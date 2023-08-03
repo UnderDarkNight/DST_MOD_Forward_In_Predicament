@@ -9,28 +9,30 @@
 
 local function main_com(self)
     self.TempData.VIP = {}
-    function self:VIP_Add_Fn(fn)    ----- vip 验证成功后执行的fn
-        if type(fn) == "function" then
+    ------------------------------------------------------------
+        function self:VIP_Add_Fn(fn)    ----- vip 验证成功后执行的fn
+            if type(fn) == "function" then
+                self.TempData.VIP.___is_vip_fn = self.TempData.VIP.___is_vip_fn or {}
+                table.insert(self.TempData.VIP.___is_vip_fn,fn)
+            end
+        end
+        function self:VIP_Do_Check_Succeed_Fns()
             self.TempData.VIP.___is_vip_fn = self.TempData.VIP.___is_vip_fn or {}
-            table.insert(self.TempData.VIP.___is_vip_fn,fn)
+            for k, fn in pairs(self.TempData.VIP.___is_vip_fn) do
+                fn()
+            end
+            self.TempData.VIP.___is_vip_fn = {} --- 执行的代码为一次性的
         end
-    end
-    function self:VIP_Do_Check_Succeed_Fns()
-        self.TempData.VIP.___is_vip_fn = self.TempData.VIP.___is_vip_fn or {}
-        for k, fn in pairs(self.TempData.VIP.___is_vip_fn) do
-            fn()
-        end
-    end
 
-    function self:VIP_Set_CDKEY(str)
-        if type(str) == "string" and self:VIP_Start_Check_CDKEY(str) then
-            self:Set_Cross_Archived_Data("cd_key",str)
+        function self:VIP_Set_CDKEY(str)
+            if type(str) == "string" and self:VIP_Start_Check_CDKEY(str) then
+                self:Set_Cross_Archived_Data("cd_key",str)
+            end
         end
-    end
 
-    function self:VIP_Get_CDKEY()
-        return self:Get_Cross_Archived_Data("cd_key")
-    end
+        function self:VIP_Get_CDKEY()
+            return self:Get_Cross_Archived_Data("cd_key")
+        end
     ------------------------------------------------------------
     ---- key 判断
                 local alphabet = {
@@ -108,105 +110,110 @@ local function main_com(self)
                 end
     ------------------------------------------------------------
     --- cd-key 生成函数
-    if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
-        function self:VIP_CreateCDKEY()
-            local function num2alphabet(num)
-                for k, v in pairs(alphabet) do
-                    if v == num then
-                        return tostring(k)
+        if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
+            function self:VIP_CreateCDKEY()
+                local function num2alphabet(num)
+                    for k, v in pairs(alphabet) do
+                        if v == num then
+                            return tostring(k)
+                        end
                     end
+                    return "#"
                 end
-                return "#"
-            end
 
-            ---------------------------------------------
-            --- key 2
-            local num_1,num_2,num_3,num_4 = 0,0,0,0
-            while true do
-                local t1 = math.random(start_num, end_num)
-                local t2 = math.random(start_num, end_num)
-                local t3 = math.random(start_num, end_num)
-                local t4 = math.random(start_num, end_num)
-                if (t1+t2+t3+t4)%13 == 0 then   --- 和为 13 的倍数
-                    num_1,num_2,num_3,num_4 = t1,t2,t3,t4
-                    break
-                end 
-            end
-            local key_2 = num2alphabet(num_1)..num2alphabet(num_2)..num2alphabet(num_3)..num2alphabet(num_4)
-            ---------------------------------------------
-            --- key 2
-            while true do
-                local t1 = math.random(start_num, end_num)
-                local t2 = math.random(start_num, end_num)
-                local t3 = math.random(start_num, end_num)
-                local t4 = math.random(start_num, end_num)
-                if (t1+t2+t3+t4)%5 == 0 then   --- 和为 5 的倍数
-                    num_1,num_2,num_3,num_4 = t1,t2,t3,t4
-                    break
-                end 
-            end
-            local key_3 = num2alphabet(num_1)..num2alphabet(num_2)..num2alphabet(num_3)..num2alphabet(num_4)
-            ---------------------------------------------
-            --- key 3
-            while true do
-                local t1 = math.random(start_num, end_num)
-                local t2 = math.random(start_num, end_num)
-                local t3 = math.random(start_num, end_num)
-                local t4 = math.random(start_num, end_num)
-                if (t1+t2+t3+t4)%12 == 0 then   --- 和为 12 的倍数
-                    num_1,num_2,num_3,num_4 = t1,t2,t3,t4
-                    break
-                end 
-            end
-            local key_4 = num2alphabet(num_1)..num2alphabet(num_2)..num2alphabet(num_3)..num2alphabet(num_4)  
-            
-            
-            -----------------------------
-            local ret_CDKEY = "FVIP-"..key_2.."-"..key_3.."-"..key_4
-            if string.find(ret_CDKEY,"#") == nil then
-                print(ret_CDKEY)
+                ---------------------------------------------
+                --- key 2
+                local num_1,num_2,num_3,num_4 = 0,0,0,0
+                while true do
+                    local t1 = math.random(start_num, end_num)
+                    local t2 = math.random(start_num, end_num)
+                    local t3 = math.random(start_num, end_num)
+                    local t4 = math.random(start_num, end_num)
+                    if (t1+t2+t3+t4)%13 == 0 then   --- 和为 13 的倍数
+                        num_1,num_2,num_3,num_4 = t1,t2,t3,t4
+                        break
+                    end 
+                end
+                local key_2 = num2alphabet(num_1)..num2alphabet(num_2)..num2alphabet(num_3)..num2alphabet(num_4)
+                ---------------------------------------------
+                --- key 2
+                while true do
+                    local t1 = math.random(start_num, end_num)
+                    local t2 = math.random(start_num, end_num)
+                    local t3 = math.random(start_num, end_num)
+                    local t4 = math.random(start_num, end_num)
+                    if (t1+t2+t3+t4)%5 == 0 then   --- 和为 5 的倍数
+                        num_1,num_2,num_3,num_4 = t1,t2,t3,t4
+                        break
+                    end 
+                end
+                local key_3 = num2alphabet(num_1)..num2alphabet(num_2)..num2alphabet(num_3)..num2alphabet(num_4)
+                ---------------------------------------------
+                --- key 3
+                while true do
+                    local t1 = math.random(start_num, end_num)
+                    local t2 = math.random(start_num, end_num)
+                    local t3 = math.random(start_num, end_num)
+                    local t4 = math.random(start_num, end_num)
+                    if (t1+t2+t3+t4)%12 == 0 then   --- 和为 12 的倍数
+                        num_1,num_2,num_3,num_4 = t1,t2,t3,t4
+                        break
+                    end 
+                end
+                local key_4 = num2alphabet(num_1)..num2alphabet(num_2)..num2alphabet(num_3)..num2alphabet(num_4)  
+                
+                
+                -----------------------------
+                local ret_CDKEY = "FVIP-"..key_2.."-"..key_3.."-"..key_4
+                if string.find(ret_CDKEY,"#") == nil then
+                    print(ret_CDKEY)
+                end
             end
         end
-    end
     ------------------------------------------------------------
 
-    function self:IsVIP()
-        return self.TempData.______vip_player or false
-    end
-    function self:VIP_Start_Check_CDKEY(input_key) ------- 检查入口,兼容文本检查，有输入的时候进行文本检查
-        local cdkey = input_key or self:VIP_Get_CDKEY()
-        if type(cdkey) ~= "string" then
-            return false
+        function self:IsVIP()
+            return self.TempData.VIP.______vip_player or false
         end
-        if #cdkey < 19 then    ---  XXXX-XXXX-XXXX-XXXX  文本长度为19
-            return false
-        end
-        -- string.sub(str,1,string.len(str)-1)  -- 截取文本
-        cdkey = string.upper(cdkey)
-        local key_1 = string.sub(cdkey,1,4)
-        local key_2 = string.sub(cdkey, 6, 9)
-        local key_3 = string.sub(cdkey, 11, 14)
-        local key_4 = string.sub(cdkey, 16, 19)
-
-        -------------------------------------------------------
-        ----  FVIP-XXXX-XXXX-XXXX 
-        ---- 以 FVIP 为开头
-        if  key_1 == "FVIP" and keys_check__typ_1(key_2,key_3,key_4) then
-            if input_key then
-                print("key check succeed:",input_key)
-                return true
-            else
-                if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
-                    print("info cd-key check succeed:",cdkey)
-                end
-                self.TempData.______vip_player = true
-                self:VIP_Do_Check_Succeed_Fns()
+    ------------------------------------------------------------
+    ---- 主检查入口。可以仅仅只检查key是否通过。
+        ---- 功能1：输入参数全为nil。为客户端上传来数据的时候检查key，并执行通过的函数。为进入世界的时候读取检查调用。
+        ---- 功能2：用户输入激活码的时候， for_player_input_flag 需要为 true。 让玩家刚输入完key就能享受对应的功能。
+        ---- 功能3：单纯的验证激活码是否通过， for_player_input_flag 为 nil 。  通常用于检查生成的key是否通过。
+        function self:VIP_Start_Check_CDKEY(input_key,for_player_input_flag)
+            local cdkey = input_key or self:VIP_Get_CDKEY()
+            if type(cdkey) ~= "string" then
                 return false
             end
+            if #cdkey < 19 then    ---  XXXX-XXXX-XXXX-XXXX  文本长度为19
+                return false
+            end
+            -- string.sub(str,1,string.len(str)-1)  -- 截取文本
+            cdkey = string.upper(cdkey)
+            local key_1 = string.sub(cdkey,1,4)
+            local key_2 = string.sub(cdkey, 6, 9)
+            local key_3 = string.sub(cdkey, 11, 14)
+            local key_4 = string.sub(cdkey, 16, 19)
+
+            -------------------------------------------------------
+            ----  FVIP-XXXX-XXXX-XXXX 
+            ---- 以 FVIP 为开头
+            if  key_1 == "FVIP" and keys_check__typ_1(key_2,key_3,key_4) then
+                if input_key and for_player_input_flag == nil then
+                    print("key check succeed:",input_key)
+                    return true
+                else
+                    if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
+                        print("info cd-key check succeed:",cdkey)
+                    end
+                    self.TempData.VIP.______vip_player = true
+                    self:VIP_Do_Check_Succeed_Fns()
+                    return false
+                end
+            end
+            -------------------------------------------------------
+            return false
         end
-        -------------------------------------------------------
-        return false
-    end
 
     self.inst:ListenForEvent("fwd_in_pdt_event.Get_Cross_Archived_Data_From_Client",function()  --- 监听同步来的数据
         self.inst:DoTaskInTime(0.1,function()
