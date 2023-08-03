@@ -23,7 +23,7 @@ local function main_com(self)
     end
 
     function self:VIP_Set_CDKEY(str)
-        if type(str) == "string" then
+        if type(str) == "string" and self:VIP_Start_Check_CDKEY(str) then
             self:Set_Cross_Archived_Data("cd_key",str)
         end
     end
@@ -70,32 +70,41 @@ local function main_com(self)
                         return nil
                     end
                 end
-                local function key2_check(str)
-                    local num_1,num_2,num_3,num_4 = str2number(str)
-                    if num_1 and num_2 and num_3 and num_4 then
-                        if (num_1+num_2+num_3+num_4)%13 == 0 then   --- 和为13的倍数
-                            return true
+
+                local function keys_check__typ_1(str2,str3,str4)
+                    local function key2_check(str)
+                        local num_1,num_2,num_3,num_4 = str2number(str)
+                        if num_1 and num_2 and num_3 and num_4 then
+                            if (num_1+num_2+num_3+num_4)%13 == 0 then   --- 和为13的倍数
+                                return true
+                            end
                         end
+                        return false
                     end
-                    return false
-                end
-                local function key3_check(str)    
-                    local num_1,num_2,num_3,num_4 = str2number(str)
-                    if num_1 and num_2 and num_3 and num_4 then
-                        if (num_1+num_2+num_3+num_4)%5 == 0 then    --- 和为5的倍数
-                            return true
-                        end
-                    end    
-                    return false
-                end
-                local function key4_check(str)    
-                    local num_1,num_2,num_3,num_4 = str2number(str) --- 和为12的倍数
-                    if num_1 and num_2 and num_3 and num_4 then
-                        if (num_1+num_2+num_3+num_4)%12 == 0 then
-                            return true
-                        end
+                    local function key3_check(str)    
+                        local num_1,num_2,num_3,num_4 = str2number(str)
+                        if num_1 and num_2 and num_3 and num_4 then
+                            if (num_1+num_2+num_3+num_4)%5 == 0 then    --- 和为5的倍数
+                                return true
+                            end
+                        end    
+                        return false
                     end
-                    return false
+                    local function key4_check(str)    
+                        local num_1,num_2,num_3,num_4 = str2number(str) --- 和为12的倍数
+                        if num_1 and num_2 and num_3 and num_4 then
+                            if (num_1+num_2+num_3+num_4)%12 == 0 then
+                                return true
+                            end
+                        end
+                        return false
+                    end
+                    
+                    if key2_check(str2) and key3_check(str3) and key4_check(str4) then
+                        return true
+                    else
+                        return false
+                    end
                 end
     ------------------------------------------------------------
     --- cd-key 生成函数
@@ -161,13 +170,13 @@ local function main_com(self)
     end
     ------------------------------------------------------------
 
-    function self:VIP_Start_Check_CDKEY(input_key) ------- 检查入口
+    function self:VIP_Start_Check_CDKEY(input_key) ------- 检查入口,兼容文本检查，有输入的时候进行文本检查
         local cdkey = input_key or self:VIP_Get_CDKEY()
         if type(cdkey) ~= "string" then
-            return
+            return false
         end
         if #cdkey < 19 then    ---  XXXX-XXXX-XXXX-XXXX  文本长度为19
-            return
+            return false
         end
         -- string.sub(str,1,string.len(str)-1)  -- 截取文本
         cdkey = string.upper(cdkey)
@@ -179,18 +188,20 @@ local function main_com(self)
         -------------------------------------------------------
         ----  FVIP-XXXX-XXXX-XXXX 
         ---- 以 FVIP 为开头
-        if  key_1 == "FVIP" and key2_check(key_2) and key3_check(key_3) and key4_check(key_4) then
+        if  key_1 == "FVIP" and keys_check__typ_1(key_2,key_3,key_4) then
             if input_key then
                 print("key check succeed:",input_key)
+                return true
             else
                 if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
                     print("info cd-key check succeed:",cdkey)
                 end
                 self:VIP_Do_Check_Succeed_Fns()
+                return false
             end
         end
         -------------------------------------------------------
-
+        return false
     end
 
     self.inst:ListenForEvent("fwd_in_pdt_event.Get_Cross_Archived_Data_From_Client",function()  --- 监听同步来的数据
