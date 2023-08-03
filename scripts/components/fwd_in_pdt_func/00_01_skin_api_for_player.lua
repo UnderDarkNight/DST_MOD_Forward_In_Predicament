@@ -169,6 +169,32 @@ local function main_com(self)
                 end
                 return cmd_table_for_unlock
             end
+
+            function self:SkinAPI__Get_Unlocked_Num()   --- 数一下当前解锁的皮肤数
+                local num = 0
+                for prefab_name, skin_list in pairs(self.DataTable.player_unlocked_skins_PREFAB_SKINS) do
+                    for index, skin_name in pairs(skin_list) do
+                        if skin_name then
+                            num = num + 1
+                        end
+                    end
+                end
+            end
+
+            function self:SkinAPI__Get_All_Skin_Num()   --- 数一下所有系统拥有皮肤的
+                if self.TempData.__________all_skins_num == nil then
+                    local num = 0
+                    for skin_name, v in pairs(FWD_IN_PDT_MOD_SKIN.SKINS_DATA) do
+                        if skin_name and v then
+                            num = num + 1
+                        end
+                    end
+                    self.TempData.__________all_skins_num = num
+                    return num
+                else
+                    return self.TempData.__________all_skins_num
+                end
+            end
         -------------------------------------------------------------
         ----- 给皮肤工具调用的
             function self:SkinAPI__Get_Prefab_Next_Skin_By_Current(prefab_name,current_skin)
