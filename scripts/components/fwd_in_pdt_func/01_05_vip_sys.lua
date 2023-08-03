@@ -170,6 +170,9 @@ local function main_com(self)
     end
     ------------------------------------------------------------
 
+    function self:IsVIP()
+        return self.TempData.______vip_player or false
+    end
     function self:VIP_Start_Check_CDKEY(input_key) ------- 检查入口,兼容文本检查，有输入的时候进行文本检查
         local cdkey = input_key or self:VIP_Get_CDKEY()
         if type(cdkey) ~= "string" then
@@ -196,6 +199,7 @@ local function main_com(self)
                 if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
                     print("info cd-key check succeed:",cdkey)
                 end
+                self.TempData.______vip_player = true
                 self:VIP_Do_Check_Succeed_Fns()
                 return false
             end
