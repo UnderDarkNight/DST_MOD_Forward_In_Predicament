@@ -11,7 +11,7 @@
 
 
 
-return function(fwd_in_pdt_func)
+local function main_com(fwd_in_pdt_func)
     if not TheWorld.ismastersim then 
         return
     end
@@ -484,4 +484,16 @@ return function(fwd_in_pdt_func)
     --     inst.components.fwd_in_pdt_func:Map_Time_0_Task_Start()
     -- end)
 
+end
+
+local function replica(fwd_in_pdt_func)
+    
+end
+
+return function(fwd_in_pdt_func)
+    if fwd_in_pdt_func.is_replica ~= true then        --- 不是replica
+        main_com(fwd_in_pdt_func) 
+    else      
+        replica(fwd_in_pdt_func)
+    end
 end

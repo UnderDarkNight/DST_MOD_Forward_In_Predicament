@@ -69,17 +69,19 @@ function fwd_in_pdt_func:Init(cmd_table,...)
             ["skin_player"]      = require("components/fwd_in_pdt_func/00_01_skin_api_for_player"),       ---- 皮肤API  玩家专属
             ["skin"]      = require("components/fwd_in_pdt_func/00_02_skin_api_for_others"),       ---- 非玩家用的皮肤API
 
-            
-            ["camera"] = require("components/fwd_in_pdt_func/01_01_ThePlayerCamera"),       ---- 玩家镜头。
-            ["picksound"] = require("components/fwd_in_pdt_func/01_02_pick_sound"),       ---- 客制化拾取声音。
-            ["rpc"] = require("components/fwd_in_pdt_func/02_RPC_Event"),                 ---- 使用RPC形式下发/上传 event 数据
+            ["player"]      = require("components/fwd_in_pdt_func/01_00_player_only_func"),       ---- 玩家独有的func
+            ["camera"]      = require("components/fwd_in_pdt_func/01_01_ThePlayerCamera"),       ---- 玩家镜头。
+            ["picksound"]   = require("components/fwd_in_pdt_func/01_02_pick_sound"),       ---- 客制化拾取声音。
+            ["pre_dodelta"]     = require("components/fwd_in_pdt_func/01_03_com_pre_dodleta"),         ---- 在官方的 DoDodelta之前，添加一些拦截API
             ["cross_archived_data_sys"] = require("components/fwd_in_pdt_func/01_04_cross_archived_data_sys"),        ---- 跨存档储存系统
-            
-            
+
+            ["rpc"] = require("components/fwd_in_pdt_func/02_RPC_Event"),                 ---- 使用RPC形式下发/上传 event 数据
+            ["long_update"] = require("components/fwd_in_pdt_func/04_LongUpdate"),        ---- 长更新，可以用于作物，或者加载范围重刷
+                        
+            ["map_modifier"] = require("components/fwd_in_pdt_func/09_theworld_map_modifier"),        ---- 地图修改器（包括资源刷新器）
             ["growable"] = require("components/fwd_in_pdt_func/10_growable"),        ---- 植物类使用的生长组件
             ["mouserover_colourful"] = require("components/fwd_in_pdt_func/11_mouserover_str_colourful"),        ---- 鼠标放上去显示颜色的组件
             ["item_tile_fx"] = require("components/fwd_in_pdt_func/12_item_tile_icon_fx"),        ---- 物品栏图标的动画特效
-
         }
 
         for k, module_name in pairs(_table) do
