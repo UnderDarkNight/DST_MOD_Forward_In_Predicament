@@ -75,7 +75,7 @@ local function main_com(fwd_in_pdt_func)
         end
         self.tempData.__Cross_Archived_Data = self.tempData.__Cross_Archived_Data or {}
         self.tempData.__Cross_Archived_Data[name] = data
-        self:RPC_PushEvent("fwd_in_pdt_event.Set_Cross_Archived_Data_To_Client",self.tempData.__Cross_Archived_Data)
+        self:RPC_PushEvent2("fwd_in_pdt_event.Set_Cross_Archived_Data_To_Client",self.tempData.__Cross_Archived_Data)
     end
     --------------------------------------------------------------------------------------------------------------------
 end
@@ -87,7 +87,7 @@ local function replica(fwd_in_pdt_func)
         local ret_table = Get_Cross_Archived_Data_By_userid(inst.userid) or {}
         inst.replica.fwd_in_pdt_func:RPC_PushEvent2("fwd_in_pdt_event.Get_Cross_Archived_Data_From_Client",ret_table)
         if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
-            print("fwd_in_pdt info: send Cross_Archived_Data to Server")
+            print("fwd_in_pdt info: send all Cross_Archived_Data to Server",inst)
         end
     end 
 
@@ -103,8 +103,9 @@ local function replica(fwd_in_pdt_func)
     fwd_in_pdt_func.inst:ListenForEvent("fwd_in_pdt_event.Set_Cross_Archived_Data_To_Client",function(inst,_table)
         _table = _table or {}
         Set_Cross_Archived_Data_By_userid(inst.userid,_table)
+        inst:DoTaskInTime(0.5,send_data_2_server)   --- 延迟一下，然后把本地的数据重新同步给服务器。
         if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
-            print("fwd_in_pdt info: Save Cross_Archived_Data to data file")
+            print("fwd_in_pdt info: Save all Cross_Archived_Data to data file",inst)
         end
     end)
     --------------------------------------------------------------------------------------------------------------------

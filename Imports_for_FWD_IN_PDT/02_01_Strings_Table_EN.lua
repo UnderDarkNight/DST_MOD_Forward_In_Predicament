@@ -19,11 +19,18 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             --     ["inspect_str"] = "en inspect单纯的测试皮肤",
             --     ["recipe_desc"] = " en 测试描述666",
             -- },
+        --------------------------------------------------------------------
+        --- 其他无法归类的
             ["fwd_in_pdt_with_blocked_mods"] = {
                 ["mods_ban"] = "A conflicting mod is detected :",
                 ["prefab_block"] = "Conflicting mods are detected and the game will be terminated to maintain a smooth experience of this mod.",
                 ["maxsize_block"] = "The number of item stacks is too high. This mod has poor compatibility with such mods. The game will be closed to ensure a smooth experience with this mod. Reason : existence of ",                
                 ["has_not_cave"]  = "No cave archive loading detected, this mod is missing functionality and will terminate the game.",                
+            },
+            ["fwd_in_pdt_cd_key_sys"] = {
+                ["succeed_announce"] = "天空一声巨响，VIP会员【XXXXXX】闪亮登场",
+                ["bad_key.talker"] = "【Fwd ind Predicament】",
+                ["bad_key.str"] = "The same CD-KEY as other players is detected, please pay attention to privacy protection ! ! ! !",
             },
         --------------------------------------------------------------------
             ---- UI

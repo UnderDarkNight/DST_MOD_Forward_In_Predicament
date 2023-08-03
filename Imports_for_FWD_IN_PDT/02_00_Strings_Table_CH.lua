@@ -25,11 +25,18 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "inspect单纯的测试皮肤",
                 ["recipe_desc"] = "测试描述666",
             },
+        --------------------------------------------------------------------
+        --- others 其他无法归类的
             ["fwd_in_pdt_with_blocked_mods"] = {
                 ["mods_ban"] = "检测到有冲突的MOD，本MOD停止加载。有冲突的MOD为：",
                 ["prefab_block"] = "检测到有冲突的MOD。为保持本MOD的流畅体验，将终止游戏运行。冲突原因：",
                 ["maxsize_block"] = "物品叠堆数量过高。本MOD与这类MOD兼容性较差。为保证本MOD的流畅体验，将关闭游戏。",
                 ["has_not_cave"]  = "未检测到有洞穴加载，本MOD功能缺失，将终止游戏运行",
+            },
+            ["fwd_in_pdt_cd_key_sys"] = {
+                ["succeed_announce"] = "天空一声巨响，VIP会员【XXXXXX】闪亮登场",
+                ["bad_key.talker"] = "【负重前行】",
+                ["bad_key.str"] = "检测到和其他玩家相同的CD-KEY，请注意隐私保护！！",
             },
         --------------------------------------------------------------------
         ---- UI

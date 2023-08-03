@@ -288,12 +288,20 @@ local flg,error_code = pcall(function()
                     -- end)
     ----------------------------------------------------------------------------------------------------------------
     ---- cd-key
-            -- for i = 1, 10, 1 do
+            -- for i = 1, 50, 1 do
             --     ThePlayer.components.fwd_in_pdt_func:VIP_CreateCDKEY()                            
             -- end
+
+            local data_from_world = TheWorld.components.fwd_in_pdt_func:Get("all_player_cd_keys") or {}
+            -- data_from_world["userid"] = "FVIP-DIKT-NOS3-4LTC"
+            -- TheWorld.components.fwd_in_pdt_func:Set("all_player_cd_keys",data_from_world)
             
             -- ThePlayer.components.fwd_in_pdt_func:VIP_Start_Check_CDKEY("FVI5P-KJXY")
-            ThePlayer.components.fwd_in_pdt_func:VIP_Set_CDKEY("FVIP-KJXY-AFF5-ZW48")
+
+            ThePlayer.components.fwd_in_pdt_func:VIP_Set_CDKEY("FVIP-2MBW-QAIN-W8W8",true)
+            -- for k, v in pairs(data_from_world) do
+            --     print(k,v)
+            -- end
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)

@@ -86,7 +86,7 @@ inst.components.fwd_in_pdt_data:Add(name,num) ,num必须给 number格式，是�
 【scripts\prefabs\20_fwd_in_pdt_events\00_natural_resources_spawner.lua】
 
 9、跨存档数据储存系统，用于A存档解锁了东西也能B存档使用，还可以去别人的存档使用。只在玩家身上添加。相关数据和userid绑定。
-【scripts\components\fwd_in_pdt_func\08_cross_archived_data_sys.lua】
+【scripts\components\fwd_in_pdt_func\01_04_cross_archived_data_sys.lua】
 
 10、简易任意物品接受组件，可以一个组件就解决物品接受问题，包括独立的显示文本和SG动作动画。
 【scripts\components\fwd_in_pdt_com_acceptable.lua】

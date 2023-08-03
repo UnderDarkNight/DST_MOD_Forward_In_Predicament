@@ -5,7 +5,9 @@
 ---- key 的格式 ： XXXX-XXXX-XXXX-XXXX      #str = 19
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
+local function GetStringTable()
+    return TUNING["Forward_In_Predicament.fn"].GetStringsTable("fwd_in_pdt_cd_key_sys")
+end
 
 local function main_com(self)
     self.TempData.VIP = {}
@@ -34,6 +36,77 @@ local function main_com(self)
             return self:Get_Cross_Archived_Data("cd_key")
         end
     ------------------------------------------------------------
+    -- bad key check  检查同一个世界里有多个玩家同一个CDKEY
+        function self:VIP_Set_Bad_Key()
+            self:Set("bad_cd_key",true)
+        end
+        function self:VIP_Is_Bad_Key()
+            return self:Get("bad_cd_key") or false
+        end
+
+        function self:VIP_Bad_Key_Flag_Clear()
+            self:Set("bad_cd_key",false)
+        end
+        
+        function self:VIP_Save_Key_2_World()
+            local cd_key = self:VIP_Get_CDKEY()
+            local userid = self.inst.userid
+            local data_from_world = TheWorld.components.fwd_in_pdt_func:Get("all_player_cd_keys") or {}
+            data_from_world[userid] = cd_key
+            TheWorld.components.fwd_in_pdt_func:Set("all_player_cd_keys",data_from_world)
+        end
+
+        function self:VIP_Bad_Key_Check()
+            local my_userid = self.inst.userid
+            local my_cd_key = self:VIP_Get_CDKEY()
+            if type(my_cd_key) ~= "string" then
+                return
+            end
+            local data_from_world = TheWorld.components.fwd_in_pdt_func:Get("all_player_cd_keys") or {}
+
+            for temp_userid, temp_cd_key in pairs(data_from_world) do
+                if temp_userid ~= my_userid and temp_cd_key == my_cd_key then
+                    self:VIP_Set_Bad_Key()
+                    return
+                end
+            end
+
+        end
+
+        function self:VIP_Bad_Key_Task_Start()
+            if self:VIP_Is_Bad_Key() and self.TempData.VIP.____bad_key_announce_task == nil then
+                self.TempData.VIP.____bad_key_announce_task = self.inst:DoPeriodicTask(5,function()
+                    ----------------------------------------
+                    --- 做通告
+                    self:Wisper({
+                        m_colour = {255,255,255} ,                           ---- 内容颜色
+                        s_colour = {255,255,255},                            ---- 发送者颜色
+                        message = GetStringTable()["bad_key.str"],           ---- 文字内容
+                        sender_name = GetStringTable()["bad_key.talker"],    ---- 发送者名字
+                    })
+                    ----------------------------------------
+                end)
+            end
+        end
+
+        function self:VIP_Bad_Key_Task_Kill()
+            if self.TempData.VIP.____bad_key_announce_task then
+                self.TempData.VIP.____bad_key_announce_task:Cancel()
+                self.TempData.VIP.____bad_key_announce_task = nil
+            end
+        end
+
+        function self:VIP_Check_AllPlayers_Bad_Key()        ---- 有人登录、输入新的key 都会执行
+            for k, temp_player in pairs(AllPlayers) do
+                if temp_player and temp_player.userid and temp_player.components.fwd_in_pdt_func and temp_player.components.fwd_in_pdt_func.IsVIP then
+                    temp_player.components.fwd_in_pdt_func:VIP_Bad_Key_Task_Kill()  --- 杀掉通告任务
+                    temp_player.components.fwd_in_pdt_func:VIP_Bad_Key_Flag_Clear() --- 先清除标记
+                    temp_player.components.fwd_in_pdt_func:VIP_Bad_Key_Check()      --- 再重新检查
+                    temp_player.components.fwd_in_pdt_func:VIP_Bad_Key_Task_Start() --- 再检查任务重启
+                end
+            end
+        end
+    ------------------------------------------------------------
     ---- key 判断
                 local alphabet = {
                     ["A"]=0,["B"]=0,["C"]=0,["D"]=0,["E"]=0,["F"]=0,["G"] = 0,
@@ -50,7 +123,7 @@ local function main_com(self)
                     alphabet[k] = num
                     num = num + 1
                 end
-                local end_num = num     ----- 
+                local end_num = num - 1    ----- 
                 local function str2number(str)
                     if string.len(str) ~= 4 then
                         return nil
@@ -165,11 +238,12 @@ local function main_com(self)
                 
                 -----------------------------
                 local ret_CDKEY = "FVIP-"..key_2.."-"..key_3.."-"..key_4
-                if string.find(ret_CDKEY,"#") == nil then
-                    print(ret_CDKEY)
-                end
+                -- if string.find(ret_CDKEY,"#") == nil then
+                print(ret_CDKEY)
+                -- end
             end
         end
+    ------------------------------------------------------------
     ------------------------------------------------------------
 
         function self:IsVIP()
@@ -207,18 +281,37 @@ local function main_com(self)
                         print("info cd-key check succeed:",cdkey)
                     end
                     self.TempData.VIP.______vip_player = true
+                    self:VIP_Set_CDKEY(input_key)   ---- 下发保存数据，过会同步上来后触发 event 重新检查一遍
                     self:VIP_Do_Check_Succeed_Fns()
-                    return false
+                    self:Replica_Set_Simple_Data("vip",true)
+
+                    self:VIP_Save_Key_2_World() --- 把 key 保存到 TheWorld
+                    self:VIP_Check_AllPlayers_Bad_Key()
+                    return true
                 end
             end
             -------------------------------------------------------
             return false
         end
 
+    ------------------------------------------------------------
     self.inst:ListenForEvent("fwd_in_pdt_event.Get_Cross_Archived_Data_From_Client",function()  --- 监听同步来的数据
         self.inst:DoTaskInTime(0.1,function()
             self:VIP_Start_Check_CDKEY()
         end)
+
+        ---------------------------------------------
+        ---- bad cd_key
+        -- self.inst:DoTaskInTime(10,function()    --- 检查 badkey
+        --     self:VIP_Bad_Key_Check()
+        -- end)
+        -- self.inst:DoTaskInTime(30,function()    --- 轮巡通告
+        --     if self:VIP_Is_Bad_Key() then
+        --         self:VIP_Check_AllPlayers_Bad_Key()
+        --     end
+        -- end)
+
+
     end)
 
 end
@@ -226,6 +319,10 @@ end
 
 
 local function replica(self)  
+    function self:IsVIP()
+        return self:Replica_Get_Simple_Data("vip") or false
+    end
+    
 end
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
