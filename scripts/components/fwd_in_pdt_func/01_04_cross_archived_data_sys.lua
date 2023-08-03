@@ -103,7 +103,7 @@ local function replica(fwd_in_pdt_func)
     fwd_in_pdt_func.inst:ListenForEvent("fwd_in_pdt_event.Set_Cross_Archived_Data_To_Client",function(inst,_table)
         _table = _table or {}
         Set_Cross_Archived_Data_By_userid(inst.userid,_table)
-        inst:DoTaskInTime(0.5,send_data_2_server)   --- 延迟一下，然后把本地的数据重新同步给服务器。
+        -- inst:DoTaskInTime(0.5,send_data_2_server)   --- 延迟一下，然后把本地的数据重新同步给服务器。
         if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
             print("fwd_in_pdt info: Save all Cross_Archived_Data to data file",inst)
         end

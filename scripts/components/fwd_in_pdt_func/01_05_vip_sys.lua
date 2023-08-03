@@ -54,6 +54,9 @@ local function main_com(self)
             local data_from_world = TheWorld.components.fwd_in_pdt_func:Get("all_player_cd_keys") or {}
             data_from_world[userid] = cd_key
             TheWorld.components.fwd_in_pdt_func:Set("all_player_cd_keys",data_from_world)
+            if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
+                print("VIP_Save_Key_2_World",userid,cd_key)
+            end
         end
 
         function self:VIP_Bad_Key_Check()
@@ -281,7 +284,9 @@ local function main_com(self)
                         print("info cd-key check succeed:",cdkey)
                     end
                     self.TempData.VIP.______vip_player = true
-                    self:VIP_Set_CDKEY(input_key)   ---- 下发保存数据，过会同步上来后触发 event 重新检查一遍
+                    if for_player_input_flag then
+                        self:VIP_Set_CDKEY(input_key)   ---- 下发保存数据
+                    end
                     self:VIP_Do_Check_Succeed_Fns()
                     self:Replica_Set_Simple_Data("vip",true)
 
@@ -297,7 +302,9 @@ local function main_com(self)
     ------------------------------------------------------------
     self.inst:ListenForEvent("fwd_in_pdt_event.Get_Cross_Archived_Data_From_Client",function()  --- 监听同步来的数据
         self.inst:DoTaskInTime(0.1,function()
-            self:VIP_Start_Check_CDKEY()
+            if not self:IsVIP() then
+                self:VIP_Start_Check_CDKEY()
+            end
         end)
 
         ---------------------------------------------
