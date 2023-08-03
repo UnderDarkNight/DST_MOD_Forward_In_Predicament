@@ -189,6 +189,7 @@ function fwd_in_pdt_func:Init(cmd_table,...)
             ["camera"]      = require("components/fwd_in_pdt_func/01_01_ThePlayerCamera"),       ---- 玩家镜头。
             ["picksound"]   = require("components/fwd_in_pdt_func/01_02_pick_sound"),       ---- 客制化拾取声音。
             ["pre_dodelta"]     = require("components/fwd_in_pdt_func/01_03_com_pre_dodleta"),         ---- 在官方的 DoDodelta之前，添加一些拦截API
+            ["cross_archived_data_sys"] = require("components/fwd_in_pdt_func/01_04_cross_archived_data_sys"),        ---- 跨存档储存系统
 
 
             ["rpc"] = require("components/fwd_in_pdt_func/02_RPC_Event"),                 ---- 使用RPC形式下发/上传 event 数据
@@ -197,7 +198,6 @@ function fwd_in_pdt_func:Init(cmd_table,...)
             -- ["before_mastersim_return"] = require("components/fwd_in_pdt_func/05_register_before_mastersim_return"),        ---- replica 的阻塞避免处理
             -- ["sg_events"] = require("components/fwd_in_pdt_func/06_sg_event_listener"),        ---- sg 监听 -- 官方提供了Event newstate，【这个模块慎用】
             --- 位置暂时预留给 07_exchange_tags.lua
-            ["cross_archived_data_sys"] = require("components/fwd_in_pdt_func/08_cross_archived_data_sys"),        ---- 跨存档储存系统
             ["map_modifier"] = require("components/fwd_in_pdt_func/09_theworld_map_modifier"),        ---- 地图修改器（包括资源刷新器）
             ["growable"] = require("components/fwd_in_pdt_func/10_growable"),        ---- 植物类使用的生长组件
             ["mouserover_colourful"] = require("components/fwd_in_pdt_func/11_mouserover_str_colourful"),        ---- 鼠标放上去显示颜色的组件

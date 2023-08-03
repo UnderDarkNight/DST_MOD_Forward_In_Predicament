@@ -73,7 +73,9 @@ function fwd_in_pdt_func:Init(cmd_table,...)
             ["camera"] = require("components/fwd_in_pdt_func/01_01_ThePlayerCamera"),       ---- 玩家镜头。
             ["picksound"] = require("components/fwd_in_pdt_func/01_02_pick_sound"),       ---- 客制化拾取声音。
             ["rpc"] = require("components/fwd_in_pdt_func/02_RPC_Event"),                 ---- 使用RPC形式下发/上传 event 数据
-            ["cross_archived_data_sys"] = require("components/fwd_in_pdt_func/08_cross_archived_data_sys"),        ---- 跨存档数据系统(玩家独有）。
+            ["cross_archived_data_sys"] = require("components/fwd_in_pdt_func/01_04_cross_archived_data_sys"),        ---- 跨存档储存系统
+            
+            
             ["growable"] = require("components/fwd_in_pdt_func/10_growable"),        ---- 植物类使用的生长组件
             ["mouserover_colourful"] = require("components/fwd_in_pdt_func/11_mouserover_str_colourful"),        ---- 鼠标放上去显示颜色的组件
             ["item_tile_fx"] = require("components/fwd_in_pdt_func/12_item_tile_icon_fx"),        ---- 物品栏图标的动画特效
