@@ -138,8 +138,8 @@ local flg,error_code = pcall(function()
         -- for k, v in pairs(ThePlayer.HUD.controls.craftingmenu) do
         --     print(k,v)
         -- end
-        local skin_cmd_table = ThePlayer.components.fwd_in_pdt_func:SkinAPI__Get_Random_Locked_Skin(2) or {}
-        ThePlayer.components.fwd_in_pdt_func:SkinAPI__Unlock_Skin(skin_cmd_table)
+        -- local skin_cmd_table = ThePlayer.components.fwd_in_pdt_func:SkinAPI__Get_Random_Locked_Skin(2) or {}
+        -- ThePlayer.components.fwd_in_pdt_func:SkinAPI__Unlock_Skin(skin_cmd_table)
     ----------------------------------------------------------------------------------------------------------------
         -- local ents = TheSim:FindEntities(x, y, z, 5, {"fwd_in_pdt_skin_test_item"})
         -- for k, inst in pairs(ents) do
@@ -286,6 +286,14 @@ local flg,error_code = pcall(function()
                     --         print("newstate",_table.statename)
                     --     end
                     -- end)
+    ----------------------------------------------------------------------------------------------------------------
+    ---- cd-key
+            -- for i = 1, 10, 1 do
+            --     ThePlayer.components.fwd_in_pdt_func:VIP_CreateCDKEY()                            
+            -- end
+            
+            -- ThePlayer.components.fwd_in_pdt_func:VIP_Start_Check_CDKEY("FVI5P-KJXY")
+            ThePlayer.components.fwd_in_pdt_func:VIP_Set_CDKEY("FVIP-KJXY-AFF5-ZW48")
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)

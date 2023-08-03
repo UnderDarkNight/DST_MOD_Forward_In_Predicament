@@ -12,6 +12,14 @@
 local function main_com(fwd_in_pdt_func)
     local inst = fwd_in_pdt_func.inst
     --------------------------------------------------------------------------------------------------------------------------------------------
+    ----------- 检查是玩家控制的角色的func，避免刷的人偶造成崩溃问题
+        function fwd_in_pdt_func:IsPlayer()
+            if self.inst:HasTag("player") and self.inst.components.playercontroller and self.userid then
+                return true
+            end
+            return false
+        end
+    --------------------------------------------------------------------------------------------------------------------------------------------
     ----------- 屏蔽声音用的组件
         function fwd_in_pdt_func:Block_Client_Sound(sound) -------- sound 可以是 string，也可以是table，table 两种形式都行。
             if sound == nil then
@@ -145,7 +153,12 @@ local function main_com(fwd_in_pdt_func)
 end
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 local function replica(fwd_in_pdt_func)
-    
+    function fwd_in_pdt_func:IsPlayer()
+        if self.inst:HasTag("player") and self.inst.components.playercontroller and self.userid then
+            return true
+        end
+        return false
+    end
 end
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 

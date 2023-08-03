@@ -27,7 +27,7 @@ local function Read_All_Json_Data()
         local retTable = json.decode(ret)
         return retTable
     else
-        print("FWD_IN_PDT ERROR :read cross archived data error :")
+        print("FWD_IN_PDT ERROR :read cross archived data error : Read_All_Json_Data got nil")
         return {}
     end
 end
@@ -64,6 +64,9 @@ local function main_com(fwd_in_pdt_func)
 
     fwd_in_pdt_func.inst:ListenForEvent("fwd_in_pdt_event.Get_Cross_Archived_Data_From_Client",function(inst,_table)
         inst.components.fwd_in_pdt_func.tempData.__Cross_Archived_Data = _table
+        if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
+            print("info: fwd_in_pdt_event.Get_Cross_Archived_Data_From_Client")
+        end
     end)
 
     function fwd_in_pdt_func:Set_Cross_Archived_Data(name,data)
@@ -108,10 +111,9 @@ local function replica(fwd_in_pdt_func)
 end
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 return function(fwd_in_pdt_func)
-    if fwd_in_pdt_func.inst == nil or not fwd_in_pdt_func.inst:HasTag("player") or fwd_in_pdt_func.userid == nil then    --- 本系统只注册给玩家。
+    if not fwd_in_pdt_func.inst:HasTag("player") or fwd_in_pdt_func.inst.userid == nil then    --- 本系统只注册给玩家。
         return
-    end
-            
+    end            
     if fwd_in_pdt_func.is_replica ~= true then        --- 不是replica
         main_com(fwd_in_pdt_func)
     else      

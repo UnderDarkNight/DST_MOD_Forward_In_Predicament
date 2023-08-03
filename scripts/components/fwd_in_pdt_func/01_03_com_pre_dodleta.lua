@@ -205,13 +205,12 @@ end
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 return function(fwd_in_pdt_func)
-    if not fwd_in_pdt_func.inst:HasTag("player") then
+    if not fwd_in_pdt_func.inst:HasTag("player") or fwd_in_pdt_func.inst.userid == nil then    --- 本系统只注册给玩家。
         return
-    end
+    end   
     if fwd_in_pdt_func.is_replica ~= true then        --- 不是replica
         main_com(fwd_in_pdt_func)
     else               
         replica(fwd_in_pdt_func)
     end
-
 end
