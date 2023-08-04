@@ -242,8 +242,9 @@ local function main_com(self)
                 -----------------------------
                 local ret_CDKEY = "FVIP-"..key_2.."-"..key_3.."-"..key_4
                 -- if string.find(ret_CDKEY,"#") == nil then
-                print(ret_CDKEY)
+                -- print(ret_CDKEY)
                 -- end
+                return ret_CDKEY
             end
         end
     ------------------------------------------------------------
@@ -300,27 +301,26 @@ local function main_com(self)
         end
 
     ------------------------------------------------------------
-    self.inst:ListenForEvent("fwd_in_pdt_event.Get_Cross_Archived_Data_From_Client",function()  --- 监听同步来的数据
-        self.inst:DoTaskInTime(0.1,function()
-            if not self:IsVIP() then
-                self:VIP_Start_Check_CDKEY()
-            end
-        end)
 
-        ---------------------------------------------
-        ---- bad cd_key
-        -- self.inst:DoTaskInTime(10,function()    --- 检查 badkey
-        --     self:VIP_Bad_Key_Check()
-        -- end)
-        -- self.inst:DoTaskInTime(30,function()    --- 轮巡通告
-        --     if self:VIP_Is_Bad_Key() then
-        --         self:VIP_Check_AllPlayers_Bad_Key()
-        --     end
-        -- end)
+    self.TempData.VIP.___Get_Cross_Archived_Data_From_Client__fn = function()  --- 监听同步来的数据
+            self.inst:DoTaskInTime(0.1,function()
+                if not self:IsVIP() then
+                    self:VIP_Start_Check_CDKEY()
 
+                    self.inst:DoTaskInTime(10,function()    --- 移除监听事件
+                        if self:IsVIP() then
+                            self.inst:RemoveEventCallback("fwd_in_pdt_event.Get_Cross_Archived_Data_From_Client",self.TempData.VIP.___Get_Cross_Archived_Data_From_Client__fn)
+                            if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
+                                print("fwd_in_pdt VIP SYS : player is vip and event remove")
+                            end
+                        end
+                    end)
 
-    end)
-
+                end
+            end)
+    end
+    self.inst:ListenForEvent("fwd_in_pdt_event.Get_Cross_Archived_Data_From_Client",self.TempData.VIP.___Get_Cross_Archived_Data_From_Client__fn)
+    
 end
 
 

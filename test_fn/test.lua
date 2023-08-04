@@ -292,18 +292,38 @@ local flg,error_code = pcall(function()
             --     ThePlayer.components.fwd_in_pdt_func:VIP_CreateCDKEY()                            
             -- end
 
-            local data_from_world = TheWorld.components.fwd_in_pdt_func:Get("all_player_cd_keys") or {}
-            data_from_world["userid"] = "FVIP-35J3-9PP7-1Z4F"
-            TheWorld.components.fwd_in_pdt_func:Set("all_player_cd_keys",data_from_world)
+            -- local data_from_world = TheWorld.components.fwd_in_pdt_func:Get("all_player_cd_keys") or {}
+            -- data_from_world["userid"] = "FVIP-35J3-9PP7-1Z4F"
+            -- TheWorld.components.fwd_in_pdt_func:Set("all_player_cd_keys",data_from_world)
             
 
-            -- ThePlayer.components.fwd_in_pdt_func:VIP_Start_Check_CDKEY("FVIP-957O-8KTR-R5TT",true)
-            for k, v in pairs(data_from_world) do
-                print(k,v)
-            end
+            -- -- ThePlayer.components.fwd_in_pdt_func:VIP_Start_Check_CDKEY("FVIP-957O-8KTR-R5TT",true)
+            -- for k, v in pairs(data_from_world) do
+            --     print(k,v)
+            -- end
             -- ThePlayer.components.fwd_in_pdt_func:Set_Cross_Archived_Data("tts",33)
             -- print(ThePlayer.components.fwd_in_pdt_func:Get_Cross_Archived_Data("tts"))
             -- print(ThePlayer.components.fwd_in_pdt_func:VIP_Get_CDKEY())
+
+
+            -- local ret_keys = {}
+            -- local num = 0
+            -- for i = 1, 10000, 1 do
+            --     local temp_key = ThePlayer.components.fwd_in_pdt_func:VIP_CreateCDKEY()
+            --     if temp_key and ThePlayer.components.fwd_in_pdt_func:VIP_Start_Check_CDKEY(temp_key) and ret_keys[temp_key] ~= true then
+            --         ret_keys[temp_key] = true
+            --         num = num + 1
+            --     end
+            -- end
+            -- print("keys",num)
+            -- local file = io.open("keys.txt","w")
+            -- for key, v in pairs(ret_keys) do
+            --     if key and v then
+            --         file:write(key)
+            --         file:write('\n')
+            --     end
+            -- end
+            -- file:close()
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)
