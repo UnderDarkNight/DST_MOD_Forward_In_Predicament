@@ -57,6 +57,14 @@ function fwd_in_pdt_func:Add(DataName_Str,num)
     self:Set(DataName_Str, self:Get(DataName_Str) + num)
     return self:Get(DataName_Str)
 end
+
+function fwd_in_pdt_func:Get_OS_Time_Num()
+    local year = tonumber(os.date("%Y"))
+    local month = tonumber(os.date("%m"))
+    local day = tonumber(os.date("%d"))
+    local ret_num = year*10000+month*100+day
+    return ret_num
+end
 ------------------------------------------------------------------------------------------------------------------------------
 --- 下发简易参数表，简易参数触发器
 function fwd_in_pdt_func:Replica_Set_Simple_Data(DataName_Str,theData)
@@ -191,6 +199,7 @@ function fwd_in_pdt_func:Init(cmd_table,...)
             ["pre_dodelta"]     = require("components/fwd_in_pdt_func/01_03_com_pre_dodleta"),         ---- 在官方的 DoDodelta之前，添加一些拦截API
             ["cross_archived_data_sys"] = require("components/fwd_in_pdt_func/01_04_cross_archived_data_sys"),        ---- 跨存档储存系统
             ["vip"] = require("components/fwd_in_pdt_func/01_05_vip_sys"),        ---- vip / cd-key 系统
+            ["daily_task"] = require("components/fwd_in_pdt_func/01_06_daily_task"),        ---- 日常系统
 
             ["rpc"] = require("components/fwd_in_pdt_func/02_RPC_Event"),                 ---- 使用RPC形式下发/上传 event 数据
             ["long_update"] = require("components/fwd_in_pdt_func/04_LongUpdate"),        ---- 长更新，可以用于作物，或者加载范围重刷

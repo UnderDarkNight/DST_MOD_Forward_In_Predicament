@@ -305,10 +305,15 @@ local flg,error_code = pcall(function()
             -- print(ThePlayer.components.fwd_in_pdt_func:Get_Cross_Archived_Data("tts"))
             -- print(ThePlayer.components.fwd_in_pdt_func:VIP_Get_CDKEY())
 
+            -- FVIP-A1H1-KY6V-LT02
+            ThePlayer.components.fwd_in_pdt_func:VIP_Player_Input_Key("FVIP-A1H1-KY6V-LT02")
+            print(ThePlayer.components.fwd_in_pdt_func:IsVIP())
 
+    ----------------------------------------------------------------------------------------------------------------
+    ------ cd-key 生成
             -- local ret_keys = {}
             -- local num = 0
-            -- for i = 1, 10000, 1 do
+            -- for i = 1, 30000, 1 do
             --     local temp_key = ThePlayer.components.fwd_in_pdt_func:VIP_CreateCDKEY()
             --     if temp_key and ThePlayer.components.fwd_in_pdt_func:VIP_Start_Check_CDKEY(temp_key) and ret_keys[temp_key] ~= true then
             --         ret_keys[temp_key] = true
@@ -316,7 +321,7 @@ local flg,error_code = pcall(function()
             --     end
             -- end
             -- print("keys",num)
-            -- local file = io.open("keys.txt","w")
+            -- local file = io.open("fvip_keys.txt","w")
             -- for key, v in pairs(ret_keys) do
             --     if key and v then
             --         file:write(key)

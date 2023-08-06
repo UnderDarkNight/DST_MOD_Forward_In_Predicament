@@ -52,38 +52,61 @@ end
 --------------------------------------------------------------------------------------------------------------------
 
 
-local function main_com(fwd_in_pdt_func)
+local function main_com(self)
+    --------------------------------------------------------------------------------------------------------------------
+    self.TempData.Cross_Archived_Data = {}
+    self.TempData.Cross_Archived_Data.__Data = {}
+    --------------------------------------------------------------------------------------------------------------------
+    ---- data 【初次】上传过来触发的执行函数，仅限每次玩家进出存档的时候。
+    function self:Add_Cross_Archived_Data_Special_Onload_Fn(fn)
+        if type(fn) == "function" then
+            self.TempData.Cross_Archived_Data.___sp_onload_fns = self.TempData.Cross_Archived_Data.___sp_onload_fns or {}
+            table.insert(self.TempData.Cross_Archived_Data.___sp_onload_fns,fn)
+        end
+    end
+    function self:Run_Cross_Archived_Data_Special_Onload_Fns()
+        if self.TempData.Cross_Archived_Data.___sp_onload_fns then
+            for k, fn in pairs(self.TempData.Cross_Archived_Data.___sp_onload_fns) do
+                fn()
+            end
+        end
+    end
+    --------------------------------------------------------------------------------------------------------------------
     --------------------------------------------------------------------------------------------------------------------
     ---- 玩家角色加载的时候，client 主动上传一次数据。
-    function fwd_in_pdt_func:Get_Cross_Archived_Data(name)
-        if self.tempData.__Cross_Archived_Data then
-            return self.tempData.__Cross_Archived_Data[name] or nil
+    function self:Get_Cross_Archived_Data(name)
+        if self.TempData.Cross_Archived_Data.__Data then
+            return self.TempData.Cross_Archived_Data.__Data[name] or nil
         end
         return nil
     end
 
-    fwd_in_pdt_func.inst:ListenForEvent("fwd_in_pdt_event.Get_Cross_Archived_Data_From_Client",function(inst,_table)
-        inst.components.fwd_in_pdt_func.tempData.__Cross_Archived_Data = _table
+    self.inst:ListenForEvent("fwd_in_pdt_event.Get_Cross_Archived_Data_From_Client",function(inst,_table)
+        inst.components.fwd_in_pdt_func.TempData.Cross_Archived_Data.__Data = _table
+        self:Run_Cross_Archived_Data_Special_Onload_Fns()
         if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
             print("info: fwd_in_pdt_event.Get_Cross_Archived_Data_From_Client")
         end
     end)
 
-    function fwd_in_pdt_func:Set_Cross_Archived_Data(name,data)
+    function self:Set_Cross_Archived_Data(name,data)
         if type(name) ~= "string" then
             return
         end
-        self.tempData.__Cross_Archived_Data = self.tempData.__Cross_Archived_Data or {}
-        self.tempData.__Cross_Archived_Data[name] = data
-        self:RPC_PushEvent2("fwd_in_pdt_event.Set_Cross_Archived_Data_To_Client",self.tempData.__Cross_Archived_Data)
+        self.TempData.Cross_Archived_Data.__Data = self.TempData.Cross_Archived_Data.__Data or {}
+        self.TempData.Cross_Archived_Data.__Data[name] = data
+        self:RPC_PushEvent2("fwd_in_pdt_event.Set_Cross_Archived_Data_To_Client",self.TempData.Cross_Archived_Data.__Data)
     end
     --------------------------------------------------------------------------------------------------------------------
 end
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-local function replica(fwd_in_pdt_func)
+local function replica(self)
     --------------------------------------------------------------------------------------------------------------------
     ----- 往 replica 注册执行函数
     local function send_data_2_server(inst)
+        if inst.userid == nil then
+            return
+        end
         local ret_table = Get_Cross_Archived_Data_By_userid(inst.userid) or {}
         inst.replica.fwd_in_pdt_func:RPC_PushEvent2("fwd_in_pdt_event.Get_Cross_Archived_Data_From_Client",ret_table)
         if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
@@ -91,16 +114,16 @@ local function replica(fwd_in_pdt_func)
         end
     end 
 
-    function fwd_in_pdt_func:Set_Cross_Archived_Data(name,data)   --- replica 这边直接储存数据，并更新同步给server
+    function self:Set_Cross_Archived_Data(name,data)   --- replica 这边直接储存数据，并更新同步给server
         local ret_table = Get_Cross_Archived_Data_By_userid(self.inst.userid) or {}
         ret_table[name] = data
         Set_Cross_Archived_Data_By_userid(self.inst.userid,ret_table)
         send_data_2_server(self.inst)
     end
 
-    fwd_in_pdt_func.inst:DoTaskInTime(0,send_data_2_server)
+    self.inst:DoTaskInTime(0,send_data_2_server)
 
-    fwd_in_pdt_func.inst:ListenForEvent("fwd_in_pdt_event.Set_Cross_Archived_Data_To_Client",function(inst,_table)
+    self.inst:ListenForEvent("fwd_in_pdt_event.Set_Cross_Archived_Data_To_Client",function(inst,_table)
         _table = _table or {}
         Set_Cross_Archived_Data_By_userid(inst.userid,_table)
         -- inst:DoTaskInTime(0.5,send_data_2_server)   --- 延迟一下，然后把本地的数据重新同步给服务器。
@@ -111,14 +134,14 @@ local function replica(fwd_in_pdt_func)
     --------------------------------------------------------------------------------------------------------------------
 end
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-return function(fwd_in_pdt_func)
-    if not fwd_in_pdt_func.inst:HasTag("player") or fwd_in_pdt_func.inst.userid == nil then    --- 本系统只注册给玩家。
+return function(self)
+    if not self.inst:HasTag("player") then    --- 本系统只注册给玩家。
         return
     end            
-    if fwd_in_pdt_func.is_replica ~= true then        --- 不是replica
-        main_com(fwd_in_pdt_func)
+    if self.is_replica ~= true then        --- 不是replica
+        main_com(self)
     else      
-        replica(fwd_in_pdt_func)
+        replica(self)
     end
 
 end

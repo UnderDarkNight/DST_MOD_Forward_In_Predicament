@@ -152,8 +152,8 @@ local function main_com(self)
                 local function keys_check__typ_1(str2,str3,str4)
                     local function key2_check(str)
                         local num_1,num_2,num_3,num_4 = str2number(str)
-                        if num_1 and num_2 and num_3 and num_4 then
-                            if (num_1+num_2+num_3+num_4)%13 == 0 then   --- 和为13的倍数
+                        if num_1 and num_2 and num_3 and num_4 and num_1>=num_2 and num_3>=num_4 then
+                            if (num_1+num_2+num_3+num_4)%13 == 0 then   --- 和为13的倍数,
                                 return true
                             end
                         end
@@ -161,7 +161,7 @@ local function main_com(self)
                     end
                     local function key3_check(str)    
                         local num_1,num_2,num_3,num_4 = str2number(str)
-                        if num_1 and num_2 and num_3 and num_4 then
+                        if num_1 and num_2 and num_3 and num_4 and num_2>=num_3 and num_4 >= num_1 then
                             if (num_1+num_2+num_3+num_4)%5 == 0 then    --- 和为5的倍数
                                 return true
                             end
@@ -170,7 +170,7 @@ local function main_com(self)
                     end
                     local function key4_check(str)    
                         local num_1,num_2,num_3,num_4 = str2number(str) --- 和为12的倍数
-                        if num_1 and num_2 and num_3 and num_4 then
+                        if num_1 and num_2 and num_3 and num_4 and num_2>=num_1 and num_4 >= num_3 then
                             if (num_1+num_2+num_3+num_4)%12 == 0 then
                                 return true
                             end
@@ -205,25 +205,12 @@ local function main_com(self)
                     local t2 = math.random(start_num, end_num)
                     local t3 = math.random(start_num, end_num)
                     local t4 = math.random(start_num, end_num)
-                    if (t1+t2+t3+t4)%13 == 0 then   --- 和为 13 的倍数
+                    if t1>=t2 and t3>=t4 and (t1+t2+t3+t4)%13 == 0 then   --- 和为 13 的倍数
                         num_1,num_2,num_3,num_4 = t1,t2,t3,t4
                         break
                     end 
                 end
                 local key_2 = num2alphabet(num_1)..num2alphabet(num_2)..num2alphabet(num_3)..num2alphabet(num_4)
-                ---------------------------------------------
-                --- key 2
-                while true do
-                    local t1 = math.random(start_num, end_num)
-                    local t2 = math.random(start_num, end_num)
-                    local t3 = math.random(start_num, end_num)
-                    local t4 = math.random(start_num, end_num)
-                    if (t1+t2+t3+t4)%5 == 0 then   --- 和为 5 的倍数
-                        num_1,num_2,num_3,num_4 = t1,t2,t3,t4
-                        break
-                    end 
-                end
-                local key_3 = num2alphabet(num_1)..num2alphabet(num_2)..num2alphabet(num_3)..num2alphabet(num_4)
                 ---------------------------------------------
                 --- key 3
                 while true do
@@ -231,7 +218,20 @@ local function main_com(self)
                     local t2 = math.random(start_num, end_num)
                     local t3 = math.random(start_num, end_num)
                     local t4 = math.random(start_num, end_num)
-                    if (t1+t2+t3+t4)%12 == 0 then   --- 和为 12 的倍数
+                    if t2>=t3 and t4>=t1 and  (t1+t2+t3+t4)%5 == 0 then   --- 和为 5 的倍数
+                        num_1,num_2,num_3,num_4 = t1,t2,t3,t4
+                        break
+                    end 
+                end
+                local key_3 = num2alphabet(num_1)..num2alphabet(num_2)..num2alphabet(num_3)..num2alphabet(num_4)
+                ---------------------------------------------
+                --- key 4
+                while true do
+                    local t1 = math.random(start_num, end_num)
+                    local t2 = math.random(start_num, end_num)
+                    local t3 = math.random(start_num, end_num)
+                    local t4 = math.random(start_num, end_num)
+                    if t2>=t1 and t4>=t3 and (t1+t2+t3+t4)%12 == 0 then   --- 和为 12 的倍数
                         num_1,num_2,num_3,num_4 = t1,t2,t3,t4
                         break
                     end 
@@ -252,6 +252,15 @@ local function main_com(self)
 
         function self:IsVIP()
             return self.TempData.VIP.______vip_player or false
+        end
+    ------------------------------------------------------------
+    ---- 玩家输入key的函数
+        function self:VIP_Player_Input_Key(input_key)
+            if self:VIP_Start_Check_CDKEY(input_key, true) then
+                print("玩家输入的key合法")
+            else
+                print("玩家输入了错误的key") 
+            end
         end
     ------------------------------------------------------------
     ---- 主检查入口。可以仅仅只检查key是否通过。
@@ -301,26 +310,14 @@ local function main_com(self)
         end
 
     ------------------------------------------------------------
+    ---- 跨存档数据更新来的时候执行
+        self:Add_Cross_Archived_Data_Special_Onload_Fn(function()
+            if not self:IsVIP() then
+                self:VIP_Start_Check_CDKEY()
+            end
+        end)
+    ------------------------------------------------------------
 
-    self.TempData.VIP.___Get_Cross_Archived_Data_From_Client__fn = function()  --- 监听同步来的数据
-            self.inst:DoTaskInTime(0.1,function()
-                if not self:IsVIP() then
-                    self:VIP_Start_Check_CDKEY()
-
-                    self.inst:DoTaskInTime(10,function()    --- 移除监听事件
-                        if self:IsVIP() then
-                            self.inst:RemoveEventCallback("fwd_in_pdt_event.Get_Cross_Archived_Data_From_Client",self.TempData.VIP.___Get_Cross_Archived_Data_From_Client__fn)
-                            if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
-                                print("fwd_in_pdt VIP SYS : player is vip and event remove")
-                            end
-                        end
-                    end)
-
-                end
-            end)
-    end
-    self.inst:ListenForEvent("fwd_in_pdt_event.Get_Cross_Archived_Data_From_Client",self.TempData.VIP.___Get_Cross_Archived_Data_From_Client__fn)
-    
 end
 
 
@@ -334,7 +331,7 @@ end
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 return function(fwd_in_pdt_func)
-    if not fwd_in_pdt_func.inst:HasTag("player") or fwd_in_pdt_func.inst.userid == nil then    --- 本系统只注册给玩家。
+    if not fwd_in_pdt_func.inst:HasTag("player") then    --- 本系统只注册给玩家。
         return
     end             
     if fwd_in_pdt_func.is_replica ~= true then        --- 不是replica

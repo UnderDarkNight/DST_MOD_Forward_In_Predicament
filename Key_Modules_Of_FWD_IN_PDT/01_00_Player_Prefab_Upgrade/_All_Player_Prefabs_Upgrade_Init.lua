@@ -13,6 +13,9 @@ modimport("Key_Modules_Of_FWD_IN_PDT/01_00_Player_Prefab_Upgrade/02_recipes_maki
  --- 制作物品的时候播放特效动画inst
 
 
+modimport("Key_Modules_Of_FWD_IN_PDT/01_00_Player_Prefab_Upgrade/03_daily_task.lua")   
+ --- 日常任务系统
+
 
 
 

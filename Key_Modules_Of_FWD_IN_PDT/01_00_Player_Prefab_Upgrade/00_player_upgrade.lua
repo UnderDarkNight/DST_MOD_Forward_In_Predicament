@@ -24,7 +24,7 @@ AddPlayerPostInit(function(inst)
     if inst.components.fwd_in_pdt_func == nil then
         inst:AddComponent("fwd_in_pdt_func")
     end
-    inst.components.fwd_in_pdt_func:Init("player","rpc","cross_archived_data_sys","camera","picksound","pre_dodelta","vip")
+    inst.components.fwd_in_pdt_func:Init("player","rpc","cross_archived_data_sys","camera","picksound","pre_dodelta","vip","daily_task")
     ----------------------------------------------------------------------------------------------------------
     ---------- 动作失败的话语组件
     inst:AddComponent("fwd_in_pdt_com_action_fail_reason")
