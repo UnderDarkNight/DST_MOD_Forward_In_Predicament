@@ -41,11 +41,6 @@ modimport("Key_Modules_Of_FWD_IN_PDT/09_Recipes/_All_Recpies_and_Tech_Init.lua")
 
 
 
-
-modimport("Key_Modules_Of_FWD_IN_PDT/12_vip_tasks/_All_VIP_TASKS_Init.lua")
---- VIP 玩家专属 执行函数
-
-
 -------------- 不同版本开发专用的调试区域
 if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE == true then
     modimport("Key_Modules_Of_FWD_IN_PDT/_Debugging_Modules/_All_Debugging_Modules_Init.lua") 

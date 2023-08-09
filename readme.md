@@ -152,3 +152,6 @@ inst.components.fwd_in_pdt_data:Add(name,num) ,num必须给 number格式，是�
 20、玩家从制作栏制作物品的时候，同步播放特效inst_fx,时间轴控制得好的话，可以在特效播放完的瞬间，物品制作完成。
 使用模块 fwd_in_pdt_com_builder_fx_for_recipe_making
 参数添加示例：【Key_Modules_Of_FWD_IN_PDT\01_00_Player_Prefab_Upgrade\03_recipes_making_with_fx.lua】
+
+21、日常任务/签到系统，真实的时间，每天只执行一次（利用了跨存档系统）
+【scripts\components\fwd_in_pdt_func\01_06_daily_task.lua】

@@ -4,6 +4,9 @@
 ---- 预留多个激活码实现不同模块激活的功能
 ---- key 的格式 ： XXXX-XXXX-XXXX-XXXX      #str = 19
 
+
+---- 都懒得加密混淆了，找到这里的程序员破解该cd-key系统是时间上的事，都是程序员，不用相互为难。
+---- Here are lazy encryption obfuscation, to find the programmers here to crack that cd-key system is a matter of time, are programmers, do not have to be difficult for each other.
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 local function GetStringTable()
     return TUNING["Forward_In_Predicament.fn"].GetStringsTable("fwd_in_pdt_cd_key_sys")
@@ -262,6 +265,10 @@ local function main_com(self)
                 print("玩家输入了错误的key") 
             end
         end
+        --------- 单纯的检查 key 的合法性
+        function self:VIP_Checking_The_Legality_Of_Key(input_key)
+            return self:VIP_Start_Check_CDKEY(input_key) or false
+        end
     ------------------------------------------------------------
     ---- 主检查入口。可以仅仅只检查key是否通过。
         ---- 功能1：输入参数全为nil。为客户端上传来数据的时候检查key，并执行通过的函数。为进入世界的时候读取检查调用。
@@ -341,3 +348,29 @@ return function(fwd_in_pdt_func)
     end
 
 end
+
+
+
+
+
+    ----------------------------------------------------------------------------------------------------------------
+    ------ cd-key 生成
+            -- local ret_keys = {}
+            -- local num = 0
+            -- for i = 1, 30000, 1 do
+            --     local temp_key = ThePlayer.components.fwd_in_pdt_func:VIP_CreateCDKEY()
+            --     if temp_key and ThePlayer.components.fwd_in_pdt_func:VIP_Start_Check_CDKEY(temp_key) and ret_keys[temp_key] ~= true then
+            --         ret_keys[temp_key] = true
+            --         num = num + 1
+            --     end
+            -- end
+            -- print("keys",num)
+            -- local file = io.open("fvip_keys.txt","w")
+            -- for key, v in pairs(ret_keys) do
+            --     if key and v then
+            --         file:write(key)
+            --         file:write('\n')
+            --     end
+            -- end
+            -- file:close()
+    ----------------------------------------------------------------------------------------------------------------
