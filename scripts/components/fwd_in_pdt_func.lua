@@ -1,6 +1,7 @@
 ----------------------------------------------------------------------------------------------------------------------------------
 -- 通用数据储存库，用来储存各种 【文本】数据
 -- 模块使用了 replica 和 net_vars 下发初始化数据。整个模块不能在 client 端加载了。
+-- 其他MOD想要hook 进本模块，监听事件  self.inst:PushEvent("fwd_in_pdt.event.main_func_inited")  后做函数hook即可。
 ----------------------------------------------------------------------------------------------------------------------------------
 -- local function loaded_modules_name_json_str(self,str)
 --     self.inst.replica.fwd_in_pdt_func:On_Replica_Init_Json(str)
@@ -241,6 +242,9 @@ function fwd_in_pdt_func:Init(cmd_table,...)
         ----------------------------------------------------------------------------------
         ---- 给onload 快速初始化和执行函数
         self:Set("__func_init_loaded_module_names",self.tempData.__func_init_loaded_module_names)
+        ----------------------------------------------------------------------------------
+        ---- 给其他模组方便hook进来准备的event
+        self.inst:PushEvent("fwd_in_pdt.event.main_func_inited")
         ----------------------------------------------------------------------------------
         -- if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE and self.inst:HasTag("player") then
         --     print("info main com init",self.inst,unpack(_table))
