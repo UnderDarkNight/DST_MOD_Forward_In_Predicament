@@ -67,6 +67,10 @@ all_clients_require_mod = true
 
 priority = -100  -- MOD加载优先级 影响某些功能的兼容性，比如官方Com 的 Hook
 
+
+local function IsChinese() 
+    return locale == "zh" or locate == "zht" or locate == "zhr" or false
+end
 configuration_options =
 {
     {
@@ -92,12 +96,12 @@ configuration_options =
 
     {
       name = "UI_FX",
-      label = "UI FX 特效",
-      hover = "Animated effects for UI",
+      label = IsChinese() and "UI动画特效" or "UI FX Anim",
+      hover = IsChinese() and "物品栏、背包栏上的动画特效" or "Animated effects for UI",
       options =
       {
-        {description = "ON", data = true},
-        {description = "OFF", data = false},
+        {description = IsChinese() and "开" or "ON", data = true},
+        {description = IsChinese() and "关" or "OFF", data = false},
       },
       default = true,
   },
