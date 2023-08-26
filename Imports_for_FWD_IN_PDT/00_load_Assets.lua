@@ -6,8 +6,8 @@ end
 local temp_assets = {
 
 
-	-- Asset("IMAGE", "images/inventoryimages/npcdebugstone.tex"),
-	-- Asset("ATLAS", "images/inventoryimages/npcdebugstone.xml"),
+	Asset("IMAGE", "images/inventoryimages/fwd_in_pdt_empty_icon.tex"),
+	Asset("ATLAS", "images/inventoryimages/fwd_in_pdt_empty_icon.xml"),
 	
 	-- Asset("IMAGE", "images/inventoryimages/default.tex"),
 	-- Asset("ATLAS", "images/inventoryimages/default.xml"),

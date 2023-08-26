@@ -105,6 +105,7 @@ inst = {
         },
         ["inventoryitem"] = {
             owner = inst,
+            ["GetGrandOwner"] = function() return inst end,
         },
         ["tradable"] = {},
         ["lootdropper"] = {},

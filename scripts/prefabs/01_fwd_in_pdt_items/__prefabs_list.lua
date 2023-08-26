@@ -27,6 +27,8 @@ local Prefabs_addr_base = string.sub(temp_addr,1,temp_str_index2) .. "/"    --- 
 -- local Prefabs_addr_base = "scripts/prefabs/01_fwd_in_pdt_items/"               --- 文件夹路径
 local prefabs_name_list = {
     "00_gift_pack",
+    "01_ice_core",      ---- 冰核心
+    "02_flame_core",      ---- 火核心
 }
 
 
