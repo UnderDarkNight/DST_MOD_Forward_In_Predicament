@@ -31,4 +31,8 @@ AddComponentPostInit("inventoryitem", function(self)
         end
     end
 
+    function self:fwd_in_pdt_set_empty_icon()
+        self:fwd_in_pdt_icon_init("fwd_in_pdt_empty_icon", "images/inventoryimages/fwd_in_pdt_empty_icon.xml")
+    end
+
 end)
