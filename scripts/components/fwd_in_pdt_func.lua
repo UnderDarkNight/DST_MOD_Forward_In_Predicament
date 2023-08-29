@@ -209,6 +209,8 @@ function fwd_in_pdt_func:Init(cmd_table,...)
             ["growable"] = require("components/fwd_in_pdt_func/10_growable"),        ---- 植物类使用的生长组件
             ["mouserover_colourful"] = require("components/fwd_in_pdt_func/11_mouserover_str_colourful"),        ---- 鼠标放上去显示颜色的组件
             ["item_tile_fx"] = require("components/fwd_in_pdt_func/12_item_tile_icon_fx"),        ---- 物品栏图标的动画特效
+
+            ["normal_api"] = require("components/fwd_in_pdt_func/13_normal_api"),        ---- 常用API
         }
 
 
