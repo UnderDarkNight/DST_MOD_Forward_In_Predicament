@@ -82,14 +82,35 @@ AddClassPostConstruct("widgets/itemtile",function(self)
 
     function self:start_fwd_in_pdt_fx_check()
         if self.item and self.item:HasTag("fwd_in_pdt_tag.fwd_in_pdt_func.item_tile_icon_fx") then
-            local bank,build,anim,colour,shader = self.item.replica.fwd_in_pdt_func:Item_Tile_Icon_Fx_Get()
-            self:fwd_in_pdt_add_icon_fx(bank,build,anim,colour,shader)                
+            -- local bank,build,anim,colour,shader,hide_image = self.item.replica.fwd_in_pdt_func:Item_Tile_Icon_Fx_Get()
+            -- self:fwd_in_pdt_add_icon_fx(bank,build,anim,colour,shader,hide_image)     
+            local cmd_table = self.item.replica.fwd_in_pdt_func:Item_Tile_Icon_Fx_Get()
+            if type(cmd_table) == "table" then
+                self:fwd_in_pdt_add_icon_fx(cmd_table)
+            end
         end
     end
-    function self:fwd_in_pdt_add_icon_fx(bank,build,anim,colour,shader)
+    function self:fwd_in_pdt_add_icon_fx(cmd_table)
+        -----------------------------------------------------------------------------
+        -- 常规参数表
+        -- cmd_table = {
+        --     bank = "",
+        --     build = "",
+        --     anim = "",
+        --     shader = "",
+        --     colour = {r,g,b,a},    -- 同时兼容命名 color
+        --     hide_image = true,  -- 隐藏图标
+        --     MoveToBack = true,  -- 动画特效移动到图标底层
+        --     MoveToFront = true, -- 动画特效移动到图标顶层
+        -- }
+        local bank,build,anim = cmd_table.bank,cmd_table.build,cmd_table.anim
+        local colour = cmd_table.color or cmd_table.colour
+        local shader = cmd_table.shader
+        -----------------------------------------------------------------------------
         if bank and build and anim then
             if self.__fwd_in_pdt_fx == nil then
-                self.__fwd_in_pdt_fx = self.image:AddChild(UIAnim())
+                -- self.__fwd_in_pdt_fx = self.image:AddChild(UIAnim())
+                self.__fwd_in_pdt_fx = self:AddChild(UIAnim())
                 self.__fwd_in_pdt_fx:GetAnimState():SetBank(bank)
                 self.__fwd_in_pdt_fx:GetAnimState():SetBuild(build)
                 self.__fwd_in_pdt_fx:GetAnimState():PlayAnimation(anim, true)
@@ -104,6 +125,20 @@ AddClassPostConstruct("widgets/itemtile",function(self)
                 end
                 if type(shader) == "string" then
                     self.__fwd_in_pdt_fx:GetAnimState():SetBloomEffectHandle(shader)
+                end
+
+                if cmd_table.hide_image then    --- 隐藏旧图标
+                    self.image:Hide()
+                    self.__fwd_in_pdt_fx:MoveToBack()
+                end
+                if cmd_table.MoveToBack then    --- 移动特效图层
+                    self.__fwd_in_pdt_fx:MoveToBack()
+                end
+                if cmd_table.MoveToFront then   --- 移动特效图层
+                    self.__fwd_in_pdt_fx:MoveToFront()
+                    if self.quantity then
+                        self.quantity:MoveToFront() --- 叠堆数字前置
+                    end
                 end
             end
         else

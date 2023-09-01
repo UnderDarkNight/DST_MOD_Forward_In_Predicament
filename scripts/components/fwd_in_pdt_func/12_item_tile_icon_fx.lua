@@ -11,6 +11,16 @@
 
 local function main_com(fwd_in_pdt_func)
     function fwd_in_pdt_func:Item_Tile_Icon_Fx_Set_Anim(cmd_table)
+        -- cmd_table = {
+        --     bank = "",
+        --     build = "",
+        --     anim = "",
+        --     shader = "",
+        --     colour = {r,g,b,a},    -- 同时兼容命名 color
+        --     hide_image = true,  -- 隐藏图标
+        --     MoveToBack = true,  -- 动画特效移动到图标底层
+        --     MoveToFront = true, -- 动画特效移动到图标顶层
+        -- }
         if TUNING["Forward_In_Predicament.Config"].UI_FX ~= true then
             return
         end
@@ -27,11 +37,17 @@ local function main_com(fwd_in_pdt_func)
         end
     end
     function fwd_in_pdt_func:Item_Tile_Icon_Fx_Clear()
+        if TUNING["Forward_In_Predicament.Config"].UI_FX ~= true then
+            return
+        end
         self:Replica_Set_Simple_Data("ItemTileFX",{})    
         self:Replica_Simple_PushEvent("imagechange")  -- 下发事件刷新图标和特效动画
     end
 
     function fwd_in_pdt_func:Item_Tile_Icon_Fx_SetDisplay(flag)  ---- 封装一个开关切换，外部代码就不用那么复杂了。
+        if TUNING["Forward_In_Predicament.Config"].UI_FX ~= true then
+            return
+        end
         flag = flag or false
         local cmd_table = self.tempData.__Item_Tile_Icon_Fx_CMD or {}
         cmd_table.display = flag
@@ -42,6 +58,9 @@ local function main_com(fwd_in_pdt_func)
     end
 
     function fwd_in_pdt_func:Item_Tile_Icon_Fx_Display_Refresh()
+        if TUNING["Forward_In_Predicament.Config"].UI_FX ~= true then
+            return
+        end
         if self.tempData.__Item_Tile_Icon_Fx_CMD and self.tempData.__Item_Tile_Icon_Fx_CMD.display then
             self:Item_Tile_Icon_Fx_SetDisplay(true)
         else
@@ -62,9 +81,11 @@ local function replica(fwd_in_pdt_func)
     function fwd_in_pdt_func:Item_Tile_Icon_Fx_Get()
         local cmd_table = self:Replica_Get_Simple_Data("ItemTileFX") or {}
         if cmd_table.display then
-            return cmd_table.bank , cmd_table.build ,cmd_table.anim,cmd_table.color or cmd_table.colour,cmd_table.shader
+            return cmd_table
+            -- return cmd_table.bank , cmd_table.build ,cmd_table.anim,cmd_table.color or cmd_table.colour,cmd_table.shader,cmd_table.hide_image
         else
-            return nil,nil,nil,nil,nil
+            -- return nil,nil,nil,nil,nil
+            return nil
         end    
     end
 end

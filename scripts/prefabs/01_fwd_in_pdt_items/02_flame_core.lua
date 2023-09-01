@@ -4,6 +4,8 @@
 local assets =
 {
     Asset("ANIM", "anim/fwd_in_pdt_element_cores.zip"),
+    Asset( "IMAGE", "images/inventoryimages/fwd_in_pdt_item_flame_core.tex" ),
+    Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_item_flame_core.xml" ),
 }
 
 local function fn()
@@ -37,20 +39,22 @@ local function fn()
 
     inst:AddComponent("inventoryitem")
     -- inst.components.inventoryitem:ChangeImageName("bluegem")
-    inst.components.inventoryitem.imagename = "fwd_in_pdt_empty_icon"
-    inst.components.inventoryitem.atlasname = "images/inventoryimages/fwd_in_pdt_empty_icon.xml"
-
-    inst:AddComponent("stackable")  -- 可叠堆
-
-    MakeHauntableLaunch(inst)
-
+    inst.components.inventoryitem.imagename = "fwd_in_pdt_item_flame_core"
+    inst.components.inventoryitem.atlasname = "images/inventoryimages/fwd_in_pdt_item_flame_core.xml"
+    
     inst:AddComponent("fwd_in_pdt_func"):Init("item_tile_fx")
     inst.components.fwd_in_pdt_func:Item_Tile_Icon_Fx_Set_Anim({
         bank = "fwd_in_pdt_element_cores",
         build = "fwd_in_pdt_element_cores",
         anim = "icon_red",
-        shader = "shaders/anim.ksh"
+        hide_image = true,
     })
+
+    inst:AddComponent("stackable")  -- 可叠堆
+
+    MakeHauntableLaunch(inst)
+
+
 
     return inst
 end
