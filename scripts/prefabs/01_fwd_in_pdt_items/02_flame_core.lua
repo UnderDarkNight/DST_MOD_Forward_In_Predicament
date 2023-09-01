@@ -41,13 +41,16 @@ local function fn()
     -- inst.components.inventoryitem:ChangeImageName("bluegem")
     inst.components.inventoryitem.imagename = "fwd_in_pdt_item_flame_core"
     inst.components.inventoryitem.atlasname = "images/inventoryimages/fwd_in_pdt_item_flame_core.xml"
-    
+
     inst:AddComponent("fwd_in_pdt_func"):Init("item_tile_fx")
     inst.components.fwd_in_pdt_func:Item_Tile_Icon_Fx_Set_Anim({
         bank = "fwd_in_pdt_element_cores",
         build = "fwd_in_pdt_element_cores",
         anim = "icon_red",
         hide_image = true,
+        text = {
+            color = {255/255,0/255,0/255},
+        }
     })
 
     inst:AddComponent("stackable")  -- 可叠堆

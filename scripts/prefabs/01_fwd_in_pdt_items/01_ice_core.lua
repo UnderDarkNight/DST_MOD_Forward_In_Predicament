@@ -48,6 +48,9 @@ local function fn()
         build = "fwd_in_pdt_element_cores",
         anim = "icon_blue",
         hide_image = true,
+        text = {
+            color = {0/255,0/255,255/255},
+        }
     })
 
     inst:AddComponent("stackable")  -- 可叠堆

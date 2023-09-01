@@ -79,15 +79,18 @@ AddClassPostConstruct("widgets/itemtile",function(self)
             -- print("info imagechange")
         end, self.item)
     --------------------------------------------------------------------------------------------
-
-    function self:start_fwd_in_pdt_fx_check()
+    function self:FWD_IN_PDT__Get_Tile_Fx_CMD()
         if self.item and self.item:HasTag("fwd_in_pdt_tag.fwd_in_pdt_func.item_tile_icon_fx") then
-            -- local bank,build,anim,colour,shader,hide_image = self.item.replica.fwd_in_pdt_func:Item_Tile_Icon_Fx_Get()
-            -- self:fwd_in_pdt_add_icon_fx(bank,build,anim,colour,shader,hide_image)     
             local cmd_table = self.item.replica.fwd_in_pdt_func:Item_Tile_Icon_Fx_Get()
-            if type(cmd_table) == "table" then
-                self:fwd_in_pdt_add_icon_fx(cmd_table)
-            end
+            return cmd_table
+        else
+            return nil
+        end
+    end
+    function self:start_fwd_in_pdt_fx_check()
+        local cmd_table = self:FWD_IN_PDT__Get_Tile_Fx_CMD()
+        if type(cmd_table) == "table" then
+            self:fwd_in_pdt_add_icon_fx(cmd_table)
         end
     end
     function self:fwd_in_pdt_add_icon_fx(cmd_table)
@@ -102,6 +105,10 @@ AddClassPostConstruct("widgets/itemtile",function(self)
         --     hide_image = true,  -- 隐藏图标
         --     MoveToBack = true,  -- 动画特效移动到图标底层
         --     MoveToFront = true, -- 动画特效移动到图标顶层
+        --     text = {            -- 叠堆数字/百分比数字相关参数操作
+        --         pt = Vector3(0,0,0), -- 坐标偏移，默认 （2,16,0）
+        --         color = {r,g,b,a},  --  颜色，同时支持 colour
+        --     }
         -- }
         local bank,build,anim = cmd_table.bank,cmd_table.build,cmd_table.anim
         local colour = cmd_table.color or cmd_table.colour
@@ -140,6 +147,7 @@ AddClassPostConstruct("widgets/itemtile",function(self)
                         self.quantity:MoveToFront() --- 叠堆数字前置
                     end
                 end
+
             end
         else
             if self.__fwd_in_pdt_fx then
@@ -148,6 +156,31 @@ AddClassPostConstruct("widgets/itemtile",function(self)
             end
             self:fwd_in_pdt_StopUpdating("fwd_in_pdt_fx")
         end
+
+        -----------------------------------------------------------------------------
+        -- 叠堆数字修改，和百分比数字修改（不拆分了，同时用 text 为参数）
+            if type(cmd_table.text) == "table" then
+                if self.quantity then   --- 叠堆数量数字
+                        if cmd_table.text.pt and cmd_table.text.pt.x then
+                            self.quantity:SetPosition(cmd_table.text.pt.x, cmd_table.text.pt.y, 0)
+                        end                        
+                        local color = cmd_table.text.color or cmd_table.text.colour or {}                    
+                        if color[1] and color[2] and color[3] then
+                            local r,g,b,a = color[1],color[2],color[3],color[4] or 1
+                            self.quantity:SetColour(r,g,b,a)
+                        end    
+                end
+                if self.percent then    --- 百分比数字
+                    local color = cmd_table.text.color or cmd_table.text.colour or {}                    
+                        if color[1] and color[2] and color[3] then
+                        local r,g,b,a = color[1],color[2],color[3],color[4] or 1
+                        self.percent:SetColour(r,g,b,a)
+                    end    
+                end
+            end
+        -----------------------------------------------------------------------------
+
+
     end
     ----------------------------------------------------------------------------------------------
     ---- 加载的时候显示
