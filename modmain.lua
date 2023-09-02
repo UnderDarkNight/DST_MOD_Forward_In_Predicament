@@ -101,33 +101,89 @@ modimport("Imports_for_FWD_IN_PDT/__All_imports_init.lua")	---- 所有 import  �
 			local function block_by_workshop_id()		--- 检查steam 工坊 id
 				local loaded_modnames = ModManager:GetEnabledModNames() or {}
 				local block_mod_floder_name = {
-					["workshop-1699194522"] = true,		-- steam ID
-					["workshop-1991746508"] = true,		-- steam ID
+					-- ["workshop-1699194522"] = true,		-- steam ID  神话书说
+					-- ["workshop-1991746508"] = true,		-- steam ID	 神话书说
+					["workshop-1505270912"] = true,		-- steam ID	 三合一
 				}
 				for k, temp in pairs(loaded_modnames) do
 					if temp and block_mod_floder_name[temp] then
 						print("fwd_in_pdt error : Loading with mods on the block list",temp)
-						local str = mod_display_name .. " : ".. tostring(Get_Block_Reason("mods_ban")) .. "  ".. temp
+						local str = mod_display_name .. " : ".. tostring(Get_Block_Reason("mods_ban")) .. "  ".. ModInfoname(temp)
 						return true,str
 					end
 				end
 				return false,""
 			end
 
-			local function block_by_prefab_loaded()		--- 检查某些 prefab 被加载了
-				local prefab_check_list = {"fangcunhill","pigsy","monkey_king","book_myth"}
-				for k,prefab_name  in pairs(prefab_check_list) do
-					if PrefabExists(tostring(prefab_name)) then
-						print("fwd_in_pdt error : Loading with the mod in the blocked list")							
-						local str = mod_display_name .. " : ".. tostring(Get_Block_Reason("prefab_block"))
-						if STRINGS.NAMES[string.upper(prefab_name)] then
-							str = str .. STRINGS.NAMES[string.upper(prefab_name)]
-						else
-							str = str .. "NONE"
+			-- local function block_by_prefab_loaded__old()		--- 检查某些 prefab 被加载了
+			-- 	local prefab_check_list = {
+			-- 		-- "fangcunhill","pigsy","monkey_king","book_myth",		-- 神话书说的某些prefab
+			-- 		"ancient_robots_assembly","rainforesttree_cone","cave_exit_vulcao",					-- 三合一 模组的东西。
+			-- 	}
+			-- 	for k,prefab_name  in pairs(prefab_check_list) do
+			-- 		if PrefabExists(tostring(prefab_name)) then
+			-- 			print("fwd_in_pdt error : Loading with the mod in the blocked list")							
+			-- 			local str = mod_display_name .. " : ".. tostring(Get_Block_Reason("prefab_block"))
+			-- 			if STRINGS.NAMES[string.upper(prefab_name)] then
+			-- 				str = str .. STRINGS.NAMES[string.upper(prefab_name)]
+			-- 			else
+			-- 				str = str .. "NONE"
+			-- 			end
+			-- 			return true,str
+			-- 		end
+			-- 	end
+			-- 	return false,""
+			-- end
+
+			local function block_by_prefab_loaded()  --- 检查某些 prefab 被加载了
+				-- print("info  start check block_by_prefab_loaded")
+				local blocked_prefab_name_list = {
+					-- ["fangcunhill"] = true,						-- 神话书说 的方寸山
+					-- ["pigsy"] = true,							-- 神话书说的 猪八戒
+					["ancient_robots_assembly"] = true,			-- 三合一 模组的东西。
+					["rainforesttree_cone"]= true,				-- 三合一 模组的东西。
+					["cave_exit_vulcao"]= true,					-- 三合一 模组的东西。
+
+				}
+				------ 代码参考来自 mods.lua
+				local runmodfn = function(fn,mod,modtype)
+					return (function(...)
+						if fn then
+							local status, r = xpcall( function() return fn(unpack(arg)) end, debug.traceback)
+							if not status then
+								print("error calling "..modtype.." in mod "..ModInfoname(mod.modname)..": \n"..(r or ""))
+								ModManager:RemoveBadMod(mod.modname,r)
+								ModManager:DisplayBadMods()
+							else
+								return r
+							end
 						end
-						return true,str
+					end)
+				end
+
+				local loaded_modnames = ModManager:GetEnabledModNames() or {}
+				for i, modname in pairs(loaded_modnames) do
+					-- print("++++",modname)
+					local mod = ModManager:GetMod(modname)
+					if mod and mod.PrefabFiles then		--- 得到每个MOD的 PrefabFiles 表
+							for _, prefab_path in ipairs(mod.PrefabFiles) do	-- prefab lua 文件的路径
+								local ret = runmodfn( mod.LoadPrefabFile, mod, "LoadPrefabFile" )("prefabs/"..prefab_path, nil, MODS_ROOT..modname.."/")
+								if ret then
+									for _, prefab in ipairs(ret) do
+											-- print("Mod: "..ModInfoname(modname), "    "..prefab.name)
+											-- mod.Prefabs[prefab.name] = prefab
+										if blocked_prefab_name_list[prefab.name] then
+											local str = mod_display_name .. " : ".. tostring(Get_Block_Reason("prefab_block")) .. ModInfoname(modname)
+											return true,str
+										end
+										-- print("## -- ",prefab.name)
+									end
+								end
+
+							end
 					end
 				end
+
 				return false,""
 			end
 
@@ -135,49 +191,50 @@ modimport("Imports_for_FWD_IN_PDT/__All_imports_init.lua")	---- 所有 import  �
 				if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE__MAX_STACK_SIZE_CHECK_PASS then
 					return false,""
 				end
-				local function stack_check(name) 
-					local inst = SpawnPrefab(name)
-					if inst and inst.components.stackable and inst.components.stackable.maxsize > 70 then
-						inst:Remove()
-						return true
-					elseif inst then
-						inst:Remove()
-						return false
-					end
-					return false
-				end
+				-- local function stack_check(name) 
+				-- 	local inst = SpawnPrefab(name)
+				-- 	if inst and inst.components.stackable and inst.components.stackable.maxsize > 70 then
+				-- 		inst:Remove()
+				-- 		return true
+				-- 	elseif inst then
+				-- 		inst:Remove()
+				-- 		return false
+				-- 	end
+				-- 	return false
+				-- end
 				
-				local check_list = {"log","twigs","goldnugget","stinger"}	--- 多检查几个
-				for k, temp_prefab_name in pairs(check_list) do
-					local crash_flag,ret = pcall(stack_check,temp_prefab_name)
-					if crash_flag and ret then
-						print("fwd_in_pdt error : The number of items stacked is too high ")							
-						local str = mod_display_name .. " : ".. tostring(Get_Block_Reason("maxsize_block"))		
-						return true,str
-					end
-				end
+				-- local check_list = {"log","twigs","goldnugget","stinger"}	--- 多检查几个
+				-- for k, temp_prefab_name in pairs(check_list) do
+				-- 	local crash_flag,ret = pcall(stack_check,temp_prefab_name)
+				-- 	if crash_flag and ret then
+				-- 		print("fwd_in_pdt error : The number of items stacked is too high ")							
+				-- 		local str = mod_display_name .. " : ".. tostring(Get_Block_Reason("maxsize_block"))		
+				-- 		return true,str
+				-- 	end
+				-- end
 				return false,""
 			end
 
 			local function block_by_no_cave()			---- 检查世界不存在洞穴,只能玩家加载后检查
-				--------------------------------------------------------
-				-- ----- 存档没有洞穴，关闭本MOD。测试模式不要紧。
-				-- 	if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE ~= true then
-				-- 			local world_shards_table = Shard_GetConnectedShards()
-				-- 			local the_world_has_cave = false
-				-- 			for k, v in pairs(world_shards_table) do
-				-- 				if k then
-				-- 					the_world_has_cave = true
-				-- 					break
-				-- 				end
-				-- 			end
-				-- 			if the_world_has_cave ~= true then
-				-- 				print("fwd_in_pdt error : this world has not cave")
-				-- 				local str = mod_display_name .. " : ".. tostring(Get_Block_Reason("has_not_cave"))
-				-- 				crash_with_str(str)
-				-- 			end
-				-- 	end
-				--------------------------------------------------------
+				------------------------------------------------------
+				----- 存档没有洞穴，关闭本MOD。测试模式不要紧。
+					if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE ~= true then
+							local world_shards_table = Shard_GetConnectedShards()
+							local the_world_has_cave = false
+							for k, v in pairs(world_shards_table) do
+								if k then
+									the_world_has_cave = true
+									break
+								end
+							end
+							if the_world_has_cave ~= true then
+								print("fwd_in_pdt error : this world has not cave")
+								local str = mod_display_name .. " : ".. tostring(Get_Block_Reason("has_not_cave"))
+								-- crash_with_str(str)
+								return true,str
+							end
+					end
+				------------------------------------------------------
 				return false,""
 			end
 			-------------------------------------------------------------------------------
