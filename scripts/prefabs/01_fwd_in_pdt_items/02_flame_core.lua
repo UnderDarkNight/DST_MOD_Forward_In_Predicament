@@ -49,7 +49,9 @@ local function fn()
         anim = "icon_red",
         hide_image = true,
         text = {
-            color = {255/255,0/255,0/255},
+            color = {255/255,255/255,0/255},
+            pt = Vector3(-14,16,0),
+            size = 35
         }
     })
 

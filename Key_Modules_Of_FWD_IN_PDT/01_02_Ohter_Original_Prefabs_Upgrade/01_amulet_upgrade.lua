@@ -12,7 +12,12 @@ AddPrefabPostInit(
         inst.components.fwd_in_pdt_func:Item_Tile_Icon_Fx_Set_Anim({
             bank = "inventory_fx_shadow",
             build = "inventory_fx_shadow",
-            anim = "idle"
+            anim = "idle",
+            text = {
+                color = {255/255,0/255,0/255},
+                -- pt = Vector3(-14,16,0),
+                size = 30
+            }
         })
 
         -- inst:AddComponent("fwd_in_pdt_com_itemtile_anim")

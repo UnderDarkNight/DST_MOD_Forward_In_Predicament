@@ -108,6 +108,7 @@ AddClassPostConstruct("widgets/itemtile",function(self)
         --     text = {            -- 叠堆数字/百分比数字相关参数操作
         --         pt = Vector3(0,0,0), -- 坐标偏移，默认 （2,16,0）
         --         color = {r,g,b,a},  --  颜色，同时支持 colour
+        --         size = 42,           -- 字体大小(默认42)
         --     }
         -- }
         local bank,build,anim = cmd_table.bank,cmd_table.build,cmd_table.anim
@@ -146,6 +147,9 @@ AddClassPostConstruct("widgets/itemtile",function(self)
                     if self.quantity then
                         self.quantity:MoveToFront() --- 叠堆数字前置
                     end
+                    if self.percent then
+                        self.percent:MoveToFront()  --- 百分比数字前置
+                    end
                 end
 
             end
@@ -160,23 +164,29 @@ AddClassPostConstruct("widgets/itemtile",function(self)
         -----------------------------------------------------------------------------
         -- 叠堆数字修改，和百分比数字修改（不拆分了，同时用 text 为参数）
             if type(cmd_table.text) == "table" then
-                if self.quantity then   --- 叠堆数量数字
-                        if cmd_table.text.pt and cmd_table.text.pt.x then
-                            self.quantity:SetPosition(cmd_table.text.pt.x, cmd_table.text.pt.y, 0)
-                        end                        
-                        local color = cmd_table.text.color or cmd_table.text.colour or {}                    
-                        if color[1] and color[2] and color[3] then
-                            local r,g,b,a = color[1],color[2],color[3],color[4] or 1
-                            self.quantity:SetColour(r,g,b,a)
-                        end    
+                local text_child = self.quantity or self.percent or nil   --- 叠堆数字或者百分比数字
+                if text_child then   
+                        -------------------------------------------------------------------------
+                        -- 坐标偏移
+                            if cmd_table.text.pt and cmd_table.text.pt.x then       
+                                text_child:SetPosition(cmd_table.text.pt.x, cmd_table.text.pt.y, 0)
+                            end     
+                        -------------------------------------------------------------------------
+                        -- 颜色切换
+                            local color = cmd_table.text.color or cmd_table.text.colour or {}                    
+                            if color[1] and color[2] and color[3] then
+                                local r,g,b,a = color[1],color[2],color[3],color[4] or 1
+                                text_child:SetColour(r,g,b,a)
+                            end   
+                        -------------------------------------------------------------------------
+                        -- 字体大小，默认 42
+                            if cmd_table.text.size then
+                                text_child:SetSize(cmd_table.text.size)
+                            end
+                        -------------------------------------------------------------------------
+
                 end
-                if self.percent then    --- 百分比数字
-                    local color = cmd_table.text.color or cmd_table.text.colour or {}                    
-                        if color[1] and color[2] and color[3] then
-                        local r,g,b,a = color[1],color[2],color[3],color[4] or 1
-                        self.percent:SetColour(r,g,b,a)
-                    end    
-                end
+
             end
         -----------------------------------------------------------------------------
 

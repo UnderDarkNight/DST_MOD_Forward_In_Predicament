@@ -23,6 +23,7 @@ local function main_com(fwd_in_pdt_func)
         --     text = {            -- 叠堆数字/百分比数字相关参数操作
         --         pt = Vector3(0,0,0), -- 坐标偏移，默认 （2,16,0）
         --         color = {r,g,b,a},  --  颜色，同时支持 colour
+        --         size = 42,           -- 字体大小(默认42)
         --     }
         -- }
         if TUNING["Forward_In_Predicament.Config"].UI_FX ~= true then
