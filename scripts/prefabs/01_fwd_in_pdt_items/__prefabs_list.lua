@@ -29,6 +29,7 @@ local prefabs_name_list = {
     "00_gift_pack",
     "01_ice_core",      ---- 冰核心
     "02_flame_core",      ---- 火核心
+    "03_jade_coin",         -- 玉龙币 （绿、黑）
 }
 
 

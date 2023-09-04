@@ -81,6 +81,16 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "礼物盒",
                 ["inspect_str"] = "一个礼物盒"
             },
+            ["fwd_in_pdt_item_jade_coin_green"] = {
+                ["name"] = "玉龙币·翠",
+                ["inspect_str"] = "一种玉石做的货币，翠绿且充满活力",
+                ["action_str"]  = "转换",
+            },
+            ["fwd_in_pdt_item_jade_coin_black"] = {
+                ["name"] = "玉龙币·墨",
+                ["inspect_str"] = "一种玉石做的货币，黑得深邃且悠远",
+                ["action_str"]  = "转换",
+            },
         --------------------------------------------------------------------
         ---- 02_fwd_in_pdt_materials
         --------------------------------------------------------------------

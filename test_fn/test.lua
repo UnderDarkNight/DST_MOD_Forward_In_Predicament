@@ -306,8 +306,8 @@ local flg,error_code = pcall(function()
             -- print(ThePlayer.components.fwd_in_pdt_func:VIP_Get_CDKEY())
 
             -- FVIP-A1H1-KY6V-LT02
-            ThePlayer.components.fwd_in_pdt_func:VIP_Player_Input_Key("FVIP-A1H1-KY6V-LT02")
-            print(ThePlayer.components.fwd_in_pdt_func:IsVIP())
+            -- ThePlayer.components.fwd_in_pdt_func:VIP_Player_Input_Key("FVIP-A1H1-KY6V-LT02")
+            -- print(ThePlayer.components.fwd_in_pdt_func:IsVIP())
 
     ----------------------------------------------------------------------------------------------------------------
     ------ cd-key 生成
@@ -329,6 +329,15 @@ local flg,error_code = pcall(function()
             --     end
             -- end
             -- file:close()
+    ----------------------------------------------------------------------------------------------------------------
+    --- 货币系统排查
+            -- print( ThePlayer.replica.inventory:Has("fwd_in_pdt_item_jade_coin_green",100,true) )
+
+        -- local num = ThePlayer.components.fwd_in_pdt_func:Jade_Coin__GetAllNum()
+        -- print(num)
+
+        local succeed_flag = ThePlayer.components.fwd_in_pdt_func:Jade_Coin__Spend(50)
+        print(succeed_flag)
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)

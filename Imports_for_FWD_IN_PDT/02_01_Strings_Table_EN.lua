@@ -72,6 +72,16 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "Gift Box",
                 ["inspect_str"] = "A Gift Box"
             },
+            ["fwd_in_pdt_item_jade_coin_green"] = {
+                ["name"] = "Green Jade Coin Of Loong",
+                ["inspect_str"] = "A kind of currency made of jade, emerald green and vibrant",
+                ["action_str"]  = "ExChange",
+            },
+            ["fwd_in_pdt_item_jade_coin_black"] = {
+                ["name"] = "Black Jade Coin Of Loong",
+                ["inspect_str"] = "A kind of currency made of jade, black and deep",
+                ["action_str"]  = "ExChange",
+            },
         --------------------------------------------------------------------
         ---- 02_fwd_in_pdt_materials
         --------------------------------------------------------------------

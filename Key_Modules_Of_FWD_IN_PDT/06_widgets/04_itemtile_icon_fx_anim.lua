@@ -136,7 +136,8 @@ AddClassPostConstruct("widgets/itemtile",function(self)
                 end
 
                 if cmd_table.hide_image then    --- 隐藏旧图标
-                    self.image:Hide()
+                    -- self.image:Hide()
+                    self.image:SetTexture("images/inventoryimages/fwd_in_pdt_empty_icon.xml","fwd_in_pdt_empty_icon.tex","fwd_in_pdt_empty_icon.tex")
                     self.__fwd_in_pdt_fx:MoveToBack()
                 end
                 if cmd_table.MoveToBack then    --- 移动特效图层

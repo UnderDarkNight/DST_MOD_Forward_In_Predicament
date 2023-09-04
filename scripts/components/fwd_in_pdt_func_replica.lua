@@ -74,6 +74,9 @@ function fwd_in_pdt_func:Init(cmd_table,...)
             ["picksound"]   = require("components/fwd_in_pdt_func/01_02_pick_sound"),       ---- 客制化拾取声音。
             ["pre_dodelta"]     = require("components/fwd_in_pdt_func/01_03_com_pre_dodleta"),         ---- 在官方的 DoDodelta之前，添加一些拦截API
             ["cross_archived_data_sys"] = require("components/fwd_in_pdt_func/01_04_cross_archived_data_sys"),        ---- 跨存档储存系统
+            ["vip"] = require("components/fwd_in_pdt_func/01_05_vip_sys"),        ---- vip / cd-key 系统
+            ["daily_task"] = require("components/fwd_in_pdt_func/01_06_daily_task"),        ---- 日常系统
+            ["jade_coin_sys"] = require("components/fwd_in_pdt_func/01_07_jade_coin_sys"),        ---- 专属货币的自动拆解和计数
 
             ["rpc"] = require("components/fwd_in_pdt_func/02_RPC_Event"),                 ---- 使用RPC形式下发/上传 event 数据
             ["long_update"] = require("components/fwd_in_pdt_func/04_LongUpdate"),        ---- 长更新，可以用于作物，或者加载范围重刷
@@ -82,6 +85,8 @@ function fwd_in_pdt_func:Init(cmd_table,...)
             ["growable"] = require("components/fwd_in_pdt_func/10_growable"),        ---- 植物类使用的生长组件
             ["mouserover_colourful"] = require("components/fwd_in_pdt_func/11_mouserover_str_colourful"),        ---- 鼠标放上去显示颜色的组件
             ["item_tile_fx"] = require("components/fwd_in_pdt_func/12_item_tile_icon_fx"),        ---- 物品栏图标的动画特效
+
+            ["normal_api"] = require("components/fwd_in_pdt_func/13_normal_api"),        ---- 常用API
         }
 
         for k, module_name in pairs(_table) do
