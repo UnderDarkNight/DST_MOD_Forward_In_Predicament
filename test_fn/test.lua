@@ -1,6 +1,5 @@
 local flg,error_code = pcall(function()
     print("WARNING:PCALL START +++++++++++++++++++++++++++++++++++++++++++++++++")
-    local theplayer = ThePlayer
     local x,y,z =    ThePlayer.Transform:GetWorldPosition()  
     ----------------------------------------------------------------------------------------------------------------    ----------------------------------------------------------------------------------------------------------------
     --- 洞穴里的虚空tile 为 1
@@ -336,8 +335,15 @@ local flg,error_code = pcall(function()
         -- local num = ThePlayer.components.fwd_in_pdt_func:Jade_Coin__GetAllNum()
         -- print(num)
 
-        local succeed_flag = ThePlayer.components.fwd_in_pdt_func:Jade_Coin__Spend(50)
-        print(succeed_flag)
+        -- local succeed_flag = ThePlayer.components.fwd_in_pdt_func:Jade_Coin__Spend(50)
+        -- print(succeed_flag)
+    ----------------------------------------------------------------------------------------------------------------
+    --- 体质值系统调试
+        local num,p = ThePlayer.replica.fwd_in_pdt_wellness:Get_Wellness()
+        print(num,p)
+
+        -- ThePlayer
+
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)

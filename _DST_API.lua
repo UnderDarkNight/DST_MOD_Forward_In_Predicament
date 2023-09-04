@@ -395,6 +395,8 @@ json = {
     decode = function(str) return{} end,
 }
 
+PrefabExists = function(str) return true end
+
 -----------------------------------------
 --- RPC : Server 2 Client
 AddClientModRPCHandler = function(RPC_namespace,event_name,fn) end

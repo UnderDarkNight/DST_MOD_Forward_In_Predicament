@@ -12,5 +12,5 @@
 -- AddReplicableComponent("npc_base_lib")  --- 示例
 
 
-AddReplicableComponent("fwd_in_pdt_func")  --- 示例
--- AddReplicableComponent("fwd_in_pdt_com_itemtile_anim")  --- 物品栏图标的动画特效组件
+AddReplicableComponent("fwd_in_pdt_func")  --- 关键主函数
+AddReplicableComponent("fwd_in_pdt_wellness")  --- 体质值模块的函数

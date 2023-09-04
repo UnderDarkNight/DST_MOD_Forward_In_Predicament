@@ -29,6 +29,7 @@ local file_folders = {
     "20_fwd_in_pdt_events",           -- 事件、资源刷新器等
     "21_fwd_in_pdt_rooms",            -- 房间/岛屿 创建相关资源
     "22_fwd_in_pdt_npc",              -- NPC
+    "23_fwd_in_pdt_wellness",         -- 体质值相关的
 }
 
 
