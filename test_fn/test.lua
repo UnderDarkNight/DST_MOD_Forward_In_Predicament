@@ -24,7 +24,9 @@ local flg,error_code = pcall(function()
     -- print("map",map_w,map_h)
     -- local mid_tile_x , mid_tile_y = TheWorld.Map:GetTileCoordsAtPoint(x,0,z)
     -- print("tile",mid_tile_x,mid_tile_y)
+
     -- print("current tile ",TheWorld.Map:GetTileAtPoint(x,y,z))
+
     -- print("current tile ",TheWorld.Map:GetTileAtPoint(ThePlayer.Transform:GetWorldPosition()))
     -- TheWorld.Map:SetTile(mid_tile_x,mid_tile_y,4)
 
@@ -32,6 +34,16 @@ local flg,error_code = pcall(function()
     -- print("Ocean Tile :",IsOceanTile(TheWorld.Map:GetTileAtPoint(x,y,z)))
     -- ThePlayer.Transform:SetPosition(0, 0, 0)
     -- 
+        local ent = TheSim:FindFirstEntityWithTag("fwd_in_pdt__ice_moon_island_tile_10")
+        if ent then
+            ThePlayer.Transform:SetPosition(ent.Transform:GetWorldPosition())
+        end
+
+        ThePlayer.components.fwd_in_pdt_func:TheCamera_SetFov(60)
+
+        -- for k, v in pairs(TheWorld.topology.nodes) do
+        --     print(k,v)
+        -- end
     ----------------------------------------------------------------------------------------------------------------
     -- ThePlayer.Transform:SetPosition(-14000, 0, -14000)
     -- ThePlayer.Transform:SetPosition(0, 0, 0)
@@ -339,8 +351,8 @@ local flg,error_code = pcall(function()
         -- print(succeed_flag)
     ----------------------------------------------------------------------------------------------------------------
     --- 体质值系统调试
-        local num,p = ThePlayer.replica.fwd_in_pdt_wellness:Get_Wellness()
-        print(num,p)
+        -- local num,p = ThePlayer.replica.fwd_in_pdt_wellness:Get_Wellness()
+        -- print(num,p)
 
         -- ThePlayer
 

@@ -38,7 +38,7 @@ end
 
 --------------------------------------------------------------------------------------------
 ---- 统一 func 初始化列表
-TUNING["Forward_In_Predicament.World_Com_Func"] = {"map_modifier"}
+TUNING["Forward_In_Predicament.World_Com_Func"] = {"map_modifier","normal_api"}
 
 
 

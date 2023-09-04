@@ -5,6 +5,9 @@
 
 -- 1、用来修改地图。岛屿生成，或者陆地生成。
 -- 2、用来添加生物、自然资源等。
+
+-- tiled软件里，单个地块用 64x64 pix，然后载入饥荒地皮资源 ground.tsx。导出后直接复制字符串过来
+
 ------------------------------------------------------------------------------------------------
 --- 【笔记】别问为什么 是 TileMap[y][x] ，python留下的习惯。
 ------------------------------------------------------------------------------------------------
@@ -193,10 +196,10 @@ local function main_com(fwd_in_pdt_func)
             if target_tile_check_fn and type(target_tile_check_fn) == "function" then
 
                     ---- 第一步，检查角落四个点
-                    if target_tile_check_fn(self.map_data.TileMap[start_y][start_x].tile) == true and
-                        target_tile_check_fn(self.map_data.TileMap[end_y][end_x].tile) == true and
-                        target_tile_check_fn(self.map_data.TileMap[start_y][end_x].tile) == true and
-                        target_tile_check_fn(self.map_data.TileMap[end_y][start_x].tile) == true then
+                    if target_tile_check_fn(self.map_data.TileMap[start_y][start_x].tile,self.map_data.TileMap[start_y][start_x]) == true and
+                        target_tile_check_fn(self.map_data.TileMap[end_y][end_x].tile,self.map_data.TileMap[end_y][end_x]) == true and
+                        target_tile_check_fn(self.map_data.TileMap[start_y][end_x].tile,self.map_data.TileMap[start_y][end_x]) == true and
+                        target_tile_check_fn(self.map_data.TileMap[end_y][start_x].tile,self.map_data.TileMap[end_y][start_x]) == true then
                             --- 四个点检查通过
                     else
                         ---- 四个点地皮检查未通过，直接返回
@@ -206,13 +209,13 @@ local function main_com(fwd_in_pdt_func)
                     --- 第二步，中心十字
                     for ty = start_y, end_y, 1 do
                         
-                        if target_tile_check_fn(self.map_data.TileMap[ty][mid_x].tile) ~= true then
+                        if target_tile_check_fn(self.map_data.TileMap[ty][mid_x].tile,self.map_data.TileMap[ty][mid_x]) ~= true then
                             return false
                         end
                     end
 
                     for tx = start_x, end_x, 1 do
-                        if target_tile_check_fn(self.map_data.TileMap[mid_y][tx].tile) ~= true then
+                        if target_tile_check_fn(self.map_data.TileMap[mid_y][tx].tile,self.map_data.TileMap[mid_y][tx]) ~= true then
                             return false
                         end
                     end

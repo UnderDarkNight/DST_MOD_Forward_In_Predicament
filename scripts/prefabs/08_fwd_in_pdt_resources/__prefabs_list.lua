@@ -16,7 +16,7 @@ local Prefabs_addr_base = string.sub(temp_addr,1,temp_str_index2) .. "/"    --- 
 
 -- local Prefabs_addr_base = "scripts/prefabs/08_fwd_in_pdt_resources/"
 local prefabs_name_list = {
-    -- "00_bloody_lake",
+    "01_glacier",   -- 冰川（两种）
 }
 
 

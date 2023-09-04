@@ -144,6 +144,51 @@ local function main_com(self)
                 return 1
             end
         end
+
+        function self:Trow_Item_2_Player(cmd_table)
+            -- cmd_table = {
+            --     pt = Vector3(0,0,0) ,--- 缺省为自身
+            --     prefab = "log",     --- 要丢的物品
+            --     num = 1,            --- 丢的数量
+            --     player = inst,       --- 玩家inst
+            -- }
+                local function launchitem(item, angle)
+                    local speed = math.random() * 4 + 2
+                    angle = (angle + math.random() * 60 - 30) * DEGREES
+                    item.Physics:SetVel(speed * math.cos(angle), math.random() * 2 + 8, speed * math.sin(angle))
+                end
+            
+                local function ontradeforgold(pt, player,prefab_name,target_num)  -- 代码来自猪王
+                    target_num = target_num or 1
+
+                    local x, y, z = pt.x,pt.y,pt.z
+                    y = y + 4.5
+                
+                    local angle
+                    if player ~= nil and player:IsValid() then
+                        angle = 180 - player:GetAngleToPoint(x, 0, z)
+                    -- else
+                    --     local down = TheCamera:GetDownVec()
+                    --     angle = math.atan2(down.z, down.x) / DEGREES
+                        -- player = nil
+                    end
+                
+                    for k = 1, target_num do
+                        local nug = SpawnPrefab(prefab_name)
+                        nug.Transform:SetPosition(x, y, z)
+                        launchitem(nug, angle or 0)
+                    end
+                end
+
+            if type(cmd_table) == "table" and cmd_table.prefab and cmd_table.player then
+                local num = cmd_table.num or 1
+                local prefab = cmd_table.prefab
+                local pt = cmd_table.pt or  Vector3(self.inst.Transform:GetWorldPosition())
+                local player = cmd_table.player
+                ontradeforgold(pt, player, prefab, num)
+            end
+
+        end
     ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 end
 local function replica(self)

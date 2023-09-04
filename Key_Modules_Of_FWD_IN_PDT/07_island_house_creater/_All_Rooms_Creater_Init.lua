@@ -9,6 +9,10 @@ modimport("Key_Modules_Of_FWD_IN_PDT/07_island_house_creater/01_theworld_upgrade
 
 -- modimport("Key_Modules_Of_FWD_IN_PDT/07_island_house_creater/03_Castle_room_create.lua")    --- 执行房间创建函数
 
+modimport("Key_Modules_Of_FWD_IN_PDT/07_island_house_creater/04_ice_moon_island_creater.lua")    --- 创建地面上的岛屿
+
+
+
 
 if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE == true then
     modimport("Key_Modules_Of_FWD_IN_PDT/07_island_house_creater/03_test_island_creater.lua")    --- 测试用的岛屿刷新器
