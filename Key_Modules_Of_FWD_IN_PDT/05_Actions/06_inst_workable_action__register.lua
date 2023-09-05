@@ -85,12 +85,16 @@ AddStategraphActionHandler("wilson",ActionHandler(FWD_IN_PDT_COM_WORKABLE_ACTION
     local creash_flag , ret = pcall(function()
         local inst = player.bufferedaction.target or player.bufferedaction.invobject
         local ret_action = inst.components.fwd_in_pdt_com_workable:GetSGAction()
+
         inst.components.fwd_in_pdt_com_workable:DoPreActionFn(player)
         return ret_action
     end)
 
     if creash_flag == true then
         return ret
+    else
+        print("error in 06_inst_workable_action__register.lua")
+        print(ret)
     end
     return "dolongaction"
 end))
@@ -110,6 +114,9 @@ AddStategraphActionHandler("wilson_client",ActionHandler(FWD_IN_PDT_COM_WORKABLE
 
     if creash_flag == true then
         return ret
+    else
+        print("error in 06_inst_workable_action__register.lua")
+        print(ret)            
     end
     return "dolongaction"
 end))

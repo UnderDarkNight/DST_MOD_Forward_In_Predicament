@@ -1,10 +1,10 @@
 
 
-local function GetStringsTable(name)
-    local prefab_name = name or "fwd_in_pdt_item_jade_coin_green"
-    local LANGUAGE = type(TUNING["Forward_In_Predicament.Language"]) == "function" and TUNING["Forward_In_Predicament.Language"]() or TUNING["Forward_In_Predicament.Language"]
-    return TUNING["Forward_In_Predicament.Strings"][LANGUAGE][prefab_name] or {}
-end
+-- local function GetStringsTable(name)
+--     local prefab_name = name or "fwd_in_pdt_item_jade_coin_green"
+--     local LANGUAGE = type(TUNING["Forward_In_Predicament.Language"]) == "function" and TUNING["Forward_In_Predicament.Language"]() or TUNING["Forward_In_Predicament.Language"]
+--     return TUNING["Forward_In_Predicament.Strings"][LANGUAGE][prefab_name] or {}
+-- end
 
 local assets =
 {
@@ -65,12 +65,12 @@ local function fn_small()
 
     inst.entity:AddTransform()
     inst.entity:AddAnimState()
-    -- inst.entity:AddMiniMapEntity()
+    inst.entity:AddMiniMapEntity()
     inst.entity:AddNetwork()
 
     MakeObstaclePhysics(inst, 2)
 
-    -- inst.MiniMapEntity:SetIcon("fwd_in_pdt_minimap_glacier.tex")
+    inst.MiniMapEntity:SetIcon("fwd_in_pdt_minimap_glacier.tex")
 
     inst.entity:AddAnimState()
     inst.AnimState:SetBank("fwd_in_pdt_resource_glacier")

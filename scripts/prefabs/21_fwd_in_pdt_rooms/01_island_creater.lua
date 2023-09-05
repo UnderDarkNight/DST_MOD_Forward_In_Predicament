@@ -118,6 +118,9 @@ local function fx()
         --     height = 15,                                 ------ 数据高度
         --     data = {},                                   ------ data 来自 tiled.exe 生成的字符串（导出）。
         --                                                          -- tiled软件里，单个地块用 64x64 pix，然后载入饥荒地皮资源 ground.tsx。导出后直接复制字符串过来
+        --                                                          -- 【警告】 数据必须是 奇数，不能是偶数！！！！！！！
+        --                                                          -- 【警告】 数据必须是 奇数，不能是偶数！！！！！！！
+        --                                                          -- 【警告】 数据必须是 奇数，不能是偶数！！！！！！！
         --     y_mirror = nil or true,                      -------- 是否Y轴镜像，可以缺省
         --     within_map_limit_off = nil,-- or true        ---- 【一般用不上】关闭 地图内部生成检测，以允许 修改地图尺寸以外的地皮，为true 的时候不检测
         --     remove_entities_flag = nil,-- or true ,      ---- 是否删除原有物品

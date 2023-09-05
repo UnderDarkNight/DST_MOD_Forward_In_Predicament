@@ -34,16 +34,26 @@ local flg,error_code = pcall(function()
     -- print("Ocean Tile :",IsOceanTile(TheWorld.Map:GetTileAtPoint(x,y,z)))
     -- ThePlayer.Transform:SetPosition(0, 0, 0)
     -- 
-        local ent = TheSim:FindFirstEntityWithTag("fwd_in_pdt__ice_moon_island_tile_10")
-        if ent then
-            ThePlayer.Transform:SetPosition(ent.Transform:GetWorldPosition())
-        end
+        -- local ent = TheSim:FindFirstEntityWithTag("fwd_in_pdt__special_island.gateway")
+        -- if ent then
+        --     ThePlayer.Transform:SetPosition(ent.Transform:GetWorldPosition())
+        -- end
 
-        ThePlayer.components.fwd_in_pdt_func:TheCamera_SetFov(60)
+        -- ThePlayer.components.fwd_in_pdt_func:TheCamera_SetFov(60)
 
         -- for k, v in pairs(TheWorld.topology.nodes) do
         --     print(k,v)
         -- end
+    ----------------------------------------------------------------------------------------------------------------
+    --- 洞穴穿越树木 测试
+        local inst = TheSim:FindFirstEntityWithTag("fwd_in_pdt__rooms_mini_portal_door")
+        -- local inst = TheSim:FindFirstEntityWithTag("fwd_in_pdt__special_island.gateway2")
+        -- local inst = TheSim:FindFirstEntityWithTag("fwd_in_pdt__rooms_quirky_red_tree")
+        if inst then
+            -- ThePlayer.Transform:SetPosition(inst.Transform:GetWorldPosition())
+            inst:PushEvent("active",ThePlayer)
+
+        end
     ----------------------------------------------------------------------------------------------------------------
     -- ThePlayer.Transform:SetPosition(-14000, 0, -14000)
     -- ThePlayer.Transform:SetPosition(0, 0, 0)

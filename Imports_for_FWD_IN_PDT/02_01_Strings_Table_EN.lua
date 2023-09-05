@@ -93,6 +93,23 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
         --------------------------------------------------------------------
         ---- 06_fwd_in_pdt_containers
         --------------------------------------------------------------------
+        ---- 07_fwd_in_pdt_buildings
+            ["fwd_in_pdt_building_mock_wall_grass"] = {
+                ["name"] = "拟态墙·草",
+                ["inspect_str"] = "这是一堵墙...而不是植物....",
+                ["recipe_desc"] = "伪装成植物的墙",
+            },
+        --------------------------------------------------------------------
+        ---- 08_fwd_in_pdt_resources
+            ["fwd_in_pdt_resource_glacier_huge"] = {
+                ["name"] = "Huge Glacier",
+                ["inspect_str"] = "This glacier is so huge, and it doesn't melt all year round .",
+            },
+            ["fwd_in_pdt_resource_glacier_small"] = {
+                ["name"] = "Glacier",
+                ["inspect_str"] = "This glacier is so weird. It doesn't melt all year round .",
+            },
+        --------------------------------------------------------------------
         ---- 09_fwd_in_pdt_plants
         --------------------------------------------------------------------
         ---- 10_fwd_in_pdt_minerals
@@ -114,6 +131,22 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
         ---- 18_fwd_in_pdt_projectiles
         --------------------------------------------------------------------
         ---- 19_fwd_in_pdt_characters
-
+        --------------------------------------------------------------------
+        ---- 20_fwd_in_pdt_events
+        --------------------------------------------------------------------
+        ---- 21_fwd_in_pdt_rooms
+        ["fwd_in_pdt__rooms_quirky_red_tree"] = {
+            ["name"] = "Quirky Red Leaf Tree",
+            ["inspect_str"] = "This tree is particularly odd. It has an ominous air about it",
+        },
+        ["fwd_in_pdt__rooms_quirky_red_tree_special"] = {
+            ["name"] = "Quirky Red Leaf Tree",
+            ["inspect_str"] = "This tree is particularly odd. It has an ominous air about it",
+        },
+        ["fwd_in_pdt__rooms_mini_portal_door"] = {
+            ["name"] = "mini portal door",
+            ["inspect_str"] = "There won't be an accident with this door, will there ?",
+            ["action_str"] = "use",
+        },
         --------------------------------------------------------------------
 }

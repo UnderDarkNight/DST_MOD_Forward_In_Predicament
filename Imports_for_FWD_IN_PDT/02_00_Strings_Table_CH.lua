@@ -114,6 +114,14 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             },
         --------------------------------------------------------------------
         ---- 08_fwd_in_pdt_resources
+            ["fwd_in_pdt_resource_glacier_huge"] = {
+                ["name"] = "巨大的冰川",
+                ["inspect_str"] = "这冰川好大，还终年不融化",
+            },
+            ["fwd_in_pdt_resource_glacier_small"] = {
+                ["name"] = "冰川",
+                ["inspect_str"] = "这冰川好奇怪，终年不融化",
+            },
         --------------------------------------------------------------------
         ---- 09_fwd_in_pdt_plants
         --------------------------------------------------------------------
@@ -136,7 +144,23 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
         ---- 18_fwd_in_pdt_projectiles
         --------------------------------------------------------------------
         ---- 19_fwd_in_pdt_characters
-
+        --------------------------------------------------------------------
+        ---- 20_fwd_in_pdt_events
+        --------------------------------------------------------------------
+        ---- 21_fwd_in_pdt_rooms
+            ["fwd_in_pdt__rooms_quirky_red_tree"] = {
+                ["name"] = "古怪的红叶树",
+                ["inspect_str"] = "这树木特别古怪，有种不祥的气息",
+            },
+            ["fwd_in_pdt__rooms_quirky_red_tree_special"] = {
+                ["name"] = "古怪的红叶树",
+                ["inspect_str"] = "这树木特别古怪，有种不祥的气息",
+            },
+            ["fwd_in_pdt__rooms_mini_portal_door"] = {
+                ["name"] = "迷你传送门",
+                ["inspect_str"] = "这门不会出事故吧？",
+                ["action_str"] = "使用",
+            },
         --------------------------------------------------------------------
 }
 

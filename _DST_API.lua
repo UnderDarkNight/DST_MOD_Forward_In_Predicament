@@ -198,9 +198,10 @@ inst = {
     end,
     ["ListenForEvent"] = function(self,event_name)end,
     ["PushEvent"] = function(self,event_name)end,
+    ["RemoveEventCallback"] = function(self,event_name,fn)end,
+
     ["RemoveAllEventCallbacks"] = function(...)end,
 
-    ["RemoveEventCallback"] = function(self,event_name,fn)end,
     ["WatchWorldState"] = function(self,state_name,fn)end,
     ["StopWatchingWorldState"] = function(self,state_name,fn)end,
     ["StopAllWatchingWorldStates"] = function()end,

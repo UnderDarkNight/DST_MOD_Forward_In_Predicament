@@ -160,7 +160,7 @@ function fwd_in_pdt_com_workable:SetPreActionFn(fn)
     end
 end
 function fwd_in_pdt_com_workable:DoPreActionFn(doer)
-    if self.__pre_action_fn then
+    if type(self.__pre_action_fn) == "function" then
         self.__pre_action_fn(self.inst,doer)
     end
 end

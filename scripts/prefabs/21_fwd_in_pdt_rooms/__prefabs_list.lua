@@ -16,8 +16,10 @@ local Prefabs_addr_base = string.sub(temp_addr,1,temp_str_index2) .. "/"    --- 
 
 -- local Prefabs_addr_base = "scripts/prefabs/21_fwd_in_pdt_rooms/"
 local prefabs_name_list = {
-    "01_island_creater",        --- 岛屿创建器
-    "02_resources_occupancy_sign", --- 资源占位符
+    "01_island_creater",            --- 岛屿创建器
+    "02_resources_occupancy_sign",  --- 资源占位符
+    "03_quirky_red_leaf_tree",      --- 传送树，下洞穴的
+    "04_mini_portal_door",      --- 迷你传送门。给两个独特岛屿用的
 }
 
 
