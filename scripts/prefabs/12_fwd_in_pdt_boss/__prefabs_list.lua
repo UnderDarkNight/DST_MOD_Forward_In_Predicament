@@ -14,7 +14,7 @@ local Prefabs_addr_base = string.sub(temp_addr,1,temp_str_index2) .. "/"    --- 
 
 ---------------------------------------------------------------------------
 
--- local Prefabs_addr_base = "scripts/prefabs/12_fwd_in_pdt_boss/"
+-- local Prefabs_addr_base = "scripts/prefabs/10_fwd_in_pdt_minerals/"
 local prefabs_name_list = {
     -- "00_gift_pack",
 }
@@ -34,6 +34,8 @@ if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE == true then
     end
 end
 ---------------------------------------------------------------------------
+
+
 
 
 

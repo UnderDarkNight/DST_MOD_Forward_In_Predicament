@@ -35,6 +35,9 @@ local file_folders = {
 
 local function Load_lua_file_2_prefabs_table(tempAddr)
     ---- tempAddr  :      "prefabs/XXX/XXX.lua"
+    local __temp = string.gsub(tempAddr,"//", "/")
+    tempAddr = __temp
+    
     local function self_load_file_to_prefabs_by_pcall(pcall_retFlag,...)
         local ret_prefabs_table = {}
         local arg = {...}

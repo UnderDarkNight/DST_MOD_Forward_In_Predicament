@@ -48,11 +48,12 @@ end
 TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE = TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE or false	
 if modname == "Forward In Predicament" then -- 如果MOD文件夹名字是 "Forward In Predicament"
 	TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE = true	
+
 	-- TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE = false	
 
-	-- local modnames = ModManager:GetEnabledModNames()
-	-- KnownModIndex:GetModInfo(modname)
-	-- TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE_MODNAME = modname or "dfadfeafgaegcvfglkjolnlngmg"
+					-- local modnames = ModManager:GetEnabledModNames()
+					-- KnownModIndex:GetModInfo(modname)
+					-- TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE_MODNAME = modname or "dfadfeafgaegcvfglkjolnlngmg"
 end
 
 Assets = {}
