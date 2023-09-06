@@ -49,7 +49,13 @@ AddStategraphState("wilson",State{
                         -- end
         -----------------------------------------------------------------------------------------------------------------------------------
             local item = inst.bufferedaction.invobject
+            local weapon = inst.components.inventory:GetEquippedItem(EQUIPSLOTS.HANDS)
             if item then
+                if weapon and weapon ~= item then
+                    inst.sg.statemem.__need_2_hide_in_hand_weapon = true
+                    inst.AnimState:HideSymbol("swap_object")
+                end
+
                 local staff_fx_name = inst.components.rider:IsRiding() and "staffcastfx_mount" or "staffcastfx"
                 local light_inst = inst:SpawnChild(staff_fx_name)
                 ---- 光线中间
@@ -106,6 +112,12 @@ AddStategraphState("wilson",State{
             if inst.components.playercontroller ~= nil then
                 inst.components.playercontroller:Enable(true)
             end
+
+            if inst.sg.statemem.__need_2_hide_in_hand_weapon then
+                inst.sg.statemem.__need_2_hide_in_hand_weapon = nil
+                inst.AnimState:ShowSymbol("swap_object")
+            end
+
         end),
     },
 
@@ -115,6 +127,10 @@ AddStategraphState("wilson",State{
             if inst.AnimState:AnimDone() then
                 inst.sg:GoToState("idle")
             end
+            if inst.sg.statemem.__need_2_hide_in_hand_weapon then
+                inst.sg.statemem.__need_2_hide_in_hand_weapon = nil
+                inst.AnimState:ShowSymbol("swap_object")
+            end
         end),
     },
 
@@ -122,7 +138,10 @@ AddStategraphState("wilson",State{
         if inst.components.playercontroller ~= nil then
             inst.components.playercontroller:Enable(true)
         end
-
+        if inst.sg.statemem.__need_2_hide_in_hand_weapon then
+            inst.sg.statemem.__need_2_hide_in_hand_weapon = nil
+            inst.AnimState:ShowSymbol("swap_object")
+        end
     end,
 
 })
@@ -131,7 +150,7 @@ AddStategraphState("wilson",State{
 AddStategraphState("wilson_client",State{
     name = "fwd_in_pdt_castspell",
     tags = { "doing", "busy", "canrotate" },
-    server_states = { "castspell" },
+    server_states = { "fwd_in_pdt_castspell" },
 
     onenter = function(inst)
         inst.components.locomotor:Stop()

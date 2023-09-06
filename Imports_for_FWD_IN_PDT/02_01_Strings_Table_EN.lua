@@ -84,7 +84,7 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             },
             ["fwd_in_pdt_item_transport_stone"] = {
                 ["name"] = "Micro Transportation Stone",
-                ["inspect_str"] = "Teleport to somewhere close",
+                ["inspect_str"] = "Teleport to the island",
             },
         --------------------------------------------------------------------
         ---- 02_fwd_in_pdt_materials
