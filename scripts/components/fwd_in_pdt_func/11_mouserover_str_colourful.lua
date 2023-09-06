@@ -1,8 +1,8 @@
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --- 鼠标放上去的文本显示颜色
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-local function main_com(fwd_in_pdt_func)
-    function fwd_in_pdt_func:Mouseover_SetColour(r,g,b,a)
+local function main_com(self)
+    function self:Mouseover_SetColour(r,g,b,a)
         if type(r) ~= "number" or type(g) ~= "number" or type(b) ~= "number" then
             return
         end
@@ -33,7 +33,7 @@ local function main_com(fwd_in_pdt_func)
         self:Replica_Set_Simple_Data("mouseover_colour",colour)
     end
     
-    function fwd_in_pdt_func:Mouseover_GetColour()
+    function self:Mouseover_GetColour()
         local colour = self.tempData.__mouser_over_colour or {}
         if colour.r and colour.g and colour.b and colour.a then
             return colour.r,colour.g,colour.b,colour.a
@@ -41,10 +41,22 @@ local function main_com(fwd_in_pdt_func)
             return nil
         end
     end
+
+    function self:Mouseover_SetText(str)
+        if type(str) == "string" then
+            self.tempData.__mouser_over_text = str
+            self:Replica_Set_Simple_Data("mouseover_text",str)
+        end
+    end
+
+    function self:Mouseover_GetText()
+        return self.tempData.__mouser_over_text
+    end
+
 end
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-local function replica(fwd_in_pdt_func)
-    function fwd_in_pdt_func:Mouseover_SetColour(r,g,b,a)
+local function replica(self)
+    function self:Mouseover_SetColour(r,g,b,a)
         if type(r) ~= "number" or type(g) ~= "number" or type(b) ~= "number" then
             return
         end
@@ -76,7 +88,7 @@ local function replica(fwd_in_pdt_func)
         self:Replica_Set_Simple_Data("mouseover_colour",colour)
     end
     
-    function fwd_in_pdt_func:Mouseover_GetColour()
+    function self:Mouseover_GetColour()
         local colour = self:Replica_Get_Simple_Data("mouseover_colour") or {}
         -- self.tempData.__mouser_over_colour = colour
         if colour.r and colour.g and colour.b and colour.a then
@@ -85,7 +97,17 @@ local function replica(fwd_in_pdt_func)
             return nil
         end
     end
-    -- print(" error : replica colourful init end")
+
+    function self:Mouseover_SetText(str)
+        if type(str) == "string" then
+            self:Replica_Set_Simple_Data("mouseover_text",str)
+        end
+    end
+
+    function self:Mouseover_GetText()
+        return self:Replica_Get_Simple_Data("mouseover_text")
+    end
+
 end
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 

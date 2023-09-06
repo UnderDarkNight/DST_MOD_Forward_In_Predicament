@@ -160,6 +160,7 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "迷你传送门",
                 ["inspect_str"] = "这门不会出事故吧？",
                 ["action_str"] = "使用",
+                ["mouse_over_text"] = "传送到 "..STRINGS.NAMES.MULTIPLAYER_PORTAL,
             },
         --------------------------------------------------------------------
 }

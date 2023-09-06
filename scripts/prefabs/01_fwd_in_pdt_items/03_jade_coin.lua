@@ -143,8 +143,8 @@ local function fn_black()
     ---------------------------------------------------------------------------------
     -- 黑币转换为绿币
         inst:AddComponent("fwd_in_pdt_com_workable")
-        inst.components.fwd_in_pdt_com_workable:SetTestFn(function()
-            return true
+        inst.components.fwd_in_pdt_com_workable:SetTestFn(function(inst,doer,right_click)            
+            return inst.replica.inventoryitem:IsGrandOwner(doer)    --- 在背包里才能转换。地上不给转。
         end)
         inst.components.fwd_in_pdt_com_workable:SetActionDisplayStr("fwd_in_pdt_item_jade_coin_exchange",GetStringsTable()["action_str"])
         inst.components.fwd_in_pdt_com_workable:SetOnWorkFn(function(inst,doer)

@@ -191,62 +191,72 @@ AddPrefabPostInit(
                                     [9] = function(pt)  --- 9 号位置：NPC A
                                             SpawnPrefab("fwd_in_pdt__resources_occupancy_sign"):PushEvent("Set",{
                                                 pt = Vector3(pt.x,0,pt.z),
-                                                tag = "fwd_in_pdt__special_island.npc_a"
+                                                tag = "fwd_in_pdt__special_island.npc_a",
+                                                hide = true,
                                             })
                                     end,
                                     [10] = function(pt)  --- 10 号位置： NPC B
                                             SpawnPrefab("fwd_in_pdt__resources_occupancy_sign"):PushEvent("Set",{
                                                 pt = Vector3(pt.x,0,pt.z),
-                                                tag = "fwd_in_pdt__special_island.npc_b"
+                                                tag = "fwd_in_pdt__special_island.npc_b",
+                                                hide = true,
                                             })
                                     end,
                                     [11] = function(pt)  --- 11 号位置：NPC C
                                         SpawnPrefab("fwd_in_pdt__resources_occupancy_sign"):PushEvent("Set",{
                                             pt = Vector3(pt.x,0,pt.z),
-                                            tag = "fwd_in_pdt__special_island.npc_c"
+                                            tag = "fwd_in_pdt__special_island.npc_c",
+                                            hide = true,
                                         })                                         
                                     end,
                                     [12] = function(pt)  --- 12 号位置：NPC D
                                         SpawnPrefab("fwd_in_pdt__resources_occupancy_sign"):PushEvent("Set",{
                                             pt = Vector3(pt.x,0,pt.z),
-                                            tag = "fwd_in_pdt__special_island.npc_d"
+                                            tag = "fwd_in_pdt__special_island.npc_d",
+                                            hide = true,
                                         })                                       
                                     end,
                                     [13] = function(pt)  --- 13 号位置：NPC E
                                         SpawnPrefab("fwd_in_pdt__resources_occupancy_sign"):PushEvent("Set",{
                                             pt = Vector3(pt.x,0,pt.z),
-                                            tag = "fwd_in_pdt__special_island.npc_e"
+                                            tag = "fwd_in_pdt__special_island.npc_e",
+                                            hide = true,
                                         })                                          
                                     end,
                                     [14] = function(pt)  --- 14 号位置： NPC F
                                         SpawnPrefab("fwd_in_pdt__resources_occupancy_sign"):PushEvent("Set",{
                                             pt = Vector3(pt.x,0,pt.z),
-                                            tag = "fwd_in_pdt__special_island.npc_f"
+                                            tag = "fwd_in_pdt__special_island.npc_f",
+                                            hide = true,
                                         })
                                     end,
                                     [15] = function(pt)  --- 15 号位置： NPC G
                                         SpawnPrefab("fwd_in_pdt__resources_occupancy_sign"):PushEvent("Set",{
                                             pt = Vector3(pt.x,0,pt.z),
-                                            tag = "fwd_in_pdt__special_island.npc_g"
+                                            tag = "fwd_in_pdt__special_island.npc_g",
+                                            hide = true,
                                         })
 
                                     end,
                                     [16] = function(pt)  --- 16 号位置： NPC H
                                         SpawnPrefab("fwd_in_pdt__resources_occupancy_sign"):PushEvent("Set",{
                                             pt = Vector3(pt.x,0,pt.z),
-                                            tag = "fwd_in_pdt__special_island.npc_h"
+                                            tag = "fwd_in_pdt__special_island.npc_h",
+                                            hide = true,
                                         })
                                     end,
                                     [17] = function(pt)  --- 17 号位置：NPC I
                                         SpawnPrefab("fwd_in_pdt__resources_occupancy_sign"):PushEvent("Set",{
                                             pt = Vector3(pt.x,0,pt.z),
-                                            tag = "fwd_in_pdt__special_island.npc_i"
+                                            tag = "fwd_in_pdt__special_island.npc_i",
+                                            hide = true,
                                         })
                                     end,
                                     [18] = function(pt)  --- 17 号位置：NPC J
                                         SpawnPrefab("fwd_in_pdt__resources_occupancy_sign"):PushEvent("Set",{
                                             pt = Vector3(pt.x,0,pt.z),
-                                            tag = "fwd_in_pdt__special_island.npc_j"
+                                            tag = "fwd_in_pdt__special_island.npc_j",
+                                            hide = true,
                                         })
                                     end,
                                     [19] = function(pt)  --- 17 号位置：NPC K

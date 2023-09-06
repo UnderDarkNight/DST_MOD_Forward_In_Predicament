@@ -58,6 +58,17 @@ local function fn()
                 if portal_door then
                     local x,y,z = portal_door.Transform:GetWorldPosition()
                     doer.components.fwd_in_pdt_func:Transform2PT(x,0,z)
+                    -----------------------------------------------------------------
+                    --- 让玩家面向摄像机，以及触发门的特效
+                        local camera_down_pt = doer.components.fwd_in_pdt_func:TheCamera_GetDownVec() or Vector3(0,0,0)
+                        portal_door:PushEvent("rez_player", doer)
+                        doer:ForceFacePoint( x+camera_down_pt.x  ,0, z+camera_down_pt.z )
+
+                    -- Spawn a light if it's dark
+                        if ( TheWorld:HasTag("cave") or not TheWorld.state.isday ) and #TheSim:FindEntities(x, y, z, 4, { "spawnlight" }) <= 0 then
+                            SpawnPrefab("spawnlight_multiplayer").Transform:SetPosition(x, y, z)
+                        end
+                    -----------------------------------------------------------------
                 else
                     return false
                 end
@@ -65,6 +76,7 @@ local function fn()
             return true
         end)
         inst.components.fwd_in_pdt_com_workable:SetActionDisplayStr("fwd_in_pdt__rooms_mini_portal_door",GetStringsTable()["action_str"])
+        inst.components.fwd_in_pdt_com_workable:SetSGAction("give")
 
 
     -------------------------------------------------------------------------------------
@@ -107,6 +119,13 @@ local function fn()
                 player.components.fwd_in_pdt_func:Transform2PT(x,y,z)
             end
         end)
+    -------------------------------------------------------------------------------------
+    ---- 鼠标放上去的文本和改色
+        inst:AddComponent("fwd_in_pdt_func"):Init("mouserover_colourful")
+        inst.components.fwd_in_pdt_func:Mouseover_SetColour(104/255,60/255,87/255,200/255)
+        if TheWorld:HasTag("cave") or TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
+            inst.components.fwd_in_pdt_func:Mouseover_SetText(GetStringsTable()["mouse_over_text"])
+        end
     -------------------------------------------------------------------------------------
     
 

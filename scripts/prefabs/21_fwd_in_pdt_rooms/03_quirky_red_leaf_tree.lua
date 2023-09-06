@@ -2,6 +2,11 @@
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+local function GetStringsTable(name)
+    local prefab_name = name or "fwd_in_pdt__rooms_quirky_red_tree"
+    local LANGUAGE = type(TUNING["Forward_In_Predicament.Language"]) == "function" and TUNING["Forward_In_Predicament.Language"]() or TUNING["Forward_In_Predicament.Language"]
+    return TUNING["Forward_In_Predicament.Strings"][LANGUAGE][prefab_name] or {}
+end
 
 local assets =
 {
@@ -142,16 +147,22 @@ local function normal_tree()
             return true
         end)
         inst.components.fwd_in_pdt_com_workable:SetSGAction("give")
-        inst.components.fwd_in_pdt_com_workable:SetActionDisplayStr("fwd_in_pdt__rooms_quirky_red_tree",STRINGS.ACTIONS.MIGRATE)
+        inst.components.fwd_in_pdt_com_workable:SetActionDisplayStr("fwd_in_pdt__rooms_quirky_red_tree",STRINGS.ACTIONS.CHECKTRAP)
         -- STRINGS.ACTIONS.MIGRATE  --游历
         -- STRINGS.TAGS.LOCATION.CAVE  -- 洞穴
     ---------------------------------------------------------------------------------------------
 
 
-    if TheWorld.ismastersim then
+    if not TheWorld.ismastersim then
         return inst
     end
-
+    ---------------------------------------------------------------------------------------------
+    ---- 修改鼠标放上去的颜色
+        inst:AddComponent("fwd_in_pdt_func"):Init("mouserover_colourful")
+        inst.components.fwd_in_pdt_func:Mouseover_SetColour(190/255,65/255,28/255,255/255)
+        inst.components.fwd_in_pdt_func:Mouseover_SetText(STRINGS.ACTIONS.CHECKTRAP .. " ".. GetStringsTable()["name"])
+        
+    ---------------------------------------------------------------------------------------------
 
     return inst
 end
@@ -269,7 +280,7 @@ local function special_tree_outside(inst)
                 find_new_location(inst)
             end
         end)
-        inst:DoTaskInTime(10,find_new_location)
+        inst:DoTaskInTime(1,find_new_location)
     --------------------------------------------------------------------------
     --- 离开加载范围的时候 重置动画
         inst:ListenForEvent("entitysleep",function()
@@ -298,17 +309,21 @@ local function special_tree()
         return inst
     end
 
-    -----------------------------------------------------------
+    ---------------------------------------------------------
     ---- 穿越洞穴用的组件，ID需要独特
         inst:AddComponent("worldmigrator")
         inst:DoTaskInTime(1,function()
             inst.components.worldmigrator.id  = 6101
             inst.components.worldmigrator.receivedPortal = 6101	
         end)
-    -----------------------------------------------------------
+    ---------------------------------------------------------
         
     -----------------------------------------------------------
-
+    ---------------------------------------------------------------------------------------------
+    ---- 修改鼠标放上去的颜色
+        inst:AddComponent("fwd_in_pdt_func"):Init("mouserover_colourful")
+        inst.components.fwd_in_pdt_func:Mouseover_SetColour( 236/255 , 131/255 , 67/255 ,200/255)
+    ---------------------------------------------------------------------------------------------
 
     return inst
 end

@@ -45,7 +45,7 @@ local function fn_huge()
     inst.components.workable:SetWorkLeft(100)
     inst.components.workable:SetOnWorkCallback(function(_,worker)
         inst.components.workable.workleft = 100  --- 永远挖不完
-        if worker and worker:HasTag("player") then
+        if worker and worker:HasTag("player") and math.random(1000) < 200 then
             local x,y,z = inst.Transform:GetWorldPosition()
             TheWorld.components.fwd_in_pdt_func:Trow_Item_2_Player({
                 pt = Vector3(x,0,z),
@@ -94,7 +94,7 @@ local function fn_small()
     inst.components.workable:SetWorkLeft(100)
     inst.components.workable:SetOnWorkCallback(function(_,worker)
         inst.components.workable.workleft = 100  --- 永远挖不完
-        if worker and worker:HasTag("player") then
+        if worker and worker:HasTag("player") and math.random(1000) < 100 then
             local x,y,z = inst.Transform:GetWorldPosition()
             TheWorld.components.fwd_in_pdt_func:Trow_Item_2_Player({
                 pt = Vector3(x,0,z),

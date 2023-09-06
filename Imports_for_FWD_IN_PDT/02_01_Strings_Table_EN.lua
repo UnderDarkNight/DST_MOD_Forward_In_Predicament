@@ -147,6 +147,8 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             ["name"] = "mini portal door",
             ["inspect_str"] = "There won't be an accident with this door, will there ?",
             ["action_str"] = "use",
+            ["mouse_over_text"] = "Transport to "..STRINGS.NAMES.MULTIPLAYER_PORTAL,
+
         },
         --------------------------------------------------------------------
 }
