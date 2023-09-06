@@ -7,17 +7,22 @@ AddClassPostConstruct("widgets/hoverer",function(self)
 	-----------------------------------------------------------------------------------------------------
 	--- 有两个 child text 做一样的事情， self.text 和 self.secondarytext
 		local new_SetString_fn = function(text,str)
-			-- local target = TheInput:GetHUDEntityUnderMouse()
-			-- if target ~= nil then
-			-- 	target = target.widget ~= nil and target.widget.parent ~= nil and target.widget.parent.item
-			-- else
-			-- 	target = TheInput:GetWorldEntityUnderMouse()
-			-- end
 
+			
+			------------ 从目标物品动作获取 target inst
 			local tempAction = ThePlayer.components.playercontroller:GetLeftMouseAction() or ThePlayer.components.playercontroller:GetRightMouseAction()
 			local target = nil
 			if tempAction then
 				target = tempAction.target or tempAction.invobject
+			end
+			----------- 从UI等地方获取 target inst
+			if target == nil then
+				target = TheInput:GetHUDEntityUnderMouse()
+				if target ~= nil then
+					target = target.widget ~= nil and target.widget.parent ~= nil and target.widget.parent.item
+				else
+					target = TheInput:GetWorldEntityUnderMouse()
+				end
 			end
 
 

@@ -67,15 +67,10 @@ local function base_fn()
     inst.AnimState:SetTime(math.random(5000)/1000)
 
     -- inst:AddTag("fwd_in_pdt__rooms_quirky_red_tree")
-    -- inst:AddTag("structure")
+    inst:AddTag("structure")
+    inst:AddTag("antlion_sinkhole_blocker")
 
     inst.entity:SetPristine()
-
-    -- if not TheNet:IsDedicated() then    --- 客机独有的装饰特效
-    --     -- inst:DoTaskInTime(0,function()
-    --     --     ground_leaves_fn().Transform:SetPosition(inst.Transform:GetWorldPosition())
-    --     -- end)
-    -- end
 
     if not TheWorld.ismastersim then
         return inst
@@ -322,7 +317,13 @@ local function special_tree()
     ---------------------------------------------------------------------------------------------
     ---- 修改鼠标放上去的颜色
         inst:AddComponent("fwd_in_pdt_func"):Init("mouserover_colourful")
-        inst.components.fwd_in_pdt_func:Mouseover_SetColour( 236/255 , 131/255 , 67/255 ,200/255)
+        if not TheWorld:HasTag("cave") then
+            inst.components.fwd_in_pdt_func:Mouseover_SetColour( 236/255 , 131/255 , 67/255 ,200/255)
+            inst.components.fwd_in_pdt_func:Mouseover_SetText(STRINGS.ACTIONS.CHECKTRAP .. " ".. GetStringsTable()["name"])
+        else
+            inst.components.fwd_in_pdt_func:Mouseover_SetText(STRINGS.ACTIONS.ENTER_GYM .. " ".. GetStringsTable()["name"])            
+        end
+
     ---------------------------------------------------------------------------------------------
 
     return inst

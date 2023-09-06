@@ -82,6 +82,10 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "A kind of currency made of jade, black and deep",
                 ["action_str"]  = "ExChange",
             },
+            ["fwd_in_pdt_item_transport_stone"] = {
+                ["name"] = "Micro Transportation Stone",
+                ["inspect_str"] = "Teleport to somewhere close",
+            },
         --------------------------------------------------------------------
         ---- 02_fwd_in_pdt_materials
         --------------------------------------------------------------------

@@ -21,6 +21,8 @@ modimport("Key_Modules_Of_FWD_IN_PDT/05_Actions/07_inst_special_workable_action_
 
 modimport("Key_Modules_Of_FWD_IN_PDT/05_Actions/08_reskin_tool_action.lua")       --- 自制皮肤切换道具
 
+modimport("Key_Modules_Of_FWD_IN_PDT/05_Actions/09_item_spell_caster_action.lua")       --- SG动作：物品施放法术用的
+
 
 
 

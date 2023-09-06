@@ -91,6 +91,10 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "一种玉石做的货币，黑得深邃且悠远",
                 ["action_str"]  = "转换",
             },
+            ["fwd_in_pdt_item_transport_stone"] = {
+                ["name"] = "微型传送石",
+                ["inspect_str"] = "传送到最近的某个地方",
+            },
         --------------------------------------------------------------------
         ---- 02_fwd_in_pdt_materials
         --------------------------------------------------------------------
