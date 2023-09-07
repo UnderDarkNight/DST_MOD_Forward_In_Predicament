@@ -12,28 +12,101 @@
     ·【体质值】字段： wellness
     ·【VC值】 字段 ：  vitamin_c
     ·【血糖值】字段：  glucose
-    ·【中毒值】字段：  poisoning
+    ·【中毒值】字段：  poison
+
+
+    常驻API  ：
+    · 体质值：
+                self:DoDelta_Wellness(num)              --- 数据加减  
+                self:External_DoDelta_Wellness(num)     --- 外部数据加减，方便在debuff_inst 挂载上限检查函数。函数内部在判断完成后内部需要 DoDelta_Wellness
+                self:GetCurrent_Wellness()              --- 返回3个值 :  当前值 、 百分比 、 MAX
+                self:SetCurrent_Wellness(num)           --- 设置当前值
+    · VC值：
+                self:DoDelta_Vitamin_C(num)              --- 数据加减  
+                self:External_DoDelta_Vitamin_C(num)     --- 外部数据加减，方便在debuff_inst 挂载上限检查函数。函数内部在判断完成后内部需要 DoDelta_Wellness
+                self:GetCurrent_Vitamin_C()              --- 返回3个值 :  当前值 、 百分比 、 MAX
+                self:SetCurrent_Vitamin_C(num)           --- 设置当前值
+    · 血糖值：
+                self:DoDelta_Glucose(num)              --- 数据加减  
+                self:External_DoDelta_Glucose(num)     --- 外部数据加减，方便在debuff_inst 挂载上限检查函数。函数内部在判断完成后内部需要 DoDelta_Wellness
+                self:GetCurrent_Glucose()              --- 返回3个值 :  当前值 、 百分比 、 MAX
+                self:SetCurrent_Glucose(num)           --- 设置当前值
+    · 中毒值：
+                self:DoDelta_Poison(num)              --- 数据加减  
+                self:External_DoDelta_Poison(num)     --- 外部数据加减，方便在debuff_inst 挂载上限检查函数。函数内部在判断完成后内部需要 DoDelta_Wellness
+                self:GetCurrent_Poison()              --- 返回3个值 :  当前值 、 百分比 、 MAX
+                self:SetCurrent_Poison(num)           --- 设置当前值
+
 ]]--
+----------------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------------
 local fwd_in_pdt_wellness = Class(function(self, inst)
     self.inst = inst
 
     self.DataTable = {}     -- 储存数据，带进存档
+    self.TempData = {}      -- 临时数据
+
     self.debuffs = {}       -- 储存 debuff_inst , index 为 prefab
 
-    self.wellness_max = 300     -- 体质值的最大值
-    self.vitamin_c_max = 100    
-    self.glucose_max = 100
-    self.poisoning_max = 100
+    ---- 最大值
+        self.max = {
+            ["wellness"] = 300,         -- 体质值  上限
+            ["vitamin_c"] = 100,        -- 维C值   上限
+            ["glucose"] = 100,          -- 血糖值  上限
+            ["poison"] = 100,           -- 中毒值  上限
+        }
 
-    --- 不在这初始化，只做一个占位。这的数据也不会保存。
-    self.wellness = 0       -- 体质值
-    self.vitamin_c = 0      -- VC值
-    self.glucose = 0        -- 血糖值
-    self.poisoning = 0      -- 中毒值
+    ---- 默认值
+        self.defualts = {
+            ["wellness"] = 140,         -- 体质值  初始
+            ["vitamin_c"] = 100,        -- 维C值   初始
+            ["glucose"] = 59,           -- 血糖值  初始
+            ["poison"] = 0,             -- 中毒值  初始
+        }
+
+    ---- inst 的prefab 名字 , 相关值的函数挂载在 这个inst 内，这个inst 不储存任何数据
+        self.base_prefabs = {                   
+            ["wellness"] = "fwd_in_pdt_wellness",                   -- 体质值  
+            ["vitamin_c"] = "fwd_in_pdt_wellness_vitamin_c",        -- 维C值
+            ["glucose"] = "fwd_in_pdt_wellness_glucose",            -- 血糖值  
+            ["poison"] = "fwd_in_pdt_wellness_poison",              -- 中毒值  
+        }
+        ----- 转置一下 table ，方便后续判断
+        self.base_prefabs_index = {                   
+            ["fwd_in_pdt_wellness"] = "wellness",                   -- 体质值  
+            ["fwd_in_pdt_wellness_vitamin_c"] = "vitamin_c",        -- 维C值
+            ["fwd_in_pdt_wellness_glucose"] = "glucose",            -- 血糖值  
+            ["fwd_in_pdt_wellness_poison"] = "poison",              -- 中毒值  
+        }
+        ---- 计算优先级，数字越小，越优先。 第一个 则永远在最后，给每次 update 的最后根据体质值 处理相关任务
+        self.base_prefabs_orders = {        
+            [1] = "wellness",
+            [2] = "vitamin_c",
+            [3] = "glucose",
+            [4] = "poison",
+        }
+
 
     inst:DoTaskInTime(0,function()  --- 0的时候再激活吧，不着急激活模块
-        self:SysInit()  --- 激活本模块        
+        if inst.userid == nil then
+            return
+        end
+
+        if not self:Get("player_datas_inited") then ----- 初始化
+            self:ReStartAllCom()
+            self:Set("player_datas_inited", true)
+        else
+            self:load_debuffs_for_new_spawn()
+            self:start_update_task()
+        end
+
+        self:Refresh()
+
+    end)
+    ----- 给外部重置整个模块用的
+    inst:ListenForEvent("fwd_in_pdt_wellness.ReStart",function()
+        self:ReStartAllCom()
+        self:Set("player_datas_inited", true)
     end)
 
 end,
@@ -76,26 +149,239 @@ nil,
         return self:Get(DataName_Str)
     end
 ------------------------------------------------------------------------------------------------------------------------------
+--- 四个基础值的数据获取
+    ---------------------------------------------------
+    -- 基础API封装
+            function fwd_in_pdt_wellness:DoDelta(index,num)
+                if type(num) == "number" and type(index) == "string" then
+                    local crash_flag ,ret = pcall(function()
+                        local ret_num = math.clamp( self:Get(index) + num ,  0 , self.max[index] )
+                        self:Set(index,ret_num)
+                    end)
+                    if not crash_flag then
+                        print("error in fwd_in_pdt_wellness DoDelta ")
+                        print(ret)
+                    end
+                end
+            end
+            function fwd_in_pdt_wellness:GetCurrent(index)          --- 当前值，和百分比 一起返回
+                if type(index) == "string" then
+                    local crash_flag,current,percent,max = pcall(function()
+                        local curr_num = self:Add(index,0)
+                        local max_num = self.max[index]
+                        return curr_num,curr_num/max_num,max_num
+                    end)
+                    if crash_flag then -- 没发生崩溃
+                        return current,percent,max
+                    else
+                        print("error in fwd_in_pdt_wellness GetCurrent")
+                        print(current)
+                    end
+                end
+                return 0,0,0
+            end
+            function fwd_in_pdt_wellness:SetCurrent(index,num)
+                if type(num) == "number" and type(index) == "string" then
+                    local crash_flag,ret = pcall(function()
+                        print("fwd_in_pdt_wellness.SetCurrent",index,num)
+                        self:Set(index,  math.clamp(num,0,self.max[index])   )                        
+                    end)
+                    if not crash_flag then
+                        print("fwd_in_pdt_wellness SetCurrent  error ")
+                        print(ret)
+                    end
+                end
+            end
+
+            function fwd_in_pdt_wellness:External_DoDelta(index,num)        --- 靠外部调用执行增减的时候，运行做限位
+                local prefab_name = self.base_prefabs[index]
+                if prefab_name and self.debuffs[prefab_name] and self.debuffs[prefab_name].External_DoDelta then
+                    self.debuffs[prefab_name]:External_DoDelta(num)
+                end
+            end
+    -------------------------------
+    --- 封装4个值的
+        ---- 体质值
+            function fwd_in_pdt_wellness:DoDelta_Wellness(num)
+                self:DoDelta("wellness",num)
+            end            
+            function fwd_in_pdt_wellness:External_DoDelta_Wellness(num)
+                self:External_DoDelta("wellness",num)
+            end
+            function fwd_in_pdt_wellness:GetCurrent_Wellness()
+                return self:GetCurrent("wellness")
+            end
+            function fwd_in_pdt_wellness:SetCurrent_Wellness(num)
+                self:SetCurrent("wellness",num)
+            end
+
+        ---- VC值
+            function fwd_in_pdt_wellness:DoDelta_Vitamin_C(num)
+                self:DoDelta("vitamin_c",num)
+            end
+            function fwd_in_pdt_wellness:External_DoDelta_Vitamin_C(num)
+                self:External_DoDelta("vitamin_c",num)
+            end
+            function fwd_in_pdt_wellness:GetCurrent_Vitamin_C()
+                return self:GetCurrent("vitamin_c")
+            end
+            function fwd_in_pdt_wellness:SetCurrent_Vitamin_C(num)
+                self:SetCurrent("vitamin_c",num)
+            end
+        ---- 血糖值
+            function fwd_in_pdt_wellness:DoDelta_Glucose(num)
+                self:DoDelta("glucose",num)
+            end
+            function fwd_in_pdt_wellness:External_DoDelta_Glucose(num)
+                self:External_DoDelta("glucose",num)
+            end
+            function fwd_in_pdt_wellness:GetCurrent_Glucose()
+                return self:GetCurrent("glucose")
+            end
+            function fwd_in_pdt_wellness:SetCurrent_Glucose(num)
+                self:SetCurrent("glucose",num)
+            end
+        ---- 中毒值
+            function fwd_in_pdt_wellness:DoDelta_Poison(num)
+                self:DoDelta("poison",num)
+            end
+            function fwd_in_pdt_wellness:External_DoDelta_Poison(num)
+                self:External_DoDelta("poison",num)
+            end
+            function fwd_in_pdt_wellness:GetCurrent_Poison()
+                return self:GetCurrent("poison")
+            end
+            function fwd_in_pdt_wellness:SetCurrent_Poison(num)
+                self:SetCurrent("poison",num)
+            end
+
+
+
+------------------------------------------------------------------------------------------------------------------------------
+--- 四个基础值的初始化，以及所有数据统一重置的API。以及周期性任务起始的API
+    function fwd_in_pdt_wellness:All_Datas_Reset()
+        print("info fwd_in_pdt_wellness  All_Datas_Reset ")
+
+        for prefab_name, defubff_inst in ipairs(self.debuffs) do
+            if prefab_name and defubff_inst then
+                defubff_inst:Remove()
+            end
+        end
+
+        self.debuffs = {}
+        self.TempData = {}
+        self.DataTable = {}
+
+        
+        for index, num in pairs(self.defualts) do
+            print(index,num)
+            self:SetCurrent(index,num)
+        end
+        print("info fwd_in_pdt_wellness  All_Datas_Reset  end")
+    end
+
+    function fwd_in_pdt_wellness:update()       --- 每个周期都会执行的函数
+        --- step 1 运行除了常驻的那些以外的所有 update 函数
+            for prefab_name, debuff_inst in pairs(self.debuffs) do
+                if prefab_name and debuff_inst and self.base_prefabs_index[prefab_name] == nil and debuff_inst.OnUpdate then
+                    debuff_inst:OnUpdate()
+                end
+            end
+        --- setp 2 运行常驻的那些，最后运行 orders 第一位的
+            local first_order_debuff_prefab = nil
+            for i, index in pairs(self.base_prefabs_orders) do
+                    if i ~= 1 and index then
+                        local temp_debuff_prefab_name = self.base_prefabs[index]
+                        if temp_debuff_prefab_name and self.debuffs[temp_debuff_prefab_name] and self.debuffs[temp_debuff_prefab_name].OnUpdate then
+                            self.debuffs[temp_debuff_prefab_name]:OnUpdate()
+                        end
+                    elseif i == 1 and index then
+                        first_order_debuff_prefab = self.base_prefabs[index]
+                    end
+            end
+
+            if first_order_debuff_prefab and self.debuffs[first_order_debuff_prefab] and self.debuffs[first_order_debuff_prefab].OnUpdate then
+                self.debuffs[first_order_debuff_prefab]:OnUpdate()
+            end        
+
+    end
+
+    function fwd_in_pdt_wellness:start_update_task(update_time)
+        if self._______update_task == nil then
+            self._______update_task = self.inst:DoPeriodicTask(update_time or 5,function()
+                self:update()
+                self:Send_Data_2_Replica()
+            end)
+        end
+    end
+    function fwd_in_pdt_wellness:stop_update_task()
+        if self._______update_task then
+            self._______update_task:Cancel()
+            self._______update_task = nil
+        end
+    end
+
+    function fwd_in_pdt_wellness:load_debuffs_for_new_spawn()   --- 玩家inst实体刷新的时候才执行
+        ---- step 1 先加载基础常驻的
+            for k, prefab_name in pairs(self.base_prefabs) do
+                if prefab_name then
+                    self:Add_Debuff(prefab_name)
+                end
+            end
+        ---- step 2 加载记录在案的其他
+            local added_debuffs = self:Get("attached_debuffs") or {}
+            for prefab_name, flag in pairs(added_debuffs) do
+                if prefab_name and flag then
+                    self:Add_Debuff(prefab_name)
+                end
+            end
+
+    end
+
+    function fwd_in_pdt_wellness:ReStartAllCom()
+        self:stop_update_task()
+        self:All_Datas_Reset()
+        self:load_debuffs_for_new_spawn()
+        self:start_update_task()
+    end
+
+    function fwd_in_pdt_wellness:ReStartUpdateTaskByTime(num)   ---  更换update刷新执行时间
+        if type(num) == "number" then
+            self:stop_update_task()
+            self:start_update_task(num)
+        end
+    end
+------------------------------------------------------------------------------------------------------------------------------
 ---- 单个debuff 的添加删除 等操作
     function fwd_in_pdt_wellness:Add_Debuff(str)    --- 添加debuff
-        if type(str) == "string" and PrefabExists(str) and self.debuffs[str] == nil then
-            local child = self.inst:SpawnChild(str)
-            if child then
-                self.debuffs[str] = child
-                child:_OnAttached(self)
-                child:_OnLoad()
+        if type(str) == "string" and PrefabExists(str) then
+                if self.debuffs[str] == nil then    --- 没有这个debuff
+                    local child = self.inst:SpawnChild(str)
+                    if child then
+                        self.debuffs[str] = child
+                        child:OnAttached(self)
+                        child.com = self
+                        child.player = self.inst
 
-                ---- 储存添加过的debuff名字，给读档的时候调用
-                local added_debuffs = self:Get("attached_debuffs") or {}
-                added_debuffs[str] = true
-                self:Set("attached_debuffs",added_debuffs)
-            end
+                        ---- 储存添加过的debuff名字，给读档的时候调用
+                        local added_debuffs = self:Get("attached_debuffs") or {}
+                        added_debuffs[str] = true
+                        self:Set("attached_debuffs",added_debuffs)
+                    end
+                else
+                    -------- 重复添加了这个debuff
+                    if self.debuffs[str] and self.debuffs[str].RepeatedlyAttached then
+                        self.debuffs[str]:RepeatedlyAttached()
+                    end
+                end
         end
     end
 
     function fwd_in_pdt_wellness:Remove_Debuff(str)     --- 移除debuff
         if str and self.debuffs[str] then
-            self.debuffs[str]:_OnDetached()
+            if self.debuffs[str].OnDetached then
+                self.debuffs[str]:OnDetached()
+            end
             self.debuffs[str]:Remove()
             self.debuffs[str] = nil
 
@@ -108,7 +394,7 @@ nil,
 
     function fwd_in_pdt_wellness:GetInfos(str)  --- 获取文本信息
         if str and self.debuffs[str] then
-            return self.debuffs[str]:_GetStringsTable()
+            return self.debuffs[str]:GetStringsTable()
         end
     end
 
@@ -118,98 +404,57 @@ nil,
         end
         return nil
     end
-
-------------------------------------------------------------------------------------------------------------------------------
--- 体质值的增减，还有限位统一检查。还有相关参数获取。
-    function fwd_in_pdt_wellness:DoDelta(num)
-        if type(num) == "number" then            
-            self:Add("wellness",num)
-        end
-    end
-    function fwd_in_pdt_wellness:__clamp_check()
-        self.wellness =  math.clamp(  self:Add("wellness",0) , 0 , self.wellness_max )       -- 体质值
-        self.vitamin_c = math.clamp(  self:Add("vitamin_c",0) , 0 , self.vitamin_c_max )      -- VC值
-        self.glucose =  math.clamp(  self:Add("glucose",0) , 0 , self.glucose_max )        -- 血糖值
-        self.poisoning = math.clamp(  self:Add("poisoning",0) , 0 , self.poisoning_max )      -- 中毒值
-
-
-        self:Set("wellness", self.wellness)
-        self:Set("vitamin_c", self.vitamin_c)
-        self:Set("glucose", self.glucose)
-        self:Set("poisoning", self.poisoning)
-
-    end
-
-    
 ------------------------------------------------------------------------------------------------------------------------------
 -- 数据同步用的 func
     function fwd_in_pdt_wellness:Send_Data_2_Replica()
         --- 需要发送的数据只有4个：【体质值】【VC值】【血糖值】【中毒值】
+        local current,percent,max = 0,0,0
+
+        ------ wellness
+            current,percent,max = self:GetCurrent_Wellness()
+            local wellness = {  current = current , percent = percent , max = max}
+        ------ vitamin_c
+            current,percent,max = self:GetCurrent_Vitamin_C()
+            local vitamin_c = {  current = current , percent = percent , max = max}
+        ------ glucose
+            current,percent,max = self:GetCurrent_Glucose()
+            local glucose = {  current = current , percent = percent , max = max}
+        ------ poison
+            current,percent,max = self:GetCurrent_Poison()
+            local poison = {  current = current , percent = percent , max = max}        
+
         local cmd_table = {
-            wellness = self:Add("wellness", 0),
-            vitamin_c = self:Add("vitamin_c", 0),
-            glucose = self:Add("glucose", 0),
-            poisoning = self:Add("poisoning", 0),
+            wellness = wellness,
+            vitamin_c = vitamin_c,
+            glucose = glucose,
+            poison = poison,
         }
         self.inst.replica.fwd_in_pdt_wellness:Send_Datas(cmd_table)
     end
 
     function fwd_in_pdt_wellness:Refresh()
-        self:__clamp_check()
         self:Send_Data_2_Replica()
     end
 ------------------------------------------------------------------------------------------------------------------------------
---- 初始化执行，负责加载 常驻函数，以及检测 之前存档时候记录的debuff
-function fwd_in_pdt_wellness:SysInit()
-    ----------- 初始化参数
 
-    if self:Get("player_spawn_init_flag") ~= true then
-        self:Set("player_spawn_init_flag",true)
 
-        self:Set("wellness", 140)   --- 体质值默认 140
 
-    end
 
-    ----------- 添加常驻的3个：【VC】【血糖】【中毒】
-        local Resident_Debuffs = {
-            ["fwd_in_pdt_welness_vc"]   = true,
-        }
-        for k, v in pairs(Resident_Debuffs) do
-            self:Add_Debuff(k)
-        end
-    --- 根据存档之前的记录，加载剩下debuff
-        local attached_debuffs = self:Get("attached_debuffs") or {} 
-        for debuff_name, flag in pairs(attached_debuffs) do
-            if debuff_name and flag then
-                self:Add_Debuff(debuff_name)
-            end
-        end
-    --- 开始周期性循环，3个常驻的在最后再执行
-    local function all_debuff_update()
-                ----- 非常驻的优先遍历
-                for debuff_name, debuff_inst in pairs(self.debuffs) do
-                    if debuff_name and debuff_inst and Resident_Debuffs[debuff_name] ~= true then
-                        local num = debuff_inst:_OnUpdate() or 0
-                        self:DoDelta(num)
-                    end
-                end
-                ---- 环常驻的
-                for debuff_name, v in pairs(Resident_Debuffs) do
-                    local temp_debuff_inst = self:Get_Debuff(debuff_name)
-                    if temp_debuff_inst then
-                        local num = temp_debuff_inst:_OnUpdate() or 0
-                        self:DoDelta(num)
-                    end
-                end
-                ---------------- max or min 限位检查
-                self:__clamp_check()
-                ---------------- 更新下发参数给 replica
-                self:Send_Data_2_Replica()
-    end
-    all_debuff_update()
-    self.inst:DoPeriodicTask(5,all_debuff_update)
-end
-------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function fwd_in_pdt_wellness:OnSave()
     local data =
     {

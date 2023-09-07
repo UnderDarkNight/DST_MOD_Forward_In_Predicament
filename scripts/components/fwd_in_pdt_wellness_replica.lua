@@ -21,10 +21,7 @@ local fwd_in_pdt_wellness = Class(function(self, inst)
         end
     end)
 
-    self.wellness = 0       -- 体质值
-    self.vitamin_c = 0      -- VC值
-    self.glucose = 0        -- 血糖值
-    self.poisoning = 0      -- 中毒值
+    self.datas = {}
 
 end,
 nil,
@@ -40,17 +37,24 @@ function fwd_in_pdt_wellness:Send_Datas(cmd_table)
 end
 
 function fwd_in_pdt_wellness:Get_The_Datas_From_Server(cmd_table)
-    self.wellness = cmd_table.wellness or 0
-    self.vitamin_c = cmd_table.vitamin_c or 0
-    self.glucose = cmd_table.glucose or 0
-    self.poisoning = cmd_table.poisoning or 0
+    self.datas = cmd_table
     ---- 数值同步了，更新HUD
     self:UpdateHUD()
-    print("++++++++++++++++++++")
-    for k, v in pairs(cmd_table) do
-        print(k,v)
+
+    if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
+        print("++++++++++++++++++++")
+        for index, _t_table in pairs(cmd_table) do
+            print(index)
+            pcall(function()
+                for k, v in pairs(_t_table) do
+                    print("   ",k,v)
+                end
+                print("----------")
+            end)
+
+        end
+        print("++++++++++++++++++++")
     end
-    print("++++++++++++++++++++")
 
 end
 
@@ -59,17 +63,32 @@ function fwd_in_pdt_wellness:UpdateHUD()
 end
 -----------------------------------------------------------------------------------------------------
 -- 给HUD那边读取数值 和百分比
+    function fwd_in_pdt_wellness:Get_By_Index(str)
+        local crash_flag,current,percent,max = pcall(function()
+            if self.datas[str].current and self.datas[str].percent and self.datas[str].max then
+                return self.datas[str].current , self.datas[str].percent , self.datas[str].max
+            end
+        end)
+        if crash_flag then
+            return current,percent,max
+        else
+            return 0,0,0
+        end
+    end
     function fwd_in_pdt_wellness:Get_Wellness()
-        return self.wellness , self.wellness/300
+        return self:Get_By_Index("wellness")
     end
     function fwd_in_pdt_wellness:Get_Vitamin_C()
-        return self.vitamin_c , self.vitamin_c/100
+        return self:Get_By_Index("vitamin_c")
+
     end
     function fwd_in_pdt_wellness:Get_Glucose()
-        return self.glucose , self.glucose / 100
+        return self:Get_By_Index("glucose")
+
     end
-    function fwd_in_pdt_wellness:Get_Poisoning()
-        return self.poisoning , self.poisoning / 100
+    function fwd_in_pdt_wellness:Get_Poison()
+        return self:Get_By_Index("poison")
+
     end
 -----------------------------------------------------------------------------------------------------
 

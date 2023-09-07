@@ -46,14 +46,14 @@ local flg,error_code = pcall(function()
         -- end
     ----------------------------------------------------------------------------------------------------------------
     --- 洞穴穿越树木 测试
-        local inst = TheSim:FindFirstEntityWithTag("fwd_in_pdt__rooms_mini_portal_door")
-        -- local inst = TheSim:FindFirstEntityWithTag("fwd_in_pdt__special_island.gateway2")
-        -- local inst = TheSim:FindFirstEntityWithTag("fwd_in_pdt__rooms_quirky_red_tree")
-        if inst then
-            -- ThePlayer.Transform:SetPosition(inst.Transform:GetWorldPosition())
-            inst:PushEvent("active",ThePlayer)
+        -- local inst = TheSim:FindFirstEntityWithTag("fwd_in_pdt__rooms_mini_portal_door")
+        -- -- local inst = TheSim:FindFirstEntityWithTag("fwd_in_pdt__special_island.gateway2")
+        -- -- local inst = TheSim:FindFirstEntityWithTag("fwd_in_pdt__rooms_quirky_red_tree")
+        -- if inst then
+        --     -- ThePlayer.Transform:SetPosition(inst.Transform:GetWorldPosition())
+        --     inst:PushEvent("active",ThePlayer)
 
-        end
+        -- end
     ----------------------------------------------------------------------------------------------------------------
     -- ThePlayer.Transform:SetPosition(-14000, 0, -14000)
     -- ThePlayer.Transform:SetPosition(0, 0, 0)
@@ -363,9 +363,11 @@ local flg,error_code = pcall(function()
     --- 体质值系统调试
         -- local num,p = ThePlayer.replica.fwd_in_pdt_wellness:Get_Wellness()
         -- print(num,p)
-
-        -- ThePlayer
-
+        -- ThePlayer.components.fwd_in_pdt_wellness:All_Datas_Reset()
+        -- print( ThePlayer.components.fwd_in_pdt_wellness:GetCurrent_Wellness())
+        -- print( ThePlayer.components.fwd_in_pdt_wellness:GetCurrent())
+        ThePlayer.components.fwd_in_pdt_wellness:DoDelta_Wellness(0.5)
+        -- ThePlayer.components.fwd_in_pdt_wellness:Refresh()
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)

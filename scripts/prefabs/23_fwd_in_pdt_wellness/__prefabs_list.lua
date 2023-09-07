@@ -16,8 +16,11 @@ local Prefabs_addr_base = string.sub(temp_addr,1,temp_str_index2) .. "/"    --- 
 ---------------------------------------------------------------------------
 
 local prefabs_name_list = {
-    "01_vitamin_c_value"    -- VC值
-
+    "01_base_wellness",     -- 体质值
+    "02_vitamin_c",         -- VC值
+    "03_glucose",           -- 血糖值
+    "03_glucose",           -- 血糖值
+    "04_poison",            -- 中毒值
 }
 
 

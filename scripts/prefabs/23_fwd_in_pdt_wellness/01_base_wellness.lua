@@ -1,10 +1,10 @@
 ----------------------------------------------------------------------------------------------------------------------------------
---- 样板示例
+--- 体质值
 --- 只有执行函数，不做任何数据存储
 
 ----------------------------------------------------------------------------------------------------------------------------------
 
-local this_prefab_name = "fwd_in_pdt_welness_vc"
+local this_prefab_name = "fwd_in_pdt_wellness"
 local function GetStringsTable(name)
     local prefab_name = name or this_prefab_name
     local LANGUAGE = type(TUNING["Forward_In_Predicament.Language"]) == "function" and TUNING["Forward_In_Predicament.Language"]() or TUNING["Forward_In_Predicament.Language"]
@@ -42,6 +42,10 @@ local function fn()
                 self.com = com
                 self.player = com.inst  --- 玩家链路进来到这
             --------------------------------------------------------
+            --- 体质值每天靠食物/道具 最多直接恢复 20 点
+            if self.com:Get("add_wellness_by_external.num") == nil then                
+                self.com:Add("add_wellness_by_external.num",20)
+            end
 
             --------------------------------------------------------            
         end

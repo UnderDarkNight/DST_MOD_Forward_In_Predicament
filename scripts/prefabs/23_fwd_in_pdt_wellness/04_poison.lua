@@ -1,10 +1,10 @@
 ----------------------------------------------------------------------------------------------------------------------------------
---- 样板示例
+--- 中毒值
 --- 只有执行函数，不做任何数据存储
 
 ----------------------------------------------------------------------------------------------------------------------------------
 
-local this_prefab_name = "fwd_in_pdt_welness_vc"
+local this_prefab_name = "fwd_in_pdt_wellness_poison"
 local function GetStringsTable(name)
     local prefab_name = name or this_prefab_name
     local LANGUAGE = type(TUNING["Forward_In_Predicament.Language"]) == "function" and TUNING["Forward_In_Predicament.Language"]() or TUNING["Forward_In_Predicament.Language"]
