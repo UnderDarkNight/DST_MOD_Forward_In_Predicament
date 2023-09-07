@@ -7,7 +7,7 @@
     · 子节点只有一层，不会有多层子节点。
     · 数据使用 json_str 通过net_string 下发给 replica 。net_string 在replica 注册
 
-    · 常驻子项目有 【VC值】【血糖值】【中毒值】
+    · 常驻子项目有 【体质值】【VC值】【血糖值】【中毒值】
     · update 周期为 5s
     ·【体质值】字段： wellness
     ·【VC值】 字段 ：  vitamin_c
@@ -23,19 +23,48 @@
                 self:SetCurrent_Wellness(num)           --- 设置当前值
     · VC值：
                 self:DoDelta_Vitamin_C(num)              --- 数据加减  
-                self:External_DoDelta_Vitamin_C(num)     --- 外部数据加减，方便在debuff_inst 挂载上限检查函数。函数内部在判断完成后内部需要 DoDelta_Wellness
+                self:External_DoDelta_Vitamin_C(num)     --- 外部数据加减，方便在debuff_inst 挂载上限检查函数。函数内部在判断完成后内部需要 DoDelta_Vitamin_C
                 self:GetCurrent_Vitamin_C()              --- 返回3个值 :  当前值 、 百分比 、 MAX
                 self:SetCurrent_Vitamin_C(num)           --- 设置当前值
     · 血糖值：
                 self:DoDelta_Glucose(num)              --- 数据加减  
-                self:External_DoDelta_Glucose(num)     --- 外部数据加减，方便在debuff_inst 挂载上限检查函数。函数内部在判断完成后内部需要 DoDelta_Wellness
+                self:External_DoDelta_Glucose(num)     --- 外部数据加减，方便在debuff_inst 挂载上限检查函数。函数内部在判断完成后内部需要 DoDelta_Glucose
                 self:GetCurrent_Glucose()              --- 返回3个值 :  当前值 、 百分比 、 MAX
                 self:SetCurrent_Glucose(num)           --- 设置当前值
     · 中毒值：
                 self:DoDelta_Poison(num)              --- 数据加减  
-                self:External_DoDelta_Poison(num)     --- 外部数据加减，方便在debuff_inst 挂载上限检查函数。函数内部在判断完成后内部需要 DoDelta_Wellness
+                self:External_DoDelta_Poison(num)     --- 外部数据加减，方便在debuff_inst 挂载上限检查函数。函数内部在判断完成后内部需要 DoDelta_Poison
                 self:GetCurrent_Poison()              --- 返回3个值 :  当前值 、 百分比 、 MAX
                 self:SetCurrent_Poison(num)           --- 设置当前值
+    
+    常用API：
+        ·  self:ForceRefresh()                  -- 【重要】 强制刷新数据。尤其是用于 道具使用的瞬间。5s周期太久，用这个强制刷新。
+
+    不常用预留API：
+        ·  self:All_Datas_Reset()               -- 清空所有缓存数据。注意，如果不停掉任务就清空，有可能遭遇nil问题。
+        .  self:update()                        -- 给周期性执行的计算函数
+        ·  self:start_update_task(time)         -- 定时循环任务，time 单位为秒
+        ·  self:stop_update_task()              -- 停掉定时循环任务。
+        ·  self:ReStartAllCom()                 -- 清空整个模块的数据和重启任务。通常用于换角色的时候执行。
+        ·  self:ReStartUpdateTaskByTime(num)    -- 更改 update() 执行 周期的 函数。方便今后进行相关buff的操作
+
+    单个debuff 的增删操作：
+        · self:Add_Debuff(prefab_name)          -- debuff_inst 的prefab 名字，无法重复添加debuff，重复添加的时候会执行  debuff_inst:RepeatedlyAttached()
+        · self:Remove_Debuff(prefab_name)       -- 删除已有debuff，顺便执行 debuff_inst:OnDetached()
+        ` self:Get_Debuff(prefab_name)          -- 获取已有debuff_inst ,或者 得到 nil
+        · self:GetInfos(prefab_name)            -- 获取该debuff_inst 的 文本表， 为 debuff_inst:GetStringsTable() 得到的。方便外部调取 相关文本信息。
+
+    需要注意的 API：
+        · self:Send_Data_2_Replica()            -- 是下发数据给 replica 用的，走的是 json_str 和 net_string 路线。4个常驻的值 都是在里面打包下发的。
+                                                -- 【注意】 数据没有任何变动的时候，net_string 是不会下发任何数据和触发event的。如果非要执行，得加个随机数。
+        · self:Refresh()                        -- 尝试同步数据给 replica 。
+
+    【重要提醒】
+    【重要提醒】
+    【重要提醒】
+    【重要提醒】
+    【重要提醒】 该 套系统的 debuff_inst 里的 player.DoPeriodicTask  注意判断 玩家 死亡等状态。
+
 
 ]]--
 ----------------------------------------------------------------------------------------------------------------------------------
@@ -107,6 +136,14 @@ local fwd_in_pdt_wellness = Class(function(self, inst)
     inst:ListenForEvent("fwd_in_pdt_wellness.ReStart",function()
         self:ReStartAllCom()
         self:Set("player_datas_inited", true)
+    end)
+
+    ---- 死亡和复活
+    inst:ListenForEvent("death",function()      -- 被杀了
+        self:stop_update_task()
+    end)
+    inst:ListenForEvent("respawnfromghost",function()   -- 复活了        
+        self:start_update_task()
     end)
 
 end,
@@ -260,11 +297,10 @@ nil,
 ------------------------------------------------------------------------------------------------------------------------------
 --- 四个基础值的初始化，以及所有数据统一重置的API。以及周期性任务起始的API
     function fwd_in_pdt_wellness:All_Datas_Reset()
-        print("info fwd_in_pdt_wellness  All_Datas_Reset ")
-
         for prefab_name, defubff_inst in ipairs(self.debuffs) do
             if prefab_name and defubff_inst then
-                defubff_inst:Remove()
+                -- defubff_inst:Remove()
+                self:Remove_Debuff(prefab_name)
             end
         end
 
@@ -277,10 +313,13 @@ nil,
             print(index,num)
             self:SetCurrent(index,num)
         end
-        print("info fwd_in_pdt_wellness  All_Datas_Reset  end")
     end
 
     function fwd_in_pdt_wellness:update()       --- 每个周期都会执行的函数
+        if self.inst:HasTag("playerghost") then
+            return
+        end
+
         --- step 1 运行除了常驻的那些以外的所有 update 函数
             for prefab_name, debuff_inst in pairs(self.debuffs) do
                 if prefab_name and debuff_inst and self.base_prefabs_index[prefab_name] == nil and debuff_inst.OnUpdate then
@@ -393,10 +432,12 @@ nil,
     end
 
     function fwd_in_pdt_wellness:GetInfos(str)  --- 获取文本信息
-        if str and self.debuffs[str] then
+        if str and self.debuffs[str] and self.debuffs[str].GetStringsTable then
             return self.debuffs[str]:GetStringsTable()
         end
+        return {}
     end
+
 
     function fwd_in_pdt_wellness:Get_Debuff(str)
         if str and self.debuffs[str] then
@@ -406,7 +447,7 @@ nil,
     end
 ------------------------------------------------------------------------------------------------------------------------------
 -- 数据同步用的 func
-    function fwd_in_pdt_wellness:Send_Data_2_Replica()
+    function fwd_in_pdt_wellness:Send_Data_2_Replica(force_flag)
         --- 需要发送的数据只有4个：【体质值】【VC值】【血糖值】【中毒值】
         local current,percent,max = 0,0,0
 
@@ -428,12 +469,43 @@ nil,
             vitamin_c = vitamin_c,
             glucose = glucose,
             poison = poison,
+            force_flag = force_flag and math.random(1000) or 0,
         }
         self.inst.replica.fwd_in_pdt_wellness:Send_Datas(cmd_table)
     end
 
     function fwd_in_pdt_wellness:Refresh()
         self:Send_Data_2_Replica()
+    end
+
+    function fwd_in_pdt_wellness:ForceRefresh()
+        if self.inst:HasTag("playerghost") then
+            return
+        end
+        --- step 1 运行除了常驻的那些以外的所有 update 函数
+        for prefab_name, debuff_inst in pairs(self.debuffs) do
+            if prefab_name and debuff_inst and self.base_prefabs_index[prefab_name] == nil and debuff_inst.ForceRefresh then
+                debuff_inst:ForceRefresh()
+            end
+        end
+    --- setp 2 运行常驻的那些，最后运行 orders 第一位的
+        local first_order_debuff_prefab = nil
+        for i, index in pairs(self.base_prefabs_orders) do
+                if i ~= 1 and index then
+                    local temp_debuff_prefab_name = self.base_prefabs[index]
+                    if temp_debuff_prefab_name and self.debuffs[temp_debuff_prefab_name] and self.debuffs[temp_debuff_prefab_name].ForceRefresh then
+                        self.debuffs[temp_debuff_prefab_name]:ForceRefresh()
+                    end
+                elseif i == 1 and index then
+                    first_order_debuff_prefab = self.base_prefabs[index]
+                end
+        end
+
+        if first_order_debuff_prefab and self.debuffs[first_order_debuff_prefab] and self.debuffs[first_order_debuff_prefab].ForceRefresh then
+            self.debuffs[first_order_debuff_prefab]:ForceRefresh()
+        end  
+
+        self:Send_Data_2_Replica(true)
     end
 ------------------------------------------------------------------------------------------------------------------------------
 

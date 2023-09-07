@@ -2,6 +2,12 @@
 --- 样板示例
 --- 只有执行函数，不做任何数据存储
 
+--- 【重要提醒】 光环循环任务 player.DoPeriodicTask  注意判断 玩家 死亡等状态。
+--- 【重要提醒】 光环循环任务 player.DoPeriodicTask  注意判断 玩家 死亡等状态。
+--- 【重要提醒】 光环循环任务 player.DoPeriodicTask  注意判断 玩家 死亡等状态。
+--- 【重要提醒】 光环循环任务 player.DoPeriodicTask  注意判断 玩家 死亡等状态。
+--- 【重要提醒】 光环循环任务 player.DoPeriodicTask  注意判断 玩家 死亡等状态。
+
 ----------------------------------------------------------------------------------------------------------------------------------
 
 local this_prefab_name = "fwd_in_pdt_welness_vc"
@@ -64,6 +70,17 @@ local function fn()
     -- 移除，看情况需要回收数据
         function inst:OnDetached()
             
+        end
+    ------------------------------------------------------------------------------
+    -- 玩家惩罚
+        function inst:Penalize_Player_By_Value(num)
+                
+        end
+    ------------------------------------------------------------------------------
+    -- 强制刷新，给道具使用的时候执行的
+        function inst:ForceRefresh()
+            -- local value,percent,max = self.com:GetCurrent_Wellness()
+            -- self:Penalize_Player_By_Value(value)
         end
     ------------------------------------------------------------------------------
     --  文本信息读取

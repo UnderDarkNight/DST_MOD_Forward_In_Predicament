@@ -85,6 +85,17 @@ configuration_options =
         },
         default = "auto",
     },
+    -- {
+    --     name = "DEBUGGING_MOD",
+    --     label = IsChinese() and "内测版本模式" or "debugging version",
+    --     hover = IsChinese() and "启动测试模式，控制台更多数据" or " for log display",
+    --     options =
+    --     {
+    --       {description = IsChinese() and "关" or "OFF", data = false},
+    --       {description = IsChinese() and "开" or "ON", data = true},
+    --     },
+    --     default = false,
+    -- },
 
     {
       name = "",

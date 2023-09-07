@@ -37,7 +37,12 @@ function fwd_in_pdt_wellness:Send_Datas(cmd_table)
 end
 
 function fwd_in_pdt_wellness:Get_The_Datas_From_Server(cmd_table)
-    self.datas = cmd_table
+    -- self.datas = cmd_table
+    for k, v in pairs(cmd_table) do
+        self.datas[k] = v
+    end
+
+
     ---- 数值同步了，更新HUD
     self:UpdateHUD()
 

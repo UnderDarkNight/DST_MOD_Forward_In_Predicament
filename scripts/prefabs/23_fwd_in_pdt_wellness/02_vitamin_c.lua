@@ -2,6 +2,13 @@
 --- VC值
 --- 只有执行函数，不做任何数据存储
 
+
+--- 【重要提醒】 光环循环任务 player.DoPeriodicTask  注意判断 玩家 死亡等状态。
+--- 【重要提醒】 光环循环任务 player.DoPeriodicTask  注意判断 玩家 死亡等状态。
+--- 【重要提醒】 光环循环任务 player.DoPeriodicTask  注意判断 玩家 死亡等状态。
+--- 【重要提醒】 光环循环任务 player.DoPeriodicTask  注意判断 玩家 死亡等状态。
+--- 【重要提醒】 光环循环任务 player.DoPeriodicTask  注意判断 玩家 死亡等状态。
+
 ----------------------------------------------------------------------------------------------------------------------------------
 
 local this_prefab_name = "fwd_in_pdt_wellness_vitamin_c"
@@ -58,17 +65,99 @@ local function fn()
     ------------------------------------------------------------------------------
     -- 周期性刷新的时候执行
         function inst:OnUpdate()
-           
+            ------------------------------------------
+            --[[ 
+                    · 按照每天OnUpdate执行100次计算
+
+                    · VC 每天 -5 点，每次 OnUpdate 则为 -0.05
+
+
+                    · 贡献光环函数说明：
+                            0  => 15   点的时候，不提供任何加成
+                            15 => 90   点的时候，【每天】提供  0  =>  +2 的加成 。 
+                            90 => 100  点的时候，【每天】提供 +2  =>  +5 的加成。
+
+                            ，线性函数为：
+                            y = （ k·x + b ）/100
+            ]]--                
+            ------------------------------------------
+            self.com:DoDelta_Vitamin_C(-0.05)
+
+            local value ,percent,max = self.com:GetCurrent_Vitamin_C()
+            local delta_num = 0
+            if value < 15 then
+                delta_num = 0
+            elseif value < 90 then
+                -- 15 => 90
+                local k = 2/(90-15)
+                local b = -0.4
+                local y = ( k * value + b) / 100
+                -- self.com:DoDelta_Wellness(y)
+                delta_num = y
+            elseif value < 100 then
+                local k = 0.3
+                local b = -25
+                local y = (k*value + b)/100
+                -- self.com:DoDelta_Wellness(y)
+                delta_num = y
+            else
+                -- self.com:DoDelta_Wellness(0.05)
+                delta_num = 0.05
+            end
+            if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
+                print("本周期 VC 值",value,"光环贡献了",delta_num)
+            end
+            self.com:DoDelta_Wellness(delta_num)
+            self:Penalize_Player_By_Value(value)    --- 根据当前VC值 提供/移除惩罚
         end
     ------------------------------------------------------------------------------
     -- 移除，看情况需要回收数据
         function inst:OnDetached()
-            
-        end
+            if self.___player_sanity_dodelta_task then
+                self.self.___player_sanity_dodelta_task:Cancel()
+                self.self.___player_sanity_dodelta_task = nil
+            end
+        end   
+    ------------------------------------------------------------------------------
+        -- 强制刷新,给吃道具的瞬间用的。
+            function inst:ForceRefresh()
+                local value,percent,max = self.com:GetCurrent_Vitamin_C()
+                self:Penalize_Player_By_Value(value)
+            end
     ------------------------------------------------------------------------------
     --  文本信息读取
         function inst:GetStringsTable()
             return GetStringsTable(self.prefab) or {}
+        end
+    ------------------------------------------------------------------------------
+    -- 根据VC值执行惩罚函数
+        function inst:Penalize_Player_By_Value(num)
+            if self.player then
+                if num < 15 then
+                        if self.___player_sanity_dodelta_task == nil then
+                            self.___player_sanity_dodelta_task = self.player:DoPeriodicTask(1,function(player)
+                                if player:HasTag("playerghost") then
+                                    return
+                                end 
+                                if self.player.components.sanity.DoDelta then
+                                    player.components.sanity:DoDelta(-1,true)
+                                end
+                            end)
+                            if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
+                                print("VC 值过低，启动每秒 -1 San 的任务")
+                            end
+                        end
+                else
+                        if self.___player_sanity_dodelta_task then
+                            self.___player_sanity_dodelta_task:Cancel()
+                            self.___player_sanity_dodelta_task = nil
+                            if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
+                                print("VC值足够，停掉降San任务")
+                            end
+                        end
+                end
+                        
+            end
         end
     ------------------------------------------------------------------------------
 
