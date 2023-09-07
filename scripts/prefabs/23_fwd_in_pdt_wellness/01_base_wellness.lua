@@ -56,7 +56,7 @@ local function fn()
                     local the_max_num = self.com:Add("add_wellness_by_external.max_num",0)
                     the_max_num = math.clamp(the_max_num + 0.42, 0 , 20)
                     self.com:Set("add_wellness_by_external.max_num",the_max_num)
-                    if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
+                    if self.com.DEBUGGING_MODE then
                         print("体质值 【直加】的上限 增加到 ",the_max_num)
                     end
                 end)
@@ -82,7 +82,7 @@ local function fn()
                 end
             ---- step 3  DoDelta
                 self.com:DoDelta_Wellness(ret_add_num)
-            if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
+            if self.com.DEBUGGING_MODE then
                 print("-------- 本次 【体质值】 直加了",ret_add_num,"剩余能直加的数",self.com:Add("add_wellness_by_external.max_num",0))
             end
         end

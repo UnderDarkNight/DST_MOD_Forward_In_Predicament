@@ -104,7 +104,7 @@ local function fn()
                 -- self.com:DoDelta_Wellness(0.05)
                 delta_num = 0.05
             end
-            if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
+            if self.com.DEBUGGING_MODE then
                 print("本周期 VC 值",value,"光环贡献了",delta_num)
             end
             self.com:DoDelta_Wellness(delta_num)
@@ -119,11 +119,11 @@ local function fn()
             end
         end   
     ------------------------------------------------------------------------------
-        -- 强制刷新,给吃道具的瞬间用的。
-            function inst:ForceRefresh()
-                local value,percent,max = self.com:GetCurrent_Vitamin_C()
-                self:Penalize_Player_By_Value(value)
-            end
+    -- 强制刷新,给吃道具的瞬间用的。
+        function inst:ForceRefresh()
+            local value,percent,max = self.com:GetCurrent_Vitamin_C()
+            self:Penalize_Player_By_Value(value)
+        end
     ------------------------------------------------------------------------------
     --  文本信息读取
         function inst:GetStringsTable()
@@ -143,7 +143,7 @@ local function fn()
                                     player.components.sanity:DoDelta(-1,true)
                                 end
                             end)
-                            if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
+                            if self.com.DEBUGGING_MODE then
                                 print("VC 值过低，启动每秒 -1 San 的任务")
                             end
                         end
@@ -151,7 +151,7 @@ local function fn()
                         if self.___player_sanity_dodelta_task then
                             self.___player_sanity_dodelta_task:Cancel()
                             self.___player_sanity_dodelta_task = nil
-                            if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
+                            if self.com.DEBUGGING_MODE then
                                 print("VC值足够，停掉降San任务")
                             end
                         end

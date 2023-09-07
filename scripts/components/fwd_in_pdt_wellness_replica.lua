@@ -46,25 +46,37 @@ function fwd_in_pdt_wellness:Get_The_Datas_From_Server(cmd_table)
     ---- 数值同步了，更新HUD
     self:UpdateHUD()
 
-    if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
-        print("++++++++++++++++++++")
-        for index, _t_table in pairs(cmd_table) do
-            print(index)
-            pcall(function()
-                for k, v in pairs(_t_table) do
-                    print("   ",k,v)
-                end
-                print("----------")
-            end)
+    -- if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
+    --     print("++++++++++++++++++++")
+    --     for index, _t_table in pairs(cmd_table) do
+    --         print(index)
+    --         pcall(function()
+    --             for k, v in pairs(_t_table) do
+    --                 print("   ",k,v)
+    --             end
+    --             print("----------")
+    --         end)
 
-        end
-        print("++++++++++++++++++++")
-    end
+    --     end
+    --     print("++++++++++++++++++++")
+    -- end
 
 end
 
 function fwd_in_pdt_wellness:UpdateHUD()
-    
+    if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
+        local wellness = self:Get_Wellness()
+        local vc = self:Get_Vitamin_C()
+        local glu = self:Get_Glucose()
+        local poison = self:Get_Poison()
+        print("----------------------------------------")
+        print("当前【体质值】",wellness)
+        print("当前【VC值】",vc)
+        print("当前【血糖值】",glu)
+        print("当前【中毒值】",poison)
+        print("----------------------------------------")
+
+    end
 end
 -----------------------------------------------------------------------------------------------------
 -- 给HUD那边读取数值 和百分比

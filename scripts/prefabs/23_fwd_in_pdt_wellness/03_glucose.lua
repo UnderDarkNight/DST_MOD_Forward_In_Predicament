@@ -102,7 +102,7 @@ local function fn()
                 else
                     delta_num = -20/100
                 end
-                if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
+                if self.com.DEBUGGING_MODE then
                     print("本周期血糖值为",value,"贡献光环",delta_num)
                 end
                 self.com:DoDelta_Wellness(delta_num)
@@ -160,7 +160,7 @@ local function fn()
                                                         player.components.hunger:DoDelta(-1,true)
                                                     end
                                                 end)
-                                                if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
+                                                if self.com.DEBUGGING_MODE then
                                                     print("血糖值到达【低】血糖惩罚区，惩罚Task启动")
                                                 end
                                             end
@@ -197,7 +197,7 @@ local function fn()
                                                         player.components.sanity:DoDelta(0.5,true)
                                                     end
                                                 end)
-                                                if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
+                                                if self.com.DEBUGGING_MODE then
                                                     print("血糖值到达【完美】血糖奖励区。奖励任务启动")
                                                 end
                                             end
@@ -212,7 +212,7 @@ local function fn()
                                                         player.components.sanity:DoDelta(-0.5,true)
                                                     end
                                                 end)
-                                                if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
+                                                if self.com.DEBUGGING_MODE then
                                                     print("血糖值到达【高】血糖惩罚区，惩罚任务启动")
                                                 end
                                             end
