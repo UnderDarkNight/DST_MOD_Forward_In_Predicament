@@ -2,9 +2,21 @@
 --- 通用的物品法术施放sg，用来方便做特效添加到光环中间
 --- 复制自 sg 的  name = "castspell"  部分，修改添加相关 API
 
---- item_inst.fx_prefab = ""
---- item_inst.sound = ""
---- item_inst.color = { r, g , b , a}   --- 光线的颜色
+--- 【原始】API 使用方案 1：
+--- item_inst.fx_prefab = ""                  --- 中间特效的 prefab
+--- item_inst.spellsound = ""                 --- 声音路径
+--- item_inst.light_color = { r, g , b , a}   --- 光线的颜色
+
+
+
+--- 【推荐】API 使用方案 2： 
+--- item_inst.castspell_onenter_fn = function(item_inst,player_inst) ... end       ---- 给 onenter 里执行用的
+--- item_inst.spellsound = ""                                       ---- 声音路径
+--- item_inst.castspell_onexit_fn = func(item_inst,player).. end              ---- 给 onexit  里执行用的
+--- item_inst.castspell_animover_fn = func(item_inst,player) ... end          ---- 给 animover event 里执行用的
+--  【提示】 如果不知道方案2 怎么用，请看 方案1里的执行代码，理解逻辑原理就行了。
+--- 【注意】 骑牛和不骑牛的 区别
+--- 【注意】 临时参数请挂载在  player.sg.statemem 的子节点里。并在用完后 nil
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
 local TIMEOUT = 2
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -51,36 +63,52 @@ AddStategraphState("wilson",State{
             local item = inst.bufferedaction.invobject
             local weapon = inst.components.inventory:GetEquippedItem(EQUIPSLOTS.HANDS)
             if item then
-                if weapon and weapon ~= item then
-                    inst.sg.statemem.__need_2_hide_in_hand_weapon = true
-                    inst.AnimState:HideSymbol("swap_object")
+
+                if type(item.spellsound) == "string" then
+                    inst.sg.statemem.castsound = item.spellsound
                 end
 
-                local staff_fx_name = inst.components.rider:IsRiding() and "staffcastfx_mount" or "staffcastfx"
-                local light_inst = inst:SpawnChild(staff_fx_name)
-                ---- 光线中间
-                if type(item.fx_prefab) == "string" then
-                    local fx = SpawnPrefab(item.fx_prefab)
-                    if fx then
-                        light_inst.__fx = fx
-                        fx.entity:SetParent(light_inst.entity)
-                        fx.entity:AddFollower()
-                        fx.Follower:FollowSymbol(light_inst.GUID, "FX", 0, 0, 1)
-                    end
+                if type(item.castspell_onenter_fn) == "function" then
+                    ---------------------------------------------------------------------------------------------------------
+                    --- 方案 2：
+                        inst.sg.statemem.___fwd_spell_casting_item = item
+                        item.castspell_onenter_fn(item,inst)
+                    ---------------------------------------------------------------------------------------------------------
+                else
+                    ---------------------------------------------------------------------------------------------------------
+                    --- 方案1 
+                        if weapon and weapon ~= item then
+                            inst.sg.statemem.__need_2_hide_in_hand_weapon = true
+                            inst.AnimState:HideSymbol("swap_object")
+                        end
+
+                        local staff_fx_name = inst.components.rider:IsRiding() and "staffcastfx_mount" or "staffcastfx"
+                        local light_inst = inst:SpawnChild(staff_fx_name)
+                        ---- 光线中间
+                        if type(item.fx_prefab) == "string" then
+                            local fx = SpawnPrefab(item.fx_prefab)
+                            if fx then
+                                light_inst.__fx = fx
+                                fx.entity:SetParent(light_inst.entity)
+                                fx.entity:AddFollower()
+                                fx.Follower:FollowSymbol(light_inst.GUID, "FX", 0, 0, 1)
+                            end
+                        end
+
+
+                        if type(item.light_color) and  item.light_color[1] and item.light_color[2] and item.light_color[3] then
+                            local r,g,b,a =  item.light_color[1] , item.light_color[2] , item.light_color[3] , item.light_color[4] or 1
+                            light_inst.AnimState:SetMultColour(r,g,b,a)
+                        end
+
+                        light_inst:ListenForEvent("animover",function()
+                            if light_inst.__fx then
+                                light_inst:Remove()
+                            end
+                            light_inst:Remove()
+                        end)
+                    ---------------------------------------------------------------------------------------------------------
                 end
-
-
-                if type(item.sound) == "string" then
-                    inst.sg.statemem.castsound = item.sound
-                end
-
-
-                light_inst:ListenForEvent("animover",function()
-                    if light_inst.__fx then
-                        light_inst:Remove()
-                    end
-                    light_inst:Remove()
-                end)
 
             end
         -----------------------------------------------------------------------------------------------------------------------------------
@@ -113,10 +141,17 @@ AddStategraphState("wilson",State{
                 inst.components.playercontroller:Enable(true)
             end
 
-            if inst.sg.statemem.__need_2_hide_in_hand_weapon then
-                inst.sg.statemem.__need_2_hide_in_hand_weapon = nil
-                inst.AnimState:ShowSymbol("swap_object")
-            end
+                ----- 方案 1
+                if inst.sg.statemem.__need_2_hide_in_hand_weapon then
+                    inst.sg.statemem.__need_2_hide_in_hand_weapon = nil
+                    inst.AnimState:ShowSymbol("swap_object")
+                end
+        
+                ----- 方案 2
+                if inst.sg.statemem.___fwd_spell_casting_item and inst.sg.statemem.___fwd_spell_casting_item.castspell_onexit_fn then
+                    inst.sg.statemem.___fwd_spell_casting_item.castspell_onexit_fn(inst.sg.statemem.___fwd_spell_casting_item,inst)
+                    inst.sg.statemem.___fwd_spell_casting_item.castspell_onexit_fn = nil
+                end
 
         end),
     },
@@ -127,10 +162,18 @@ AddStategraphState("wilson",State{
             if inst.AnimState:AnimDone() then
                 inst.sg:GoToState("idle")
             end
-            if inst.sg.statemem.__need_2_hide_in_hand_weapon then
-                inst.sg.statemem.__need_2_hide_in_hand_weapon = nil
-                inst.AnimState:ShowSymbol("swap_object")
-            end
+            ------- 方案 1
+                if inst.sg.statemem.__need_2_hide_in_hand_weapon then
+                    inst.sg.statemem.__need_2_hide_in_hand_weapon = nil
+                    inst.AnimState:ShowSymbol("swap_object")
+                end
+
+            ------- 方案 2
+                if inst.sg.statemem.___fwd_spell_casting_item and inst.sg.statemem.___fwd_spell_casting_item.castspell_animover_fn then
+                    inst.sg.statemem.___fwd_spell_casting_item.castspell_animover_fn(inst.sg.statemem.___fwd_spell_casting_item,inst)
+                    inst.sg.statemem.___fwd_spell_casting_item.castspell_animover_fn = nil
+                end
+
         end),
     },
 
@@ -138,10 +181,19 @@ AddStategraphState("wilson",State{
         if inst.components.playercontroller ~= nil then
             inst.components.playercontroller:Enable(true)
         end
-        if inst.sg.statemem.__need_2_hide_in_hand_weapon then
-            inst.sg.statemem.__need_2_hide_in_hand_weapon = nil
-            inst.AnimState:ShowSymbol("swap_object")
-        end
+        ----- 方案 1
+            if inst.sg.statemem.__need_2_hide_in_hand_weapon then
+                inst.sg.statemem.__need_2_hide_in_hand_weapon = nil
+                inst.AnimState:ShowSymbol("swap_object")
+            end
+
+        ----- 方案 2
+            if inst.sg.statemem.___fwd_spell_casting_item and inst.sg.statemem.___fwd_spell_casting_item.castspell_onexit_fn then
+                inst.sg.statemem.___fwd_spell_casting_item.castspell_onexit_fn(inst.sg.statemem.___fwd_spell_casting_item,inst)
+                inst.sg.statemem.___fwd_spell_casting_item.castspell_onexit_fn = nil
+            end
+            inst.sg.statemem.___fwd_spell_casting_item = nil
+
     end,
 
 })

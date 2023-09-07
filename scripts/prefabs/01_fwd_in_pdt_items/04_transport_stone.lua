@@ -12,6 +12,56 @@ local assets =
 
 }
 
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------- 施法动作相关 参数
+    local function Add_SG_castspell_fns(inst)
+        inst.spellsound = "dontstarve/pig/mini_game/cointoss"
+
+        inst.castspell_onenter_fn = function(inst,player)
+            local weapon = player.components.inventory:GetEquippedItem(EQUIPSLOTS.HANDS)
+            if weapon then
+                player.AnimState:HideSymbol("swap_object")
+                inst._______temp_cast_spell_weapon_in_hand_flag = true
+            end
+
+            local light_prefab_name = player.components.rider:IsRiding() and "staffcastfx_mount" or "staffcastfx"
+            local light_inst = player:SpawnChild(light_prefab_name)           --- 创建 施法 光效
+            local r,g,b,a = 157/255 , 86/255 ,126/255 , 200/255
+            light_inst.AnimState:SetMultColour(r,g,b,a)
+
+            local fx = SpawnPrefab("fwd_in_pdt_item_transport_stone_fx")    --- 往施法光效 中心点 挂载 个 fx_inst
+            fx.entity:SetParent(light_inst.entity)
+            fx.entity:AddFollower()
+            fx.Follower:FollowSymbol(light_inst.GUID, "FX", 0, 0, 1)
+
+
+            light_inst:ListenForEvent("animover",function()                 --- 光效完了一起删除
+                fx:Remove()
+                light_inst:Remove()
+            end)
+
+        end
+        inst.castspell_onexit_fn = function(inst,player)
+
+            if player.components.inventory:GetEquippedItem(EQUIPSLOTS.HANDS) then
+                player.AnimState:ShowSymbol("swap_object")
+            end
+
+        end
+
+        inst.castspell_animover_fn = function(inst,player)
+
+            if player.components.inventory:GetEquippedItem(EQUIPSLOTS.HANDS) then
+                player.AnimState:ShowSymbol("swap_object")
+            end
+
+        end
+
+
+    end
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 local function fn()
     local inst = CreateEntity()
 
@@ -43,7 +93,7 @@ local function fn()
             local mini_portal_door = TheSim:FindFirstEntityWithTag("fwd_in_pdt__rooms_mini_portal_door")
             if mini_portal_door then
                 mini_portal_door:PushEvent("active",doer)
-                inst:Remove()
+                inst.components.stackable:Get():Remove()
                 return true
             end
             return false
@@ -52,8 +102,9 @@ local function fn()
         inst.components.fwd_in_pdt_com_workable:SetActionDisplayStr("fwd_in_pdt_item_transport_stone",STRINGS.ACTIONS.USEITEM)
     -----------------------------------------------------------------------------------
     --- sg fwd_in_pdt_castspell 里的特效和声音
-        inst.fx_prefab = "fwd_in_pdt_item_transport_stone_fx"
-        inst.sound = "dontstarve/pig/mini_game/cointoss"
+        -- inst.fx_prefab = "fwd_in_pdt_item_transport_stone_fx"
+        -- inst.spellsound = "dontstarve/pig/mini_game/cointoss"
+        Add_SG_castspell_fns(inst)
     -----------------------------------------------------------------------------------
 
     if not TheWorld.ismastersim then
@@ -68,21 +119,26 @@ local function fn()
     inst.components.inventoryitem:EnableMoisture(false)
 
     inst:AddComponent("fwd_in_pdt_func"):Init("item_tile_fx","mouserover_colourful")
-    local r,g,b,a = 157/255 , 86/255 ,126/255 , 200/255
+    -- local r,g,b,a = 157/255 , 86/255 ,126/255 , 200/255
+    local r,g,b,a = 209/255 , 127/255 ,170/255 , 200/255
     inst.components.fwd_in_pdt_func:Item_Tile_Icon_Fx_Set_Anim({
         bank = "fwd_in_pdt_item_transport_stone",
         build = "fwd_in_pdt_item_transport_stone",
         anim = "icon",
         hide_image = true,
         text = {
-            color = {r,g,b,a},
-            -- pt = Vector3(4,1,0),
-            -- size = 36,
+            -- color = {r,g,b,1},
+            pt = Vector3(-14,16,0),
+            -- size = 35,
         }
     })
     inst.components.fwd_in_pdt_func:Mouseover_SetColour(r,g,b,a)
 
     MakeHauntableLaunch(inst)
+
+    inst:AddComponent("stackable")
+    inst.components.stackable.maxsize = TUNING.STACK_SIZE_LARGEITEM
+
 
     local function shadow_init(inst)
         if inst:IsOnOcean(false) then       --- 如果在海里（不包括船）
