@@ -155,4 +155,26 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
 
         },
         --------------------------------------------------------------------
+        ---- 22_fwd_in_pdt_npc
+        --------------------------------------------------------------------
+        ---- 23_fwd_in_pdt_wellness
+            ["fwd_in_pdt_wellness"] = {
+                ["name"] = "Body Wellness",
+                ["treatment"] = "想办法提高总体体质值",
+            },
+            ["fwd_in_pdt_wellness_vitamin_c"] = {
+                ["name"] = "Vitamin C",
+                ["treatment"] = "多吃富含维他命C的食物",
+            },
+            ["fwd_in_pdt_wellness_glucose"] = {
+                ["name"] = "Glucose in blood",
+                ["treatment"] = "多吃含糖食物",
+            },
+            ["fwd_in_pdt_wellness_poison"] = {
+                ["name"] = "Poison",
+                ["treatment"] = "使用对应的解毒药剂",
+            },
+        --------------------------------------------------------------------
+        --------------------------------------------------------------------
+
 }

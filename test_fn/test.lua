@@ -369,10 +369,13 @@ local flg,error_code = pcall(function()
         -- ThePlayer.components.fwd_in_pdt_wellness:DoDelta_Wellness(0.5)
         -- ThePlayer.components.fwd_in_pdt_wellness:Refresh()
 
-        ThePlayer.components.fwd_in_pdt_wellness:External_DoDelta_Wellness(5)
+        -- ThePlayer.components.fwd_in_pdt_wellness:External_DoDelta_Wellness(5)
 
-        ThePlayer.components.fwd_in_pdt_wellness:Refresh()
+        -- ThePlayer.components.fwd_in_pdt_wellness:Refresh()
 
+        -- ThePlayer.components.workmultiplier:AddMultiplier(ACTIONS.CHOP,0.5,ThePlayer)
+        -- ThePlayer.components.workmultiplier:RemoveMultiplier(ACTIONS.CHOP,ThePlayer)
+        -- ThePlayer.components.health:DeltaPenalty(0.2)
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)

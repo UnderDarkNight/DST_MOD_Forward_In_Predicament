@@ -2,6 +2,22 @@
 --- 血糖值
 --- 只有执行函数，不做任何数据存储
 
+--[[
+
+    关键外部API 说明：
+    ·  inst:OnAttached(com)            添加这个 debuff_inst 的时候执行。绑定 组件 和玩家给本inst ，顺便初始化一些数据。玩家进出洞穴重新添加也会执行。
+    ·  inst:External_DoDelta(num)      常驻的debuff 才会执行这个，给外部道具或食物调用，进行各种  上下限 ，比例缩放的操作。
+    ·  inst:RepeatedlyAttached()       同一个debuff 重复 添加的时候执行这部分。
+    ·  inst:OnUpdate()                 每个扫描周期内都会执行的函数。默认执行周期为 5秒
+    ·  inst:OnDetached()               debuff_inst 删除的时候执行。整个Wellness 模块重置的时候，也会调用这个删除 光环循环任务。
+
+    注意事项：
+    ·  扫描周期为 5秒，但是提供的光环效果却不是以5s为单位计算的。而是使用 player.DoPeriodicTask 
+    ·  注意监控玩家死亡，来停掉 debuff 的光环  player:ListenForEvent("death",fn)  player:RemoveEventCallback("death",fn)   
+    ·  OnDetached 的时候也需要 停掉 player.DoPeriodicTask 。不然无法重置整个模块。
+
+]]--
+
 --- 【重要提醒】 光环循环任务 player.DoPeriodicTask  注意判断 玩家 死亡等状态。
 --- 【重要提醒】 光环循环任务 player.DoPeriodicTask  注意判断 玩家 死亡等状态。
 --- 【重要提醒】 光环循环任务 player.DoPeriodicTask  注意判断 玩家 死亡等状态。
@@ -82,9 +98,12 @@ local function fn()
                  y = ( k·x + b )/100
 
 
+                · 每天会扣除10血糖，夏季每天扣除20血糖。
+                · 每次 0.1     0.2
            ]]--
            -------------------------------------------------
            ---- 自身血糖值计算
+                self.com:DoDelta_Glucose(TheWorld.state.issummer and 0.2 or 0.1)
            -------------------------------------------------
            ---- 光环贡献计算
                 local value,percent,max = self.com:GetCurrent_Glucose()
@@ -113,18 +132,9 @@ local function fn()
     ------------------------------------------------------------------------------
     -- 移除，看情况需要回收数据
         function inst:OnDetached()
-            if self.___low_value_task then          --- 关闭低血糖惩罚Task
-                self.___low_value_task:Cancel()
-                self.___low_value_task = nil
-            end
-            if self.___high_value_task then         --- 关闭高血糖惩罚Task
-                self.___high_value_task:Cancel()
-                self.___high_value_task = nil
-            end
-            if self.__perfect_value_task then       --- 关闭完美血糖奖励Task
-                self.__perfect_value_task:Cancel()
-                self.__perfect_value_task = nil
-            end
+            self:Remove_Low_Value_Task()
+            self:Remove_Perfect_Value_Task()
+            self:Remove_High_Value_Task()
         end
     ------------------------------------------------------------------------------
     -- 强制刷新,给吃道具的瞬间用的。
@@ -148,102 +158,107 @@ local function fn()
             ]]--
             if num < 20 then  -------------------------------------------------------------------------------------------------------------------------
 
-                                            if self.___low_value_task == nil then
-                                                self.___low_value_task = self.player:DoPeriodicTask(1,function(player)
-                                                    if player:HasTag("playerghost") then
-                                                        return
-                                                    end 
-                                                    if player.components.sanity then
-                                                        player.components.sanity:DoDelta(0.5,true)
-                                                    end
-                                                    if player.components.hunger then
-                                                        player.components.hunger:DoDelta(-1,true)
-                                                    end
-                                                end)
-                                                if self.com.DEBUGGING_MODE then
-                                                    print("血糖值到达【低】血糖惩罚区，惩罚Task启动")
-                                                end
-                                            end
-                                            if self.___high_value_task then         --- 关闭高血糖惩罚Task
-                                                self.___high_value_task:Cancel()
-                                                self.___high_value_task = nil
-                                            end
-                                            if self.__perfect_value_task then       --- 关闭完美血糖奖励Task
-                                                self.__perfect_value_task:Cancel()
-                                                self.__perfect_value_task = nil
-                                            end
+                                            self:Add_Low_Value_Task()
+                                            self:Remove_Perfect_Value_Task()
+                                            self:Remove_High_Value_Task()
 
             elseif num >= 40 and num <=60 then -------------------------------------------------------------------------------------------------------------------------
                
-                                         ------------ 关闭过高过低惩罚Task
-                                            if self.___low_value_task then          --- 关闭低血糖惩罚Task
-                                                self.___low_value_task:Cancel()
-                                                self.___low_value_task = nil
-                                            end
-                                            if self.___high_value_task then         --- 关闭高血糖惩罚Task
-                                                self.___high_value_task:Cancel()
-                                                self.___high_value_task = nil
-                                            end
-                                        ----------- 启动完美血糖Task
-                                            if self.__perfect_value_task == nil then
-                                                self.__perfect_value_task = self.player:DoPeriodicTask(1,function(player)
-                                                    if player:HasTag("playerghost") then
-                                                        return
-                                                    end 
-                                                    if player.components.health then
-                                                        player.components.health:DoDelta(0.2,true)
-                                                    end
-                                                    if player.components.sanity then
-                                                        player.components.sanity:DoDelta(0.5,true)
-                                                    end
-                                                end)
-                                                if self.com.DEBUGGING_MODE then
-                                                    print("血糖值到达【完美】血糖奖励区。奖励任务启动")
-                                                end
-                                            end
+                                            self:Add_Perfect_Value_Task()
+                                            self:Remove_Low_Value_Task()
+                                            self:Remove_High_Value_Task()
 
             elseif num > 80 then    -------------------------------------------------------------------------------------------------------------------------
-                                            if self.___high_value_task == nil then
-                                                self.___high_value_task = self.player:DoPeriodicTask(1,function(player)
-                                                    if player:HasTag("playerghost") then
-                                                        return
-                                                    end 
-                                                    if player.components.sanity then
-                                                        player.components.sanity:DoDelta(-0.5,true)
-                                                    end
-                                                end)
-                                                if self.com.DEBUGGING_MODE then
-                                                    print("血糖值到达【高】血糖惩罚区，惩罚任务启动")
-                                                end
-                                            end
-                                            if self.___low_value_task then          --- 关闭低血糖惩罚Task
-                                                self.___low_value_task:Cancel()
-                                                self.___low_value_task = nil
-                                            end
-                                            if self.__perfect_value_task then       --- 关闭完美血糖奖励Task
-                                                self.__perfect_value_task:Cancel()
-                                                self.__perfect_value_task = nil
-                                            end
+                                            
+                                            self:Add_High_Value_Task()
+                                            self:Remove_Low_Value_Task()
+                                            self:Remove_Perfect_Value_Task()
+
             else    -------------------------------------------------------------------------------------------------------------------------
 
-                                            if self.___low_value_task then          --- 关闭低血糖惩罚Task
-                                                self.___low_value_task:Cancel()
-                                                self.___low_value_task = nil
-                                            end
-                                            if self.___high_value_task then         --- 关闭高血糖惩罚Task
-                                                self.___high_value_task:Cancel()
-                                                self.___high_value_task = nil
-                                            end
-                                            if self.__perfect_value_task then       --- 关闭完美血糖奖励Task
-                                                self.__perfect_value_task:Cancel()
-                                                self.__perfect_value_task = nil
-                                            end
+                                            self:Remove_Low_Value_Task()
+                                            self:Remove_Perfect_Value_Task()
+                                            self:Remove_High_Value_Task()
             
 
             end
 
                 
         end
+    ------------------------------------------------------------------------------
+    ---- 各种task
+        ------- 低血糖惩罚task
+            function inst:Add_Low_Value_Task() 
+                if self.___low_value_task == nil then
+                    self.___low_value_task = self.player:DoPeriodicTask(1,function(player)
+                        if player:HasTag("playerghost") then
+                            return
+                        end 
+                        if player.components.sanity then
+                            player.components.sanity:DoDelta(0.5,true)
+                        end
+                        if player.components.hunger then
+                            player.components.hunger:DoDelta(-1,true)
+                        end
+                    end)
+                    if self.com.DEBUGGING_MODE then
+                        print("血糖值到达【低】血糖惩罚区，惩罚Task启动")
+                    end
+                end
+            end
+            function inst:Remove_Low_Value_Task()
+                if self.___low_value_task then          --- 关闭低血糖惩罚Task
+                    self.___low_value_task:Cancel()
+                    self.___low_value_task = nil
+                end
+            end
+        ------ 高血糖惩罚Task
+            function inst:Add_High_Value_Task()
+                if self.___high_value_task == nil then
+                    self.___high_value_task = self.player:DoPeriodicTask(1,function(player)
+                        if player:HasTag("playerghost") then
+                            return
+                        end 
+                        if player.components.sanity then
+                            player.components.sanity:DoDelta(-0.5,true)
+                        end
+                    end)
+                    if self.com.DEBUGGING_MODE then
+                        print("血糖值到达【高】血糖惩罚区，惩罚任务启动")
+                    end
+                end
+            end
+            function inst:Remove_High_Value_Task()
+                if self.___high_value_task then         --- 关闭高血糖惩罚Task
+                    self.___high_value_task:Cancel()
+                    self.___high_value_task = nil
+                end
+            end
+        ----- 完美血糖奖励Task
+            function inst:Add_Perfect_Value_Task()
+                    if self.__perfect_value_task == nil then
+                        self.__perfect_value_task = self.player:DoPeriodicTask(1,function(player)
+                            if player:HasTag("playerghost") then
+                                return
+                            end 
+                            if player.components.health then
+                                player.components.health:DoDelta(0.2,true)
+                            end
+                            if player.components.sanity then
+                                player.components.sanity:DoDelta(0.5,true)
+                            end
+                        end)
+                        if self.com.DEBUGGING_MODE then
+                            print("血糖值到达【完美】血糖奖励区。奖励任务启动")
+                        end
+                    end
+            end
+            function inst:Remove_Perfect_Value_Task()
+                if self.__perfect_value_task then       --- 关闭完美血糖奖励Task
+                    self.__perfect_value_task:Cancel()
+                    self.__perfect_value_task = nil
+                end
+            end
     ------------------------------------------------------------------------------
 
 

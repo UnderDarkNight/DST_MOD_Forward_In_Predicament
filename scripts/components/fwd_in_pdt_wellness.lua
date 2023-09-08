@@ -3,7 +3,7 @@
 --[[
     · 所有体质值有关的数据储存在本模块里面，使用 Get(str) ,Set(str,num) 的形式。虽然有点多此一举，但是数据不易乱。
 
-    · 子项目使用 inst 实体挂载为玩家的child，这些 inst 里不储存任何数据，只有执行函数。
+    · 子项目使用 inst 实体挂载为玩家的child，这些 inst 里不储存任何离线数据，只有执行函数、临时参数、临时函数。
     · 子节点只有一层，不会有多层子节点。
     · 数据使用 json_str 通过net_string 下发给 replica 。net_string 在replica 注册
 
@@ -47,6 +47,7 @@
         ·  self:stop_update_task()              -- 停掉定时循环任务。
         ·  self:ReStartAllCom()                 -- 清空整个模块的数据和重启任务。通常用于换角色的时候执行。
         ·  self:ReStartUpdateTaskByTime(num)    -- 更改 update() 执行 周期的 函数。方便今后进行相关buff的操作
+        ·  self.BeingPaused                     -- 标记 update() 是否正在循环。给子项目debuff_inst 内部监控模组是否暂停用的
 
     单个debuff 的增删操作：
         · self:Add_Debuff(prefab_name)          -- debuff_inst 的prefab 名字，无法重复添加debuff，重复添加的时候会执行  debuff_inst:RepeatedlyAttached()
@@ -65,6 +66,7 @@
     【重要提醒】
     【重要提醒】 该 套系统的 debuff_inst 里的 player.DoPeriodicTask  注意判断 玩家 死亡等状态。
 
+    模板示例 在 【scripts\prefabs\23_fwd_in_pdt_wellness\_excample.lua】 里。可以参考常驻debuff 的内容 进行自行新增更多debuff
 
 ]]--
 ----------------------------------------------------------------------------------------------------------------------------------
@@ -82,7 +84,7 @@ local fwd_in_pdt_wellness = Class(function(self, inst)
     self.TempData = {}      -- 临时数据
 
     self.debuffs = {}       -- 储存 debuff_inst , index 为 prefab
-    
+    self.BeingPaused = true  -- 标记 Update() 是否暂停了。
     ---- 最大值
         self.max = {
             ["wellness"] = 300,         -- 体质值  上限
@@ -358,12 +360,14 @@ nil,
                 self:Send_Data_2_Replica()
             end)
         end
+        self.BeingPaused = false
     end
     function fwd_in_pdt_wellness:stop_update_task()
         if self._______update_task then
             self._______update_task:Cancel()
             self._______update_task = nil
         end
+        self.BeingPaused = true
     end
 
     function fwd_in_pdt_wellness:load_debuffs_for_new_spawn()   --- 玩家inst实体刷新的时候才执行

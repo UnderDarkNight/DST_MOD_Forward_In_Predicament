@@ -167,5 +167,25 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["mouse_over_text"] = "传送到 "..STRINGS.NAMES.MULTIPLAYER_PORTAL,
             },
         --------------------------------------------------------------------
+        ---- 22_fwd_in_pdt_npc
+        --------------------------------------------------------------------
+        ---- 23_fwd_in_pdt_wellness
+            ["fwd_in_pdt_wellness"] = {
+                ["name"] = "体质值",
+                ["treatment"] = "想办法提高总体体质值",
+            },
+            ["fwd_in_pdt_wellness_vitamin_c"] = {
+                ["name"] = "维他命C",
+                ["treatment"] = "多吃富含维他命C的食物",
+            },
+            ["fwd_in_pdt_wellness_glucose"] = {
+                ["name"] = "血糖",
+                ["treatment"] = "多吃含糖食物",
+            },
+            ["fwd_in_pdt_wellness_poison"] = {
+                ["name"] = "中毒",
+                ["treatment"] = "使用对应的解毒药剂",
+            },
+        --------------------------------------------------------------------
 }
 
