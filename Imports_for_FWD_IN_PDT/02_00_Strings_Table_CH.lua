@@ -180,11 +180,41 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             },
             ["fwd_in_pdt_wellness_glucose"] = {
                 ["name"] = "血糖",
-                ["treatment"] = "多吃含糖食物",
+                ["treatment"] = "吃含糖的食物增加。快速降低则需要胰岛素",
             },
             ["fwd_in_pdt_wellness_poison"] = {
                 ["name"] = "中毒",
-                ["treatment"] = "使用对应的解毒药剂",
+                ["treatment"] = "万能解毒剂",
+            },
+            ["fwd_in_pdt_welness_snake_poison"] = {
+                ["name"] = "蛇毒",
+                ["treatment"] = "雄黄 水解酶",
+            },
+            ["fwd_in_pdt_welness_frog_poison"] = {
+                ["name"] = "青蛙毒",
+                ["treatment"] = "雄黄 水解酶",
+            },
+            ["fwd_in_pdt_welness_spider_poison"] = {
+                ["name"] = "蜘蛛毒",
+                ["treatment"] = STRINGS.NAMES[string.upper("spidergland")],
+            },
+            ["fwd_in_pdt_welness_bee_poison"] = {
+                ["name"] = "蜜蜂毒",
+                ["treatment"] = STRINGS.NAMES[string.upper("taffy")],
+            },
+            ["fwd_in_pdt_welness_cough"] = {
+                ["name"] = "咳嗽",
+                ["treatment"] = [[
+                    · 使用《伤寒病论》
+                    · 紫菀药丸、熟牛奶、旮瘩汤、蜂蜜蒸橙
+                ]],
+            },
+            ["fwd_in_pdt_welness_fever"] = {
+                ["name"] = "发烧",
+                ["treatment"] = [[
+                    · 使用《伤寒病论》
+                    · 紫菀药丸、熟牛奶、旮瘩汤、蜂蜜蒸橙
+                ]],
             },
         --------------------------------------------------------------------
 }

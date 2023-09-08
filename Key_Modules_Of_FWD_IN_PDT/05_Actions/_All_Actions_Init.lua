@@ -23,6 +23,8 @@ modimport("Key_Modules_Of_FWD_IN_PDT/05_Actions/08_reskin_tool_action.lua")     
 
 modimport("Key_Modules_Of_FWD_IN_PDT/05_Actions/09_item_spell_caster_action.lua")       --- SG动作：物品施放法术用的
 
+modimport("Key_Modules_Of_FWD_IN_PDT/05_Actions/10_cough_action.lua")       --- SG动作：咳嗽
+
 
 
 

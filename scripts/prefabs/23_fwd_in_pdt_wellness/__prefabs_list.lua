@@ -21,6 +21,18 @@ local prefabs_name_list = {
     "03_glucose",           -- 血糖值
     "03_glucose",           -- 血糖值
     "04_poison",            -- 中毒值
+
+    "05_snake_poison",            -- 蛇毒
+    "06_frog_poison",             -- 青蛙毒
+    "07_spider_poison",           -- 蜘蛛毒
+    "08_bee_poison",              -- 蜜蜂毒
+
+    "09_cough",                   -- 咳嗽
+    "10_fever",                   -- 发烧
+
+
+
+
 }
 
 
