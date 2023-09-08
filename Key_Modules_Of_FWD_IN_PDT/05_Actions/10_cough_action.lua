@@ -6,7 +6,7 @@
 
 AddStategraphState("wilson",State{
     name = "fwd_in_pdt_wellness_cough",
-    tags = { "doing", "busy", "canrotate" },
+    tags = { "doing", "busy", "canrotate","nointerrupt" },
 
     onenter = function(inst)
         if inst.components.playercontroller ~= nil then
@@ -52,24 +52,30 @@ AddStategraphState("wilson",State{
 })
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
--- 客户端上的，同 SGWilson_client.lua
+---- 客户端上的，同 SGWilson_client.lua
 local TIMEOUT = 2
 AddStategraphState("wilson_client",State{
     name = "fwd_in_pdt_wellness_cough",
-    tags = { "doing", "busy", "canrotate" },
+    tags = { "doing", "busy", "canrotate","nointerrupt" },
     server_states = { "fwd_in_pdt_wellness_cough" },
 
     onenter = function(inst)
+        if inst.components.playercontroller ~= nil then
+            inst.components.playercontroller:Enable(false)
+        end
         inst.components.locomotor:Stop()
         inst.AnimState:PlayAnimation("sing_fail",false)
         inst:PerformPreviewBufferedAction()
         inst.sg:SetTimeout(TIMEOUT)
+        -- print("client_fwd_in_pdt_wellness_cough")
     end,
 
     onupdate = function(inst)
         if inst.sg:ServerStateMatches() then
             if inst.entity:FlattenMovementPrediction() then
                 inst.sg:GoToState("idle", "noanim")
+                --  print("client_fwd_in_pdt_wellness_cough666666666")
+
             end
         elseif inst.bufferedaction == nil then
             inst.sg:GoToState("idle")
@@ -79,5 +85,8 @@ AddStategraphState("wilson_client",State{
     ontimeout = function(inst)
         inst:ClearBufferedAction()
         inst.sg:GoToState("idle")
+        if inst.components.playercontroller ~= nil then
+            inst.components.playercontroller:Enable(true)
+        end
     end,
 })

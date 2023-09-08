@@ -54,6 +54,24 @@ local function fn()
     inst:AddTag("CLASSIFIED")   --  私密的，client 不可观测， FindEntity 默认过滤
     inst:AddTag("NOBLOCK")      -- 不会影响种植和放置
 
+    --------------------------------------------------------------------------------------
+    -- 带洞穴的时候，服务端 执行 player.sg:GoToState 会和 client 端冲突，导致动作播放失败
+    inst.___net_entity = net_entity(inst.GUID,"fwd_in_pdt_welness_cough.net_entity","fwd_in_pdt_welness_cough.net_entity")
+    if not TheWorld.ismastersim then
+        inst:ListenForEvent("fwd_in_pdt_welness_cough.net_entity",function()
+            local target = inst.___net_entity:value()   ---- 下发inst
+
+            if target:HasTag("player") then             ---- 如果是玩家，绑定为 inst.player
+                inst.player = target
+            else                                        ---- 如果不是，则执行 动作,注意 net_vars 不会重复下发相同的东西
+                if inst.player and inst.player.sg and inst.player.sg.GoToState then
+                    inst.player.sg:GoToState("fwd_in_pdt_wellness_cough")
+                end
+            end
+        end)
+        
+    end
+
     if not TheWorld.ismastersim then
         return inst
     end
@@ -73,6 +91,7 @@ local function fn()
                 if self.com.DEBUGGING_MODE then
                    print(" ------------ 得到咳嗽 debuff") 
                 end
+                self.___net_entity:set(self.player)
             --------------------------------------------------------     
             
             
@@ -133,6 +152,10 @@ local function fn()
                     self.___cough_action_task = self.player:DoPeriodicTask(10, function(player)
                         if player and player.sg and player.sg.GoToState then
                             player.sg:GoToState("fwd_in_pdt_wellness_cough")
+                            self.___net_entity:set(self)
+                            self:DoTaskInTime(3,function()
+                                self.___net_entity:set(player)
+                            end)
                         end
                     end)
                 end
