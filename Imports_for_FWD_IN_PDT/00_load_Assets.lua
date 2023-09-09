@@ -46,11 +46,11 @@ local temp_assets = {
     -- Asset( "ATLAS", "images/map_icons/npc_card_teleportation_mark.xml" ),
 	-- ---------------------------------------------------------------------------
 
+	Asset("ANIM", "anim/fwd_in_pdt_hud_wellness.zip")	--- 体质值进度条
 
-	-- -------------- 暴食猪人的素材包
-	-- ---- 使用 TheSim:LoadPrefabs({ "quagmire_swampig" })   加载方法，不用这里添加
-	-- Asset("ATLAS", "images/quagmire_hud.xml"),
-	-- Asset("IMAGE", "images/quagmire_hud.tex"),
+	-- ---------------------------------------------------------------------------
+
+
 }
 
 for k, v in pairs(temp_assets) do

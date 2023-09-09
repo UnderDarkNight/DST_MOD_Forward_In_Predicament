@@ -131,12 +131,12 @@ local function fn()
                 if self.___fever_task == nil then
                     self.___fever_task = self.player:DoPeriodicTask(1,function(player)
                         --[[
-                            往 75℃ 聚拢
+                            往 74℃ 聚拢,到达发热掉血的程度
                         ]]--
                         if player.components.temperature then
-                            local current_num = player.components.temperature:GetCurrent()
-                            local delta_num = math.abs( (current_num - 75)/5 )
-                            player.components.temperature:DoDelta(delta_num)
+                            local current_num = player.components.temperature:GetCurrent()                            
+                            local delta_num = math.abs( (current_num - 74)/5 )
+                            player.components.temperature:DoDelta(delta_num)                            
                         end
 
                     end)

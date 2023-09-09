@@ -10,3 +10,5 @@ modimport("Key_Modules_Of_FWD_IN_PDT/06_widgets/03_mouseover_text_colourful.lua"
 
 modimport("Key_Modules_Of_FWD_IN_PDT/06_widgets/04_itemtile_icon_fx_anim.lua")    --- 物品图标动画特效
 
+modimport("Key_Modules_Of_FWD_IN_PDT/06_widgets/05_wellness_wideget.lua")    --- 添加体质值能量条
+

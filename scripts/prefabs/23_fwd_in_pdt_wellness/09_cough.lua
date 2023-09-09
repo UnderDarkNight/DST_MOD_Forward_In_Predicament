@@ -91,7 +91,7 @@ local function fn()
                 if self.com.DEBUGGING_MODE then
                    print(" ------------ 得到咳嗽 debuff") 
                 end
-                self.___net_entity:set(self.player)
+                self.___net_entity:set(self.player)     --- 下发 需要绑定的玩家
             --------------------------------------------------------     
             
             
@@ -152,8 +152,8 @@ local function fn()
                     self.___cough_action_task = self.player:DoPeriodicTask(10, function(player)
                         if player and player.sg and player.sg.GoToState then
                             player.sg:GoToState("fwd_in_pdt_wellness_cough")
-                            self.___net_entity:set(self)
-                            self:DoTaskInTime(3,function()
+                            self.___net_entity:set(self)    --- 下发自己 inst ,触发 客户端 的 player.sg:GoToState
+                            self:DoTaskInTime(3,function()          ---  延时重新下发另一个内容，让下一次 net_vars 可以继续下发
                                 self.___net_entity:set(player)
                             end)
                         end

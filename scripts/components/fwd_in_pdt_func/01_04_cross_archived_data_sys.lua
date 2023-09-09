@@ -109,6 +109,7 @@ local function replica(self)
         end
         local ret_table = Get_Cross_Archived_Data_By_userid(inst.userid) or {}
         inst.replica.fwd_in_pdt_func:RPC_PushEvent2("fwd_in_pdt_event.Get_Cross_Archived_Data_From_Client",ret_table)
+        inst:PushEvent("fwd_in_pdt_event.Cross_Archived_Data_Send_2_Server_Finish")     --- 给client 挂个事件监听
         if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
             print("fwd_in_pdt info: send all Cross_Archived_Data to Server",inst)
         end
@@ -119,6 +120,15 @@ local function replica(self)
         ret_table[name] = data
         Set_Cross_Archived_Data_By_userid(self.inst.userid,ret_table)
         send_data_2_server(self.inst)
+    end
+
+    function self:Get_Cross_Archived_Data(name)
+        if name then
+            local ret_table = Get_Cross_Archived_Data_By_userid(self.inst.userid) or {}
+            return ret_table[name]
+        else
+            return nil
+        end
     end
 
     self.inst:DoTaskInTime(0,send_data_2_server)
