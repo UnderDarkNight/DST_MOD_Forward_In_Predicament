@@ -173,38 +173,46 @@ end
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ----- 以 net_entity 下发数据，让摄像机视角锁定给指定inst
-    local function Add_Focus_Fns(self)
+    local function Add_Focus_Fns_Replica(self)
         self.TempData.___CameraData.__camera_focus_target = net_entity(self.inst.GUID,"fwd_in_pdt_func_camera_focus_target","fwd_in_pdt_func_camera_focus_target")
         self.inst:ListenForEvent("fwd_in_pdt_func_camera_focus_target",function()
             if TheCamera then
                 local target = self.TempData.___CameraData.__camera_focus_target:value()
-                TheCamera:SetTarget(target)
-            end
-        end)
-
-        if self.is_replica ~= true then
-            function self:TheCamera_SetTarget(inst)                                 --- 绑定目标
-                if inst and inst.IsValid and inst:IsValid() then
-                    self.TempData.___CameraData.__camera_focus_target:set(inst)
-                else
-                    self.TempData.___CameraData.__camera_focus_target:set(self.inst)
+                if target then
+                    TheCamera:SetTarget(target)
                 end
             end
-            function self:TheCamera_ClearTarget()
-                self:TheCamera_SetTarget(self.inst)
+        end)        
+
+        function self:TheCamera_SetTarget(inst)                                 --- 绑定目标
+            if inst and inst.IsValid and inst:IsValid() then
+                self.TempData.___CameraData.__camera_focus_target:set(inst)
+            else
+                self.TempData.___CameraData.__camera_focus_target:set(self.inst)
             end
         end
-
+        function self:TheCamera_ClearTarget()
+            self:TheCamera_SetTarget(self.inst)
+        end
+    end
+    local function Add_Focus_Fns_Com(self)
+        function self:TheCamera_SetTarget(inst)
+            self.inst.replica.fwd_in_pdt_func:TheCamera_SetTarget(inst)
+        end
+        function self:TheCamera_ClearTarget()
+            self.inst.replica.fwd_in_pdt_func:TheCamera_ClearTarget()            
+        end
     end
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-return function(self)
+return function(self)    
     self:Init("rpc")   --- 避免个万一，在这加载一下模块。
     self.TempData.___CameraData = {}
-    Add_Focus_Fns(self)
     if self.is_replica ~= true then        --- 不是replica
         main_com(self)
+        Add_Focus_Fns_Com(self)
     else               
         replica(self)
+        Add_Focus_Fns_Replica(self)
     end
 
 end
