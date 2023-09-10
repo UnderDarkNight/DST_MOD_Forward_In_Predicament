@@ -383,6 +383,7 @@ net_float = function(inst_GUID,namespace,event_name) return{
     ["set"] = function(self,num)  end,
     ["value"] = function()  end,
 } end
+net_entity = net_bool
 
 net_tinybyte = net_float
 net_smallbyte = net_float

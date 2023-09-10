@@ -5,41 +5,41 @@
 ---- 使用rpc 上下传输数据
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-local function main_com(fwd_in_pdt_func)
-    fwd_in_pdt_func.inst:ListenForEvent("fwd_in_pdt_event.camera_data_synchronization",function(_,_table)
+local function main_com(self)
+    self.inst:ListenForEvent("fwd_in_pdt_event.camera_data_synchronization",function(_,_table)
         if type(_table) ~= "table" then
             return
         end
 
         for k, v in pairs(_table) do
             if k and v then
-                fwd_in_pdt_func.TempData.___CameraData[k] = v
+                self.TempData.___CameraData[k] = v
             end
         end
 
     end)
 
     ----------------------------------------------------------------------------------------------
-    function fwd_in_pdt_func:TheCamera_GetRightVec()      --- 获取镜头右边矢量坐标
+    function self:TheCamera_GetRightVec()      --- 获取镜头右边矢量坐标
         return self.TempData.___CameraData.right_vec or Vector3(0,0,0)
     end
-    function fwd_in_pdt_func:TheCamera_GetDownVec()       --- 获取镜头下边矢量坐标
+    function self:TheCamera_GetDownVec()       --- 获取镜头下边矢量坐标
         return self.TempData.___CameraData.down_vec or Vector3(0,0,0)
     end
 
-    function fwd_in_pdt_func:TheCamera_GetHeadingTarget() ---- 获取镜头角度
+    function self:TheCamera_GetHeadingTarget() ---- 获取镜头角度
         return self.TempData.___CameraData.current_deg or 0
     end
-    function fwd_in_pdt_func:TheCamera_GetLastHeadingTarget() ---- 获取之前的镜头角度
+    function self:TheCamera_GetLastHeadingTarget() ---- 获取之前的镜头角度
         return self.TempData.___CameraData.last_deg or self:TheCamera_GetHeadingTarget()
     end
 
-    function fwd_in_pdt_func:TheCamera_GetFov()
+    function self:TheCamera_GetFov()
         return self.TempData.___CameraData.fov or 35
     end
 
     ----------------------------------------------------------------------------------------------
-    function fwd_in_pdt_func:TheCamera_SetData(name,data) --- 使用 DoTaskInTime 0 进行数据同时下发，避免RPC阻塞
+    function self:TheCamera_SetData(name,data) --- 使用 DoTaskInTime 0 进行数据同时下发，避免RPC阻塞
         self.TempData.___CameraData.RPC_PUSH_DATA = self.TempData.___CameraData.RPC_PUSH_DATA or {}
         self.TempData.___CameraData.RPC_PUSH_DATA[name] = data
 
@@ -55,11 +55,11 @@ local function main_com(fwd_in_pdt_func)
 
     end
 
-    function fwd_in_pdt_func:TheCamera_SetDefault()       ---- 重置镜头
+    function self:TheCamera_SetDefault()       ---- 重置镜头
         self:TheCamera_SetData("SetDefault",true)
     end
 
-    function fwd_in_pdt_func:TheCamera_SetHeadingTarget(r)  --- 服务器下发设置玩家镜头旋转角度，
+    function self:TheCamera_SetHeadingTarget(r)  --- 服务器下发设置玩家镜头旋转角度，
         if type(r) == "number" then
             -- self:RPC_PushEvent("fwd_in_pdt_func.camera_cmd",{
             --     SetHeadingTarget = r
@@ -68,7 +68,7 @@ local function main_com(fwd_in_pdt_func)
         end
     end
 
-    function fwd_in_pdt_func:TheCamera_SetFov(t)  ---- 下发俯视角角度。
+    function self:TheCamera_SetFov(t)  ---- 下发俯视角角度。
         if type(t) == "number" then
             self:TheCamera_SetData("fov",t)
         else
@@ -82,7 +82,7 @@ end
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ---------- client replica
-local function Add_Camera_Listener(fwd_in_pdt_func)   --- 添加监控event
+local function Add_Camera_Listener(self)   --- 添加监控event
 
     -- fwd_in_pdt_func.TempData.___CameraData.headingtarget_old = TheCamera.headingtarget
     TheCamera:AddListener("fwd_in_pdt_camera_event",function()    ----- 这个 监听会大量执行，估计有 30FPS
@@ -90,20 +90,20 @@ local function Add_Camera_Listener(fwd_in_pdt_func)   --- 添加监控event
         local data_needs_to_be_synchronized_flag = false
         -------------------------------------------------------------------------------------------------------
         --- 同步镜头旋转角度
-            if fwd_in_pdt_func.TempData.___CameraData.headingtarget_old ~= TheCamera.headingtarget then
+            if self.TempData.___CameraData.headingtarget_old ~= TheCamera.headingtarget then
 
-                temp_data["last_deg"] = fwd_in_pdt_func.TempData.___CameraData.headingtarget_old
+                temp_data["last_deg"] = self.TempData.___CameraData.headingtarget_old
                 temp_data["current_deg"] = TheCamera.headingtarget
 
                 data_needs_to_be_synchronized_flag = true
-                fwd_in_pdt_func.TempData.___CameraData.headingtarget_old = TheCamera.headingtarget 
+                self.TempData.___CameraData.headingtarget_old = TheCamera.headingtarget 
             end
         -------------------------------------------------------------------------------------------------------
         --- 同步镜头缩放角度
-            if fwd_in_pdt_func.TempData.___CameraData.fov_old ~= TheCamera.fov then
+            if self.TempData.___CameraData.fov_old ~= TheCamera.fov then
                 temp_data["fov"] = TheCamera.fov
                 data_needs_to_be_synchronized_flag = true
-                fwd_in_pdt_func.TempData.___CameraData.fov_old = TheCamera.fov 
+                self.TempData.___CameraData.fov_old = TheCamera.fov 
             end
         -------------------------------------------------------------------------------------------------------
         --- 
@@ -112,15 +112,15 @@ local function Add_Camera_Listener(fwd_in_pdt_func)   --- 添加监控event
             if data_needs_to_be_synchronized_flag then
                 temp_data["right_vec"] = TheCamera:GetRightVec()    --- 顺便同步镜头矢量坐标
                 temp_data["down_vec"] = TheCamera:GetDownVec()      --- 顺便同步镜头矢量坐标
-                fwd_in_pdt_func:RPC_PushEvent2("fwd_in_pdt_event.camera_data_synchronization",temp_data)
+                self:RPC_PushEvent2("fwd_in_pdt_event.camera_data_synchronization",temp_data)
             end
         -------------------------------------------------------------------------------------------------------
 
     end)
     
 end
-local function Add_Server2Client_Controller(fwd_in_pdt_func)
-    fwd_in_pdt_func.inst:ListenForEvent("fwd_in_pdt_func.camera_cmd",function(_,_table)
+local function Add_Server2Client_Controller(self)
+    self.inst:ListenForEvent("fwd_in_pdt_func.camera_cmd",function(_,_table)
         -- print("fwd_in_pdt_func.camera_cmd")
         if type(_table)~= "table" then
             return
@@ -145,21 +145,47 @@ local function Add_Server2Client_Controller(fwd_in_pdt_func)
     end)
 end
 
-local function replica(fwd_in_pdt_func)
+local function replica(self)
     if TheCamera then
-        Add_Camera_Listener(fwd_in_pdt_func)  --- 添加监控event，用 rpc 上传常用数据
-        Add_Server2Client_Controller(fwd_in_pdt_func)     --- 服务器下发来数据，监听并执行
+        Add_Camera_Listener(self)  --- 添加监控event，用 rpc 上传常用数据
+        Add_Server2Client_Controller(self)     --- 服务器下发来数据，监听并执行
     end
 end
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-return function(fwd_in_pdt_func)
-    fwd_in_pdt_func:Init("rpc")   --- 避免个万一，在这加载一下模块。
-    fwd_in_pdt_func.TempData.___CameraData = {}
-    if fwd_in_pdt_func.is_replica ~= true then        --- 不是replica
-        main_com(fwd_in_pdt_func)
+----- 以 net_entity 下发数据
+local function Add_Focus_Fns(self)
+    self.TempData.___CameraData.__camera_focus_target = net_entity(self.inst.GUID,"fwd_in_pdt_func_camera_focus_target","fwd_in_pdt_func_camera_focus_target")
+    self.inst:ListenForEvent("fwd_in_pdt_func_camera_focus_target",function()
+        if TheCamera then
+            local target = self.TempData.___CameraData.__camera_focus_target:value()
+            TheCamera:SetTarget(target)
+        end
+    end)
+
+    if self.is_replica ~= true then
+        function self:TheCamera_SetTarget(inst)                                 --- 绑定目标
+            if inst and inst.IsValid and inst:IsValid() then
+                self.TempData.___CameraData.__camera_focus_target:set(inst)
+            else
+                self.TempData.___CameraData.__camera_focus_target:set(self.inst)
+            end
+        end
+        function self:TheCamera_ClearTarget()
+            self:TheCamera_SetTarget(self.inst)
+        end
+    end
+
+end
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+return function(self)
+    self:Init("rpc")   --- 避免个万一，在这加载一下模块。
+    self.TempData.___CameraData = {}
+    Add_Focus_Fns(self)
+    if self.is_replica ~= true then        --- 不是replica
+        main_com(self)
     else               
-        replica(fwd_in_pdt_func)
+        replica(self)
     end
 
 end
