@@ -116,6 +116,30 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "这是一堵墙...而不是植物....",
                 ["recipe_desc"] = "伪装成植物的墙",
             },
+            ["fwd_in_pdt_building_banner_light"] = {
+                ["name"] = "幡灯",
+                ["inspect_str"] = "幡旗飘荡",
+            },
+            ["fwd_in_pdt_building_special_shop"] = {
+                ["name"] = "纪念品商店",
+                ["inspect_str"] = "这里好像不只是卖纪念品",
+                ["action_str"] = "进入",
+            },
+            ["fwd_in_pdt_building_materials_shop"] = {
+                ["name"] = "材料商店",
+                ["inspect_str"] = "有时候会进货一些稀有材料，得看运气",
+                ["action_str"] = "进入",
+            },
+            ["fwd_in_pdt_building_cuisines_shop"] = {
+                ["name"] = "美食商店",
+                ["inspect_str"] = "有好多好多好吃的",
+                ["action_str"] = "进入",
+            },
+            ["fwd_in_pdt_building_hotel"] = {
+                ["name"] = "旅馆",
+                ["inspect_str"] = "休息的好去处",
+                ["action_str"] = "进入",
+            },
         --------------------------------------------------------------------
         ---- 08_fwd_in_pdt_resources
             ["fwd_in_pdt_resource_glacier_huge"] = {

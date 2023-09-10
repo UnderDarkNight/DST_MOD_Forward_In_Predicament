@@ -121,8 +121,20 @@ local flg,error_code = pcall(function()
             -- ThePlayer.HUD.fwd_in_pdt_wellness:HideOhters()
             -- ThePlayer.HUD.fwd_in_pdt_wellness:ShowOhters()
         -- ThePlayer.components.fwd_in_pdt_wellness:HudShowOhters(true)
-        ThePlayer.components.fwd_in_pdt_wellness:HudShowOhters(false)
+        -- ThePlayer.components.fwd_in_pdt_wellness:HudShowOhters(false)
 
+    ----------------------------------------------------------------------------------------------------------------
+    --- 路灯灯光调试
+            local ents = TheSim:FindEntities(x, y, z, 50, {"fwd_in_pdt_building_banner_light"}, nil, nil)
+            for k, inst in pairs(ents) do
+                if inst then
+                    inst.Light:SetIntensity(0.5)		-- 强度
+                    inst.Light:SetRadius(5)			-- 半径 ，矩形的？？ --- SetIntensity 为1 的时候 成矩形
+                    inst.Light:SetFalloff(1)		-- 下降梯度
+                    inst.Light:SetColour(255 / 255, 255 / 255, 255 / 255)
+
+                end
+            end
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)

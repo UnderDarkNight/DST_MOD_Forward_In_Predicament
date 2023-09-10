@@ -11,3 +11,6 @@ modimport("Imports_for_FWD_IN_PDT/04_DST_STRINGS_PRE_INIT.lua")	---- 尝试初�
 
 
 modimport("Imports_for_FWD_IN_PDT/05_Chat_Message_Icons.lua")	---- 添加 聊天框密语系统用的图标
+
+modimport("Imports_for_FWD_IN_PDT/06_inventoryimages_icon_register.lua")	---- 物品图标统一注册
+modimport("Imports_for_FWD_IN_PDT/07_minimap_icon_register.lua")	        ---- 地图图标统一注册

@@ -147,7 +147,7 @@ AddPrefabPostInit(
                                     0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  0,  0,
                                     0,  0,  0,  0,  0,  0,  4,  0,  8,  0,  1,  0,  0,
                                     0,  0,  0,  0, 13,  0,  0,  0,  0,  0,  1,  0,  0,
-                                    0,  0,  0,  0,  0,  0,  5,  0,  9,  0,  1,  0,  0,
+                                    0,  0,  0,  0,  0, 18,  5,  0,  9,  0,  1,  0,  0,
                                     0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  0,  0,
                                     0,  0,  0,  0,  0,  0,  6,  0, 10,  0,  1,  0,  0,
                                     0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  0,  0,
@@ -166,14 +166,14 @@ AddPrefabPostInit(
                                     [2] = function(pt)  --- 2 号位置 ：猪屋
                                             SpawnPrefab("pighouse").Transform:SetPosition(pt.x, 0, pt.z)
                                     end,
-                                    [3] = function(pt)  --- 3 号位置： 商店
-                                            SpawnPrefab("wardrobe").Transform:SetPosition(pt.x, 0, pt.z)
+                                    [3] = function(pt)  --- 3 号位置： 特殊商店
+                                            SpawnPrefab("fwd_in_pdt_building_special_shop").Transform:SetPosition(pt.x, 0, pt.z)
                                     end,
                                     [4] = function(pt)  --- 4 号位置： 材料店铺
-                                            SpawnPrefab("wardrobe").Transform:SetPosition(pt.x, 0, pt.z)
+                                            SpawnPrefab("fwd_in_pdt_building_materials_shop").Transform:SetPosition(pt.x, 0, pt.z)
                                     end,
                                     [5] = function(pt)  --- 5 号位置： 料理商店
-                                            SpawnPrefab("wintersfeastoven").Transform:SetPosition(pt.x, 0, pt.z)
+                                            SpawnPrefab("fwd_in_pdt_building_cuisines_shop").Transform:SetPosition(pt.x, 0, pt.z)
                                     end,
                                     [6] = function(pt)  --- 6 号位置： ATM
                                             SpawnPrefab("sisturn").Transform:SetPosition(pt.x, 0, pt.z)
@@ -196,11 +196,8 @@ AddPrefabPostInit(
                                                 tag = "fwd_in_pdt__ice_moon_island_tile_9"
                                             })
                                     end,
-                                    [10] = function(pt)  --- 10 号位置： 占位 ，上标记
-                                            SpawnPrefab("fwd_in_pdt__resources_occupancy_sign"):PushEvent("Set",{
-                                                pt = Vector3(pt.x,0,pt.z),
-                                                tag = "fwd_in_pdt__ice_moon_island_tile_10"
-                                            })
+                                    [10] = function(pt)  --- 10 号位置： 旅店                                            
+                                            SpawnPrefab("fwd_in_pdt_building_hotel").Transform:SetPosition(pt.x, 0, pt.z)
                                     end,
                                     [11] = function(pt)  --- 11 号位置：NPC 面善的法师
                                         SpawnPrefab("wargshrine").Transform:SetPosition(pt.x, 0, pt.z)                                            
@@ -222,6 +219,9 @@ AddPrefabPostInit(
                                         
 
                                         SpawnPrefab("fwd_in_pdt_resource_glacier_huge").Transform:SetPosition(base_pt.x - 6, 0, base_pt.z )
+                                        
+                                        -- ---- 中间的路灯
+                                        -- SpawnPrefab("fwd_in_pdt_building_banner_light").Transform:SetPosition(pt.x - 4, 0, pt.z + 2 )
 
                                     end,
                                     [14] = function(pt)  --- 14 号位置：船
@@ -240,6 +240,12 @@ AddPrefabPostInit(
                                     end,
                                     [17] = function(pt)  --- 17 号位置：洞穴出入口
                                         SpawnPrefab("fwd_in_pdt__rooms_quirky_red_tree_special").Transform:SetPosition(pt.x, 0, pt.z)
+                                    end,
+                                    [18] = function(pt)  --- 18 号位置：岛屿的中心点附近
+                                        local island_mid_pt = Vector3(pt.x,0,pt.z-2)
+                                        -- SpawnPrefab("fwd_in_pdt_building_banner_light").Transform:SetPosition(island_mid_pt.x, 0, island_mid_pt.z)
+                                        SpawnPrefab("fwd_in_pdt_building_banner_light").Transform:SetPosition(island_mid_pt.x, 0, island_mid_pt.z - 5.5*4)
+                                        SpawnPrefab("fwd_in_pdt_building_banner_light").Transform:SetPosition(island_mid_pt.x, 0, island_mid_pt.z + 5.5*4)
                                     end,
                                 }
                             }

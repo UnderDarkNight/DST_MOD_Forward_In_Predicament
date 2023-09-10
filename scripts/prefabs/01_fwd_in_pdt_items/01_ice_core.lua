@@ -7,7 +7,6 @@ local assets =
     Asset( "IMAGE", "images/inventoryimages/fwd_in_pdt_item_ice_core.tex" ),
     Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_item_ice_core.xml" ),
 }
-
 local function fn()
     local inst = CreateEntity()
 

@@ -30,14 +30,14 @@ local temp_assets = {
 
 	-- ---------------------------------------------------------------------------
 	-- ----- 地图上的标记
-	Asset( "IMAGE", "images/map_icons/fwd_in_pdt_minimap_glacier.tex" ),  
-    Asset( "ATLAS", "images/map_icons/fwd_in_pdt_minimap_glacier.xml" ),
+	-- Asset( "IMAGE", "images/map_icons/fwd_in_pdt_minimap_glacier.tex" ),  
+    -- Asset( "ATLAS", "images/map_icons/fwd_in_pdt_minimap_glacier.xml" ),
 
-	Asset( "IMAGE", "images/map_icons/fwd_in_pdt_minimap_quirky_red_leaf_tree.tex" ),  
-    Asset( "ATLAS", "images/map_icons/fwd_in_pdt_minimap_quirky_red_leaf_tree.xml" ),
+	-- Asset( "IMAGE", "images/map_icons/fwd_in_pdt_minimap_quirky_red_leaf_tree.tex" ),  
+    -- Asset( "ATLAS", "images/map_icons/fwd_in_pdt_minimap_quirky_red_leaf_tree.xml" ),
 
-	Asset( "IMAGE", "images/map_icons/fwd_in_pdt_minimap_mini_portal_door.tex" ),  
-    Asset( "ATLAS", "images/map_icons/fwd_in_pdt_minimap_mini_portal_door.xml" ),
+	-- Asset( "IMAGE", "images/map_icons/fwd_in_pdt_minimap_mini_portal_door.tex" ),  
+    -- Asset( "ATLAS", "images/map_icons/fwd_in_pdt_minimap_mini_portal_door.xml" ),
 
 	-- Asset( "IMAGE", "images/inventoryimages/npc_item_cards_station.tex" ),  
     -- Asset( "ATLAS", "images/inventoryimages/npc_item_cards_station.xml" ),
@@ -57,9 +57,3 @@ for k, v in pairs(temp_assets) do
     table.insert(Assets,v)
 end
 
--- RegisterInventoryItemAtlas("images/inventoryimages/"..tex_name.. ".xml", tex_name..".tex")  -- 注册贴图文件【必须要做】
-
--- AddMinimapAtlas("images/map_icons/npc_item_treasure_map.xml")	----- 小地图上的标记得用这个func 在modmain 里加载
-AddMinimapAtlas("images/map_icons/fwd_in_pdt_minimap_glacier.xml")
-AddMinimapAtlas("images/map_icons/fwd_in_pdt_minimap_quirky_red_leaf_tree.xml")
-AddMinimapAtlas("images/map_icons/fwd_in_pdt_minimap_mini_portal_door.xml")
