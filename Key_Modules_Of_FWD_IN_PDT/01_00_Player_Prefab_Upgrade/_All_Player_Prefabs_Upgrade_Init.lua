@@ -19,6 +19,9 @@ modimport("Key_Modules_Of_FWD_IN_PDT/01_00_Player_Prefab_Upgrade/03_daily_task.l
 modimport("Key_Modules_Of_FWD_IN_PDT/01_00_Player_Prefab_Upgrade/04_01_vip_login_task.lua")   
  --- VIP专属内容执行函数
 
+modimport("Key_Modules_Of_FWD_IN_PDT/01_00_Player_Prefab_Upgrade/04_player_wellness_events.lua")   
+ --- 体质值 相关的监听事件，以及疾病获取。
+
 
 
 

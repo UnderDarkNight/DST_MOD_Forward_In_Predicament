@@ -41,26 +41,8 @@ function fwd_in_pdt_wellness:Get_The_Datas_From_Server(cmd_table)
     for k, v in pairs(cmd_table) do
         self.datas[k] = v
     end
-
-
     ---- 数值同步了，更新HUD
     self:UpdateHUD()
-
-    -- if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
-    --     print("++++++++++++++++++++")
-    --     for index, _t_table in pairs(cmd_table) do
-    --         print(index)
-    --         pcall(function()
-    --             for k, v in pairs(_t_table) do
-    --                 print("   ",k,v)
-    --             end
-    --             print("----------")
-    --         end)
-
-    --     end
-    --     print("++++++++++++++++++++")
-    -- end
-
 end
 
 function fwd_in_pdt_wellness:UpdateHUD()
@@ -80,6 +62,12 @@ function fwd_in_pdt_wellness:UpdateHUD()
             self.inst.HUD.fwd_in_pdt_wellness:SetCurrent_Vitamin_C(self:Get_Vitamin_C())
             self.inst.HUD.fwd_in_pdt_wellness:SetCurrent_Glucose(self:Get_Glucose())
             self.inst.HUD.fwd_in_pdt_wellness:SetCurrent_Poison(self:Get_Poison())
+
+            if self:Get("Show_Hud_Others") then
+                self.inst.HUD.fwd_in_pdt_wellness:ShowOhters()
+            else
+                self.inst.HUD.fwd_in_pdt_wellness:HideOhters()                
+            end
 
         end
     end
@@ -112,6 +100,12 @@ end
     function fwd_in_pdt_wellness:Get_Poison()
         return self:Get_By_Index("poison")
 
+    end
+-----------------------------------------------------------------------------------------------------
+    function fwd_in_pdt_wellness:Get(str)
+        if type(str) == "string" then
+            return self.datas[str]
+        end
     end
 -----------------------------------------------------------------------------------------------------
 

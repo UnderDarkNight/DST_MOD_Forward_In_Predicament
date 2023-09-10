@@ -159,11 +159,34 @@ AddClassPostConstruct("widgets/controls", function(self, owner)
                     local wellness_text = wellness_frame:AddChild(Text(CODEFONT,30,"100.42",{ 255/255 , 255/255 ,255/255 , 1}))
                     wellness_text:SetPosition(45,0)
                 ------------------------------------------------------
+                --- 添加升降标识
+                    local wellness_up_down_icon = wellness_bar:AddChild(UIAnim())
+                    wellness_up_down_icon:GetAnimState():SetBuild("fwd_in_pdt_hud_wellness")
+                    wellness_up_down_icon:GetAnimState():SetBank("fwd_in_pdt_hud_wellness")
+                    wellness_up_down_icon:GetAnimState():PlayAnimation("up")
+                    wellness_up_down_icon:Hide()
+                    wellness_up_down_icon:SetPosition(10,-30)
+                ------------------------------------------------------
 
                 function owner.HUD.fwd_in_pdt_wellness:SetCurrent_Wellness(num,percent,max) 
                     -- 10s = 100%                    
                     wellness_bar:GetAnimState():SetTime(percent*10)
                     wellness_text:SetString(tostring(string.format("%.2f",num)))    --- 保留2位小数
+
+                    ----- 升降符号
+                    if wellness_bar.__last_percent then
+                        if wellness_bar.__last_percent > percent then
+                            wellness_up_down_icon:GetAnimState():PlayAnimation("down")
+                            wellness_up_down_icon:Show()
+                        elseif wellness_bar.__last_percent < percent then
+                            wellness_up_down_icon:GetAnimState():PlayAnimation("up")
+                            wellness_up_down_icon:Show()
+                        else                                        
+                            -- wellness_up_down_icon:Hide()                            
+                        end
+                    end
+                    wellness_bar.__last_percent = percent
+
                 end
         -----------------------------------------------------------------------------------------------------------------
         ----- VC 值

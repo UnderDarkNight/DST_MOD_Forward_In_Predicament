@@ -56,7 +56,7 @@
         · self:GetInfos(prefab_name)            -- 获取该debuff_inst 的 文本表， 为 debuff_inst:GetStringsTable() 得到的。方便外部调取 相关文本信息。
 
     需要注意的 API：
-        · self:Send_Data_2_Replica()            -- 是下发数据给 replica 用的，走的是 json_str 和 net_string 路线。4个常驻的值 都是在里面打包下发的。
+        · self:Get_Datas_Table_For_Replica()    -- 封装4个常驻值成table 给 下发使用的
                                                 -- 【注意】 数据没有任何变动的时候，net_string 是不会下发任何数据和触发event的。如果非要执行，得加个随机数。
         · self:Refresh()                        -- 尝试同步数据给 replica 。
 
@@ -76,15 +76,18 @@ local fwd_in_pdt_wellness = Class(function(self, inst)
 
     ------ 预留个标记位，给打印测试。
     -- self.DEBUGGING_MODE = nil    
-    if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
-        self.DEBUGGING_MODE = true
-    end
+    -- if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
+    --     self.DEBUGGING_MODE = true
+    -- end
 
     self.DataTable = {}     -- 储存数据，带进存档
     self.TempData = {}      -- 临时数据
 
     self.debuffs = {}       -- 储存 debuff_inst , index 为 prefab
     self.BeingPaused = true  -- 标记 Update() 是否暂停了。
+
+    self.Show_Hud_Others = true     ---- HUD 显示其他条的标记位。
+
     ---- 最大值
         self.max = {
             ["wellness"] = 300,         -- 体质值  上限
@@ -357,7 +360,7 @@ nil,
         if self._______update_task == nil then
             self._______update_task = self.inst:DoPeriodicTask(update_time or 5,function()
                 self:update()
-                self:Send_Data_2_Replica()
+                self:Refresh()
             end)
         end
         self.BeingPaused = false
@@ -457,7 +460,7 @@ nil,
     end
 ------------------------------------------------------------------------------------------------------------------------------
 -- 数据同步用的 func
-    function fwd_in_pdt_wellness:Send_Data_2_Replica(force_flag)
+    function fwd_in_pdt_wellness:Get_Datas_Table_For_Replica()
         --- 需要发送的数据只有4个：【体质值】【VC值】【血糖值】【中毒值】
         local current,percent,max = 0,0,0
 
@@ -479,13 +482,17 @@ nil,
             vitamin_c = vitamin_c,
             glucose = glucose,
             poison = poison,
-            force_flag = force_flag and math.random(1000) or 0,
         }
-        self.inst.replica.fwd_in_pdt_wellness:Send_Datas(cmd_table)
+        return cmd_table
+        -- self.inst.replica.fwd_in_pdt_wellness:Send_Datas(cmd_table)
     end
 
     function fwd_in_pdt_wellness:Refresh()
-        self:Send_Data_2_Replica()
+        local datas_table = self:Get_Datas_Table_For_Replica() or {}
+
+        datas_table["Show_Hud_Others"] = self.Show_Hud_Others or false
+        datas_table["Temp_Force_Flag"] = math.random(10000)
+        self.inst.replica.fwd_in_pdt_wellness:Send_Datas(datas_table)
     end
 
     function fwd_in_pdt_wellness:ForceRefresh()
@@ -498,24 +505,33 @@ nil,
                 debuff_inst:ForceRefresh()
             end
         end
-    --- setp 2 运行常驻的那些，最后运行 orders 第一位的
-        local first_order_debuff_prefab = nil
-        for i, index in pairs(self.base_prefabs_orders) do
-                if i ~= 1 and index then
-                    local temp_debuff_prefab_name = self.base_prefabs[index]
-                    if temp_debuff_prefab_name and self.debuffs[temp_debuff_prefab_name] and self.debuffs[temp_debuff_prefab_name].ForceRefresh then
-                        self.debuffs[temp_debuff_prefab_name]:ForceRefresh()
+        --- setp 2 运行常驻的那些，最后运行 orders 第一位的
+            local first_order_debuff_prefab = nil
+            for i, index in pairs(self.base_prefabs_orders) do
+                    if i ~= 1 and index then
+                        local temp_debuff_prefab_name = self.base_prefabs[index]
+                        if temp_debuff_prefab_name and self.debuffs[temp_debuff_prefab_name] and self.debuffs[temp_debuff_prefab_name].ForceRefresh then
+                            self.debuffs[temp_debuff_prefab_name]:ForceRefresh()
+                        end
+                    elseif i == 1 and index then
+                        first_order_debuff_prefab = self.base_prefabs[index]
                     end
-                elseif i == 1 and index then
-                    first_order_debuff_prefab = self.base_prefabs[index]
-                end
-        end
+            end
 
-        if first_order_debuff_prefab and self.debuffs[first_order_debuff_prefab] and self.debuffs[first_order_debuff_prefab].ForceRefresh then
-            self.debuffs[first_order_debuff_prefab]:ForceRefresh()
-        end  
+            if first_order_debuff_prefab and self.debuffs[first_order_debuff_prefab] and self.debuffs[first_order_debuff_prefab].ForceRefresh then
+                self.debuffs[first_order_debuff_prefab]:ForceRefresh()
+            end  
 
-        self:Send_Data_2_Replica(true)
+        --- 获取数据下发更新
+            local datas_table = self:Get_Datas_Table_For_Replica()
+            self.inst.replica.fwd_in_pdt_wellness:Send_Datas(datas_table)
+            -- self:Refresh()
+    end
+------------------------------------------------------------------------------------------------------------------------------
+-- UI操作显示隐藏用的
+    function fwd_in_pdt_wellness:HudShowOhters(flag)
+        self.Show_Hud_Others = flag
+        self:Refresh()
     end
 ------------------------------------------------------------------------------------------------------------------------------
 

@@ -29,7 +29,7 @@ AddPlayerPostInit(function(inst)
     ---------- 动作失败的话语组件
     inst:AddComponent("fwd_in_pdt_com_action_fail_reason")
     ----------------------------------------------------------------------------------------------------------
-    inst:AddComponent("fwd_in_pdt_wellness") --- 体质值组件
+    
     ----------------------------------------------------------------------------------------------------------
 
     -- inst.AnimState:SetBloomEffectHandle(resolvefilepath("shaders/mod_test_shader.ksh"))

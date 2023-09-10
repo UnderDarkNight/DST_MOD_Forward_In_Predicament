@@ -120,6 +120,9 @@ local flg,error_code = pcall(function()
             -- TheAnim:SetTime(0)
             -- ThePlayer.HUD.fwd_in_pdt_wellness:HideOhters()
             -- ThePlayer.HUD.fwd_in_pdt_wellness:ShowOhters()
+        -- ThePlayer.components.fwd_in_pdt_wellness:HudShowOhters(true)
+        ThePlayer.components.fwd_in_pdt_wellness:HudShowOhters(false)
+
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)
