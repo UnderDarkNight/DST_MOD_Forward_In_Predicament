@@ -20,7 +20,12 @@ local files_name = {
 	---------------------------------------------------------------------------------------
 	-- 02_fwd_in_pdt_materials
 		"fwd_in_pdt_material_tree_resin",						--- 树脂
-		"fwd_in_pdt_material_snake_skin",						--- 树脂
+		"fwd_in_pdt_material_snake_skin",						--- 蛇皮
+	---------------------------------------------------------------------------------------
+	-- 02_fwd_in_pdt_materials
+		"fwd_in_pdt_equipment_blazing_nightmaresword",			--- 炽热影刀
+		"fwd_in_pdt_equipment_frozen_nightmaresword",			--- 极寒影刀
+		
 
 
 

@@ -16,7 +16,8 @@ local Prefabs_addr_base = string.sub(temp_addr,1,temp_str_index2) .. "/"    --- 
 
 -- local Prefabs_addr_base = "scripts/prefabs/03_fwd_in_pdt_equipments/"
 local prefabs_name_list = {
-    -- "01_hambat",    --- 火腿棒
+    "01_blazing_nightmaresword",    --- 炽热暗影剑
+    "02_frozen_nightmaresword",     --- 极寒暗影剑
 }
 
 
@@ -25,8 +26,8 @@ local prefabs_name_list = {
 ---- 正在测试的物品
 if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE == true then
     local debugging_name_list = {
-        "02_mirror_whip",   -- 镜像工具
-        "03_reskin_tool",   --- 自制皮肤切换工具
+        -- "02_mirror_whip",   -- 镜像工具
+        -- "03_reskin_tool",   --- 自制皮肤切换工具
 
 
     }

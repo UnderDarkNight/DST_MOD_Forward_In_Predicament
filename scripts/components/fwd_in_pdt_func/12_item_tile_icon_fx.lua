@@ -29,10 +29,7 @@ local function main_com(fwd_in_pdt_func)
         if TUNING["Forward_In_Predicament.Config"].UI_FX ~= true then
             return
         end
-        if type(cmd_table) == "table" and 
-            type(cmd_table.bank) == "string" and 
-            type(cmd_table.build) == "string" and 
-            type(cmd_table.anim) == "string" then
+        if type(cmd_table) == "table" then
                 cmd_table.display = true
                 self.tempData.__Item_Tile_Icon_Fx_CMD = cmd_table
                 self:Replica_Set_Simple_Data("ItemTileFX",cmd_table)

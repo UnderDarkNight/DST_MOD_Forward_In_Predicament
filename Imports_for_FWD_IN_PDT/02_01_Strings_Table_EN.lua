@@ -98,6 +98,14 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             },
         --------------------------------------------------------------------
         ---- 03_fwd_in_pdt_equipments
+            ["fwd_in_pdt_equipment_blazing_nightmaresword"] = {
+                ["name"] = "炽热暗影剑",
+                ["inspect_str"] = "这东西充满暗影和光热"
+            },
+            ["fwd_in_pdt_equipment_frozen_nightmaresword"] = {
+                ["name"] = "霜寒暗影剑",
+                ["inspect_str"] = "这东西充满暗影和寒冷"
+            },
         --------------------------------------------------------------------
         ---- 04_fwd_in_pdt_foods
         --------------------------------------------------------------------
