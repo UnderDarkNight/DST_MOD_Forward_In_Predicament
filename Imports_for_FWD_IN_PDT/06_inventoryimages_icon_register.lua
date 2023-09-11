@@ -9,11 +9,24 @@ if Assets == nil then
 end
 
 local files_name = {
-	"fwd_in_pdt_item_ice_core"	, 							--- 冰核心
-	"fwd_in_pdt_item_flame_core"	, 						--- 火核心
-	"fwd_in_pdt_item_jade_coin_green"	, 					--- 玉龙币·翠
-	"fwd_in_pdt_item_jade_coin_black"	, 					--- 玉龙币·墨
-	"fwd_in_pdt_item_transport_stone"	, 					--- 传送石
+
+	---------------------------------------------------------------------------------------
+	-- 01_fwd_in_pdt_items
+		"fwd_in_pdt_item_ice_core"	, 							--- 冰核心
+		"fwd_in_pdt_item_flame_core"	, 						--- 火核心
+		"fwd_in_pdt_item_jade_coin_green"	, 					--- 玉龙币·翠
+		"fwd_in_pdt_item_jade_coin_black"	, 					--- 玉龙币·墨
+		"fwd_in_pdt_item_transport_stone"	, 					--- 传送石
+	---------------------------------------------------------------------------------------
+	-- 02_fwd_in_pdt_materials
+		"fwd_in_pdt_material_tree_resin",						--- 树脂
+		"fwd_in_pdt_material_snake_skin",						--- 树脂
+
+
+
+
+
+	---------------------------------------------------------------------------------------
 
 }
 

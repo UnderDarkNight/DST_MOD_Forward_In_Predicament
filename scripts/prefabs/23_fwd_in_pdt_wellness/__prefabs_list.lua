@@ -20,7 +20,8 @@ local prefabs_name_list = {
     "02_vitamin_c",         -- VC值
     "03_glucose",           -- 血糖值
     "03_glucose",           -- 血糖值
-    "04_poison",            -- 中毒值
+    "04_01_poison",            -- 中毒值
+    "04_02_poison_blocker",            -- 中毒屏蔽计数器
 
     "05_snake_poison",            -- 蛇毒
     "06_frog_poison",             -- 青蛙毒

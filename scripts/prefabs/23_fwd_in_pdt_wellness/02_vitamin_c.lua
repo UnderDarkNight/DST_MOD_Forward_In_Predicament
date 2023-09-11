@@ -16,6 +16,11 @@
     ·  注意监控玩家死亡，来停掉 debuff 的光环  player:ListenForEvent("death",fn)  player:RemoveEventCallback("death",fn)   
     ·  OnDetached 的时候也需要 停掉 player.DoPeriodicTask 。不然无法重置整个模块。
 
+    额外特殊API：
+    ·  inst:Set_Value_Block_Go_Down_Update_Times(num)   设置不允许VC值降低的循环次数。
+    ·  inst:Allow_Value_OnUpdate_Go_Down()  每次 update 里，VC要降低的时候，这个检查 次数 并 -1 ，再 return 是否允许降低
+
+
 ]]--
 
 --- 【重要提醒】 光环循环任务 player.DoPeriodicTask  注意判断 玩家 死亡等状态。
@@ -96,7 +101,9 @@ local function fn()
                             y = （ k·x + b ）/100
             ]]--                
             ------------------------------------------
-            self.com:DoDelta_Vitamin_C(-0.05)
+            if self:Allow_Value_OnUpdate_Go_Down() then
+                self.com:DoDelta_Vitamin_C(-0.05)
+            end
 
             local value ,percent,max = self.com:GetCurrent_Vitamin_C()
             local delta_num = 0
@@ -179,6 +186,20 @@ local function fn()
                 if self.com.DEBUGGING_MODE then
                     print("VC值足够，停掉降San任务")
                 end
+            end
+        end
+    ------------------------------------------------------------------------------
+    --- 让VC值一段时间不降低的函数
+        function inst:Allow_Value_OnUpdate_Go_Down()
+            local update_times_num = self.com:Add("vc_value_go_down_in_update_check_times_num",-1)
+            if update_times_num <= 0 then
+                return true
+            end
+            return false
+        end
+        function inst:Set_Value_Block_Go_Down_Update_Times(num)
+            if type(num) == "number" then
+                self.com:Set("vc_value_go_down_in_update_check_times_num",num)
             end
         end
     ------------------------------------------------------------------------------

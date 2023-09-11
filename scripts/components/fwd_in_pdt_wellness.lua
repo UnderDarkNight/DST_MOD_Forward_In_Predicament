@@ -410,15 +410,28 @@ nil,
                 if self.debuffs[str] == nil then    --- 没有这个debuff
                     local child = self.inst:SpawnChild(str)
                     if child then
-                        self.debuffs[str] = child
-                        child:OnAttached(self)
-                        child.com = self
-                        child.player = self.inst
 
-                        ---- 储存添加过的debuff名字，给读档的时候调用
-                        local added_debuffs = self:Get("attached_debuffs") or {}
-                        added_debuffs[str] = true
-                        self:Set("attached_debuffs",added_debuffs)
+                        local attach_succeed_flag = true    --- 预添加检测
+                        if child.PreAttach then
+                            child.com = self
+                            child.player = self.inst
+                            attach_succeed_flag = child:PreAttach(self) or false
+                        end
+
+                        if attach_succeed_flag then
+                                self.debuffs[str] = child
+                                child:OnAttached(self)
+                                child.com = self
+                                child.player = self.inst
+
+                                ---- 储存添加过的debuff名字，给读档的时候调用
+                                local added_debuffs = self:Get("attached_debuffs") or {}
+                                added_debuffs[str] = true
+                                self:Set("attached_debuffs",added_debuffs)
+                        else
+                                child:Remove()
+                        end
+                        
                     end
                 else
                     -------- 重复添加了这个debuff

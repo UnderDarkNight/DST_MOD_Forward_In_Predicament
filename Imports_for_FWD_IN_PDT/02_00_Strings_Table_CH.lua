@@ -97,6 +97,14 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             },
         --------------------------------------------------------------------
         ---- 02_fwd_in_pdt_materials
+            ["fwd_in_pdt_material_tree_resin"] = {
+                ["name"] = "树脂",
+                ["inspect_str"] = "树里的液脂",
+            },
+            ["fwd_in_pdt_material_snake_skin"] = {
+                ["name"] = "蛇皮",
+                ["inspect_str"] = "蛇的皮，不是自然蜕皮那种",
+            },
         --------------------------------------------------------------------
         ---- 03_fwd_in_pdt_equipments
             ["fwd_in_pdt_eq_mirror_whip"] = {

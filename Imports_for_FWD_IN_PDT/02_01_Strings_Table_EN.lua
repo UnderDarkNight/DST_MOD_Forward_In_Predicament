@@ -88,6 +88,14 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             },
         --------------------------------------------------------------------
         ---- 02_fwd_in_pdt_materials
+            ["fwd_in_pdt_material_tree_resin"] = {
+                ["name"] = "Tree Resin",
+                ["inspect_str"] = "Resin from the trees.",
+            },
+            ["fwd_in_pdt_material_snake_skin"] = {
+                ["name"] = "Snake Skin",
+                ["inspect_str"] = "A snake's skin. Not the naturally molting kind.",
+            },
         --------------------------------------------------------------------
         ---- 03_fwd_in_pdt_equipments
         --------------------------------------------------------------------
