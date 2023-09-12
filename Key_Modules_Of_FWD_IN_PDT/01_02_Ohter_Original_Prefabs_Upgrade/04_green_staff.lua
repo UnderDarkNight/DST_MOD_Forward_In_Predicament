@@ -40,6 +40,22 @@ AddPrefabPostInit(
                     return true
                 end
 
+                if item.prefab == "greengem" then
+                    if inst:HasTag("greengem_enough") then
+                        return false
+                    else
+                        return true
+                    end
+                end
+
+                if item.prefab == "opalpreciousgem" then
+                    if inst:HasTag("opalpreciousgem_enough") then
+                        return false
+                    else
+                        return true    
+                    end
+                end
+
             end            
             return false
         end)
@@ -54,18 +70,34 @@ AddPrefabPostInit(
 
             local ice_num = inst.components.fwd_in_pdt_func:Add("fwd_in_pdt_item_ice_core",0)
             local flame_num = inst.components.fwd_in_pdt_func:Add("fwd_in_pdt_item_flame_core",0)
+            local greengem_num = inst.components.fwd_in_pdt_func:Add("greengem",0)
+            local opalpreciousgem_num = inst.components.fwd_in_pdt_func:Add("opalpreciousgem",0)
 
-            if item:HasTag("fwd_in_pdt_item_ice_core") then
-                ice_num = inst.components.fwd_in_pdt_func:Add("fwd_in_pdt_item_ice_core",1)
-            end
+            --------------- 冰核心
+                if item:HasTag("fwd_in_pdt_item_ice_core") then
+                    ice_num = inst.components.fwd_in_pdt_func:Add("fwd_in_pdt_item_ice_core",1)
+                end
+            --------------- 火核心
+                if item:HasTag("fwd_in_pdt_item_flame_core") then
+                    flame_num = inst.components.fwd_in_pdt_func:Add("fwd_in_pdt_item_flame_core",1)
+                end
+            --------------- 绿宝石
+                if item.prefab == "greengem" then
+                    greengem_num = inst.components.fwd_in_pdt_func:Add("greengem",1)
+                end
+            --------------- 彩虹
+                if item.prefab == "opalpreciousgem" then
+                    opalpreciousgem_num = inst.components.fwd_in_pdt_func:Add("opalpreciousgem",1)
+                end
 
-            if item:HasTag("fwd_in_pdt_item_flame_core") then
-                flame_num = inst.components.fwd_in_pdt_func:Add("fwd_in_pdt_item_flame_core",1)
-            end
 
-            item.components.stackable:Get():Remove()
+            if item.components.stackable then
+                item.components.stackable:Get():Remove()
+            else
+                item:Remove()
+            end    
             
-            if ice_num >= 5 and flame_num >= 5 then
+            if ice_num >= 5 and flame_num >= 5 and greengem_num >= 1 and opalpreciousgem_num >= 1 then
                 doer.components.inventory:GiveItem(SpawnPrefab("fwd_in_pdt_equipment_repair_staff"))
                 inst:Remove()
             end
@@ -86,6 +118,8 @@ AddPrefabPostInit(
         inst:ListenForEvent("mouse_over_text_refresh",function()
             local ice_num = inst.components.fwd_in_pdt_func:Add("fwd_in_pdt_item_ice_core",0)
             local flame_num = inst.components.fwd_in_pdt_func:Add("fwd_in_pdt_item_flame_core",0)
+            local greengem_num = inst.components.fwd_in_pdt_func:Add("greengem",0)
+            local opalpreciousgem_num = inst.components.fwd_in_pdt_func:Add("opalpreciousgem",0)
 
             local r,g,b,a = 0/255,255/255,0/255,200/255
 
@@ -96,7 +130,15 @@ AddPrefabPostInit(
                 inst:AddTag("flame_core_enough")
             end
 
-            if ice_num > 0 or flame_num > 0 then
+            if greengem_num >= 1 then
+                inst:AddTag("greengem_enough")
+            end
+
+            if opalpreciousgem_num >= 1 then
+                inst:AddTag("opalpreciousgem_enough")
+            end
+
+            if ice_num + flame_num + greengem_num  + opalpreciousgem_num > 0 then
                 inst.components.fwd_in_pdt_func:Mouseover_SetColour(r,g,b,a)
             end
             
