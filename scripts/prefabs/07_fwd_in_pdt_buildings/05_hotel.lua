@@ -62,7 +62,8 @@ local function fn()
                 inst:PushEvent("DOOR_CLOSE")
                 inst.SoundEmitter:PlaySound("dontstarve/common/pighouse_door")                
             end)
-            doer.components.fwd_in_pdt_func:TheCamera_SetTarget(inst)
+            -- doer.components.fwd_in_pdt_func:TheCamera_SetTarget(inst)
+
             return true
         end)
         

@@ -44,6 +44,11 @@ AddPlayerPostInit(function(inst)
                             inst.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_bee_poison")                        
                         end
                     end,
+                    ["beeguard"] = function()        --- 蜂王的蜜蜂护卫攻击 3% 概率中蜜蜂毒
+                        if math.random(1000) <= 30 then
+                            inst.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_bee_poison")                        
+                        end
+                    end,
 
 
                 }

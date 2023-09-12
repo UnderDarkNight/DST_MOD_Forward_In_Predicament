@@ -9,7 +9,7 @@
 --[[
 
     关键外部API 说明：
-    ·  inst:PreAttach(com)             预添加本debuff的时候检查，return true 则允许添加
+    ·  inst:PreAttach(com)             inst:OnAttached(com) 之前，准备添加本debuff的时候检查，return true 则允许添加。重复debuff不会经过这个。
     ·  inst:OnAttached(com)            添加这个 debuff_inst 的时候执行。绑定 组件 和玩家给本inst ，顺便初始化一些数据。玩家进出洞穴重新添加也会执行。
     ·  inst:External_DoDelta(num)      常驻的debuff 才会执行这个，给外部道具或食物调用，进行各种  上下限 ，比例缩放的操作。
     ·  inst:RepeatedlyAttached()       同一个debuff 重复 添加的时候执行这部分。
@@ -63,6 +63,7 @@ local function fn()
 
     ------------------------------------------------------------------------------
         -- 预添加本Debuff 的时候检查函数，如果通过，则添加，不通过，则不添加
+        -- 重复添加不会执行这个
         function inst:PreAttach(com)
             return true
         end

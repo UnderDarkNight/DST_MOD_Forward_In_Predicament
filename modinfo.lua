@@ -8,7 +8,7 @@ author = "可爱的小亨、GAGA、幕夜之下"
 ---                   第二位为大版本号，进行主题更新、大DLC发布的时候进行增量。
 ---                   第一位暂时预留。 
 ----------------------------------------------------------------------------
-local the_version = "0.00.00.0000"
+local the_version = "0.00.00.0001"
 
 
 
@@ -115,7 +115,30 @@ configuration_options =
         {description = IsChinese() and "关" or "OFF", data = false},
       },
       default = true,
-  },
+    },
+
+    {
+      name = "",
+      label = "     ",
+      hover = "",
+      options = {{description = "", data = 0}},
+      default = 0,
+    },
+    {
+      name = "Element_Core_Probability",
+      label = IsChinese() and "元素核心概率" or "Element Core Probability",
+      hover = IsChinese() and "炽热光核、极冰冷核 的出现概率" or "Flame/Ice Core Stone Probability",
+      options =
+      {
+        {description = "30%", data = 0.3},
+        {description = "25%", data = 0.25},
+        {description = "20%", data = 0.2},
+        {description = "15%", data = 0.15},
+        {description = "10%", data = 0.1},
+
+      },
+      default = 0.1,
+    },
 
   
 }

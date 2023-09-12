@@ -52,17 +52,18 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["fertilize"] = "施肥"
             },
             ["fwd_in_pdt_com_special_acceptable"] = { 
-                ["DEFAULT"] = "给",
-                ["fertilize"] = "施肥"
+                ["DEFAULT"] = "Give",
+                ["fertilize"] = "Fertilize",
+                ["fwd_in_pdt_element_cores"] = "Enchantment",                
             },
             ["fwd_in_pdt_com_workable"] = { 
-                ["DEFAULT"] = "工作",
+                ["DEFAULT"] = "Work",
             },
             ["fwd_in_pdt_com_special_workable"] = { 
-                ["DEFAULT"] = "工作",
+                ["DEFAULT"] = "Work",
             },
             ["fwd_in_pdt_com_weapon"] = { 
-                ["DEFAULT"] = "执行",
+                ["DEFAULT"] = "Do",
             },
         --------------------------------------------------------------------
         ---- 00_fwd_in_pdt_others
@@ -71,6 +72,14 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             ["fwd_in_pdt_gift_pack"] = {
                 ["name"] = "Gift Box",
                 ["inspect_str"] = "A Gift Box"
+            },
+            ["fwd_in_pdt_item_ice_core"] = {
+                ["name"] = "Ice Core Stone",
+                ["inspect_str"] = "There's cold inside"
+            },
+            ["fwd_in_pdt_item_flame_core"] = {
+                ["name"] = "Flame Core Stone",
+                ["inspect_str"] = "There's flame inside"
             },
             ["fwd_in_pdt_item_jade_coin_green"] = {
                 ["name"] = "Green Jade Coin Of Loong",
@@ -99,12 +108,12 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
         --------------------------------------------------------------------
         ---- 03_fwd_in_pdt_equipments
             ["fwd_in_pdt_equipment_blazing_nightmaresword"] = {
-                ["name"] = "炽热暗影剑",
-                ["inspect_str"] = "这东西充满暗影和光热"
+                ["name"] = "Blazing Nightmare Sword",
+                ["inspect_str"] = "This sword is full of shadows and heat"
             },
             ["fwd_in_pdt_equipment_frozen_nightmaresword"] = {
-                ["name"] = "霜寒暗影剑",
-                ["inspect_str"] = "这东西充满暗影和寒冷"
+                ["name"] = "Frozen Nightmare Sword",
+                ["inspect_str"] = "This sword is full of shadows and cold"
             },
         --------------------------------------------------------------------
         ---- 04_fwd_in_pdt_foods

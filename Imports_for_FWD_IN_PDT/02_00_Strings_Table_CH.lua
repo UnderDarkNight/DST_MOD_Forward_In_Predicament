@@ -62,7 +62,8 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             },
             ["fwd_in_pdt_com_special_acceptable"] = { 
                 ["DEFAULT"] = "给",
-                ["fertilize"] = "施肥"
+                ["fertilize"] = "施肥",
+                ["fwd_in_pdt_element_cores"] = "附魔",
             },
             ["fwd_in_pdt_com_workable"] = { 
                 ["DEFAULT"] = "工作",
@@ -80,6 +81,14 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             ["fwd_in_pdt_gift_pack"] = {
                 ["name"] = "礼物盒",
                 ["inspect_str"] = "一个礼物盒"
+            },
+            ["fwd_in_pdt_item_ice_core"] = {
+                ["name"] = "极冰冷核",
+                ["inspect_str"] = "这里面封存着寒冷"
+            },
+            ["fwd_in_pdt_item_flame_core"] = {
+                ["name"] = "炽焰光核",
+                ["inspect_str"] = "这里面封存着火焰"
             },
             ["fwd_in_pdt_item_jade_coin_green"] = {
                 ["name"] = "玉龙币·翠",

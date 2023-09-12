@@ -53,6 +53,8 @@ local function fn()
     -- local swap_data = {sym_build = "swap_nightmaresword", bank = "nightmaresword"}
     -- MakeInventoryFloatable(inst, "med", 0.05, {1.0, 0.4, 1.0}, true, -17.5, swap_data)
 
+    MakeInventoryFloatable(inst, "med", 0.05, {1, 0.4, 1.0}, true, -17.5)
+
     inst.entity:SetPristine()
 
     if not TheWorld.ismastersim then

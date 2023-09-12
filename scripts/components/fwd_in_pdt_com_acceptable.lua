@@ -21,8 +21,8 @@
 
 -- 常用API:
 -- 【可选】 fwd_in_pdt_com_acceptable:SetCanAccept(flag)  -- 设置是否可以使用本组件交互 ，默认可以。
--- 【必须】 fwd_in_pdt_com_acceptable:SetTestFn(fn)       -- fn(inst,doer,right_click)  
--- 【必须】 fwd_in_pdt_com_acceptable:SetOnAcceptFn(fn)   -- fn(inst,doer)
+-- 【必须】 fwd_in_pdt_com_acceptable:SetTestFn(fn)       -- fn(inst,item,doer,right_click)  
+-- 【必须】 fwd_in_pdt_com_acceptable:SetOnAcceptFn(fn)   -- fn(inst,item,doer)
 -- 【可选】 fwd_in_pdt_com_acceptable:SetSGAction(str)    -- 设置交互动作。 --- SGWilson 里面的。默认为 "give"
 -- 【可选】 fwd_in_pdt_com_acceptable:SetActionDisplayStr(index_str,action_name)  -- 设置显示的动作文本。
 -- 【可选】 fwd_in_pdt_com_acceptable:SetPreActionFn(fn)  -- fn(inst,item,doer) 动作执行前的预执行函数。server端 和 client端 都会执行

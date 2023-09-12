@@ -7,6 +7,11 @@ TUNING["Forward_In_Predicament.Config"].UI_FX = GetModConfigData("UI_FX")     --
 
 
 
+TUNING["Forward_In_Predicament.Config"].Element_Core_Probability = GetModConfigData("Element_Core_Probability")     --- UI的动画特效
+
+
+
+
 
 
 -- TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE = true	

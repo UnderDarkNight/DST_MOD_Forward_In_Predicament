@@ -25,6 +25,12 @@ local files_name = {
 	-- 02_fwd_in_pdt_materials
 		"fwd_in_pdt_equipment_blazing_nightmaresword",			--- 炽热影刀
 		"fwd_in_pdt_equipment_frozen_nightmaresword",			--- 极寒影刀
+		"fwd_in_pdt_equipment_blazing_hambat",					--- 炽热火腿
+		"fwd_in_pdt_equipment_frozen_hambat",					--- 极寒火腿
+		"fwd_in_pdt_equipment_blazing_spear",					--- 炽热长矛
+		"fwd_in_pdt_equipment_frozen_spear",					--- 极寒火腿
+
+		"fwd_in_pdt_equipment_repair_staff",					--- 修复法杖
 		
 
 

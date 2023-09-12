@@ -412,7 +412,7 @@ nil,
                     if child then
 
                         local attach_succeed_flag = true    --- 预添加检测
-                        if child.PreAttach then
+                        if child.PreAttach then             --- 重复不检测
                             child.com = self
                             child.player = self.inst
                             attach_succeed_flag = child:PreAttach(self) or false
