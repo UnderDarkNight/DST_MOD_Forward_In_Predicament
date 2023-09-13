@@ -138,7 +138,16 @@ AddClassPostConstruct("widgets/itemtile",function(self)
                 if cmd_table.hide_image then    --- 隐藏旧图标
                     -- self.image:Hide()
                     self.image:SetTexture("images/inventoryimages/fwd_in_pdt_empty_icon.xml","fwd_in_pdt_empty_icon.tex","fwd_in_pdt_empty_icon.tex")
-                    self.__fwd_in_pdt_fx:MoveToBack()
+                    self.__fwd_in_pdt_fx:MoveToFront()
+                    -- if self.spoilage then   ------  新鲜度
+                    --     self.spoilage:MoveToBack()
+                    -- end
+                    if self.quantity then
+                        self.quantity:MoveToFront() --- 叠堆数字前置
+                    end
+                    if self.percent then
+                        self.percent:MoveToFront()  --- 百分比数字前置
+                    end
                 end
                 if cmd_table.MoveToBack then    --- 移动特效图层
                     self.__fwd_in_pdt_fx:MoveToBack()

@@ -16,7 +16,16 @@ local Prefabs_addr_base = string.sub(temp_addr,1,temp_str_index2) .. "/"    --- 
 
 -- local Prefabs_addr_base = "scripts/prefabs/05_fwd_in_pdt_foods_cooked/"
 local prefabs_name_list = {
-    -- "00_gift_pack",
+    "01_mixed_potato_soup",                          -- 疙瘩汤
+    "02_orange_with_honey",                          -- 蜂蜜蒸橙
+    "03_scrambled_eggs_with_tomatoes",               -- 番茄炒蛋
+    "04_eggplant_casserole",                         -- 茄子盒
+    "05_gifts_of_nature",                            -- 自然的馈赠
+    "06_snake_skin_jelly",                           -- 蛇皮冻
+    "07_atractylodes_macrocephala_pills",            -- 苍术药丸
+    "08_pinellia_ternata_pills",                     -- 半夏药丸
+    "09_aster_tataricus_l_f_pills",                  -- 紫苑药丸
+    "10_red_mushroom_soup",                          -- 红伞伞蘑菇汤
 }
 
 ---------------------------------------------------------------------------

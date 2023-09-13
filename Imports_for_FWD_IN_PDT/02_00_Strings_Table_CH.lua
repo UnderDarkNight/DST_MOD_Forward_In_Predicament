@@ -132,6 +132,46 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
         ---- 04_fwd_in_pdt_foods
         --------------------------------------------------------------------
         ---- 05_fwd_in_pdt_foods_cooked
+            ["fwd_in_pdt_food_mixed_potato_soup"] = {
+                ["name"] = "疙瘩汤",
+                ["inspect_str"] = "一块一块像是疙瘩"
+            },
+            ["fwd_in_pdt_food_steamed_orange_with_honey"] = {
+                ["name"] = "蜂蜜蒸橙",
+                ["inspect_str"] = "橙子的香味伴随着浓甜的蜜糖"
+            },
+            ["fwd_in_pdt_food_scrambled_eggs_with_tomatoes"] = {
+                ["name"] = "番茄炒蛋",
+                ["inspect_str"] = "经典的番茄和鸡蛋组合"
+            },
+            ["fwd_in_pdt_food_eggplant_casserole"] = {
+                ["name"] = "茄子盒",
+                ["inspect_str"] = "经典的茄子料理"
+            },
+            ["fwd_in_pdt_food_gifts_of_nature"] = {
+                ["name"] = "自然的馈赠",
+                ["inspect_str"] = "各种自然食材混合烹饪而成"
+            },
+            ["fwd_in_pdt_food_snake_skin_jelly"] = {
+                ["name"] = "蛇皮冻",
+                ["inspect_str"] = "弹性很好，但是总感觉有一条蛇住在里面"
+            },
+            ["fwd_in_pdt_food_atractylodes_macrocephala_pills"] = {
+                ["name"] = "苍术药丸",
+                ["inspect_str"] = "能取出体内湿气，提高体温"
+            },
+            ["fwd_in_pdt_food_pinellia_ternata_pills"] = {
+                ["name"] = "半夏药丸",
+                ["inspect_str"] = "能抵御沙尘暴，降低体温"
+            },
+            ["fwd_in_pdt_food_aster_tataricus_l_f_pills"] = {
+                ["name"] = "紫苑药丸",
+                ["inspect_str"] = "可以治疗咳嗽和发烧"
+            },
+            ["fwd_in_pdt_food_red_mushroom_soup"] = {
+                ["name"] = "红伞伞蘑菇汤",
+                ["inspect_str"] = "这汤感觉很危险"
+            },
         --------------------------------------------------------------------
         ---- 06_fwd_in_pdt_containers
         --------------------------------------------------------------------
