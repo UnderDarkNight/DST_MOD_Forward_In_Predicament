@@ -77,9 +77,9 @@ local function fn()
             if inst:IsOnOcean(false) then       --- 如果在海里（不包括船）
                 -- inst.AnimState:Hide("SHADOW")
                 local x,y,z = inst.Transform:GetWorldPosition()
-                SpawnPrefab("fwd_in_pdt_fx_waterspout"):PushEvent("Set",{
+                SpawnPrefab("fwd_in_pdt_fx_splash_sink"):PushEvent("Set",{
                     pt = Vector3(x,0,z),
-                    scale = Vector3(0.5,0.5,0.5),
+                    -- scale = Vector3(0.3,0.3,0.3),
                 })
                 inst:Remove()
             else                                

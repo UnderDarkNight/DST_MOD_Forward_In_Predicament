@@ -126,9 +126,9 @@ local function fn()
                 -- self.com:DoDelta_Wellness(0.05)
                 delta_num = 0.05
             end
-            if self.com.DEBUGGING_MODE then
-                print("本周期 VC 值",value,"光环贡献了",delta_num)
-            end
+            -- if self.com.DEBUGGING_MODE then
+            --     print("本周期 VC 值",value,"光环贡献了",delta_num)
+            -- end
             self.com:DoDelta_Wellness(delta_num)
             self:Penalize_Player_By_Value(value)    --- 根据当前VC值 提供/移除惩罚
         end

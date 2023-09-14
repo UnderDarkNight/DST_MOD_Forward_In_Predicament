@@ -72,9 +72,9 @@ local function fn()
                     local the_max_num = self.com:Add("add_wellness_by_external.max_num",0)
                     the_max_num = math.clamp(the_max_num + 0.42, 0 , 20)
                     self.com:Set("add_wellness_by_external.max_num",the_max_num)
-                    if self.com.DEBUGGING_MODE then
-                        print("体质值 【直加】的上限 增加到 ",the_max_num)
-                    end
+                    -- if self.com.DEBUGGING_MODE then
+                    --     print("体质值 【直加】的上限 增加到 ",the_max_num)
+                    -- end
                 end)
             --------------------------------------------------------    
             ---- 回光返照CD天数初始化

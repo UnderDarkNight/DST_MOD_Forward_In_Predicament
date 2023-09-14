@@ -117,9 +117,9 @@ local function fn()
             else
                 delta_num = -0.36
             end
-            if self.com.DEBUGGING_MODE then
-                print("中毒值为",value,"光环贡献",delta_num)
-            end
+            -- if self.com.DEBUGGING_MODE then
+            --     print("中毒值为",value,"光环贡献",delta_num)
+            -- end
             self.com:DoDelta_Wellness(delta_num)
             self:Penalize_Player_By_Value(value)
         end

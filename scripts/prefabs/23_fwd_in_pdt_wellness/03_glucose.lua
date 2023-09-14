@@ -121,9 +121,9 @@ local function fn()
                 else
                     delta_num = -20/100
                 end
-                if self.com.DEBUGGING_MODE then
-                    print("本周期血糖值为",value,"贡献光环",delta_num)
-                end
+                -- if self.com.DEBUGGING_MODE then
+                --     print("本周期血糖值为",value,"贡献光环",delta_num)
+                -- end
                 self.com:DoDelta_Wellness(delta_num)
            -------------------------------------------------
                 self:Penalize_Player_By_Value(value)
