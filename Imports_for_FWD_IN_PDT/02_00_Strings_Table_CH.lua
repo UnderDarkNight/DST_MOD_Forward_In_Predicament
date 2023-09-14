@@ -130,6 +130,10 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             },
         --------------------------------------------------------------------
         ---- 04_fwd_in_pdt_foods
+            ["fwd_in_pdt_food_raw_milk"] = {
+                ["name"] = "生牛奶",
+                ["inspect_str"] = "从牛身上得到的"
+            },
         --------------------------------------------------------------------
         ---- 05_fwd_in_pdt_foods_cooked
             ["fwd_in_pdt_food_mixed_potato_soup"] = {
@@ -170,7 +174,65 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             },
             ["fwd_in_pdt_food_red_mushroom_soup"] = {
                 ["name"] = "红伞伞蘑菇汤",
-                ["inspect_str"] = "这汤感觉很危险"
+                ["inspect_str"] = "这汤感觉很危险",
+                ["special_action_str"] = "喂食",
+            },
+            ["fwd_in_pdt_food_green_mushroom_soup"] = {
+                ["name"] = "绿伞伞蘑菇汤",
+                ["inspect_str"] = "这汤感觉很危险",
+                ["special_action_str"] = "喂食",
+            },
+            ["fwd_in_pdt_food_tofu"] = {
+                ["name"] = "豆腐",
+                ["inspect_str"] = "这豆腐闪亮亮的"
+            },
+            ["fwd_in_pdt_food_stinky_tofu"] = {
+                ["name"] = "臭豆腐",
+                ["inspect_str"] = "这味道让人难以表达"
+            },
+            ["fwd_in_pdt_food_cooked_milk"] = {
+                ["name"] = "熟牛奶",
+                ["inspect_str"] = "煮过的牛奶味道就是香"
+            },
+            ["fwd_in_pdt_food_yogurt"] = {
+                ["name"] = "酸奶",
+                ["inspect_str"] = "酸酸的，挺好吃的"
+            },
+            ["fwd_in_pdt_food_coffee"] = {
+                ["name"] = "咖啡",
+                ["inspect_str"] = "提神醒脑"
+            },
+            ["fwd_in_pdt_food_saline_medicine"] = {
+                ["name"] = "生理盐水",
+                ["inspect_str"] = "医学用品"
+            },
+            ["fwd_in_pdt_food_yogurt_ice_cream"] = {
+                ["name"] = "酸奶冰淇淋",
+                ["inspect_str"] = "香甜味美"
+            },
+            ["fwd_in_pdt_food_mango_ice_drink"] = {
+                ["name"] = "杨枝甘露",
+                ["inspect_str"] = "充满芒果的香味"
+            },
+            ["fwd_in_pdt_food_cooked_rice"] = {
+                ["name"] = "白米饭",
+                ["inspect_str"] = "口感诱人"
+            },
+            ["fwd_in_pdt_food_bread"] = {
+                ["name"] = "面包",
+                ["inspect_str"] = "口感诱人"
+            },
+            ["fwd_in_pdt_food_thousand_year_old_egg"] = {
+                ["name"] = "皮蛋",
+                ["inspect_str"] = "感觉这蛋还活着"
+            },
+            ["fwd_in_pdt_food_congee_with_meat_and_thousand_year_old_eggs"] = {
+                ["name"] = "皮蛋肉粥",
+                ["inspect_str"] = "十分鲜美"
+            },
+            ["fwd_in_pdt_food_protein_powder"] = {
+                ["name"] = "蛋白质粉",
+                ["inspect_str"] = "健美人士的最爱"
             },
         --------------------------------------------------------------------
         ---- 06_fwd_in_pdt_containers

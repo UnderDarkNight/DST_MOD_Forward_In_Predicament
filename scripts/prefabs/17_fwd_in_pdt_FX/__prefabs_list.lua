@@ -20,6 +20,7 @@ local prefabs_name_list = {
     "02_fx_collapse",           --- 烟雾
     "03_recipe_funcion",        --- 函数符号
     "04_recipe_star",            --- 星星
+    "05_waterspout",            --- 水花爆炸
 }
 
 

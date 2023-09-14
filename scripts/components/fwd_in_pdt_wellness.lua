@@ -76,9 +76,9 @@ local fwd_in_pdt_wellness = Class(function(self, inst)
 
     ------ 预留个标记位，给打印测试。
     -- self.DEBUGGING_MODE = nil    
-    -- if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
-    --     self.DEBUGGING_MODE = true
-    -- end
+    if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
+        self.DEBUGGING_MODE = true
+    end
 
     self.DataTable = {}     -- 储存数据，带进存档
     self.TempData = {}      -- 临时数据

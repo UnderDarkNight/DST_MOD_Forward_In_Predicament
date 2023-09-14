@@ -117,8 +117,110 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             },
         --------------------------------------------------------------------
         ---- 04_fwd_in_pdt_foods
+            ["fwd_in_pdt_food_raw_milk"] = {
+                ["name"] = "Raw Milk",
+                ["inspect_str"] = "From the cow"
+            },
         --------------------------------------------------------------------
         ---- 05_fwd_in_pdt_foods_cooked
+            ["fwd_in_pdt_food_mixed_potato_soup"] = {
+                ["name"] = "Mix Potato Soup",
+                ["inspect_str"] = "Pieces of it look like lumps."
+            },
+            ["fwd_in_pdt_food_steamed_orange_with_honey"] = {
+                ["name"] = "Steamed Orange With Honey",
+                ["inspect_str"] = "The scent of oranges is accompanied by the sweetness of honey"
+            },
+            ["fwd_in_pdt_food_scrambled_eggs_with_tomatoes"] = {
+                ["name"] = "Screamble Eggs With Tomatoes",
+                ["inspect_str"] = "The classic tomato and egg combo"
+            },
+            ["fwd_in_pdt_food_eggplant_casserole"] = {
+                ["name"] = "Eggplant Casserole",
+                ["inspect_str"] = "Classic Eggplant Cuisine"
+            },
+            ["fwd_in_pdt_food_gifts_of_nature"] = {
+                ["name"] = "Gifts Of Nature",
+                ["inspect_str"] = "Cooked with a mixture of natural ingredients"
+            },
+            ["fwd_in_pdt_food_snake_skin_jelly"] = {
+                ["name"] = "Snake Skin Jelly",
+                ["inspect_str"] = "It's very flexible, but it always feels like there's a snake living in it"
+            },
+            ["fwd_in_pdt_food_atractylodes_macrocephala_pills"] = {
+                ["name"] = "Atractylodes Macrocephala Pills",
+                ["inspect_str"] = "Raising body temperature and removing moisture"
+            },
+            ["fwd_in_pdt_food_pinellia_ternata_pills"] = {
+                ["name"] = "Pinellia Ternata Pills",
+                ["inspect_str"] = "It protects against sandstorms and lowers body temperature."
+            },
+            ["fwd_in_pdt_food_aster_tataricus_l_f_pills"] = {
+                ["name"] = "Aster Tataricus L.F Pills",
+                ["inspect_str"] = "Can treat coughs and fevers"
+            },
+            ["fwd_in_pdt_food_red_mushroom_soup"] = {
+                ["name"] = "Red Mushroom Soup",
+                ["inspect_str"] = "This soup feels dangerous.",
+                ["special_action_str"] = "Feed",
+            },
+            ["fwd_in_pdt_food_green_mushroom_soup"] = {
+                ["name"] = "Green Mushroom Soup",
+                ["inspect_str"] = "This soup feels dangerous.",
+                ["special_action_str"] = "Feed",
+            },
+            ["fwd_in_pdt_food_tofu"] = {
+                ["name"] = "Tofu",
+                ["inspect_str"] = "This tofu is shiny."
+            },
+            ["fwd_in_pdt_food_stinky_tofu"] = {
+                ["name"] = "Stinky Tofu",
+                ["inspect_str"] = "It's an indescribable taste."
+            },
+            ["fwd_in_pdt_food_cooked_milk"] = {
+                ["name"] = "Cooked Milk",
+                ["inspect_str"] = "Boiled milk tastes so good."
+            },
+            ["fwd_in_pdt_food_yogurt"] = {
+                ["name"] = "Yogurt",
+                ["inspect_str"] = "It's sour and tasty."
+            },
+            ["fwd_in_pdt_food_coffee"] = {
+                ["name"] = "Coffee",
+                ["inspect_str"] = "refresh and clear the mind"
+            },
+            ["fwd_in_pdt_food_saline_medicine"] = {
+                ["name"] = "Saline Medicine",
+                ["inspect_str"] = "Medical supplies"
+            },
+            ["fwd_in_pdt_food_yogurt_ice_cream"] = {
+                ["name"] = "Yogurt Ice Cream",
+                ["inspect_str"] = "sweet and savory"
+            },
+            ["fwd_in_pdt_food_mango_ice_drink"] = {
+                ["name"] = "Mango Ice Drink",
+                ["inspect_str"] = "Filled with the scent of mango"
+            },
+            ["fwd_in_pdt_food_cooked_rice"] = {
+                ["name"] = "Cooked Rice",
+                ["inspect_str"] = "tantalizing taste"
+            },
+            ["fwd_in_pdt_food_bread"] = {
+                ["name"] = "Bread",
+                ["inspect_str"] = "tantalizing taste"
+            },
+            ["fwd_in_pdt_food_thousand_year_old_egg"] = {
+                ["name"] = "Thousand-Year-Old Egg",
+                ["inspect_str"] = "It feels like the egg is still alive."
+            },
+            ["fwd_in_pdt_food_congee_with_meat_and_thousand_year_old_eggs"] = {
+                ["name"] = "Congee With Meat & Thousand-Year-Old Eggs",
+                ["inspect_str"] = "It's very fresh."
+            },
+            ["fwd_in_pdt_food_protein_powder"] = {
+                ["name"] = "Protein Powder",
+                ["inspect_str"] = "A favorite among bodybuilders"
+            },
         --------------------------------------------------------------------
         ---- 06_fwd_in_pdt_containers
         --------------------------------------------------------------------

@@ -16,7 +16,7 @@ local Prefabs_addr_base = string.sub(temp_addr,1,temp_str_index2) .. "/"    --- 
 
 -- local Prefabs_addr_base = "scripts/prefabs/04_fwd_in_pdt_foods/"
 local prefabs_name_list = {
-    -- "00_gift_pack",
+    "01_raw_milk",                          --- 生牛奶
 }
 
 

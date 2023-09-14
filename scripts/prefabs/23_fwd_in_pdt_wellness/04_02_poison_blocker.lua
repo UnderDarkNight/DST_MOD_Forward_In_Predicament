@@ -74,8 +74,10 @@ local function fn()
 
             ----------------------------------------
             --- 蛇毒计数器。蛇毒里的 inst:PreAttach() 调用检查
-                self.com:Add("snake_poison_blocker_update_times",-1)
-
+                local snake_poison_blocker_times = self.com:Add("snake_poison_blocker_update_times",-1)
+                if snake_poison_blocker_times < -10 then
+                    self.com:Set("snake_poison_blocker_update_times",-1)
+                end
 
         end
     ------------------------------------------------------------------------------

@@ -99,27 +99,118 @@ AddPlayerPostInit(function(inst)
 
     ----------------------------------------------------------------------------------------------------------
     -----------  吃对应的东西后执行的事件
-        inst:ListenForEvent("oneat",function(inst,_table)
-            if not (_table and _table.food) then
-                return
+        local cooking = require("cooking")
+        local cooking_ingredients = cooking.ingredients
+        -------------- 血糖值
+            local function GetGluByFood(food)
+                local num = 0
+                local food_base_prefab = food.nameoverride or food.prefab 
+                if food:HasTag("honeyed") then
+                    num = 10
+                elseif cooking_ingredients[food_base_prefab] and cooking_ingredients[food_base_prefab].tags and cooking_ingredients[food_base_prefab].tags["sweetener"] then
+                    num = 10
+                elseif food.components.edible and food.components.edible.honeyvalue then
+                    num = food.components.edible.honeyvalue
+                elseif cooking_ingredients[food_base_prefab] and cooking_ingredients[food_base_prefab].tags and cooking_ingredients[food_base_prefab].tags["fruit"] then
+                    num = 5
+                end
+                return num
             end
+        --------------- VC 值
+            local function GetVcByFood(food)
+                local num = 0
+                local food_base_prefab = food.nameoverride or food.prefab 
+                -------------------------------------------------------------------
+                local prefab_list_with_vc_value = {
+                    ["tomato"] = 20,                     --- 番茄
+                    ["tomato_cooked"] = 20,              --- 烤番茄
+                    ["pomegranate"] = 20,                --- 石榴
+                    ["pomegranate_cooked"] = 20,         --- 烤石榴
+                    ["pineananas"] = 20,                 --- 松萝
+                    ["pineananas_cooked"] = 20,          --- 烤松萝
+                    ["dish_murmurananas"] = 30,          --- 松萝咕咾肉
+                    ["dish_sosweetjarkfruit"] = 40,          --- 甜到裂开的松萝蜜
+                }
+                if prefab_list_with_vc_value[food_base_prefab] then
+                    num = prefab_list_with_vc_value[food_base_prefab]
+                end
+                -------------------------------------------------------------------
 
-            local feeder = _table.feeder        --- 其他人喂食
-            local food = _table.food            --- 食物 inst
-            local food_base_prefab = food.nameoverride or food.prefab  --- --- 得到加料食物的基础名字
 
+                return num
+            end
+        --------------- 特殊食物特殊事件
+            local function special_event_by_food(inst,food)
+                local food_base_prefab = food.nameoverride or food.prefab  --- --- 得到加料食物的基础名字
+                local food_events_by_prefab = {
+                        ["taffy"] = function(inst)      --- 太妃糖移除蜜蜂毒
+                            inst.components.fwd_in_pdt_wellness:Remove_Debuff("fwd_in_pdt_welness_bee_poison")
+                        end,
+                }
+                if food_events_by_prefab[food_base_prefab] then
+                    food_events_by_prefab[food_base_prefab](inst)
+                end
+            end
+        ---------------- 监听玩家吃食物的事件
+            inst:ListenForEvent("oneat",function(inst,_table)
+                if not (_table and _table.food) then
+                    return
+                end
 
-            
+                local feeder = _table.feeder        --- 其他人喂食
+                local food = _table.food            --- 食物 inst
+                local food_base_prefab = food.nameoverride or food.prefab  --- --- 得到加料食物的基础名字
 
-
-        end)
+                ----------- 血糖值
+                    local glu_delta_num = GetGluByFood(food)
+                    if glu_delta_num ~= 0 then
+                        inst.components.fwd_in_pdt_wellness:DoDelta_Glucose(glu_delta_num)
+                    end
+                ----------- vc 值
+                    local vc_delta_num = GetVcByFood(food)
+                    if vc_delta_num ~= 0 then
+                        inst.components.fwd_in_pdt_wellness:DoDelta_Vitamin_C(vc_delta_num)
+                    end
+                ----------- 特殊事件
+                    special_event_by_food(inst, food)
+                ---------- 刷新一下
+                    inst.components.fwd_in_pdt_wellness:ForceRefresh()
+            end)
 
 
 
 
 
     ----------------------------------------------------------------------------------------------------------
-    -----------  吃对应的东西后执行的事件
+    -----------  季节变换后触发的事件    
+            inst:WatchWorldState("cycles",function()
+                inst:DoTaskInTime(math.random(100),function()
+                    if TheWorld.state.isspring and TheWorld.state.seasonprogress <= 2 then
+                        --- 春天的前两天
+                        if math.random(1000) < 200 then -- 20% 得发烧
+                            inst.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_fever")
+                        end
+                        if math.random(1000) < 200 then -- 20% 得咳嗽
+                            inst.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_cough")
+                        end
 
+                    elseif TheWorld.state.iswinter and TheWorld.state.seasonprogress <= 2 then
+                        --- 冬天的前两天
+                        if math.random(1000) < 200 then -- 20% 得发烧
+                            inst.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_fever")
+                        end
+                        if math.random(1000) < 200 then -- 20% 得咳嗽
+                            inst.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_cough")
+                        end
+                    end
+
+                end)
+            end)
+    ----------------------------------------------------------------------------------------------------------
+    ----------- 官方道具物品使用
+            
+    ----------------------------------------------------------------------------------------------------------
+    ----------------------------------------------------------------------------------------------------------
+    ----------------------------------------------------------------------------------------------------------
     ----------------------------------------------------------------------------------------------------------
 end)

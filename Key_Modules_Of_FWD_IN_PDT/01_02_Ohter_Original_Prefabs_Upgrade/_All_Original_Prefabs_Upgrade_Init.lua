@@ -13,3 +13,7 @@ modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/03_ham
 modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/04_green_staff.lua")    --- 升级 分解法杖 
 
 modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/05_star_moon_staffs_upgreade.lua")    --- 升级 唤月/唤星 法杖 
+
+modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/06_boss_toadstool_upgrade.lua")    --- 修改 蟾蜍BOSS
+
+modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/07_spidergland.lua")    --- 修改 蜘蛛腺体

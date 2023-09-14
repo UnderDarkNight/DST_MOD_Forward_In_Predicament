@@ -31,7 +31,11 @@ local prefabs_name_list = {
     "09_cough",                   -- 咳嗽
     "10_fever",                   -- 发烧
 
-
+    "11_01_food_effect_green_mushroom_soup",            -- 绿蘑菇汤 的debuff
+    "11_02_food_effect_coffee",                         -- 咖啡 的buff
+    "11_03_food_effect_mango_ice_drink",                -- 杨枝甘露 的 buff
+    "11_04_food_effect_thousand_year_old_egg",          -- 皮蛋 的 buff
+    "11_05_food_effect_protein_powder",                 -- 蛋白质粉 的 buff
 
 
 }

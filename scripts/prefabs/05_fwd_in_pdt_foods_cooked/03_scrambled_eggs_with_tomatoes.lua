@@ -1,6 +1,6 @@
 --------------------------------------------------------------------------
 --- 食物
---- 蜂蜜蒸橙
+--- 番茄炒蛋
 --------------------------------------------------------------------------
 
 
@@ -46,20 +46,19 @@ local function fn()
     inst:AddComponent("edible") -- 可食物组件
     inst.components.edible.foodtype = FOODTYPE.VEGGIE
     inst.components.edible:SetOnEatenFn(function(inst,eater)
-        -- if eater and eater:HasTag("player") then
-        --     ---- 给计时器添加 时间，超过1天的算一天。
-        --     if eater.components.npng_database:Add("npng_debuff_vitamin_c_retention_buff",480) > 480 then
-        --         eater.components.npng_database:Set("npng_debuff_vitamin_c_retention_buff",480) --- 
-        --     end
-        --     ---- 上倒计时debuff
-        --     if not eater:HasDebuff("npng_debuff_vitamin_c_retention_buff") then
-        --         eater:AddDebuff("npng_debuff_vitamin_c_retention_buff","npng_debuff_vitamin_c_retention_buff")
-        --     end
-        -- end
+        if eater and eater:HasTag("player") then
+            -- 一天内VC不降低
+            if eater.components.fwd_in_pdt_wellness then
+                local vc_inst = eater.components.fwd_in_pdt_wellness:Get_Debuff("fwd_in_pdt_wellness_vitamin_c")
+                if vc_inst then
+                    vc_inst:Set_Value_Block_Go_Down_Update_Times(100)
+                end
+            end
+        end
     end)
 
     inst:AddComponent("perishable") -- 可腐烂的组件
-    inst.components.perishable:SetPerishTime(TUNING.PERISH_SLOW)
+    inst.components.perishable:SetPerishTime(TUNING.PERISH_TWO_DAY)
     inst.components.perishable:StartPerishing()
     inst.components.perishable.onperishreplacement = "spoiled_food" -- 腐烂后变成腐烂食物
 
