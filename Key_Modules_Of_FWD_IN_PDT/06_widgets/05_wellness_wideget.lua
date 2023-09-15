@@ -28,16 +28,32 @@ local TEMPLATES = require "widgets/redux/templates"
                     inst.HUD.fwd_in_pdt_wellness.y_percent = pt_percent_of_screen.y_percent
                     inst.HUD.fwd_in_pdt_wellness:LocationScaleFix()
                 end
+
+                ----- 
+                local wellness_main_icon_hide_flag = inst.replica.fwd_in_pdt_func:Get_Cross_Archived_Data("wellness_main_icon_hide_flag")
+                if wellness_main_icon_hide_flag then
+                    inst.HUD.fwd_in_pdt_wellness:HideMainIcon(true)
+                else
+                    inst.HUD.fwd_in_pdt_wellness:HideMainIcon(false)                    
+                end
+
             end
         end)
 
         --------- 监听 体质条 的移动和储存数据到跨存档保存表
         inst:DoTaskInTime(1,function()
             if inst.HUD and inst.HUD.fwd_in_pdt_wellness then
-                inst:ListenForEvent("fwd_in_pdt_wellness_bars.save_pt_percent",function(_,pt)
-                    if pt and pt.x_percent then
-                        inst.replica.fwd_in_pdt_func:Set_Cross_Archived_Data("wellness_bars_screen_xy",pt)
+                inst:ListenForEvent("fwd_in_pdt_wellness_bars.save_cmd",function(_,cmd_table)
+                    if type(cmd_table) ~= "table" then
+                        return
                     end
+                    if cmd_table.pt and cmd_table.pt.x_percent then
+                        inst.replica.fwd_in_pdt_func:Set_Cross_Archived_Data("wellness_bars_screen_xy",cmd_table.pt)
+                    end
+                    if cmd_table.HideMainIcon ~= nil then
+                        inst.replica.fwd_in_pdt_func:Set_Cross_Archived_Data("wellness_main_icon_hide_flag",cmd_table.HideMainIcon)
+                    end
+
                 end)
             end
         end)
@@ -113,9 +129,8 @@ AddClassPostConstruct("widgets/controls", function(self, owner)
                                             root.x_percent = x/scrnw
                                             root.y_percent = y/scrnh
 
-                                            owner:PushEvent("fwd_in_pdt_wellness_bars.save_pt_percent",{    --- 发送储存坐标。
-                                                x_percent = root.x_percent,
-                                                y_percent = root.y_percent,
+                                            owner:PushEvent("fwd_in_pdt_wellness_bars.save_cmd",{    --- 发送储存坐标。
+                                                pt = {x_percent = root.x_percent,y_percent = root.y_percent},
                                             })
 
                                         end
@@ -131,7 +146,10 @@ AddClassPostConstruct("widgets/controls", function(self, owner)
                 wellness_icon:GetAnimState():PlayAnimation("icon_wellness",true)
                 wellness_icon:SetPosition(0,0)
                 wellness_icon:Show()
+                wellness_icon.show_flag = true
                 wellness_icon:SetScale(main_scale_num,main_scale_num,main_scale_num)
+        -----------------------------------------------------------------------------------------------------------------
+
         -----------------------------------------------------------------------------------------------------------------
         ----- 体质值条
                 local wellness_bar = root:AddChild(UIAnim())
@@ -166,6 +184,40 @@ AddClassPostConstruct("widgets/controls", function(self, owner)
                     wellness_up_down_icon:GetAnimState():PlayAnimation("up")
                     wellness_up_down_icon:Hide()
                     wellness_up_down_icon:SetPosition(10,-30)
+                ------------------------------------------------------
+                ---- 体质条按钮 ----- 隐藏主图标的按钮
+                    function root:HideMainIcon(flag)
+                        if flag then
+                            wellness_icon:Hide()
+                            wellness_icon.show_flag = false
+                            button:Hide()
+                            wellness_up_down_icon:SetPosition(15,0)
+
+                        else
+                            wellness_icon:Show()
+                            wellness_icon.show_flag = true
+                            button:Show()
+                            wellness_up_down_icon:SetPosition(10,-30)
+                        end
+                    end
+                    wellness_bar.OnMouseButton__fwd_in_pdt_old = wellness_bar.OnMouseButton
+                    wellness_bar.OnMouseButton = function(self,t_button,down,x,y)
+                        -- print("test ++ ",t_button,down,x,y)
+                        if t_button == MOUSEBUTTON_LEFT and down == false then
+                            if wellness_icon.show_flag then
+                                root:HideMainIcon(true)
+                                owner:PushEvent("fwd_in_pdt_wellness_bars.save_cmd",{
+                                    HideMainIcon = true
+                                })
+                            else
+                                root:HideMainIcon(false)
+                                owner:PushEvent("fwd_in_pdt_wellness_bars.save_cmd",{
+                                    HideMainIcon = false
+                                })
+                            end
+                        end
+                        return self:OnMouseButton__fwd_in_pdt_old(t_button,down,x,y)
+                    end
                 ------------------------------------------------------
 
                 function owner.HUD.fwd_in_pdt_wellness:SetCurrent_Wellness(num,percent,max) 
