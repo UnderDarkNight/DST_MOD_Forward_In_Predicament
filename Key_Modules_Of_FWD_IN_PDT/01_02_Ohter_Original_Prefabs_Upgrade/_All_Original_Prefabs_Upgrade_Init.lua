@@ -17,3 +17,5 @@ modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/05_sta
 modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/06_boss_toadstool_upgrade.lua")    --- 修改 蟾蜍BOSS
 
 modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/07_spidergland.lua")    --- 修改 蜘蛛腺体
+
+modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/08_rock_flintless.lua")    --- 修改 岩石，可以挖到雄黄矿

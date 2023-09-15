@@ -17,10 +17,12 @@ local files_name = {
 		"fwd_in_pdt_item_jade_coin_green"	, 					--- 玉龙币·翠
 		"fwd_in_pdt_item_jade_coin_black"	, 					--- 玉龙币·墨
 		"fwd_in_pdt_item_transport_stone"	, 					--- 传送石
+		"fwd_in_pdt_item_insulin_syringe"	, 					--- 胰岛素注射器
 	---------------------------------------------------------------------------------------
 	-- 02_fwd_in_pdt_materials
 		"fwd_in_pdt_material_tree_resin",						--- 树脂
 		"fwd_in_pdt_material_snake_skin",						--- 蛇皮
+		"fwd_in_pdt_material_realgar",							--- 雄黄矿
 	---------------------------------------------------------------------------------------
 	-- 03_fwd_in_pdt_equipments
 		"fwd_in_pdt_equipment_blazing_nightmaresword",			--- 炽热影刀
@@ -34,6 +36,7 @@ local files_name = {
 	---------------------------------------------------------------------------------------
 	-- 04_fwd_in_pdt_foods
 		"fwd_in_pdt_food_raw_milk",								--- 生牛奶
+		"fwd_in_pdt_food_andrographis_paniculata_botany", 	    --- 雄黄饮剂
 
 	---------------------------------------------------------------------------------------
 	-- 05_fwd_in_pdt_foods_cooked

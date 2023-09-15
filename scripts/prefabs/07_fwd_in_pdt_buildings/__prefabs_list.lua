@@ -21,6 +21,8 @@ local prefabs_name_list = {
     "03_materials_shop",      --- 材料商店
     "04_cuisines_shop",      --- 美食店
     "05_hotel",             -- 旅馆
+
+    "06_medical_check_up_machine",             -- 健康检查机
 }
 
 

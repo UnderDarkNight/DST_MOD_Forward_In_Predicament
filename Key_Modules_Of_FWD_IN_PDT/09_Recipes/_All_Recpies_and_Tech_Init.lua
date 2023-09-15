@@ -5,6 +5,8 @@
 
 modimport("Key_Modules_Of_FWD_IN_PDT/09_Recipes/01_buildings.lua")    --- 添加建筑类
 
+modimport("Key_Modules_Of_FWD_IN_PDT/09_Recipes/02_medical_check_up_machine.lua")    --- 健康检查机及其科技树
+
 
 
 

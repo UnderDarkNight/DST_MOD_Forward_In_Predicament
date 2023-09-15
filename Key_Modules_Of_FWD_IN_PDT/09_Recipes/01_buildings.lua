@@ -22,27 +22,50 @@ STRINGS.UI.CRAFTING_FILTERS["FWD_IN_PDT_BUILDINGS"] = GetStringsTable("fwd_in_pd
 
 
 
---------------------------------------------------------------------------------------------------------------------------------------------
----- 拟态墙-草
 -- --------------------------------------------------------------------------------------------------------------------------------------------
-AddRecipeToFilter("fwd_in_pdt_building_mock_wall_grass_item",string.upper("FWD_IN_PDT_BUILDINGS"))     ---- 添加物品到目标标签
-GLOBAL.STRINGS.NAMES[string.upper("fwd_in_pdt_building_mock_wall_grass_item")] =  GetStringsTable("fwd_in_pdt_building_mock_wall_grass").name   -- -- 制造栏里展示的名字
-GLOBAL.STRINGS.RECIPE_DESC[string.upper("fwd_in_pdt_building_mock_wall_grass_item")] = GetStringsTable("fwd_in_pdt_building_mock_wall_grass").recipe_desc  -- --  制造栏里展示的说明
-AddRecipe2(
-    "fwd_in_pdt_building_mock_wall_grass_item",            --  --  inst.prefab  实体名字
-    {Ingredient("log", 1)}, 
-    TECH.NONE, --- TECH.NONE
-    {
-        -- nounlock=true,
-        -- no_deconstruction=true,
-        -- builder_tag = "npng_tag.has_green_amulet",    --------- -- 【builder_tag】只给指定tag的角色能制造这件物品，角色添加/移除 tag 都能立马解锁/隐藏该物品
-        -- placer = "fwd_in_pdt_building_mock_wall_grass_item",                       -------- 建筑放置器        
-        atlas = "images/inventoryimages1.xml",
-        image = "dug_grass.tex",
-    },
-    {string.upper("FWD_IN_PDT_BUILDINGS")}
-)
-RemoveRecipeFromFilter("fwd_in_pdt_building_mock_wall_grass_item","MODS")                       -- -- 在【模组物品】标签里移除这个。
+-- ---- 拟态墙-草
+-- -- --------------------------------------------------------------------------------------------------------------------------------------------
+-- AddRecipeToFilter("fwd_in_pdt_building_mock_wall_grass_item",string.upper("FWD_IN_PDT_BUILDINGS"))     ---- 添加物品到目标标签
+-- GLOBAL.STRINGS.NAMES[string.upper("fwd_in_pdt_building_mock_wall_grass_item")] =  GetStringsTable("fwd_in_pdt_building_mock_wall_grass").name   -- -- 制造栏里展示的名字
+-- GLOBAL.STRINGS.RECIPE_DESC[string.upper("fwd_in_pdt_building_mock_wall_grass_item")] = GetStringsTable("fwd_in_pdt_building_mock_wall_grass").recipe_desc  -- --  制造栏里展示的说明
+-- AddRecipe2(
+--     "fwd_in_pdt_building_mock_wall_grass_item",            --  --  inst.prefab  实体名字
+--     {Ingredient("log", 1)}, 
+--     TECH.NONE, --- TECH.NONE
+--     {
+--         -- nounlock=true,
+--         -- no_deconstruction=true,
+--         -- builder_tag = "npng_tag.has_green_amulet",    --------- -- 【builder_tag】只给指定tag的角色能制造这件物品，角色添加/移除 tag 都能立马解锁/隐藏该物品
+--         -- placer = "fwd_in_pdt_building_mock_wall_grass_item",                       -------- 建筑放置器        
+--         atlas = "images/inventoryimages1.xml",
+--         image = "dug_grass.tex",
+--     },
+--     {string.upper("FWD_IN_PDT_BUILDINGS")}
+-- )
+-- RemoveRecipeFromFilter("fwd_in_pdt_building_mock_wall_grass_item","MODS")                       -- -- 在【模组物品】标签里移除这个。
+
+
+
+
+-- --------------------------------------------------------------------------------------------------------------------------------------------
+-- ---- 健康检查机
+-- -- --------------------------------------------------------------------------------------------------------------------------------------------
+-- -- AddRecipeToFilter("fwd_in_pdt_building_medical_check_up_machine","PROTOTYPERS")     ---- 添加物品到目标标签
+-- AddRecipe2(
+--     "fwd_in_pdt_building_medical_check_up_machine",            --  --  inst.prefab  实体名字
+--     { Ingredient("cutstone", 2),Ingredient("transistor", 2),Ingredient("boards", 2) }, 
+--     TECH.SCIENCE_TWO, --- TECH.NONE
+--     {
+--         -- nounlock=true,
+--         -- no_deconstruction=true,
+--         -- builder_tag = "npng_tag.has_green_amulet",    --------- -- 【builder_tag】只给指定tag的角色能制造这件物品，角色添加/移除 tag 都能立马解锁/隐藏该物品
+--         placer = "fwd_in_pdt_building_medical_check_up_machine_placer",                       -------- 建筑放置器        
+--         atlas = "images/map_icons/fwd_in_pdt_building_medical_check_up_machine.xml",
+--         image = "fwd_in_pdt_building_medical_check_up_machine.tex",
+--     },
+--     {"PROTOTYPERS","RESTORATION"}
+-- )
+-- RemoveRecipeFromFilter("fwd_in_pdt_building_medical_check_up_machine","MODS")                       -- -- 在【模组物品】标签里移除这个。
 
 
 

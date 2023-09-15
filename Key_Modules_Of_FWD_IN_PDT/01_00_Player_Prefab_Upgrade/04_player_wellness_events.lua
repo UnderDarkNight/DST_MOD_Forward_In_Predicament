@@ -40,7 +40,7 @@ AddPlayerPostInit(function(inst)
                         inst.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_bee_poison")                    
                     end,
                     ["bee"] = function()        --- 普通蜜蜂攻击 10% 概率中蜜蜂毒
-                        if math.random(100) <= 10 then
+                        if math.random(1000) <= 100 then
                             inst.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_bee_poison")                        
                         end
                     end,
@@ -60,13 +60,17 @@ AddPlayerPostInit(function(inst)
                         inst.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_frog_poison")                    
                     end,
                     ["spider"] = function()    
-                        --[[
-                            被除了一级蜘蛛之外的蜘蛛攻击50%中毒
+                        --[[                            
+                            普通的蜘蛛 ： 0.5 %
+                            其他蜘蛛   ： 5 %
                         ]]--
                         if attacker.prefab == "spider" then
+                            if math.random(1000) <= 5 then
+                                inst.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_spider_poison")
+                            end
                             return
                         end
-                        if math.random(100) < 50 then
+                        if math.random(1000) <= 50 then
                             inst.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_spider_poison")
                         end
                     end,

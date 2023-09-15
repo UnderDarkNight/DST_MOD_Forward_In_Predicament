@@ -86,7 +86,7 @@ local fwd_in_pdt_wellness = Class(function(self, inst)
     self.debuffs = {}       -- 储存 debuff_inst , index 为 prefab
     self.BeingPaused = true  -- 标记 Update() 是否暂停了。
 
-    self.Show_Hud_Others = true     ---- HUD 显示其他条的标记位。
+    self.Show_Hud_Others = false     ---- HUD 显示其他条的标记位。
 
     ---- 最大值
         self.max = {
@@ -536,15 +536,16 @@ nil,
             end  
 
         --- 获取数据下发更新
-            local datas_table = self:Get_Datas_Table_For_Replica()
-            self.inst.replica.fwd_in_pdt_wellness:Send_Datas(datas_table)
-            -- self:Refresh()
+            -- local datas_table = self:Get_Datas_Table_For_Replica()
+            -- datas_table["Temp_Force_Flag"] = math.random(10000)
+            -- self.inst.replica.fwd_in_pdt_wellness:Send_Datas(datas_table)
+            self:Refresh()
     end
 ------------------------------------------------------------------------------------------------------------------------------
 -- UI操作显示隐藏用的
     function fwd_in_pdt_wellness:HudShowOhters(flag)
         self.Show_Hud_Others = flag
-        self:Refresh()
+        self:ForceRefresh()
     end
 ------------------------------------------------------------------------------------------------------------------------------
 

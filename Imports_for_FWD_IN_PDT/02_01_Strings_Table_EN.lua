@@ -95,6 +95,12 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "Micro Transportation Stone",
                 ["inspect_str"] = "Teleport to the Mangrove Island or the Black Market",
             },
+            ["fwd_in_pdt_item_insulin_syringe"] = {
+                ["name"] = "Insulin Syringe",
+                ["inspect_str"] = "For reducing blood glucose",
+                ["recipe_desc"] = "Injectable injections for lowering blood glucose",
+
+            },
         --------------------------------------------------------------------
         ---- 02_fwd_in_pdt_materials
             ["fwd_in_pdt_material_tree_resin"] = {
@@ -104,6 +110,10 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             ["fwd_in_pdt_material_snake_skin"] = {
                 ["name"] = "Snake Skin",
                 ["inspect_str"] = "A snake's skin. Not the naturally molting kind.",
+            },
+            ["fwd_in_pdt_material_realgar"] = {
+                ["name"] = "Realgar",
+                ["inspect_str"] = "Snakes are most afraid of realgar",
             },
         --------------------------------------------------------------------
         ---- 03_fwd_in_pdt_equipments
@@ -120,6 +130,16 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             ["fwd_in_pdt_food_raw_milk"] = {
                 ["name"] = "Raw Milk",
                 ["inspect_str"] = "From the cow"
+            },
+            ["fwd_in_pdt_food_andrographis_paniculata_botany"] = {
+                ["name"] = "Andrographis Paniculata ( botany )",
+                ["inspect_str"] = "It can be used to neutralize snake poison",
+                ["recipe_desc"] = "It can be used to neutralize snake poison",
+            },
+            ["fwd_in_pdt_food_universal_antidote"] = {
+                ["name"] = "Universal Antidote",
+                ["inspect_str"] = "It can be used to neutralize all kinds of poisons",
+                ["recipe_desc"] = "It can be used to neutralize all kinds of poisons",
             },
         --------------------------------------------------------------------
         ---- 05_fwd_in_pdt_foods_cooked
@@ -229,6 +249,38 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "拟态墙·草",
                 ["inspect_str"] = "这是一堵墙...而不是植物....",
                 ["recipe_desc"] = "伪装成植物的墙",
+            },
+            ["fwd_in_pdt_building_banner_light"] = {
+                ["name"] = "Banner Light",
+                ["inspect_str"] = "banner fluttering",
+            },
+            ["fwd_in_pdt_building_special_shop"] = {
+                ["name"] = "Special Shop",
+                ["inspect_str"] = "They sell some weird stuff here.",
+                ["action_str"] = "Enter",
+            },
+            ["fwd_in_pdt_building_materials_shop"] = {
+                ["name"] = "Materials Shop",
+                ["inspect_str"] = "This store sometimes gets rare materials. It's a matter of luck.",
+                ["action_str"] = "Enter",
+            },
+            ["fwd_in_pdt_building_cuisines_shop"] = {
+                ["name"] = "Cuisines Shop",
+                ["inspect_str"] = "There's a lot of delicious food.",
+                ["action_str"] = "Enter",
+            },
+            ["fwd_in_pdt_building_hotel"] = {
+                ["name"] = "Hotel",
+                ["inspect_str"] = "A good place to rest",
+                ["action_str"] = "Enter",
+            },
+            ["fwd_in_pdt_building_medical_check_up_machine"] = {
+                ["name"] = "Medical Check-Up Machine",
+                ["inspect_str"] = "For medical checkups.",
+                ["inspect_str_burnt"] = "This machine is burnt out and unusable.",
+                ["recipe_desc"] = "It's used to check various indicators of the body",
+
+
             },
         --------------------------------------------------------------------
         ---- 08_fwd_in_pdt_resources

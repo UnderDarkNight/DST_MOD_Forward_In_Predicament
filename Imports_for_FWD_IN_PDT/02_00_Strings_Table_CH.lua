@@ -104,6 +104,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "微型传送石",
                 ["inspect_str"] = "传送到红树岛或者黑市",
             },
+            ["fwd_in_pdt_item_insulin_syringe"] = {
+                ["name"] = "胰岛素注射器",
+                ["inspect_str"] = "降低血糖用的",
+                ["recipe_desc"] = "降低血糖用的注射针剂",
+            },
         --------------------------------------------------------------------
         ---- 02_fwd_in_pdt_materials
             ["fwd_in_pdt_material_tree_resin"] = {
@@ -113,6 +118,10 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             ["fwd_in_pdt_material_snake_skin"] = {
                 ["name"] = "蛇皮",
                 ["inspect_str"] = "蛇的皮，不是自然蜕皮那种",
+            },
+            ["fwd_in_pdt_material_realgar"] = {
+                ["name"] = "雄黄矿石",
+                ["inspect_str"] = "蛇最怕雄黄了",
             },
         --------------------------------------------------------------------
         ---- 03_fwd_in_pdt_equipments
@@ -133,6 +142,16 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             ["fwd_in_pdt_food_raw_milk"] = {
                 ["name"] = "生牛奶",
                 ["inspect_str"] = "从牛身上得到的"
+            },
+            ["fwd_in_pdt_food_andrographis_paniculata_botany"] = {
+                ["name"] = "雄黄饮剂",
+                ["inspect_str"] = "可以用来解除蛇毒",
+                ["recipe_desc"] = "可以用来解除蛇毒",
+            },
+            ["fwd_in_pdt_food_universal_antidote"] = {
+                ["name"] = "万能解毒剂",
+                ["inspect_str"] = "可以用来解除各种毒",
+                ["recipe_desc"] = "可以用来解除各种毒",
             },
         --------------------------------------------------------------------
         ---- 05_fwd_in_pdt_foods_cooked
@@ -266,6 +285,12 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "旅馆",
                 ["inspect_str"] = "休息的好去处",
                 ["action_str"] = "进入",
+            },
+            ["fwd_in_pdt_building_medical_check_up_machine"] = {
+                ["name"] = "健康检查机",
+                ["inspect_str"] = "检查身体状况用的",
+                ["inspect_str_burnt"] = "已经烧毁不能用了",
+                ["recipe_desc"] = "用来检查身体各种指标的",
             },
         --------------------------------------------------------------------
         ---- 08_fwd_in_pdt_resources

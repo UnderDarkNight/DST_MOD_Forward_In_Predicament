@@ -17,6 +17,8 @@ local files_name = {
 	"fwd_in_pdt_building_cuisines_shop",					    --- 美食商店
 	"fwd_in_pdt_building_hotel",					    		--- 旅店
 
+	"fwd_in_pdt_building_medical_check_up_machine",				--- 健康检查机
+
 }
 
 for k, name in pairs(files_name) do

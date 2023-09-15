@@ -31,6 +31,7 @@ local prefabs_name_list = {
     "02_flame_core",        ---- 火核心
     "03_jade_coin",         -- 玉龙币 （绿、黑）
     "04_transport_stone",   -- 传送石，直接传送到岛上的
+    "05_insulin_syringe",   -- 胰岛素注射器
 }
 
 
