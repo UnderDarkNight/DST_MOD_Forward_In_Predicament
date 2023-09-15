@@ -136,8 +136,13 @@ local flg,error_code = pcall(function()
             --     end
             -- end
     ----------------------------------------------------------------------------------------------------------------
-            ThePlayer.components.fwd_in_pdt_func:TheCamera_ClearTarget()
+            -- ThePlayer.components.fwd_in_pdt_func:TheCamera_ClearTarget()
                 
+    ----------------------------------------------------------------------------------------------------------------
+    --- 青蛙变异测试
+                -- local frog = SpawnPrefab("frog")
+                -- frog.Transform:SetPosition(x+10, y, z)
+                -- frog:PushEvent("fwd_in_pdt_event.start_mutant")
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)

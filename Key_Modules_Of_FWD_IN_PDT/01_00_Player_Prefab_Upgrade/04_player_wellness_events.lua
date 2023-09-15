@@ -49,6 +49,11 @@ AddPlayerPostInit(function(inst)
                             inst.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_bee_poison")                        
                         end
                     end,
+                    ["frog"] = function()
+                        if attacker and attacker:HasTag("fwd_in_pdt_tag.mutant_frog") then
+                            inst.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_frog_poison")                        
+                        end
+                    end,
 
 
                 }
