@@ -349,6 +349,7 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             ["fwd_in_pdt_wellness"] = {
                 ["name"] = "体质值",
                 ["treatment"] = "想办法提高总体体质值",
+                ["health_down_death_announce"] = "XXXX 死于体质不够高，太惨了 ~ ",
             },
             ["fwd_in_pdt_wellness_vitamin_c"] = {
                 ["name"] = "维他命C",

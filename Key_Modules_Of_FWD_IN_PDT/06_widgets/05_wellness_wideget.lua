@@ -325,8 +325,19 @@ AddClassPostConstruct("widgets/controls", function(self, owner)
 
         button:MoveToFront()    --- 按钮永远在最上面
         
-        -- owner.HUD.fwd_in_pdt_wellness:HideOhters() --- 默认隐藏
+        owner.HUD.fwd_in_pdt_wellness:HideOhters() --- 默认隐藏
 
         ------ 
+    --------------------------------------------------------------
+    --- 死亡隐藏
+            -- owner:ListenForEvent("death",function()
+            --     root:Hide()
+            -- end)
+            -- owner:ListenForEvent("respawnfromghost",function()
+            --     owner:DoTaskInTime(9,function()
+            --         root:Show()                    
+            --     end)
+            -- end)
 
+    --------------------------------------------------------------
 end)

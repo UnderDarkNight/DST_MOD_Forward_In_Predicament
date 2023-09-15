@@ -46,7 +46,10 @@ local temp_assets = {
     -- Asset( "ATLAS", "images/map_icons/npc_card_teleportation_mark.xml" ),
 	-- ---------------------------------------------------------------------------
 
-	Asset("ANIM", "anim/fwd_in_pdt_hud_wellness.zip")	--- 体质值进度条
+	Asset("ANIM", "anim/fwd_in_pdt_hud_wellness.zip"),	--- 体质值进度条
+
+	-- ---------------------------------------------------------------------------
+	Asset("ANIM", "anim/fwd_in_pdt_mutant_frog.zip"),	--- 变异青蛙贴图包
 
 	-- ---------------------------------------------------------------------------
 

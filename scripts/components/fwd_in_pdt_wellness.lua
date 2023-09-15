@@ -87,7 +87,7 @@ local fwd_in_pdt_wellness = Class(function(self, inst)
     self.BeingPaused = true  -- 标记 Update() 是否暂停了。
 
     self.Show_Hud_Others = false     ---- HUD 显示其他条的标记位。
-
+    self.Show_Hud = true
     ---- 最大值
         self.max = {
             ["wellness"] = 300,         -- 体质值  上限
@@ -152,9 +152,11 @@ local fwd_in_pdt_wellness = Class(function(self, inst)
     ---- 死亡和复活
     inst:ListenForEvent("death",function()      -- 被杀了
         self:stop_update_task()
+        self:HudShow(false)
     end)
     inst:ListenForEvent("respawnfromghost",function()   -- 复活了        
         self:start_update_task()
+        self:HudShow(true)
     end)
 
 end,
@@ -504,6 +506,7 @@ nil,
         local datas_table = self:Get_Datas_Table_For_Replica() or {}
 
         datas_table["Show_Hud_Others"] = self.Show_Hud_Others or false
+        datas_table["Show_Hud"] = self.Show_Hud
         datas_table["Temp_Force_Flag"] = math.random(10000)
         self.inst.replica.fwd_in_pdt_wellness:Send_Datas(datas_table)
     end
@@ -545,6 +548,10 @@ nil,
 -- UI操作显示隐藏用的
     function fwd_in_pdt_wellness:HudShowOhters(flag)
         self.Show_Hud_Others = flag
+        self:ForceRefresh()
+    end
+    function fwd_in_pdt_wellness:HudShow(flag)
+        self.Show_Hud = flag
         self:ForceRefresh()
     end
 ------------------------------------------------------------------------------------------------------------------------------

@@ -68,7 +68,11 @@ function fwd_in_pdt_wellness:UpdateHUD()
             else
                 self.inst.HUD.fwd_in_pdt_wellness:HideOhters()                
             end
-
+            if self:Get("Show_Hud") then
+                self.inst.HUD.fwd_in_pdt_wellness:Show()
+            else
+                self.inst.HUD.fwd_in_pdt_wellness:Hide()
+            end
         end
     end
 end
