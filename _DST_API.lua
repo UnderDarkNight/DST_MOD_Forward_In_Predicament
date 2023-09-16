@@ -351,7 +351,7 @@ GLOBAL = {
     ["UserToPlayer"] = function(userid)    end,
 }
 
-SpawnPrefab = function(name,...)    
+SpawnPrefab = function(name)
     return inst
 end
 CreateEntity = function(...)

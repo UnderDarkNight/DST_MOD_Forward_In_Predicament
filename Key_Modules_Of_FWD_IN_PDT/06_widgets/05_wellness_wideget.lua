@@ -191,7 +191,7 @@ AddClassPostConstruct("widgets/controls", function(self, owner)
                             wellness_icon:Hide()
                             wellness_icon.show_flag = false
                             button:Hide()
-                            wellness_up_down_icon:SetPosition(15,0)
+                            wellness_up_down_icon:SetPosition(20,0)
 
                         else
                             wellness_icon:Show()

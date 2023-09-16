@@ -15,11 +15,11 @@ local assets =
 }
 
 local function UpdateDamage(inst)
-    -- if inst.components.perishable and inst.components.weapon then
-    --     local dmg = TUNING.HAMBAT_DAMAGE * inst.components.perishable:GetPercent()
-    --     dmg = Remap(dmg, 0, TUNING.HAMBAT_DAMAGE, TUNING.HAMBAT_MIN_DAMAGE_MODIFIER*TUNING.HAMBAT_DAMAGE, TUNING.HAMBAT_DAMAGE)
-    --     inst.components.weapon:SetDamage(dmg)
-    -- end
+    if inst.components.perishable and inst.components.weapon then
+        local dmg = TUNING.HAMBAT_DAMAGE * inst.components.perishable:GetPercent()
+        dmg = Remap(dmg, 0, TUNING.HAMBAT_DAMAGE, TUNING.HAMBAT_MIN_DAMAGE_MODIFIER*TUNING.HAMBAT_DAMAGE, TUNING.HAMBAT_DAMAGE)
+        inst.components.weapon:SetDamage(dmg)
+    end
 end
 
 local function OnLoad(inst, data)
@@ -82,9 +82,24 @@ local function fn()
 
 
     inst:AddComponent("perishable")
-    inst.components.perishable:SetPerishTime(TUNING.PERISH_MED)
+    inst.components.perishable:SetPerishTime(TUNING.PERISH_MED*0.8)
     inst.components.perishable:StartPerishing()
     inst.components.perishable.onperishreplacement = "spoiled_food"
+    inst.components.perishable.onreplacedfn = function(inst,item)   --- 返还 核心
+        local owner = inst.components.inventoryitem:GetGrandOwner()
+        if owner then
+            local give_back_cores = SpawnPrefab("fwd_in_pdt_item_flame_core")
+            give_back_cores.components.stackable:SetStackSize(2)
+            if owner.components.inventory then
+                owner.components.inventory:GiveItem(give_back_cores)
+            elseif owner.components.container then
+                owner.components.container:GiveItem(give_back_cores)
+            else
+                give_back_cores:Remove()
+            end
+        end
+    end
+
 
     inst:AddComponent("weapon")
     inst.components.weapon:SetDamage(TUNING.HAMBAT_DAMAGE)
@@ -103,9 +118,60 @@ local function fn()
     inst.components.equippable:SetOnUnequip(onunequip)
 
     ---------------------------------------------------------------------------------------------
+        ---- 攻击特效
+        local function Attack_Fx(target)
+            local x,y,z = target.Transform:GetWorldPosition()
+            local fx = SpawnPrefab("fwd_in_pdt_fx_flame_up")
+            fx:PushEvent("Set",{
+                pt = Vector3(x,y,z),
+                scale = Vector3(2,2,2),
+                sound = "dontstarve/common/fireAddFuel"            
+            })
+        end
+    ---------------------------------------------------------------------------------------------
     --- 添加长矛特殊效果代码
     inst.components.weapon:SetOnAttack(function(inst,attacker,target)
-        
+        if not ( target and attacker ) then
+            return
+        end
+        -------- 一定概率扣新鲜度
+            if math.random(1000) < 200 then
+                inst.components.perishable:ReducePercent(0.05)
+            end
+        -------- 一定概率斩杀影怪
+            if target:HasTag("shadow") and not target:HasTag("epic") and math.random(1000) < 300 then
+                if target.components.lootdropper then
+                    target:RemoveComponent("lootdropper")
+                end
+                target.components.health:DoDelta(target.components.health.maxhealth*2)
+                return
+            end
+
+        -------- 数据初始化
+            target.fwd_in_pdt_mark = target.fwd_in_pdt_mark or {}
+            target.fwd_in_pdt_mark[inst.prefab] = target.fwd_in_pdt_mark[inst.prefab] or {}
+            target.fwd_in_pdt_mark[inst.prefab].num = target.fwd_in_pdt_mark[inst.prefab].num or 0
+            ---- 取消超时任务
+            if target.fwd_in_pdt_mark[inst.prefab].timeout_task then
+                target.fwd_in_pdt_mark[inst.prefab].timeout_task:Cancel()
+            end
+
+        -------- 计数
+            target.fwd_in_pdt_mark[inst.prefab].num = target.fwd_in_pdt_mark[inst.prefab].num + 1
+            if target.fwd_in_pdt_mark[inst.prefab].num >= 5 then
+                if target.components.health then
+                    target.components.health:DoDelta(-25)
+                end
+                if attacker.components.sanity then
+                    attacker.components.sanity:DoDelta(-3,true)
+                end
+                target.fwd_in_pdt_mark[inst.prefab].num = 0
+                Attack_Fx(target)
+            end
+        -------- 超时
+            target.fwd_in_pdt_mark[inst.prefab].timeout_task = target:DoTaskInTime(5,function()
+                target.fwd_in_pdt_mark[inst.prefab] = nil
+            end)
     end)
     ---------------------------------------------------------------------------------------------
     ---- 青枳绿叶   --- 棱镜已经做了第三方兼容，直接利用其API

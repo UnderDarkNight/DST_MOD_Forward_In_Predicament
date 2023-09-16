@@ -22,6 +22,11 @@ local prefabs_name_list = {
     "04_recipe_star",            --- 星星
     "05_waterspout",            --- 水花爆炸(三叉戟)
     "06_splash_sink",            --- 水花爆炸（物品掉落）
+    "07_ice_broke_up",            --- 冰块爆炸
+    "08_orange_leaves_fall_down",            --- 橙色树叶落下
+    "09_flame_up",            --- 火焰冒出
+    "10_red_leaves_fall_down",            --- 红色树叶落下
+
 }
 
 

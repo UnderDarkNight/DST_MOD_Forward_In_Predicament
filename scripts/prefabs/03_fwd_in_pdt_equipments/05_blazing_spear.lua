@@ -1,6 +1,7 @@
 --------------------------------------------------------------------------
 --- 装备 ，武器
 --- 炽热长矛
+--- 绿法杖分解代码在【Key_Modules_Of_FWD_IN_PDT\09_Recipes\03_element_core_weapon_recipes_for_green_staff.lua】
 --------------------------------------------------------------------------
 
 local assets =
@@ -61,7 +62,7 @@ local function fn()
 
 
     inst:AddComponent("weapon")
-    inst.components.weapon:SetDamage(TUNING.SPEAR_DAMAGE)
+    inst.components.weapon:SetDamage(34)
     -------
 
     inst:AddComponent("finiteuses")
@@ -77,9 +78,60 @@ local function fn()
     MakeHauntableLaunch(inst)
 
     ---------------------------------------------------------------------------------------------
+    ---- 攻击特效
+        local function Attack_Fx(target)
+            local x,y,z = target.Transform:GetWorldPosition()
+            local fx = SpawnPrefab("fwd_in_pdt_fx_flame_up")
+            fx:PushEvent("Set",{
+                pt = Vector3(x,y,z),
+                scale = Vector3(2,2,2),
+                sound = "dontstarve/common/fireAddFuel"            
+            })
+        end
+    ---------------------------------------------------------------------------------------------
     --- 添加长矛特殊效果代码
     inst.components.weapon:SetOnAttack(function(inst,attacker,target)
-       
+        if not ( target and attacker ) then
+            return
+        end
+        ------- 概率额外消耗耐久
+            if math.random(1000) < 200 then
+                inst.components.finiteuses:Use()
+            end
+        -------- 一定概率斩杀影怪
+            if target:HasTag("shadow") and not target:HasTag("epic") and math.random(1000) < 300 then
+                if target.components.lootdropper then
+                    target:RemoveComponent("lootdropper")
+                end
+                target.components.health:DoDelta(target.components.health.maxhealth*2)
+                return
+            end
+
+        -------- 数据初始化
+            target.fwd_in_pdt_mark = target.fwd_in_pdt_mark or {}
+            target.fwd_in_pdt_mark[inst.prefab] = target.fwd_in_pdt_mark[inst.prefab] or {}
+            target.fwd_in_pdt_mark[inst.prefab].num = target.fwd_in_pdt_mark[inst.prefab].num or 0
+            ---- 取消超时任务
+            if target.fwd_in_pdt_mark[inst.prefab].timeout_task then
+                target.fwd_in_pdt_mark[inst.prefab].timeout_task:Cancel()
+            end
+
+        -------- 计数
+            target.fwd_in_pdt_mark[inst.prefab].num = target.fwd_in_pdt_mark[inst.prefab].num + 1
+            if target.fwd_in_pdt_mark[inst.prefab].num >= 5 then
+                if target.components.health then
+                    target.components.health:DoDelta(-25)
+                end
+                if attacker.components.sanity then
+                    attacker.components.sanity:DoDelta(-5,true)
+                end
+                target.fwd_in_pdt_mark[inst.prefab].num = 0
+                Attack_Fx(target)
+            end
+        -------- 超时
+            target.fwd_in_pdt_mark[inst.prefab].timeout_task = target:DoTaskInTime(5,function()
+                target.fwd_in_pdt_mark[inst.prefab] = nil
+            end)
     end)
     ---------------------------------------------------------------------------------------------
     return inst

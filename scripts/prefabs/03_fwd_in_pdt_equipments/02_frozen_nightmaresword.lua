@@ -114,38 +114,69 @@ local function fn()
         inst.components.fwd_in_pdt_func:Mouseover_SetColour(r,g,b,a)
 
     ---------------------------------------------------------------------------------------------
-    --- 添加剑的特殊效果代码
-        -- local function Add_FX(player)
-        --     if player.__npng_weapon_blazing_nightmaresword_mark_fx == nil then
-        --         local fx = SpawnPrefab("thurible_smoke")
-        --         fx.entity:SetParent(player.entity)
-        --         fx.entity:AddFollower()
-        --         fx.Follower:FollowSymbol(player.GUID, "swap_object",50,-170,0)
-        --         player.__npng_weapon_blazing_nightmaresword_mark_fx = fx
-        --     end
-        -- end
-        -- local function Remove_FX(player)
-        --     if player and player.__npng_weapon_blazing_nightmaresword_mark_fx then
-        --         player.__npng_weapon_blazing_nightmaresword_mark_fx:Remove()
-        --         player.__npng_weapon_blazing_nightmaresword_mark_fx = nil
-        --     end
-        -- end
-
-        -- inst:ListenForEvent("equipped",function(_,_table)   --- 装备武器的时候，添加烟雾特效
-        --     if _table and _table.owner and _table.owner:HasTag("player") then
-        --         Add_FX(_table.owner)
-        --     end
-        -- end)
-        -- inst:ListenForEvent("unequipped",function(_,_table) ---- 脱下装备的时候，移除烟雾特效
-        --     if _table and _table.owner and _table.owner:HasTag("player") then
-        --         Remove_FX(_table.owner)
-        --     end
-        -- end)
+    ---- 攻击特效
+        local function Attack_Fx(target)
+            local x,y,z = target.Transform:GetWorldPosition()
+            local fx = SpawnPrefab("fwd_in_pdt_fx_ice_broke_up")
+            fx:PushEvent("Set",{
+                pt = Vector3(x,y,z),
+                scale = Vector3(2,2,2),                    
+            })
+            SpawnPrefab("icespike_fx_1").Transform:SetPosition(x, y, z)
+        end
     -------------------------------------------------------------------------------------------
     ----- 攻击的时候执行的代码
     inst.components.weapon:SetOnAttack(function(inst,attacker,target)
-     
+        if not ( target and attacker ) then
+            return
+        end
+        -------- 额外概率掉耐久
+            if math.random(1000) < 300 then
+                inst.components.finiteuses:Use()
+            end
+        -------- 数据初始化
+            target.fwd_in_pdt_mark = target.fwd_in_pdt_mark or {}
+            target.fwd_in_pdt_mark[inst.prefab] = target.fwd_in_pdt_mark[inst.prefab] or {}
+            target.fwd_in_pdt_mark[inst.prefab].num = target.fwd_in_pdt_mark[inst.prefab].num or 0
+            ---- 取消超时任务
+            if target.fwd_in_pdt_mark[inst.prefab].timeout_task then
+                target.fwd_in_pdt_mark[inst.prefab].timeout_task:Cancel()
+            end
+
+        -------- 计数
+            target.fwd_in_pdt_mark[inst.prefab].num = target.fwd_in_pdt_mark[inst.prefab].num + 1
+            if target.fwd_in_pdt_mark[inst.prefab].num >= 5 then
+                if target.components.health then
+                    target.components.health:DoDelta(-30)
+                end
+                if attacker.components.sanity then
+                    attacker.components.sanity:DoDelta(-2,true)
+                end
+                if attacker.components.temperature then
+                    attacker.components.temperature:DoDelta(-3)
+                end
+                Attack_Fx(target)
+
+
+                target.fwd_in_pdt_mark[inst.prefab].num = 0
+            end
+        -------- 超时
+            target.fwd_in_pdt_mark[inst.prefab].timeout_task = target:DoTaskInTime(5,function()
+                target.fwd_in_pdt_mark[inst.prefab] = nil
+            end)
+
     end)
+    ---------------------------------------------------------------------------------------------
+    --- 下雨天 2倍伤害 
+        --- hook weapon 的 GetDamage 函数
+        inst.components.weapon.GetDamage__fwd_in_pdt_old = inst.components.weapon.GetDamage
+        inst.components.weapon.GetDamage = function(self,...)
+            if TheWorld.state.israining then
+                return 180
+            else
+                return 90
+            end
+        end
     ---------------------------------------------------------------------------------------------
     return inst
 end

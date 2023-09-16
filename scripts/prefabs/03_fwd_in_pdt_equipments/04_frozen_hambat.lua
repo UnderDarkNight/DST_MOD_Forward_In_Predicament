@@ -1,7 +1,8 @@
 --------------------------------------------------------------------------
 --- 装备 ，武器
---- 极寒长矛
---- 
+--- 极寒火腿棒
+--- 绿法杖分解代码在【Key_Modules_Of_FWD_IN_PDT\09_Recipes\03_element_core_weapon_recipes_for_green_staff.lua】
+
 --------------------------------------------------------------------------
 
 
@@ -81,21 +82,60 @@ local function fn()
     MakeHauntableLaunch(inst)
 
     ---------------------------------------------------------------------------------------------
+    ---- 攻击特效
+        local function Attack_Fx(target)
+            local x,y,z = target.Transform:GetWorldPosition()
+            local fx = SpawnPrefab("fwd_in_pdt_fx_ice_broke_up")
+            fx:PushEvent("Set",{
+                pt = Vector3(x,y,z),
+                scale = Vector3(2,2,2),                    
+            })
+            SpawnPrefab("icespike_fx_1").Transform:SetPosition(x, y, z)
+        end
+    ---------------------------------------------------------------------------------------------
     --- 添加长矛特殊效果代码
     inst.components.weapon:SetOnAttack(function(inst,attacker,target)
-        
+        if not ( target and attacker ) then
+            return
+        end
+        -------- 数据初始化
+            target.fwd_in_pdt_mark = target.fwd_in_pdt_mark or {}
+            target.fwd_in_pdt_mark[inst.prefab] = target.fwd_in_pdt_mark[inst.prefab] or {}
+            target.fwd_in_pdt_mark[inst.prefab].num = target.fwd_in_pdt_mark[inst.prefab].num or 0
+            ---- 取消超时任务
+            if target.fwd_in_pdt_mark[inst.prefab].timeout_task then
+                target.fwd_in_pdt_mark[inst.prefab].timeout_task:Cancel()
+            end
+
+        -------- 计数
+            target.fwd_in_pdt_mark[inst.prefab].num = target.fwd_in_pdt_mark[inst.prefab].num + 1
+            if target.fwd_in_pdt_mark[inst.prefab].num >= 10 then
+                if target.components.health then
+                    target.components.health:DoDelta(-20)
+                end
+                if attacker.components.temperature then
+                    attacker.components.temperature:DoDelta(-3)
+                end
+                target.fwd_in_pdt_mark[inst.prefab].num = 0
+                Attack_Fx(target)
+            end
+        -------- 超时
+            target.fwd_in_pdt_mark[inst.prefab].timeout_task = target:DoTaskInTime(5,function()
+                target.fwd_in_pdt_mark[inst.prefab] = nil
+            end)
+
     end)    
     ---------------------------------------------------------------------------------------------
     --- 下雨天 2倍伤害 
-    --- hook weapon 的 GetDamage 函数
-    inst.components.weapon.GetDamage__npng_old = inst.components.weapon.GetDamage
-    inst.components.weapon.GetDamage = function(self,...)
-        if TheWorld.state.israining then
-            return TUNING.HAMBAT_DAMAGE * 2
-        else
-            return TUNING.HAMBAT_DAMAGE
+        --- hook weapon 的 GetDamage 函数
+        inst.components.weapon.GetDamage__fwd_in_pdt_old = inst.components.weapon.GetDamage
+        inst.components.weapon.GetDamage = function(self,...)
+            if TheWorld.state.israining then
+                return 68*2
+            else
+                return 68
+            end
         end
-    end
     ---------------------------------------------------------------------------------------------
     return inst
 end

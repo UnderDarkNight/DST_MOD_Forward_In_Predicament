@@ -7,7 +7,7 @@
 -- -- API :
 --     SpawnPrefab("fwd_in_pdt_natural_resources_spawner"):PushEvent("Set",{
 --         pt = Vector3(x,0,z),        --- 刷新器坐标。                    spawner's location
---         day = 0,                    --- 经过多少天刷新资源 。            After XX days of refreshing resources。
+--         days = 0,                    --- 经过多少天刷新资源 。            After XX days of refreshing resources。
 --         season = "summer" ,         -- nil ， autumn , winter , spring , summer ,        --- -- TheWorld.state.season == "winter"  --
 --         prefab = "berrybush",       -- target prefab name
 
@@ -36,11 +36,11 @@ local function fn()
     inst:AddTag("CLASSIFIED")   --  私密的，client 不可观测， FindEntity 默认过滤
     inst:AddTag("NOBLOCK")      -- 不会影响种植和放置
 
-    if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE == true then  -- 测试的时候弄个外观，方便观察
-        inst.AnimState:SetBank("mushroom_light")
-        inst.AnimState:SetBuild("mushroom_light")
-        inst.AnimState:PlayAnimation("idle")
-    end
+    -- if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE == true then  -- 测试的时候弄个外观，方便观察
+    --     inst.AnimState:SetBank("mushroom_light")
+    --     inst.AnimState:SetBuild("mushroom_light")
+    --     inst.AnimState:PlayAnimation("idle")
+    -- end
 
 
     if not TheWorld.ismastersim then
@@ -66,7 +66,7 @@ local function fn()
         if _table.pt == nil or _table.pt.x == nil or _table.prefab == nil then
             return
         end
-        _table.day = _table.day or 0    --- 天数初始化
+        _table.days = _table.days or 0    --- 天数初始化
         inst.Transform:SetPosition(_table.pt.x, 0, _table.pt.z)
 
         inst.components.fwd_in_pdt_data:Set("data",_table)        
@@ -87,12 +87,12 @@ local function fn()
         local function spawner_fn(inst)
             local x,y,z = inst.Transform:GetWorldPosition()
             local cmd_table = inst.components.fwd_in_pdt_data:Get("data")
-            local current_day = inst.components.fwd_in_pdt_data:Add("day",0)
-            local tar_days = cmd_table.day or 0
+            local current_days = inst.components.fwd_in_pdt_data:Add("days",0)
+            local tar_days = cmd_table.days or 0
             local prefab = cmd_table.prefab or "log"
             local spawned_target_flag = false
 
-            if current_day < tar_days then      
+            if current_days < tar_days then      
                 return
             end
 
@@ -182,13 +182,13 @@ local function fn()
             end
         end
         inst:WatchWorldState("cycles", function()
-            local current_day = inst.components.fwd_in_pdt_data:Add("day",1)
+            local current_days = inst.components.fwd_in_pdt_data:Add("days",1)
             if  inst:GetDistanceSqToClosestPlayer() < 25*25 then
                 return
             end
             spawner_fn(inst)
             if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE == true then
-                print("info fwd_in_pdt_natural_resources_spawner  cycles day",current_day ,inst)
+                print("info fwd_in_pdt_natural_resources_spawner  cycles day",current_days ,inst)
             end
         end)
 

@@ -1,6 +1,8 @@
 --------------------------------------------------------------------------
 --- 装备 ，武器
---- 炽热长矛
+--- 修复法杖
+--- 绿法杖分解代码在【Key_Modules_Of_FWD_IN_PDT\09_Recipes\03_element_core_weapon_recipes_for_green_staff.lua】
+
 --------------------------------------------------------------------------
 
 local assets =
@@ -61,12 +63,12 @@ local function fn()
 
 
     inst:AddComponent("weapon")
-    inst.components.weapon:SetDamage(TUNING.SPEAR_DAMAGE)
+    inst.components.weapon:SetDamage(0)
     -------
 
     inst:AddComponent("finiteuses")
-    inst.components.finiteuses:SetMaxUses(150)
-    inst.components.finiteuses:SetUses(150)
+    inst.components.finiteuses:SetMaxUses(10)
+    inst.components.finiteuses:SetUses(10)
     inst.components.finiteuses:SetOnFinished(inst.Remove)
 
     
@@ -75,26 +77,47 @@ local function fn()
     inst.components.equippable:SetOnUnequip(onunequip)
 
     MakeHauntableLaunch(inst)
-    inst:AddComponent("fwd_in_pdt_func"):Init("item_tile_fx","mouserover_colourful")
-    -- local r,g,b,a = 157/255 , 86/255 ,126/255 , 200/255
-    local r,g,b,a = 0/255 , 255/255 ,0/255 , 200/255
-    inst.components.fwd_in_pdt_func:Item_Tile_Icon_Fx_Set_Anim({
-        bank = "fwd_in_pdt_equipment_repair_staff",
-        build = "fwd_in_pdt_equipment_repair_staff",
-        anim = "icon",
-        hide_image = true,
-        text = {
-            color = {r,g,b,1},
-            -- pt = Vector3(-14,16,0),
-            -- size = 35,
-        }
-    })
-    inst.components.fwd_in_pdt_func:Mouseover_SetColour(r,g,b,a)
     ---------------------------------------------------------------------------------------------
-    --- 添加长矛特殊效果代码
-    inst.components.weapon:SetOnAttack(function(inst,attacker,target)
-       
-    end)
+    ---- 图标和颜色
+        inst:AddComponent("fwd_in_pdt_func"):Init("item_tile_fx","mouserover_colourful")
+        -- local r,g,b,a = 157/255 , 86/255 ,126/255 , 200/255
+        local r,g,b,a = 0/255 , 255/255 ,0/255 , 200/255
+        inst.components.fwd_in_pdt_func:Item_Tile_Icon_Fx_Set_Anim({
+            bank = "fwd_in_pdt_equipment_repair_staff",
+            build = "fwd_in_pdt_equipment_repair_staff",
+            anim = "icon",
+            hide_image = true,
+            text = {
+                color = {r,g,b,1},
+                -- pt = Vector3(-14,16,0),
+                -- size = 35,
+            }
+        })
+        inst.components.fwd_in_pdt_func:Mouseover_SetColour(r,g,b,a)
+    ---------------------------------------------------------------------------------------------
+    --- 添加攻击特殊效果代码
+        inst.components.weapon:SetOnAttack(function(inst,attacker,target)
+            inst.components.finiteuses:Use(100)
+        end)
+    ---------------------------------------------------------------------------------------------
+    --- 法杖动作
+        inst.fxcolour = {51/255,153/255,51/255}
+        inst:AddComponent("spellcaster")
+        inst.components.spellcaster.canuseontargets = true
+        inst.components.spellcaster:SetCanCastFn(function(doer,target,pos)
+            if target and target.components.finiteuses and target.components.finiteuses:GetPercent() < 1 and target.prefab ~= inst.prefab then
+                return true
+            end
+            return false
+        end)
+        inst.components.spellcaster:SetSpellFn(function(inst,target,pos,doer)
+            inst.components.finiteuses:Use()
+            target.components.finiteuses:SetPercent(1)
+            SpawnPrefab("fwd_in_pdt_fx_knowledge_flash"):PushEvent("Set",{
+                pt = Vector3(target.Transform:GetWorldPosition()),
+                color = Vector3(51/255,255/255,51/255)
+            })
+        end)
     ---------------------------------------------------------------------------------------------
     return inst
 end

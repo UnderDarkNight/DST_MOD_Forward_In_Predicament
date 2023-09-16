@@ -115,6 +115,13 @@ local function base_fn()
         inst:WatchWorldState("issnowcovered", snow_over_init)
         inst:PushEvent("hide_door")
     -------------------------------------------------------------------------------------
+        inst:DoPeriodicTask(10,function()
+            SpawnPrefab(math.random(100)<30 and "fwd_in_pdt_fx_orange_leaves_fall_down" or "fwd_in_pdt_fx_red_leaves_fall_down"):PushEvent("Set",{
+                target = inst,
+                scale = Vector3(2,2,2),
+            })
+        end,math.random(100)/10)
+    -------------------------------------------------------------------------------------
     
 
     return inst

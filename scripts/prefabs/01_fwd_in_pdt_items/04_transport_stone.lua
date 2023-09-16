@@ -41,20 +41,23 @@ local assets =
             end)
 
         end
-        inst.castspell_onexit_fn = function(inst,player)
 
+        local function player_show_in_hand_weapon(player)
             if player.components.inventory:GetEquippedItem(EQUIPSLOTS.HANDS) then
                 player.AnimState:ShowSymbol("swap_object")
             end
-
+            player:DoTaskInTime(0.5,function()
+                if player.components.inventory:GetEquippedItem(EQUIPSLOTS.HANDS) then
+                    player.AnimState:ShowSymbol("swap_object")
+                end
+            end)
+        end
+        inst.castspell_onexit_fn = function(inst,player)
+            player_show_in_hand_weapon(player)
         end
 
         inst.castspell_animover_fn = function(inst,player)
-
-            if player.components.inventory:GetEquippedItem(EQUIPSLOTS.HANDS) then
-                player.AnimState:ShowSymbol("swap_object")
-            end
-
+            player_show_in_hand_weapon(player)
         end
 
 
