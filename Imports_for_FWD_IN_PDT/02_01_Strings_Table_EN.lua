@@ -101,6 +101,20 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["recipe_desc"] = "Injectable injections for lowering blood glucose",
 
             },
+            ["fwd_in_pdt_item_disease_treatment_book"] = {
+                ["name"] = "Disease Treatment Magic Book",
+                ["inspect_str"] = "Magic book to cure some disease",
+                ["recipe_desc"] = "Magic book to cure some disease",
+                ["action_fail"] = "I don't have any medical conditions that need to be treated right now"
+
+            },
+            ["fwd_in_pdt_item_book_of_harvest"] = {
+                ["name"] = "Book Of Harvest",
+                ["inspect_str"] = "A magic book to celebrate the harvest",
+                ["recipe_desc"] = "A magic book to celebrate the harvest",
+                ["action_fail"] = "I can't use it around here for now.",
+
+            },
         --------------------------------------------------------------------
         ---- 02_fwd_in_pdt_materials
             ["fwd_in_pdt_material_tree_resin"] = {

@@ -144,6 +144,14 @@ local flg,error_code = pcall(function()
                 -- frog.Transform:SetPosition(x+10, y, z)
                 -- frog:PushEvent("fwd_in_pdt_event.start_mutant")
     ----------------------------------------------------------------------------------------------------------------
+    --- 书本动作
+                -- ThePlayer.AnimState:PlayAnimation("book")
+                -- ThePlayer.AnimState:PushAnimation("book")
+                -- ThePlayer.AnimState:PlayAnimation("action_uniqueitem_pre")
+                -- ThePlayer.AnimState:PushAnimation("peruse", false)
+                -- ThePlayer.SoundEmitter:PlaySound("dontstarve/common/book_spell")
+                -- ThePlayer.SoundEmitter:PlaySound("wickerbottom_rework/book_spells/upgraded_horticulture")
+    ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)
 

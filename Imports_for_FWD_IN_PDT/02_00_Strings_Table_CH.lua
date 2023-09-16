@@ -109,6 +109,18 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "降低血糖用的",
                 ["recipe_desc"] = "降低血糖用的注射针剂",
             },
+            ["fwd_in_pdt_item_disease_treatment_book"] = {
+                ["name"] = "《伤寒病论》",
+                ["inspect_str"] = "治疗一些疾病的魔法书",
+                ["recipe_desc"] = "治疗一些疾病的魔法书",
+                ["action_fail"] = "我现在没有需要治疗的疾病"
+            },
+            ["fwd_in_pdt_item_book_of_harvest"] = {
+                ["name"] = "《丰收赞歌》",
+                ["inspect_str"] = "用来庆祝丰收的魔法书",
+                ["recipe_desc"] = "用来庆祝丰收的魔法书",
+                ["action_fail"] = "暂时没法在这附近使用",
+            },
         --------------------------------------------------------------------
         ---- 02_fwd_in_pdt_materials
             ["fwd_in_pdt_material_tree_resin"] = {

@@ -25,6 +25,8 @@ modimport("Key_Modules_Of_FWD_IN_PDT/05_Actions/09_item_spell_caster_action.lua"
 
 modimport("Key_Modules_Of_FWD_IN_PDT/05_Actions/10_cough_action.lua")       --- SG动作：咳嗽
 
+modimport("Key_Modules_Of_FWD_IN_PDT/05_Actions/12_read_book_action_cook_book_type.lua")       --- SG动作：读书(烹饪书)
+
 
 
 
