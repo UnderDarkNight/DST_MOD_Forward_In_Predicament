@@ -299,6 +299,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "This windmill brings water so we can grow rice.",
                 ["recipe_desc"] = "This windmill is used to grow rice",
             },
+            ["fwd_in_pdt_moom_jewelry_lamp"] = {
+                ["name"] = "Jewelry Lamp",
+                ["inspect_str"] = "Quite useful lamp",
+                ["recipe_desc"] = "Three gemstones offer three functions",
+            },
         --------------------------------------------------------------------
         ---- 08_fwd_in_pdt_resources
             ["fwd_in_pdt_resource_glacier_huge"] = {

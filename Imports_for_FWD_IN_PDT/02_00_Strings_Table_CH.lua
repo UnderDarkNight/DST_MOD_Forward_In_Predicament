@@ -309,6 +309,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "这风车带来了水源，可以种植稻谷了",
                 ["recipe_desc"] = "用来种植稻谷的",
             },
+            ["fwd_in_pdt_moom_jewelry_lamp"] = {
+                ["name"] = "天体珠宝灯",
+                ["inspect_str"] = "挺有用的灯",
+                ["recipe_desc"] = "三种宝石提供三种功能",
+            },
         --------------------------------------------------------------------
         ---- 08_fwd_in_pdt_resources
             ["fwd_in_pdt_resource_glacier_huge"] = {

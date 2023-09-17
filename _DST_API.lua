@@ -35,6 +35,7 @@ inst = {
         ["SetDeltaTimeMultiplier"] = function(self,num) end,
         ["SetTime"] = function(self,num)    end,
         ["SetBloomEffectHandle"] = function(self,ksh)      end,
+        ["ClearBloomEffectHandle"] = function(self)      end,
     },
 
     ["Transform"] = {

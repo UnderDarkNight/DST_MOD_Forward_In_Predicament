@@ -75,24 +75,24 @@ local function fn()
     ---- 掉落列表
         inst:AddComponent("lootdropper")
         inst.components.lootdropper.GetRecipeLoot = function(self,...) 
-            local ret_loots = {"boards","cutstone"}
+            local ret_loots = {"boards","rope"}
             for i = 1, 3, 1 do
                 if math.random(100) < 30 then
                     table.insert(ret_loots,"boards")
                 end
-                if math.random(100) < 30 then
-                    table.insert(ret_loots,"cutstone")
-                end
+                -- if math.random(100) < 30 then
+                --     table.insert(ret_loots,"cutstone")
+                -- end
                 if math.random(100) < 30 then
                     table.insert(ret_loots,"rope")
                 end
             end
-            if math.random(100) < 15 then
-                table.insert(ret_loots,"minifan")
-            end
-            if math.random(100) < 15 then
-                table.insert(ret_loots,"farm_plow_item")
-            end
+            -- if math.random(100) < 15 then
+            --     table.insert(ret_loots,"minifan")
+            -- end
+            -- if math.random(100) < 15 then
+            --     table.insert(ret_loots,"farm_plow_item")
+            -- end
             return ret_loots
         end
     -------------------------------------------------------------------------------------

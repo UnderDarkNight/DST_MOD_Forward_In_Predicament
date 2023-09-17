@@ -49,12 +49,12 @@ STRINGS.UI.CRAFTING_FILTERS["FWD_IN_PDT_BUILDINGS"] = GetStringsTable("fwd_in_pd
 
 --------------------------------------------------------------------------------------------------------------------------------------------
 ---- 稻田风车
--- --------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------
 AddRecipeToFilter("fwd_in_pdt_building_paddy_windmill","GARDENING")     ---- 添加物品到目标标签
 AddRecipe2(
     "fwd_in_pdt_building_paddy_windmill",            --  --  inst.prefab  实体名字
-    { Ingredient("minifan", 1),Ingredient("farm_plow_item", 1),Ingredient("boards", 3),Ingredient("rope", 3),Ingredient("cutstone", 3), }, 
-    TECH.NONE, --- TECH.NONE
+    { Ingredient("boards", 10),Ingredient("rope", 10) }, 
+    TECH.SCIENCE_TWO, --- TECH.NONE
     {
         -- nounlock=true,
         no_deconstruction=true,
@@ -66,6 +66,26 @@ AddRecipe2(
     {"GARDENING","STRUCTURES"}
 )
 RemoveRecipeFromFilter("fwd_in_pdt_building_paddy_windmill","MODS")                       -- -- 在【模组物品】标签里移除这个。
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+---- 天体珠宝灯
+--------------------------------------------------------------------------------------------------------------------------------------------
+AddRecipeToFilter("fwd_in_pdt_moom_jewelry_lamp","DECOR")     ---- 添加物品到目标标签
+AddRecipe2(
+    "fwd_in_pdt_moom_jewelry_lamp",            --  --  inst.prefab  实体名字
+    { }, 
+    TECH.NONE, --- TECH.NONE
+    {
+        -- nounlock=true,
+        no_deconstruction=true,
+        -- builder_tag = "npng_tag.has_green_amulet",    --------- -- 【builder_tag】只给指定tag的角色能制造这件物品，角色添加/移除 tag 都能立马解锁/隐藏该物品
+        placer = "fwd_in_pdt_moom_jewelry_lamp_placer",                       -------- 建筑放置器        
+        atlas = "images/map_icons/fwd_in_pdt_moom_jewelry_lamp.xml",
+        image = "fwd_in_pdt_moom_jewelry_lamp.tex",
+    },
+    {"DECOR"}
+)
+RemoveRecipeFromFilter("fwd_in_pdt_moom_jewelry_lamp","MODS")                       -- -- 在【模组物品】标签里移除这个。
 
 
 
