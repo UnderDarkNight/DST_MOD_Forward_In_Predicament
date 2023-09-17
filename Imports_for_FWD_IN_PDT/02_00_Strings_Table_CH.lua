@@ -304,6 +304,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str_burnt"] = "已经烧毁不能用了",
                 ["recipe_desc"] = "用来检查身体各种指标的",
             },
+            ["fwd_in_pdt_building_paddy_windmill"] = {
+                ["name"] = "稻田风车",
+                ["inspect_str"] = "这风车带来了水源，可以种植稻谷了",
+                ["recipe_desc"] = "用来种植稻谷的",
+            },
         --------------------------------------------------------------------
         ---- 08_fwd_in_pdt_resources
             ["fwd_in_pdt_resource_glacier_huge"] = {

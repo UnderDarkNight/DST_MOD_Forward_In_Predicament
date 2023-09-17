@@ -4,6 +4,8 @@
 
 -- modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/01_amulet_upgrade.lua")    --- 升级项链
 
+modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/00_special_ent_add_tag.lua")    --- 上 tag 好扫描
+
 modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/01_spear.lua")    --- 升级 长矛 
 
 modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/02_nightmaresword.lua")    --- 升级 暗影剑 

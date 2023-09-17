@@ -293,8 +293,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "For medical checkups.",
                 ["inspect_str_burnt"] = "This machine is burnt out and unusable.",
                 ["recipe_desc"] = "It's used to check various indicators of the body",
-
-
+            },
+            ["fwd_in_pdt_building_paddy_windmill"] = {
+                ["name"] = "Paddy & Windmill",
+                ["inspect_str"] = "This windmill brings water so we can grow rice.",
+                ["recipe_desc"] = "This windmill is used to grow rice",
             },
         --------------------------------------------------------------------
         ---- 08_fwd_in_pdt_resources
