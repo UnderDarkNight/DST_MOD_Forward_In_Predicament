@@ -7,8 +7,10 @@
 --- API
 --- item_inst.read_book_onenter_fn = function(item_inst,player_inst) ... end       ---- 给 onenter 里执行用的
 --- item_inst.sound = ""                                       ---- 声音路径
+--- item_inst.read_book_stopable = false                                       ---- 可移动打断
 --- item_inst.read_book_onexit_fn = func(item_inst,player).. end              ---- 给 onexit  里执行用的
 --- item_inst.read_book_animover_fn = func(item_inst,player) ... end          ---- 给 animover event 里执行用的
+--- 动作执行完成，或者中途打断，都会 item_inst:PushEvent("reading_end")
 
 --  图层替换参照 inst.AnimState:OverrideSymbol("book_cook", "cookbook", "book_cook")
 
@@ -25,12 +27,11 @@ local TIMEOUT = 2
 -- 服务器上的  ，同 SGwilson.lua
 AddStategraphState("wilson",State{
     name = "fwd_in_pdt_read_book_type_cookbook",
-    tags = { "doing", "busy", "canrotate" },
+    tags = { "doing", "canrotate" },  -- "busy"
 
     onenter = function(inst)
-        if inst.components.playercontroller ~= nil then
-            inst.components.playercontroller:Enable(false)
-        end
+        local stopable = false
+
         inst.AnimState:OverrideSymbol("book_cook", "cookbook", "book_cook")
         inst.AnimState:PlayAnimation("action_uniqueitem_pre")   -- 0.267
         inst.AnimState:PushAnimation("reading_in", false)   -- 0.287s
@@ -48,6 +49,8 @@ AddStategraphState("wilson",State{
                 if type(item.sound) == "string" then
                     inst.sg.statemem.castsound = item.sound
                 end
+                ----- 可打断
+                stopable = item.read_book_stopable or false
 
                 if type(item.read_book_onenter_fn) == "function" then
                     ---------------------------------------------------------------------------------------------------------
@@ -57,16 +60,33 @@ AddStategraphState("wilson",State{
 
                     ---------------------------------------------------------------------------------------------------------
                 end
-                
+
+
+
             end
         -----------------------------------------------------------------------------------------------------------------------------------
-
+        if not stopable and inst.components.playercontroller ~= nil then
+            inst.components.playercontroller:Enable(false)
+        end
     end,
 
     timeline =
     {
         TimeEvent(12 * FRAMES, function(inst)
             inst.SoundEmitter:PlaySound("dontstarve/common/use_book_light","fwd_in_pdt_read_book_type_cookbook")
+
+            local item = inst.sg.statemem.___fwd_spell_casting_item 
+            if item then
+                item._temp__newstate_fn = function()
+                    item:PushEvent("reading_end")
+                    inst:RemoveEventCallback("newstate",  item._temp__newstate_fn)
+                    item._temp__newstate_fn = nil
+                    inst.SoundEmitter:KillSound("fwd_in_pdt_read_book_type_cookbook")
+                    inst.SoundEmitter:KillSound("fwd_in_pdt_read_book_type_cookbook.reading")
+                end
+                inst:ListenForEvent("newstate", item._temp__newstate_fn)
+            end
+
         end),
         TimeEvent(22 * FRAMES, function(inst)
             inst.SoundEmitter:KillSound("fwd_in_pdt_read_book_type_cookbook")
@@ -139,7 +159,7 @@ AddStategraphState("wilson",State{
 -- 客户端上的，同 SGWilson_client.lua
 AddStategraphState("wilson_client",State{
     name = "fwd_in_pdt_read_book_type_cookbook",
-    tags = { "doing", "busy", "canrotate" },
+    tags = { "doing", "canrotate" },  --  "busy",
     server_states = { "fwd_in_pdt_read_book_type_cookbook" },
 
     onenter = function(inst)

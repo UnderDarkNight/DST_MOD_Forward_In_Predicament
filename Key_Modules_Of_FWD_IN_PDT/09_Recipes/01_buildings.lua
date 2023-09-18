@@ -16,7 +16,7 @@ RegisterInventoryItemAtlas("images/ui_images/fwd_in_pdt_buildings.xml", "fwd_in_
 AddRecipeFilter({name="FWD_IN_PDT_BUILDINGS", atlas = "images/ui_images/fwd_in_pdt_buildings.xml",	image = "fwd_in_pdt_buildings.tex"})
 STRINGS.UI.CRAFTING_FILTERS["FWD_IN_PDT_BUILDINGS"] = GetStringsTable("fwd_in_pdt_ui_craftingmenu")["FWD_IN_PDT_BUILDINGS"] or ""
 --------------------------------------------------------------------------------------------------------------------------------------------
-
+require("recipes_filter")
 
 
 
@@ -68,22 +68,23 @@ AddRecipe2(
 RemoveRecipeFromFilter("fwd_in_pdt_building_paddy_windmill","MODS")                       -- -- 在【模组物品】标签里移除这个。
 
 --------------------------------------------------------------------------------------------------------------------------------------------
----- 天体珠宝灯
+---- 天体珠宝灯（只能在天体宝珠制作）
 --------------------------------------------------------------------------------------------------------------------------------------------
-AddRecipeToFilter("fwd_in_pdt_moom_jewelry_lamp","DECOR")     ---- 添加物品到目标标签
+-- AddRecipeToFilter("fwd_in_pdt_moom_jewelry_lamp","CRAFTING_STATION")     ---- 添加物品到目标标签
 AddRecipe2(
     "fwd_in_pdt_moom_jewelry_lamp",            --  --  inst.prefab  实体名字
-    { }, 
-    TECH.NONE, --- TECH.NONE
+    { Ingredient("livinglog", 10),Ingredient("purplegem", 1),Ingredient("yellowgem", 1),Ingredient("moonrockcrater", 1) }, 
+    TECH.CELESTIAL_ONE, --- 天体宝珠
     {
-        -- nounlock=true,
+        nounlock = true,
         no_deconstruction=true,
+        station_tag = "fwd_in_pdt_tag.moonrockseed",   --- 科技物品必须带这个 tag （ 几乎等于天体宝珠 ）
         -- builder_tag = "npng_tag.has_green_amulet",    --------- -- 【builder_tag】只给指定tag的角色能制造这件物品，角色添加/移除 tag 都能立马解锁/隐藏该物品
         placer = "fwd_in_pdt_moom_jewelry_lamp_placer",                       -------- 建筑放置器        
         atlas = "images/map_icons/fwd_in_pdt_moom_jewelry_lamp.xml",
         image = "fwd_in_pdt_moom_jewelry_lamp.tex",
     },
-    {"DECOR"}
+    {"CELESTIAL"}
 )
 RemoveRecipeFromFilter("fwd_in_pdt_moom_jewelry_lamp","MODS")                       -- -- 在【模组物品】标签里移除这个。
 

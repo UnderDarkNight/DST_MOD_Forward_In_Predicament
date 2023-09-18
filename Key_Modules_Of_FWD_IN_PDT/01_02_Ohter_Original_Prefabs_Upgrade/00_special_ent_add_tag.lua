@@ -28,6 +28,8 @@ local prefab_list = {
     "gravestone",                       --- 墓碑
     "grotto_pool_big",                  --- 洞穴巨型玻璃池
     "grotto_pool_small",                --- 洞穴小型玻璃池
+
+    "moonrockseed",                --- 天体宝珠
 }
 
 for k, prefab_name in pairs(prefab_list) do

@@ -98,7 +98,7 @@ local fwd_in_pdt_wellness = Class(function(self, inst)
 
     ---- 默认值
         self.defualts = {
-            ["wellness"] = 140,         -- 体质值  初始
+            ["wellness"] = 230,         -- 体质值  初始
             ["vitamin_c"] = 100,        -- 维C值   初始
             ["glucose"] = 59,           -- 血糖值  初始
             ["poison"] = 0,             -- 中毒值  初始

@@ -62,10 +62,17 @@ local function fn()
     inst.entity:SetPristine()
     --------------------------------------------------------------------------
     --- 图层覆盖，sg 的 fwd_in_pdt_read_book_type_cookbook 里面
+        inst:ListenForEvent("reading_end",function()
+            if inst.__reading_fx then
+                inst.__reading_fx:Remove()
+                inst.__reading_fx = nil
+            end
+        end)
         inst.read_book_onenter_fn = function(inst,player)
             player.AnimState:OverrideSymbol("book_cook", "fwd_in_pdt_item_book_of_harvest", "book_cook")
-            player:DoTaskInTime(30*FRAMES,function()
-                player:SpawnChild("fwd_in_pdt_fx_knowledge_flash"):PushEvent("Set",{
+            player:DoTaskInTime(30*FRAMES,function()               
+                inst.__reading_fx =  player:SpawnChild("fwd_in_pdt_fx_knowledge_flash")
+                inst.__reading_fx:PushEvent("Set",{
                     pt = Vector3(0,player.replica.rider:IsRiding() and 3 or 1,0),
                     color = Vector3(255,0,0)
                 })
@@ -76,6 +83,9 @@ local function fn()
             player.AnimState:ClearOverrideSymbol("book_cook")
         end
         inst.read_book_animover_fn = inst.read_book_onexit_fn
+        --- 可移动打断
+        inst.read_book_stopable = true
+
     --------------------------------------------------------------------------
     --- 失败通知组件
         -- inst:AddComponent("fwd_in_pdt_com_action_fail_reason")

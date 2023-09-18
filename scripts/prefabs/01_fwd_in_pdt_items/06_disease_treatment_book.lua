@@ -40,6 +40,7 @@ local function fn()
             player.AnimState:ClearOverrideSymbol("book_cook")
         end
         inst.read_book_animover_fn = inst.read_book_onexit_fn
+        inst.read_book_stopable = true  --- 可移动打断
     --------------------------------------------------------------------------
     -- 交互动作
         inst:AddComponent("fwd_in_pdt_com_workable")

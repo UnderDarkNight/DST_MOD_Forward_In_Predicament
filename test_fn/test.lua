@@ -122,7 +122,7 @@ local flg,error_code = pcall(function()
             -- ThePlayer.HUD.fwd_in_pdt_wellness:ShowOhters()
         -- ThePlayer.components.fwd_in_pdt_wellness:HudShowOhters(true)
         -- ThePlayer.components.fwd_in_pdt_wellness:HudShowOhters(false)
-
+            -- ThePlayer.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_snake_poison")  
     ----------------------------------------------------------------------------------------------------------------
     --- 路灯灯光调试
             -- local ents = TheSim:FindEntities(x, y, z, 50, {"fwd_in_pdt_building_banner_light"}, nil, nil)
