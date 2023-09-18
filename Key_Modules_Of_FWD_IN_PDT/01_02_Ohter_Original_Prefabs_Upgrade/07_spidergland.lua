@@ -19,11 +19,18 @@ AddPrefabPostInit(
                 if ret and target and target:HasTag("player") and target.components.fwd_in_pdt_wellness then
                     local num = target.components.fwd_in_pdt_wellness:Add("spidergland_used_num",1)
                     if num >= 3 then
-                        -- if  target.components.fwd_in_pdt_wellness:Get_Debuff("fwd_in_pdt_welness_spider_poison") then
-                        --     target.components.fwd_in_pdt_wellness:DoDelta_Poison(-10)
-                        -- end
-                        target.components.fwd_in_pdt_wellness:Remove_Debuff("fwd_in_pdt_welness_spider_poison")
                         target.components.fwd_in_pdt_wellness:Set("spidergland_used_num",0)
+
+                        if  target.components.fwd_in_pdt_wellness:Get_Debuff("fwd_in_pdt_welness_spider_poison") then
+                            target.components.fwd_in_pdt_wellness:DoDelta_Poison(-25)
+                            target.components.fwd_in_pdt_wellness:Remove_Debuff("fwd_in_pdt_welness_spider_poison")
+                            if target.components.sanity then
+                                target.components.sanity:DoDelta(-10)
+                            end
+                            if target.components.health and target.components.health.currenthealth > 10 then
+                                target.components.health:DoDelta(-10,nil,inst.prefab)
+                            end
+                        end
                     end
                 end
                 return ret

@@ -153,7 +153,16 @@ AddPlayerPostInit(function(inst)
                 local food_base_prefab = food.nameoverride or food.prefab  --- --- 得到加料食物的基础名字
                 local food_events_by_prefab = {
                         ["taffy"] = function(inst)      --- 太妃糖移除蜜蜂毒
-                            inst.components.fwd_in_pdt_wellness:Remove_Debuff("fwd_in_pdt_welness_bee_poison")
+                            if inst.components.fwd_in_pdt_wellness:Get_Debuff("fwd_in_pdt_welness_bee_poison") then
+                                inst.components.fwd_in_pdt_wellness:Remove_Debuff("fwd_in_pdt_welness_bee_poison")
+                                inst.components.fwd_in_pdt_wellness:DoDelta_Poison(-25)
+                                if inst.components.sanity then
+                                    inst.components.sanity:DoDelta(-10)
+                                end
+                                if inst.components.health and inst.components.health.currenthealth > 10 then
+                                    inst.components.health:DoDelta(-10,nil,"taffy")
+                                end
+                            end
                         end,
                 }
                 if food_events_by_prefab[food_base_prefab] then

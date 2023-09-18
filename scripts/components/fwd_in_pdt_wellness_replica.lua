@@ -106,6 +106,14 @@ end
 
     end
 -----------------------------------------------------------------------------------------------------
+    function fwd_in_pdt_wellness:Has_Debuff(debuff_prefab)
+        if type(debuff_prefab) == "string" then
+            local debuffs = self.datas["debuffs"] or {}
+            return debuffs[debuff_prefab] or false
+        end
+        return false
+    end
+-----------------------------------------------------------------------------------------------------
     function fwd_in_pdt_wellness:Get(str)
         if type(str) == "string" then
             return self.datas[str]

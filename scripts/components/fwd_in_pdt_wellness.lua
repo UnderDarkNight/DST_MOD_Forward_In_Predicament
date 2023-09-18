@@ -501,6 +501,15 @@ nil,
         return cmd_table
         -- self.inst.replica.fwd_in_pdt_wellness:Send_Datas(cmd_table)
     end
+    function fwd_in_pdt_wellness:Get_Debuffs_Prefab()
+        local list = {}
+        for prefab, debuff_inst in pairs(self.debuffs) do
+            if prefab and debuff_inst then
+                list[prefab] = true
+            end
+        end
+        return list
+    end
 
     function fwd_in_pdt_wellness:Refresh()
         local datas_table = self:Get_Datas_Table_For_Replica() or {}
@@ -508,6 +517,7 @@ nil,
         datas_table["Show_Hud_Others"] = self.Show_Hud_Others or false
         datas_table["Show_Hud"] = self.Show_Hud
         datas_table["Temp_Force_Flag"] = math.random(10000)
+        datas_table["debuffs"] = self:Get_Debuffs_Prefab()
         self.inst.replica.fwd_in_pdt_wellness:Send_Datas(datas_table)
     end
 

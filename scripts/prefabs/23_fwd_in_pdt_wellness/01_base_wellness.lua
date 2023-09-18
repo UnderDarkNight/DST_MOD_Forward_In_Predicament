@@ -237,12 +237,12 @@ local function fn()
                         if player.components.health then
                             player.components.health:DoDelta(-0.5,true,self.prefab)
                             ------------------------------------------
-                            --- 特殊死亡通告
-                                local str = GetStringsTable()["health_down_death_announce"]
-                                player.components.fwd_in_pdt_func:Add_Death_Announce({
-                                    source = self.prefab,
-                                    announce = string.gsub(str, "XXXX", player:GetDisplayName())
-                                })
+                            -- --- 特殊死亡通告
+                            --     local str = GetStringsTable()["health_down_death_announce"]
+                            --     player.components.fwd_in_pdt_func:Add_Death_Announce({
+                            --         source = self.prefab,
+                            --         announce = string.gsub(str, "XXXX", player:GetDisplayName())
+                            --     })
                             ------------------------------------------
                         end
                     end)

@@ -48,9 +48,17 @@ local function fn()
     inst.components.edible:SetOnEatenFn(function(inst,eater)
         if eater and eater:HasTag("player") then
             -- 解除蛇毒，屏蔽蛇毒1天(100个周期)
-            if eater.components.fwd_in_pdt_wellness then
+            if eater.components.fwd_in_pdt_wellness and eater.components.fwd_in_pdt_wellness:Get_Debuff("fwd_in_pdt_welness_snake_poison") then
+
                 eater.components.fwd_in_pdt_wellness:Remove_Debuff("fwd_in_pdt_welness_snake_poison")
                 eater.components.fwd_in_pdt_wellness:Set("snake_poison_blocker_update_times",100)
+                if eater.components.sanity then
+                    eater.components.sanity:DoDelta(-10)
+                end
+                if eater.components.health and eater.components.health.currenthealth > 10 then
+                    eater.components.health:DoDelta(-10,nil,inst.prefab)
+                end
+
             end
         end
     end)
