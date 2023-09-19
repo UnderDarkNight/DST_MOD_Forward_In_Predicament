@@ -273,6 +273,21 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             },
         --------------------------------------------------------------------
         ---- 06_fwd_in_pdt_containers
+            ["fwd_in_pdt_fish_farm"] = {
+                ["name"] = "养鱼池",
+                ["inspect_str"] = STRINGS.NAMES[string.upper("spoiled_food")] .. "、".. STRINGS.NAMES[string.upper("chum")] .. "都能当饲料",
+                ["recipe_desc"] = STRINGS.NAMES[string.upper("spoiled_food")] .. "、".. STRINGS.NAMES[string.upper("chum")] .. "都能当饲料",
+            },
+            ["fwd_in_pdt_fish_farm_kit"] = {
+                ["name"] = "养鱼池",
+                ["inspect_str"] = STRINGS.NAMES[string.upper("spoiled_food")] .. "、".. STRINGS.NAMES[string.upper("chum")] .. "都能当饲料",
+                ["recipe_desc"] = STRINGS.NAMES[string.upper("spoiled_food")] .. "、".. STRINGS.NAMES[string.upper("chum")] .. "都能当饲料",
+            },
+            ["fwd_in_pdt_moom_jewelry_lamp"] = {
+                ["name"] = "天体珠宝灯",
+                ["inspect_str"] = "挺有用的灯",
+                ["recipe_desc"] = "三种宝石提供三种功能",
+            },
         --------------------------------------------------------------------
         ---- 07_fwd_in_pdt_buildings
             ["fwd_in_pdt_building_mock_wall_grass"] = {
@@ -314,11 +329,6 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "稻田风车",
                 ["inspect_str"] = "这风车带来了水源，可以种植稻谷了",
                 ["recipe_desc"] = "用来种植稻谷的",
-            },
-            ["fwd_in_pdt_moom_jewelry_lamp"] = {
-                ["name"] = "天体珠宝灯",
-                ["inspect_str"] = "挺有用的灯",
-                ["recipe_desc"] = "三种宝石提供三种功能",
             },
         --------------------------------------------------------------------
         ---- 08_fwd_in_pdt_resources

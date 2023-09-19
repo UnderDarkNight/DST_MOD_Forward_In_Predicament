@@ -23,6 +23,8 @@ local files_name = {
 
 	"fwd_in_pdt_moom_jewelry_lamp",				--- 天体珠宝灯
 
+	"fwd_in_pdt_fish_farm",				--- 养鱼池
+
 }
 
 for k, name in pairs(files_name) do

@@ -36,6 +36,10 @@ inst = {
         ["SetTime"] = function(self,num)    end,
         ["SetBloomEffectHandle"] = function(self,ksh)      end,
         ["ClearBloomEffectHandle"] = function(self)      end,
+        ["SetSortOrder"] = function(self,num)      end,
+        ["SetOrientation"] = function(self,num)      end,   --- ANIM_ORIENTATION.OnGround
+        ["SetLayer"] = function(self,num)      end,         --- LAYER_WORLD_BACKGROUND
+
     },
 
     ["Transform"] = {

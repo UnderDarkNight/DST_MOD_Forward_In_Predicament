@@ -152,6 +152,24 @@ local flg,error_code = pcall(function()
                 -- ThePlayer.SoundEmitter:PlaySound("dontstarve/common/book_spell")
                 -- ThePlayer.SoundEmitter:PlaySound("wickerbottom_rework/book_spells/upgraded_horticulture")
     ----------------------------------------------------------------------------------------------------------------
+    --- 鱼池 container widget 穿插
+                -- for k, widget in pairs(ThePlayer.HUD.controls.containers) do
+                --     -- print(k,v)
+                --     -- for kk, vv in pairs(v) do
+                --     --     print(kk,vv)
+
+                --     -- end
+                --     local text = widget.__test_str
+                --     if text == nil then
+                --         text = widget:AddChild(Text(CODEFONT,100,"100.42",{ 255/255 , 255/255 ,255/255 , 1}))
+                --         widget.__test_str = text
+                --     end
+                -- end
+                local inst = TheSim:FindFirstEntityWithTag("fwd_in_pdt_fish_farm")
+                if inst then
+                    inst:PushEvent("daily_task_start")
+                end
+    ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)
 

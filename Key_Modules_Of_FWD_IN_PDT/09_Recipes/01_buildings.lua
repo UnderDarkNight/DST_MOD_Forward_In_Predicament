@@ -88,6 +88,25 @@ AddRecipe2(
 )
 RemoveRecipeFromFilter("fwd_in_pdt_moom_jewelry_lamp","MODS")                       -- -- 在【模组物品】标签里移除这个。
 
+--------------------------------------------------------------------------------------------------------------------------------------------
+---- 养鱼池
+--------------------------------------------------------------------------------------------------------------------------------------------
+AddRecipeToFilter("fwd_in_pdt_fish_farm_kit","FISHING")     ---- 添加物品到目标标签
+AddRecipe2(
+    "fwd_in_pdt_fish_farm_kit",            --  --  inst.prefab  实体名字
+    { Ingredient("spoiled_food", 5),Ingredient("rope", 4),Ingredient("silk", 4) }, 
+    TECH.SCIENCE_TWO, --- TECH.NONE
+    {
+        -- nounlock=true,
+        no_deconstruction=true,
+        -- builder_tag = "npng_tag.has_green_amulet",    --------- -- 【builder_tag】只给指定tag的角色能制造这件物品，角色添加/移除 tag 都能立马解锁/隐藏该物品
+        -- placer = "fwd_in_pdt_fish_farm_placer",                       -------- 建筑放置器        
+        atlas = "images/map_icons/fwd_in_pdt_fish_farm.xml",
+        image = "fwd_in_pdt_fish_farm.tex",
+    },
+    {"GARDENING","FISHING"}
+)
+RemoveRecipeFromFilter("fwd_in_pdt_fish_farm","MODS")                       -- -- 在【模组物品】标签里移除这个。
 
 
 

@@ -264,6 +264,21 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             },
         --------------------------------------------------------------------
         ---- 06_fwd_in_pdt_containers
+            ["fwd_in_pdt_fish_farm"] = {
+                ["name"] = "Fish Farm",
+                ["inspect_str"] = STRINGS.NAMES[string.upper("spoiled_food")] .. "、".. STRINGS.NAMES[string.upper("chum")] .. "etc can be used as feeds",
+                ["recipe_desc"] = STRINGS.NAMES[string.upper("spoiled_food")] .. "、".. STRINGS.NAMES[string.upper("chum")] .. "etc can be used as feeds",
+            },
+            ["fwd_in_pdt_fish_farm_kit"] = {
+                ["name"] = "Fish Farm",
+                ["inspect_str"] =  STRINGS.NAMES[string.upper("spoiled_food")] .. "、".. STRINGS.NAMES[string.upper("chum")] .. "etc can be used as feeds",
+                ["recipe_desc"] =  STRINGS.NAMES[string.upper("spoiled_food")] .. "、".. STRINGS.NAMES[string.upper("chum")] .. "etc can be used as feeds",
+            },
+                ["fwd_in_pdt_moom_jewelry_lamp"] = {
+                ["name"] = "Jewelry Lamp",
+                ["inspect_str"] = "Quite useful lamp",
+                ["recipe_desc"] = "Three gemstones offer three functions",
+            },
         --------------------------------------------------------------------
         ---- 07_fwd_in_pdt_buildings
             ["fwd_in_pdt_building_mock_wall_grass"] = {
@@ -305,11 +320,6 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "Paddy & Windmill",
                 ["inspect_str"] = "This windmill brings water so we can grow rice.",
                 ["recipe_desc"] = "This windmill is used to grow rice",
-            },
-            ["fwd_in_pdt_moom_jewelry_lamp"] = {
-                ["name"] = "Jewelry Lamp",
-                ["inspect_str"] = "Quite useful lamp",
-                ["recipe_desc"] = "Three gemstones offer three functions",
             },
         --------------------------------------------------------------------
         ---- 08_fwd_in_pdt_resources
