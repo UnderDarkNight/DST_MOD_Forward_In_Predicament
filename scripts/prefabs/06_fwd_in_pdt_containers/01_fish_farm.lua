@@ -101,7 +101,7 @@ end
             local json_str = inst.__fish_food_value_json_str:value()
             local cmd_table = json.decode(json_str)
             inst.fish_food_value = cmd_table.num or 0
-            inst:PushEvent("fish_food_value_refresh")
+            inst:PushEvent("fish_food_value_refresh",cmd_table)
         end)
 
         if TheWorld.ismastersim then    --- 修改函数只添加在 服务器
@@ -113,33 +113,56 @@ end
                     end
                     local cmd_table = {
                         num = inst.fish_food_value,
-                        random = math.random(100000)
+                        random = math.random(100000),
+                        show_food_value = true,
                     }
                     inst.__fish_food_value_json_str:set(json.encode(cmd_table))
                     inst.components.fwd_in_pdt_data:Set("food_value",inst.fish_food_value)
                 end
             end)
-            -- inst:DoTaskInTime(0,function()  --- 初始化检查
-            --     local value = inst.components.fwd_in_pdt_data:Add("food_value",0)
-            --     inst:PushEvent()
-            -- end)
+            inst:ListenForEvent("hide_food_value",function()
+                local cmd_table = {
+                    num = inst.components.fwd_in_pdt_data:Add("food_value",0),
+                    show_food_value = false,
+                    random = math.random(100000),
+                }
+                inst.__fish_food_value_json_str:set(json.encode(cmd_table))
+            end)
+
+
         end
 
-        inst:ListenForEvent("fish_food_value_refresh",function()
+        inst:ListenForEvent("fish_food_value_refresh",function(_,cmd_table)
             -- -- print("fish_food_value_refresh",inst.fish_food_value)
             ----- 检测玩家  HUD 并 往里直接填数据 child
             local crash_flag,error_code = pcall(function()
                 if ThePlayer and ThePlayer.HUD and ThePlayer.HUD.controls and ThePlayer.HUD.controls.containers then
-                    local custom_widget = ThePlayer.HUD.controls.containers[inst]
-                    if custom_widget then
-                        -- -- print("found the widget")
-                        if custom_widget.fish_food_value == nil then
-                            custom_widget.fish_food_value = custom_widget:AddChild(widgets_Text(DEFAULTFONT,50,"100.42",{ 255/255 , 255/255 ,255/255 , 1}))
+                        local custom_widget = ThePlayer.HUD.controls.containers[inst]
+                        if custom_widget then
+                            if cmd_table.show_food_value then
+                                -- -- print("found the widget")
+                                if custom_widget.fish_food_value == nil then
+                                    custom_widget.fish_food_value = custom_widget:AddChild(widgets_Text(DEFAULTFONT,50,"100.42",{ 255/255 , 255/255 ,255/255 , 1}))
+                                end
+                                custom_widget.fish_food_value:Show()
+                                custom_widget.fish_food_value:SetPosition(0,160)
+                                custom_widget.fish_food_value:SetString("Food : "..tostring(inst.fish_food_value))
+                                custom_widget.fish_food_value:MoveToFront()
+
+                                inst.__client_fish_food_value = custom_widget.fish_food_value
+
+                            elseif custom_widget.fish_food_value then
+                                custom_widget.fish_food_value:Kill()
+                                custom_widget.fish_food_value = nil
+                                inst.__client_fish_food_value = nil
+                            end
+
                         end
-                        custom_widget.fish_food_value:SetPosition(0,160)
-                        custom_widget.fish_food_value:SetString("Food : "..tostring(inst.fish_food_value))
-                        custom_widget.fish_food_value:MoveToFront()
-                    end
+                elseif inst.__client_fish_food_value and not cmd_table.show_food_value then
+
+                        inst.__client_fish_food_value:Kill()
+                        inst.__client_fish_food_value = nil
+
                 end
 
             end)
@@ -147,6 +170,7 @@ end
             --     -- print(error_code)
             -- end
         end)
+
 
 
 
@@ -159,42 +183,62 @@ local assets =
 }
 
 local function fn()
-    local inst = CreateEntity()
+    -------------------------------------------------------------------------------------
+        local inst = CreateEntity()
 
-    inst.entity:AddTransform()
-    inst.entity:AddAnimState()
-    inst.entity:AddNetwork()
-    inst.entity:AddSoundEmitter()
-
-
-    inst.entity:AddSoundEmitter()
-
-    inst.entity:AddMiniMapEntity()
-    inst.MiniMapEntity:SetIcon("fwd_in_pdt_fish_farm.tex")
-
-    MakeObstaclePhysics(inst, 1.5)
+        inst.entity:AddTransform()
+        inst.entity:AddAnimState()
+        inst.entity:AddNetwork()
+        inst.entity:AddSoundEmitter()
 
 
-    inst.AnimState:SetBank("fwd_in_pdt_fish_farm")
-    inst.AnimState:SetBuild("fwd_in_pdt_fish_farm")
-    inst.AnimState:PlayAnimation("idle",true)
-    inst.AnimState:SetTime(math.random(800)/10)
-    local scale = 0.6
-    inst.AnimState:SetScale(scale, scale, scale)
-    inst.AnimState:SetFinalOffset(-10)
-    inst.AnimState:SetSortOrder(-10)
-    inst.AnimState:SetLayer(LAYER_BELOW_OCEAN)
+        inst.entity:AddSoundEmitter()
+
+        inst.entity:AddMiniMapEntity()
+        inst.MiniMapEntity:SetIcon("fwd_in_pdt_fish_farm.tex")
+
+        MakeObstaclePhysics(inst, 1.5)
 
 
-    inst:AddTag("structure")
-    inst:AddTag("antlion_sinkhole_blocker")
-    inst:AddTag("birdblocker")
-    inst:AddTag("fwd_in_pdt_fish_farm")
-    
+        inst.AnimState:SetBank("fwd_in_pdt_fish_farm")
+        inst.AnimState:SetBuild("fwd_in_pdt_fish_farm")
+        inst.AnimState:PlayAnimation("idle",true)
+        inst.AnimState:SetTime(math.random(800)/10)
+        local scale = 0.6
+        inst.AnimState:SetScale(scale, scale, scale)
+        inst.AnimState:SetFinalOffset(-10)
+        inst.AnimState:SetSortOrder(-10)
+        inst.AnimState:SetLayer(LAYER_BELOW_OCEAN)
+
+
+        inst:AddTag("structure")
+        inst:AddTag("antlion_sinkhole_blocker")
+        inst:AddTag("birdblocker")
+        inst:AddTag("fwd_in_pdt_fish_farm")
+        
     inst.entity:SetPristine()
-
-    add_container_before_not_ismastersim_return(inst)
-    add_net_event(inst)
+    -------------------------------------------------------------------------------------
+        add_container_before_not_ismastersim_return(inst)
+        add_net_event(inst)
+    -------------------------------------------------------------------------------------
+    ---- 批量采摘的动作
+        inst:AddComponent("fwd_in_pdt_com_workable")
+        inst.components.fwd_in_pdt_com_workable:SetTestFn(function(inst,doer,right_click)
+            return right_click
+        end)
+        inst.components.fwd_in_pdt_com_workable:SetOnWorkFn(function(inst,doer)
+            if not TheWorld.ismastersim then
+                return
+            end
+            inst.components.container:Close()
+            inst.components.container:ForEachItem(function(item)
+                doer.components.inventory:GiveItem(item)
+            end)
+            return true
+        end)
+        -- inst.components.fwd_in_pdt_com_workable:SetSGAction("give")
+        inst.components.fwd_in_pdt_com_workable:SetActionDisplayStr("fwd_in_pdt_fish_farm",STRINGS.ACTIONS.HARVEST)
+    -------------------------------------------------------------------------------------
 
     if not TheWorld.ismastersim then
         return inst
@@ -206,6 +250,7 @@ local function fn()
 
     -------------------------------------------------------------------------------------
     ---- 东西放进去、拿出来
+        
         inst:ListenForEvent("itemget",function(_,_table)
             inst.SoundEmitter:PlaySound("turnoftides/common/together/water/splash/small")
 
@@ -215,6 +260,8 @@ local function fn()
                         tempItem.components.perishable:StopPerishing()
                     end
                 end
+                inst:PushEvent("refresh_value")
+
         end)
         inst:ListenForEvent("itemlose",function(inst,_table)    
             inst.SoundEmitter:PlaySound("turnoftides/common/together/water/splash/small")
@@ -225,20 +272,31 @@ local function fn()
                             tempItem.components.perishable:StartPerishing()
                         end
                     end
+            inst:PushEvent("refresh_value")
+                    
         end)
 
         inst:ListenForEvent("onopen",function()
-            inst:PushEvent("add_food_value",0)
+            inst:PushEvent("refresh_value")
+        end)
+        inst:ListenForEvent("onclose",function()
+            inst:PushEvent("hide_food_value")
+        end)
+    -------------------------------------------------------------------------------------
+        inst:ListenForEvent("refresh_value",function()
+            inst:DoTaskInTime(0.5,function()
+                inst:PushEvent("add_food_value",0)                
+            end)
         end)
     -------------------------------------------------------------------------------------
     ---- 鱼池内部计算
         inst:ListenForEvent("itemget",function(_,_table)
                 local food_value_list = {
-                    ["spoiled_food"] = 15,      --- 腐烂的食物
-                    ["rottenegg"]    = 10,      --- 腐烂的鸟蛋
-                    ["chum"] = 30,              --- 鱼食
+                    ["spoiled_food"] = 30,      --- 腐烂的食物
+                    ["rottenegg"]    = 15,      --- 腐烂的鸟蛋
+                    ["chum"] = 90,              --- 鱼食
                     ["spoiled_fish"] = 20,             --- 腐烂的鱼
-                    ["spoiled_fish_small"] = 10,       --- 腐烂的小鱼
+                    ["spoiled_fish_small"] = 15,       --- 腐烂的小鱼
                 }
                 if _table and _table.item and food_value_list[_table.item.prefab] and _table.slot then   
                     inst:DoTaskInTime(0,function()
@@ -295,7 +353,7 @@ local function fn()
             ---------------------------------------------------------------------- 
             ---- 值初始化
                 local each_fish_cost_value_a_day = 5        --- 每条鱼每天吃多少
-                local each_fish_create_value = 15           --- 每条鱼需要消耗的点数
+                local each_fish_create_value = 30           --- 每条鱼需要消耗的点数
             ---------------------------------------------------------------------- 
             -------- 第一步，计算总共有多少条鱼,以及鱼的类别
                 local fish_num = 0
@@ -320,7 +378,7 @@ local function fn()
                 end
                 -- print("第二步通过")
             ----------------------------------------------------------------------
-            ------- 第三步， 15 点食物度生长一条鱼                
+            ------- 第三步， 30 点食物度生长一条鱼                
                 local food_current_value = inst.components.fwd_in_pdt_data:Add("food_value",0)
                 local food_value_need = fish_num * each_fish_cost_value_a_day
                 local food_cost_value = 0   --- 本次消耗掉的食物值

@@ -12,3 +12,5 @@ modimport("Key_Modules_Of_FWD_IN_PDT/06_widgets/04_itemtile_icon_fx_anim.lua")  
 
 modimport("Key_Modules_Of_FWD_IN_PDT/06_widgets/05_wellness_wideget.lua")    --- 添加体质值能量条
 
+modimport("Key_Modules_Of_FWD_IN_PDT/06_widgets/06_medical_certificate_widget.lua")    --- 诊断单界面
+

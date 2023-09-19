@@ -45,10 +45,10 @@
                         table.insert(TechTree.BONUS_TECH,string.upper("fwd_in_pdt_building_medical_check_up_machine")) ---- 有奖励的科技树
 
                         -------------------- 科技参数
-                        -- TECH.NONE[string.upper("fwd_in_pdt_building_medical_check_up_machine")] = 0
-                        for k, v in pairs(TECH) do
-                            TECH[k][string.upper("fwd_in_pdt_building_medical_check_up_machine")] = 0
-                        end
+                        TECH.NONE[string.upper("fwd_in_pdt_building_medical_check_up_machine")] = 0
+                        -- for k, v in pairs(TECH) do
+                        --     TECH[k][string.upper("fwd_in_pdt_building_medical_check_up_machine")] = 0
+                        -- end
                         TECH[string.upper("fwd_in_pdt_building_medical_check_up_machine")] = {
                             [string.upper("fwd_in_pdt_building_medical_check_up_machine")] = 1,
                         }

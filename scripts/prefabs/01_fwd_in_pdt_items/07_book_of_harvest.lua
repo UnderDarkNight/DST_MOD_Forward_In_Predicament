@@ -149,6 +149,9 @@ local function fn()
     -- inst.components.stackable.maxsize = TUNING.STACK_SIZE_LARGEITEM
     --------------------------------------------------------------------------
     MakeHauntableLaunch(inst)
+    MakeSmallBurnable(inst, TUNING.MED_BURNTIME)
+    inst:AddComponent("fuel")
+    inst.components.fuel.fuelvalue = TUNING.MED_FUEL
     -------------------------------------------------------------------
     --- 落水影子
         local function shadow_init(inst)
