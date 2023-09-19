@@ -171,3 +171,12 @@ end
         atlas = "images/inventoryimages/fwd_in_pdt_food_universal_antidote.xml",
         image = "fwd_in_pdt_food_universal_antidote.tex",
     })
+--------------------------------------------------------------------------------------------------------------------------------------------
+--- 诊断单 
+--------------------------------------------------------------------------------------------------------------------------------------------
+    Add_Recipe_2_Machine({
+        prefab = "fwd_in_pdt_item_medical_certificate",
+        Ingredients = {  },
+        atlas = GetInventoryItemAtlas("scandata.tex"),
+        image = "scandata.tex",
+    })

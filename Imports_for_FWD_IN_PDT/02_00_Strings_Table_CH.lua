@@ -121,6 +121,12 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["recipe_desc"] = "用来庆祝丰收的魔法书",
                 ["action_fail"] = "暂时没法在这附近使用",
             },
+            ["fwd_in_pdt_item_medical_certificate"] = {
+                ["name"] = "诊断单",
+                ["inspect_str"] = "自己身体的诊断结果",
+                ["recipe_desc"] = "自己身体的诊断结果",
+                ["item_name_format"] = "XXXX的诊断单"
+            },
         --------------------------------------------------------------------
         ---- 02_fwd_in_pdt_materials
             ["fwd_in_pdt_material_tree_resin"] = {
@@ -379,41 +385,35 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             },
             ["fwd_in_pdt_wellness_glucose"] = {
                 ["name"] = "血糖",
-                ["treatment"] = "吃含糖的食物增加。快速降低则需要胰岛素",
+                ["treatment"] = "吃含糖的食物增加。快速降低则需要胰岛素针。",
             },
             ["fwd_in_pdt_wellness_poison"] = {
                 ["name"] = "中毒",
-                ["treatment"] = "万能解毒剂",
+                ["treatment"] = {"清空需要万能解毒剂","想要不再增长，则需要使用对应解毒方法"},
             },
             ["fwd_in_pdt_welness_snake_poison"] = {
                 ["name"] = "蛇毒",
-                ["treatment"] = "雄黄 水解酶",
+                ["treatment"] = "雄黄饮剂",
             },
             ["fwd_in_pdt_welness_frog_poison"] = {
                 ["name"] = "青蛙毒",
-                ["treatment"] = "雄黄 水解酶",
+                ["treatment"] = "万能解毒剂",
             },
             ["fwd_in_pdt_welness_spider_poison"] = {
                 ["name"] = "蜘蛛毒",
-                ["treatment"] = STRINGS.NAMES[string.upper("spidergland")],
+                ["treatment"] = { STRINGS.NAMES[string.upper("spidergland")] , "万能解毒剂" },
             },
             ["fwd_in_pdt_welness_bee_poison"] = {
                 ["name"] = "蜜蜂毒",
-                ["treatment"] = STRINGS.NAMES[string.upper("taffy")],
+                ["treatment"] = { STRINGS.NAMES[string.upper("taffy")] , "万能解毒剂" },
             },
             ["fwd_in_pdt_welness_cough"] = {
                 ["name"] = "咳嗽",
-                ["treatment"] = [[
-                    · 使用《伤寒病论》
-                    · 紫菀药丸、熟牛奶、旮瘩汤、蜂蜜蒸橙
-                ]],
+                ["treatment"] = { "使用《伤寒病论》","紫菀药丸、熟牛奶、旮瘩汤、蜂蜜蒸橙"},
             },
             ["fwd_in_pdt_welness_fever"] = {
                 ["name"] = "发烧",
-                ["treatment"] = [[
-                    · 使用《伤寒病论》
-                    · 紫菀药丸、熟牛奶、旮瘩汤、蜂蜜蒸橙
-                ]],
+                ["treatment"] = { "使用《伤寒病论》","紫菀药丸、熟牛奶、旮瘩汤、蜂蜜蒸橙"},
             },
         --------------------------------------------------------------------
 }

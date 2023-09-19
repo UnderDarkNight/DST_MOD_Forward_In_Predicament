@@ -115,6 +115,13 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["action_fail"] = "I can't use it around here for now.",
 
             },
+            ["fwd_in_pdt_item_medical_certificate"] = {
+                ["name"] = "Medical Certificate",
+                ["inspect_str"] = "Diagnosis of your own body",
+                ["recipe_desc"] = "Diagnosis of your own body",
+                ["item_name_format"] = "Medical Certificate For XXXX"
+
+            },
         --------------------------------------------------------------------
         ---- 02_fwd_in_pdt_materials
             ["fwd_in_pdt_material_tree_resin"] = {

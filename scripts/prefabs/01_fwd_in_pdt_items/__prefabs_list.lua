@@ -34,6 +34,7 @@ local prefabs_name_list = {
     "05_insulin_syringe",   -- 胰岛素注射器
     "06_disease_treatment_book",   -- 《伤寒病论》
     "07_book_of_harvest",           -- 《丰收之书》
+    "08_medical_certificate",           -- 诊断单
 }
 
 

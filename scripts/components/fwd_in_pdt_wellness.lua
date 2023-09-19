@@ -466,6 +466,28 @@ nil,
         return {}
     end
 
+    function fwd_in_pdt_wellness:Get_All_Debuffs_Name()  --- 获取所有debuff 的prefab
+        
+        local mark_list = {}
+        local ret_debuff_list = {}
+        for k, order in pairs(self.base_prefabs_orders) do ---- 先插入常驻的
+            local index = self.base_prefabs[order]
+            if index and self.debuffs[index] and not mark_list[index] then
+                table.insert(ret_debuff_list,index)
+                mark_list[index] = true
+            end
+        end
+
+        for index, debuff_inst in pairs(self.debuffs) do ---- 先插入常驻的
+            if index and debuff_inst and not mark_list[index] then
+                table.insert(ret_debuff_list,index)
+                mark_list[index] = true
+            end
+        end
+        
+        return ret_debuff_list
+    end
+
 
     function fwd_in_pdt_wellness:Get_Debuff(str)
         if str and self.debuffs[str] then
