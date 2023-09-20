@@ -176,7 +176,8 @@ end
 --------------------------------------------------------------------------------------------------------------------------------------------
     Add_Recipe_2_Machine({
         prefab = "fwd_in_pdt_item_medical_certificate",
-        Ingredients = {  },
-        atlas = GetInventoryItemAtlas("scandata.tex"),
-        image = "scandata.tex",
+        Ingredients = { Ingredient("papyrus", 1) },
+        -- atlas = GetInventoryItemAtlas("scandata.tex"),
+        atlas = "images/inventoryimages/fwd_in_pdt_item_medical_certificate.xml",
+        image = "fwd_in_pdt_item_medical_certificate.tex",
     })

@@ -165,19 +165,19 @@ local flg,error_code = pcall(function()
                 --         widget.__test_str = text
                 --     end
                 -- end
-                -- local inst = TheSim:FindFirstEntityWithTag("fwd_in_pdt_fish_farm")
-                -- if inst then
-                --     inst:PushEvent("daily_task_start")
-                -- end
+                local inst = TheSim:FindFirstEntityWithTag("fwd_in_pdt_fish_farm")
+                if inst then
+                    inst:PushEvent("daily_task_start")
+                end
     ----------------------------------------------------------------------------------------------------------------
     ---- 诊断单界面测试
                     -- ThePlayer.HUD:fwd_in_pdt_medical_certificate_show()
-                ThePlayer.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_snake_poison")
-                ThePlayer.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_frog_poison")
-                -- ThePlayer.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_spider_poison")
-                ThePlayer.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_bee_poison")
-                -- ThePlayer.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_cough")
-                ThePlayer.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_fever")
+                -- ThePlayer.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_snake_poison")
+                -- ThePlayer.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_frog_poison")
+                -- -- ThePlayer.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_spider_poison")
+                -- ThePlayer.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_bee_poison")
+                -- -- ThePlayer.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_cough")
+                -- ThePlayer.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_fever")
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)

@@ -114,63 +114,35 @@ end
                     local cmd_table = {
                         num = inst.fish_food_value,
                         random = math.random(100000),
-                        show_food_value = true,
                     }
                     inst.__fish_food_value_json_str:set(json.encode(cmd_table))
                     inst.components.fwd_in_pdt_data:Set("food_value",inst.fish_food_value)
                 end
             end)
-            inst:ListenForEvent("hide_food_value",function()
-                local cmd_table = {
-                    num = inst.components.fwd_in_pdt_data:Add("food_value",0),
-                    show_food_value = false,
-                    random = math.random(100000),
-                }
-                inst.__fish_food_value_json_str:set(json.encode(cmd_table))
-            end)
-
 
         end
-
-        inst:ListenForEvent("fish_food_value_refresh",function(_,cmd_table)
-            -- -- print("fish_food_value_refresh",inst.fish_food_value)
-            ----- 检测玩家  HUD 并 往里直接填数据 child
-            local crash_flag,error_code = pcall(function()
-                if ThePlayer and ThePlayer.HUD and ThePlayer.HUD.controls and ThePlayer.HUD.controls.containers then
-                        local custom_widget = ThePlayer.HUD.controls.containers[inst]
-                        if custom_widget then
-                            if cmd_table.show_food_value then
-                                -- -- print("found the widget")
-                                if custom_widget.fish_food_value == nil then
-                                    custom_widget.fish_food_value = custom_widget:AddChild(widgets_Text(DEFAULTFONT,50,"100.42",{ 255/255 , 255/255 ,255/255 , 1}))
-                                end
-                                custom_widget.fish_food_value:Show()
-                                custom_widget.fish_food_value:SetPosition(0,160)
-                                custom_widget.fish_food_value:SetString("Food : "..tostring(inst.fish_food_value))
-                                custom_widget.fish_food_value:MoveToFront()
-
-                                inst.__client_fish_food_value = custom_widget.fish_food_value
-
-                            elseif custom_widget.fish_food_value then
-                                custom_widget.fish_food_value:Kill()
-                                custom_widget.fish_food_value = nil
-                                inst.__client_fish_food_value = nil
-                            end
-
-                        end
-                elseif inst.__client_fish_food_value and not cmd_table.show_food_value then
-
-                        inst.__client_fish_food_value:Kill()
-                        inst.__client_fish_food_value = nil
-
-                end
-
-            end)
-            -- if not crash_flag then
-            --     -- print(error_code)
-            -- end
+        
+        --------------------------- 界面被打开(不管是 server 还是 client。有界面的那个端才触发的event)
+        inst:ListenForEvent("fwd_in_pdt_event.container_widget_open",function(_,custom_widget)
+            if custom_widget then
+                inst.___container_widget = custom_widget
+                local fish_food_value = custom_widget:AddChild(widgets_Text(DEFAULTFONT,50,"100.42",{ 255/255 , 255/255 ,255/255 , 1}))
+                fish_food_value:SetPosition(0,160)
+                fish_food_value:SetString("Food : "..tostring(inst.fish_food_value or 0))
+                inst.___container_widget_food_value = fish_food_value
+            end
         end)
-
+        inst:ListenForEvent("fwd_in_pdt_event.container_widget_close",function()
+            if inst.___container_widget_food_value then
+                inst.___container_widget_food_value:Kill()
+                inst.___container_widget_food_value = nil
+            end
+        end)
+        inst:ListenForEvent("fish_food_value_refresh",function(_,cmd_table)
+            if inst.___container_widget_food_value then
+                inst.___container_widget_food_value:SetString("Food : "..tostring(inst.fish_food_value or 0))
+            end
+        end)
 
 
 
@@ -260,7 +232,6 @@ local function fn()
                         tempItem.components.perishable:StopPerishing()
                     end
                 end
-                inst:PushEvent("refresh_value")
 
         end)
         inst:ListenForEvent("itemlose",function(inst,_table)    
@@ -272,21 +243,29 @@ local function fn()
                             tempItem.components.perishable:StartPerishing()
                         end
                     end
-            inst:PushEvent("refresh_value")
                     
         end)
-
+    -------------------------------------------------------------------------------------
         inst:ListenForEvent("onopen",function()
-            inst:PushEvent("refresh_value")
+            if inst.components.container:IsEmpty() then
+                inst.components.fwd_in_pdt_com_workable:SetCanWorlk(false)
+            else
+                inst.components.fwd_in_pdt_com_workable:SetCanWorlk(true)
+            end
         end)
         inst:ListenForEvent("onclose",function()
-            inst:PushEvent("hide_food_value")
+            if inst.components.container:IsEmpty() then
+                inst.components.fwd_in_pdt_com_workable:SetCanWorlk(false)
+            else
+                inst.components.fwd_in_pdt_com_workable:SetCanWorlk(true)
+            end
         end)
-    -------------------------------------------------------------------------------------
-        inst:ListenForEvent("refresh_value",function()
-            inst:DoTaskInTime(0.5,function()
-                inst:PushEvent("add_food_value",0)                
-            end)
+        inst:DoTaskInTime(0,function()
+            if inst.components.container:IsEmpty() then
+                inst.components.fwd_in_pdt_com_workable:SetCanWorlk(false)
+            else
+                inst.components.fwd_in_pdt_com_workable:SetCanWorlk(true)
+            end
         end)
     -------------------------------------------------------------------------------------
     ---- 鱼池内部计算
@@ -302,11 +281,11 @@ local function fn()
                     inst:DoTaskInTime(0,function()
                         local item = _table.item 
                         local food_value = food_value_list[item.prefab]
-                        local food_value = 1
+                        local food_num = 1
                         if item.components.stackable then
-                            food_value = item.components.stackable.stacksize
+                            food_num = item.components.stackable.stacksize
                         end
-                        inst:PushEvent("add_food_value",food_value*food_value)
+                        inst:PushEvent("add_food_value",food_value*food_num)
                         inst.components.container:DropItemBySlot(_table.slot)
                         item:Remove()
                     end)  
@@ -366,8 +345,11 @@ local function fn()
                 end)
                 -- print("第一步：",fish_num)
                 if fish_num == 0 then
+                    inst.components.fwd_in_pdt_com_workable:SetCanWorlk(false)
                     return
                 end
+                inst.components.fwd_in_pdt_com_workable:SetCanWorlk(true)
+
             ----------------------------------------------------------------------
             -------- 第二步，每天每条鱼消耗 5 点 食物度。只有一条鱼的时候返回。
                 if fish_num == 1 then

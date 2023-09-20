@@ -115,60 +115,65 @@ local function fn()
 
 
     MakeHauntableLaunch(inst)
-    MakeSmallBurnable(inst, TUNING.MED_BURNTIME)
-    inst:AddComponent("fuel")
-    inst.components.fuel.fuelvalue = TUNING.MED_FUEL
     ------------------------------------------------------------------------------------------------------
-    inst:AddComponent("fwd_in_pdt_func")    --- 用来转存数据的
-    inst:ListenForEvent("certificate_data",function(_,cmd_table)
-        -- cmd_table = {
-        --     days = 0,
-        --     player_name = "",
-        --     debuffs = {
-        --         { 
-        --             name = "",
-        --             treatment = "", -- or table
-        --         },
-        --         { 
-        --             name = "",
-        --             treatment = "", -- or table
-        --         },
-        --     }
-        -- }
-        inst.components.fwd_in_pdt_func:Set("certificate_data",cmd_table)
-        local str = GetStringsTable()["item_name_format"]
-        local ret_item_name = string.gsub(str, "XXXX", tostring(cmd_table.player_name))
-        inst.components.named:SetName(ret_item_name)
-        inst.components.fwd_in_pdt_func:Replica_Set_Simple_Data("certificate_data",cmd_table)
-    end)
-    inst:DoTaskInTime(0,function()
-        local data = inst.components.fwd_in_pdt_func:Get("certificate_data")
-        if data then
-            inst:PushEvent("certificate_data",data)
-        end
-    end)
-
-    inst.OnBuiltFn = function(self,builder)
-        local cmd_table = {
-            days = TheWorld.state.cycles + 1,
-            player_name = builder:GetDisplayName()
-        }
-        if not builder.components.fwd_in_pdt_wellness then
-            return
-        end
-
-        local debuff_list = builder.components.fwd_in_pdt_wellness:Get_All_Debuffs_Name()
-        local debuffs = {}
-        for k , debuff_prefab in pairs(debuff_list) do
-            local string_table = GetStringsTable(debuff_prefab)
-            if string_table and string_table.name and string_table.treatment then
-                -- print("++++ inser ",string_table.name)
-                table.insert(debuffs,{name = string_table.name , treatment = string_table.treatment})
+    --- 擦除
+        inst:AddComponent("erasablepaper")
+    ------------------------------------------------------------------------------------------------------
+    ---- 燃烧 和 可燃
+        MakeSmallBurnable(inst, TUNING.MED_BURNTIME)    --- 可点燃
+        inst:AddComponent("fuel")
+        inst.components.fuel.fuelvalue = TUNING.MED_FUEL
+    ------------------------------------------------------------------------------------------------------
+        inst:AddComponent("fwd_in_pdt_func")    --- 用来转存数据的
+        inst:ListenForEvent("certificate_data",function(_,cmd_table)
+            -- cmd_table = {
+            --     days = 0,
+            --     player_name = "",
+            --     debuffs = {
+            --         { 
+            --             name = "",
+            --             treatment = "", -- or table
+            --         },
+            --         { 
+            --             name = "",
+            --             treatment = "", -- or table
+            --         },
+            --     }
+            -- }
+            inst.components.fwd_in_pdt_func:Set("certificate_data",cmd_table)
+            local str = GetStringsTable()["item_name_format"]
+            local ret_item_name = string.gsub(str, "XXXX", tostring(cmd_table.player_name))
+            inst.components.named:SetName(ret_item_name)
+            inst.components.fwd_in_pdt_func:Replica_Set_Simple_Data("certificate_data",cmd_table)
+        end)
+        inst:DoTaskInTime(0,function()
+            local data = inst.components.fwd_in_pdt_func:Get("certificate_data")
+            if data then
+                inst:PushEvent("certificate_data",data)
             end
+        end)
+
+        inst.OnBuiltFn = function(self,builder)
+            local cmd_table = {
+                days = TheWorld.state.cycles + 1,
+                player_name = builder:GetDisplayName()
+            }
+            if not builder.components.fwd_in_pdt_wellness then
+                return
+            end
+
+            local debuff_list = builder.components.fwd_in_pdt_wellness:Get_All_Debuffs_Name()
+            local debuffs = {}
+            for k , debuff_prefab in pairs(debuff_list) do
+                local string_table = GetStringsTable(debuff_prefab)
+                if string_table and string_table.name and string_table.treatment then
+                    -- print("++++ inser ",string_table.name)
+                    table.insert(debuffs,{name = string_table.name , treatment = string_table.treatment})
+                end
+            end
+            cmd_table.debuffs = debuffs
+            inst:PushEvent("certificate_data",cmd_table)
         end
-        cmd_table.debuffs = debuffs
-        inst:PushEvent("certificate_data",cmd_table)
-    end
     ------------------------------------------------------------------------------------------------------
 
     -------------------------------------------------------------------
