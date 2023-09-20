@@ -288,6 +288,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "挺有用的灯",
                 ["recipe_desc"] = "三种宝石提供三种功能",
             },
+            ["fwd_in_pdt_building_special_production_table"] = {
+                ["name"] = "多合一制作台",
+                ["inspect_str"] = "制作一些特别的东西用的工作台",
+                ["recipe_desc"] = "制作一些特别的东西用的工作台",
+            },
         --------------------------------------------------------------------
         ---- 07_fwd_in_pdt_buildings
             ["fwd_in_pdt_building_mock_wall_grass"] = {

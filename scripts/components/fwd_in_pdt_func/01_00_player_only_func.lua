@@ -171,6 +171,49 @@ local function main_com(fwd_in_pdt_func)
             end)
         end
     --------------------------------------------------------------------------------------------------------------------------------------------
+    ---- 给指定数量的物品（用来减少卡顿）
+        function fwd_in_pdt_func:GiveItemByPrefab(prefab,num)
+            -- print("main info fwd_in_pdt_func:GiveItemByPrefab",prefab,num)
+            if type(prefab) ~= "string" or not PrefabExists(prefab) then
+                return
+            end
+
+            num = num or 1
+            if num == 1 then
+                self.inst.components.inventory:GiveItem(SpawnPrefab(prefab))
+                return
+            end
+
+            local base_item_inst = SpawnPrefab(prefab)
+            if not base_item_inst.components.stackable then --- 不可叠堆的物品
+                for i = 2, num, 1 do
+                    self.inst.components.inventory:GiveItem(SpawnPrefab(prefab))
+                end
+                self.inst.components.inventory:GiveItem(base_item_inst)
+                return
+            end
+            ---------------------------------- 
+            -- 叠堆计算
+
+            local max_stack_num = base_item_inst.components.stackable.maxsize
+            local rest_num = math.floor( num % max_stack_num )      --- 不够一组的个数
+            local stack_groups = math.floor(   (num - rest_num)/max_stack_num    )  --- 够一组的个数
+            if rest_num > 0 then
+                base_item_inst.components.stackable.stacksize = rest_num
+                self.inst.components.inventory:GiveItem(base_item_inst)
+            else
+                base_item_inst:Remove()
+            end
+            if stack_groups > 0 then
+                for i = 1, stack_groups, 1 do
+                    local items = SpawnPrefab(prefab)
+                    items.components.stackable.stacksize = max_stack_num
+                    self.inst.components.inventory:GiveItem(items)
+                end
+            end
+            
+        end
+    --------------------------------------------------------------------------------------------------------------------------------------------
 end
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 local function replica(fwd_in_pdt_func)

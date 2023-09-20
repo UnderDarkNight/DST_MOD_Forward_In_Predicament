@@ -16,8 +16,9 @@ local Prefabs_addr_base = string.sub(temp_addr,1,temp_str_index2) .. "/"    --- 
 
 -- local Prefabs_addr_base = "scripts/prefabs/06_fwd_in_pdt_containers/"
 local prefabs_name_list = {
-    "01_fish_farm",                 --- 养鱼池
-    "02_moon_jewelry_lamp",                 --- 天体宝珠灯
+    "01_fish_farm",                           --- 养鱼池
+    "02_moon_jewelry_lamp",                   --- 天体宝珠灯
+    "03_special_production_table",            --- 特殊工作台
 }
 
 ---------------------------------------------------------------------------

@@ -279,6 +279,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "Quite useful lamp",
                 ["recipe_desc"] = "Three gemstones offer three functions",
             },
+            ["fwd_in_pdt_building_special_production_table"] = {
+                ["name"] = "All-In-One Special Production Table",
+                ["inspect_str"] = "a table for making special items",
+                ["recipe_desc"] = "a table for making special items",
+            },
         --------------------------------------------------------------------
         ---- 07_fwd_in_pdt_buildings
             ["fwd_in_pdt_building_mock_wall_grass"] = {

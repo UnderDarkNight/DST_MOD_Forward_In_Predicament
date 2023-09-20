@@ -165,10 +165,10 @@ local flg,error_code = pcall(function()
                 --         widget.__test_str = text
                 --     end
                 -- end
-                local inst = TheSim:FindFirstEntityWithTag("fwd_in_pdt_fish_farm")
-                if inst then
-                    inst:PushEvent("daily_task_start")
-                end
+                -- local inst = TheSim:FindFirstEntityWithTag("fwd_in_pdt_fish_farm")
+                -- if inst then
+                --     inst:PushEvent("daily_task_start")
+                -- end
     ----------------------------------------------------------------------------------------------------------------
     ---- 诊断单界面测试
                     -- ThePlayer.HUD:fwd_in_pdt_medical_certificate_show()

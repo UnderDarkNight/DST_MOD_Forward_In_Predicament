@@ -24,6 +24,7 @@ local files_name = {
 	"fwd_in_pdt_moom_jewelry_lamp",				--- 天体珠宝灯
 
 	"fwd_in_pdt_fish_farm",				--- 养鱼池
+	"fwd_in_pdt_building_special_production_table",				--- 特殊工作台
 
 }
 
