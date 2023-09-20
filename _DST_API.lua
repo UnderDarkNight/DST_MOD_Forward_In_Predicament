@@ -246,7 +246,7 @@ inst = {
         ["HasStateTag"] = function(self,tag_name) end,
     },
     ["SpawnChild"] = function(self,name)        return inst    end,
-    ["OnBuiltFn"] = function(...)end,
+    ["OnBuiltFn"] = function(self,doer)end,
     ["RemoveChild"] = function(self,inst) end,
     ["AddChild"] = function(self,child_inst)end,
     parent = inst,

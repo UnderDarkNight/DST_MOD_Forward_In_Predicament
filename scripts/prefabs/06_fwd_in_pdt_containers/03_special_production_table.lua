@@ -38,6 +38,7 @@ local assets =
                 {
                     animbank = "fwd_in_pdt_building_special_production_table",
                     animbuild = "fwd_in_pdt_building_special_production_table",
+                    animloop = true,
                     pos = Vector3(0, 170, 0),
                     side_align_tip = 160,
                     slotpos =
@@ -302,7 +303,12 @@ local function fn()
             inst:Remove()            
         end)
     -------------------------------------------------------------------------------------
-
+    ---- 玩家建造后给一本说明书
+        inst.OnBuiltFn = function(self,builder)
+            if builder and builder.components.fwd_in_pdt_func then
+                builder.components.fwd_in_pdt_func:GiveItemByPrefab("log")
+            end
+        end
     -------------------------------------------------------------------------------------
 
     return inst

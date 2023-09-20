@@ -59,13 +59,6 @@ function fwd_in_pdt_func:Add(DataName_Str,num)
     return self:Get(DataName_Str)
 end
 
-function fwd_in_pdt_func:Get_OS_Time_Num()
-    local year = tonumber(os.date("%Y"))
-    local month = tonumber(os.date("%m"))
-    local day = tonumber(os.date("%d"))
-    local ret_num = year*10000+month*100+day
-    return ret_num
-end
 ------------------------------------------------------------------------------------------------------------------------------
 --- 下发简易参数表，简易参数触发器
 function fwd_in_pdt_func:Replica_Set_Simple_Data(DataName_Str,theData)
