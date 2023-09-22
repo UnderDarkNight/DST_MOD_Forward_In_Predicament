@@ -17,7 +17,8 @@ local assets =
 
         if  TheSim:CountEntities(x, y, z, 5.5, {"fwd_in_pdt_building_paddy_windmill"}) == 1 
             and 0 == TheSim:CountEntities(x, y, z, 1.5, {"fwd_in_pdt_building_paddy_windmill"}) 
-            and TheWorld.Map:CanDeployPlantAtPoint(Vector3(x,y,z),inst) then
+            and TheWorld.Map:IsDeployPointClear2(Vector3(x,y,z),inst,0) then
+            -- and TheWorld.Map:CanDeployPlantAtPoint(Vector3(x,y,z),inst) then
                 return true
         end
 
@@ -44,7 +45,8 @@ local assets =
                     end            
                 end
                 inst.components.deployable:SetDeployMode(DEPLOYMODE.PLANT)
-                inst.components.deployable:SetDeploySpacing(DEPLOYSPACING.MEDIUM)   
+                -- inst.components.deployable:SetDeploySpacing(DEPLOYSPACING.MEDIUM)   
+                inst.components.deployable:SetDeploySpacing(DEPLOYSPACING.LESS)   
         end
     end
 ---------------------------------------------------------------------------------------------------------------------------
@@ -116,7 +118,6 @@ local function placer_postinit_fn(inst)
             local x,y,z = inst.Transform:GetWorldPosition()
             return CanPlantAtPoint(inst, x, y, z)
         end
-
     end
 
 end
