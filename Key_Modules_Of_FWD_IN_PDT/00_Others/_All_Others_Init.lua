@@ -12,7 +12,7 @@ modimport("Key_Modules_Of_FWD_IN_PDT/00_Others/02_Sound_hook.lua")    --- 屏蔽
 modimport("Key_Modules_Of_FWD_IN_PDT/00_Others/03_Death_Announce.lua")    --- 死亡通告相关API  hook
 modimport("Key_Modules_Of_FWD_IN_PDT/00_Others/04_Resurrection_Announce.lua")    --- 复活通告相关API hook
 
-modimport("Key_Modules_Of_FWD_IN_PDT/00_Others/05_OnEntityReplicated_Event.lua")    --- 修改replica ，让其可以 在加载后瞬间 pushevent
+-- modimport("Key_Modules_Of_FWD_IN_PDT/00_Others/05_OnEntityReplicated_Event.lua")    --- 修改replica ，让其可以 在加载后瞬间 pushevent
 
 modimport("Key_Modules_Of_FWD_IN_PDT/00_Others/06_pick_sound_customization.lua")    --- 自定义拾取声音，角色独有拾取声音
 

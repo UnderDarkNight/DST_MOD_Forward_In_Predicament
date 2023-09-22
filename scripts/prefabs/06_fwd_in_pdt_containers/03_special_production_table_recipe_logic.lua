@@ -10,37 +10,37 @@ return function(inst)
 
     local recipes = {
         ------- 正式配方
-        -- -------------------------------------------------------------------------------------------------------------
-        -- ---- 测试配方
-        --     {
-        --         source = {     
-        --             {prefab = "log" , num = 1, } ,  {prefab = "log" , num = 1, },   {prefab = "log" , num = 1, },
-        --             {prefab = "log" , num = 1, } ,  {prefab = "log" , num = 1, },   {prefab = "log" , num = 1, },
-        --             {prefab = "log" , num = 1, } ,  {prefab = "log" , num = 1, },   {prefab = "log" , num = 1, },
-        --         },
-        --         ret = {
-        --             prefab = "walrus_tusk",
-        --             num = 1,
-        --             atlas =  GetInventoryItemAtlas("walrus_tusk.tex"),
-        --             image =  "walrus_tusk.tex"
-        --         }
-        --     },
-        -- -------------------------------------------------------------------------------------------------------------
-        -- ---- 测试配方
-        --     {
-        --         source = {     
-        --             {                                 } ,  {prefab = "goldnugget" , num = 1, },   {                          },
-        --             {prefab = "goldnugget" , num = 1, } ,  {                                 },   {                          },
-        --             {                                 } ,  {prefab = "goldnugget" , num = 1, },   {                          },
-        --         },
-        --         ret = {
-        --             prefab = "transistor",
-        --             num = 1,
-        --             atlas =  GetInventoryItemAtlas("transistor.tex"),
-        --             image =  "transistor.tex"
-        --         }
-        --     },
-        -- -------------------------------------------------------------------------------------------------------------
+        -------------------------------------------------------------------------------------------------------------
+        ---- 水稻种子
+            {
+                source = {     
+                    {                            } ,  {prefab = "seeds" , num = 2, },           {                            },
+                    {prefab = "seeds" , num = 2, } ,  {prefab = "goldenpickaxe" , use = 1, },   {prefab = "seeds" , num = 2, },
+                    {                            } ,  {prefab = "seeds" , num = 2, },           {                            },
+                },
+                ret = {
+                    prefab = "fwd_in_pdt_plant_paddy_rice_seed",
+                    num = 4,
+                    atlas =  GetInventoryItemAtlas("fwd_in_pdt_plant_paddy_rice_seed.tex"),
+                    image =  "fwd_in_pdt_plant_paddy_rice_seed.tex"
+                }
+            },
+        -------------------------------------------------------------------------------------------------------------
+        ---- 稻米脱壳 配方
+            {
+                source = {     
+                    {prefab = "fwd_in_pdt_plant_paddy_rice_seed" , num = 1} ,  {                          },   {prefab = "fwd_in_pdt_plant_paddy_rice_seed" , num = 1},
+                    {                                                     } ,  {prefab = "hammer" ,use = 1},   {                                                     },
+                    {prefab = "fwd_in_pdt_plant_paddy_rice_seed" , num = 1} ,  {                          },   {prefab = "fwd_in_pdt_plant_paddy_rice_seed" , num = 1},
+                },
+                ret = {
+                    prefab = "fwd_in_pdt_food_rice",
+                    num = 4,
+                    atlas =  GetInventoryItemAtlas("fwd_in_pdt_food_rice.tex"),
+                    image =  "fwd_in_pdt_food_rice.tex"
+                }
+            },
+        -------------------------------------------------------------------------------------------------------------
 
     }
 
@@ -58,7 +58,11 @@ return function(inst)
                             prefab = "walrus_tusk",
                             num = 1,
                             atlas =  GetInventoryItemAtlas("walrus_tusk.tex"),
-                            image =  "walrus_tusk.tex"
+                            image =  "walrus_tusk.tex",
+                            fn = function(inst,doer,times)
+                                --- 给奖励后执行的函数。
+                                --- times -- 奖励次数
+                            end
                         }
                     },
                 -------------------------------------------------------------------------------------------------------------
@@ -73,7 +77,11 @@ return function(inst)
                             prefab = "transistor",
                             num = 1,
                             atlas =  GetInventoryItemAtlas("transistor.tex"),
-                            image =  "transistor.tex"
+                            image =  "transistor.tex",
+                            fn = function(inst,doer,times)
+                                --- 给奖励后执行的函数。
+                                --- times -- 奖励次数
+                            end
                         }
                     },
                 -------------------------------------------------------------------------------------------------------------
@@ -279,6 +287,9 @@ return function(inst)
             local total_reward_num = reward_num * cycle_times
             if total_reward_num > 0 then
                 doer.components.fwd_in_pdt_func:GiveItemByPrefab(reward_table.prefab,total_reward_num)
+            end
+            if reward_table.fn then
+                reward_table.fn(inst,doer,cycle_times)
             end
         end
 

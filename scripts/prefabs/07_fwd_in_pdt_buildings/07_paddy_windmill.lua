@@ -127,7 +127,7 @@ end
 
         inst.AnimState:SetBank("fwd_in_pdt_building_paddy_windmill___paddy")
         inst.AnimState:SetBuild("fwd_in_pdt_building_paddy_windmill___paddy")
-        local scale_num = 2
+        local scale_num = 2.025
         inst.AnimState:SetScale(scale_num, scale_num, scale_num)
         inst.AnimState:SetLayer(LAYER_WORLD_BACKGROUND)
         inst.AnimState:SetOrientation(ANIM_ORIENTATION.OnGround)

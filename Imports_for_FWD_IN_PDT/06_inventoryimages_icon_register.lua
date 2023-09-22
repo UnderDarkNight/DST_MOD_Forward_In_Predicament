@@ -40,6 +40,8 @@ local files_name = {
 	-- 04_fwd_in_pdt_foods
 		"fwd_in_pdt_food_raw_milk",								--- 生牛奶
 		"fwd_in_pdt_food_andrographis_paniculata_botany", 	    --- 雄黄饮剂
+		"fwd_in_pdt_food_universal_antidote", 	   				--- 万能解毒剂
+		"fwd_in_pdt_food_rice", 	    						--- 脱壳的稻米
 
 	---------------------------------------------------------------------------------------
 	-- 05_fwd_in_pdt_foods_cooked
@@ -72,6 +74,9 @@ local files_name = {
 
 
 
+	---------------------------------------------------------------------------------------
+	-- 09_fwd_in_pdt_plants
+		"fwd_in_pdt_plant_paddy_rice_seed"						--- 未脱壳的稻米
 	---------------------------------------------------------------------------------------
 
 }

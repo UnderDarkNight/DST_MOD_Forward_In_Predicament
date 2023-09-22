@@ -162,6 +162,10 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "It can be used to neutralize all kinds of poisons",
                 ["recipe_desc"] = "It can be used to neutralize all kinds of poisons",
             },
+            ["fwd_in_pdt_food_rice"] = {
+                ["name"] = "Rice",
+                ["inspect_str"] = "It's so white it's beautiful.",
+            },
         --------------------------------------------------------------------
         ---- 05_fwd_in_pdt_foods_cooked
             ["fwd_in_pdt_food_mixed_potato_soup"] = {
@@ -338,6 +342,14 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             },
         --------------------------------------------------------------------
         ---- 09_fwd_in_pdt_plants
+            ["fwd_in_pdt_plant_paddy_rice"] = {
+                ["name"] = "Paddy Rice",
+                ["inspect_str"] = "This should only be planted in a well-watered area",
+            },
+            ["fwd_in_pdt_plant_paddy_rice_seed"] = {
+                ["name"] = "Unhulled Rice",
+                ["inspect_str"] = "Shelled and ready to eat.",
+            },
         --------------------------------------------------------------------
         ---- 10_fwd_in_pdt_minerals
         --------------------------------------------------------------------

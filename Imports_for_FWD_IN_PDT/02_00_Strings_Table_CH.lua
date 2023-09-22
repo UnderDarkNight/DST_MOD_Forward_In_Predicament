@@ -171,6 +171,10 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "可以用来解除各种毒",
                 ["recipe_desc"] = "可以用来解除各种毒",
             },
+            ["fwd_in_pdt_food_rice"] = {
+                ["name"] = "稻米",
+                ["inspect_str"] = "白花花的煞是好看",
+            },
         --------------------------------------------------------------------
         ---- 05_fwd_in_pdt_foods_cooked
             ["fwd_in_pdt_food_mixed_potato_soup"] = {
@@ -347,6 +351,14 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             },
         --------------------------------------------------------------------
         ---- 09_fwd_in_pdt_plants
+            ["fwd_in_pdt_plant_paddy_rice"] = {
+                ["name"] = "水稻",
+                ["inspect_str"] = "这个只能在水源充足的地方生长",
+            },
+            ["fwd_in_pdt_plant_paddy_rice_seed"] = {
+                ["name"] = "未脱壳的稻米",
+                ["inspect_str"] = "脱壳后就能吃了",
+            },
         --------------------------------------------------------------------
         ---- 10_fwd_in_pdt_minerals
         --------------------------------------------------------------------
