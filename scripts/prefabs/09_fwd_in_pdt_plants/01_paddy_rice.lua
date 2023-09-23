@@ -314,7 +314,7 @@ local function fn()
             },
         }
 
-        inst.components.growable:SetStage(1)
+        inst.components.growable:SetStage(4)
         inst.components.growable.loopstages = false
         inst.components.growable.springgrowth = true
         inst.components.growable:StartGrowing()
@@ -322,7 +322,12 @@ local function fn()
 
         inst:AddComponent("simplemagicgrower")  --- 魔法书
         inst.components.simplemagicgrower:SetLastStage(#inst.components.growable.stages)
-
+        inst:ListenForEvent("_OnPlanted",function(_,_table)
+            inst.components.growable:SetStage(1)
+            if _table and _table.pt then
+                inst.Transform:SetPosition(_table.pt.x, 0, _table.pt.z)
+            end
+        end)
     ------------------------------------------
     --- 可燃
         MakeMediumBurnable(inst)    

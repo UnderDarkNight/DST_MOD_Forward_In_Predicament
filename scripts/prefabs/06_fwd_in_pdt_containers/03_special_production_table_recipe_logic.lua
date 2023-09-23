@@ -8,41 +8,42 @@ return function(inst)
     
 
 
-    local recipes = {
-        ------- 正式配方
-        -------------------------------------------------------------------------------------------------------------
-        ---- 水稻种子
-            {
-                source = {     
-                    {                            } ,  {prefab = "seeds" , num = 2, },           {                            },
-                    {prefab = "seeds" , num = 2, } ,  {prefab = "goldenpickaxe" , use = 1, },   {prefab = "seeds" , num = 2, },
-                    {                            } ,  {prefab = "seeds" , num = 2, },           {                            },
-                },
-                ret = {
-                    prefab = "fwd_in_pdt_plant_paddy_rice_seed",
-                    num = 4,
-                    atlas =  GetInventoryItemAtlas("fwd_in_pdt_plant_paddy_rice_seed.tex"),
-                    image =  "fwd_in_pdt_plant_paddy_rice_seed.tex"
-                }
-            },
-        -------------------------------------------------------------------------------------------------------------
-        ---- 稻米脱壳 配方
-            {
-                source = {     
-                    {prefab = "fwd_in_pdt_plant_paddy_rice_seed" , num = 1} ,  {                          },   {prefab = "fwd_in_pdt_plant_paddy_rice_seed" , num = 1},
-                    {                                                     } ,  {prefab = "hammer" ,use = 1},   {                                                     },
-                    {prefab = "fwd_in_pdt_plant_paddy_rice_seed" , num = 1} ,  {                          },   {prefab = "fwd_in_pdt_plant_paddy_rice_seed" , num = 1},
-                },
-                ret = {
-                    prefab = "fwd_in_pdt_food_rice",
-                    num = 4,
-                    atlas =  GetInventoryItemAtlas("fwd_in_pdt_food_rice.tex"),
-                    image =  "fwd_in_pdt_food_rice.tex"
-                }
-            },
-        -------------------------------------------------------------------------------------------------------------
+    -- local recipes = {
+    --     ------- 正式配方
+    --     -------------------------------------------------------------------------------------------------------------
+    --     ---- 水稻种子
+    --         {
+    --             source = {     
+    --                 {                            } ,  {prefab = "seeds" , num = 2, },           {                            },
+    --                 {prefab = "seeds" , num = 2, } ,  {prefab = "goldenpickaxe" , use = 1, },   {prefab = "seeds" , num = 2, },
+    --                 {                            } ,  {prefab = "seeds" , num = 2, },           {                            },
+    --             },
+    --             ret = {
+    --                 prefab = "fwd_in_pdt_plant_paddy_rice_seed",
+    --                 num = 4,
+    --                 atlas =  GetInventoryItemAtlas("fwd_in_pdt_plant_paddy_rice_seed.tex"),
+    --                 image =  "fwd_in_pdt_plant_paddy_rice_seed.tex"
+    --             }
+    --         },
+    --     -------------------------------------------------------------------------------------------------------------
+    --     ---- 稻米脱壳 配方
+    --         {
+    --             source = {     
+    --                 {prefab = "fwd_in_pdt_plant_paddy_rice_seed" , num = 1} ,  {                          },   {prefab = "fwd_in_pdt_plant_paddy_rice_seed" , num = 1},
+    --                 {                                                     } ,  {prefab = "hammer" ,use = 1},   {                                                     },
+    --                 {prefab = "fwd_in_pdt_plant_paddy_rice_seed" , num = 1} ,  {                          },   {prefab = "fwd_in_pdt_plant_paddy_rice_seed" , num = 1},
+    --             },
+    --             ret = {
+    --                 prefab = "fwd_in_pdt_food_rice",
+    --                 num = 4,
+    --                 atlas =  GetInventoryItemAtlas("fwd_in_pdt_food_rice.tex"),
+    --                 image =  "fwd_in_pdt_food_rice.tex"
+    --             }
+    --         },
+    --     -------------------------------------------------------------------------------------------------------------
 
-    }
+    -- }
+    local recipes = require("prefabs/06_fwd_in_pdt_containers/03_special_production_table_recipes") or {}
 
     if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
         local debugging_recipe = {
@@ -59,7 +60,7 @@ return function(inst)
                             num = 1,
                             atlas =  GetInventoryItemAtlas("walrus_tusk.tex"),
                             image =  "walrus_tusk.tex",
-                            fn = function(inst,doer,times)
+                            finish_fn = function(inst,doer,times)
                                 --- 给奖励后执行的函数。
                                 --- times -- 奖励次数
                             end
@@ -78,7 +79,7 @@ return function(inst)
                             num = 1,
                             atlas =  GetInventoryItemAtlas("transistor.tex"),
                             image =  "transistor.tex",
-                            fn = function(inst,doer,times)
+                            finish_fn = function(inst,doer,times)
                                 --- 给奖励后执行的函数。
                                 --- times -- 奖励次数
                             end
@@ -103,41 +104,40 @@ return function(inst)
 
 
     local function get_ret_cmd_table_by_slots(slots)
-        local ret_recipe_cmd = nil  --- 最终配方
-        -- for k, v in pairs(slots) do
-        --     print(k,v)
-        -- end
+        local function check_item_fit_with_arg_for_widget(item_in_slot,item_arg_table)
+            if item_in_slot == nil and ( item_arg_table == nil or item_arg_table.prefab ==  nil) then
+                return true
+            end
+            if item_in_slot and item_in_slot.prefab and item_arg_table and item_arg_table.prefab == item_in_slot.prefab then
+                local arg_num = item_arg_table.num or 1
+                local current_num = 1
+                if item_in_slot.replica.stackable then
+                    current_num = item_in_slot.replica.stackable:StackSize()
+                end
+                if current_num < arg_num then   --- 个数不够
+                    return false
+                end
+                ---- 个数够了
+                return true
+            end
+            return false
+        end
 
         for k, current_recipe in pairs(recipes) do
-
                 --------- 检查 9 个格子里是否都满足条件。
-                local check_succeed_flag_table = {}
+                local flag_num = 0
                 if current_recipe.source and current_recipe.ret then
                     for i, item_arg_table in pairs(current_recipe.source) do
                                 local the_slot_item = slots[i]
-                                if (item_arg_table == nil or item_arg_table.prefab == nil ) and the_slot_item == nil then
-                                    table.insert(check_succeed_flag_table,1)    --- 空位置，符合
-                                elseif the_slot_item and the_slot_item.prefab and type(item_arg_table) == "table" and the_slot_item.prefab == item_arg_table.prefab  then
-                                    local item_num = GetStackNum(the_slot_item)
-                                    local ask_num = item_arg_table.num or 1
-                                    if ask_num <= item_num then --- 个数够
-                                        table.insert(check_succeed_flag_table,1)    --- 位置和个数符合
-                                    else
-                                        table.insert(check_succeed_flag_table,-100)    --- 位置符合，个数不符合
-                                    end
+                                if check_item_fit_with_arg_for_widget(the_slot_item,item_arg_table) then
+                                    flag_num = flag_num + 1
                                 else
-                                    table.insert(check_succeed_flag_table,-100)    --- 都不符合                                    
+                                    flag_num = flag_num - 100
                                 end
-                                    
-                            -- print(i,check_succeed_flag_table[i])
                     end
                 end
-                -------- 如果成功获得9个true
-                local temp_num = 0
-                for kk, flag_num in pairs(check_succeed_flag_table) do
-                    temp_num = temp_num + flag_num
-                end
-                if temp_num >= 9 then                    
+
+                if flag_num >= 9 then
                     return current_recipe
                 end
 
@@ -230,8 +230,12 @@ return function(inst)
                     end
 
                 else
-                    local use = item_arg_table.use or 1
-                    item_in_slot.components.finiteuses:Use(use)
+                    if not item_arg_table.remove then
+                        local use = item_arg_table.use or 1
+                        item_in_slot.components.finiteuses:Use(use)
+                    else
+                        item_in_slot:Remove()
+                    end                    
                 end
 
                 return true
@@ -286,10 +290,13 @@ return function(inst)
             local reward_num = reward_table.num or 1
             local total_reward_num = reward_num * cycle_times
             if total_reward_num > 0 then
-                doer.components.fwd_in_pdt_func:GiveItemByPrefab(reward_table.prefab,total_reward_num)
+                local reward_item_insts = doer.components.fwd_in_pdt_func:GiveItemByPrefab(reward_table.prefab,total_reward_num) or {}
+                if reward_table.item_fn then
+                    reward_table.item_fn(reward_item_insts,doer)
+                end
             end
-            if reward_table.fn then
-                reward_table.fn(inst,doer,cycle_times)
+            if reward_table.finish_fn then
+                reward_table.finish_fn(inst,doer,cycle_times)
             end
         end
 

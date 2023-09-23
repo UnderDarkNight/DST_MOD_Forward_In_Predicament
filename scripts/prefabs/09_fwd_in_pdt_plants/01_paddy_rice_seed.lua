@@ -41,7 +41,8 @@ local assets =
                 inst:AddComponent("deployable")                
                 inst.components.deployable.ondeploy = function(inst, pt, deployer)
                     if pt and pt.x then
-                        SpawnPrefab("fwd_in_pdt_plant_paddy_rice").Transform:SetPosition(pt.x, pt.y, pt.z)
+                        -- SpawnPrefab("fwd_in_pdt_plant_paddy_rice").Transform:SetPosition(pt.x, pt.y, pt.z)
+                        SpawnPrefab("fwd_in_pdt_plant_paddy_rice"):PushEvent("_OnPlanted",{pt = pt})
                     end            
                 end
                 inst.components.deployable:SetDeployMode(DEPLOYMODE.PLANT)

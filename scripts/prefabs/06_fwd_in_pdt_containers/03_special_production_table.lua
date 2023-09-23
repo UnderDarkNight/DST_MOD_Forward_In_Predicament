@@ -23,7 +23,7 @@ local assets =
 }
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ---- 安装容器界面
-    local function container_Widget_change(theContainer)
+    local function Container_Widget_Setup(theContainer)
             -----------------------------------------------------------------------------------
         ----- 容器界面名 --- 要独特一点，避免冲突
         local container_widget_name = "fwd_in_pdt_building_special_production_table_widget"
@@ -113,11 +113,11 @@ local assets =
             inst:AddComponent("container")
             inst.components.container.openlimit = 1  ---- 限制1个人打开
             -- inst.components.container:WidgetSetup(container_WidgetSetup)
-            container_Widget_change(inst.components.container)
+            Container_Widget_Setup(inst.components.container)
 
         else
             inst.OnEntityReplicated = function(inst)
-                container_Widget_change(inst.replica.container)
+                Container_Widget_Setup(inst.replica.container)
             end
         end
         -------------------------------------------------------------------------------------------------
