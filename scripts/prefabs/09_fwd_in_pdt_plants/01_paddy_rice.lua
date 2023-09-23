@@ -115,7 +115,7 @@ local assets =
                 if inst.components.fwd_in_pdt_data:Get("fertilized") then
                     rice_num = 10
                 end
-                inst.SoundEmitter:PlaySound("dontstarve/wilson/pickup_reeds")            
+                doer.SoundEmitter:PlaySound("dontstarve/wilson/pickup_reeds")            
 
                 doer.components.fwd_in_pdt_func:GiveItemByPrefab("fwd_in_pdt_plant_paddy_rice_seed",rice_num)
                 inst:Remove()
@@ -248,6 +248,10 @@ local function fn()
         inst:AddComponent("workable")
         inst.components.workable:SetWorkAction(ACTIONS.DIG)
         inst.components.workable:SetOnFinishCallback(function()
+            if inst.components.growable:GetStage() == 4 then
+                inst.components.lootdropper:SetLoot({"fwd_in_pdt_plant_paddy_rice_seed","fwd_in_pdt_plant_paddy_rice_seed"})
+            end
+            inst.components.lootdropper:DropLoot()
             inst:Remove()
         end)
         inst.components.workable:SetWorkLeft(1)

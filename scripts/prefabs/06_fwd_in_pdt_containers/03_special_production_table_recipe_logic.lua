@@ -8,41 +8,6 @@ return function(inst)
     
 
 
-    -- local recipes = {
-    --     ------- 正式配方
-    --     -------------------------------------------------------------------------------------------------------------
-    --     ---- 水稻种子
-    --         {
-    --             source = {     
-    --                 {                            } ,  {prefab = "seeds" , num = 2, },           {                            },
-    --                 {prefab = "seeds" , num = 2, } ,  {prefab = "goldenpickaxe" , use = 1, },   {prefab = "seeds" , num = 2, },
-    --                 {                            } ,  {prefab = "seeds" , num = 2, },           {                            },
-    --             },
-    --             ret = {
-    --                 prefab = "fwd_in_pdt_plant_paddy_rice_seed",
-    --                 num = 4,
-    --                 atlas =  GetInventoryItemAtlas("fwd_in_pdt_plant_paddy_rice_seed.tex"),
-    --                 image =  "fwd_in_pdt_plant_paddy_rice_seed.tex"
-    --             }
-    --         },
-    --     -------------------------------------------------------------------------------------------------------------
-    --     ---- 稻米脱壳 配方
-    --         {
-    --             source = {     
-    --                 {prefab = "fwd_in_pdt_plant_paddy_rice_seed" , num = 1} ,  {                          },   {prefab = "fwd_in_pdt_plant_paddy_rice_seed" , num = 1},
-    --                 {                                                     } ,  {prefab = "hammer" ,use = 1},   {                                                     },
-    --                 {prefab = "fwd_in_pdt_plant_paddy_rice_seed" , num = 1} ,  {                          },   {prefab = "fwd_in_pdt_plant_paddy_rice_seed" , num = 1},
-    --             },
-    --             ret = {
-    --                 prefab = "fwd_in_pdt_food_rice",
-    --                 num = 4,
-    --                 atlas =  GetInventoryItemAtlas("fwd_in_pdt_food_rice.tex"),
-    --                 image =  "fwd_in_pdt_food_rice.tex"
-    --             }
-    --         },
-    --     -------------------------------------------------------------------------------------------------------------
-
-    -- }
     local recipes = require("prefabs/06_fwd_in_pdt_containers/03_special_production_table_recipes") or {}
 
     if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
@@ -63,7 +28,10 @@ return function(inst)
                             finish_fn = function(inst,doer,times)
                                 --- 给奖励后执行的函数。
                                 --- times -- 奖励次数
-                            end
+                            end,
+                            item_fn = function(rewarded_items_insts,doer) --- 用来触发某些奖励物品的执行事件
+                    
+                            end,
                         }
                     },
                 -------------------------------------------------------------------------------------------------------------
@@ -82,7 +50,10 @@ return function(inst)
                             finish_fn = function(inst,doer,times)
                                 --- 给奖励后执行的函数。
                                 --- times -- 奖励次数
-                            end
+                            end,
+                            item_fn = function(rewarded_items_insts,doer) --- 用来触发某些奖励物品的执行事件
+                    
+                            end,
                         }
                     },
                 -------------------------------------------------------------------------------------------------------------
@@ -103,7 +74,7 @@ return function(inst)
     end
 
 
-    local function get_ret_cmd_table_by_slots(slots)
+    local function get_ret_cmd_table_by_slots(slots,doer)
         local function check_item_fit_with_arg_for_widget(item_in_slot,item_arg_table)
             if item_in_slot == nil and ( item_arg_table == nil or item_arg_table.prefab ==  nil) then
                 return true
@@ -127,6 +98,9 @@ return function(inst)
                 --------- 检查 9 个格子里是否都满足条件。
                 local flag_num = 0
                 if current_recipe.source and current_recipe.ret then
+                    if current_recipe.player_check_fn and not current_recipe.player_check_fn(doer) then
+                        flag_num = flag_num - 100
+                    end
                     for i, item_arg_table in pairs(current_recipe.source) do
                                 local the_slot_item = slots[i]
                                 if check_item_fit_with_arg_for_widget(the_slot_item,item_arg_table) then
@@ -151,8 +125,15 @@ return function(inst)
 
 
     local function item_get_or_lose(inst)
+        if TheNet:IsDedicated() then
+            return
+        end
+        -- if not ThePlayer then
+        --     return
+        -- end
         local slots = inst.replica.container:GetItems()
-        local ret_recipe_cmd = get_ret_cmd_table_by_slots(slots)
+        local doer = ThePlayer
+        local ret_recipe_cmd = get_ret_cmd_table_by_slots(slots,doer)
         if ret_recipe_cmd then
             local giveback_item_data = ret_recipe_cmd.ret
             inst:PushEvent("target_widget_image",giveback_item_data)
@@ -174,7 +155,9 @@ return function(inst)
 
     local function item_get_or_lose_for_server(inst)
         local slots = inst.replica.container:GetItems()
-        local ret_recipe_cmd = get_ret_cmd_table_by_slots(slots)
+        local openers = inst.components.container:GetOpeners()
+        local doer = openers[1]
+        local ret_recipe_cmd = get_ret_cmd_table_by_slots(slots,doer)
 
         if ret_recipe_cmd and ret_recipe_cmd.ret and ret_recipe_cmd.ret.prefab then
             inst.components.fwd_in_pdt_com_workable:SetCanWorlk(true)
@@ -191,7 +174,9 @@ return function(inst)
     inst:ListenForEvent("recipe_work",function(inst,doer)
         local recipe = inst.___ret_recipe_cmd
         if type(recipe) ~= "table" or doer == nil then
-
+            return
+        end
+        if recipe.player_check_fn and not recipe.player_check_fn(doer) then
             return
         end
 
@@ -204,9 +189,12 @@ return function(inst)
         local cycle_times = 0   --- 循环次数
 
         local function check_item_fit_with_arg(item_in_slot,item_arg_table,use_flag)
+
+
             if item_in_slot == nil and ( item_arg_table == nil or item_arg_table.prefab ==  nil) then
                 return true
             end
+
             if item_in_slot and item_in_slot.prefab and item_arg_table and item_arg_table.prefab == item_in_slot.prefab then
                 local arg_num = item_arg_table.num or 1
                 local current_num = 1

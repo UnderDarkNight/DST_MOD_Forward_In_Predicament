@@ -30,7 +30,7 @@ local prefabs_name_list = {
     "09_example_special_test_tree", ---- 【模块测试】可生长的树
     "10_example_workable_test_item",    ---【模块测试】物品
     "11_special_npc_test",              --- 【功能测试】不同角色对同一实体看到不一样的内容。
-    "12_container_replica_test_box",    --- 【功能测试】测试replica event
+    -- "12_container_replica_test_box",    --- 【功能测试】测试replica event
     "13_stack_item_anim_icon_test",     --- 【功能测试】叠堆物品的动态图标
     "14_test_skeleton",                 --- 【物品测试】角色独有骷髅
 }

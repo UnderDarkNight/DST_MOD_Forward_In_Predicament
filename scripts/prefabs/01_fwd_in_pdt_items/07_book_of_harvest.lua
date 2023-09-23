@@ -20,19 +20,20 @@ local function BookFn(inst,reader)      -- 采摘
     -- grass  sapling
     --- 5x5 地皮， 长宽 20x20 ， 对角距离 22.82 ，半径 以 12
 
-    local prefab_names = {
-        ["grass"] = true,
-        ["sapling"] = true,
-    }
+    -- local prefab_names = {
+    --     ["grass"] = true,
+    --     ["sapling"] = true,
+    --     ["fwd_in_pdt_plant_paddy_rice"] = true,
+    -- }
     local pick_num = 0
 
-    local musthavetags = {"plant","renewable","silviculture"}   --- 树苗 和 草 都有这3个tag
+    local musthavetags = {"plant","silviculture"}   --- 树苗 和 草 都有这3个tag
     local canthavetags = {}
     local musthaveoneoftags = {}
     
     local ents = TheSim:FindEntities(pt.x, 0, pt.z, 12, musthavetags, canthavetags, musthaveoneoftags)
     for k, v in pairs(ents) do
-        if v and prefab_names[tostring(v.prefab)] and  v.components.pickable and v.components.pickable:CanBePicked() then
+        if v and v.components.pickable and v.components.pickable:CanBePicked() then
             v.components.pickable:Pick(reader)
             pick_num = pick_num + 1
         end
