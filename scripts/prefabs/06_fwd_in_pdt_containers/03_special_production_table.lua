@@ -157,6 +157,7 @@ local assets =
             --     image = "",
             --     atlas = "",
             --     prefab = "",
+            --     overwrite_str = "",
             -- }
             if inst.___target_item_widget then
 
@@ -173,7 +174,11 @@ local assets =
                     local num = cmd_table.num or 1
                     local text_widget = inst.___target_item_widget.inside_icon:AddChild( Text(DEFAULTFONT,40,"100.42",{ 255/255 , 255/255 ,255/255 , 1}) )
                     text_widget:SetPosition(0,-60)
-                    text_widget:SetString("= "..tostring(num).." x N")
+                    if cmd_table.overwrite_str then
+                        text_widget:SetString(cmd_table.overwrite_str)
+                    else
+                        text_widget:SetString("= "..tostring(num).." x N")
+                    end
                     if cmd_table.prefab then
                         local name_widget = inst.___target_item_widget.inside_icon:AddChild( Text(DEFAULTFONT,40,"100.42",{ 255/255 , 255/255 ,255/255 , 1}) )
                         name_widget:SetPosition(0,60)
@@ -195,6 +200,37 @@ local assets =
                     -- inst:ListenForEvent("itemlose",function()
                     --     inst:PushEvent("target_widget_image",{})
                     -- end)
+    end
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---- 工作组件
+    local function Add_Workable(inst)
+        inst:AddComponent("fwd_in_pdt_com_workable")
+        inst.components.fwd_in_pdt_com_workable:SetPreActionFn(function(inst,doer)
+            inst.replica.container:Close()
+            if doer then
+                local y = 2.7
+                if doer.replica.rider and doer.replica.rider:IsRiding() then
+                    y = y + 2.5
+                end
+                doer:SpawnChild("fwd_in_pdt_fx_recipe_function"):PushEvent("Set",{
+                    pt = Vector3(0,y,0),
+                    speed = 0.8
+                })
+            end
+        end)
+        inst.components.fwd_in_pdt_com_workable:SetTestFn(function(inst,doer,right_click)
+            return right_click
+        end)
+        inst.components.fwd_in_pdt_com_workable:SetOnWorkFn(function(inst,doer)
+            if not TheWorld.ismastersim then
+                return
+            end
+            inst:PushEvent("recipe_work",doer)
+            return true
+        end)
+        inst.components.fwd_in_pdt_com_workable:SetCanWorlk(false)
+        -- inst.components.fwd_in_pdt_com_workable:SetSGAction("give")
+        inst.components.fwd_in_pdt_com_workable:SetActionDisplayStr("fwd_in_pdt_building_special_production_table",STRINGS.ACTIONS.COMBINESTACK)
     end
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -231,29 +267,14 @@ local function fn()
         
         inst.entity:SetPristine()
     -------------------------------------------------------------------------------------
-        add_container_before_not_ismastersim_return(inst)
-        HookContainerWidget(inst)
-        add_recipe_logic(inst)
+        add_container_before_not_ismastersim_return(inst)   --- 添加容器组件和界面
+        HookContainerWidget(inst)                           --- hook 界面 添加对应的贴图
+        add_recipe_logic(inst)                              --- 配方扫描逻辑
     -------------------------------------------------------------------------------------
     ---- 批量采摘的动作
-        inst:AddComponent("fwd_in_pdt_com_workable")
-        inst.components.fwd_in_pdt_com_workable:SetPreActionFn(function()
-            inst.replica.container:Close()
-        end)
-        inst.components.fwd_in_pdt_com_workable:SetTestFn(function(inst,doer,right_click)
-            return right_click
-        end)
-        inst.components.fwd_in_pdt_com_workable:SetOnWorkFn(function(inst,doer)
-            if not TheWorld.ismastersim then
-                return
-            end
-            inst:PushEvent("recipe_work",doer)
-            return true
-        end)
-        inst.components.fwd_in_pdt_com_workable:SetCanWorlk(false)
-        -- inst.components.fwd_in_pdt_com_workable:SetSGAction("give")
-        inst.components.fwd_in_pdt_com_workable:SetActionDisplayStr("fwd_in_pdt_building_special_production_table",STRINGS.ACTIONS.HARVEST)
+        Add_Workable(inst)
     -------------------------------------------------------------------------------------
+
 
     if not TheWorld.ismastersim then
         return inst

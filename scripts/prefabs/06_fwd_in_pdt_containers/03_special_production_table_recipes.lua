@@ -58,6 +58,7 @@ return {
             ret = {
                 prefab = "fwd_in_pdt_equipment_repair_staff",
                 num = 1,
+                overwrite_str = "x 1",
                 atlas =  GetInventoryItemAtlas("fwd_in_pdt_equipment_repair_staff.tex"),
                 image =  "fwd_in_pdt_equipment_repair_staff.tex",
             }
@@ -74,6 +75,7 @@ return {
             ret = {
                 prefab = "fwd_in_pdt_equipment_blazing_spear",
                 num = 1,
+                overwrite_str = "x 1",
                 atlas =  GetInventoryItemAtlas("fwd_in_pdt_equipment_blazing_spear.tex"),
                 image =  "fwd_in_pdt_equipment_blazing_spear.tex",
             }
@@ -90,6 +92,7 @@ return {
             ret = {
                 prefab = "fwd_in_pdt_equipment_blazing_hambat",
                 num = 1,
+                overwrite_str = "x 1",
                 atlas =  GetInventoryItemAtlas("fwd_in_pdt_equipment_blazing_hambat.tex"),
                 image =  "fwd_in_pdt_equipment_blazing_hambat.tex",
             }
@@ -106,6 +109,7 @@ return {
             ret = {
                 prefab = "fwd_in_pdt_equipment_blazing_nightmaresword",
                 num = 1,
+                overwrite_str = "x 1",
                 atlas =  GetInventoryItemAtlas("fwd_in_pdt_equipment_blazing_nightmaresword.tex"),
                 image =  "fwd_in_pdt_equipment_blazing_nightmaresword.tex",
             }
@@ -122,6 +126,7 @@ return {
             ret = {
                 prefab = "fwd_in_pdt_equipment_frozen_spear",
                 num = 1,
+                overwrite_str = "x 1",
                 atlas =  GetInventoryItemAtlas("fwd_in_pdt_equipment_frozen_spear.tex"),
                 image =  "fwd_in_pdt_equipment_frozen_spear.tex",
             }
@@ -138,6 +143,7 @@ return {
             ret = {
                 prefab = "fwd_in_pdt_equipment_frozen_hambat",
                 num = 1,
+                overwrite_str = "x 1",
                 atlas =  GetInventoryItemAtlas("fwd_in_pdt_equipment_frozen_hambat.tex"),
                 image =  "fwd_in_pdt_equipment_frozen_hambat.tex",
             }
@@ -154,6 +160,7 @@ return {
             ret = {
                 prefab = "fwd_in_pdt_equipment_frozen_nightmaresword",
                 num = 1,
+                overwrite_str = "x 1",
                 atlas =  GetInventoryItemAtlas("fwd_in_pdt_equipment_frozen_nightmaresword.tex"),
                 image =  "fwd_in_pdt_equipment_frozen_nightmaresword.tex",
             }
