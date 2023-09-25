@@ -166,6 +166,10 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "Rice",
                 ["inspect_str"] = "It's so white it's beautiful.",
             },
+            ["fwd_in_pdt_food_wheat_flour"] = {
+                ["name"] = "Flour",
+                ["inspect_str"] = "It's so white it's beautiful.",
+            },
         --------------------------------------------------------------------
         ---- 05_fwd_in_pdt_foods_cooked
             ["fwd_in_pdt_food_mixed_potato_soup"] = {
@@ -349,6 +353,14 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             ["fwd_in_pdt_plant_paddy_rice_seed"] = {
                 ["name"] = "Unhulled Rice",
                 ["inspect_str"] = "Shelled and ready to eat.",
+            },
+            ["fwd_in_pdt_plant_wheat"] = {
+                ["name"] = "Wheat",
+                ["inspect_str"] = "When it matures, it will be golden",
+            },
+            ["fwd_in_pdt_plant_wheat_seed"] = {
+                ["name"] = "Wheat",
+                ["inspect_str"] = "It can be used for continued cultivation or made into flour",
             },
         --------------------------------------------------------------------
         ---- 10_fwd_in_pdt_minerals

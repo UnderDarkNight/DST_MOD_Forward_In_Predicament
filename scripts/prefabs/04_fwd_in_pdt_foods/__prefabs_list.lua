@@ -20,6 +20,7 @@ local prefabs_name_list = {
     "02_andrographis_paniculata_botany",    --- 雄黄饮剂
     "03_universal_antidote",                --- 万能解毒剂
     "04_rise",                              --- 脱壳的稻米
+    "05_wheat_flour",                              --- 面粉
 }
 
 

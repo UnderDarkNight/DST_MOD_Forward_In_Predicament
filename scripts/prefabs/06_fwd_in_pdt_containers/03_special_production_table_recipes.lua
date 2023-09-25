@@ -48,6 +48,50 @@ return {
         },
     -------------------------------------------------------------------------------------------------------------
     -------------------------------------------------------------------------------------------------------------
+    ---- 小麦种子 配方
+        {
+            source = {     
+                {prefab = "seeds" , num = 2, }, {                                    },     {prefab = "seeds" , num = 2, },
+                {                            }, {prefab = "goldenpickaxe" , use = 1, },     {                            } ,
+                {prefab = "seeds" , num = 2, }, {                                    },     {prefab = "seeds" , num = 2, },
+            },
+            ret = {
+                prefab = "fwd_in_pdt_plant_wheat_seed",
+                num = 4,
+                atlas =  GetInventoryItemAtlas("fwd_in_pdt_plant_wheat_seed.tex"),
+                image =  "fwd_in_pdt_plant_wheat_seed.tex",
+                finish_fn = function(inst,doer,times) --- 给奖励后执行的函数。                    
+                    --- times -- 奖励次数
+                end,
+                item_fn = function(rewarded_items_insts,doer) --- 用来触发某些奖励物品的执行事件
+                    
+                end,
+            }
+        },
+    -------------------------------------------------------------------------------------------------------------
+    -------------------------------------------------------------------------------------------------------------
+    ---- 面粉
+        {
+            source = {     
+                {                            }, {prefab = "fwd_in_pdt_plant_wheat_seed" , num = 2},     {                            } ,
+                {                            }, {prefab = "fwd_in_pdt_plant_wheat_seed" , num = 2},     {                            } ,
+                {                            }, {prefab = "hammer",use = 1                        },     {                            } ,
+            },
+            ret = {
+                prefab = "fwd_in_pdt_food_wheat_flour",
+                num = 2,
+                atlas =  GetInventoryItemAtlas("fwd_in_pdt_food_wheat_flour.tex"),
+                image =  "fwd_in_pdt_food_wheat_flour.tex",
+                finish_fn = function(inst,doer,times) --- 给奖励后执行的函数。                    
+                    --- times -- 奖励次数
+                end,
+                item_fn = function(rewarded_items_insts,doer) --- 用来触发某些奖励物品的执行事件
+                    
+                end,
+            }
+        },
+    -------------------------------------------------------------------------------------------------------------
+    -------------------------------------------------------------------------------------------------------------
     ---- 修复法杖
         {
             source = {     
@@ -153,9 +197,9 @@ return {
     ---- 极寒暗影剑
         {
             source = {     
-                {prefab = "fwd_in_pdt_item_ice_core" , num = 10} ,  {                               },   {                               },
+                {prefab = "fwd_in_pdt_item_ice_core" , num = 10 } ,  {                                     },   {                               },
                 {                                               } ,  {prefab = "nightsword" ,remove = true},   {                               },
-                {                                               } ,  {                               },   {                               },
+                {                                               } ,  {                                    },   {                               },
             },
             ret = {
                 prefab = "fwd_in_pdt_equipment_frozen_nightmaresword",
@@ -163,6 +207,22 @@ return {
                 overwrite_str = "x 1",
                 atlas =  GetInventoryItemAtlas("fwd_in_pdt_equipment_frozen_nightmaresword.tex"),
                 image =  "fwd_in_pdt_equipment_frozen_nightmaresword.tex",
+            }
+        },
+    -------------------------------------------------------------------------------------------------------------
+    -------------------------------------------------------------------------------------------------------------
+    ---- 月亮玻璃
+        {
+            source = {     
+                {prefab = "fwd_in_pdt_material_tree_resin" , num = 1} , {prefab = "fwd_in_pdt_material_tree_resin" , num = 1} ,  {prefab = "fwd_in_pdt_material_tree_resin" , num = 1} ,
+                {prefab = "fwd_in_pdt_material_tree_resin" , num = 1} , {prefab = "torch" , use = 10                        } ,  {prefab = "fwd_in_pdt_material_tree_resin" , num = 1} ,
+                {prefab = "fwd_in_pdt_material_tree_resin" , num = 1}  ,{prefab = "fwd_in_pdt_material_tree_resin" , num = 1} ,  {prefab = "fwd_in_pdt_material_tree_resin" , num = 1} ,
+            },
+            ret = {
+                prefab = "moonglass",
+                num = 1,
+                atlas =  GetInventoryItemAtlas("moonglass.tex"),
+                image =  "moonglass.tex",
             }
         },
     -------------------------------------------------------------------------------------------------------------

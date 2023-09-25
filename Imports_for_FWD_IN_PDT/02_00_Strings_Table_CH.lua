@@ -175,6 +175,10 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "稻米",
                 ["inspect_str"] = "白花花的煞是好看",
             },
+            ["fwd_in_pdt_food_wheat_flour"] = {
+                ["name"] = "面粉",
+                ["inspect_str"] = "白花花的煞是好看",
+            },
         --------------------------------------------------------------------
         ---- 05_fwd_in_pdt_foods_cooked
             ["fwd_in_pdt_food_mixed_potato_soup"] = {
@@ -358,6 +362,14 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             ["fwd_in_pdt_plant_paddy_rice_seed"] = {
                 ["name"] = "未脱壳的稻米",
                 ["inspect_str"] = "脱壳后就能吃了",
+            },
+            ["fwd_in_pdt_plant_wheat"] = {
+                ["name"] = "小麦",
+                ["inspect_str"] = "成熟后就能金灿灿的了",
+            },
+            ["fwd_in_pdt_plant_wheat_seed"] = {
+                ["name"] = "麦子",
+                ["inspect_str"] = "可以拿去继续种植，也能做成面粉",
             },
         --------------------------------------------------------------------
         ---- 10_fwd_in_pdt_minerals
