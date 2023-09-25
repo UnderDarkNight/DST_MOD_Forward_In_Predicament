@@ -3,6 +3,59 @@
 ----- server/client 都执行
 ----- 挂载去 event   itemget  / itemlose
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--[[
+    API 说明：
+    · player_check_fn = nil or  function(doer)   end，    ---- 用来检测指定玩家状态是否允许使用本配方。 return true 为允许。注意 server和client都会执行。注意区别。
+    · source 内部9个为对应每个格子的需求参数。 
+            - 【注意】 如果该格子里不需要任何东西，空的 table 就行了。
+            - 【必须】 prefab          消耗/使用的物品 
+            - 【必须】 num             消耗的数量。如果是带耐久度的物品，则【默认】消耗点数1。
+            - 【可选】 use             该物品有耐久度，使用多少点 。  item_in_slot.components.finiteuses:Use( ... )
+            - 【可选】 remove          给有耐久度的消耗品使用。可直接消耗掉带耐久度的物品。
+            - 【可选】 no_loss         true 的时候不消耗本格子的东西，包括耐久度。用于一些特殊的拥有权检查。
+    · ret 为奖励执行参数。 ( server side only )
+            - 【必须】 prefab          奖励的物品
+            - 【必须】 num             奖励的数量
+            - 【必须】 atlas           切片xml文件路径。如果是默认的【images\inventoryimages】路径，推荐使用 GetInventoryItemAtlas("walrus_tusk.tex")
+            - 【必须】 image           tex贴图文件名。如 "walrus_tusk.tex"
+            - 【可选】 finish_fn       奖励发放之后的执行函数，nil 或者 function(inst,doer,times) end , times 为奖励发放次数（给给多个循环使用）
+            - 【可选】 item_fn         奖励发放之后，触发对应奖励的执行函数。 nil 或者 function(rewarded_items_insts,doer) end。 其中的 rewarded_items_insts 为发放的物品inst集合成的table
+            - 【可选】 overwrite_str   显示的文字特殊化。
+        -------------------------------------------------------------------------------------------------------------
+                ---- 示例
+                    player_check_fn = function(doer)  --- 配方权限检查
+                        if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
+                            return true
+                        else
+                            return false
+                        end
+                    end，    
+                    source = {     
+                        {                          } ,  {prefab = "log" , num = 1, },   {prefab = "log" , num = 1, },
+                        {prefab = "log" , num = 1, } ,  {prefab = "log" , num = 1, },   {prefab = "log" , num = 1, },
+                        {prefab = "log" , num = 1, } ,  {prefab = "log" , num = 1, },   {prefab = "log" , num = 1, },
+                    },
+                    ret = {
+                        prefab = "walrus_tusk",
+                        num = 1,
+                        atlas =  GetInventoryItemAtlas("walrus_tusk.tex"),
+                        image =  "walrus_tusk.tex",
+                        finish_fn = function(inst,doer,times) 
+                            --- 给奖励后执行的函数。
+                            --- times -- 奖励次数
+                        end,
+                        item_fn = function(rewarded_items_insts,doer) --- 用来触发某些奖励物品的执行事件
+                            for k, item in pairs(rewarded_items_insts) do
+                                --- 
+                            end
+                        end,
+                    }
+                },
+        -------------------------------------------------------------------------------------------------------------
+]]--
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 return function(inst)
     
@@ -206,6 +259,10 @@ return function(inst)
                 end
                 ---- 个数够了
                 if not use_flag then    --- 个数够了，又不需要消耗掉
+                    return true
+                end
+
+                if item_arg_table.no_loss then   --- 本格子无任何消耗。
                     return true
                 end
 
