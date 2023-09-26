@@ -57,6 +57,8 @@ function fwd_in_pdt_wellness:UpdateHUD()
         -- print("当前【血糖值】",glu)
         -- print("当前【中毒值】",poison)
         -- print("----------------------------------------")
+    end
+    
         if self.inst.HUD and self.inst.HUD.fwd_in_pdt_wellness then
             self.inst.HUD.fwd_in_pdt_wellness:SetCurrent_Wellness(self:Get_Wellness())
             self.inst.HUD.fwd_in_pdt_wellness:SetCurrent_Vitamin_C(self:Get_Vitamin_C())
@@ -74,7 +76,7 @@ function fwd_in_pdt_wellness:UpdateHUD()
                 self.inst.HUD.fwd_in_pdt_wellness:Hide()
             end
         end
-    end
+    
 end
 -----------------------------------------------------------------------------------------------------
 -- 给HUD那边读取数值 和百分比
