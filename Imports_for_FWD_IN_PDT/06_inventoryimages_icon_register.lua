@@ -26,6 +26,10 @@ local files_name = {
 		"fwd_in_pdt_material_tree_resin",						--- 树脂
 		"fwd_in_pdt_material_snake_skin",						--- 蛇皮
 		"fwd_in_pdt_material_realgar",							--- 雄黄矿
+		"fwd_in_pdt_material_atractylodes_macrocephala",				--- 苍术
+		"fwd_in_pdt_material_pinellia_ternata",							--- 半夏
+		"fwd_in_pdt_material_aster_tataricus_l_f",						--- 紫苑
+
 	---------------------------------------------------------------------------------------
 	-- 03_fwd_in_pdt_equipments
 		"fwd_in_pdt_equipment_blazing_nightmaresword",			--- 炽热影刀
@@ -77,8 +81,11 @@ local files_name = {
 
 	---------------------------------------------------------------------------------------
 	-- 09_fwd_in_pdt_plants
-		"fwd_in_pdt_plant_paddy_rice_seed",						--- 未脱壳的稻米
-		"fwd_in_pdt_plant_wheat_seed",						--- 麦子
+		"fwd_in_pdt_plant_paddy_rice_seed",								--- 未脱壳的稻米
+		"fwd_in_pdt_plant_wheat_seed",									--- 麦子
+		"fwd_in_pdt_plant_atractylodes_macrocephala_seed",				--- 苍术种子
+		"fwd_in_pdt_plant_pinellia_ternata_seed",						--- 半夏种子
+		"fwd_in_pdt_plant_aster_tataricus_l_f_seed",					--- 紫苑种子
 	---------------------------------------------------------------------------------------
 
 }

@@ -19,6 +19,9 @@ local prefabs_name_list = {
     "01_tree_resin",            -- 树脂
     "02_snake_skin",            -- 蛇皮
     "03_realgar",               -- 雄黄矿石
+    "04_atractylodes_macrocephala",      -- 苍术
+    "05_pinellia_ternata",               -- 半夏
+    "06_aster_tataricus_l_f",            -- 紫苑
 }
 
 

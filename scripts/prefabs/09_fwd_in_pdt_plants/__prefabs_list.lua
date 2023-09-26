@@ -19,7 +19,13 @@ local prefabs_name_list = {
     "01_paddy_rice",                     --- 水稻
     "01_paddy_rice_seed",                --- 水稻种子
     "02_wheat",                          --- 小麦
-    "02_wheat_seed",                          --- 麦种
+    "02_wheat_seed",                        --- 麦种
+    "03_atractylodes_macrocephala",         --- 苍术
+    "03_atractylodes_macrocephala_seed",    --- 苍术种子
+    "04_pinellia_ternata",                  --- 半夏
+    "04_pinellia_ternata_seed",             --- 半夏种子
+    "05_aster_tataricus_l_f",               --- 紫苑
+    "05_aster_tataricus_l_f_seed",          --- 紫苑种子
 }
 
 

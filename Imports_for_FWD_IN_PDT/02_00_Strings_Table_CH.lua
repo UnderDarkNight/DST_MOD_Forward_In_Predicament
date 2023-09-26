@@ -141,6 +141,18 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "雄黄矿石",
                 ["inspect_str"] = "蛇最怕雄黄了",
             },
+            ["fwd_in_pdt_material_atractylodes_macrocephala"] = {
+                ["name"] = "苍术",
+                ["inspect_str"] = "采摘下来的药材",
+            },
+            ["fwd_in_pdt_material_pinellia_ternata"] = {
+                ["name"] = "半夏",
+                ["inspect_str"] = "采摘下来的药材",
+            },
+            ["fwd_in_pdt_material_aster_tataricus_l_f"] = {
+                ["name"] = "紫苑",
+                ["inspect_str"] = "采摘下来的药材",
+            },
         --------------------------------------------------------------------
         ---- 03_fwd_in_pdt_equipments
             ["fwd_in_pdt_eq_mirror_whip"] = {
@@ -370,6 +382,30 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             ["fwd_in_pdt_plant_wheat_seed"] = {
                 ["name"] = "麦子",
                 ["inspect_str"] = "可以拿去继续种植，也能做成面粉",
+            },
+            ["fwd_in_pdt_plant_atractylodes_macrocephala"] = {
+                ["name"] = "苍术",
+                ["inspect_str"] = "风雨本是无心起，奈何花叶倾心落",
+            },
+            ["fwd_in_pdt_plant_atractylodes_macrocephala_seed"] = {
+                ["name"] = "苍术种子",
+                ["inspect_str"] = "苍术的种子",
+            },
+            ["fwd_in_pdt_plant_pinellia_ternata"] = {
+                ["name"] = "半夏",
+                ["inspect_str"] = "苦尽甘来终有时，一路向阳待花期",
+            },
+            ["fwd_in_pdt_plant_pinellia_ternata_seed"] = {
+                ["name"] = "半夏种子",
+                ["inspect_str"] = "半夏的种子",
+            },
+            ["fwd_in_pdt_plant_aster_tataricus_l_f"] = {
+                ["name"] = "紫苑",
+                ["inspect_str"] = "多病所须唯药物，差科未动是闲人",
+            },
+            ["fwd_in_pdt_plant_aster_tataricus_l_f_seed"] = {
+                ["name"] = "紫苑种子",
+                ["inspect_str"] = "紫苑的种子",
             },
         --------------------------------------------------------------------
         ---- 10_fwd_in_pdt_minerals

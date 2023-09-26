@@ -39,6 +39,9 @@ modimport("Key_Modules_Of_FWD_IN_PDT/08_prefab_skin_sys/_skin_sys_Init.lua")
 modimport("Key_Modules_Of_FWD_IN_PDT/09_Recipes/_All_Recpies_and_Tech_Init.lua")
 --- 制作栏和科技的添加
 
+modimport("Key_Modules_Of_FWD_IN_PDT/10_Cook/_All_Cooking_Related_Init.lua")
+--- 烹饪相关的
+
 
 
 -------------- 不同版本开发专用的调试区域

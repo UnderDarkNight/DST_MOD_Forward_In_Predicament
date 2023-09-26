@@ -136,6 +136,18 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "Realgar",
                 ["inspect_str"] = "Snakes are most afraid of realgar",
             },
+            ["fwd_in_pdt_material_atractylodes_macrocephala"] = {
+                ["name"] = "Atractylodes Macrocephala",
+                ["inspect_str"] = "Picked herbs",
+            },
+            ["fwd_in_pdt_material_pinellia_ternata"] = {
+                ["name"] = "Pinellia Ternata",
+                ["inspect_str"] = "Picked herbs",
+            },
+            ["fwd_in_pdt_material_aster_tataricus_l_f"] = {
+                ["name"] = "Aster tataricus L.f.",
+                ["inspect_str"] = "Picked herbs",
+            },
         --------------------------------------------------------------------
         ---- 03_fwd_in_pdt_equipments
             ["fwd_in_pdt_equipment_blazing_nightmaresword"] = {
@@ -361,6 +373,30 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             ["fwd_in_pdt_plant_wheat_seed"] = {
                 ["name"] = "Wheat",
                 ["inspect_str"] = "It can be used for continued cultivation or made into flour",
+            },
+            ["fwd_in_pdt_plant_atractylodes_macrocephala"] = {
+                ["name"] = "Atractylodes Macrocephala",
+                ["inspect_str"] = "A kind of herb.",
+            },
+            ["fwd_in_pdt_plant_atractylodes_macrocephala_seed"] = {
+                ["name"] = "Seed of Atractylodes Macrocephala",
+                ["inspect_str"] = "Seed of Atractylodes Macrocephala",
+            },
+            ["fwd_in_pdt_plant_pinellia_ternata"] = {
+                ["name"] = "Pinellia Ternata",
+                ["inspect_str"] = "A kind of herb.",
+            },
+            ["fwd_in_pdt_plant_pinellia_ternata_seed"] = {
+                ["name"] = "Seed of Pinellia Ternata",
+                ["inspect_str"] = "Seed of Pinellia Ternata",
+            },
+            ["fwd_in_pdt_plant_aster_tataricus_l_f"] = {
+                ["name"] = "Aster tataricus L.f.",
+                ["inspect_str"] = "A kind of herb.",
+            },
+            ["fwd_in_pdt_plant_aster_tataricus_l_f_seed"] = {
+                ["name"] = "Seed of Aster tataricus L.f.",
+                ["inspect_str"] = "Seed of Aster tataricus L.f.",
             },
         --------------------------------------------------------------------
         ---- 10_fwd_in_pdt_minerals
