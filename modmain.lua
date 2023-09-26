@@ -161,9 +161,12 @@ require("worldsettingsutil")
 						if fn then
 							local status, r = xpcall( function() return fn(unpack(arg)) end, debug.traceback)
 							if not status then
-								print("error calling "..modtype.." in mod "..ModInfoname(mod.modname)..": \n"..(r or ""))
-								ModManager:RemoveBadMod(mod.modname,r)
-								ModManager:DisplayBadMods()
+								pcall(function()
+									print("error calling "..modtype.." in mod "..ModInfoname(mod.modname)..": \n"..(r or ""))
+									ModManager:RemoveBadMod(mod.modname,r)
+									ModManager:DisplayBadMods()
+								end)
+								
 							else
 								return r
 							end
