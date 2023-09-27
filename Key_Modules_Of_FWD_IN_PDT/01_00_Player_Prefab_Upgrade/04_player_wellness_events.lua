@@ -115,9 +115,9 @@ AddPlayerPostInit(function(inst)
                 local num = 0
                 local food_base_prefab = food.nameoverride or food.prefab 
                 if food:HasTag("honeyed") then
-                    num = 10
+                    num = 1
                 elseif cooking_ingredients[food_base_prefab] and cooking_ingredients[food_base_prefab].tags and cooking_ingredients[food_base_prefab].tags["sweetener"] then
-                    num = 10
+                    num = 5
                 elseif food.components.edible and food.components.edible.honeyvalue then
                     num = food.components.edible.honeyvalue
                 elseif cooking_ingredients[food_base_prefab] and cooking_ingredients[food_base_prefab].tags and cooking_ingredients[food_base_prefab].tags["fruit"] then
