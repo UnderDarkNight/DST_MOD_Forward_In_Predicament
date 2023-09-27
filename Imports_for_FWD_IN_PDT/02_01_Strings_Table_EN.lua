@@ -32,6 +32,9 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["bad_key.talker"] = "【Fwd ind Predicament】",
                 ["bad_key.str"] = "The same CD-KEY as other players is detected, please pay attention to privacy protection ! ! ! !",
             },
+            ["fwd_in_pdt_other_poison_frog"] = {
+                ["name"] = "Poison Dart Frog",                
+            },
         --------------------------------------------------------------------
             ---- UI
             ["fwd_in_pdt_ui_craftingmenu"] = {        ---- 制作栏

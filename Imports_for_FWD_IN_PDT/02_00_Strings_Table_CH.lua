@@ -38,6 +38,9 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["bad_key.talker"] = "【负重前行】",
                 ["bad_key.str"] = "检测到和其他玩家相同的CD-KEY，请注意隐私保护！！",
             },
+            ["fwd_in_pdt_other_poison_frog"] = {
+                ["name"] = "箭毒娃",                
+            },
         --------------------------------------------------------------------
         ---- UI
             ["fwd_in_pdt_ui_craftingmenu"] = {        ---- 制作栏

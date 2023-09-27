@@ -4,6 +4,11 @@
 --- 池塘的青蛙 有 20%的概率变异
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+		local function GetStringsTable(name)
+		    local prefab_name = name or "fwd_in_pdt_other_poison_frog"
+		    local LANGUAGE = type(TUNING["Forward_In_Predicament.Language"]) == "function" and TUNING["Forward_In_Predicament.Language"]() or TUNING["Forward_In_Predicament.Language"]
+		    return TUNING["Forward_In_Predicament.Strings"][LANGUAGE][prefab_name] or {}
+		end
 
 AddPrefabPostInit(
     "frog",
@@ -12,7 +17,7 @@ AddPrefabPostInit(
             return
         end
 
-
+        
 
         inst:AddComponent("fwd_in_pdt_data")
         inst:ListenForEvent("fwd_in_pdt_event.start_mutant",function()
@@ -28,6 +33,10 @@ AddPrefabPostInit(
 
 
             inst:AddTag("fwd_in_pdt_tag.mutant_frog")
+            if inst.components.named == nil then
+                inst:AddComponent("named")
+            end
+            inst.components.named:SetName(GetStringsTable().name)
         end)
         inst:DoTaskInTime(0,function()
             if inst.components.fwd_in_pdt_data:Get("mutant_frog") then
