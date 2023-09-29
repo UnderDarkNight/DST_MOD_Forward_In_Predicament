@@ -159,7 +159,7 @@ end
 --------------------------------------------------------------------------------------------------------------------------------------------
     Add_Recipe_2_Machine({
         prefab = "fwd_in_pdt_item_insulin_syringe",
-        Ingredients = { Ingredient("spidergland", 10),Ingredient("stinger", 2)  },
+        Ingredients = { Ingredient("bird_egg", 3),Ingredient("stinger", 2)  },
         atlas = "images/inventoryimages/fwd_in_pdt_item_insulin_syringe.xml",
         image = "fwd_in_pdt_item_insulin_syringe.tex",
     })

@@ -103,7 +103,7 @@ local function fn()
            ]]--
            -------------------------------------------------
            ---- 自身血糖值计算
-                self.com:DoDelta_Glucose(TheWorld.state.issummer and 0.2 or 0.1)
+                self.com:DoDelta_Glucose(TheWorld.state.issummer and -0.2 or -0.1)
            -------------------------------------------------
            ---- 光环贡献计算
                 local value,percent,max = self.com:GetCurrent_Glucose()
