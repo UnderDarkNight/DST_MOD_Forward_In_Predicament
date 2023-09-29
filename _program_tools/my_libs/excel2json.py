@@ -29,11 +29,13 @@ def start_excel_2_json(input_excel_file_name,output_json_file_name):
             pass
         else:
             temp_dict = {}
-            temp_dict[row[0]] = sheet1.row_values(i)[0]     # prefab
-            temp_dict[row[1]] = sheet1.row_values(i)[1]     # cost
-            temp_dict[row[2]] = sheet1.row_values(i)[2]     # num2give
-            temp_dict[row[3]] = sheet1.row_values(i)[3]     #image
-            temp_dict[row[4]] = sheet1.row_values(i)[4]     #atlas
+            for k in range(len(row)):
+                temp_dict[row[k]] = sheet1.row_values(i)[k]
+            # temp_dict[row[0]] = sheet1.row_values(i)[0]     # prefab
+            # temp_dict[row[1]] = sheet1.row_values(i)[1]     # cost
+            # temp_dict[row[2]] = sheet1.row_values(i)[2]     # num2give
+            # temp_dict[row[3]] = sheet1.row_values(i)[3]     # image
+            # temp_dict[row[4]] = sheet1.row_values(i)[4]     # atlas
             ret_list.append(temp_dict)
 
     # print(ret_list)
