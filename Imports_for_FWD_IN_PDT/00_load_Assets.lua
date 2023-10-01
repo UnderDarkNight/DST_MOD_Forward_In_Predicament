@@ -48,6 +48,7 @@ local temp_assets = {
 
 	Asset("ANIM", "anim/fwd_in_pdt_hud_wellness.zip"),	--- 体质值进度条
 	Asset("ANIM", "anim/fwd_in_pdt_item_medical_certificate.zip"),	--- 诊断单 界面
+	Asset("ANIM", "anim/fwd_in_pdt_hud_shop_widget.zip"),	--- 商店界面和按钮
 
 	-- ---------------------------------------------------------------------------
 	Asset("ANIM", "anim/fwd_in_pdt_mutant_frog.zip"),	--- 变异青蛙贴图包

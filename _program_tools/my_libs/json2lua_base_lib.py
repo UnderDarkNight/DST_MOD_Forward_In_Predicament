@@ -1,9 +1,12 @@
+#coding=utf-8
 # code from https://www.cnblogs.com/lyh916/p/11343266.html
 import json
 import types
 import json
 import os
 import codecs
+import chardet
+
 
 def space_str(layer):
     lua_str = ""
@@ -14,7 +17,11 @@ def space_str(layer):
 def dic_to_lua_str(data,layer=0):
     d_type = type(data)
     if d_type is str:
-        return "\"" + data + "\""
+        # 加双引号
+        ss = "\"" + data + "\""
+        print(ss)
+        return ss
+        
     elif d_type is bool:
         if data:
             return 'true'

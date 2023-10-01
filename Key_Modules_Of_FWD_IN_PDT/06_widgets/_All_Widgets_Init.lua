@@ -16,3 +16,5 @@ modimport("Key_Modules_Of_FWD_IN_PDT/06_widgets/05_wellness_wideget.lua")    ---
 
 modimport("Key_Modules_Of_FWD_IN_PDT/06_widgets/06_medical_certificate_widget.lua")    --- 诊断单界面
 
+modimport("Key_Modules_Of_FWD_IN_PDT/06_widgets/07_shop_widget.lua")    --- 商店界面
+

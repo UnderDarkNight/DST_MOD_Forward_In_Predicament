@@ -58,6 +58,10 @@ local function fn()
             end
             inst:PushEvent("DOOR_OPEN")
             inst.SoundEmitter:PlaySound("dontstarve/common/pighouse_door")
+
+            inst.components.fwd_in_pdt_com_shop:PlayerEnter(doer)
+
+            
             return true
         end)
         
@@ -86,11 +90,13 @@ local function fn()
     ----- 灯的开关控制
         inst:ListenForEvent("LIGHT_ON",function()
             inst.AnimState:Show("LIGHT_ON")
+            inst.AnimState:Hide("LIGHT_OFF")
             inst.Light:Enable(true)
             inst.SoundEmitter:PlaySound("dontstarve/pig/pighut_lighton")
         end)
         inst:ListenForEvent("LIGHT_OFF",function()
             inst.AnimState:Hide("LIGHT_ON")
+            inst.AnimState:Show("LIGHT_OFF")
             inst.Light:Enable(false)
             inst.SoundEmitter:PlaySound("dontstarve/pig/pighut_lightoff")
 
@@ -133,6 +139,20 @@ local function fn()
             inst.SoundEmitter:PlaySound("dontstarve/common/pighouse_door")      
         end)
 
+    -------------------------------------------------------------------------------------
+    ----- 商店
+        inst:AddComponent("fwd_in_pdt_com_shop")
+        inst.components.fwd_in_pdt_com_shop:SetListA(require("prefabs/07_fwd_in_pdt_buildings/02_special_shop_items_a"))
+        inst.components.fwd_in_pdt_com_shop:SetNumA(5)
+
+
+        inst.components.fwd_in_pdt_com_shop:Refresh_Items_List()
+
+        inst:WatchWorldState("cycles",function()
+            if TheWorld.state.cycles % 5 == 0 then  ---
+                inst.components.fwd_in_pdt_com_shop:Refresh_Items_List()
+            end
+        end)
     -------------------------------------------------------------------------------------
 
     return inst

@@ -1,3 +1,4 @@
+#coding=utf-8
 # import json2lua_base_lib
 import my_libs.json2lua_base_lib as json2lua_base_lib
 
@@ -23,7 +24,7 @@ def json_file_2_lua_file(input_file_name,output_file_name):
 
     temp_file.close()
 
-    with open(output_file_name,"w") as f:
+    with open(output_file_name,"w",encoding="utf-8") as f:
         for i in txt:
             f.writelines(i)
     f.close()

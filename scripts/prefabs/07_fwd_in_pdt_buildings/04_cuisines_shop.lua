@@ -20,17 +20,17 @@ local function fn()
     inst.entity:AddTransform()
     inst.entity:AddAnimState()
     inst.entity:AddNetwork()
-    -- inst.entity:AddLight()
+    inst.entity:AddLight()
     inst.entity:AddSoundEmitter()
 
     inst.entity:AddMiniMapEntity()
     inst.MiniMapEntity:SetIcon("fwd_in_pdt_building_cuisines_shop.tex")
 
-    -- inst.Light:SetIntensity(0.5)		-- 强度
-    -- inst.Light:SetRadius(3)			-- 半径 ，矩形的？？ --- SetIntensity 为1 的时候 成矩形
-    -- inst.Light:SetFalloff(1)		-- 下降梯度
-    -- inst.Light:SetColour(180 / 255, 195 / 255, 50 / 255)
-    -- inst.Light:Enable(false)
+    inst.Light:SetIntensity(0.5)		-- 强度
+    inst.Light:SetRadius(3)			-- 半径 ，矩形的？？ --- SetIntensity 为1 的时候 成矩形
+    inst.Light:SetFalloff(1)		-- 下降梯度
+    inst.Light:SetColour(180 / 255, 195 / 255, 50 / 255)
+    inst.Light:Enable(false)
 
     MakeObstaclePhysics(inst, 1.5)
 
@@ -58,6 +58,9 @@ local function fn()
             end
             inst:PushEvent("DOOR_OPEN")
             inst.SoundEmitter:PlaySound("dontstarve/common/pighouse_door")
+            
+            inst.components.fwd_in_pdt_com_shop:PlayerEnter(doer)
+
             return true
         end)
         
@@ -84,30 +87,32 @@ local function fn()
         inst:WatchWorldState("issnowcovered", snow_over_init)
     -------------------------------------------------------------------------------------
     ----- 灯的开关控制
-        -- inst:ListenForEvent("LIGHT_ON",function()
-        --     inst.AnimState:Show("LIGHT_ON")
-        --     inst.Light:Enable(true)
+        inst:ListenForEvent("LIGHT_ON",function()
+            inst.AnimState:Show("LIGHT_ON")
+            inst.AnimState:Hide("LIGHT_OFF")
+            inst.Light:Enable(true)
 
-        -- end)
-        -- inst:ListenForEvent("LIGHT_OFF",function()
-        --     inst.AnimState:Hide("LIGHT_ON")
-        --     inst.Light:Enable(false)
-        -- end)
+        end)
+        inst:ListenForEvent("LIGHT_OFF",function()
+            inst.AnimState:Hide("LIGHT_ON")
+            inst.AnimState:Show("LIGHT_OFF")
+            inst.Light:Enable(false)
+        end)
 
-        -- local function SwitchTheLight(inst)
-        --     if TheWorld.state.isnight or TheWorld.state.isdusk or TheWorld:HasTag("cave") then
-        --         inst:PushEvent("LIGHT_ON")
-        --     else
-        --         inst:PushEvent("LIGHT_OFF")
-        --     end
-        -- end
-        -- inst:DoTaskInTime(0,SwitchTheLight)
-        -- inst:WatchWorldState("isdusk",function()
-        --     inst:DoTaskInTime(3,SwitchTheLight)
-        -- end)
-        -- inst:WatchWorldState("isday",function()
-        --     inst:DoTaskInTime(math.random(8),SwitchTheLight)
-        -- end)
+        local function SwitchTheLight(inst)
+            if TheWorld.state.isnight or TheWorld.state.isdusk or TheWorld:HasTag("cave") then
+                inst:PushEvent("LIGHT_ON")
+            else
+                inst:PushEvent("LIGHT_OFF")
+            end
+        end
+        inst:DoTaskInTime(0,SwitchTheLight)
+        inst:WatchWorldState("isdusk",function()
+            inst:DoTaskInTime(3,SwitchTheLight)
+        end)
+        inst:WatchWorldState("isday",function()
+            inst:DoTaskInTime(math.random(8),SwitchTheLight)
+        end)
     -------------------------------------------------------------------------------------
     ----- 门的控制
         inst:ListenForEvent("DOOR_OPEN",function()
@@ -131,6 +136,19 @@ local function fn()
             inst.SoundEmitter:PlaySound("dontstarve/common/pighouse_door")      
         end)
 
+    -------------------------------------------------------------------------------------
+    ----- 商店
+        inst:AddComponent("fwd_in_pdt_com_shop")
+        inst.components.fwd_in_pdt_com_shop:SetListA(require("prefabs/07_fwd_in_pdt_buildings/04_cuisines_shop_items_a"))
+        inst.components.fwd_in_pdt_com_shop:SetNumA(3)
+        inst.components.fwd_in_pdt_com_shop:SetListB(require("prefabs/07_fwd_in_pdt_buildings/04_cuisines_shop_items_b"))
+        inst.components.fwd_in_pdt_com_shop:SetNumB(5)
+
+
+        inst.components.fwd_in_pdt_com_shop:Refresh_Items_List()
+        inst:WatchWorldState("cycles",function()
+            inst.components.fwd_in_pdt_com_shop:Refresh_Items_List()
+        end)
     -------------------------------------------------------------------------------------
 
     return inst
