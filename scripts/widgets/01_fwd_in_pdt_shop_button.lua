@@ -5,7 +5,7 @@ local Image = require "widgets/image" -- 引入image控件
 local Text = require "widgets/text"
 
 
-local AnimButton = Class(Button, function(self, cmd_table)
+local AnimButton = Class(Button, function(self, cmd_table,trade_back_flag)
     Button._ctor(self, "AnimButton")
     self.anim = self:AddChild(UIAnim())
     self.anim:MoveToBack()
@@ -26,7 +26,11 @@ local AnimButton = Class(Button, function(self, cmd_table)
 	self.num2give_text:SetPosition(30,-20)
 	self.num2give_text:MoveToFront()
 
-	self.cost_text = self:AddChild(Text(TALKINGFONT,35,"500",{ 150/255 , 255/255 ,150/255 , 1}))
+	local cost_color = { 150/255 , 255/255 ,150/255 , 1}
+	if trade_back_flag then
+		 cost_color = { 255/255 , 200/255 ,0/255 , 1}
+	end
+	self.cost_text = self:AddChild(Text(TALKINGFONT,35,"500",cost_color))
 	self.cost_text:SetPosition(0,-75)
 
 

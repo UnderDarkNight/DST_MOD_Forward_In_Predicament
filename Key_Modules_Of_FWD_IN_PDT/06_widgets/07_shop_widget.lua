@@ -37,7 +37,7 @@ AddClassPostConstruct("screens/playerhud",function(self)
 
 
 
-    function self:fwd_in_pdt_shop_open(cmd_table)
+    function self:fwd_in_pdt_shop_open(cmd_table,trade_back_flag)
        
 
         if self.fwd_in_pdt_shop_widget ~= nil then
@@ -71,7 +71,7 @@ AddClassPostConstruct("screens/playerhud",function(self)
 
             local function add_item_button(x,y,item_cmd_table)
                 if item_cmd_table and item_cmd_table.image and item_cmd_table.prefab then
-                    local temp_button = root:AddChild(ShopButton(item_cmd_table))
+                    local temp_button = root:AddChild(ShopButton(item_cmd_table,trade_back_flag))
                     temp_button:SetPosition(x,y)
                     temp_button:Show()
                     temp_button:SetScale(main_scale_num,main_scale_num,main_scale_num)

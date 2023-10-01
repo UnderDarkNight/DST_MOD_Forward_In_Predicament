@@ -54,7 +54,7 @@ end)
 --- 只在客户端执行，必须确认 ThePlayer 存在
 function fwd_in_pdt_com_shop:Client_PlayerEnter()
     if ThePlayer then
-        ThePlayer.HUD:fwd_in_pdt_shop_open(self:GetItemsList())    
+        ThePlayer.HUD:fwd_in_pdt_shop_open(self:GetItemsList(),self.inst:HasTag("trade_back"))    
     end
 end
 -----------------------------------------------------------------------------------------------------------

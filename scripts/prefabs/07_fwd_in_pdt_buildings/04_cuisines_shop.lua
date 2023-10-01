@@ -47,7 +47,8 @@ local function fn()
     ---- 添加交互
         inst:AddComponent("fwd_in_pdt_com_workable")
         inst.components.fwd_in_pdt_com_workable:SetTestFn(function(inst,doer,righ_click)
-            return not TheWorld.state.isnight
+            -- return not TheWorld.state.isnight
+            return true
         end)
         inst.components.fwd_in_pdt_com_workable:SetSGAction("give")
         inst.components.fwd_in_pdt_com_workable:SetActionDisplayStr("fwd_in_pdt_building_cuisines_shop",GetStringsTable()["action_str"])

@@ -79,8 +79,8 @@ end,nil,
         local result_table = {}
         for i = 1, 100000, 1 do
             local temp_item_data = the_table[math.random(#the_table)]
-            local prefab = temp_item_data.prefab
-            if not ret_flag[prefab]  then
+            local prefab = tostring( temp_item_data.prefab )
+            if not ret_flag[prefab] and PrefabExists(prefab) then
                 ret_flag[prefab] = true
                 flag_num = flag_num + 1
                 table.insert(result_table,temp_item_data)
@@ -120,7 +120,7 @@ end,nil,
         -------- 点击购买的时候
         player.__fwd_in_pdt_com_shop__player_event_click = function(player,prefab)
             if type(prefab) == "string" then
-                self:PlayerBuy(player,prefab)
+                self:PlayerTrade(player,prefab)
             end
         end
         ------- 退出的时候
@@ -154,6 +154,29 @@ end,nil,
             if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
                 print("钱不够")
             end
+        end
+    end
+--------------------------------------------------------------------------------------------------
+---- 回收
+    function fwd_in_pdt_com_shop:SetTradeBcak()
+        self.inst:AddTag("trade_back")
+    end
+    function fwd_in_pdt_com_shop:PlayerTradeBack(player,prefab)
+        local item_cmd_table = self:GetItemDataByPrefab(prefab)
+        if item_cmd_table == nil then
+            return
+        end
+        local cost = item_cmd_table.cost
+        local num2give = item_cmd_table.num2give or 1
+        
+
+    end
+--------------------------------------------------------------------------------------------------
+    function fwd_in_pdt_com_shop:PlayerTrade(player,prefab)
+        if self.inst:HasTag("trade_back") then
+            self:PlayerTradeBack(player,prefab)
+        else
+            self:PlayerBuy(player,prefab)
         end
     end
 --------------------------------------------------------------------------------------------------
