@@ -157,7 +157,7 @@ return{
 		["prefab"] = "dish_medicinalliquor",
 		["cost"] = 1.0,
 		["num2give"] = 20.0,
-		["image"] = "",
-		["atlas"] = ""
+		["image"] = "dish_medicinalliquor.tex",
+		["atlas"] = "images/inventoryimages/dish_medicinalliquor.xml"
 	}
 }

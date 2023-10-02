@@ -46,10 +46,11 @@ local AnimButton = Class(Button, function(self, cmd_table,trade_back_flag)
 		cost = cmd_table.num2give or 1
 	end
 
-	if ( image == nil or image == "" ) and type(prefab) == "string" then
-		image = prefab .. ".tex"
-	else
+	if image == "" then
 		image = nil
+	end
+	if image == nil and type(prefab) == "string" then
+		image = prefab .. ".tex"
 	end
 
 	if ( atlas == nil or atlas == "" )and image then
@@ -59,6 +60,7 @@ local AnimButton = Class(Button, function(self, cmd_table,trade_back_flag)
 
 
 	if image == nil then
+		print("shop widget button error",prefab,image,atlas)
 		self:Hide()
 		self:Disable()		
 	else
