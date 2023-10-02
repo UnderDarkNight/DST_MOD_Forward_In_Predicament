@@ -170,6 +170,26 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "霜寒暗影剑",
                 ["inspect_str"] = "这东西充满暗影和寒冷"
             },
+            ["fwd_in_pdt_equipment_blazing_hambat"] = {
+                ["name"] = "炽热火腿",
+                ["inspect_str"] = "这火腿很热很热"
+            },
+            ["fwd_in_pdt_equipment_frozen_hambat"] = {
+                ["name"] = "冰冻火腿",
+                ["inspect_str"] = "这火腿冻得硬邦邦的"
+            },
+            ["fwd_in_pdt_equipment_blazing_spear"] = {
+                ["name"] = "炽热长矛",
+                ["inspect_str"] = "这长矛里充满了炽热"
+            },
+            ["fwd_in_pdt_equipment_frozen_spear"] = {
+                ["name"] = "霜寒长矛",
+                ["inspect_str"] = "这长矛里充满了霜寒"
+            },
+            ["fwd_in_pdt_equipment_repair_staff"] = {
+                ["name"] = "修复法杖",
+                ["inspect_str"] = "能修理很多东西"
+            },
         --------------------------------------------------------------------
         ---- 04_fwd_in_pdt_foods
             ["fwd_in_pdt_food_raw_milk"] = {
@@ -357,6 +377,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "稻田风车",
                 ["inspect_str"] = "这风车带来了水源，可以种植稻谷了",
                 ["recipe_desc"] = "用来种植稻谷的",
+            },
+            ["fwd_in_pdt_building_pawnshop"] = {
+                ["name"] = "当铺",
+                ["inspect_str"] = "这里能卖掉一些东西",
+                ["action_str"] = "进入",
             },
         --------------------------------------------------------------------
         ---- 08_fwd_in_pdt_resources

@@ -246,20 +246,21 @@ AddPrefabPostInit(
                                         })
                                     end,
                                     [17] = function(pt)  --- 17 号位置：NPC I
-                                        SpawnPrefab("fwd_in_pdt__resources_occupancy_sign"):PushEvent("Set",{
-                                            pt = Vector3(pt.x,0,pt.z),
-                                            tag = "fwd_in_pdt__special_island.npc_i",
-                                            hide = true,
-                                        })
+                                        SpawnPrefab("fwd_in_pdt_building_pawnshop").Transform:SetPosition(pt.x, 0, pt.z)
+                                        -- SpawnPrefab("fwd_in_pdt__resources_occupancy_sign"):PushEvent("Set",{
+                                        --     pt = Vector3(pt.x,0,pt.z),
+                                        --     tag = "fwd_in_pdt__special_island.npc_i",
+                                        --     hide = true,
+                                        -- })
                                     end,
-                                    [18] = function(pt)  --- 17 号位置：NPC J
+                                    [18] = function(pt)  --- 18 号位置：NPC J
                                         SpawnPrefab("fwd_in_pdt__resources_occupancy_sign"):PushEvent("Set",{
                                             pt = Vector3(pt.x,0,pt.z),
                                             tag = "fwd_in_pdt__special_island.npc_j",
                                             hide = true,
                                         })
                                     end,
-                                    [19] = function(pt)  --- 17 号位置：NPC K
+                                    [19] = function(pt)  --- 19 号位置：NPC K
                                         SpawnPrefab("fwd_in_pdt__resources_occupancy_sign"):PushEvent("Set",{
                                             pt = Vector3(pt.x,0,pt.z),
                                             tag = "fwd_in_pdt__special_island.npc_k"

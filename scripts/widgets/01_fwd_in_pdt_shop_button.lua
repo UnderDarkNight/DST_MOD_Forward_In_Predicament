@@ -21,8 +21,9 @@ local AnimButton = Class(Button, function(self, cmd_table,trade_back_flag)
 	self.image_widget = self:AddChild(Image())
 	self.image_widget:SetPosition(0,20)
 
-	
-	self.num2give_text = self:AddChild(Text(TALKINGFONT,35,"x10",{ 255/255 , 255/255 ,255/255 , 1}))
+	-- local txt_font = TALKINGFONT
+	local txt_font = CODEFONT
+	self.num2give_text = self:AddChild(Text(txt_font,35,"x10",{ 255/255 , 255/255 ,255/255 , 1}))
 	self.num2give_text:SetPosition(30,-20)
 	self.num2give_text:MoveToFront()
 
@@ -30,7 +31,7 @@ local AnimButton = Class(Button, function(self, cmd_table,trade_back_flag)
 	if trade_back_flag then
 		 cost_color = { 255/255 , 200/255 ,0/255 , 1}
 	end
-	self.cost_text = self:AddChild(Text(TALKINGFONT,35,"500",cost_color))
+	self.cost_text = self:AddChild(Text(txt_font,35,"500",cost_color))
 	self.cost_text:SetPosition(0,-75)
 
 
@@ -39,6 +40,11 @@ local AnimButton = Class(Button, function(self, cmd_table,trade_back_flag)
 	local image = cmd_table.image
 	local atlas = cmd_table.atlas
 	local prefab = cmd_table.prefab
+
+	if trade_back_flag then		---- 卖出去的时候，数字是相反的
+		num2give = cmd_table.cost or 1
+		cost = cmd_table.num2give or 1
+	end
 
 	if ( image == nil or image == "" ) and type(prefab) == "string" then
 		image = prefab .. ".tex"

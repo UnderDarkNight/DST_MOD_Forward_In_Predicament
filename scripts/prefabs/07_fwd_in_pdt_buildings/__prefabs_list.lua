@@ -25,6 +25,7 @@ local prefabs_name_list = {
     "06_medical_check_up_machine",             -- 健康检查机
 
     "07_paddy_windmill",             -- 稻田风车
+    "08_pawnshop",                   -- 当铺
 }
 
 

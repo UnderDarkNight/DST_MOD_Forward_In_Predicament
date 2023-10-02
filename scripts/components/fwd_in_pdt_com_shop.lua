@@ -112,7 +112,7 @@ end,nil,
     end
 
 --------------------------------------------------------------------------------------------------
----- 玩家进入商店和购买
+---- 玩家进入商店和交易
 
 
     function fwd_in_pdt_com_shop:PlayerEnter(player)
@@ -137,6 +137,15 @@ end,nil,
         player:ListenForEvent("fwd_in_pdt_event.shop.close",player.__fwd_in_pdt_com_shop__player_event_widget_close)
     end
 
+    function fwd_in_pdt_com_shop:PlayerTrade(player,prefab)
+        if self.inst:HasTag("trade_back") then
+            self:PlayerTradeBack(player,prefab)
+        else
+            self:PlayerBuy(player,prefab)
+        end
+    end
+--------------------------------------------------------------------------------------------------
+----- 购买
     function fwd_in_pdt_com_shop:PlayerBuy(player,prefab)
         -- print("info fwd_in_pdt_com_shop  buy",player,prefab)
         local item_cmd_table = self:GetItemDataByPrefab(prefab)
@@ -166,19 +175,62 @@ end,nil,
         if item_cmd_table == nil then
             return
         end
-        local cost = item_cmd_table.cost
+        local cost = item_cmd_table.cost or 1
         local num2give = item_cmd_table.num2give or 1
+        local item_insts = {}
+        local stackable_flag = false
+        -------- 第一步，判断玩家身上的够不够
+            local current_num = 0
+            player.components.inventory:ForEachItem(function(item)
+                if item and item.prefab == prefab then
+                    if item.components.stackable then
+                        current_num = current_num + item.components.stackable.stacksize
+                        stackable_flag = true
+                    else
+                        current_num = current_num + 1
+                    end
+                    table.insert(item_insts,item)
+                end
+            end)
+            if current_num < cost then --- 身上的不够
+                return
+            end
         
+        --------- 第二步，删除指定数量的物品
+            if stackable_flag then  --- 叠堆的物品
+                        for k, item in pairs(item_insts) do
+                                local stack_num = item.components.stackable.stacksize
+                                if stack_num >= cost then
+                                    item.components.stackable:Get(cost):Remove()
+                                    cost = 0
+                                else
+                                    cost = cost - stack_num
+                                    item:Remove()
+                                end
+                                if cost <= 0 then
+                                    break
+                                end
+                        end
+
+
+            else                    --- 非叠堆的物品
+                        current_num = 0
+                        for k, item in pairs(item_insts) do
+                        item:Remove()
+                        current_num = current_num + 1
+                        if current_num >= cost then
+                            break
+                        end
+                        end
+            end
+        -------- 第三步，给货币
+            player.components.fwd_in_pdt_func:GiveItemByPrefab("fwd_in_pdt_item_jade_coin_green",num2give)
+
+
 
     end
 --------------------------------------------------------------------------------------------------
-    function fwd_in_pdt_com_shop:PlayerTrade(player,prefab)
-        if self.inst:HasTag("trade_back") then
-            self:PlayerTradeBack(player,prefab)
-        else
-            self:PlayerBuy(player,prefab)
-        end
-    end
+
 --------------------------------------------------------------------------------------------------
 
 return fwd_in_pdt_com_shop

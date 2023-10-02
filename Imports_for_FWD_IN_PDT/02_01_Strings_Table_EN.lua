@@ -161,6 +161,26 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "Frozen Nightmare Sword",
                 ["inspect_str"] = "This sword is full of shadows and cold"
             },
+            ["fwd_in_pdt_equipment_blazing_hambat"] = {
+                ["name"] = "Blazing Hambat",
+                ["inspect_str"] = "This hambat is hot, hot, hot."
+            },
+            ["fwd_in_pdt_equipment_frozen_hambat"] = {
+                ["name"] = "Frozen Hambat",
+                ["inspect_str"] = "This hambat is frozen solid."
+            },
+            ["fwd_in_pdt_equipment_blazing_spear"] = {
+                ["name"] = "Blazing Spear",
+                ["inspect_str"] = "This spear is full of heat."
+            },
+            ["fwd_in_pdt_equipment_frozen_spear"] = {
+                ["name"] = "Frozen Spear",
+                ["inspect_str"] = "This spear is filled with frost and cold."
+            },
+            ["fwd_in_pdt_equipment_repair_staff"] = {
+                ["name"] = "Repair Staff",
+                ["inspect_str"] = "This staff can fix a lot of things."
+            },
         --------------------------------------------------------------------
         ---- 04_fwd_in_pdt_foods
             ["fwd_in_pdt_food_raw_milk"] = {
@@ -348,6 +368,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "Paddy & Windmill",
                 ["inspect_str"] = "This windmill brings water so we can grow rice.",
                 ["recipe_desc"] = "This windmill is used to grow rice",
+            },
+            ["fwd_in_pdt_building_pawnshop"] = {
+                ["name"] = "Pawn Shop",
+                ["inspect_str"] = "This place can sell some stuff.",
+                ["action_str"] = "Enter",
             },
         --------------------------------------------------------------------
         ---- 08_fwd_in_pdt_resources
