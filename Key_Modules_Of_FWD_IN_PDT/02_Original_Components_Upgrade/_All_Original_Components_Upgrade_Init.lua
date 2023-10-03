@@ -7,8 +7,6 @@
 
 
 
-modimport("Key_Modules_Of_FWD_IN_PDT/02_Original_Components_Upgrade/01_player_controller_hook_for_self_maked_com.lua")   
---- 让自己做的组件也能识别自动动作
 
 
 

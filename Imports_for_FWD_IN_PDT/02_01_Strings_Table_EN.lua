@@ -145,6 +145,10 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "Formulated Crystals",
                 ["inspect_str"] = "Recipes of Production Table",
             },
+            ["fwd_in_pdt_item_glass_pig_skin"] = {
+                ["name"] = "Glass Pig Skin",
+                ["inspect_str"] = "Glass Pig Skin",
+            },
         --------------------------------------------------------------------
         ---- 02_fwd_in_pdt_materials
             ["fwd_in_pdt_material_tree_resin"] = {
@@ -200,6 +204,14 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             ["fwd_in_pdt_equipment_repair_staff"] = {
                 ["name"] = "Repair Staff",
                 ["inspect_str"] = "This staff can fix a lot of things."
+            },
+            ["fwd_in_pdt_equipment_glass_pig"] = {
+                ["name"] = "Glass Pig Statue",
+                ["inspect_str"] = "The statue is so lifelike, and you can dedicate bonestews on the full moon"
+            },
+            ["fwd_in_pdt_equipment_cursed_pig"] = {
+                ["name"] = "Cursed Pig Statue",
+                ["inspect_str"] = "The statue is so lifelike, and you can dedicate bonestews on the new moon"
             },
         --------------------------------------------------------------------
         ---- 04_fwd_in_pdt_foods

@@ -27,7 +27,8 @@ local prefabs_name_list = {
 
     "07_repair_staff",             --- 修复法杖
 
-    
+    "08_glass_pig_chesspiece",     --- 玻璃猪雕像
+    "09_cursed_pig_chesspiece",     --- 诅咒猪雕像
 
 }
 

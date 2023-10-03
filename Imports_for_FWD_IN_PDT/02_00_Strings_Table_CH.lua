@@ -136,7 +136,7 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             },
             ["fwd_in_pdt_item_cursed_pig_skin"] = {
                 ["name"] = "被诅咒的猪皮",
-                ["inspect_str"] = "可以对猪猪下手了",
+                ["inspect_str"] = "可以对猪猪的房子下手了",
             },
             ["fwd_in_pdt_item_book_of_gardening"] = {
                 ["name"] = "《园艺之书》",
@@ -149,6 +149,10 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             ["fwd_in_pdt_item_formulated_crystal"] = {
                 ["name"] = "配方水晶",
                 ["inspect_str"] = "工作台的相关操作配方",
+            },
+            ["fwd_in_pdt_item_glass_pig_skin"] = {
+                ["name"] = "玻璃猪皮",
+                ["inspect_str"] = "可以对猪猪的房子下手了",
             },
         --------------------------------------------------------------------
         ---- 02_fwd_in_pdt_materials
@@ -209,6 +213,14 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             ["fwd_in_pdt_equipment_repair_staff"] = {
                 ["name"] = "修复法杖",
                 ["inspect_str"] = "能修理很多东西"
+            },
+            ["fwd_in_pdt_equipment_glass_pig"] = {
+                ["name"] = "玻璃猪雕像",
+                ["inspect_str"] = "这雕像栩栩如生，满月的时候可以供奉肉汤"
+            },
+            ["fwd_in_pdt_equipment_cursed_pig"] = {
+                ["name"] = "诅咒猪雕像",
+                ["inspect_str"] = "这雕像栩栩如生，新月的时候可以供奉肉汤"
             },
         --------------------------------------------------------------------
         ---- 04_fwd_in_pdt_foods

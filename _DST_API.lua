@@ -113,7 +113,10 @@ inst = {
             ["GetGrandOwner"] = function() return inst end,
         },
         ["tradable"] = {},
-        ["lootdropper"] = {},
+        ["lootdropper"] = {
+            ["SetLoot"] = function(self,_table) end,
+            ["DropLoot"] = function(self) end,
+        },
         ["trader"] = {},
         ["stackable"] = {
             stacksize = 1,

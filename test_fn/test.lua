@@ -188,7 +188,13 @@ local flg,error_code = pcall(function()
         -- TheWorld:PushEvent("ms_setmoonphase", {moonphase = "new" ,iswaxing = true})
     ----------------------------------------------------------------------------------------------------------------
     -- 工作台界面
-        ThePlayer.HUD:fwd_in_pdt_special_production_formulated_crystal_widget_open()
+        -- ThePlayer.HUD:fwd_in_pdt_special_production_formulated_crystal_widget_open()
+    ----------------------------------------------------------------------------------------------------------------
+                    ThePlayer:ListenForEvent("newstate",function(_,_table)
+                        if _table and _table.statename then
+                            print("statename",_table.statename)
+                        end
+                    end)
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)

@@ -25,7 +25,8 @@ local files_name = {
 		"fwd_in_pdt_item_cursed_pig_skin"	,				    --- 被诅咒的猪皮
 		"fwd_in_pdt_item_book_of_gardening"	,				    --- 《园艺之书》
 		"fwd_in_pdt_item_book_of_newmoon"	,				    --- 《新月之书》
-		"fwd_in_pdt_item_formulated_crystal"	,				    --- 工作台配方水晶
+		"fwd_in_pdt_item_formulated_crystal"	,				--- 工作台配方水晶
+		"fwd_in_pdt_item_glass_pig_skin"	,				    --- 玻璃猪皮
 	---------------------------------------------------------------------------------------
 	-- 02_fwd_in_pdt_materials
 		"fwd_in_pdt_material_tree_resin",						--- 树脂
@@ -43,8 +44,9 @@ local files_name = {
 		"fwd_in_pdt_equipment_frozen_hambat",					--- 极寒火腿
 		"fwd_in_pdt_equipment_blazing_spear",					--- 炽热长矛
 		"fwd_in_pdt_equipment_frozen_spear",					--- 极寒火腿
-
 		"fwd_in_pdt_equipment_repair_staff",					--- 修复法杖
+		"fwd_in_pdt_equipment_glass_pig",						--- 玻璃猪雕像
+		"fwd_in_pdt_equipment_cursed_pig",						--- 诅咒猪雕像
 	---------------------------------------------------------------------------------------
 	-- 04_fwd_in_pdt_foods
 		"fwd_in_pdt_food_raw_milk",								--- 生牛奶

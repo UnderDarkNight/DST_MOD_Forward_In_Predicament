@@ -23,3 +23,5 @@ modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/07_spi
 modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/08_rock_flintless.lua")    --- 修改 岩石，可以挖到雄黄矿
 
 modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/09_mutant_frogs.lua")    --- 修改 青蛙，让青蛙能变异
+
+modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/10_pig_house.lua")    --- 修改 猪人房子
