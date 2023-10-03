@@ -125,6 +125,26 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["item_name_format"] = "Medical Certificate For XXXX"
 
             },
+            ["fwd_in_pdt_item_locked_book"] = {
+                ["name"] = "Locked Book",
+                ["inspect_str"] = "It takes some skill to unlock it.",
+            },
+            ["fwd_in_pdt_item_cursed_pig_skin"] = {
+                ["name"] = "Cursed Pig Skin",
+                ["inspect_str"] = "Cursed Spreading Pigskin",
+            },
+            ["fwd_in_pdt_item_book_of_gardening"] = {
+                ["name"] = "Book Of Gardening",
+                ["inspect_str"] = "A book of gardening",
+            },
+            ["fwd_in_pdt_item_book_of_newmoon"] = {
+                ["name"] = "Magic Book Of New Moon",
+                ["inspect_str"] = "It's filled with new moon related content and magic",
+            },
+            ["fwd_in_pdt_item_formulated_crystal"] = {
+                ["name"] = "Formulated Crystals",
+                ["inspect_str"] = "Recipes of Production Table",
+            },
         --------------------------------------------------------------------
         ---- 02_fwd_in_pdt_materials
             ["fwd_in_pdt_material_tree_resin"] = {

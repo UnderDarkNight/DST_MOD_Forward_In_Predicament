@@ -183,53 +183,12 @@ local flg,error_code = pcall(function()
                 -- -- ThePlayer.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_cough")
                 -- ThePlayer.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_fever")
     ----------------------------------------------------------------------------------------------------------------
-    ---- 商店界面调试
-                    -- ThePlayer.HUD:fwd_in_pdt_shop_open()
-                    local items = {
-	
-                        {
-                            ["name"] = "金块",
-                            ["prefab"] = "goldnugget",
-                            ["cost"] = 5.0,
-                            ["num2give"] = 10.0,
-                            ["image"] = "",
-                            ["atlas"] = ""
-                        },
-                        {
-                            ["name"] = "大理石",
-                            ["prefab"] = "marble",
-                            ["cost"] = 4.0,
-                            ["num2give"] = 10.0,
-                            ["image"] = "",
-                            ["atlas"] = ""
-                        },
-                        {
-                            ["name"] = "月岩",
-                            ["prefab"] = "moonrocknugget",
-                            ["cost"] = 3.0,
-                            ["num2give"] = 10.0,
-                            ["image"] = "",
-                            ["atlas"] = ""
-                        },
-                        {
-                            ["name"] = "铥矿碎片",
-                            ["prefab"] = "thulecite_pieces",
-                            ["cost"] = 2.0,
-                            ["num2give"] = 10.0,
-                            ["image"] = "",
-                            ["atlas"] = ""
-                        },
-                        {
-                            ["name"] = "噩梦燃料",
-                            ["prefab"] = "nightmarefuel",
-                            ["cost"] = 1.0,
-                            ["num2give"] = 10.0,
-                            ["image"] = "",
-                            ["atlas"] = ""
-                        }
-                    }
-                    ThePlayer:PushEvent("fwd_in_pdt_client_event.shop_open",items)
-                    -- ThePlayer:PushEvent("fwd_in_pdt_client_event.shop_open")
+    -- 新月
+        -- TheWorld:PushEvent("ms_setmoonphase", {moonphase = "full"})
+        -- TheWorld:PushEvent("ms_setmoonphase", {moonphase = "new" ,iswaxing = true})
+    ----------------------------------------------------------------------------------------------------------------
+    -- 工作台界面
+        ThePlayer.HUD:fwd_in_pdt_special_production_formulated_crystal_widget_open()
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)

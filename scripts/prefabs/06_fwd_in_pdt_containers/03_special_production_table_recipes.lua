@@ -226,6 +226,91 @@ return {
             }
         },
     -------------------------------------------------------------------------------------------------------------
+    -------------------------------------------------------------------------------------------------------------
+    ---- 被诅咒的猪皮
+        {
+            source = {     
+                { prefab = "nightmarefuel" , num = 1 } , {                                } ,  { prefab = "ash" , num = 1           } ,
+                {                                    } , { prefab = "pigskin" , num = 1   } ,  {                                    } ,
+                { prefab = "ash" , num = 1           } , {                                } ,  { prefab = "nightmarefuel" , num = 1 } ,
+            },
+            ret = {
+                prefab = "fwd_in_pdt_item_cursed_pig_skin",
+                num = 1,
+                overwrite_str = "x 1",
+                atlas =  GetInventoryItemAtlas("fwd_in_pdt_item_cursed_pig_skin.tex"),
+                image =  "fwd_in_pdt_item_cursed_pig_skin.tex",
+            }
+        },
+    -------------------------------------------------------------------------------------------------------------
+    -------------------------------------------------------------------------------------------------------------
+    ---- 《伤寒病论》
+        {
+            source = {     
+                { prefab = "featherpencil" , num = 1 } , {                                                    } ,  { prefab = "featherpencil" , num = 1 } ,
+                {                                    } , { prefab = "fwd_in_pdt_item_locked_book" , num = 1   } ,  {                                    } ,
+                {                                    } , {                                                    } ,  {                                    } ,
+            },
+            ret = {
+                prefab = "fwd_in_pdt_item_disease_treatment_book",
+                num = 1,
+                overwrite_str = "x 1",
+                atlas =  GetInventoryItemAtlas("fwd_in_pdt_item_disease_treatment_book.tex"),
+                image =  "fwd_in_pdt_item_disease_treatment_book.tex",
+            }
+        },
+    -------------------------------------------------------------------------------------------------------------
+    -------------------------------------------------------------------------------------------------------------
+    ---- 《丰收之书》
+        {
+            source = {     
+                { prefab = "twigs" , num = 1                            } , { prefab = "featherpencil" , num = 1                 } ,  { prefab = "cutgrass" , num = 1                    } ,
+                { prefab = "fwd_in_pdt_plant_paddy_rice_seed" , num = 1 } , { prefab = "fwd_in_pdt_item_locked_book" , num = 1   } ,  { prefab = "fwd_in_pdt_plant_wheat_seed" , num = 1 } ,
+                { prefab = "cutgrass" , num = 1                         } , {                                                    } ,  { prefab = "twigs" , num = 1                       } ,
+            },
+            ret = {
+                prefab = "fwd_in_pdt_item_book_of_harvest",
+                num = 1,
+                overwrite_str = "x 1",
+                atlas =  GetInventoryItemAtlas("fwd_in_pdt_item_book_of_harvest.tex"),
+                image =  "fwd_in_pdt_item_book_of_harvest.tex",
+            }
+        },
+    -------------------------------------------------------------------------------------------------------------
+    -------------------------------------------------------------------------------------------------------------
+    ---- 《园艺之书》
+        {
+            source = {     
+                { prefab = "featherpencil" , num = 1 } , { prefab = "petals_evil" , num = 1                   } ,  { prefab = "petals" , num = 1        } ,
+                { prefab = "twigs" , num = 1         } , { prefab = "fwd_in_pdt_item_locked_book" , num = 1   } ,  { prefab = "twigs" , num = 1         } ,
+                { prefab = "petals" , num = 1        } , {                                                    } ,  { prefab = "featherpencil" , num = 1 } ,
+            },
+            ret = {
+                prefab = "fwd_in_pdt_item_book_of_gardening",
+                num = 1,
+                overwrite_str = "x 1",
+                atlas =  GetInventoryItemAtlas("fwd_in_pdt_item_book_of_gardening.tex"),
+                image =  "fwd_in_pdt_item_book_of_gardening.tex",
+            }
+        },
+    -------------------------------------------------------------------------------------------------------------
+    -------------------------------------------------------------------------------------------------------------
+    ---- 《新月之书》
+        {
+            source = {     
+                { prefab = "moonrocknugget" , num = 1 } , {                                                    } ,  { prefab = "nightmarefuel" , num = 1  } ,
+                {                                     } , { prefab = "fwd_in_pdt_item_locked_book" , num = 1   } ,  {                                     } ,
+                { prefab = "nightmarefuel" , num = 1  } , {                                                    } ,  { prefab = "moonrocknugget" , num = 1 } ,
+            },
+            ret = {
+                prefab = "fwd_in_pdt_item_book_of_newmoon",
+                num = 1,
+                overwrite_str = "x 1",
+                atlas =  GetInventoryItemAtlas("fwd_in_pdt_item_book_of_newmoon.tex"),
+                image =  "fwd_in_pdt_item_book_of_newmoon.tex",
+            }
+        },
+    -------------------------------------------------------------------------------------------------------------
 
 
 

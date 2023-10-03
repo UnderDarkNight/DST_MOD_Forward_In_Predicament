@@ -23,5 +23,13 @@ return{
 		["num2give"] = 5.0,
 		["image"] = "",
 		["atlas"] = ""
+	},
+	{
+		["name"] = "被锁住的书",
+		["prefab"] = "fwd_in_pdt_item_locked_book",
+		["cost"] = 40.0,
+		["num2give"] = 1.0,
+		["image"] = "",
+		["atlas"] = ""
 	}
 }

@@ -327,7 +327,7 @@ local function fn()
     ---- 玩家建造后给一本说明书
         inst.OnBuiltFn = function(self,builder)
             if builder and builder.components.fwd_in_pdt_func then
-                builder.components.fwd_in_pdt_func:GiveItemByPrefab("log")
+                builder.components.fwd_in_pdt_func:GiveItemByPrefab("fwd_in_pdt_item_formulated_crystal")
             end
         end
     -------------------------------------------------------------------------------------

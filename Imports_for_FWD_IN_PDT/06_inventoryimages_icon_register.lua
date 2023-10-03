@@ -21,6 +21,11 @@ local files_name = {
 		"fwd_in_pdt_item_disease_treatment_book"	, 			--- 《伤寒病论》
 		"fwd_in_pdt_item_book_of_harvest"	, 					--- 《丰收之书》
 		"fwd_in_pdt_item_medical_certificate"	, 					--- 诊断单
+		"fwd_in_pdt_item_locked_book"	, 						--- 被锁住的书
+		"fwd_in_pdt_item_cursed_pig_skin"	,				    --- 被诅咒的猪皮
+		"fwd_in_pdt_item_book_of_gardening"	,				    --- 《园艺之书》
+		"fwd_in_pdt_item_book_of_newmoon"	,				    --- 《新月之书》
+		"fwd_in_pdt_item_formulated_crystal"	,				    --- 工作台配方水晶
 	---------------------------------------------------------------------------------------
 	-- 02_fwd_in_pdt_materials
 		"fwd_in_pdt_material_tree_resin",						--- 树脂

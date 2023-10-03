@@ -35,6 +35,11 @@ local prefabs_name_list = {
     "06_disease_treatment_book",   -- 《伤寒病论》
     "07_book_of_harvest",           -- 《丰收之书》
     "08_medical_certificate",           -- 诊断单
+    "09_locked_book",               -- 被锁住的书
+    "10_cursed_pig_skin",               -- 被诅咒的猪皮
+    "11_book_of_gardening",               -- 《园艺之书》
+    "12_book_of_newmoon",               -- 《新月之书》
+    "13_formulated_crystal",               -- 工作台配方水晶
 }
 
 

@@ -63,6 +63,8 @@ local function fn()
 
     inst:AddComponent("weapon")
     inst.components.weapon:SetDamage(TUNING.SPEAR_DAMAGE)
+    inst.components.weapon:SetRange(2.5,2.5)
+
     -------
 
     inst:AddComponent("finiteuses")

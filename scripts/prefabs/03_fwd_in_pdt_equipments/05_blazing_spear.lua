@@ -63,6 +63,7 @@ local function fn()
 
     inst:AddComponent("weapon")
     inst.components.weapon:SetDamage(34)
+    inst.components.weapon:SetRange(2.5,2.5)
     -------
 
     inst:AddComponent("finiteuses")

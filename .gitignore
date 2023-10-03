@@ -32,13 +32,13 @@ anim/*.autosave.zip
 *.exp
 
 # Shared objects (inc. Windows DLLs)
-*.dll
+# *.dll
 *.so
 *.so.*
 *.dylib
 
 # Executables
-*.exe
+# *.exe
 *.out
 *.app
 *.i*86

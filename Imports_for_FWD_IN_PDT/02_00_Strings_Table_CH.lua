@@ -130,6 +130,26 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["recipe_desc"] = "自己身体的诊断结果",
                 ["item_name_format"] = "XXXX的诊断单"
             },
+            ["fwd_in_pdt_item_locked_book"] = {
+                ["name"] = "被锁住的书",
+                ["inspect_str"] = "得需要点技巧才能解锁",
+            },
+            ["fwd_in_pdt_item_cursed_pig_skin"] = {
+                ["name"] = "被诅咒的猪皮",
+                ["inspect_str"] = "可以对猪猪下手了",
+            },
+            ["fwd_in_pdt_item_book_of_gardening"] = {
+                ["name"] = "《园艺之书》",
+                ["inspect_str"] = "和园艺有关的书籍",
+            },
+            ["fwd_in_pdt_item_book_of_newmoon"] = {
+                ["name"] = "《新月之书》",
+                ["inspect_str"] = "里面写满了和新月相关的内容，还有魔法",
+            },
+            ["fwd_in_pdt_item_formulated_crystal"] = {
+                ["name"] = "配方水晶",
+                ["inspect_str"] = "工作台的相关操作配方",
+            },
         --------------------------------------------------------------------
         ---- 02_fwd_in_pdt_materials
             ["fwd_in_pdt_material_tree_resin"] = {

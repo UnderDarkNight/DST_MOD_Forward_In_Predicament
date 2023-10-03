@@ -18,3 +18,5 @@ modimport("Key_Modules_Of_FWD_IN_PDT/06_widgets/06_medical_certificate_widget.lu
 
 modimport("Key_Modules_Of_FWD_IN_PDT/06_widgets/07_shop_widget.lua")    --- 商店界面
 
+modimport("Key_Modules_Of_FWD_IN_PDT/06_widgets/08_special_production_formulated_crystal_widget.lua")    --- 工作台说明书界面
+

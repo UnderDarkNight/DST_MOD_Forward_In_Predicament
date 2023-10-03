@@ -1,0 +1,42 @@
+[
+    {
+        "name": "金块",
+        "prefab": "goldnugget",
+        "cost": 5.0,
+        "num2give": 10.0,
+        "image": "",
+        "atlas": ""
+    },
+    {
+        "name": "大理石",
+        "prefab": "marble",
+        "cost": 4.0,
+        "num2give": 10.0,
+        "image": "",
+        "atlas": ""
+    },
+    {
+        "name": "月岩",
+        "prefab": "moonrocknugget",
+        "cost": 3.0,
+        "num2give": 10.0,
+        "image": "",
+        "atlas": ""
+    },
+    {
+        "name": "铥矿碎片",
+        "prefab": "thulecite_pieces",
+        "cost": 2.0,
+        "num2give": 10.0,
+        "image": "",
+        "atlas": ""
+    },
+    {
+        "name": "噩梦燃料",
+        "prefab": "nightmarefuel",
+        "cost": 1.0,
+        "num2give": 10.0,
+        "image": "",
+        "atlas": ""
+    }
+]

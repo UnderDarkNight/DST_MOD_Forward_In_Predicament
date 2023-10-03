@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Atlas>
+	<Texture filename="fwd_in_pdt_special_production_formulated_crystal.tex" />
+	<Elements>
+		<Element name="fwd_in_pdt_special_production_formulated_crystal_background.tex" u1="0.001" u2="0.887671875" v2="0.999" v1="0.43459375" variant="" />
+		<Element name="fwd_in_pdt_special_production_formulated_crystal_close.tex" u1="0.001" u2="0.067359375" v2="0.43259375" v1="0.3681875" variant="" />
+		<Element name="fwd_in_pdt_special_production_formulated_crystal_left.tex" u1="0.001" u2="0.13571875" v2="0.3661875" v1="0.2812734375" variant="" />
+		<Element name="fwd_in_pdt_special_production_formulated_crystal_right.tex" u1="0.001" u2="0.13571875" v2="0.2792734375" v1="0.194359375" variant="" />
+	</Elements>
+</Atlas>
