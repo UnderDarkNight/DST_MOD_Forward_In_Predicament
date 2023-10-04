@@ -264,9 +264,9 @@ return {
     ---- 玻璃牛角
         {
             source = {     
-                { prefab = "moonglass" , num = 1        } , {                                } ,  { prefab = "moonrocknugget" , num = 1  } ,
-                {                                       } , { prefab = "horn" , num = 1   } ,  {                                      } ,
-                { prefab = "moonrocknugget" , num = 1   } , {                                } ,  { prefab = "moonglass" , num = 1       } ,
+                { prefab = "moonglass" , num = 1   } , { prefab = "moonglass" , num = 1   } ,  { prefab = "moonglass" , num = 1  } ,
+                { prefab = "moonglass" , num = 1   } , { prefab = "horn" , num = 1        } ,  { prefab = "moonglass" , num = 1  } ,
+                { prefab = "moonglass" , num = 1   } , { prefab = "moonglass" , num = 1   } ,  { prefab = "moonglass" , num = 1  } ,
             },
             ret = {
                 prefab = "fwd_in_pdt_item_glass_horn",
