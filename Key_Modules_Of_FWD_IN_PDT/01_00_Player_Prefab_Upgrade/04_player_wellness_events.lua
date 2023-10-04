@@ -164,6 +164,18 @@ AddPlayerPostInit(function(inst)
                                 end
                             end
                         end,
+                        ["frogglebunwich"] = function(inst)      --- 蛙腿三明治 移除青蛙毒
+                            if inst.components.fwd_in_pdt_wellness:Get_Debuff("fwd_in_pdt_welness_frog_poison") then
+                                inst.components.fwd_in_pdt_wellness:Remove_Debuff("fwd_in_pdt_welness_frog_poison")
+                                inst.components.fwd_in_pdt_wellness:DoDelta_Poison(-25)
+                                if inst.components.sanity then
+                                    inst.components.sanity:DoDelta(-10)
+                                end
+                                if inst.components.health and inst.components.health.currenthealth > 10 then
+                                    inst.components.health:DoDelta(-10,nil,"frogglebunwich")
+                                end
+                            end
+                        end,
                 }
                 if food_events_by_prefab[food_base_prefab] then
                     food_events_by_prefab[food_base_prefab](inst)

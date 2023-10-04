@@ -511,21 +511,44 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
         ---- 23_fwd_in_pdt_wellness
             ["fwd_in_pdt_wellness"] = {
                 ["name"] = "Body Wellness",
-                ["treatment"] = "想办法提高总体体质值",
-                ["health_down_death_announce"] = "XXXX died because of lack of Wellness Value. Too bad. ",
-
+                ["treatment"] = "Find ways to increase overall body wellness values",
+                ["health_down_death_announce"] = "XXXX 死于体质不够高，太惨了 ~ ",
             },
             ["fwd_in_pdt_wellness_vitamin_c"] = {
                 ["name"] = "Vitamin C",
-                ["treatment"] = "多吃富含维他命C的食物",
+                ["treatment"] = "Eat more foods rich in vitamin C",
             },
             ["fwd_in_pdt_wellness_glucose"] = {
-                ["name"] = "Glucose in blood",
-                ["treatment"] = "多吃含糖食物",
+                ["name"] = "Blood Glucose",
+                ["treatment"] = "Eating sugary foods increases. A rapid decrease requires insulin shots.",
             },
             ["fwd_in_pdt_wellness_poison"] = {
                 ["name"] = "Poison",
-                ["treatment"] = "使用对应的解毒药剂",
+                ["treatment"] = {"Emptying requires a Universal Antidote","To stop the growth, you need to use the corresponding detoxification methods"},
+            },
+            ["fwd_in_pdt_welness_snake_poison"] = {
+                ["name"] = "Snake Poison",
+                ["treatment"] = "Andrographis Paniculata ( botany )",
+            },
+            ["fwd_in_pdt_welness_frog_poison"] = {
+                ["name"] = "Frog Poison",
+                ["treatment"] = "Universal Antidote or "..STRINGS.NAMES[string.upper("frogglebunwich")],
+            },
+            ["fwd_in_pdt_welness_spider_poison"] = {
+                ["name"] = "Spider Poison",
+                ["treatment"] = { STRINGS.NAMES[string.upper("spidergland")] , "Universal Antidote" },
+            },
+            ["fwd_in_pdt_welness_bee_poison"] = {
+                ["name"] = "Bee Poison",
+                ["treatment"] = { STRINGS.NAMES[string.upper("taffy")] , "Universal Antidote" },
+            },
+            ["fwd_in_pdt_welness_cough"] = {
+                ["name"] = "Cough",
+                ["treatment"] = { "Disease Treatment Magic Book","Aster Tataricus L.F Pills","Cooked Milk , Mix Potato Soup , Steamed Orange With Honey"},
+            },
+            ["fwd_in_pdt_welness_fever"] = {
+                ["name"] = "Fever",
+                ["treatment"] = { "Disease Treatment Magic Book","Aster Tataricus L.F Pills","Cooked Milk , Mix Potato Soup , Steamed Orange With Honey"},
             },
         --------------------------------------------------------------------
         --------------------------------------------------------------------

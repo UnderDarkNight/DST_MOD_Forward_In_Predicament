@@ -540,7 +540,7 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             },
             ["fwd_in_pdt_welness_frog_poison"] = {
                 ["name"] = "青蛙毒",
-                ["treatment"] = "万能解毒剂",
+                ["treatment"] = "万能解毒剂 或者 青腿三明治",
             },
             ["fwd_in_pdt_welness_spider_poison"] = {
                 ["name"] = "蜘蛛毒",
