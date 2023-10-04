@@ -80,7 +80,8 @@ AddClassPostConstruct("widgets/itemtile",function(self)
         end, self.item)
     --------------------------------------------------------------------------------------------
     function self:FWD_IN_PDT__Get_Tile_Fx_CMD()
-        if self.item and self.item:HasTag("fwd_in_pdt_tag.fwd_in_pdt_func.item_tile_icon_fx") then
+        if self.item and self.item:HasTag("fwd_in_pdt_tag.fwd_in_pdt_func.item_tile_icon_fx") 
+            and self.item.replica.fwd_in_pdt_func and self.item.replica.fwd_in_pdt_func.Item_Tile_Icon_Fx_Get then
             local cmd_table = self.item.replica.fwd_in_pdt_func:Item_Tile_Icon_Fx_Get()
             return cmd_table
         else

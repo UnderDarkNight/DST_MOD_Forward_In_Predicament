@@ -25,10 +25,21 @@ AddPlayerPostInit(function(inst)
                 })
             end)
         end
-
-
         
 
     end)
+
+    -------------------------- vip 解锁皮肤
+        inst.components.fwd_in_pdt_func:VIP_Add_Fn(function()
+            inst:DoTaskInTime(1,function()
+                local list = {
+                    ["fwd_in_pdt_equipment_blazing_nightmaresword"] = {
+                        "fwd_in_pdt_equipment_blazing_nightmaresword_sharp",
+                    }
+                }
+                inst.components.fwd_in_pdt_func:SkinAPI__Unlock_Skin(list)
+
+            end)
+        end)
 
 end)

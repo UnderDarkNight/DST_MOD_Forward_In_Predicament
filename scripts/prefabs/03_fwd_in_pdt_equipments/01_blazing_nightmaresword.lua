@@ -11,10 +11,42 @@ local assets =
     Asset("ANIM", "anim/fwd_in_pdt_equipment_blazing_nightmaresword_swap.zip"),
     Asset( "IMAGE", "images/inventoryimages/fwd_in_pdt_equipment_blazing_nightmaresword.tex" ),  -- 背包贴图
     Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_equipment_blazing_nightmaresword.xml" ),
+    ---- 皮肤
+    Asset("ANIM", "anim/fwd_in_pdt_equipment_blazing_nightmaresword_sharp.zip"),
+    Asset("ANIM", "anim/fwd_in_pdt_equipment_blazing_nightmaresword_sharp_swap.zip"),
+    Asset( "IMAGE", "images/inventoryimages/fwd_in_pdt_equipment_blazing_nightmaresword_sharp.tex" ),  -- 背包贴图
+    Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_equipment_blazing_nightmaresword_sharp.xml" ),
 }
 
+
+-------------------------------------------------------------------------------------------------------------------------------
+---- 皮肤API 套件
+    ---- 物品用的skin数据
+    local skins_data_item = {
+        ["fwd_in_pdt_equipment_blazing_nightmaresword_sharp"] = {             --- 皮肤名字，全局唯一。
+            bank = "fwd_in_pdt_equipment_blazing_nightmaresword_sharp",                               --- 制作完成后切换的 bank
+            build = "fwd_in_pdt_equipment_blazing_nightmaresword_sharp",                              --- 制作完成后切换的 build
+            atlas = "images/inventoryimages/fwd_in_pdt_equipment_blazing_nightmaresword_sharp.xml",                                        --- 【制作栏】皮肤显示的贴图，
+            image = "fwd_in_pdt_equipment_blazing_nightmaresword_sharp",                              --- 【制作栏】皮肤显示的贴图， 不需要 .tex
+            -- name = "尖锐",                                                                         --- 【制作栏】皮肤的名字
+            onequip_bank = "fwd_in_pdt_equipment_blazing_nightmaresword_sharp_swap"
+        },
+    }
+
+    FWD_IN_PDT_MOD_SKIN.SKIN_INIT(skins_data_item,"fwd_in_pdt_equipment_blazing_nightmaresword")     --- 往总表注册所有皮肤
+
+    local function Set_ReSkin_API_Default_Animate(inst,bank,build,minimap)      -- 在 inst.AnimState:PlayAnimation() 前启用本函数
+        FWD_IN_PDT_MOD_SKIN.Set_ReSkin_API_Default_Animate(inst,bank,build,minimap)
+    end
+          
+-------------------------------------------------------------------------------------------------------------------------------
+
+
 local function onequip(inst, owner)
-    owner.AnimState:OverrideSymbol("swap_object", "fwd_in_pdt_equipment_blazing_nightmaresword_swap", "swap_object")    
+    local skinname = tostring(inst.skinname)
+    local bank = skins_data_item[skinname] and skins_data_item[skinname].onequip_bank
+
+    owner.AnimState:OverrideSymbol("swap_object", bank or "fwd_in_pdt_equipment_blazing_nightmaresword_swap", "swap_object")    
     owner.AnimState:Show("ARM_carry")
     owner.AnimState:Hide("ARM_normal")
 end
@@ -26,6 +58,18 @@ local function onunequip(inst, owner)
 
 end
 
+---------------------------------------------------------------------------------------------
+---- 攻击特效
+local function Attack_Fx(target)
+    local x,y,z = target.Transform:GetWorldPosition()
+    local fx = SpawnPrefab("fwd_in_pdt_fx_flame_up")
+    fx:PushEvent("Set",{
+        pt = Vector3(x,y,z),
+        scale = Vector3(2,2,2),
+        sound = "dontstarve/common/fireAddFuel"            
+    })
+end
+---------------------------------------------------------------------------------------------
 local function fn()
     local inst = CreateEntity()
 
@@ -56,6 +100,20 @@ local function fn()
     MakeInventoryFloatable(inst, "med", 0.05, {1, 0.4, 1.0}, true, -17.5)
 
     inst.entity:SetPristine()
+    -------------------------------------------------------
+    ---- Skin API Register
+        Set_ReSkin_API_Default_Animate(inst,"fwd_in_pdt_equipment_blazing_nightmaresword","fwd_in_pdt_equipment_blazing_nightmaresword")
+        if TheWorld.ismastersim then
+            inst:AddComponent("fwd_in_pdt_func"):Init("skin","item_tile_fx","mouserover_colourful")
+            ---- 自定义扫把切皮肤特效
+                inst.components.fwd_in_pdt_func:SkinAPI__SetReSkinToolFn(function()
+                    Attack_Fx(inst)
+                end)
+
+            inst:AddComponent("inventoryitem")
+            inst.components.inventoryitem:fwd_in_pdt_icon_init("fwd_in_pdt_equipment_blazing_nightmaresword","images/inventoryimages/fwd_in_pdt_equipment_blazing_nightmaresword.xml")
+        end
+    -------------------------------------------------------
 
     if not TheWorld.ismastersim then
         return inst
@@ -66,10 +124,10 @@ local function fn()
     ------ 物品名 和检查文本
     inst:AddComponent("inspectable")
 
-    inst:AddComponent("inventoryitem")
-    -- inst.components.inventoryitem:ChangeImageName("nightsword")
-    inst.components.inventoryitem.imagename = "fwd_in_pdt_equipment_blazing_nightmaresword"
-    inst.components.inventoryitem.atlasname = "images/inventoryimages/fwd_in_pdt_equipment_blazing_nightmaresword.xml"
+    -- inst:AddComponent("inventoryitem")
+    -- -- inst.components.inventoryitem:ChangeImageName("nightsword")
+    -- inst.components.inventoryitem.imagename = "fwd_in_pdt_equipment_blazing_nightmaresword"
+    -- inst.components.inventoryitem.atlasname = "images/inventoryimages/fwd_in_pdt_equipment_blazing_nightmaresword.xml"
 
     
 
@@ -106,7 +164,7 @@ local function fn()
 
     ---------------------------------------------------------------------------------------------
     --- 文字颜色的代码
-        inst:AddComponent("fwd_in_pdt_func"):Init("item_tile_fx","mouserover_colourful")
+        -- inst:AddComponent("fwd_in_pdt_func"):Init("item_tile_fx","mouserover_colourful")
         local r,g,b,a = 255/255 , 50/255 ,0/255 , 180/255
         inst.components.fwd_in_pdt_func:Item_Tile_Icon_Fx_Set_Anim({
             text = {
@@ -115,17 +173,6 @@ local function fn()
         })
         inst.components.fwd_in_pdt_func:Mouseover_SetColour(r,g,b,a)
 
-    ---------------------------------------------------------------------------------------------
-    ---- 攻击特效
-        local function Attack_Fx(target)
-            local x,y,z = target.Transform:GetWorldPosition()
-            local fx = SpawnPrefab("fwd_in_pdt_fx_flame_up")
-            fx:PushEvent("Set",{
-                pt = Vector3(x,y,z),
-                scale = Vector3(2,2,2),
-                sound = "dontstarve/common/fireAddFuel"            
-            })
-        end
     -------------------------------------------------------------------------------------------
     ----- 攻击的时候执行的代码
     inst.components.weapon:SetOnAttack(function(inst,attacker,target)
