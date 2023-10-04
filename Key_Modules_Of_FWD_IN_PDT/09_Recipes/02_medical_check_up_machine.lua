@@ -168,7 +168,7 @@ end
 --------------------------------------------------------------------------------------------------------------------------------------------
     Add_Recipe_2_Machine({
         prefab = "fwd_in_pdt_food_andrographis_paniculata_botany",
-        Ingredients = { Ingredient("spidergland", 1),Ingredient("honey", 1),Ingredient("fwd_in_pdt_material_realgar", 1)  },
+        Ingredients = { Ingredient("fwd_in_pdt_material_tree_resin", 2),Ingredient("fwd_in_pdt_material_realgar", 2)  },
         atlas = "images/inventoryimages/fwd_in_pdt_food_andrographis_paniculata_botany.xml",
         image = "fwd_in_pdt_food_andrographis_paniculata_botany.tex",
     })
@@ -177,7 +177,7 @@ end
 --------------------------------------------------------------------------------------------------------------------------------------------
     Add_Recipe_2_Machine({
         prefab = "fwd_in_pdt_food_universal_antidote",
-        Ingredients = { Ingredient("spidergland", 10),Ingredient("honey", 10),Ingredient("fwd_in_pdt_material_realgar", 10),Ingredient("froglegs", 10)  },
+        Ingredients = { Ingredient("fwd_in_pdt_material_snake_skin", 1),Ingredient("stinger", 2),Ingredient("fwd_in_pdt_material_realgar", 1),Ingredient("froglegs", 5)  },
         atlas = "images/inventoryimages/fwd_in_pdt_food_universal_antidote.xml",
         image = "fwd_in_pdt_food_universal_antidote.tex",
     })
