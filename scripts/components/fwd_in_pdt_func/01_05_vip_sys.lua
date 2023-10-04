@@ -274,6 +274,7 @@ local function main_com(self)
         ---- 功能1：输入参数全为nil。为客户端上传来数据的时候检查key，并执行通过的函数。为进入世界的时候读取检查调用。
         ---- 功能2：用户输入激活码的时候， for_player_input_flag 需要为 true。 让玩家刚输入完key就能享受对应的功能。
         ---- 功能3：单纯的验证激活码是否通过， for_player_input_flag 为 nil 。  通常用于检查生成的key是否通过。
+        ---- ThePlayer.components.fwd_in_pdt_func:VIP_Start_Check_CDKEY("FVIP-A1H1-KY6V-LT02",true)
         function self:VIP_Start_Check_CDKEY(input_key,for_player_input_flag)
             local cdkey = input_key or self:VIP_Get_CDKEY()
             if type(cdkey) ~= "string" then
@@ -306,6 +307,7 @@ local function main_com(self)
                     end
                     self:VIP_Do_Check_Succeed_Fns()
                     self:Replica_Set_Simple_Data("vip",true)
+                    self.inst:AddTag("fwd_in_pdt_tag.vip")
 
                     self:VIP_Save_Key_2_World() --- 把 key 保存到 TheWorld
                     self:VIP_Check_AllPlayers_Bad_Key()

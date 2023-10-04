@@ -46,6 +46,11 @@ local AnimButton = Class(Button, function(self, cmd_table,trade_back_flag)
 	local atlas = cmd_table.atlas
 	local prefab = cmd_table.prefab
 
+	--- VIP 购买打折 8折
+	if not trade_back_flag and ThePlayer and ThePlayer:HasTag("fwd_in_pdt_tag.vip") then
+		cost = math.ceil(cost * 0.8)
+	end
+
 	if trade_back_flag then		---- 卖出去的时候，数字是相反的
 		num2give = cmd_table.cost or 1
 		cost = cmd_table.num2give or 1

@@ -156,6 +156,11 @@ end,nil,
         local cost = item_cmd_table.cost
         local num2give = item_cmd_table.num2give or 1
 
+        ----- vip 打折  8折
+        if player.components.fwd_in_pdt_func:IsVIP() then
+            cost = math.ceil(cost*0.8)
+        end
+
         if player.components.fwd_in_pdt_func:Jade_Coin__Has(cost) then
             player.components.fwd_in_pdt_func:Jade_Coin__Spend(cost)
             player.components.fwd_in_pdt_func:GiveItemByPrefab(prefab,num2give)
