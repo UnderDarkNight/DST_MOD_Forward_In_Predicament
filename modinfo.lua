@@ -13,7 +13,7 @@ local the_version = "0.00.00.0008"
 
 
 local function Check_Mod_is_Internal_Version()
-  if folder_name and (folder_name == "Forward In Predicament" or folder_name == "workshop-3031245026") then
+  if folder_name and (folder_name == "Forward In Predicament" or folder_name == "workshop-3041511769") then
       return true
   end
   return false
@@ -85,26 +85,24 @@ configuration_options =
         },
         default = "auto",
     },
-    -- {
-    --     name = "DEBUGGING_MOD",
-    --     label = IsChinese() and "内测版本模式" or "debugging version",
-    --     hover = IsChinese() and "启动测试模式，控制台更多数据" or " for log display",
-    --     options =
-    --     {
-    --       {description = IsChinese() and "关" or "OFF", data = false},
-    --       {description = IsChinese() and "开" or "ON", data = true},
-    --     },
-    --     default = false,
-    -- },
-
     {
-      name = "",
-      label = "隔断测试2",
-      hover = "",
-      options = {{description = "", data = 0}},
-      default = 0,
+        name = "DEBUGGING_MOD",
+        label = Check_Mod_is_Internal_Version() and "开发者模式" or "",
+        hover = Check_Mod_is_Internal_Version() and "开发者模式" or "",
+        options = Check_Mod_is_Internal_Version() and 
+        {
+          {description = IsChinese() and "关" or "OFF", data = false},
+          {description = IsChinese() and "开" or "ON", data = true},
+        } or  {{description = "", data = false}},
+        default = false,
     },
-
+    -- {
+    --   name = "",
+    --   label = "隔断测试2",
+    --   hover = "",
+    --   options = {{description = "", data = 0}},
+    --   default = 0,
+    -- },
     {
       name = "UI_FX",
       label = IsChinese() and "UI动画特效" or "UI FX Anim",

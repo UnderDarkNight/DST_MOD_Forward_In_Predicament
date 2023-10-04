@@ -29,6 +29,7 @@ local prefabs_name_list = {
 
     "08_glass_pig_chesspiece",     --- 玻璃猪雕像
     "09_cursed_pig_chesspiece",     --- 诅咒猪雕像
+    "10_glass_beefalo_chesspiece",     --- 玻璃牛
 
 }
 

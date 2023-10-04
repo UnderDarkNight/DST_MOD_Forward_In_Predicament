@@ -27,6 +27,8 @@ modimport("Key_Modules_Of_FWD_IN_PDT/05_Actions/10_cough_action.lua")       --- 
 
 modimport("Key_Modules_Of_FWD_IN_PDT/05_Actions/12_read_book_action_cook_book_type.lua")       --- SG动作：读书(烹饪书)
 
+modimport("Key_Modules_Of_FWD_IN_PDT/05_Actions/13_play_horn_action.lua")       --- SG动作：号角
+
 
 
 

@@ -154,6 +154,10 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "玻璃猪皮",
                 ["inspect_str"] = "可以对猪猪的房子下手了",
             },
+            ["fwd_in_pdt_item_glass_horn"] = {
+                ["name"] = "玻璃牛角",
+                ["inspect_str"] = "可以对牛牛出手了",
+            },
         --------------------------------------------------------------------
         ---- 02_fwd_in_pdt_materials
             ["fwd_in_pdt_material_tree_resin"] = {
@@ -221,6 +225,10 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             ["fwd_in_pdt_equipment_cursed_pig"] = {
                 ["name"] = "诅咒猪雕像",
                 ["inspect_str"] = "这雕像栩栩如生，新月的时候可以供奉肉汤"
+            },
+            ["fwd_in_pdt_equipment_glass_beefalo"] = {
+                ["name"] = "玻璃牛雕像",
+                ["inspect_str"] = "这雕像栩栩如生"
             },
         --------------------------------------------------------------------
         ---- 04_fwd_in_pdt_foods

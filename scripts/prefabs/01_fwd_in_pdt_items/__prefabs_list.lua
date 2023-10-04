@@ -41,6 +41,7 @@ local prefabs_name_list = {
     "12_book_of_newmoon",                -- 《新月之书》
     "13_formulated_crystal",             -- 工作台配方水晶
     "14_glass_pig_skin",                 -- 玻璃猪皮
+    "15_glass_horn",                     -- 玻璃号角
 }
 
 

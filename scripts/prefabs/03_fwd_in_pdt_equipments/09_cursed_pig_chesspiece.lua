@@ -5,7 +5,7 @@
         图层文件夹 swap_body
         player_encumbered.scml
         swap_body-0   			 【注意】【用不上】往右走的时候，和 10 同时显示，注意透明
-        swap_body-1	  					【用不上】
+        swap_body-1	  			 【注意】【用不上】刚搬起来的瞬间。可以透明
         swap_body-2   					【用不上】
         swap_body-3	  		【重要】往上走的时候（包括骑牛往上）
         swap_body-4	  					【用不上】

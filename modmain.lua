@@ -45,17 +45,27 @@ end
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ----- 调试模式开关
 ----- 用于新大型版本管理和上线后文件切割。修BUG不用担心新的未完成内容上线造成崩溃。
-TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE = TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE or false	
-if modname == "Forward In Predicament" or modname == "workshop-3031245026" then -- 如果MOD文件夹名字是 "Forward In Predicament"
-	TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE = true	
+	TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE = TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE or GetModConfigData("DEBUGGING_MOD") or false	
+		-- if modname == "Forward In Predicament" then -- 如果MOD文件夹名字是 "Forward In Predicament"
+		-- 	TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE = true	
 
-	-- TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE = false	
+		-- 	-- TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE = false	
 
-					-- local modnames = ModManager:GetEnabledModNames()
-					-- KnownModIndex:GetModInfo(modname)
-					-- TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE_MODNAME = modname or "dfadfeafgaegcvfglkjolnlngmg"
-end
-
+		-- 					-- local modnames = ModManager:GetEnabledModNames()
+		-- 					-- KnownModIndex:GetModInfo(modname)
+		-- 					-- TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE_MODNAME = modname or "dfadfeafgaegcvfglkjolnlngmg"
+		-- end
+		AddPlayerPostInit(function(player_inst)	---- 玩家进入后再执行。检查。
+			if not TheWorld.ismastersim then
+				return
+			end
+			player_inst:DoTaskInTime(2,function()
+				if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
+					TheNet:SystemMessage("FWD_IN_PDT DEBUGGING MODE ON")	
+				end
+			end)
+		end)
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Assets = {}
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 

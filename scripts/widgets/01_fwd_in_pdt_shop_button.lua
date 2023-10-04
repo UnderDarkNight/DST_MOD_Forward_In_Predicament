@@ -34,6 +34,11 @@ local AnimButton = Class(Button, function(self, cmd_table,trade_back_flag)
 	self.cost_text = self:AddChild(Text(txt_font,35,"500",cost_color))
 	self.cost_text:SetPosition(0,-75)
 
+	local name_str = STRINGS.NAMES[string.upper(tostring(cmd_table.prefab))]
+	self.name_text = self:AddChild(Text(TALKINGFONT,50,name_str,{ 255/255 , 255/255 ,255/255 , 1}))
+	self.name_text:SetPosition(0,100)
+	self.name_text:MoveToFront()
+	self.name_text:Hide()
 
 	local num2give = cmd_table.num2give or 1
 	local cost = cmd_table.cost or 1
@@ -75,6 +80,7 @@ function AnimButton:OnGainFocus()
 	AnimButton._base.OnGainFocus(self)
 
     if self:IsEnabled() then
+		self.name_text:Show()
 		self.anim:GetAnimState():PlayAnimation("button_mouseover")
 	end
 end
@@ -83,6 +89,7 @@ function AnimButton:OnLoseFocus()
 	AnimButton._base.OnLoseFocus(self)
 
 	if self:IsEnabled() then
+		self.name_text:Hide()
 		self.anim:GetAnimState():PlayAnimation("button_idle")
     end
 end

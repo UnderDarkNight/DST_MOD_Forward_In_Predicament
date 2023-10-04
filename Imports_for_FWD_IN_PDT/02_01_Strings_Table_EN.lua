@@ -149,6 +149,10 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "Glass Pig Skin",
                 ["inspect_str"] = "Glass Pig Skin",
             },
+            ["fwd_in_pdt_item_glass_horn"] = {
+                ["name"] = "Glass Horn",
+                ["inspect_str"] = "Glass Horn",
+            },
         --------------------------------------------------------------------
         ---- 02_fwd_in_pdt_materials
             ["fwd_in_pdt_material_tree_resin"] = {
@@ -212,6 +216,10 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             ["fwd_in_pdt_equipment_cursed_pig"] = {
                 ["name"] = "Cursed Pig Statue",
                 ["inspect_str"] = "The statue is so lifelike, and you can dedicate bonestews on the new moon"
+            },
+            ["fwd_in_pdt_equipment_glass_beefalo"] = {
+                ["name"] = "Glass Beefalo Statue",
+                ["inspect_str"] = "The statue is so lifelike ."
             },
         --------------------------------------------------------------------
         ---- 04_fwd_in_pdt_foods

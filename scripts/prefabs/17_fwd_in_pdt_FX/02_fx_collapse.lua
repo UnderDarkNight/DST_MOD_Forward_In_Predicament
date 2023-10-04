@@ -38,6 +38,7 @@ local function fx()
     -- inst.components.colouradder:OnSetColour(139/255,34/255,34/255,0.1)
     inst:ListenForEvent("Set",function(_,_table)
         -- _table = {
+        --     target = inst,
         --     pt = Vector3(0,0,0),
         --     scale = Vector3(0,0,0)
         --     color = Vector3(255,255,255),
@@ -50,6 +51,9 @@ local function fx()
         end
         if _table.pt and _table.pt.x then
             inst.Transform:SetPosition(_table.pt.x,_table.pt.y,_table.pt.z)
+        end
+        if _table.target then
+            inst.Transform:SetPosition(_table.target.Transform:GetWorldPosition())
         end
 
         if _table.scale and _table.scale.x then

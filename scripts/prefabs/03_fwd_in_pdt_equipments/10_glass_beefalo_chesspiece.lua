@@ -22,14 +22,14 @@
 
 local assets =
 {
-    Asset("ANIM", "anim/fwd_in_pdt_equipment_glass_pig.zip"),
-    Asset( "IMAGE", "images/inventoryimages/fwd_in_pdt_equipment_glass_pig.tex" ),  -- 背包贴图
-    Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_equipment_glass_pig.xml" ),
+    Asset("ANIM", "anim/fwd_in_pdt_equipment_glass_beefalo.zip"),
+    Asset( "IMAGE", "images/inventoryimages/fwd_in_pdt_equipment_glass_beefalo.tex" ),  -- 背包贴图
+    Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_equipment_glass_beefalo.xml" ),
 }
 
 local function onequip(inst, owner)
     
-    owner.AnimState:OverrideSymbol("swap_body", "fwd_in_pdt_equipment_glass_pig", "swap_body")
+    owner.AnimState:OverrideSymbol("swap_body", "fwd_in_pdt_equipment_glass_beefalo", "swap_body")
     -- owner.AnimState:Show("ARM_carry")
     -- owner.AnimState:Hide("ARM_normal")
 end
@@ -51,41 +51,41 @@ local function fn()
     MakeHeavyObstaclePhysics(inst, PHYSICS_RADIUS)
     inst:SetPhysicsRadiusOverride(PHYSICS_RADIUS)
 
-    inst.AnimState:SetBank("fwd_in_pdt_equipment_glass_pig")
-    inst.AnimState:SetBuild("fwd_in_pdt_equipment_glass_pig")
+    inst.AnimState:SetBank("fwd_in_pdt_equipment_glass_beefalo")
+    inst.AnimState:SetBuild("fwd_in_pdt_equipment_glass_beefalo")
     inst.AnimState:PlayAnimation("idle")
 
     inst:AddTag("heavy")
 
     inst.entity:SetPristine()
-    ---------------------------------------------------------------------------------------------
-    -- 物品贸易
-        inst:AddComponent("fwd_in_pdt_com_acceptable")
-        inst.components.fwd_in_pdt_com_acceptable:SetTestFn(function(inst,item,doer,right_click)
-            if TheWorld.state.isfullmoon and item and item.prefab == "bonestew" then
-                return true
-            end
-            return false
-        end)
-        inst.components.fwd_in_pdt_com_acceptable:SetOnAcceptFn(function(inst,item,doer)
-            if not TheWorld.ismastersim then
-                return
-            end
-            if doer and item and item.components.stackable then
-                local num = item.components.stackable.stacksize
-                item:Remove()
-                doer.SoundEmitter:PlaySound("dontstarve/pig/PigKingThrowGold")
-                doer.SoundEmitter:PlaySound("dontstarve/pig/oink")
-                TheWorld.components.fwd_in_pdt_func:Throw_Out_Items({
-                        target = doer,
-                        name = "fwd_in_pdt_item_jade_coin_green",
-                        num = num,
-                })
-            end
-            return true
-        end)
-        inst.components.fwd_in_pdt_com_acceptable:SetActionDisplayStr("fwd_in_pdt_equipment_glass_pig",STRINGS.ACTIONS.APPLYCONSTRUCTION.OFFER)
-    ---------------------------------------------------------------------------------------------
+    -- ---------------------------------------------------------------------------------------------
+    -- -- 物品贸易
+    --     inst:AddComponent("fwd_in_pdt_com_acceptable")
+    --     inst.components.fwd_in_pdt_com_acceptable:SetTestFn(function(inst,item,doer,right_click)
+    --         if TheWorld.state.isnewmoon and item and item.prefab == "bonestew" then
+    --             return true
+    --         end
+    --         return false
+    --     end)
+    --     inst.components.fwd_in_pdt_com_acceptable:SetOnAcceptFn(function(inst,item,doer)
+    --         if not TheWorld.ismastersim then
+    --             return
+    --         end
+    --         if doer and item and item.components.stackable then
+    --             local num = item.components.stackable.stacksize
+    --             item:Remove()
+    --             doer.SoundEmitter:PlaySound("dontstarve/pig/PigKingThrowGold")
+    --             doer.SoundEmitter:PlaySound("dontstarve/pig/oink")
+    --             TheWorld.components.fwd_in_pdt_func:Throw_Out_Items({
+    --                     target = doer,
+    --                     name = "fwd_in_pdt_item_jade_coin_green",
+    --                     num = num,
+    --             })
+    --         end
+    --         return true
+    --     end)
+    --     inst.components.fwd_in_pdt_com_acceptable:SetActionDisplayStr("fwd_in_pdt_equipment_glass_pig",STRINGS.ACTIONS.APPLYCONSTRUCTION.OFFER)
+    -- ---------------------------------------------------------------------------------------------
     if not TheWorld.ismastersim then
         return inst
     end
@@ -97,8 +97,8 @@ local function fn()
     ---- 物品组件
         inst:AddComponent("inventoryitem")
         -- inst.components.inventoryitem:ChangeImageName("spear")
-        inst.components.inventoryitem.imagename = "fwd_in_pdt_equipment_glass_pig"
-        inst.components.inventoryitem.atlasname = "images/inventoryimages/fwd_in_pdt_equipment_glass_pig.xml"
+        inst.components.inventoryitem.imagename = "fwd_in_pdt_equipment_glass_beefalo"
+        inst.components.inventoryitem.atlasname = "images/inventoryimages/fwd_in_pdt_equipment_glass_beefalo.xml"
         inst.components.inventoryitem:SetSinks(true)
         inst.components.inventoryitem.cangoincontainer = false
 
@@ -109,7 +109,7 @@ local function fn()
     ---------------------------------------------------------------------------------------------
     --- 损毁掉落
         inst:AddComponent("lootdropper")
-        inst.components.lootdropper:SetLoot({"moonglass"})
+        inst.components.lootdropper:SetLoot({"nightmarefuel"})
     ---------------------------------------------------------------------------------------------
     --- 穿戴
         inst:AddComponent("equippable")
@@ -135,9 +135,9 @@ local function fn()
     ---------------------------------------------------------------------------------------------
         -- inst:AddComponent("submersible")
         -- inst:AddComponent("symbolswapdata")
-        -- inst.components.symbolswapdata:SetData("fwd_in_pdt_equipment_glass_pig", "swap_body")
+        -- inst.components.symbolswapdata:SetData("fwd_in_pdt_equipment_glass_beefalo", "swap_body")
     ---------------------------------------------------------------------------------------------
     return inst
 end
 
-return Prefab("fwd_in_pdt_equipment_glass_pig", fn, assets)
+return Prefab("fwd_in_pdt_equipment_glass_beefalo", fn, assets)

@@ -27,6 +27,7 @@ local files_name = {
 		"fwd_in_pdt_item_book_of_newmoon"	,				    --- 《新月之书》
 		"fwd_in_pdt_item_formulated_crystal"	,				--- 工作台配方水晶
 		"fwd_in_pdt_item_glass_pig_skin"	,				    --- 玻璃猪皮
+		"fwd_in_pdt_item_glass_horn"	,				  	    --- 玻璃号角
 	---------------------------------------------------------------------------------------
 	-- 02_fwd_in_pdt_materials
 		"fwd_in_pdt_material_tree_resin",						--- 树脂
@@ -47,6 +48,7 @@ local files_name = {
 		"fwd_in_pdt_equipment_repair_staff",					--- 修复法杖
 		"fwd_in_pdt_equipment_glass_pig",						--- 玻璃猪雕像
 		"fwd_in_pdt_equipment_cursed_pig",						--- 诅咒猪雕像
+		"fwd_in_pdt_equipment_glass_beefalo",					--- 玻璃牛雕像
 	---------------------------------------------------------------------------------------
 	-- 04_fwd_in_pdt_foods
 		"fwd_in_pdt_food_raw_milk",								--- 生牛奶
