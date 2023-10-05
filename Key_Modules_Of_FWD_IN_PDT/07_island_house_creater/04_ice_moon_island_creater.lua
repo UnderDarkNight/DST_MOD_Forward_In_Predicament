@@ -176,7 +176,7 @@ AddPrefabPostInit(
                                             SpawnPrefab("fwd_in_pdt_building_cuisines_shop").Transform:SetPosition(pt.x, 0, pt.z)
                                     end,
                                     [6] = function(pt)  --- 6 号位置： ATM
-                                            SpawnPrefab("sisturn").Transform:SetPosition(pt.x, 0, pt.z)
+                                            SpawnPrefab("fwd_in_pdt_building_atm").Transform:SetPosition(pt.x, 0, pt.z)
                                     end,
                                     [7] = function(pt)  --- 7 号位置： 占位 ，上标记
                                             SpawnPrefab("fwd_in_pdt__resources_occupancy_sign"):PushEvent("Set",{

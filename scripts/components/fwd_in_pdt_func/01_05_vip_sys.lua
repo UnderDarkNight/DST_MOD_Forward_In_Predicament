@@ -326,6 +326,18 @@ local function main_com(self)
             end
         end)
     ------------------------------------------------------------
+    ---- ATM 界面输入监听
+        self.inst:ListenForEvent("fwd_in_pdt_event.atm_enter_cd_key",function(_,cd_key)
+            if self:VIP_Start_Check_CDKEY(cd_key) then
+                print("input cd-key succeed")
+                self:VIP_Start_Check_CDKEY(cd_key, true)
+            else
+                if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
+                    print("error input cd-key",cd_key)
+                end
+            end
+        end)
+    ------------------------------------------------------------
 
 end
 

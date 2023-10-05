@@ -173,7 +173,7 @@ AddPrefabPostInit(
                                             SpawnPrefab("yotr_decor_2").Transform:SetPosition(pt.x, 0, pt.z)
                                     end,
                                     [5] = function(pt)  --- 5 号位置： ATM
-                                            SpawnPrefab("pigshrine").Transform:SetPosition(pt.x, 0, pt.z)
+                                            SpawnPrefab("fwd_in_pdt_building_atm").Transform:SetPosition(pt.x, 0, pt.z)
                                     end,
                                     [6] = function(pt)  --- 6 号位置： 医院
                                             SpawnPrefab("carnivalgame_puckdrop_station").Transform:SetPosition(pt.x, 0, pt.z)

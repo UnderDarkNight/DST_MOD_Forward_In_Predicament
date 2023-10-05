@@ -20,3 +20,5 @@ modimport("Key_Modules_Of_FWD_IN_PDT/06_widgets/07_shop_widget.lua")    --- 商�
 
 modimport("Key_Modules_Of_FWD_IN_PDT/06_widgets/08_special_production_formulated_crystal_widget.lua")    --- 工作台说明书界面
 
+modimport("Key_Modules_Of_FWD_IN_PDT/06_widgets/09_atm_widget.lua")    --- ATM 界面
+

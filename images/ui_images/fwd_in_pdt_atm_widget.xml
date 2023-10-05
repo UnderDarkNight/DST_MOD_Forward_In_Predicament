@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Atlas>
+	<Texture filename="fwd_in_pdt_atm_widget.tex" />
+	<Elements>
+		<Element name="atm cd_key_background.tex" u1="0.46584375" u2="0.78562109375" v2="0.999" v1="0.7051015625" variant="" />
+		<Element name="atm_background.tex" u1="0.001" u2="0.46384375" v2="0.883765625" v1="0.127953125" variant="" />
+		<Element name="atm_cd_key_button.tex" u1="0.1054921875" u2="0.207984375" v2="0.999" v1="0.885765625" variant="" />
+		<Element name="atm_clear.tex" u1="0.209984375" u2="0.262671875" v2="0.999" v1="0.9179921875" variant="" />
+		<Element name="atm_close.tex" u1="0.264671875" u2="0.3066171875" v2="0.999" v1="0.913109375" variant="" />
+		<Element name="atm_key.tex" u1="0.3086171875" u2="0.3613046875" v2="0.999" v1="0.9179921875" variant="" />
+		<Element name="atm_save.tex" u1="0.001" u2="0.1034921875" v2="0.125953125" v1="0.01271875" variant="" />
+		<Element name="atm_withdraw.tex" u1="0.001" u2="0.1034921875" v2="0.999" v1="0.885765625" variant="" />
+	</Elements>
+</Atlas>

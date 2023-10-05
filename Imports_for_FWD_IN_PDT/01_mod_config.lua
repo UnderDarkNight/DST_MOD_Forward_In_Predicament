@@ -8,6 +8,7 @@ TUNING["Forward_In_Predicament.Config"].UI_FX = GetModConfigData("UI_FX")     --
 
 
 TUNING["Forward_In_Predicament.Config"].Element_Core_Probability = GetModConfigData("Element_Core_Probability")     --- UI的动画特效
+TUNING["Forward_In_Predicament.Config"].ATM_CROSS_ARCHIVE = GetModConfigData("ATM_CROSS_ARCHIVE")     --- 跨存档ATM
 
 
 

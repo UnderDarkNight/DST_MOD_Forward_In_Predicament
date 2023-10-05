@@ -136,6 +136,19 @@ configuration_options =
       },
       default = 0.1,
     },
+    {
+      name = "ATM_CROSS_ARCHIVE",
+      label = IsChinese() and "ATM 跨存档" or "ATM Cross Archive",
+      hover = IsChinese() and "ATM 跨存档" or "ATM Cross Archive",
+      options =
+      {
+        {description = IsChinese() and "仅限管理员" or "Admin Only", data = "Admin"},
+        {description = IsChinese() and "版主" or "Moderator", data = "Moderator"},
+        {description = IsChinese() and "任何人" or "Anyone", data = "Anyone"},
+        {description = IsChinese() and "关掉" or "Nobody", data = "Nobody"},
+      },
+      default = "Admin",
+    },
 
   
 }

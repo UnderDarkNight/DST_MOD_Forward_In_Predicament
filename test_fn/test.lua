@@ -190,11 +190,17 @@ local flg,error_code = pcall(function()
     -- 工作台界面
         -- ThePlayer.HUD:fwd_in_pdt_special_production_formulated_crystal_widget_open()
     ----------------------------------------------------------------------------------------------------------------
-                    ThePlayer:ListenForEvent("newstate",function(_,_table)
-                        if _table and _table.statename then
-                            print("statename",_table.statename)
-                        end
-                    end)
+    -- sg 监控
+                    -- ThePlayer:ListenForEvent("newstate",function(_,_table)
+                    --     if _table and _table.statename then
+                    --         print("statename",_table.statename)
+                    --     end
+                    -- end)
+    ----------------------------------------------------------------------------------------------------------------
+    -- ATM 核心 API 测试
+                    -- ThePlayer.components.fwd_in_pdt_func:Jade_Coin__ATM_SaveMoney(30)
+                    -- ThePlayer.components.fwd_in_pdt_func:Jade_Coin__ATM_WithdrawMoney(25)
+                    ThePlayer.HUD:fwd_in_pdt_atm_open()
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)

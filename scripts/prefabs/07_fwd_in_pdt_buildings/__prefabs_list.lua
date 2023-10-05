@@ -26,6 +26,7 @@ local prefabs_name_list = {
 
     "07_paddy_windmill",             -- 稻田风车
     "08_pawnshop",                   -- 当铺
+    "09_atm",                        -- ATM
 }
 
 

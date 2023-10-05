@@ -169,7 +169,8 @@ local function fn()
         inst.entity:AddMiniMapEntity()
         inst.MiniMapEntity:SetIcon("fwd_in_pdt_fish_farm.tex")
 
-        MakeObstaclePhysics(inst, 1.5)
+        -- MakeObstaclePhysics(inst, 1.5)
+        MakeObstaclePhysics(inst, 2)
 
 
         inst.AnimState:SetBank("fwd_in_pdt_fish_farm")

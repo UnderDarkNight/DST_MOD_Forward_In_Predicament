@@ -423,6 +423,10 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "这里能卖掉一些东西",
                 ["action_str"] = "进入",
             },
+            ["fwd_in_pdt_building_atm"] = {
+                ["name"] = "ATM",
+                ["inspect_str"] = "可以存钱取钱",
+            },
         --------------------------------------------------------------------
         ---- 08_fwd_in_pdt_resources
             ["fwd_in_pdt_resource_glacier_huge"] = {
