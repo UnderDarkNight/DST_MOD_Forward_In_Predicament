@@ -33,9 +33,23 @@ AddPlayerPostInit(function(inst)
         inst.components.fwd_in_pdt_func:VIP_Add_Fn(function()
             inst:DoTaskInTime(1,function()
                 local list = {
-                    ["fwd_in_pdt_equipment_blazing_nightmaresword"] = {
-                        "fwd_in_pdt_equipment_blazing_nightmaresword_sharp",
-                    }
+                    ---- 炽热暗影剑
+                        ["fwd_in_pdt_equipment_blazing_nightmaresword"] = {
+                            "fwd_in_pdt_equipment_blazing_nightmaresword_sharp",
+                        },
+                    ---- 极寒暗影剑
+                        ["fwd_in_pdt_equipment_frozen_nightmaresword"] = {
+                            "fwd_in_pdt_equipment_frozen_nightmaresword_sharp",
+                        },
+                    ---- 炽热长矛
+                        ["fwd_in_pdt_equipment_blazing_spear"] = {
+                            "fwd_in_pdt_equipment_blazing_spear_sharp",
+                        },
+                    ---- 极寒长矛
+                        ["fwd_in_pdt_equipment_frozen_spear"] = {
+                            "fwd_in_pdt_equipment_frozen_spear_sharp",
+                        },
+
                 }
                 inst.components.fwd_in_pdt_func:SkinAPI__Unlock_Skin(list)
 

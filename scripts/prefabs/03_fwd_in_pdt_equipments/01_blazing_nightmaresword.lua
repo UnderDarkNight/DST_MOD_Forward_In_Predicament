@@ -105,11 +105,23 @@ local function fn()
         Set_ReSkin_API_Default_Animate(inst,"fwd_in_pdt_equipment_blazing_nightmaresword","fwd_in_pdt_equipment_blazing_nightmaresword")
         if TheWorld.ismastersim then
             inst:AddComponent("fwd_in_pdt_func"):Init("skin","item_tile_fx","mouserover_colourful")
+            ---------------------------------------------------------------------------------------------
             ---- 自定义扫把切皮肤特效
                 inst.components.fwd_in_pdt_func:SkinAPI__SetReSkinToolFn(function()
                     Attack_Fx(inst)
                 end)
+            ---------------------------------------------------------------------------------------------
+            --- 文字颜色的代码
+                -- inst:AddComponent("fwd_in_pdt_func"):Init("item_tile_fx","mouserover_colourful")
+                local r,g,b,a = 255/255 , 50/255 ,0/255 , 180/255
+                inst.components.fwd_in_pdt_func:Item_Tile_Icon_Fx_Set_Anim({
+                    text = {
+                        color = {243/255,201/255,0/255,1},
+                    }
+                })
+                inst.components.fwd_in_pdt_func:Mouseover_SetColour(r,g,b,a)
 
+            -------------------------------------------------------------------------------------------
             inst:AddComponent("inventoryitem")
             inst.components.inventoryitem:fwd_in_pdt_icon_init("fwd_in_pdt_equipment_blazing_nightmaresword","images/inventoryimages/fwd_in_pdt_equipment_blazing_nightmaresword.xml")
         end
@@ -162,16 +174,6 @@ local function fn()
 
     MakeHauntableLaunch(inst)
 
-    ---------------------------------------------------------------------------------------------
-    --- 文字颜色的代码
-        -- inst:AddComponent("fwd_in_pdt_func"):Init("item_tile_fx","mouserover_colourful")
-        local r,g,b,a = 255/255 , 50/255 ,0/255 , 180/255
-        inst.components.fwd_in_pdt_func:Item_Tile_Icon_Fx_Set_Anim({
-            text = {
-                color = {243/255,201/255,0/255,1},
-            }
-        })
-        inst.components.fwd_in_pdt_func:Mouseover_SetColour(r,g,b,a)
 
     -------------------------------------------------------------------------------------------
     ----- 攻击的时候执行的代码

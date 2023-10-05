@@ -122,6 +122,14 @@ return {
                 overwrite_str = "x 1",
                 atlas =  GetInventoryItemAtlas("fwd_in_pdt_equipment_blazing_spear.tex"),
                 image =  "fwd_in_pdt_equipment_blazing_spear.tex",
+                item_fn = function(insts,doer)
+                    --- 有皮肤的解锁皮肤
+                    for k, v in pairs(insts or {}) do
+                        if v then
+                            doer.components.fwd_in_pdt_func:SkinAPI__Set_Target_Next_Skin(v)
+                        end
+                    end
+                end
             }
         },
     -------------------------------------------------------------------------------------------------------------
@@ -181,6 +189,14 @@ return {
                 overwrite_str = "x 1",
                 atlas =  GetInventoryItemAtlas("fwd_in_pdt_equipment_frozen_spear.tex"),
                 image =  "fwd_in_pdt_equipment_frozen_spear.tex",
+                item_fn = function(insts,doer)
+                    --- 有皮肤的解锁皮肤
+                    for k, v in pairs(insts or {}) do
+                        if v then
+                            doer.components.fwd_in_pdt_func:SkinAPI__Set_Target_Next_Skin(v)
+                        end
+                    end
+                end
             }
         },
     -------------------------------------------------------------------------------------------------------------
@@ -215,6 +231,14 @@ return {
                 overwrite_str = "x 1",
                 atlas =  GetInventoryItemAtlas("fwd_in_pdt_equipment_frozen_nightmaresword.tex"),
                 image =  "fwd_in_pdt_equipment_frozen_nightmaresword.tex",
+                item_fn = function(insts,doer)
+                    --- 有皮肤的解锁皮肤
+                    for k, v in pairs(insts or {}) do
+                        if v then
+                            doer.components.fwd_in_pdt_func:SkinAPI__Set_Target_Next_Skin(v)
+                        end
+                    end
+                end
             }
         },
     -------------------------------------------------------------------------------------------------------------
