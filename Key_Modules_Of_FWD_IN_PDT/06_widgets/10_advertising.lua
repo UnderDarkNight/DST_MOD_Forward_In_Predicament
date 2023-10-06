@@ -15,25 +15,32 @@ for k, v in pairs(temp_assets) do
     table.insert(Assets,v)
 end
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------- 语言检测
+    local LANGUAGE = "ch"
+    if type(TUNING["Forward_In_Predicament.Language"]) == "function" then
+        LANGUAGE = TUNING["Forward_In_Predicament.Language"]()
+    elseif type(TUNING["Forward_In_Predicament.Language"]) == "string" then
+        LANGUAGE = TUNING["Forward_In_Predicament.Language"]
+    end
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 local time = 15      --- 倒计时时间
-local url = "https://www.bilibili.com/"
-
-
+----------- 广告图片
 local pics = {
     ["ch"] = "ad_ch.tex",
     ["en"] = "ad_en.tex"
 }
-
-local LANGUAGE = "ch"
-if type(TUNING["Forward_In_Predicament.Language"]) == "function" then
-    LANGUAGE = TUNING["Forward_In_Predicament.Language"]()
-elseif type(TUNING["Forward_In_Predicament.Language"]) == "string" then
-    LANGUAGE = TUNING["Forward_In_Predicament.Language"]
-end
+----------- 按钮访问链接
+local urls = {
+    ["ch"] = "https://www.bilibili.com/",
+    ["en"] = "https://www.bilibili.com/",
+}
 
 local ad_tex = pics[LANGUAGE] or pics["ch"]
 local ad_atlas = "images/ui_images/fwd_in_pdt_ad.xml"
- 
+local ad_url = urls[LANGUAGE] or urls["ch"]
+local function button_click()
+    VisitURL(ad_url)
+end
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 local Widget = require "widgets/widget"
@@ -133,9 +140,7 @@ AddClassPostConstruct("screens/playerhud",function(self)
             go_button:Show()
             go_button:SetScale(main_scale_num,main_scale_num,main_scale_num)
             go_button:SetOnDown(function()
-                if url then
-                    VisitURL(url)
-                end
+                button_click()
                 -- VisitURL("http://forums.kleientertainment.com/klei-bug-tracker/dont-starve-together/")            
             end)
 
