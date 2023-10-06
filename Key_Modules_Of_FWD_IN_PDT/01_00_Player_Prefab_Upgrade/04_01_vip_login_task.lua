@@ -70,3 +70,38 @@ AddPlayerPostInit(function(inst)
         end)
 
 end)
+
+---------------------------------------------------
+--- VIP 礼物盒
+AddPlayerPostInit(function(inst)
+    if not TheWorld.ismastersim or TheWorld:HasTag("cave") then
+        return
+    end
+
+    inst.components.fwd_in_pdt_func:VIP_Add_Fn(function()
+        local flag = "vip_gift." .. tostring(inst.userid)
+        if TheWorld.components.fwd_in_pdt_data:Get(flag) then
+            return
+        end
+        TheWorld.components.fwd_in_pdt_data:Set(flag,true)
+
+        local gift_pack = SpawnPrefab("fwd_in_pdt_gift_pack")
+        gift_pack:PushEvent("Set",{
+            name = "VIP Gift Pack",
+            inspect_str = "VIP Gift Pack",
+            skin_num = math.random(6),   -- 1~6
+            items = {
+                        {"log",1},
+                        {"goldnugget",2},
+                        {"fwd_in_pdt_item_jade_coin_green",8},
+                        {"fwd_in_pdt_item_transport_stone",1},
+                        {"nightstick",1},
+                        {"fwd_in_pdt_food_bread",2},
+                    },
+        })
+        inst.components.inventory:GiveItem(gift_pack)
+
+
+    end)
+
+end)
