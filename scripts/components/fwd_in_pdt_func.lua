@@ -7,7 +7,8 @@
 --     self.inst.replica.fwd_in_pdt_func:On_Replica_Init_Json(str)
 -- end
 local function simple_data_table_json_str(self,str)
-    self.inst.replica.fwd_in_pdt_func:set_simple_data_table_json_str(str)
+    local fwd_in_pdt_func = self.inst.replica.fwd_in_pdt_func or self.inst.replica._.fwd_in_pdt_func
+    fwd_in_pdt_func:set_simple_data_table_json_str(str)
 end
 local fwd_in_pdt_func = Class(function(self, inst)
     self.inst = inst

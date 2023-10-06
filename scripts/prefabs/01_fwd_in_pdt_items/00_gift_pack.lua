@@ -155,7 +155,7 @@ local function fn()
                 local itemName = theCMD[1]
                 local itemNum = theCMD[2]
                 local item_fn = theCMD[3]
-                if itemName == nil then
+                if itemName == nil or not PrefabExists(itemName) then
                     return
                 end
                 if itemNum == nil then
@@ -177,48 +177,57 @@ local function fn()
                     ------ 用for 循环容易导致游戏卡顿
                     if itemNum == 1 then
                                 local temp_item = SpawnPrefab(itemName)
-                                if temp_item.components.inventoryitem and temp_item.components.inventoryitem.cangoincontainer then
-                                    inst.components.container:GiveItem(temp_item)
-                                else  ------------ 如果不能放背包里，放到特殊物品表里，拆包的时候根据表 来重新生成物品
-                                    print("gift pack info : "..itemName.." has not inventoryitem or can not cangoincontainer")
-                                    _table.special_items = _table.special_items or {}
-                                    if item_fn then
-                                        pcall(item_fn,temp_item)
-                                    end
-                                    local save_code = temp_item:GetSaveRecord() --- 获取保存字符串
-                                    table.insert(_table.special_items,save_code)    --- 储存到表里
-                                    temp_item:Remove()  --- 删除实体
+                                if temp_item then
+                                        if temp_item.components.inventoryitem and temp_item.components.inventoryitem.cangoincontainer then
+                                            inst.components.container:GiveItem(temp_item)
+                                        else  ------------ 如果不能放背包里，放到特殊物品表里，拆包的时候根据表 来重新生成物品
+                                            print("gift pack info : "..itemName.." has not inventoryitem or can not cangoincontainer")
+                                            _table.special_items = _table.special_items or {}
+                                            if item_fn then
+                                                pcall(item_fn,temp_item)
+                                            end
+                                            local save_code = temp_item:GetSaveRecord() --- 获取保存字符串
+                                            table.insert(_table.special_items,save_code)    --- 储存到表里
+                                            temp_item:Remove()  --- 删除实体
+                                        end
+                                else
+                                        print("fwd_in_pdt_gift_pack error",itemName)
+
                                 end
                     else                            
-                        local tempItem = SpawnPrefab(itemName)
-                        if tempItem.components.stackable == nil then
-                                --- 不可叠堆物品
-                                tempItem:Remove()
-                                for i = 1, itemNum, 1 do
-                                    inst.components.container:GiveItem(SpawnPrefab(itemName))
-                                end
-                        else
-                            --- 可叠堆物品
-                                local stack_max = tempItem.components.stackable.maxsize
+                                local tempItem = SpawnPrefab(itemName)
+                                if tempItem then
+                                    if tempItem.components.stackable == nil then
+                                            --- 不可叠堆物品
+                                            tempItem:Remove()
+                                            for i = 1, itemNum, 1 do
+                                                inst.components.container:GiveItem(SpawnPrefab(itemName))
+                                            end
+                                    else
+                                        --- 可叠堆物品
+                                            local stack_max = tempItem.components.stackable.maxsize
 
-                                local rest_num = itemNum % stack_max                ---- 取不满叠堆的那组里面的个数
-                                local group_num = math.floor( (itemNum - rest_num)/stack_max )    ---- 取满叠堆的组数
-                                if group_num > 0 then
-                                    for i = 1, group_num, 1 do
-                                        local group_item = SpawnPrefab(itemName)
-                                        group_item.components.stackable.stacksize = stack_max
-                                        inst.components.container:GiveItem(group_item)
+                                            local rest_num = itemNum % stack_max                ---- 取不满叠堆的那组里面的个数
+                                            local group_num = math.floor( (itemNum - rest_num)/stack_max )    ---- 取满叠堆的组数
+                                            if group_num > 0 then
+                                                for i = 1, group_num, 1 do
+                                                    local group_item = SpawnPrefab(itemName)
+                                                    group_item.components.stackable.stacksize = stack_max
+                                                    inst.components.container:GiveItem(group_item)
+                                                end
+                                            end
+
+                                            rest_num = math.floor(rest_num)
+                                            if rest_num > 0 then
+                                                tempItem.components.stackable.stacksize = rest_num
+                                                inst.components.container:GiveItem(tempItem)
+                                            else
+                                                tempItem:Remove()
+                                            end
                                     end
-                                end
-
-                                rest_num = math.floor(rest_num)
-                                if rest_num > 0 then
-                                    tempItem.components.stackable.stacksize = rest_num
-                                    inst.components.container:GiveItem(tempItem)
                                 else
-                                    tempItem:Remove()
+                                    print("fwd_in_pdt_gift_pack error",itemName)
                                 end
-                        end
                     end
 
 
