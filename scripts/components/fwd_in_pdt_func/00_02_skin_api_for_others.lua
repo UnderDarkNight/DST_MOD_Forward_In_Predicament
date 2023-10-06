@@ -3,7 +3,14 @@
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 local function main_com(self)
-
+    self.TempData.SkinAPI_Datas = {}
+    local SkinAPI_Datas = self.TempData.SkinAPI_Datas
+    ----------------------------- 皮肤切换后执行函数(可以用来后续切换图标等操作)
+        function self:SkinAPI__Add_Skin_Changed_Fn(fn)
+            if type(fn) == "function" then
+                SkinAPI_Datas.__skin_changed_fn = fn
+            end            
+        end
     ----------------------------- 设置当前对象的皮肤为
         function self:SkinAPI__SetCurrent(skin_name)       ---- 设置为目标皮肤，或者清除皮肤
                 -- print("SkinAPI__SetCurrent",skin_name)
@@ -33,6 +40,10 @@ local function main_com(self)
                     if temp_data.minimap and self.inst.MiniMapEntity then
                         self.inst.MiniMapEntity:SetIcon(temp_data.minimap)
                     end
+
+                    if SkinAPI_Datas.__skin_changed_fn then
+                        SkinAPI_Datas.__skin_changed_fn(skin_name)
+                    end
                 else        ----------------------------------------------------------------------------------
                     self:Set("current_skin",skin_name)
                     self:Replica_Set_Simple_Data("current_skin",skin_name)
@@ -57,6 +68,10 @@ local function main_com(self)
                     end
                     if self.inst.components.named then
                         self.inst.components.named:fwd_in_pdt_reset_name()
+                    end
+
+                    if SkinAPI_Datas.__skin_changed_fn then
+                        SkinAPI_Datas.__skin_changed_fn(skin_name)
                     end
                     ----------------------------------------------------------------------------------
                 end   
@@ -122,13 +137,13 @@ local function main_com(self)
     -- 执行皮肤工具切换后的特效
         function self:SkinAPI__SetReSkinToolFn(fn)
             if type(fn) == "function" then
-                self.TempData.___ReSkinToolFn = fn
+                SkinAPI_Datas.___ReSkinToolFn = fn
             end
         end
 
         self.inst:ListenForEvent("fwd_in_pdt_event.next_skin",function(inst,_cmd_table)
-            if self.TempData.___ReSkinToolFn then
-                self.TempData.___ReSkinToolFn(inst,_cmd_table and _cmd_table.skin_name)
+            if SkinAPI_Datas.___ReSkinToolFn then
+                SkinAPI_Datas.___ReSkinToolFn(inst,_cmd_table and _cmd_table.skin_name)
             else
                         local color = {
                             Vector3(255,0,0),
