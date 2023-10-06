@@ -331,12 +331,27 @@ local function main_com(self)
             if self:VIP_Start_Check_CDKEY(cd_key) then
                 print("input cd-key succeed")
                 self:VIP_Start_Check_CDKEY(cd_key, true)
+                self:VIP_Announce()
             else
                 if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
                     print("error input cd-key",cd_key)
                 end
             end
         end)
+    ------------------------------------------------------------
+    ---- vip announce
+        function self:VIP_Announce()
+            local display_name = self.inst:GetDisplayName()
+                local base_str = GetStringTable()["succeed_announce"]
+                local ret_str = string.gsub(base_str, "XXXXXX", tostring(display_name))
+                self:Wisper({
+                --     m_colour = {0,0,255} ,                          ---- 内容颜色
+                --     s_colour = {255,255,0},                         ---- 发送者颜色
+                --     icondata = "profileflair_food_crabroll",        ---- 图标
+                    message = ret_str,                                 ---- 文字内容
+                    -- sender_name = "HHHH555",                        ---- 发送者名字
+                })
+        end
     ------------------------------------------------------------
 
 end

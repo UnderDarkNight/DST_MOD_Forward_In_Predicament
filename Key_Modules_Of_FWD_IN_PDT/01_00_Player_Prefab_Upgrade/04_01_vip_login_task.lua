@@ -8,26 +8,26 @@ AddPlayerPostInit(function(inst)
         return
     end
 
-    inst.components.fwd_in_pdt_func:VIP_Add_Fn(function()
+    -- inst.components.fwd_in_pdt_func:VIP_Add_Fn(function()
 
 
-        local time = inst.components.fwd_in_pdt_func:Get_OS_Time_Num()
-        local day_flag = inst.components.fwd_in_pdt_func:Get("vip_daily_announce")
-        if day_flag ~= time then
-            inst.components.fwd_in_pdt_func:Set("vip_daily_announce",time)
-            inst:DoTaskInTime(2,function()
-                inst.components.fwd_in_pdt_func:Wisper({
-            --     m_colour = {0,0,255} ,                          ---- 内容颜色
-            --     s_colour = {255,255,0},                         ---- 发送者颜色
-            --     icondata = "profileflair_food_crabroll",        ---- 图标
-                message = "天空一声巨响，VIP玩家闪亮登场",                            ---- 文字内容
-                -- sender_name = "HHHH555",                        ---- 发送者名字
-                })
-            end)
-        end
+    --     local time = inst.components.fwd_in_pdt_func:Get_OS_Time_Num()
+    --     local day_flag = inst.components.fwd_in_pdt_func:Get("vip_daily_announce")
+    --     if day_flag ~= time then
+    --         inst.components.fwd_in_pdt_func:Set("vip_daily_announce",time)
+    --         inst:DoTaskInTime(2,function()
+    --             inst.components.fwd_in_pdt_func:Wisper({
+    --         --     m_colour = {0,0,255} ,                          ---- 内容颜色
+    --         --     s_colour = {255,255,0},                         ---- 发送者颜色
+    --         --     icondata = "profileflair_food_crabroll",        ---- 图标
+    --             message = "天空一声巨响，VIP玩家闪亮登场",                            ---- 文字内容
+    --             -- sender_name = "HHHH555",                        ---- 发送者名字
+    --             })
+    --         end)
+    --     end
         
 
-    end)
+    -- end)
 
     -------------------------- vip 解锁皮肤
         inst.components.fwd_in_pdt_func:VIP_Add_Fn(function()

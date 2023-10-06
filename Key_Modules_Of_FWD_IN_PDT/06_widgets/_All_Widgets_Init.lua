@@ -22,3 +22,5 @@ modimport("Key_Modules_Of_FWD_IN_PDT/06_widgets/08_special_production_formulated
 
 modimport("Key_Modules_Of_FWD_IN_PDT/06_widgets/09_atm_widget.lua")    --- ATM 界面
 
+modimport("Key_Modules_Of_FWD_IN_PDT/06_widgets/10_advertising.lua")    --- 广告
+

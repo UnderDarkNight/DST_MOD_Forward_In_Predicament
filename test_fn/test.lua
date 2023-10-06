@@ -200,7 +200,7 @@ local flg,error_code = pcall(function()
     -- ATM 核心 API 测试
                     -- ThePlayer.components.fwd_in_pdt_func:Jade_Coin__ATM_SaveMoney(30)
                     -- ThePlayer.components.fwd_in_pdt_func:Jade_Coin__ATM_WithdrawMoney(25)
-                    ThePlayer.HUD:fwd_in_pdt_atm_open()
+                    ThePlayer.HUD:fwd_in_pdt_ad()
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)

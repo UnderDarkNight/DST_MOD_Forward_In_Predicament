@@ -34,7 +34,7 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["has_not_cave"]  = "未检测到有洞穴加载，本MOD功能缺失，将终止游戏运行",
             },
             ["fwd_in_pdt_cd_key_sys"] = {
-                ["succeed_announce"] = "天空一声巨响，VIP会员【XXXXXX】闪亮登场",
+                ["succeed_announce"] = "天空一声巨响，VIP会员【 XXXXXX 】闪亮登场",
                 ["bad_key.talker"] = "【负重前行】",
                 ["bad_key.str"] = "检测到和其他玩家相同的CD-KEY，请注意隐私保护！！",
             },

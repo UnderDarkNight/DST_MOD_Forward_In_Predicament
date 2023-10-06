@@ -28,7 +28,7 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["has_not_cave"]  = "No cave archive loading detected, this mod is missing functionality and will terminate the game.",                
             },
             ["fwd_in_pdt_cd_key_sys"] = {
-                ["succeed_announce"] = "天空一声巨响，VIP会员【XXXXXX】闪亮登场",
+                ["succeed_announce"] = "There was a loud bang in the sky, and VIP member [ XXXXXXX ] made a shiny appearance",
                 ["bad_key.talker"] = "【Fwd ind Predicament】",
                 ["bad_key.str"] = "The same CD-KEY as other players is detected, please pay attention to privacy protection ! ! ! !",
             },

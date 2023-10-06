@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Atlas>
+	<Texture filename="fwd_in_pdt_ad.tex" />
+	<Elements>
+		<Element name="ad_ch.tex" u1="0.001" u2="0.50144140625" v2="0.999" v1="0.6113515625" variant="" />
+		<Element name="ad_en.tex" u1="0.001" u2="0.50144140625" v2="0.6093515625" v1="0.221703125" variant="" />
+	</Elements>
+</Atlas>
