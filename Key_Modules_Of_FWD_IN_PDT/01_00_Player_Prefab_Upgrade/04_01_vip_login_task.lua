@@ -49,6 +49,11 @@ AddPlayerPostInit(function(inst)
                         ["fwd_in_pdt_equipment_frozen_spear"] = {
                             "fwd_in_pdt_equipment_frozen_spear_sharp",
                         },
+                    ---- 修复法杖
+                        ["fwd_in_pdt_equipment_repair_staff"] = {
+                            "fwd_in_pdt_equipment_repair_staff_glass_short",
+                            "fwd_in_pdt_equipment_repair_staff_glass_long",
+                        },
 
                 }
                 inst.components.fwd_in_pdt_func:SkinAPI__Unlock_Skin(list)

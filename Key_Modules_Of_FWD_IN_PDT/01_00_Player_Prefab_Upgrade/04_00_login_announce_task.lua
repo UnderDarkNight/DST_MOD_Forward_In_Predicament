@@ -8,11 +8,6 @@ local function GetStringsTable(name)
 end
 
 AddPlayerPostInit(function(inst)
-    inst:ListenForEvent("fwd_in_pdt_event.display_ad",function()
-        if inst.HUD then
-            inst.HUD:fwd_in_pdt_ad()
-        end
-    end)
 
     if not TheWorld.ismastersim then
         return
