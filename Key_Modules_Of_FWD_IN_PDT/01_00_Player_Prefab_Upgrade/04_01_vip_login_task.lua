@@ -41,6 +41,14 @@ AddPlayerPostInit(function(inst)
                         ["fwd_in_pdt_equipment_frozen_nightmaresword"] = {
                             "fwd_in_pdt_equipment_frozen_nightmaresword_sharp",
                         },
+                    ---- 炽热火腿
+                        ["fwd_in_pdt_equipment_blazing_hambat"] = {
+                            "fwd_in_pdt_equipment_blazing_hambat_drumstick",
+                        },
+                    ---- 极寒火腿
+                        ["fwd_in_pdt_equipment_frozen_hambat"] = {
+                            "fwd_in_pdt_equipment_frozen_hambat_drumstick",
+                        },
                     ---- 炽热长矛
                         ["fwd_in_pdt_equipment_blazing_spear"] = {
                             "fwd_in_pdt_equipment_blazing_spear_sharp",
