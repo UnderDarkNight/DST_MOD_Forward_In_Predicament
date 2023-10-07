@@ -25,6 +25,7 @@ local function fn()
     inst.AnimState:PlayAnimation("idle") -- 默认播放哪个动画
     -- inst.AnimState:SetScale(1.5,1.5,1.5)
     MakeInventoryFloatable(inst)
+    inst:AddTag("preparedfood")
 
     inst.entity:SetPristine()
     

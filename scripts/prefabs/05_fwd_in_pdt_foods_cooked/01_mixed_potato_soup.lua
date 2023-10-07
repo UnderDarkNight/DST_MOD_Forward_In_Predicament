@@ -26,6 +26,8 @@ local function fn()
 
     MakeInventoryFloatable(inst)
 
+    inst:AddTag("preparedfood")
+
     inst.entity:SetPristine()
     
     if not TheWorld.ismastersim then

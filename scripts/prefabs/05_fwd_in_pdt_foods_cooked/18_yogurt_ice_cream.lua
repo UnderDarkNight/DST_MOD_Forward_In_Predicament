@@ -27,6 +27,7 @@ local function fn()
     -- MakeInventoryFloatable(inst)
 
     inst:AddTag("frozen")   --- 给腐烂组件用的
+    inst:AddTag("preparedfood")
 
     inst.entity:SetPristine()
     

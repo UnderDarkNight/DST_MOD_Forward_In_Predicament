@@ -115,7 +115,8 @@
             local eggplant = names.eggplant or 0
             local eggplant_cooked = names.eggplant_cooked or 0
             local meat = tags.meat or 0
-            if meat >=1 and eggplant + eggplant_cooked >= 1  then
+            local monster = tags.monster or 0
+            if meat >=1 and eggplant + eggplant_cooked >= 1 and monster < 1 then
                 return true
             end
             return false
