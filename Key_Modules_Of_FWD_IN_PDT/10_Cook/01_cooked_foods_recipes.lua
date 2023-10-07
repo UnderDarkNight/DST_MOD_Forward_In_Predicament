@@ -6,14 +6,18 @@
 ----- 疙瘩汤
     local fwd_in_pdt_food_mixed_potato_soup = {
         test = function(cooker, names, tags)
-            local ice_value = names.ice or 0
-            local potato_value = names.potato or 0
-            local potato_cooked_value = names.potato_cooked or 0
-            local veggie_value = tags.veggie or 0
-            if ice_value == 2 and potato_value + potato_cooked_value >= 1 and veggie_value >=2 then
-                return true
-            end
-            return false
+            return (names.ice and names.ice >= 2) 
+            and ( (names.potato or 0) + (names.potato_cooked or 0) >= 1) 
+            and (tags.veggie and tags.veggie >=2)
+
+            -- local ice_value = names.ice or 0
+            -- local potato_value = names.potato or 0
+            -- local potato_cooked_value = names.potato_cooked or 0
+            -- local veggie_value = tags.veggie or 0
+            -- if ice_value == 2 and potato_value + potato_cooked_value >= 1 and veggie_value >=2 then
+            --     return true
+            -- end
+            -- return false
         end,
         name = "fwd_in_pdt_food_mixed_potato_soup", -- 料理名
         weight = 10, -- 食谱权重
@@ -41,16 +45,19 @@
 ----- 蜂蜜蒸橙
     local fwd_in_pdt_food_steamed_orange_with_honey = {
         test = function(cooker, names, tags)
-            local honey_value = names.honey or 0
-            local saltrock_value = names.saltrock or 0
-            local orange_value = names.fwd_in_pdt_food_orange or 0
-            local meat_value = tags.meat or 0
-            local egg_value = tags.egg or 0
-
-            if egg_value + meat_value == 0 and honey_value>= 1 and saltrock_value >=1 and orange_value >= 1 then
-                return true
-            end
-            return false
+            return ( names.honey and names.honey >= 1 )
+                    and (  names.saltrock and  names.saltrock >=1 )
+                    and (  names.fwd_in_pdt_food_orange and  names.fwd_in_pdt_food_orange >=1 )
+                    and (  (names.egg or 0) + (names.meat or 0) == 0  )
+            -- local honey_value = names.honey or 0
+            -- local saltrock_value = names.saltrock or 0
+            -- local orange_value = names.fwd_in_pdt_food_orange or 0
+            -- local meat_value = tags.meat or 0
+            -- local egg_value = tags.egg or 0
+            -- if egg_value + meat_value == 0 and honey_value>= 1 and saltrock_value >=1 and orange_value >= 1 then
+            --     return true
+            -- end
+            -- return false
         end,
         name = "fwd_in_pdt_food_steamed_orange_with_honey", -- 料理名
         weight = 10, -- 食谱权重
@@ -78,13 +85,15 @@
 ----- 番茄炒蛋
     local fwd_in_pdt_food_scrambled_eggs_with_tomatoes = {
         test = function(cooker, names, tags)
-            local tomatoes_value = names.tomato or 0
-            local tomato_cooked_value = names.tomato_cooked or 0
-            local egg_value = tags.egg or 0
-            if egg_value == 2 and tomato_cooked_value + tomatoes_value >= 2  then
-                return true
-            end
-            return false
+            return ( names.egg and names.egg == 2 )
+                and ( (names.tomato or 0) + (names.tomato_cooked or 0) >= 2 )
+            -- local tomatoes_value = names.tomato or 0
+            -- local tomato_cooked_value = names.tomato_cooked or 0
+            -- local egg_value = tags.egg or 0
+            -- if egg_value == 2 and tomato_cooked_value + tomatoes_value >= 2  then
+            --     return true
+            -- end
+            -- return false
         end,
         name = "fwd_in_pdt_food_scrambled_eggs_with_tomatoes", -- 料理名
         weight = 10, -- 食谱权重
@@ -112,14 +121,17 @@
 ----- 茄子盒
     local fwd_in_pdt_food_eggplant_casserole = {
         test = function(cooker, names, tags)
-            local eggplant = names.eggplant or 0
-            local eggplant_cooked = names.eggplant_cooked or 0
-            local meat = tags.meat or 0
-            local monster = tags.monster or 0
-            if meat >=1 and eggplant + eggplant_cooked >= 1 and monster < 1 then
-                return true
-            end
-            return false
+            return ( (names.eggplant or 0 ) + (names.eggplant_cooked or 0) >= 1 )
+                and (tags.meat and tags.meat >=1 )
+                and ( (tags.monster or 0) < 1)
+            -- local eggplant = names.eggplant or 0
+            -- local eggplant_cooked = names.eggplant_cooked or 0
+            -- local meat = tags.meat or 0
+            -- local monster = tags.monster or 0
+            -- if meat >=1 and eggplant + eggplant_cooked >= 1 and monster < 1 then
+            --     return true
+            -- end
+            -- return false
         end,
         name = "fwd_in_pdt_food_eggplant_casserole", -- 料理名
         weight = 10, -- 食谱权重
@@ -147,11 +159,12 @@
 ----- 自然的馈赠
     local fwd_in_pdt_food_gifts_of_nature = {
         test = function(cooker, names, tags)
-            local fwd_in_pdt_material_tree_resin = names.fwd_in_pdt_material_tree_resin or 0
-            if fwd_in_pdt_material_tree_resin >= 4  then
-                return true
-            end
-            return false
+            return ( names.fwd_in_pdt_material_tree_resin or 0) >= 4
+            -- local fwd_in_pdt_material_tree_resin = names.fwd_in_pdt_material_tree_resin or 0
+            -- if fwd_in_pdt_material_tree_resin >= 4  then
+            --     return true
+            -- end
+            -- return false
         end,
         name = "fwd_in_pdt_food_gifts_of_nature", -- 料理名
         weight = 10, -- 食谱权重
@@ -179,13 +192,16 @@
 ----- 蛇皮冻
     local fwd_in_pdt_food_snake_skin_jelly = {
         test = function(cooker, names, tags)
-            local fwd_in_pdt_material_snake_skin = names.fwd_in_pdt_material_snake_skin or 0
-            local meat = tags.meat or 0
-            local inedible = tags.inedible or 0
-            if fwd_in_pdt_material_snake_skin >= 1 and meat >= 1 and inedible == fwd_in_pdt_material_snake_skin then
-                return true
-            end
-            return false
+            return ( ( names.fwd_in_pdt_material_snake_skin or 0) >=1 )
+                    and ( ( tags.meat  or 0) >=1 )
+                    and ( tags.inedible == names.fwd_in_pdt_material_snake_skin )
+            -- local fwd_in_pdt_material_snake_skin = names.fwd_in_pdt_material_snake_skin or 0
+            -- local meat = tags.meat or 0
+            -- local inedible = tags.inedible or 0
+            -- if fwd_in_pdt_material_snake_skin >= 1 and meat >= 1 and inedible == fwd_in_pdt_material_snake_skin then
+            --     return true
+            -- end
+            -- return false
         end,
         name = "fwd_in_pdt_food_snake_skin_jelly", -- 料理名
         weight = 10, -- 食谱权重
@@ -297,12 +313,13 @@
 ----- 红伞伞蘑菇汤
     local fwd_in_pdt_food_red_mushroom_soup = {
         test = function(cooker, names, tags)
-            local red_cap = names.red_cap or 0
-            local red_cap_cooked = names.red_cap_cooked or 0
-            if red_cap + red_cap_cooked >= 4 then
-                return true
-            end
-            return false
+            return ( (names.red_cap or 0) + (names.red_cap_cooked or 0) >= 4 )
+            -- local red_cap = names.red_cap or 0
+            -- local red_cap_cooked = names.red_cap_cooked or 0
+            -- if red_cap + red_cap_cooked >= 4 then
+            --     return true
+            -- end
+            -- return false
         end,
         name = "fwd_in_pdt_food_red_mushroom_soup", -- 料理名
         weight = 10, -- 食谱权重
@@ -330,12 +347,13 @@
 ----- 绿伞伞蘑菇汤
     local fwd_in_pdt_food_green_mushroom_soup = {
         test = function(cooker, names, tags)
-            local green_cap = names.green_cap or 0
-            local green_cap_cooked = names.green_cap_cooked or 0
-            if green_cap + green_cap_cooked >= 4 then
-                return true
-            end
-            return false
+            return ( (names.green_cap or 0) + (names.green_cap_cooked or 0) >=4 )
+            -- local green_cap = names.green_cap or 0
+            -- local green_cap_cooked = names.green_cap_cooked or 0
+            -- if green_cap + green_cap_cooked >= 4 then
+            --     return true
+            -- end
+            -- return false
         end,
         name = "fwd_in_pdt_food_green_mushroom_soup", -- 料理名
         weight = 10, -- 食谱权重
@@ -363,12 +381,13 @@
 ----- 豆腐
     local fwd_in_pdt_food_tofu = {
         test = function(cooker, names, tags)
-            local ash = names.ash or 0
-            local fwd_in_pdt_food_soybeans = names.fwd_in_pdt_food_soybeans or 0
-            if ash >= 2 and fwd_in_pdt_food_soybeans >= 2 then
-                return true
-            end
-            return false
+            return ( (names.ash or 0 ) >=2 ) and  ( names.fwd_in_pdt_food_soybeans or 0 ) >= 2
+            -- local ash = names.ash or 0
+            -- local fwd_in_pdt_food_soybeans = names.fwd_in_pdt_food_soybeans or 0
+            -- if ash >= 2 and fwd_in_pdt_food_soybeans >= 2 then
+            --     return true
+            -- end
+            -- return false
         end,
         name = "fwd_in_pdt_food_tofu", -- 料理名
         weight = 10, -- 食谱权重
@@ -396,12 +415,13 @@
 ----- 熟牛奶
     local fwd_in_pdt_food_cooked_milk = {
         test = function(cooker, names, tags)
-            local fwd_in_pdt_food_raw_milk = names.fwd_in_pdt_food_raw_milk or 0
-            local ice = names.ice or 0
-            if ice >= 2 and fwd_in_pdt_food_raw_milk >= 2 then
-                return true
-            end
-            return false
+            return  ( names.ice or 0 ) >=2  and (names.fwd_in_pdt_food_raw_milk or 0) >= 2
+            -- local fwd_in_pdt_food_raw_milk = names.fwd_in_pdt_food_raw_milk or 0
+            -- local ice = names.ice or 0
+            -- if ice >= 2 and fwd_in_pdt_food_raw_milk >= 2 then
+            --     return true
+            -- end
+            -- return false
         end,
         name = "fwd_in_pdt_food_cooked_milk", -- 料理名
         weight = 10, -- 食谱权重
@@ -429,16 +449,18 @@
 ----- 咖啡
     local fwd_in_pdt_food_coffee = {
         test = function(cooker, names, tags)
-            local fwd_in_pdt_food_coffeebeans = names.fwd_in_pdt_food_coffeebeans or 0
-            local honey = names.honey or 0
-            local royal_jelly = names.royal_jelly or 0
-            if fwd_in_pdt_food_coffeebeans >= 4 then
-                return true
-            end
-            if fwd_in_pdt_food_coffeebeans >=3 and ( honey >= 1 or royal_jelly >= 1) then
-                return true
-            end
-            return false
+            return ( (names.fwd_in_pdt_food_coffeebeans or 0) >= 3 and (names.honey or 0) + (names.royal_jelly or 0) >=1 )
+                    or (  names.fwd_in_pdt_food_coffeebeans or 0) >=4
+            -- local fwd_in_pdt_food_coffeebeans = names.fwd_in_pdt_food_coffeebeans or 0
+            -- local honey = names.honey or 0
+            -- local royal_jelly = names.royal_jelly or 0
+            -- if fwd_in_pdt_food_coffeebeans >= 4 then
+            --     return true
+            -- end
+            -- if fwd_in_pdt_food_coffeebeans >=3 and ( honey >= 1 or royal_jelly >= 1) then
+            --     return true
+            -- end
+            -- return false
         end,
         name = "fwd_in_pdt_food_coffee", -- 料理名
         weight = 10, -- 食谱权重
@@ -466,13 +488,14 @@
 ----- 生理盐水
     local fwd_in_pdt_food_saline_medicine = {
         test = function(cooker, names, tags)
-            local saltrock = names.saltrock or 0
-            local ice = names.ice or 0
-            local veggie = tags.veggie or 0
-            if saltrock >= 1 and ice >= 2 and veggie >= 1 then
-                return true
-            end
-            return false
+            return (names.saltrock or 0) >= 1 and (names.ice or 0) >= 2 and (names.veggie or 0) >=1
+            -- local saltrock = names.saltrock or 0
+            -- local ice = names.ice or 0
+            -- local veggie = tags.veggie or 0
+            -- if saltrock >= 1 and ice >= 2 and veggie >= 1 then
+            --     return true
+            -- end
+            -- return false
         end,
         name = "fwd_in_pdt_food_saline_medicine", -- 料理名
         weight = 10, -- 食谱权重
@@ -500,13 +523,14 @@
 ----- 酸奶冰淇淋
     local fwd_in_pdt_food_yogurt_ice_cream = {
         test = function(cooker, names, tags)
-            local fwd_in_pdt_food_yogurt = names.fwd_in_pdt_food_yogurt or 0
-            local ice = names.ice or 0
-            local twigs = names.twigs or 0
-            if fwd_in_pdt_food_yogurt >= 2 and ice >= 1 and twigs >= 1 then
-                return true
-            end
-            return false
+            return (names.fwd_in_pdt_food_yogurt or 0) >= 2 and (names.ice or 0)>=2 and (names.twigs or 0) >= 2
+            -- local fwd_in_pdt_food_yogurt = names.fwd_in_pdt_food_yogurt or 0
+            -- local ice = names.ice or 0
+            -- local twigs = names.twigs or 0
+            -- if fwd_in_pdt_food_yogurt >= 2 and ice >= 1 and twigs >= 1 then
+            --     return true
+            -- end
+            -- return false
         end,
         name = "fwd_in_pdt_food_yogurt_ice_cream", -- 料理名
         weight = 10, -- 食谱权重
@@ -534,13 +558,14 @@
 ----- 杨枝甘露
     local fwd_in_pdt_food_mango_ice_drink = {
         test = function(cooker, names, tags)
-            local fwd_in_pdt_food_mango = names.fwd_in_pdt_food_mango or 0
-            local fwd_in_pdt_food_mango_green = names.fwd_in_pdt_food_mango_green or 0
-            local ice = names.ice or 0
-            if ice >= 2 and fwd_in_pdt_food_mango_green + fwd_in_pdt_food_mango >= 2  then
-                return true
-            end
-            return false
+            return (names.ice or 0) >= 2 and (names.fwd_in_pdt_food_mango or 0) + (names.fwd_in_pdt_food_mango_green or 0) >=2
+            -- local fwd_in_pdt_food_mango = names.fwd_in_pdt_food_mango or 0
+            -- local fwd_in_pdt_food_mango_green = names.fwd_in_pdt_food_mango_green or 0
+            -- local ice = names.ice or 0
+            -- if ice >= 2 and fwd_in_pdt_food_mango_green + fwd_in_pdt_food_mango >= 2  then
+            --     return true
+            -- end
+            -- return false
         end,
         name = "fwd_in_pdt_food_mango_ice_drink", -- 料理名
         weight = 10, -- 食谱权重
@@ -568,11 +593,12 @@
 ----- 白米饭
     local fwd_in_pdt_food_cooked_rice = {
         test = function(cooker, names, tags)
-            local fwd_in_pdt_food_rice = names.fwd_in_pdt_food_rice or 0
-            if fwd_in_pdt_food_rice >= 4 then
-                return true
-            end
-            return false
+            return ( names.fwd_in_pdt_food_rice or 0 ) >= 4
+            -- local fwd_in_pdt_food_rice = names.fwd_in_pdt_food_rice or 0
+            -- if fwd_in_pdt_food_rice >= 4 then
+            --     return true
+            -- end
+            -- return false
         end,
         name = "fwd_in_pdt_food_cooked_rice", -- 料理名
         weight = 10, -- 食谱权重
@@ -600,11 +626,12 @@
 ----- 面包
     local fwd_in_pdt_food_bread = {
         test = function(cooker, names, tags)
-            local fwd_in_pdt_food_wheat_flour = names.fwd_in_pdt_food_wheat_flour or 0
-            if fwd_in_pdt_food_wheat_flour >= 4 then
-                return true
-            end
-            return false
+            return (names.fwd_in_pdt_food_wheat_flour or 0) >= 4
+            -- local fwd_in_pdt_food_wheat_flour = names.fwd_in_pdt_food_wheat_flour or 0
+            -- if fwd_in_pdt_food_wheat_flour >= 4 then
+            --     return true
+            -- end
+            -- return false
         end,
         name = "fwd_in_pdt_food_bread", -- 料理名
         weight = 10, -- 食谱权重
@@ -632,13 +659,16 @@
 ----- 皮蛋肉粥
     local fwd_in_pdt_food_congee_with_meat_and_thousand_year_old_eggs = {
         test = function(cooker, names, tags)
-            local fwd_in_pdt_food_thousand_year_old_egg = names.fwd_in_pdt_food_thousand_year_old_egg or 0
-            local fwd_in_pdt_food_rice = names.fwd_in_pdt_food_rice or 0
-            local meat = tags.meat or 0
-            if fwd_in_pdt_food_thousand_year_old_egg >= 1 and meat >= 2 and fwd_in_pdt_food_rice >= 2 then
-                return true
-            end
-            return false
+            return (names.fwd_in_pdt_food_thousand_year_old_egg or 0) >= 1
+                and (names.fwd_in_pdt_food_rice or 0) >= 2
+                and (tags.meat or 0) >=2
+            -- local fwd_in_pdt_food_thousand_year_old_egg = names.fwd_in_pdt_food_thousand_year_old_egg or 0
+            -- local fwd_in_pdt_food_rice = names.fwd_in_pdt_food_rice or 0
+            -- local meat = tags.meat or 0
+            -- if fwd_in_pdt_food_thousand_year_old_egg >= 1 and meat >= 2 and fwd_in_pdt_food_rice >= 2 then
+            --     return true
+            -- end
+            -- return false
         end,
         name = "fwd_in_pdt_food_congee_with_meat_and_thousand_year_old_eggs", -- 料理名
         weight = 10, -- 食谱权重
@@ -666,11 +696,12 @@
 ----- 蛋白粉
     local fwd_in_pdt_food_protein_powder = {
         test = function(cooker, names, tags)
-            local fwd_in_pdt_food_soybeans = names.fwd_in_pdt_food_soybeans or 0
-            if fwd_in_pdt_food_soybeans >= 4  then
-                return true
-            end
-            return false
+            return (names.fwd_in_pdt_food_soybeans or 0) >=4
+            -- local fwd_in_pdt_food_soybeans = names.fwd_in_pdt_food_soybeans or 0
+            -- if fwd_in_pdt_food_soybeans >= 4  then
+            --     return true
+            -- end
+            -- return false
         end,
         name = "fwd_in_pdt_food_protein_powder", -- 料理名
         weight = 10, -- 食谱权重

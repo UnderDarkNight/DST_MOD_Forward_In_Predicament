@@ -200,7 +200,21 @@ local flg,error_code = pcall(function()
     -- ATM 核心 API 测试
                     -- ThePlayer.components.fwd_in_pdt_func:Jade_Coin__ATM_SaveMoney(30)
                     -- ThePlayer.components.fwd_in_pdt_func:Jade_Coin__ATM_WithdrawMoney(25)
-                    ThePlayer.HUD:fwd_in_pdt_ad()
+                    -- ThePlayer.HUD:fwd_in_pdt_ad()
+    ----------------------------------------------------------------------------------------------------------------
+    -- bonestew   fwd_in_pdt_food_mixed_potato_soup
+                    local cooking = require("cooking")
+                    local recipes = {}
+                    for port, temp_recipe in pairs(cooking.recipes) do
+                        for food_name, _table in pairs(temp_recipe) do
+                            recipes[food_name] = _table
+                        end
+                    end
+                    local temp = ThePlayer.components.knownfoods:_SmartSearch(recipes["fwd_in_pdt_food_mixed_potato_soup"].test)
+                    print(temp)
+                    -- for k, v in pairs(ThePlayer.components.knownfoods._knownfoods) do
+                    --     print(k,v)
+                    -- end
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)
