@@ -180,7 +180,8 @@
         test = function(cooker, names, tags)
             local fwd_in_pdt_material_snake_skin = names.fwd_in_pdt_material_snake_skin or 0
             local meat = tags.meat or 0
-            if fwd_in_pdt_material_snake_skin >= 1 and meat >= 1 then
+            local inedible = tags.inedible or 0
+            if fwd_in_pdt_material_snake_skin >= 1 and meat >= 1 and inedible == fwd_in_pdt_material_snake_skin then
                 return true
             end
             return false
