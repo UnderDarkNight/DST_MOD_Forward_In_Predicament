@@ -26,6 +26,8 @@ local function fn()
     -- inst.AnimState:SetScale(1.5,1.5,1.5)
     -- MakeInventoryFloatable(inst)
 
+    inst:AddTag("frozen")   --- 给腐烂组件用的
+
     inst.entity:SetPristine()
     
     if not TheWorld.ismastersim then

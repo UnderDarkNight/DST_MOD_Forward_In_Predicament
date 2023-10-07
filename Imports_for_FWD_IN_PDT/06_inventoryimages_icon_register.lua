@@ -56,6 +56,11 @@ local files_name = {
 		"fwd_in_pdt_food_universal_antidote", 	   				--- 万能解毒剂
 		"fwd_in_pdt_food_rice", 	    						--- 脱壳的稻米
 		"fwd_in_pdt_food_wheat_flour", 	    					--- 面粉
+		"fwd_in_pdt_food_mango", 	    						--- 芒果
+		"fwd_in_pdt_food_mango_green", 	    					--- 绿芒果
+		"fwd_in_pdt_food_orange", 	    						--- 橙子
+		"fwd_in_pdt_food_soybeans", 	    					--- 大豆
+		"fwd_in_pdt_food_coffeebeans", 	    					--- 咖啡豆
 
 	---------------------------------------------------------------------------------------
 	-- 05_fwd_in_pdt_foods_cooked

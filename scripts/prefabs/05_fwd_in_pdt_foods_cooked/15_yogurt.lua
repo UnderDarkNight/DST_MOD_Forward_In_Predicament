@@ -102,5 +102,8 @@ local function fn()
     
     return inst
 end
-
+--- 设置可以放烹饪锅里
+AddIngredientValues({"fwd_in_pdt_food_yogurt"}, { 
+    dairy = 2,
+})
 return Prefab("fwd_in_pdt_food_yogurt", fn, assets)

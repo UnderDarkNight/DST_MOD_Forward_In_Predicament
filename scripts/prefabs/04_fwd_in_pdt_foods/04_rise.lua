@@ -93,4 +93,8 @@ local function fn()
     return inst
 end
 
+--- 设置可以放烹饪锅里
+AddIngredientValues({"fwd_in_pdt_food_rice"}, { 
+    veggie = 1,
+})
 return Prefab("fwd_in_pdt_food_rice", fn, assets)

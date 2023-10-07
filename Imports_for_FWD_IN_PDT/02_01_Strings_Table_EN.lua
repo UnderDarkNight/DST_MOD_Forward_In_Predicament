@@ -245,6 +245,26 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "Flour",
                 ["inspect_str"] = "It's so white it's beautiful.",
             },
+            ["fwd_in_pdt_food_mango"] = {
+                ["name"] = "Mango",
+                ["inspect_str"] = "Ripe mango",
+            },
+            ["fwd_in_pdt_food_mango_green"] = {
+                ["name"] = "Green Mango",
+                ["inspect_str"] = "Unripe mango",
+            },
+            ["fwd_in_pdt_food_orange"] = {
+                ["name"] = "Orange",
+                ["inspect_str"] = "yellowish-orange",
+            },
+            ["fwd_in_pdt_food_soybeans"] = {
+                ["name"] = "Soybeans",
+                ["inspect_str"] = "One by one, they're quite full.",
+            },
+            ["fwd_in_pdt_food_coffeebeans"] = {
+                ["name"] = "Coffee Beans",
+                ["inspect_str"] = "One by one, they're quite full.",
+            },
         --------------------------------------------------------------------
         ---- 05_fwd_in_pdt_foods_cooked
             ["fwd_in_pdt_food_mixed_potato_soup"] = {

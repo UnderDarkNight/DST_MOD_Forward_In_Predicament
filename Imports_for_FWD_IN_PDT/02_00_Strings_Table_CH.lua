@@ -254,6 +254,26 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "面粉",
                 ["inspect_str"] = "白花花的煞是好看",
             },
+            ["fwd_in_pdt_food_mango"] = {
+                ["name"] = "芒果",
+                ["inspect_str"] = "熟透的芒果",
+            },
+            ["fwd_in_pdt_food_mango_green"] = {
+                ["name"] = "青芒果",
+                ["inspect_str"] = "还没熟的芒果",
+            },
+            ["fwd_in_pdt_food_orange"] = {
+                ["name"] = "橙子",
+                ["inspect_str"] = "黄橙橙的橙子",
+            },
+            ["fwd_in_pdt_food_soybeans"] = {
+                ["name"] = "大豆",
+                ["inspect_str"] = "一颗一颗相当饱满",
+            },
+            ["fwd_in_pdt_food_coffeebeans"] = {
+                ["name"] = "咖啡豆",
+                ["inspect_str"] = "一颗一颗相当饱满",
+            },
         --------------------------------------------------------------------
         ---- 05_fwd_in_pdt_foods_cooked
             ["fwd_in_pdt_food_mixed_potato_soup"] = {
