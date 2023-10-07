@@ -556,10 +556,10 @@
         overridebuild = "fwd_in_pdt_food_mango_ice_drink",          ----- build (zip名字)
         overridesymbolname = "png",     ----- scml 的图层名字（图片所在的文件夹名）
         floater = {"med", nil, 0.55},
-        cookbook_category = "cookpot"
+        cookbook_category = "portablecookpot"
     }
 
-    AddCookerRecipe("cookpot", fwd_in_pdt_food_mango_ice_drink) -- 将食谱添加进普通锅
+    -- AddCookerRecipe("cookpot", fwd_in_pdt_food_mango_ice_drink) -- 将食谱添加进普通锅
     AddCookerRecipe("portablecookpot", fwd_in_pdt_food_mango_ice_drink) -- 将食谱添加进便携锅(大厨锅)
 ---------------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------
