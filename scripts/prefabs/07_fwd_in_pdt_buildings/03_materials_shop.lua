@@ -148,6 +148,8 @@ local function fn()
         inst:AddComponent("fwd_in_pdt_com_shop")
         inst.components.fwd_in_pdt_com_shop:SetListA(require("prefabs/07_fwd_in_pdt_buildings/03_materials_shop_items_a"))
         inst.components.fwd_in_pdt_com_shop:SetNumA(10)
+        inst.components.fwd_in_pdt_com_shop:SetListB(require("prefabs/07_fwd_in_pdt_buildings/03_materials_shop_items_b"))
+        inst.components.fwd_in_pdt_com_shop:SetNumB(10)
 
 
         inst.components.fwd_in_pdt_com_shop:Refresh_Items_List()

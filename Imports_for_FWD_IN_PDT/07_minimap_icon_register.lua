@@ -47,6 +47,7 @@ local files_name = {
 		"fwd_in_pdt_plant_atractylodes_macrocephala",				--- 苍术
 		"fwd_in_pdt_plant_pinellia_ternata",						--- 半夏
 		"fwd_in_pdt_plant_aster_tataricus_l_f",						--- 紫苑
+		"fwd_in_pdt_plant_coffeebush",								--- 咖啡树
 
 	-------------------------------------------------------------------------------------------------
 	---- 10_fwd_in_pdt_minerals

@@ -100,6 +100,7 @@ local files_name = {
 		"fwd_in_pdt_plant_atractylodes_macrocephala_seed",				--- 苍术种子
 		"fwd_in_pdt_plant_pinellia_ternata_seed",						--- 半夏种子
 		"fwd_in_pdt_plant_aster_tataricus_l_f_seed",					--- 紫苑种子
+		"fwd_in_pdt_plant_coffeebush_item",							    --- 咖啡树
 	---------------------------------------------------------------------------------------
 
 }

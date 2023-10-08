@@ -518,6 +518,14 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "紫苑种子",
                 ["inspect_str"] = "紫苑的种子",
             },
+            ["fwd_in_pdt_plant_coffeebush"] = {
+                ["name"] = "咖啡丛",
+                ["inspect_str"] = "很奇怪的咖啡丛",
+            },
+            ["fwd_in_pdt_plant_coffeebush_item"] = {
+                ["name"] = "咖啡丛",
+                ["inspect_str"] = "很奇怪的咖啡丛",
+            },
         --------------------------------------------------------------------
         ---- 10_fwd_in_pdt_minerals
         --------------------------------------------------------------------

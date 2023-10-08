@@ -31,5 +31,13 @@ return{
 		["num2give"] = 1.0,
 		["image"] = "",
 		["atlas"] = ""
+	},
+	{
+		["name"] = "咖啡丛",
+		["prefab"] = "fwd_in_pdt_plant_coffeebush_item",
+		["cost"] = 5.0,
+		["num2give"] = 1.0,
+		["image"] = "fwd_in_pdt_plant_coffeebush_item.tex",
+		["atlas"] = "images/inventoryimages/fwd_in_pdt_plant_coffeebush_item.xml"
 	}
 }

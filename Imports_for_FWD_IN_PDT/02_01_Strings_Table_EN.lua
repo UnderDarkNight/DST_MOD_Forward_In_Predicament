@@ -510,6 +510,14 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "Seed of Aster tataricus L.f.",
                 ["inspect_str"] = "Seed of Aster tataricus L.f.",
             },
+            ["fwd_in_pdt_plant_coffeebush"] = {
+                ["name"] = "Coffee Bush",
+                ["inspect_str"] = "Strange coffee bush.",
+            },
+            ["fwd_in_pdt_plant_coffeebush_item"] = {
+                ["name"] = "Coffee Bush",
+                ["inspect_str"] = "Strange coffee bush.",
+            },
         --------------------------------------------------------------------
         ---- 10_fwd_in_pdt_minerals
         --------------------------------------------------------------------
