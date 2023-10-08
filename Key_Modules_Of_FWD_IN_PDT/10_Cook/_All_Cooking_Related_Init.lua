@@ -9,6 +9,11 @@ modimport("Key_Modules_Of_FWD_IN_PDT/10_Cook/01_cooked_foods_recipes.lua")    --
 
 
 
+modimport("Key_Modules_Of_FWD_IN_PDT/10_Cook/02_portablespicer.lua")    --- 便携香料站 可放入其他特殊物品
+modimport("Key_Modules_Of_FWD_IN_PDT/10_Cook/03_portablespicer_recipes.lua")    --- 便携香料站 配方
+
+
+
 
 
 

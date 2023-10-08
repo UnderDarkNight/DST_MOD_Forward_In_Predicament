@@ -393,6 +393,14 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "健美人士的最爱",
                 ["oneat_desc"] = "肌肉不萎缩",
             },
+            ["fwd_in_pdt_food_stinky_tofu_salad"] = {
+                ["name"] = "臭豆腐沙拉",
+                ["inspect_str"] = "味道难闻，但是很好吃",
+            },
+            ["fwd_in_pdt_food_stinky_tofu_bolognese"] = {
+                ["name"] = "臭豆腐肉酱",
+                ["inspect_str"] = "味道难闻，但是很好吃",
+            },
         --------------------------------------------------------------------
         ---- 06_fwd_in_pdt_containers
             ["fwd_in_pdt_fish_farm"] = {

@@ -414,6 +414,14 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str_burnt"] = "It's burned.",
                 ["action_str"] = "Fester"
             },
+            ["fwd_in_pdt_food_stinky_tofu_salad"] = {
+                ["name"] = "Stinky Tofu Salad",
+                ["inspect_str"] = "It tastes awful, but it's delicious",
+            },
+            ["fwd_in_pdt_food_stinky_tofu_bolognese"] = {
+                ["name"] = "Stinky Tofu Bolognese",
+                ["inspect_str"] = "It tastes awful, but it's delicious",
+            },
         --------------------------------------------------------------------
         ---- 07_fwd_in_pdt_buildings
             ["fwd_in_pdt_building_mock_wall_grass"] = {

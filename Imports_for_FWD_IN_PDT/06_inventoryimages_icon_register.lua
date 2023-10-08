@@ -88,6 +88,8 @@ local files_name = {
 		"fwd_in_pdt_food_thousand_year_old_egg",				--- 皮蛋
 		"fwd_in_pdt_food_congee_with_meat_and_thousand_year_old_eggs",				--- 皮蛋肉粥
 		"fwd_in_pdt_food_protein_powder",						--- 蛋白质粉
+		"fwd_in_pdt_food_stinky_tofu_salad",					--- 臭豆腐沙拉
+		"fwd_in_pdt_food_stinky_tofu_bolognese",				--- 臭豆腐肉酱
 		
 
 

@@ -137,7 +137,7 @@ local recipes = require("prefabs/06_fwd_in_pdt_containers/04_fermenter_recipes")
                     local tempItem = _table.prev_item
                     if tempItem.components.perishable then
                         tempItem.components.perishable:StartPerishing()
-                        tempItem.components.perishable:SetPercent(1)
+                        -- tempItem.components.perishable:SetPercent(1)
                     end
                 end
             end)
