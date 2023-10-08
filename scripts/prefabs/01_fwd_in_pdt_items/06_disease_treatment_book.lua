@@ -30,6 +30,8 @@ local function fn()
     inst.AnimState:PlayAnimation("idle",true) -- 默认播放哪个动画
     inst.Transform:SetScale(1.2, 1.2, 1.2)
 
+    inst:AddTag("bookcabinet_item") -- 能够放书架里
+
     inst.entity:SetPristine()
     --------------------------------------------------------------------------
     --- 图层覆盖，sg 的 fwd_in_pdt_read_book_type_cookbook 里面
