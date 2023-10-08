@@ -76,7 +76,7 @@ local function main_com(self)
         
         end
         function self:GiveItemByName(name,num)
-            if type(name) ~= "string" or type(num) ~= "number" or num == 0 then
+            if type(name) ~= "string" or type(num) ~= "number" or num == 0 or not PrefabExists(name) then
                 return
             end
 
