@@ -407,6 +407,13 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "a table for making special items",
                 ["recipe_desc"] = "a table for making special items",
             },
+            ["fwd_in_pdt_building_fermenter"] = {
+                ["name"] = "Fermenter",
+                ["inspect_str"] = "It can be used to ferment some foods",
+                ["recipe_desc"] = "It can be used to ferment some foods",
+                ["inspect_str_burnt"] = "It's burned.",
+                ["action_str"] = "Fester"
+            },
         --------------------------------------------------------------------
         ---- 07_fwd_in_pdt_buildings
             ["fwd_in_pdt_building_mock_wall_grass"] = {

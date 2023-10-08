@@ -415,6 +415,13 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "制作一些特别的东西用的工作台",
                 ["recipe_desc"] = "制作一些特别的东西用的工作台",
             },
+            ["fwd_in_pdt_building_fermenter"] = {
+                ["name"] = "发酵缸",
+                ["inspect_str"] = "能用来发酵一些食物",
+                ["recipe_desc"] = "能用来发酵一些食物",
+                ["inspect_str_burnt"] = "已经烧毁了",
+                ["action_str"] = "开始发酵"
+            },
         --------------------------------------------------------------------
         ---- 07_fwd_in_pdt_buildings
             ["fwd_in_pdt_building_mock_wall_grass"] = {
