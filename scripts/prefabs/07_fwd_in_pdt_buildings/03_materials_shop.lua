@@ -121,10 +121,12 @@ local function fn()
         inst:ListenForEvent("DOOR_OPEN",function()
             inst.AnimState:Hide("DOOR_CLOSE")
             inst.AnimState:Show("DOOR_OPEN")
+            inst:AddTag("DOOR_OPEN")
         end)
         inst:ListenForEvent("DOOR_CLOSE",function()
             inst.AnimState:Show("DOOR_CLOSE")
             inst.AnimState:Hide("DOOR_OPEN")
+            inst:RemoveTag("DOOR_OPEN")
         end)
         inst:PushEvent("DOOR_CLOSE")    --- 默认关闭
     -------------------------------------------------------------------------------------
@@ -135,8 +137,10 @@ local function fn()
             -- inst.SoundEmitter:PlaySound("dontstarve/common/pighouse_door")
         end)
         inst.components.playerprox:SetOnPlayerFar(function()
-            inst:PushEvent("DOOR_CLOSE")  
-            inst.SoundEmitter:PlaySound("dontstarve/common/pighouse_door")      
+            if inst:HasTag("DOOR_OPEN") then
+                inst:PushEvent("DOOR_CLOSE")  
+                inst.SoundEmitter:PlaySound("dontstarve/common/pighouse_door")    
+            end  
         end)
 
     -------------------------------------------------------------------------------------
