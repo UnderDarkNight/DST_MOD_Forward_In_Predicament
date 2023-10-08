@@ -96,5 +96,5 @@ end
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 return Prefab("fwd_in_pdt_plant_coffeebush_item", fn, assets),
-MakePlacer("fwd_in_pdt_plant_coffeebush_item_placer", "fwd_in_pdt_plant_coffeebush", "fwd_in_pdt_plant_coffeebush", "shake_empty", nil, false, nil, nil, nil, nil, placer_postinit_fn, nil, nil)
+MakePlacer("fwd_in_pdt_plant_coffeebush_item_placer", "fwd_in_pdt_plant_coffeebush", "fwd_in_pdt_plant_coffeebush", "idle_dead", nil, false, nil, nil, nil, nil, placer_postinit_fn, nil, nil)
 
