@@ -144,6 +144,15 @@ local function fn()
                 if self.player.components.foodmemory and self.player.components.foodmemory._GetFoodMultiplier_old_thousand_year_old_egg == nil then
                     self.player.components.foodmemory._GetFoodMultiplier_old_thousand_year_old_egg = self.player.components.foodmemory.GetFoodMultiplier
                     self.player.components.foodmemory.GetFoodMultiplier = function(self,...)
+                        self.inst:DoTaskInTime(0.5,function()                            
+                                for food_prefab, _table in pairs(self.foods) do
+                                    if type(_table) == "table" and _table.task then
+                                        _table.task:Cancel()
+                                    end
+                                    self.foods[food_prefab] = nil
+                                end
+                        end)
+
                         return 1
                     end
                 end
