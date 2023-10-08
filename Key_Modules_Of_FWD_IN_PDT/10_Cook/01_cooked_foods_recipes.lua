@@ -1,4 +1,11 @@
 
+---------------------------------------------------------------------------------------------------------------------
+--- 文本表获取
+    local function GetStringsTable(name)
+        local prefab_name = name or "fwd_in_pdt_gift_pack"
+        local LANGUAGE = type(TUNING["Forward_In_Predicament.Language"]) == "function" and TUNING["Forward_In_Predicament.Language"]() or TUNING["Forward_In_Predicament.Language"]
+        return TUNING["Forward_In_Predicament.Strings"][LANGUAGE][prefab_name] or {}
+    end
 
 
 
@@ -35,6 +42,7 @@
         overridebuild = "fwd_in_pdt_food_mixed_potato_soup",          ----- build (zip名字)
         overridesymbolname = "png",     ----- scml 的图层名字（图片所在的文件夹名）
         floater = {"med", nil, 0.55},
+        oneat_desc = GetStringsTable("fwd_in_pdt_food_mixed_potato_soup")["oneat_desc"],    --- 副作用一栏显示的文本
         cookbook_category = "portablecookpot"
     }
 
@@ -75,6 +83,7 @@
         overridebuild = "fwd_in_pdt_food_steamed_orange_with_honey",          ----- build (zip名字)
         overridesymbolname = "png",     ----- scml 的图层名字（图片所在的文件夹名）
         floater = {"med", nil, 0.55},
+        oneat_desc = GetStringsTable("fwd_in_pdt_food_steamed_orange_with_honey")["oneat_desc"],    --- 副作用一栏显示的文本
         cookbook_category = "portablecookpot"
     }
 
@@ -111,6 +120,7 @@
         overridebuild = "fwd_in_pdt_food_scrambled_eggs_with_tomatoes",          ----- build (zip名字)
         overridesymbolname = "png",     ----- scml 的图层名字（图片所在的文件夹名）
         floater = {"med", nil, 0.55},
+        oneat_desc = GetStringsTable("fwd_in_pdt_food_scrambled_eggs_with_tomatoes")["oneat_desc"],    --- 副作用一栏显示的文本
         cookbook_category = "cookpot"
     }
 
@@ -149,6 +159,7 @@
         overridebuild = "fwd_in_pdt_food_eggplant_casserole",          ----- build (zip名字)
         overridesymbolname = "png",     ----- scml 的图层名字（图片所在的文件夹名）
         floater = {"med", nil, 0.55},
+        oneat_desc = GetStringsTable("fwd_in_pdt_food_eggplant_casserole")["oneat_desc"],    --- 副作用一栏显示的文本
         cookbook_category = "cookpot"
     }
 
@@ -182,6 +193,7 @@
         overridebuild = "fwd_in_pdt_food_gifts_of_nature",          ----- build (zip名字)
         overridesymbolname = "png",     ----- scml 的图层名字（图片所在的文件夹名）
         floater = {"med", nil, 0.55},
+        oneat_desc = GetStringsTable("fwd_in_pdt_food_gifts_of_nature")["oneat_desc"],    --- 副作用一栏显示的文本
         cookbook_category = "cookpot"
     }
 
@@ -219,6 +231,7 @@
         overridebuild = "fwd_in_pdt_food_snake_skin_jelly",          ----- build (zip名字)
         overridesymbolname = "png",     ----- scml 的图层名字（图片所在的文件夹名）
         floater = {"med", nil, 0.55},
+        oneat_desc = GetStringsTable("fwd_in_pdt_food_snake_skin_jelly")["oneat_desc"],    --- 副作用一栏显示的文本
         cookbook_category = "cookpot"
     }
 
@@ -247,6 +260,7 @@
         overridebuild = "fwd_in_pdt_food_atractylodes_macrocephala_pills",          ----- build (zip名字)
         overridesymbolname = "png",     ----- scml 的图层名字（图片所在的文件夹名）
         floater = {"med", nil, 0.55},
+        oneat_desc = GetStringsTable("fwd_in_pdt_food_atractylodes_macrocephala_pills")["oneat_desc"],    --- 副作用一栏显示的文本
         cookbook_category = "cookpot"
     }
 
@@ -275,6 +289,7 @@
         overridebuild = "fwd_in_pdt_food_pinellia_ternata_pills",          ----- build (zip名字)
         overridesymbolname = "png",     ----- scml 的图层名字（图片所在的文件夹名）
         floater = {"med", nil, 0.55},
+        oneat_desc = GetStringsTable("fwd_in_pdt_food_pinellia_ternata_pills")["oneat_desc"],    --- 副作用一栏显示的文本
         cookbook_category = "cookpot"
     }
 
@@ -303,6 +318,7 @@
         overridebuild = "fwd_in_pdt_food_aster_tataricus_l_f_pills",          ----- build (zip名字)
         overridesymbolname = "png",     ----- scml 的图层名字（图片所在的文件夹名）
         floater = {"med", nil, 0.55},
+        oneat_desc = GetStringsTable("fwd_in_pdt_food_aster_tataricus_l_f_pills")["oneat_desc"],    --- 副作用一栏显示的文本
         cookbook_category = "cookpot"
     }
 
@@ -337,6 +353,7 @@
         overridebuild = "fwd_in_pdt_food_red_mushroom_soup",          ----- build (zip名字)
         overridesymbolname = "png",     ----- scml 的图层名字（图片所在的文件夹名）
         floater = {"med", nil, 0.55},
+        oneat_desc = GetStringsTable("fwd_in_pdt_food_red_mushroom_soup")["oneat_desc"],    --- 副作用一栏显示的文本
         cookbook_category = "cookpot"
     }
 
@@ -371,6 +388,7 @@
         overridebuild = "fwd_in_pdt_food_green_mushroom_soup",          ----- build (zip名字)
         overridesymbolname = "png",     ----- scml 的图层名字（图片所在的文件夹名）
         floater = {"med", nil, 0.55},
+        oneat_desc = GetStringsTable("fwd_in_pdt_food_green_mushroom_soup")["oneat_desc"],    --- 副作用一栏显示的文本
         cookbook_category = "cookpot"
     }
 
@@ -405,6 +423,7 @@
         overridebuild = "fwd_in_pdt_food_tofu",          ----- build (zip名字)
         overridesymbolname = "png",     ----- scml 的图层名字（图片所在的文件夹名）
         floater = {"med", nil, 0.55},
+        oneat_desc = GetStringsTable("fwd_in_pdt_food_tofu")["oneat_desc"],    --- 副作用一栏显示的文本
         cookbook_category = "portablecookpot"
     }
 
@@ -439,6 +458,7 @@
         overridebuild = "fwd_in_pdt_food_cooked_milk",          ----- build (zip名字)
         overridesymbolname = "png",     ----- scml 的图层名字（图片所在的文件夹名）
         floater = {"med", nil, 0.55},
+        oneat_desc = GetStringsTable("fwd_in_pdt_food_cooked_milk")["oneat_desc"],    --- 副作用一栏显示的文本
         cookbook_category = "cookpot"
     }
 
@@ -478,6 +498,7 @@
         overridebuild = "fwd_in_pdt_food_coffee",          ----- build (zip名字)
         overridesymbolname = "png",     ----- scml 的图层名字（图片所在的文件夹名）
         floater = {"med", nil, 0.55},
+        oneat_desc = GetStringsTable("fwd_in_pdt_food_coffee")["oneat_desc"],    --- 副作用一栏显示的文本
         cookbook_category = "cookpot"
     }
 
@@ -513,6 +534,7 @@
         overridebuild = "fwd_in_pdt_food_saline_medicine",          ----- build (zip名字)
         overridesymbolname = "png",     ----- scml 的图层名字（图片所在的文件夹名）
         floater = {"med", nil, 0.55},
+        oneat_desc = GetStringsTable("fwd_in_pdt_food_saline_medicine")["oneat_desc"],    --- 副作用一栏显示的文本
         cookbook_category = "cookpot"
     }
 
@@ -548,6 +570,7 @@
         overridebuild = "fwd_in_pdt_food_yogurt_ice_cream",          ----- build (zip名字)
         overridesymbolname = "png",     ----- scml 的图层名字（图片所在的文件夹名）
         floater = {"med", nil, 0.55},
+        oneat_desc = GetStringsTable("fwd_in_pdt_food_yogurt_ice_cream")["oneat_desc"],    --- 副作用一栏显示的文本
         cookbook_category = "cookpot"
     }
 
@@ -583,6 +606,7 @@
         overridebuild = "fwd_in_pdt_food_mango_ice_drink",          ----- build (zip名字)
         overridesymbolname = "png",     ----- scml 的图层名字（图片所在的文件夹名）
         floater = {"med", nil, 0.55},
+        oneat_desc = GetStringsTable("fwd_in_pdt_food_mango_ice_drink")["oneat_desc"],    --- 副作用一栏显示的文本
         cookbook_category = "portablecookpot"
     }
 
@@ -616,6 +640,7 @@
         overridebuild = "fwd_in_pdt_food_cooked_rice",          ----- build (zip名字)
         overridesymbolname = "png",     ----- scml 的图层名字（图片所在的文件夹名）
         floater = {"med", nil, 0.55},
+        oneat_desc = GetStringsTable("fwd_in_pdt_food_cooked_rice")["oneat_desc"],    --- 副作用一栏显示的文本
         cookbook_category = "cookpot"
     }
 
@@ -649,6 +674,7 @@
         overridebuild = "fwd_in_pdt_food_bread",          ----- build (zip名字)
         overridesymbolname = "png",     ----- scml 的图层名字（图片所在的文件夹名）
         floater = {"med", nil, 0.55},
+        oneat_desc = GetStringsTable("fwd_in_pdt_food_bread")["oneat_desc"],    --- 副作用一栏显示的文本
         cookbook_category = "cookpot"
     }
 
@@ -686,6 +712,7 @@
         overridebuild = "fwd_in_pdt_food_congee_with_meat_and_thousand_year_old_eggs",          ----- build (zip名字)
         overridesymbolname = "png",     ----- scml 的图层名字（图片所在的文件夹名）
         floater = {"med", nil, 0.55},
+        oneat_desc = GetStringsTable("fwd_in_pdt_food_congee_with_meat_and_thousand_year_old_eggs")["oneat_desc"],    --- 副作用一栏显示的文本
         cookbook_category = "cookpot"
     }
 
@@ -719,6 +746,7 @@
         overridebuild = "fwd_in_pdt_food_protein_powder",          ----- build (zip名字)
         overridesymbolname = "png",     ----- scml 的图层名字（图片所在的文件夹名）
         floater = {"med", nil, 0.55},
+        oneat_desc = GetStringsTable("fwd_in_pdt_food_protein_powder")["oneat_desc"],    --- 副作用一栏显示的文本
         cookbook_category = "cookpot"
     }
 

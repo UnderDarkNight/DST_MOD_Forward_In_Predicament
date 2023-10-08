@@ -269,49 +269,61 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
         ---- 05_fwd_in_pdt_foods_cooked
             ["fwd_in_pdt_food_mixed_potato_soup"] = {
                 ["name"] = "Mix Potato Soup",
-                ["inspect_str"] = "Pieces of it look like lumps."
+                ["inspect_str"] = "Pieces of it look like lumps.",
+                ["oneat_desc"] = "Relieves fever and raises body temperature",
+
             },
             ["fwd_in_pdt_food_steamed_orange_with_honey"] = {
                 ["name"] = "Steamed Orange With Honey",
-                ["inspect_str"] = "The scent of oranges is accompanied by the sweetness of honey"
+                ["inspect_str"] = "The scent of oranges is accompanied by the sweetness of honey",
+                ["oneat_desc"] = "cough treatment",
             },
             ["fwd_in_pdt_food_scrambled_eggs_with_tomatoes"] = {
                 ["name"] = "Screamble Eggs With Tomatoes",
-                ["inspect_str"] = "The classic tomato and egg combo"
+                ["inspect_str"] = "The classic tomato and egg combo",
+                ["oneat_desc"] = "VC does not decrease in one day",
             },
             ["fwd_in_pdt_food_eggplant_casserole"] = {
                 ["name"] = "Eggplant Casserole",
-                ["inspect_str"] = "Classic Eggplant Cuisine"
+                ["inspect_str"] = "Classic Eggplant Cuisine",
+                ["oneat_desc"] = "Lower blood glucose levels",
             },
             ["fwd_in_pdt_food_gifts_of_nature"] = {
                 ["name"] = "Gifts Of Nature",
-                ["inspect_str"] = "Cooked with a mixture of natural ingredients"
+                ["inspect_str"] = "Cooked with a mixture of natural ingredients",
+                ["oneat_desc"] = "Increased blood glucose levels",
             },
             ["fwd_in_pdt_food_snake_skin_jelly"] = {
                 ["name"] = "Snake Skin Jelly",
-                ["inspect_str"] = "It's very flexible, but it always feels like there's a snake living in it"
+                ["inspect_str"] = "It's very flexible, but it always feels like there's a snake living in it",
+                ["oneat_desc"] = "detoxify snake venom",
             },
             ["fwd_in_pdt_food_atractylodes_macrocephala_pills"] = {
                 ["name"] = "Atractylodes Macrocephala Pills",
-                ["inspect_str"] = "Raising body temperature and removing moisture"
+                ["inspect_str"] = "Raising body temperature and removing moisture",
+                ["oneat_desc"] = "Removes moisture and stabilizes body temperature",
             },
             ["fwd_in_pdt_food_pinellia_ternata_pills"] = {
                 ["name"] = "Pinellia Ternata Pills",
-                ["inspect_str"] = "It protects against sandstorms and lowers body temperature."
+                ["inspect_str"] = "It protects against sandstorms and lowers body temperature.",
+                ["oneat_desc"] = "Lower your body temperature. Immunize yourself against dust storms for a little while.",
             },
             ["fwd_in_pdt_food_aster_tataricus_l_f_pills"] = {
                 ["name"] = "Aster Tataricus L.F Pills",
-                ["inspect_str"] = "Can treat coughs and fevers"
+                ["inspect_str"] = "Can treat coughs and fevers",
+                ["oneat_desc"] = "Treat coughs and fevers",
             },
             ["fwd_in_pdt_food_red_mushroom_soup"] = {
                 ["name"] = "Red Mushroom Soup",
                 ["inspect_str"] = "This soup feels dangerous.",
                 ["special_action_str"] = "Feed",
+                ["oneat_desc"] = "Do Not Feed Pigman !!",
             },
             ["fwd_in_pdt_food_green_mushroom_soup"] = {
                 ["name"] = "Green Mushroom Soup",
                 ["inspect_str"] = "This soup feels dangerous.",
                 ["special_action_str"] = "Feed",
+                ["oneat_desc"] = "You'll hallucinate.",
             },
             ["fwd_in_pdt_food_tofu"] = {
                 ["name"] = "Tofu",
@@ -323,7 +335,8 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             },
             ["fwd_in_pdt_food_cooked_milk"] = {
                 ["name"] = "Cooked Milk",
-                ["inspect_str"] = "Boiled milk tastes so good."
+                ["inspect_str"] = "Boiled milk tastes so good.",
+                ["oneat_desc"] = "cough treatment",
             },
             ["fwd_in_pdt_food_yogurt"] = {
                 ["name"] = "Yogurt",
@@ -331,27 +344,33 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             },
             ["fwd_in_pdt_food_coffee"] = {
                 ["name"] = "Coffee",
-                ["inspect_str"] = "refresh and clear the mind"
+                ["inspect_str"] = "refresh and clear the mind",
+                ["oneat_desc"] = "Increase walking speed for a little while",
             },
             ["fwd_in_pdt_food_saline_medicine"] = {
                 ["name"] = "Saline Medicine",
-                ["inspect_str"] = "Medical supplies"
+                ["inspect_str"] = "Medical supplies",
+                ["oneat_desc"] = "Increase VC",
             },
             ["fwd_in_pdt_food_yogurt_ice_cream"] = {
                 ["name"] = "Yogurt Ice Cream",
-                ["inspect_str"] = "sweet and savory"
+                ["inspect_str"] = "sweet and savory",
+                ["oneat_desc"] = "lower body temperature",
             },
             ["fwd_in_pdt_food_mango_ice_drink"] = {
                 ["name"] = "Mango Ice Drink",
-                ["inspect_str"] = "Filled with the scent of mango"
+                ["inspect_str"] = "Filled with the scent of mango",
+                ["oneat_desc"] = "Increased attack power",
             },
             ["fwd_in_pdt_food_cooked_rice"] = {
                 ["name"] = "Cooked Rice",
-                ["inspect_str"] = "tantalizing taste"
+                ["inspect_str"] = "tantalizing taste",
+                -- ["oneat_desc"] = "可快速采集",
             },
             ["fwd_in_pdt_food_bread"] = {
                 ["name"] = "Bread",
-                ["inspect_str"] = "tantalizing taste"
+                ["inspect_str"] = "tantalizing taste",
+                ["oneat_desc"] = "Slowly restores hunger levels",
             },
             ["fwd_in_pdt_food_thousand_year_old_egg"] = {
                 ["name"] = "Thousand-Year-Old Egg",
@@ -363,7 +382,8 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             },
             ["fwd_in_pdt_food_protein_powder"] = {
                 ["name"] = "Protein Powder",
-                ["inspect_str"] = "A favorite among bodybuilders"
+                ["inspect_str"] = "A favorite among bodybuilders",
+                ["oneat_desc"] = "No muscle atrophy",
             },
         --------------------------------------------------------------------
         ---- 06_fwd_in_pdt_containers
