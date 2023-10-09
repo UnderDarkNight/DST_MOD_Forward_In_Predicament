@@ -105,11 +105,21 @@ local function fn()
         end)
         inst.read_book_onenter_fn = function(inst,player)
             player.AnimState:OverrideSymbol("book_cook", "fwd_in_pdt_item_book_of_gardening", "book_cook")
-            player:DoTaskInTime(30*FRAMES,function()               
+            player:DoTaskInTime(30*FRAMES,function()    
+                local color = {
+                    Vector3(255,0,0),
+                    Vector3(0,255,0),
+                    Vector3(0,0,255),
+                    Vector3(255,255,0),
+                    Vector3(255,0,255),
+                    Vector3(0,255,255),
+                    Vector3(255,255,255),
+                }
+
                 inst.__reading_fx =  player:SpawnChild("fwd_in_pdt_fx_knowledge_flash")
                 inst.__reading_fx:PushEvent("Set",{
                     pt = Vector3(0,player.replica.rider:IsRiding() and 3 or 1,0),
-                    color = Vector3(255,0,0)
+                    color = color[math.random(#color)],
                 })
             end)
 

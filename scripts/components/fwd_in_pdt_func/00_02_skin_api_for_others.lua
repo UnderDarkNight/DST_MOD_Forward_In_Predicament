@@ -152,6 +152,7 @@ local function main_com(self)
                             Vector3(255,255,0),
                             Vector3(255,0,255),
                             Vector3(0,255,255),
+                            Vector3(255,255,255),
                         }
                         local pt = Vector3(inst.Transform:GetWorldPosition())
                         SpawnPrefab("fwd_in_pdt_fx_knowledge_flash"):PushEvent("Set",{
