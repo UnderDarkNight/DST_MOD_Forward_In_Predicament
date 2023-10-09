@@ -44,6 +44,7 @@ local flg,error_code = pcall(function()
         -- for k, v in pairs(TheWorld.topology.nodes) do
         --     print(k,v)
         -- end
+        -- print(TheWorld.Map:GetTileCoordsAtPoint(ThePlayer.Transform:GetWorldPosition()))
     ----------------------------------------------------------------------------------------------------------------
     --- 洞穴穿越树木 测试
         -- local inst = TheSim:FindFirstEntityWithTag("fwd_in_pdt__rooms_mini_portal_door")
@@ -203,18 +204,21 @@ local flg,error_code = pcall(function()
                     -- ThePlayer.HUD:fwd_in_pdt_ad()
     ----------------------------------------------------------------------------------------------------------------
     -- bonestew   fwd_in_pdt_food_mixed_potato_soup
-                    local cooking = require("cooking")
-                    local recipes = {}
-                    for port, temp_recipe in pairs(cooking.recipes) do
-                        for food_name, _table in pairs(temp_recipe) do
-                            recipes[food_name] = _table
-                        end
-                    end
-                    local temp = ThePlayer.components.knownfoods:_SmartSearch(recipes["fwd_in_pdt_food_mixed_potato_soup"].test)
-                    print(temp)
+                    -- local cooking = require("cooking")
+                    -- local recipes = {}
+                    -- for port, temp_recipe in pairs(cooking.recipes) do
+                    --     for food_name, _table in pairs(temp_recipe) do
+                    --         recipes[food_name] = _table
+                    --     end
+                    -- end
+                    -- local temp = ThePlayer.components.knownfoods:_SmartSearch(recipes["fwd_in_pdt_food_mixed_potato_soup"].test)
+                    -- print(temp)
                     -- for k, v in pairs(ThePlayer.components.knownfoods._knownfoods) do
                     --     print(k,v)
                     -- end
+    ----------------------------------------------------------------------------------------------------------------
+                -- local TileManager = require("tilemanager")
+                print(WORLD_TILES[string.upper("fwd_in_pdt_turf_test")])
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)

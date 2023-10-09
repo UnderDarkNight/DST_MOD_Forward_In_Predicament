@@ -190,9 +190,9 @@ local function fn()
 
     MakeObstaclePhysics(inst, .25)
 
-    inst:AddTag("plant")
-    inst:AddTag("silviculture") -- for silviculture book
-    inst:AddTag("lunarplant_target")
+    -- inst:AddTag("plant")
+    -- inst:AddTag("silviculture") -- for silviculture book
+    -- inst:AddTag("lunarplant_target")
 
 
     inst.entity:SetPristine()
