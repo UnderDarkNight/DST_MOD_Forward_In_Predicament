@@ -28,6 +28,8 @@ local prefabs_name_list = {
     "05_aster_tataricus_l_f_seed",          --- 紫苑种子
     "06_coffeebush",                        --- 咖啡丛
     "06_coffeebush_item",                   --- 咖啡丛
+    "07_mango_tree",                        --- 芒果树
+    "07_mango_tree_item",                   --- 芒果树芽穂
 }
 
 

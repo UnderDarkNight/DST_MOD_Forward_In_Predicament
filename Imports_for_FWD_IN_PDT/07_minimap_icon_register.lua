@@ -49,6 +49,7 @@ local files_name = {
 		"fwd_in_pdt_plant_pinellia_ternata",						--- 半夏
 		"fwd_in_pdt_plant_aster_tataricus_l_f",						--- 紫苑
 		"fwd_in_pdt_plant_coffeebush",								--- 咖啡树
+		"fwd_in_pdt_plant_mango_tree",								--- 芒果树
 
 	-------------------------------------------------------------------------------------------------
 	---- 10_fwd_in_pdt_minerals

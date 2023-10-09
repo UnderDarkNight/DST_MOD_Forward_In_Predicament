@@ -533,6 +533,14 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "Coffee Bush",
                 ["inspect_str"] = "Strange coffee bush.",
             },
+            ["fwd_in_pdt_plant_mango_tree"] = {
+                ["name"] = "Mango Tree",
+                ["inspect_str"] = "Strange Mango Tree",
+            },
+            ["fwd_in_pdt_plant_mango_tree_item"] = {
+                ["name"] = "Mango Tree Sprout",
+                ["inspect_str"] = "Can be used to grow mango trees",
+            },
         --------------------------------------------------------------------
         ---- 10_fwd_in_pdt_minerals
         --------------------------------------------------------------------

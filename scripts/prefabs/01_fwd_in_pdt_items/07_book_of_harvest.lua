@@ -23,11 +23,16 @@ local function BookFn(inst,reader)      -- 采摘
     local prefab_names = {
         ["grass"] = true,           ---- 草
         ["sapling"] = true,         ---- 树枝
-        ["fwd_in_pdt_plant_paddy_rice"] = true,  --- 稻米
+        ["fwd_in_pdt_plant_paddy_rice"] = true,                 --- 稻米
+        ["fwd_in_pdt_plant_wheat"] = true,                      --- 小麦
+        ["fwd_in_pdt_plant_atractylodes_macrocephala"] = true,  --- 苍术
+        ["fwd_in_pdt_plant_pinellia_ternata"] = true,           --- 半夏
+        ["fwd_in_pdt_plant_aster_tataricus_l_f"] = true,        --- 紫苑
+        ["fwd_in_pdt_plant_coffeebush"] = true,                 --- 咖啡丛
     }
     local pick_num = 0
 
-    local musthavetags = {"plant","silviculture"}   --- 树苗 和 草 都有这些个tag
+    local musthavetags = {"plant"}   --- 
     -- local musthavetags = nil
     local canthavetags = {}
     local musthaveoneoftags = {}
@@ -103,7 +108,8 @@ local function fn()
             if not inst.replica.inventoryitem:IsGrandOwner(doer) then
                 return false
             end
-            if inst.replica.sanity and inst.replica.sanity:GetCurrent() <= 50 then
+            local sanity = doer.replica.sanity or doer.replica._.sanity
+            if sanity and sanity:GetCurrent() <= 50 then
                 return false
             end
             return true

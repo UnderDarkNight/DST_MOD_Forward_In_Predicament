@@ -31,6 +31,8 @@ modimport("Key_Modules_Of_FWD_IN_PDT/05_Actions/13_play_horn_action.lua")       
 
 modimport("Key_Modules_Of_FWD_IN_PDT/05_Actions/14_container_action_fix_for_fish_farm.lua")       --- 修改 container 动作相关参数
 
+modimport("Key_Modules_Of_FWD_IN_PDT/05_Actions/15_special_pick_action.lua")       --- SG动作：特殊采集
+
 
 
 

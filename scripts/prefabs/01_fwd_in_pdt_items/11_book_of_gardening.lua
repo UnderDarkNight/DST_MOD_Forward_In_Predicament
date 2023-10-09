@@ -15,8 +15,66 @@ local assets = {
     Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_item_book_of_gardening.xml" ),
 }
 
+local function spawn_flows(mid_pt,range,num)
+    -- local flowers = {"flower","flower_rose","flower_evil"}
+    local flower = "flower"
+    local temp_propery = math.random(100)
+    if temp_propery < 30 then
+        flower = "flower_rose"
+    end
+    if temp_propery < 10 then
+        flower = "flower_evil"
+    end
+
+    local points = TheWorld.components.fwd_in_pdt_func:GetSurroundPoints({
+        target = mid_pt,
+        range = range or 1,
+        num = num or 3
+    })
+    for k, pt in pairs(points) do
+        if pt and TheWorld.Map:IsAboveGroundAtPoint(pt.x, 0, pt.z,false) then
+            SpawnPrefab(flower).Transform:SetPosition(pt.x,0, pt.z)
+            SpawnPrefab("fwd_in_pdt_fx_collapse"):PushEvent("Set",{pt = pt , scale =  Vector3(0.3,0.3,0.3)})
+        end
+    end
+
+end
+
 local function BookFn(inst,reader)      -- 采摘
-    
+    local mid_pt = Vector3(reader.Transform:GetWorldPosition())
+
+    local cmd_table = {
+        {
+            time = 0,
+            range = 1,
+            num = 3
+        },
+        {
+            time = 1,
+            range = 2.5,
+            num = 6
+        },
+        {
+            time = 2,
+            range = 4,
+            num = 10
+        },
+        {
+            time = 3,
+            range = 5.5,
+            num = 15
+        },
+    }
+    for k, temp_table in pairs(cmd_table) do
+        reader:DoTaskInTime(temp_table.time or 0,function()
+            spawn_flows(mid_pt, temp_table.range, temp_table.num)
+        end)
+    end
+
+
+
+
+
     return true
 end
 
@@ -76,7 +134,8 @@ local function fn()
             if not inst.replica.inventoryitem:IsGrandOwner(doer) then
                 return false
             end
-            if inst.replica.sanity and inst.replica.sanity:GetCurrent() <= 50 then
+            local sanity = doer.replica.sanity or doer.replica._.sanity
+            if sanity and sanity:GetCurrent() <= 50 then
                 return false
             end
             return true

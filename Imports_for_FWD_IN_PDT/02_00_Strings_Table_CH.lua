@@ -442,8 +442,8 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "幡旗飘荡",
             },
             ["fwd_in_pdt_building_special_shop"] = {
-                ["name"] = "纪念品商店",
-                ["inspect_str"] = "这里好像不只是卖纪念品",
+                ["name"] = "特殊物品商店",
+                ["inspect_str"] = "这里好多特别的物品",
                 ["action_str"] = "进入",
             },
             ["fwd_in_pdt_building_materials_shop"] = {
@@ -540,6 +540,14 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             ["fwd_in_pdt_plant_coffeebush_item"] = {
                 ["name"] = "咖啡丛",
                 ["inspect_str"] = "很奇怪的咖啡丛",
+            },
+            ["fwd_in_pdt_plant_mango_tree"] = {
+                ["name"] = "芒果树",
+                ["inspect_str"] = "奇特的芒果树",
+            },
+            ["fwd_in_pdt_plant_mango_tree_item"] = {
+                ["name"] = "芒果树穂",
+                ["inspect_str"] = "可以用来种植芒果树",
             },
         --------------------------------------------------------------------
         ---- 10_fwd_in_pdt_minerals

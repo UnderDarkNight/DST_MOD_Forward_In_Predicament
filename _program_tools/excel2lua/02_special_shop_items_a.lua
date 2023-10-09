@@ -39,5 +39,13 @@ return{
 		["num2give"] = 1.0,
 		["image"] = "fwd_in_pdt_plant_coffeebush_item.tex",
 		["atlas"] = "images/inventoryimages/fwd_in_pdt_plant_coffeebush_item.xml"
+	},
+	{
+		["name"] = "芒果树芽穂",
+		["prefab"] = "fwd_in_pdt_plant_mango_tree_item",
+		["cost"] = 30.0,
+		["num2give"] = 1.0,
+		["image"] = "",
+		["atlas"] = ""
 	}
 }

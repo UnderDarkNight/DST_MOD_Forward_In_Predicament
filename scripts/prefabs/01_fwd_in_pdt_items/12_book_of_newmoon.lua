@@ -76,7 +76,8 @@ local function fn()
             if not inst.replica.inventoryitem:IsGrandOwner(doer) then
                 return false
             end
-            if inst.replica.sanity and inst.replica.sanity:GetCurrent() <= 50 then
+            local sanity = doer.replica.sanity or doer.replica._.sanity
+            if sanity and sanity:GetCurrent() <= 50 then
                 return false
             end
             return true
