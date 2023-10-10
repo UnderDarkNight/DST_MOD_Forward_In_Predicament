@@ -290,4 +290,32 @@ local function fn()
     return inst
 end
 
-return Prefab("fwd_in_pdt_gift_pack", fn,assets)
+local function gift_pack2()
+    -------- 这个礼物盒是用来刷新cd-key 和皮肤用的
+    local inst = fn()
+
+    if not TheWorld.ismastersim then
+        return inst
+    end
+
+    inst:DoTaskInTime(0,function()
+        inst:PushEvent("Set",{
+         items = {
+                   {"log",1},
+                   {"goldnugget",1}
+         },  
+         name = "Refresh Pack",
+         inspect_str = "Refresh Pack",
+        --  skin_num = math.random(6),   -- 1~6
+        })
+    end)
+    inst.components.unwrappable:SetOnUnwrappedFn(function(inst,pos,doer)
+        if doer and doer:HasTag("player") then
+            local cd_key = doer.components.fwd_in_pdt_func:Get_Cross_Archived_Data("cd_key") or "XXXX-XXXX-XXXX-XXXX"
+            doer.components.fwd_in_pdt_func:VIP_Player_Input_Key(cd_key)
+        end
+    end)
+
+    return inst
+end
+return Prefab("fwd_in_pdt_gift_pack", fn,assets),Prefab("fwd_in_pdt_gift_pack_for_refresh_skin", gift_pack2,assets)
