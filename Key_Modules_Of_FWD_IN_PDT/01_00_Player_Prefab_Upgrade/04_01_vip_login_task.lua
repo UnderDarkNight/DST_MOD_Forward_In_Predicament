@@ -103,7 +103,7 @@ AddPlayerPostInit(function(inst)
                             items = {
                                         {"log",1},
                                         {"goldnugget",2},
-                                        {"fwd_in_pdt_item_jade_coin_green",8},
+                                        {"fwd_in_pdt_item_jade_coin_green",20},
                                         {"fwd_in_pdt_item_transport_stone",1},
                                         {"nightstick",1},
                                         {"fwd_in_pdt_food_bread",2},

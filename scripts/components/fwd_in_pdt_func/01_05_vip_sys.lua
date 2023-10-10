@@ -5,15 +5,11 @@
 -- The code in this module is not intended to be encrypted or obfuscated, it's simple to read and crack.
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
+local function GetStringTable()
+    return TUNING["Forward_In_Predicament.fn"].GetStringsTable("fwd_in_pdt_cd_key_sys")
+end
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-local function Get_OS_Time_STR()
-    local year = tostring(os.date("%Y"))
-    local month = tostring(os.date("%m"))
-    local day = tostring(os.date("%d"))
-    return year..month..day
-end
 
 local function Get_OS_Time_Num()
     local year = tonumber(os.date("%Y"))
@@ -76,7 +72,8 @@ local function main_com(self)
         local function Set_Is_VIP() 
             self:Set_Cross_Archived_Data("cd_key_time_checker",Get_OS_Time_Num())
             self:Replica_Set_Simple_Data("vip",true)
-            self:VIP_Run_Fns()            
+            self:VIP_Run_Fns()  
+            self:VIP_Announce()          
         end
 
         function self:IsVIP()
@@ -191,6 +188,29 @@ local function main_com(self)
             end
             return LANGUAGE == "ch"
         end
+    ------------------------------------------------------------------------------------------
+        
+        ---- vip announce
+        function self:VIP_Announce()
+            local daily_announce_flag = self:Get_Cross_Archived_Data("vip_daily_annouce")
+            if daily_announce_flag == Get_OS_Time_Num() then
+                return
+            end
+            self:Set_Cross_Archived_Data("vip_daily_annouce",Get_OS_Time_Num())
+
+            local display_name = self.inst:GetDisplayName()
+            local base_str = GetStringTable()["succeed_announce"]
+            local ret_str = string.gsub(base_str, "XXXXXX", tostring(display_name))
+            self:Wisper({
+            --     m_colour = {0,0,255} ,                          ---- 内容颜色
+            --     s_colour = {255,255,0},                         ---- 发送者颜色
+            --     icondata = "profileflair_food_crabroll",        ---- 图标
+                message = ret_str,                                 ---- 文字内容
+                -- sender_name = "HHHH555",                        ---- 发送者名字
+            })
+
+        end
+
     ------------------------------------------------------------------------------------------
     ----- 主入口，读取到本地存档的数据时候就执行。
         self:Add_Cross_Archived_Data_Special_Onload_Fn(function()
