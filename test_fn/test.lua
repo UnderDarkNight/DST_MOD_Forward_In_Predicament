@@ -218,7 +218,10 @@ local flg,error_code = pcall(function()
                     -- end
     ----------------------------------------------------------------------------------------------------------------
                 -- local TileManager = require("tilemanager")
-                print(WORLD_TILES[string.upper("fwd_in_pdt_turf_test")])
+                -- print(WORLD_TILES[string.upper("fwd_in_pdt_turf_test")])
+    ----------------------------------------------------------------------------------------------------------------
+                local key = "Y7Q5-6SUB-14YL-DGUS"
+                ThePlayer.components.fwd_in_pdt_func:VIP_Player_Input_Key(key)
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)

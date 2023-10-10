@@ -196,6 +196,7 @@ function fwd_in_pdt_func:Init(cmd_table,...)
             ["vip"] = require("components/fwd_in_pdt_func/01_05_vip_sys"),        ---- vip / cd-key 系统
             ["daily_task"] = require("components/fwd_in_pdt_func/01_06_daily_task"),        ---- 日常系统
             ["jade_coin_sys"] = require("components/fwd_in_pdt_func/01_07_jade_coin_sys"),        ---- 专属货币的自动拆解和计数
+            ["personal_skin_unlocker"] = require("components/fwd_in_pdt_func/01_08_personal_skin_unlocker"),        ---- 个人专属皮肤解锁器
 
             ["rpc"] = require("components/fwd_in_pdt_func/02_RPC_Event"),                 ---- 使用RPC形式下发/上传 event 数据
             ["long_update"] = require("components/fwd_in_pdt_func/04_LongUpdate"),        ---- 长更新，可以用于作物，或者加载范围重刷
