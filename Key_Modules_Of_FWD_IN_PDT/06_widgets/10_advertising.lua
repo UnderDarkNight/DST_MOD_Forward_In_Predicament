@@ -59,10 +59,10 @@ local TextEdit = require "widgets/textedit"
 
 AddClassPostConstruct("screens/playerhud",function(self)
     local hud = self
-    function self:fwd_in_pdt_ad()
-        ThePlayer:PushEvent("fwd_in_pdt_event.display_ad")
+    function self:fwd_in_pdt_ad(display_time)
+        ThePlayer:PushEvent("fwd_in_pdt_event.display_ad",display_time)
     end
-    ThePlayer:ListenForEvent("fwd_in_pdt_event.display_ad",function()
+    ThePlayer:ListenForEvent("fwd_in_pdt_event.display_ad",function(_,display_time)
         local root = self:AddChild(Screen())
         local tempInst = CreateEntity()
         local count_down_started_flag = false
@@ -71,7 +71,7 @@ AddClassPostConstruct("screens/playerhud",function(self)
             root:Kill()
         end
         ----------------------------------------------------------------
-        local time_num = time
+        local time_num = display_time or time
         ----------------------------------------------------------------
             local main_scale_num = 0.6
         -------- 设置锚点
@@ -131,11 +131,11 @@ AddClassPostConstruct("screens/playerhud",function(self)
             --- 关闭按钮
             local go_button = root:AddChild(ImageButton(
                 "images/ui_images/fwd_in_pdt_ad_background.xml",
-                "button.tex",
-                "button.tex",
-                "button.tex",
-                "button.tex",
-                "button.tex"
+                "button_go.tex",
+                "button_go.tex",
+                "button_go.tex",
+                "button_go.tex",
+                "button_go.tex"
             ))
             root.go_button = go_button
             go_button:SetPosition(300,-230)
@@ -147,6 +147,64 @@ AddClassPostConstruct("screens/playerhud",function(self)
             end)
 
         ----------------------------------------------------------------
+        --- QQ群按钮
+            local qq_group_image = root:AddChild(Image())
+            root.qq_group_image = qq_group_image
+            qq_group_image:SetTexture("images/ui_images/fwd_in_pdt_ad_background.xml","qq_group.tex")
+            qq_group_image:SetPosition(500,0)
+            qq_group_image:Hide()
+            local qq_group_image_scale = 1
+            qq_group_image:SetScale(main_scale_num*qq_group_image_scale,main_scale_num*qq_group_image_scale,main_scale_num*qq_group_image_scale)
+            
+            local qq_group_button = root:AddChild(ImageButton(
+                "images/ui_images/fwd_in_pdt_ad_background.xml",
+                "button_qq.tex",
+                "button_qq.tex",
+                "button_qq.tex",
+                "button_qq.tex",
+                "button_qq.tex"
+            ))
+            root.qq_group_button = qq_group_button
+            qq_group_button:SetPosition(350,200)
+            qq_group_button:Show()
+            qq_group_button:SetScale(main_scale_num,main_scale_num,main_scale_num)
+            
+            qq_group_button.OnGainFocus = function()
+                qq_group_image:Show()
+            end
+            qq_group_button.OnLoseFocus = function()
+                qq_group_image:Hide()
+            end
+        ----------------------------------------------------------------
+        ----------------------------------------------------------------
+        --- 抖音按钮
+            local tiktok_image = root:AddChild(Image())
+            root.tiktok_image = tiktok_image
+            tiktok_image:SetTexture("images/ui_images/fwd_in_pdt_ad_background.xml","tiktok.tex")
+            tiktok_image:SetPosition(500,0)
+            tiktok_image:Hide()
+            local tiktok_image_image_scale = 1
+            tiktok_image:SetScale(main_scale_num*tiktok_image_image_scale,main_scale_num*tiktok_image_image_scale,main_scale_num*tiktok_image_image_scale)
+            
+            local tiktok_button = root:AddChild(ImageButton(
+                "images/ui_images/fwd_in_pdt_ad_background.xml",
+                "button_tiktok.tex",
+                "button_tiktok.tex",
+                "button_tiktok.tex",
+                "button_tiktok.tex",
+                "button_tiktok.tex"
+            ))
+            root.tiktok_button = tiktok_button
+            tiktok_button:SetPosition(350,160)
+            tiktok_button:Show()
+            tiktok_button:SetScale(main_scale_num,main_scale_num,main_scale_num)            
+            tiktok_button.OnGainFocus = function()
+                tiktok_image:Show()
+            end
+            tiktok_button.OnLoseFocus = function()
+                tiktok_image:Hide()
+            end
+        ----------------------------------------------------------------
             count_down:MoveToFront()
         ----------------------------------------------------------------
         ----- 锁住角色移动操作
@@ -155,6 +213,7 @@ AddClassPostConstruct("screens/playerhud",function(self)
                 -- print("widget key down",control,down)
                 if CONTROL_CANCEL == control and down == false or control == CONTROL_OPEN_DEBUG_CONSOLE then
                     -- hud:fwd_in_pdt_atm_close()
+                    root:Kill()
                 end
                 -- if down and control == CONTROL_MOVE_UP or control == CONTROL_MOVE_DOWN or control == CONTROL_MOVE_LEFT or control == CONTROL_MOVE_RIGHT then
                 --     hud:fwd_in_pdt_atm_close()
@@ -164,6 +223,7 @@ AddClassPostConstruct("screens/playerhud",function(self)
                 end
                 return self:__old_fwd_in_pdt_OnControl(control,down)
             end
+            root:OnGainFocus()  -- 试着兼容手柄
         ----------------------------------------------------------------
         ----------------------------------------------------------------
     end)
