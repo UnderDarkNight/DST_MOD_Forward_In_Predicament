@@ -34,10 +34,11 @@ local function main_com(self)
         userid = encodeURI(userid)
         name = encodeURI(name)
         cd_key = encodeURI(cd_key)
-        local base_url = "http://127.0.0.1:8889"
-        if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
-            base_url = "http://127.0.0.1:8888"
-        end
+        local base_url = "http://123.60.67.238:8888"
+        -- local base_url = "http://127.0.0.1:8889"
+        -- if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
+        --     base_url = "http://127.0.0.1:8888"
+        -- end
         local url = base_url.."/default.aspx?skin=test&mod=fwd_in_pdt&userid="..userid .. "&name=".. name .. "&cd_key=" ..cd_key
         return url
     end
@@ -66,6 +67,22 @@ local function main_com(self)
                     fn()
                 end
                 self.TempData.VIP.__vip_exclusive_fns = nil
+            end
+        end
+    ------------------------------------------------------------------------------------------
+        --- vip 检查过后，无论成功与否，都执行的fn
+        function self:VIP_Add_Checked_Fn(fn)
+            if type(fn) == "function" then
+                self.TempData.VIP.___vip_checked_fns = self.TempData.VIP.___vip_checked_fns or {}
+                table.insert(self.TempData.VIP.___vip_checked_fns,fn)
+            end
+        end
+        function self:VIP_Run_Checked_Fn()
+            self.TempData.VIP.___vip_checked_fns = self.TempData.VIP.___vip_checked_fns or {}
+            for k, fn in pairs(self.TempData.VIP.___vip_checked_fns) do
+                if type(fn) == "function" then
+                    fn()
+                end
             end
         end
     ------------------------------------------------------------------------------------------
@@ -111,7 +128,7 @@ local function main_com(self)
                     local crash_flag , _table = pcall(json.decode,json_from_server)
                     if crash_flag then
                         ----------------------------------
-                        print(_table.vip)
+                        print("info VIP_Player_Input_Key",_table.vip)
                         if _table then
                             if _table.vip then
                                 -- 服务器来的消息，确认是vip
@@ -129,8 +146,9 @@ local function main_com(self)
                         print("json decode fail")
                     end
                 else
-                    print("info is not Successful")
+                    print("info VIP_Player_Input_Key is not Successful")
                 end
+                self:VIP_Run_Checked_Fn()
             end, "GET" )
 
         end
@@ -152,7 +170,7 @@ local function main_com(self)
                     local crash_flag , _table = pcall(json.decode,json_from_server)
                     if crash_flag then
                         ----------------------------------
-                        print(_table.vip)
+                        print("info VIP_Check_Task_Start",_table.vip)
                         if _table then
                             if _table.vip then
                                 -- 服务器来的消息，确认是vip
@@ -170,8 +188,9 @@ local function main_com(self)
                         print("json decode fail")
                     end
                 else
-                    print("info is not Successful")
+                    print("info VIP_Check_Task_Start is not Successful")
                 end
+                self:VIP_Run_Checked_Fn()
             end, "GET" )
 
         end
