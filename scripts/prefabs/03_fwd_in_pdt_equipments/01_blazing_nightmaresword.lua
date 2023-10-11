@@ -16,6 +16,11 @@ local assets =
     Asset("ANIM", "anim/fwd_in_pdt_equipment_blazing_nightmaresword_sharp_swap.zip"),
     Asset( "IMAGE", "images/inventoryimages/fwd_in_pdt_equipment_blazing_nightmaresword_sharp.tex" ),  -- 背包贴图
     Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_equipment_blazing_nightmaresword_sharp.xml" ),
+    ---- 皮肤
+    Asset("ANIM", "anim/fwd_in_pdt_equipment_blazing_nightmaresword_king.zip"),
+    Asset("ANIM", "anim/fwd_in_pdt_equipment_blazing_nightmaresword_king_swap.zip"),
+    Asset( "IMAGE", "images/inventoryimages/fwd_in_pdt_equipment_blazing_nightmaresword_king.tex" ),  -- 背包贴图
+    Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_equipment_blazing_nightmaresword_king.xml" ),
 }
 
 
@@ -30,6 +35,14 @@ local assets =
             image = "fwd_in_pdt_equipment_blazing_nightmaresword_sharp",                              --- 【制作栏】皮肤显示的贴图， 不需要 .tex
             -- name = "尖锐",                                                                         --- 【制作栏】皮肤的名字
             onequip_bank = "fwd_in_pdt_equipment_blazing_nightmaresword_sharp_swap"
+        },
+        ["fwd_in_pdt_equipment_blazing_nightmaresword_king"] = {             --- 皮肤名字，全局唯一。
+            bank = "fwd_in_pdt_equipment_blazing_nightmaresword_king",                               --- 制作完成后切换的 bank
+            build = "fwd_in_pdt_equipment_blazing_nightmaresword_king",                              --- 制作完成后切换的 build
+            atlas = "images/inventoryimages/fwd_in_pdt_equipment_blazing_nightmaresword_king.xml",                                        --- 【制作栏】皮肤显示的贴图，
+            image = "fwd_in_pdt_equipment_blazing_nightmaresword_king",                              --- 【制作栏】皮肤显示的贴图， 不需要 .tex
+            -- name = "尖锐",                                                                         --- 【制作栏】皮肤的名字
+            onequip_bank = "fwd_in_pdt_equipment_blazing_nightmaresword_king_swap"
         },
     }
 
