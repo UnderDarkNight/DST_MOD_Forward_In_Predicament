@@ -314,6 +314,7 @@ local function gift_pack2()
             local cd_key = doer.components.fwd_in_pdt_func:Get_Cross_Archived_Data("cd_key") or "XXXX-XXXX-XXXX-XXXX"
             doer.components.fwd_in_pdt_func:VIP_Player_Input_Key(cd_key)
         end
+        inst:Remove()
     end)
 
     return inst
