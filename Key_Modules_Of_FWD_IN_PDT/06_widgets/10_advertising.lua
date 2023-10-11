@@ -59,7 +59,9 @@ local TextEdit = require "widgets/textedit"
 
 AddClassPostConstruct("screens/playerhud",function(self)
     local hud = self
-
+    function self:fwd_in_pdt_ad()
+        ThePlayer:PushEvent("fwd_in_pdt_event.display_ad")
+    end
     ThePlayer:ListenForEvent("fwd_in_pdt_event.display_ad",function()
         local root = self:AddChild(Screen())
         local tempInst = CreateEntity()

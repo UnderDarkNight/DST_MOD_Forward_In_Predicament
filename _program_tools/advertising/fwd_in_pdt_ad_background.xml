@@ -2,7 +2,7 @@
 <Atlas>
 	<Texture filename="fwd_in_pdt_ad_background.tex" />
 	<Elements>
-		<Element name="background.tex" u1="0.001" u2="0.6152109375" v2="0.999" v1="0.084984375" variant="" />
-		<Element name="button.tex" u1="0.001" u2="0.0644296875" v2="0.082984375" v1="0.02053125" variant="" />
+		<Element name="background.tex" u1="0.001" u2="0.62058203125" v2="0.999" v1="0.0742421875" variant="" />
+		<Element name="button.tex" u1="0.001" u2="0.0644296875" v2="0.0722421875" v1="0.0097890625" variant="" />
 	</Elements>
 </Atlas>
