@@ -162,3 +162,13 @@ AddTile(
                                                                         --- 【注意】没有 inventoryitem 的参数渠道。要么 外部注册 turf_XXXXXX 的图片名，要么使用其他手段注册图片。
     }
 )
+
+-- -------- 地皮物品无法做出图标的时候使用
+-- AddPrefabPostInit("turf_fwd_in_pdt_turf_test",function(inst)
+--     if not TheWorld.ismastersim then
+--         return
+--     end
+
+--     inst.components.inventoryitem.imagename = "..."  -- tex 的名字。不带  .tex 后缀
+--     inst.components.inventoryitem.atlasname = "..."     --- xml 的完整路径，带 .xml 后缀
+-- end)

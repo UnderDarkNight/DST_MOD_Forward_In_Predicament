@@ -36,12 +36,12 @@ if __name__ == "__main__":
 
     base_addr = "./_program_tools/excel2lua/"
 
-    # 纪念品商店A
-    input_excel_file_name = base_addr + "02_special_shop_items_a.xls"
-    temp_json_file_name = base_addr + "02_special_shop_items_a.json"
-    output_lua_file_name = base_addr + "02_special_shop_items_a.lua"
-    excel2json.start_excel_2_json(input_excel_file_name, temp_json_file_name)
-    json2lua.json_file_2_lua_file(temp_json_file_name, output_lua_file_name)
+    # # 纪念品商店A
+    # input_excel_file_name = base_addr + "02_special_shop_items_a.xls"
+    # temp_json_file_name = base_addr + "02_special_shop_items_a.json"
+    # output_lua_file_name = base_addr + "02_special_shop_items_a.lua"
+    # excel2json.start_excel_2_json(input_excel_file_name, temp_json_file_name)
+    # json2lua.json_file_2_lua_file(temp_json_file_name, output_lua_file_name)
     # 纪念品商店B
     input_excel_file_name = base_addr + "02_special_shop_items_b.xls"
     temp_json_file_name = base_addr + "02_special_shop_items_b.json"
@@ -49,44 +49,44 @@ if __name__ == "__main__":
     excel2json.start_excel_2_json(input_excel_file_name, temp_json_file_name)
     json2lua.json_file_2_lua_file(temp_json_file_name, output_lua_file_name)
 
-    # 材料商店A
-    input_excel_file_name = base_addr + "03_materials_shop_items_a.xls"
-    temp_json_file_name = base_addr + "03_materials_shop_items_a.json"
-    output_lua_file_name = base_addr + "03_materials_shop_items_a.lua"
-    excel2json.start_excel_2_json(input_excel_file_name, temp_json_file_name)
-    json2lua.json_file_2_lua_file(temp_json_file_name, output_lua_file_name)
-    # 材料商店B
-    input_excel_file_name = base_addr + "03_materials_shop_items_b.xls"
-    temp_json_file_name = base_addr + "03_materials_shop_items_b.json"
-    output_lua_file_name = base_addr + "03_materials_shop_items_b.lua"
-    excel2json.start_excel_2_json(input_excel_file_name, temp_json_file_name)
-    json2lua.json_file_2_lua_file(temp_json_file_name, output_lua_file_name)
+    # # 材料商店A
+    # input_excel_file_name = base_addr + "03_materials_shop_items_a.xls"
+    # temp_json_file_name = base_addr + "03_materials_shop_items_a.json"
+    # output_lua_file_name = base_addr + "03_materials_shop_items_a.lua"
+    # excel2json.start_excel_2_json(input_excel_file_name, temp_json_file_name)
+    # json2lua.json_file_2_lua_file(temp_json_file_name, output_lua_file_name)
+    # # 材料商店B
+    # input_excel_file_name = base_addr + "03_materials_shop_items_b.xls"
+    # temp_json_file_name = base_addr + "03_materials_shop_items_b.json"
+    # output_lua_file_name = base_addr + "03_materials_shop_items_b.lua"
+    # excel2json.start_excel_2_json(input_excel_file_name, temp_json_file_name)
+    # json2lua.json_file_2_lua_file(temp_json_file_name, output_lua_file_name)
 
 
-    # 料理商店A
-    input_excel_file_name = base_addr + "04_cuisines_shop_items_a.xls"
-    temp_json_file_name = base_addr + "04_cuisines_shop_items_a.json"
-    output_lua_file_name = base_addr + "04_cuisines_shop_items_a.lua"
-    excel2json.start_excel_2_json(input_excel_file_name, temp_json_file_name)
-    json2lua.json_file_2_lua_file(temp_json_file_name, output_lua_file_name)
-    # 料理商店B
-    input_excel_file_name = base_addr + "04_cuisines_shop_items_b.xls"
-    temp_json_file_name = base_addr + "04_cuisines_shop_items_b.json"
-    output_lua_file_name = base_addr + "04_cuisines_shop_items_b.lua"
-    excel2json.start_excel_2_json(input_excel_file_name, temp_json_file_name)
-    json2lua.json_file_2_lua_file(temp_json_file_name, output_lua_file_name)
+    # # 料理商店A
+    # input_excel_file_name = base_addr + "04_cuisines_shop_items_a.xls"
+    # temp_json_file_name = base_addr + "04_cuisines_shop_items_a.json"
+    # output_lua_file_name = base_addr + "04_cuisines_shop_items_a.lua"
+    # excel2json.start_excel_2_json(input_excel_file_name, temp_json_file_name)
+    # json2lua.json_file_2_lua_file(temp_json_file_name, output_lua_file_name)
+    # # 料理商店B
+    # input_excel_file_name = base_addr + "04_cuisines_shop_items_b.xls"
+    # temp_json_file_name = base_addr + "04_cuisines_shop_items_b.json"
+    # output_lua_file_name = base_addr + "04_cuisines_shop_items_b.lua"
+    # excel2json.start_excel_2_json(input_excel_file_name, temp_json_file_name)
+    # json2lua.json_file_2_lua_file(temp_json_file_name, output_lua_file_name)
 
-    # 当铺A
-    input_excel_file_name = base_addr + "08_pawnshop_items_a.xls"
-    temp_json_file_name = base_addr + "08_pawnshop_items_a.json"
-    output_lua_file_name = base_addr + "08_pawnshop_items_a.lua"
-    excel2json.start_excel_2_json(input_excel_file_name, temp_json_file_name)
-    json2lua.json_file_2_lua_file(temp_json_file_name, output_lua_file_name)
-    # 当铺B
-    input_excel_file_name = base_addr + "08_pawnshop_items_b.xls"
-    temp_json_file_name = base_addr + "08_pawnshop_items_b.json"
-    output_lua_file_name = base_addr + "08_pawnshop_items_b.lua"
-    excel2json.start_excel_2_json(input_excel_file_name, temp_json_file_name)
-    json2lua.json_file_2_lua_file(temp_json_file_name, output_lua_file_name)
+    # # 当铺A
+    # input_excel_file_name = base_addr + "08_pawnshop_items_a.xls"
+    # temp_json_file_name = base_addr + "08_pawnshop_items_a.json"
+    # output_lua_file_name = base_addr + "08_pawnshop_items_a.lua"
+    # excel2json.start_excel_2_json(input_excel_file_name, temp_json_file_name)
+    # json2lua.json_file_2_lua_file(temp_json_file_name, output_lua_file_name)
+    # # 当铺B
+    # input_excel_file_name = base_addr + "08_pawnshop_items_b.xls"
+    # temp_json_file_name = base_addr + "08_pawnshop_items_b.json"
+    # output_lua_file_name = base_addr + "08_pawnshop_items_b.lua"
+    # excel2json.start_excel_2_json(input_excel_file_name, temp_json_file_name)
+    # json2lua.json_file_2_lua_file(temp_json_file_name, output_lua_file_name)
 
     

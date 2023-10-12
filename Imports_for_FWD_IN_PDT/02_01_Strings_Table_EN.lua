@@ -551,6 +551,18 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
         ---- 13_fwd_in_pdt_pets
         --------------------------------------------------------------------
         ---- 14_fwd_in_pdt_turfs
+            ["turf_fwd_in_pdt_turf_snakeskin"] = {
+                ["name"] = "Snake Skin Turf",
+                ["inspect_str"] = "Rugs made of snake skin",
+            },
+            ["turf_fwd_in_pdt_turf_cobbleroad"] = {
+                ["name"] = "Cobble Road",
+                ["inspect_str"] = "Ground made of stone and brick piles",
+            },
+            ["turf_fwd_in_pdt_turf_grasslawn"] = {
+                ["name"] = "Grass Lawn",
+                ["inspect_str"] = "Trimmed out of grass, one grid at a time",
+            },
         --------------------------------------------------------------------
         ---- 15_fwd_in_pdt_debuffs
         --------------------------------------------------------------------

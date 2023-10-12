@@ -559,6 +559,18 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
         ---- 13_fwd_in_pdt_pets
         --------------------------------------------------------------------
         ---- 14_fwd_in_pdt_turfs
+            ["turf_fwd_in_pdt_turf_snakeskin"] = {
+                ["name"] = "蛇皮地毯",
+                ["inspect_str"] = "用蛇皮做成的地毯",
+            },
+            ["turf_fwd_in_pdt_turf_cobbleroad"] = {
+                ["name"] = "石砖地皮",
+                ["inspect_str"] = "用石砖堆砌成的地皮",
+            },
+            ["turf_fwd_in_pdt_turf_grasslawn"] = {
+                ["name"] = "草格地皮",
+                ["inspect_str"] = "用草一个一个格子修整出的",
+            },
         --------------------------------------------------------------------
         ---- 15_fwd_in_pdt_debuffs
         --------------------------------------------------------------------
