@@ -61,7 +61,7 @@ AddPlayerPostInit(function(inst)
                 inst.components.fwd_in_pdt_func:VIP_Announce()
 
             else
-                inst.components.fwd_in_pdt_func:RPC_PushEvent2("fwd_in_pdt_event.display_ad")
+                -- inst.components.fwd_in_pdt_func:RPC_PushEvent2("fwd_in_pdt_event.display_ad")
             end
 
 
