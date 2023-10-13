@@ -17,6 +17,11 @@ local assets =
     Asset("ANIM", "anim/fwd_in_pdt_equipment_blazing_hambat_drumstick_swap.zip"),
     Asset( "IMAGE", "images/inventoryimages/fwd_in_pdt_equipment_blazing_hambat_drumstick.tex" ),  -- 背包贴图
     Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_equipment_blazing_hambat_drumstick.xml" ),
+    --- 皮肤
+    Asset("ANIM", "anim/fwd_in_pdt_equipment_blazing_hambat_fork.zip"),
+    Asset("ANIM", "anim/fwd_in_pdt_equipment_blazing_hambat_fork_swap.zip"),
+    Asset( "IMAGE", "images/inventoryimages/fwd_in_pdt_equipment_blazing_hambat_fork.tex" ),  -- 背包贴图
+    Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_equipment_blazing_hambat_fork.xml" ),
 }
 -------------------------------------------------------------------------------------------------------------------------------
 ---- 皮肤API 套件
@@ -29,6 +34,14 @@ local assets =
             image = "fwd_in_pdt_equipment_blazing_hambat_drumstick",                              --- 【制作栏】皮肤显示的贴图， 不需要 .tex
             -- name = "尖锐",                                                                         --- 【制作栏】皮肤的名字
             onequip_bank = "fwd_in_pdt_equipment_blazing_hambat_drumstick_swap"
+        },
+        ["fwd_in_pdt_equipment_blazing_hambat_fork"] = {             --- 皮肤名字，全局唯一。
+            bank = "fwd_in_pdt_equipment_blazing_hambat_fork",                               --- 制作完成后切换的 bank
+            build = "fwd_in_pdt_equipment_blazing_hambat_fork",                              --- 制作完成后切换的 build
+            atlas = "images/inventoryimages/fwd_in_pdt_equipment_blazing_hambat_fork.xml",                                        --- 【制作栏】皮肤显示的贴图，
+            image = "fwd_in_pdt_equipment_blazing_hambat_fork",                              --- 【制作栏】皮肤显示的贴图， 不需要 .tex
+            -- name = "尖锐",                                                                         --- 【制作栏】皮肤的名字
+            onequip_bank = "fwd_in_pdt_equipment_blazing_hambat_fork_swap"
         },
     }
 
