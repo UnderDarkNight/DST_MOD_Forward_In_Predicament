@@ -197,12 +197,12 @@ local moduless_name = {
 
 }
 for k, v in pairs(moduless_name) do
-    local ret = pcall(function()
+    -- local ret = pcall(function()
         
-    end)
+    -- end)
     -- if not ret then
     --     print("require error with",k)
     -- end
-    print("info 6666",k)
+    -- print("info 6666",k)
     require(k)
 end
