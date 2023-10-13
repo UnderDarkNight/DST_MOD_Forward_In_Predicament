@@ -1,3 +1,5 @@
+modimport("Imports_for_FWD_IN_PDT/_require_module_for_prefab_block.lua")	---- 为屏蔽一些MOD，整的官方模块加载。
+
 modimport("Imports_for_FWD_IN_PDT/00_load_Assets.lua")	---- 加载mod 所用素材资源
 modimport("Imports_for_FWD_IN_PDT/01_mod_config.lua")	---- 加载mod 设置
 
