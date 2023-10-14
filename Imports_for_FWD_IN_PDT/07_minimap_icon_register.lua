@@ -26,6 +26,7 @@ local files_name = {
 		"fwd_in_pdt_fish_farm",										--- 养鱼池
 		"fwd_in_pdt_moom_jewelry_lamp",								--- 天体珠宝灯
 		"fwd_in_pdt_building_special_production_table",				--- 特殊工作台
+		"fwd_in_pdt_building_special_production_table_punk",				--- 特殊工作台（朋克皮肤）
 		"fwd_in_pdt_building_fermenter",							--- 发酵缸
 	-------------------------------------------------------------------------------------------------
 	---- 07_fwd_in_pdt_buildings
@@ -91,7 +92,7 @@ for k, name in pairs(files_name) do
     table.insert(Assets, Asset( "IMAGE", "images/map_icons/".. name ..".tex" ))
     table.insert(Assets, Asset( "ATLAS", "images/map_icons/".. name ..".xml" ))
 	AddMinimapAtlas("images/map_icons/".. name ..".xml")
-
+	RegisterInventoryItemAtlas("images/map_icons/".. name ..".xml",name..".tex")	
 end
 
 

@@ -70,6 +70,10 @@ AddPlayerPostInit(function(inst)
                             "fwd_in_pdt_equipment_repair_staff_glass_short",
                             "fwd_in_pdt_equipment_repair_staff_glass_long",
                         },
+                    ---- 特殊工作台
+                        ["fwd_in_pdt_building_special_production_table"] = {
+                            "fwd_in_pdt_building_special_production_table_punk",
+                        },
 
                 }
                 inst.components.fwd_in_pdt_func:SkinAPI__Unlock_Skin(list)

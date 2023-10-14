@@ -42,8 +42,8 @@ AddTile(
     {                                                            --- ground_tile_def    应该是游戏场景内地皮相关的参数
         name="fwd_in_pdt_stoneroad",                                                  --- 地毯遮罩类型   resolvefilepath("levels/tiles/"..trimmed_name, true)
         noise_texture = turf_name,                      --- 地毯花纹，1024x1024 像素.【注意】没有“.tex”后缀。  resolvefilepath("levels/textures/"..trimmed_name, true)
-        runsound="turnoftides/movement/run_dirt",                --- 跑在上面的声音
-        walksound="turnoftides/movement/walk_dirt",               --- 走在上面的声音
+        runsound="dontstarve/movement/run_dirt",                --- 跑在上面的声音
+        walksound="dontstarve/movement/walk_dirt",               --- 走在上面的声音
         snowsound="dontstarve/movement/run_ice",                        --- 积雪覆盖后在上面行走的声音
         mudsound="dontstarve/movement/run_mud",                         --- 用途未知
         
