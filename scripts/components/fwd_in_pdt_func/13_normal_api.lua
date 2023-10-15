@@ -75,7 +75,7 @@ local function main_com(self)
             return theSpawnItemsList
         
         end
-        function self:GiveItemByName(name,num)
+        function self:GiveItemByName(name,num,item_fn)
             if type(name) ~= "string" or type(num) ~= "number" or num == 0 or not PrefabExists(name) then
                 return
             end
@@ -91,7 +91,12 @@ local function main_com(self)
 
             if num == 1 then    ----------------------------------------- 单个物品，尝试给物品套上皮肤
                 local item = SpawnPrefab(name)
-                self:Change_Item_Skin(item)   
+                if type(item_fn) == "function" then
+                    item_fn(item)
+                end
+                if self.Change_Item_Skin then
+                    self:Change_Item_Skin(item)
+                end
                 container:GiveItem(item)
             else    ----------------------------------------------------- 多个物品，为了避免卡顿，测试能否叠加
                 local stack_test_item = SpawnPrefab(name)
@@ -100,7 +105,11 @@ local function main_com(self)
                 end
                 if stack_test_item.components.stackable == nil then
                     for i = 1, num, 1 do
-                        container:GiveItem(SpawnPrefab(name) or SpawnPrefab("log"))
+                        local item = SpawnPrefab(name)
+                        if type(item_fn) == "function" then
+                            item_fn(item)
+                        end
+                        container:GiveItem(item or SpawnPrefab("log"))
                     end
                 else
                     local max_size = stack_test_item.components.stackable.maxsize   -- 获取叠堆数量
@@ -110,6 +119,9 @@ local function main_com(self)
                         for i = 1, Group_num, 1 do
                             local ret_item = SpawnPrefab(name)
                             ret_item.components.stackable.stacksize = ret_item.components.stackable.maxsize
+                            if type(item_fn) == "function" then
+                                item_fn(ret_item)
+                            end
                             container:GiveItem(ret_item)
                         end
                     end
@@ -117,6 +129,9 @@ local function main_com(self)
                     if Rest_num > 0 then
                         local res_item = SpawnPrefab(name)
                         res_item.components.stackable.stacksize = Rest_num
+                        if type(item_fn) == "function" then
+                            item_fn(res_item)
+                        end
                         container:GiveItem(res_item)
                     end
                 end

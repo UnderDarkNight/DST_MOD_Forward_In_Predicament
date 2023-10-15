@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Atlas>
+	<Texture filename="fwd_in_pdt_synopsis.tex" />
+	<Elements>
+		<Element name="button.tex" u1="0.001" u2="0.03757421875" v2="0.999" v1="0.979271484375" variant="" />
+		<Element name="button2.tex" u1="0.001" u2="0.03757421875" v2="0.977271484375" v1="0.95754296875" variant="" />
+		<Element name="page_1.tex" u1="0.03957421875" u2="0.351294921875" v2="0.999" v1="0.815453125" variant="" />
+		<Element name="page_2.tex" u1="0.001" u2="0.312720703125" v2="0.813453125" v1="0.62990625" variant="" />
+		<Element name="page_3.tex" u1="0.353294921875" u2="0.665015625" v2="0.999" v1="0.815453125" variant="" />
+		<Element name="page_4.tex" u1="0.314720703125" u2="0.62644140625" v2="0.813453125" v1="0.62990625" variant="" />
+		<Element name="page_5.tex" u1="0.667015625" u2="0.978736328125" v2="0.999" v1="0.815453125" variant="" />
+		<Element name="page_6.tex" u1="0.62844140625" u2="0.940162109375" v2="0.813453125" v1="0.62990625" variant="" />
+		<Element name="page_7.tex" u1="0.001" u2="0.312720703125" v2="0.62790625" v1="0.444359375" variant="" />
+		<Element name="page_8.tex" u1="0.001" u2="0.312720703125" v2="0.442359375" v1="0.2588125" variant="" />
+		<Element name="page_9.tex" u1="0.314720703125" u2="0.62644140625" v2="0.62790625" v1="0.444359375" variant="" />
+	</Elements>
+</Atlas>

@@ -24,3 +24,5 @@ modimport("Key_Modules_Of_FWD_IN_PDT/06_widgets/09_atm_widget.lua")    --- ATM �
 
 modimport("Key_Modules_Of_FWD_IN_PDT/06_widgets/10_advertising.lua")    --- 广告
 
+modimport("Key_Modules_Of_FWD_IN_PDT/06_widgets/11_synopsis.lua")    --- MOD说明书
+

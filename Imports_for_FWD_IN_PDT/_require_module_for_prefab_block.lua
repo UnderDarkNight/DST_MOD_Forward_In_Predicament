@@ -195,6 +195,7 @@ local moduless_name = {
     ["yotb_costumes"] = true,
     ["yotb_sewing"] = true,
 
+    ["prefabs/veggies"] = true,
 }
 for k, v in pairs(moduless_name) do
     -- local ret = pcall(function()

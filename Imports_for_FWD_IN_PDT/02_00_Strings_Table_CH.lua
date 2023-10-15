@@ -158,6 +158,10 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "玻璃牛角",
                 ["inspect_str"] = "可以对牛牛出手了",
             },
+            ["fwd_in_pdt_item_mod_synopsis"] = {
+                ["name"] = "《负重前行》介绍册",
+                ["inspect_str"] = "《负重前行》的内容介绍册",
+            },
         --------------------------------------------------------------------
         ---- 02_fwd_in_pdt_materials
             ["fwd_in_pdt_material_tree_resin"] = {

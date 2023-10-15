@@ -153,6 +153,10 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "Glass Horn",
                 ["inspect_str"] = "Glass Horn",
             },
+            ["fwd_in_pdt_item_mod_synopsis"] = {
+                ["name"] = "Synopsis",
+                ["inspect_str"] = "Synopsis of Forward In Predicament",
+            },
         --------------------------------------------------------------------
         ---- 02_fwd_in_pdt_materials
             ["fwd_in_pdt_material_tree_resin"] = {

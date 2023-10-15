@@ -69,4 +69,18 @@ AddPlayerPostInit(function(inst)
         end)
 
 
+    ----------------------------------------------------------------------------------------------------
+    -- 介绍册
+        if inst.userid and not TheWorld:HasTag("cave") then
+            local synopsis_flag = inst.userid..".synopsis_flag"
+            if not TheWorld.components.fwd_in_pdt_data:Get(synopsis_flag) then
+                TheWorld.components.fwd_in_pdt_data:Set(synopsis_flag,true)
+                inst:DoTaskInTime(1,function()
+                    inst.components.fwd_in_pdt_func:GiveItemByName("fwd_in_pdt_item_mod_synopsis",1)                    
+                end)
+            end
+        end
+    ----------------------------------------------------------------------------------------------------
+
+
 end)
