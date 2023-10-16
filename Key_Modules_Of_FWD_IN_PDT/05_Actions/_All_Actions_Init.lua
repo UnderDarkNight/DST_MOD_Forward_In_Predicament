@@ -33,6 +33,8 @@ modimport("Key_Modules_Of_FWD_IN_PDT/05_Actions/14_container_action_fix_for_fish
 
 modimport("Key_Modules_Of_FWD_IN_PDT/05_Actions/15_special_pick_action.lua")       --- SG动作：特殊采集
 
+modimport("Key_Modules_Of_FWD_IN_PDT/05_Actions/16_shave_action_upgrade.lua")       --- 修改 剃刀相关动作和出发事件
+
 
 
 
