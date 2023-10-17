@@ -71,7 +71,7 @@ AddClassPostConstruct("screens/playerhud",function(self)
             root:Kill()
         end
         ----------------------------------------------------------------
-        local time_num = display_time or time
+        local time_num = type(display_time) == "number" and display_time or time
         ----------------------------------------------------------------
             local main_scale_num = 0.6
         -------- 设置锚点

@@ -42,8 +42,8 @@ AddTile(
     {                                                            --- ground_tile_def    应该是游戏场景内地皮相关的参数
         name="carpet",                                                  --- 地毯遮罩类型   resolvefilepath("levels/tiles/"..trimmed_name, true)
         noise_texture = turf_name,                      --- 地毯花纹，1024x1024 像素.【注意】没有“.tex”后缀。  resolvefilepath("levels/textures/"..trimmed_name, true)
-        runsound="turnoftides/movement/run_carpet",                --- 跑在上面的声音
-        walksound="turnoftides/movement/walk_carpet",               --- 走在上面的声音
+        runsound="dontstarve/movement/run_carpet",                --- 跑在上面的声音
+        walksound="dontstarve/movement/walk_carpet",               --- 走在上面的声音
         snowsound="dontstarve/movement/run_snow",                        --- 积雪覆盖后在上面行走的声音
         mudsound="dontstarve/movement/run_mud",                         --- 用途未知
         

@@ -38,6 +38,8 @@ local files_name = {
 		"fwd_in_pdt_building_paddy_windmill",						--- 稻田风车
 		"fwd_in_pdt_building_pawnshop",								--- 当铺
 		"fwd_in_pdt_building_atm",									--- ATM
+		"fwd_in_pdt_building_bulletin_board",						--- 公告板
+		"fwd_in_pdt_building_hospital",								--- 医院
 	-------------------------------------------------------------------------------------------------
 	---- 08_fwd_in_pdt_resources
 		"fwd_in_pdt_minimap_glacier"	, 							--- 冰川

@@ -43,6 +43,7 @@ local prefabs_name_list = {
     "14_glass_pig_skin",                 -- 玻璃猪皮
     "15_glass_horn",                     -- 玻璃号角
     "16_synopsis",                       -- MOD说明书
+    "17_advertising_leaflet",            -- 广告单
 }
 
 

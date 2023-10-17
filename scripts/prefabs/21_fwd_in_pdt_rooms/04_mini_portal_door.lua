@@ -43,11 +43,12 @@ local function fn()
 
         inst:AddComponent("fwd_in_pdt_com_workable")
         inst.components.fwd_in_pdt_com_workable:SetTestFn(function(inst,doer,right_click)  
-            if TheWorld:HasTag("cave") or doer:HasTag("fwd_in_pdt_tag.vip") or TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
-                return true
-            else
-                return false
-            end
+            -- if TheWorld:HasTag("cave") or doer:HasTag("fwd_in_pdt_tag.vip") or TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
+            --     return true
+            -- else
+            --     return false
+            -- end
+            return true
         end)
         inst.components.fwd_in_pdt_com_workable:SetOnWorkFn(function(inst,doer)
             if not TheWorld.ismastersim then

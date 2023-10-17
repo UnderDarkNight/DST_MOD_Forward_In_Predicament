@@ -162,6 +162,10 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "《负重前行》介绍册",
                 ["inspect_str"] = "《负重前行》的内容介绍册",
             },
+            ["fwd_in_pdt_item_advertising_leaflet"] = {
+                ["name"] = "广告单",
+                ["inspect_str"] = "一张广告",
+            },
         --------------------------------------------------------------------
         ---- 02_fwd_in_pdt_materials
             ["fwd_in_pdt_material_tree_resin"] = {
@@ -484,6 +488,15 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             ["fwd_in_pdt_building_atm"] = {
                 ["name"] = "ATM",
                 ["inspect_str"] = "可以存钱取钱",
+            },
+            ["fwd_in_pdt_building_bulletin_board"] = {
+                ["name"] = "公告栏",
+                ["inspect_str"] = "贴有广告，和任务",
+            },
+            ["fwd_in_pdt_building_hospital"] = {
+                ["name"] = "医院",
+                ["inspect_str"] = "这里居然有一个医院",
+                ["action_str"] = "进入",
             },
         --------------------------------------------------------------------
         ---- 08_fwd_in_pdt_resources

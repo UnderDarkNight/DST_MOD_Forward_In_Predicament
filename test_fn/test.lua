@@ -25,7 +25,7 @@ local flg,error_code = pcall(function()
     -- local mid_tile_x , mid_tile_y = TheWorld.Map:GetTileCoordsAtPoint(x,0,z)
     -- print("tile",mid_tile_x,mid_tile_y)
 
-    -- print("current tile ",TheWorld.Map:GetTileAtPoint(x,y,z))
+    print("current tile ",TheWorld.Map:GetTileAtPoint(x,y,z))
 
     -- print("current tile ",TheWorld.Map:GetTileAtPoint(ThePlayer.Transform:GetWorldPosition()))
     -- TheWorld.Map:SetTile(mid_tile_x,mid_tile_y,4)
@@ -220,8 +220,7 @@ local flg,error_code = pcall(function()
                 -- local TileManager = require("tilemanager")
                 -- print(WORLD_TILES[string.upper("fwd_in_pdt_turf_test")])
     ----------------------------------------------------------------------------------------------------------------
-                local key = "Y7Q5-6SUB-14YL-DGUS"
-                ThePlayer.components.fwd_in_pdt_func:VIP_Player_Input_Key(key)
+
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)

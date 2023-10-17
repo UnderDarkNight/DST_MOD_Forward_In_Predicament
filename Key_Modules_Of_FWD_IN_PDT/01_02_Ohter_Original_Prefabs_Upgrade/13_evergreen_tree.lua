@@ -21,12 +21,15 @@ for k, prefab in pairs(trees) do
         function(inst)
             --------------------------------------------------------------------------
             --- 添加交互组件
-                inst:AddComponent("fwd_in_pdt_com_acceptable")
+                if inst.components.fwd_in_pdt_com_acceptable == nil then
+                    inst:AddComponent("fwd_in_pdt_com_acceptable")
+                end
                 inst.components.fwd_in_pdt_com_acceptable:SetTestFn(function(inst,item,doer,right_click)
                     return ( TheWorld.state.issummer or TheWorld.state.isautumn) and not inst:HasTag("burnt") and item and item.prefab == "razor" or false
                 end)
                 inst.components.fwd_in_pdt_com_acceptable:SetSGAction("fwd_in_pdt_special_pick")
                 inst.components.fwd_in_pdt_com_acceptable:SetActionDisplayStr("evergreen_shave_for_resin",STRINGS.ACTIONS.SHAVE.GENERIC)
+                -- inst.components.fwd_in_pdt_com_acceptable:SetActionDisplayStr("evergreen_shave_for_resin",STRINGS.ACTIONS.MINE)
                 inst.components.fwd_in_pdt_com_acceptable:SetOnAcceptFn(function(inst,item,doer)
                     if not TheWorld.ismastersim then
                         return

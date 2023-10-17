@@ -41,6 +41,8 @@ local function fn()
 
     inst:AddTag("structure")
     inst:AddTag("fwd_in_pdt_building_hotel")
+    inst:AddTag("antlion_sinkhole_blocker")
+
     
     inst.entity:SetPristine()
     -------------------------------------------------------------------------------------

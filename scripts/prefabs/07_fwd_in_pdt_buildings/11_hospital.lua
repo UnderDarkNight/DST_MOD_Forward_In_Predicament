@@ -1,17 +1,17 @@
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
--- 纪念品商店
+-- 材料商店
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 local function GetStringsTable(name)
-    local prefab_name = name or "fwd_in_pdt_building_special_shop"
+    local prefab_name = name or "fwd_in_pdt_building_hospital"
     local LANGUAGE = type(TUNING["Forward_In_Predicament.Language"]) == "function" and TUNING["Forward_In_Predicament.Language"]() or TUNING["Forward_In_Predicament.Language"]
     return TUNING["Forward_In_Predicament.Strings"][LANGUAGE][prefab_name] or {}
 end
 
 local assets =
 {
-    Asset("ANIM", "anim/fwd_in_pdt_building_special_shop.zip"),
+    Asset("ANIM", "anim/fwd_in_pdt_building_hospital.zip"),
 }
 
 local function fn()
@@ -24,7 +24,7 @@ local function fn()
     inst.entity:AddSoundEmitter()
 
     inst.entity:AddMiniMapEntity()
-    inst.MiniMapEntity:SetIcon("fwd_in_pdt_building_special_shop.tex")
+    inst.MiniMapEntity:SetIcon("fwd_in_pdt_building_hospital.tex")
 
     inst.Light:SetIntensity(0.5)		-- 强度
     inst.Light:SetRadius(3)			-- 半径 ，矩形的？？ --- SetIntensity 为1 的时候 成矩形
@@ -32,15 +32,16 @@ local function fn()
     inst.Light:SetColour(180 / 255, 195 / 255, 50 / 255)
     inst.Light:Enable(false)
 
-    MakeObstaclePhysics(inst, 2)
+    MakeObstaclePhysics(inst, 1.5)
 
 
-    inst.AnimState:SetBank("fwd_in_pdt_building_special_shop")
-    inst.AnimState:SetBuild("fwd_in_pdt_building_special_shop")
+    inst.AnimState:SetBank("fwd_in_pdt_building_hospital")
+    inst.AnimState:SetBuild("fwd_in_pdt_building_hospital")
     inst.AnimState:PlayAnimation("idle",true)
-
+    local scale = 2
+    inst.AnimState:SetScale(scale, scale, scale)
     inst:AddTag("structure")
-    inst:AddTag("fwd_in_pdt_building_special_shop")
+    inst:AddTag("fwd_in_pdt_building_hospital")
     inst:AddTag("antlion_sinkhole_blocker")
 
     
@@ -49,10 +50,11 @@ local function fn()
     ---- 添加交互
         inst:AddComponent("fwd_in_pdt_com_workable")
         inst.components.fwd_in_pdt_com_workable:SetTestFn(function(inst,doer,righ_click)
+            -- return not TheWorld.state.isnight
             return true
         end)
         inst.components.fwd_in_pdt_com_workable:SetSGAction("give")
-        inst.components.fwd_in_pdt_com_workable:SetActionDisplayStr("fwd_in_pdt_building_special_shop",GetStringsTable()["action_str"])
+        inst.components.fwd_in_pdt_com_workable:SetActionDisplayStr("fwd_in_pdt_building_hospital",GetStringsTable()["action_str"])
         inst.components.fwd_in_pdt_com_workable:SetCanWorlk(true)
         inst.components.fwd_in_pdt_com_workable:SetOnWorkFn(function(inst,doer)
             if not TheWorld.ismastersim then
@@ -60,10 +62,9 @@ local function fn()
             end
             inst:PushEvent("DOOR_OPEN")
             inst.SoundEmitter:PlaySound("dontstarve/common/pighouse_door")
-
+            
             inst.components.fwd_in_pdt_com_shop:PlayerEnter(doer)
 
-            
             return true
         end)
         
@@ -94,14 +95,12 @@ local function fn()
             inst.AnimState:Show("LIGHT_ON")
             inst.AnimState:Hide("LIGHT_OFF")
             inst.Light:Enable(true)
-            inst.SoundEmitter:PlaySound("dontstarve/pig/pighut_lighton")
+
         end)
         inst:ListenForEvent("LIGHT_OFF",function()
             inst.AnimState:Hide("LIGHT_ON")
             inst.AnimState:Show("LIGHT_OFF")
             inst.Light:Enable(false)
-            inst.SoundEmitter:PlaySound("dontstarve/pig/pighut_lightoff")
-
         end)
 
         local function SwitchTheLight(inst)
@@ -148,18 +147,15 @@ local function fn()
     -------------------------------------------------------------------------------------
     ----- 商店
         inst:AddComponent("fwd_in_pdt_com_shop")
-        inst.components.fwd_in_pdt_com_shop:SetListA(require("prefabs/07_fwd_in_pdt_buildings/02_special_shop_items_a"))
-        inst.components.fwd_in_pdt_com_shop:SetNumA(5)
-        inst.components.fwd_in_pdt_com_shop:SetListB(require("prefabs/07_fwd_in_pdt_buildings/02_special_shop_items_b"))
+        inst.components.fwd_in_pdt_com_shop:SetListA(require("prefabs/07_fwd_in_pdt_buildings/11_hospital_items_a"))
+        inst.components.fwd_in_pdt_com_shop:SetNumA(3)
+        inst.components.fwd_in_pdt_com_shop:SetListB(require("prefabs/07_fwd_in_pdt_buildings/11_hospital_items_b"))
         inst.components.fwd_in_pdt_com_shop:SetNumB(5)
 
 
         inst.components.fwd_in_pdt_com_shop:Refresh_Items_List()
-
         inst:WatchWorldState("cycles",function()
-            if TheWorld.state.cycles % 5 == 0 then  ---
-                inst.components.fwd_in_pdt_com_shop:Refresh_Items_List()
-            end
+            inst.components.fwd_in_pdt_com_shop:Refresh_Items_List()
         end)
     -------------------------------------------------------------------------------------
 
@@ -167,4 +163,4 @@ local function fn()
 end
 
 
-return Prefab("fwd_in_pdt_building_special_shop", fn, assets)
+return Prefab("fwd_in_pdt_building_hospital", fn, assets)

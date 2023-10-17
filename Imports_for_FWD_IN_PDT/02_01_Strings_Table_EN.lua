@@ -157,6 +157,10 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "Synopsis",
                 ["inspect_str"] = "Synopsis of Forward In Predicament",
             },
+            ["fwd_in_pdt_item_advertising_leaflet"] = {
+                ["name"] = "Advertising Leaflet",
+                ["inspect_str"] = "An Advertising Leaflet",
+            },
         --------------------------------------------------------------------
         ---- 02_fwd_in_pdt_materials
             ["fwd_in_pdt_material_tree_resin"] = {
@@ -476,6 +480,16 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             ["fwd_in_pdt_building_atm"] = {
                 ["name"] = "ATM",
                 ["inspect_str"] = "It is possible to save and withdraw money",
+            },
+            ["fwd_in_pdt_building_bulletin_board"] = {
+                ["name"] = "Bulletin Board",
+                ["inspect_str"] = "There are advertisements posted, and tasks",
+            },
+            ["fwd_in_pdt_building_hospital"] = {
+                ["name"] = "Hospital",
+                ["inspect_str"] = "There's actually a hospital here.",
+                ["action_str"] = "Enter",
+
             },
         --------------------------------------------------------------------
         ---- 08_fwd_in_pdt_resources
