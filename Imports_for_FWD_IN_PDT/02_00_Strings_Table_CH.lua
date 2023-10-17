@@ -499,6 +499,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "这里居然有一个医院",
                 ["action_str"] = "进入",
             },
+            ["fwd_in_pdt_building_doll_clamping_machine"] = {
+                ["name"] = "夹娃娃机",
+                ["inspect_str"] = "可以试试手气",
+                ["action_str"] = "投入",
+            },
         --------------------------------------------------------------------
         ---- 08_fwd_in_pdt_resources
             ["fwd_in_pdt_resource_glacier_huge"] = {

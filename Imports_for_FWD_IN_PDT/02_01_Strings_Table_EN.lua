@@ -491,7 +491,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "Hospital",
                 ["inspect_str"] = "There's actually a hospital here.",
                 ["action_str"] = "Enter",
-
+            },
+            ["fwd_in_pdt_building_doll_clamping_machine"] = {
+                ["name"] = "Doll Clamping Machine",
+                ["inspect_str"] = "Try your luck.",
+                ["action_str"] = "Invest in",
             },
         --------------------------------------------------------------------
         ---- 08_fwd_in_pdt_resources

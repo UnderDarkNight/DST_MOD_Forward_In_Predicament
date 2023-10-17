@@ -40,6 +40,7 @@ local files_name = {
 		"fwd_in_pdt_building_atm",									--- ATM
 		"fwd_in_pdt_building_bulletin_board",						--- 公告板
 		"fwd_in_pdt_building_hospital",								--- 医院
+		"fwd_in_pdt_building_doll_clamping_machine",				--- 娃娃机
 	-------------------------------------------------------------------------------------------------
 	---- 08_fwd_in_pdt_resources
 		"fwd_in_pdt_minimap_glacier"	, 							--- 冰川

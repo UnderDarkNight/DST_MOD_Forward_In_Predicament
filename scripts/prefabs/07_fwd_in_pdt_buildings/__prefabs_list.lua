@@ -30,6 +30,7 @@ local prefabs_name_list = {
     "10_bulletin_board",             -- 公告板
     
     "11_hospital",                   -- 医院
+    "12_doll_clamping_machine",      -- 娃娃机
 }
 
 
