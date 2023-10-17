@@ -160,6 +160,8 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             ["fwd_in_pdt_item_advertising_leaflet"] = {
                 ["name"] = "Advertising Leaflet",
                 ["inspect_str"] = "An Advertising Leaflet",
+                ["name2"] = " ( Read )"
+
             },
         --------------------------------------------------------------------
         ---- 02_fwd_in_pdt_materials

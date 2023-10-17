@@ -2,11 +2,11 @@
 --- MOD 广告单
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
--- local function GetStringsTable(name)
---     local prefab_name = name or "fwd_in_pdt_item_advertising_leaflet"
---     local LANGUAGE = type(TUNING["Forward_In_Predicament.Language"]) == "function" and TUNING["Forward_In_Predicament.Language"]() or TUNING["Forward_In_Predicament.Language"]
---     return TUNING["Forward_In_Predicament.Strings"][LANGUAGE][prefab_name] or {}
--- end
+local function GetStringsTable(name)
+    local prefab_name = name or "fwd_in_pdt_item_advertising_leaflet"
+    local LANGUAGE = type(TUNING["Forward_In_Predicament.Language"]) == "function" and TUNING["Forward_In_Predicament.Language"]() or TUNING["Forward_In_Predicament.Language"]
+    return TUNING["Forward_In_Predicament.Strings"][LANGUAGE][prefab_name] or {}
+end
 
 local assets =
 {
@@ -56,7 +56,7 @@ local function fn()
             if doer then
                 doer.components.fwd_in_pdt_func:RPC_PushEvent2("fwd_in_pdt_event.display_ad",30)
             end
-
+            inst:PushEvent("read")
             return true
         end)
         inst.components.fwd_in_pdt_com_workable:SetSGAction("give")
@@ -76,6 +76,8 @@ local function fn()
     -- inst.components.inventoryitem:ChangeImageName("scandata")
     inst.components.inventoryitem.imagename = "fwd_in_pdt_item_advertising_leaflet"
     inst.components.inventoryitem.atlasname = "images/inventoryimages/fwd_in_pdt_item_advertising_leaflet.xml"
+
+    inst:AddComponent("fwd_in_pdt_data")
 
 
     MakeHauntableLaunch(inst)
@@ -100,6 +102,37 @@ local function fn()
         end
         inst:ListenForEvent("on_landed",shadow_init)
         shadow_init(inst)
+    -------------------------------------------------------------------
+    --- 读过后能烧出币
+        inst:ListenForEvent("read",function()
+            inst.components.fwd_in_pdt_data:Set("read",true)
+            inst.components.named:SetName(GetStringsTable()["name"] .. GetStringsTable()["name2"])
+            inst:AddTag("read")
+        end)
+        inst:DoTaskInTime(0,function()
+            if inst.components.fwd_in_pdt_data:Get("read") then
+                inst:PushEvent("read")
+            end
+        end)
+
+        inst:ListenForEvent("temp_burnt",function(_,pt)
+            if inst:HasTag("read") then
+                TheWorld.components.fwd_in_pdt_func:Throw_Out_Items({
+                    target = pt,
+                    name = "fwd_in_pdt_item_jade_coin_green",
+                    num = 2,
+                })
+            end
+        end)
+        inst:ListenForEvent("fueltaken",function(_,_table)  --- 被当做燃料
+            if _table and _table.taker then
+                inst:PushEvent("temp_burnt",Vector3(_table.taker.Transform:GetWorldPosition()))
+                print("fake error fueltaken")
+            end
+        end)
+        inst:ListenForEvent("onburnt",function() -- 被点火
+            inst:PushEvent("temp_burnt",Vector3(inst.Transform:GetWorldPosition()))            
+        end)
     -------------------------------------------------------------------
 
     return inst
