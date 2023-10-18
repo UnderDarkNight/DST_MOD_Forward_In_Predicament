@@ -231,6 +231,10 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "Glass Beefalo Statue",
                 ["inspect_str"] = "The statue is so lifelike ."
             },
+            ["fwd_in_pdt_equipment_huge_soybean"] = {
+                ["name"] = "Huge Soybean Pods",
+                ["inspect_str"] = "Very Huge"
+            },
         --------------------------------------------------------------------
         ---- 04_fwd_in_pdt_foods
             ["fwd_in_pdt_food_raw_milk"] = {
@@ -564,6 +568,14 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             ["fwd_in_pdt_plant_mango_tree_item"] = {
                 ["name"] = "Mango Tree Sprout",
                 ["inspect_str"] = "Can be used to grow mango trees",
+            },
+            ["fwd_in_pdt_plant_bean"] = {
+                ["name"] = "Soybean Plant",
+                ["inspect_str"] = "Rich in vegetable protein",
+            },
+            ["fwd_in_pdt_plant_bean_seed"] = {
+                ["name"] = "Bean Seeds",
+                ["inspect_str"] = "It can be used for planting.",
             },
         --------------------------------------------------------------------
         ---- 10_fwd_in_pdt_minerals

@@ -239,6 +239,10 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "玻璃牛雕像",
                 ["inspect_str"] = "这雕像栩栩如生"
             },
+            ["fwd_in_pdt_equipment_huge_soybean"] = {
+                ["name"] = "巨大豆荚",
+                ["inspect_str"] = "这豆荚很大"
+            },
         --------------------------------------------------------------------
         ---- 04_fwd_in_pdt_foods
             ["fwd_in_pdt_food_raw_milk"] = {
@@ -571,6 +575,14 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             ["fwd_in_pdt_plant_mango_tree_item"] = {
                 ["name"] = "芒果树穂",
                 ["inspect_str"] = "可以用来种植芒果树",
+            },
+            ["fwd_in_pdt_plant_bean"] = {
+                ["name"] = "大豆",
+                ["inspect_str"] = "含有丰富的植物蛋白",
+            },
+            ["fwd_in_pdt_plant_bean_seed"] = {
+                ["name"] = "大豆种子",
+                ["inspect_str"] = "可以拿来种植",
             },
         --------------------------------------------------------------------
         ---- 10_fwd_in_pdt_minerals

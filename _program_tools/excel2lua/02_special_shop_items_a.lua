@@ -47,5 +47,13 @@ return{
 		["num2give"] = 1.0,
 		["image"] = "",
 		["atlas"] = ""
+	},
+	{
+		["name"] = "大豆种子",
+		["prefab"] = "fwd_in_pdt_plant_bean_seed",
+		["cost"] = 30.0,
+		["num2give"] = 1.0,
+		["image"] = "",
+		["atlas"] = ""
 	}
 }
