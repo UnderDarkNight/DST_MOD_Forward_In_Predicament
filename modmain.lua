@@ -268,7 +268,7 @@ modimport("Imports_for_FWD_IN_PDT/__All_imports_init.lua")	---- 所有 import  �
 				-- end
 			-------------------------------------------------------------------------------
 			AddPlayerPostInit(function(player_inst)	---- 玩家进入后再执行。检查。
-				if not TheWorld.ismastersim then
+				if not TheWorld.ismastersim or TUNING["Forward_In_Predicament.Config"].compatibility_mode then
 					return
 				end
 				if block_check_pass__flag then
