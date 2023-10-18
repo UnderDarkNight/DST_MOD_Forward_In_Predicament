@@ -152,7 +152,7 @@ local function fn()
             return
         end
         ------- 概率额外消耗耐久
-            if math.random(1000) < 200 then
+            if math.random(1000) < 50 then
                 inst.components.finiteuses:Use()
             end
         -------- 一定概率斩杀影怪

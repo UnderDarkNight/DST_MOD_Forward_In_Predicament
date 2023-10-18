@@ -90,13 +90,6 @@ local function fn()
 
                 ·以下光环数据为每天的量
 
-                  0    <=>   20   <=>    40    <=>   60   <=>    80     <=>     100
-                 -10          0          +15        +15          0              -20  
-
-
-
-                 y = ( k·x + b )/100
-
 
                 · 每天会扣除10血糖，夏季每天扣除20血糖。
                 · 每次 0.1     0.2
@@ -109,17 +102,11 @@ local function fn()
                 local value,percent,max = self.com:GetCurrent_Glucose()
                 local delta_num = 0
                 if value <= 20 then
-                    delta_num = ( 0.5*value - 10)/100
-                elseif value < 40 then
-                    delta_num = ( 0.75*value -15)/100
-                elseif value <= 60 then
-                    delta_num = 15/100
-                elseif value <= 80 then
-                    delta_num = ( -0.75 * value + 60)/100
-                elseif value < 100 then
-                    delta_num = ( -1 * value + 80)/100
+                    delta_num = -0.1
+                elseif value >= 80 then
+                    delta_num = -0.2
                 else
-                    delta_num = -20/100
+                    delta_num = 0.15
                 end
                 -- if self.com.DEBUGGING_MODE then
                 --     print("本周期血糖值为",value,"贡献光环",delta_num)
@@ -154,32 +141,25 @@ local function fn()
                     低血糖惩罚区： 饥饿值每秒-1点，每2秒+1点san
                     高血糖惩罚区： 每2秒降低1点san
                     完美血糖奖励区：每5s + 1 血，每2s +1 San
-                    其余区域 没任何奖惩
             ]]--
-            if num < 20 then  -------------------------------------------------------------------------------------------------------------------------
+            if num <= 20 then  -------------------------------------------------------------------------------------------------------------------------
 
                                             self:Add_Low_Value_Task()
                                             self:Remove_Perfect_Value_Task()
                                             self:Remove_High_Value_Task()
 
-            elseif num >= 40 and num <=60 then -------------------------------------------------------------------------------------------------------------------------
-               
-                                            self:Add_Perfect_Value_Task()
-                                            self:Remove_Low_Value_Task()
-                                            self:Remove_High_Value_Task()
+            elseif num >= 80 then -------------------------------------------------------------------------------------------------------------------------
 
-            elseif num > 80 then    -------------------------------------------------------------------------------------------------------------------------
-                                            
                                             self:Add_High_Value_Task()
                                             self:Remove_Low_Value_Task()
                                             self:Remove_Perfect_Value_Task()
 
-            else    -------------------------------------------------------------------------------------------------------------------------
 
+            else    -------------------------------------------------------------------------------------------------------------------------
+                                            
+                                            self:Add_Perfect_Value_Task()
                                             self:Remove_Low_Value_Task()
-                                            self:Remove_Perfect_Value_Task()
                                             self:Remove_High_Value_Task()
-            
 
             end
 
@@ -195,10 +175,10 @@ local function fn()
                             return
                         end 
                         if player.components.sanity then
-                            player.components.sanity:DoDelta(0.5,true)
+                            player.components.sanity:DoDelta(-0.2,true)
                         end
                         if player.components.hunger then
-                            player.components.hunger:DoDelta(-1,true)
+                            player.components.hunger:DoDelta(-0.1,true)
                         end
                     end)
                     if self.com.DEBUGGING_MODE then
@@ -220,7 +200,7 @@ local function fn()
                             return
                         end 
                         if player.components.sanity then
-                            player.components.sanity:DoDelta(-0.5,true)
+                            player.components.sanity:DoDelta(-0.1,true)
                         end
                     end)
                     if self.com.DEBUGGING_MODE then

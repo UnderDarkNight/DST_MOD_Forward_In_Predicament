@@ -89,7 +89,7 @@ local function fn()
             --[[ 
                     · 按照每天OnUpdate执行100次计算
 
-                    · VC 每天 -5 点，每次 OnUpdate 则为 -0.05
+                    · VC 每天 -16 点，每次 OnUpdate 则为 -0.16
 
 
                     · 贡献光环函数说明：
@@ -102,7 +102,7 @@ local function fn()
             ]]--                
             ------------------------------------------
             if self:Allow_Value_OnUpdate_Go_Down() then
-                self.com:DoDelta_Vitamin_C(-0.05)
+                self.com:DoDelta_Vitamin_C(-0.16)
             end
 
             local value ,percent,max = self.com:GetCurrent_Vitamin_C()

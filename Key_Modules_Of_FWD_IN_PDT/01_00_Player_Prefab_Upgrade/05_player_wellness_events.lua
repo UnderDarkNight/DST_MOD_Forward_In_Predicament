@@ -115,7 +115,7 @@ AddPlayerPostInit(function(inst)
                 local num = 0
                 local food_base_prefab = food.nameoverride or food.prefab 
                 if food:HasTag("honeyed") then
-                    num = 2
+                    num = 10
                 elseif cooking_ingredients[food_base_prefab] and cooking_ingredients[food_base_prefab].tags and cooking_ingredients[food_base_prefab].tags["sweetener"] then
                     num = 10
                 elseif food.components.edible and food.components.edible.honeyvalue then
@@ -144,10 +144,21 @@ AddPlayerPostInit(function(inst)
                     num = prefab_list_with_vc_value[food_base_prefab]
                 end
                 -------------------------------------------------------------------
-
+                --- 每天只能靠食物增加一次VC
+                    if not inst.components.fwd_in_pdt_wellness:Get("vc_value_by_food_blocked") then
+                        inst.components.fwd_in_pdt_wellness:Set("vc_value_by_food_blocked",true)                        
+                    else
+                        return 0
+                    end
+                -------------------------------------------------------------------
 
                 return num
             end
+            ---- 每天只能靠食物增加一次VC
+                inst:WatchWorldState("cycles", function()
+                    inst.components.fwd_in_pdt_wellness:Set("vc_value_by_food_blocked",false)
+                end)
+
         --------------- 特殊食物特殊事件
             local function special_event_by_food(inst,food)
                 local food_base_prefab = food.nameoverride or food.prefab  --- --- 得到加料食物的基础名字

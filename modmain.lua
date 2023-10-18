@@ -258,14 +258,14 @@ modimport("Imports_for_FWD_IN_PDT/__All_imports_init.lua")	---- 所有 import  �
 			end
 			-------------------------------------------------------------------------------
 			---- 加载的时候先检查一次
-				if not TUNING["Forward_In_Predicament.Config"].compatibility_mode then
-						if not need_2_block then	--- 检查工坊 id 
-							need_2_block,block_reason_str = block_by_workshop_id()
-						end
-						if not need_2_block then	--- 检查 加载的东西
-							need_2_block,block_reason_str = block_by_prefab_loaded()
-						end
-				end
+				-- if not TUNING["Forward_In_Predicament.Config"].compatibility_mode then
+				-- 		if not need_2_block then	--- 检查工坊 id 
+				-- 			need_2_block,block_reason_str = block_by_workshop_id()
+				-- 		end
+				-- 		if not need_2_block then	--- 检查 加载的东西
+				-- 			need_2_block,block_reason_str = block_by_prefab_loaded()
+				-- 		end
+				-- end
 			-------------------------------------------------------------------------------
 			AddPlayerPostInit(function(player_inst)	---- 玩家进入后再执行。检查。
 				if not TheWorld.ismastersim then

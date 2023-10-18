@@ -162,7 +162,7 @@ local function fn()
 
 
     inst:AddComponent("perishable")
-    inst.components.perishable:SetPerishTime(TUNING.PERISH_MED*0.8)
+    inst.components.perishable:SetPerishTime(TUNING.PERISH_MED*1.5)
     inst.components.perishable:StartPerishing()
     inst.components.perishable.onperishreplacement = "spoiled_food"
     inst.components.perishable.onreplacedfn = function(inst,item)   --- 返还 核心

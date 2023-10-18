@@ -177,7 +177,7 @@ end
 --------------------------------------------------------------------------------------------------------------------------------------------
     Add_Recipe_2_Machine({
         prefab = "fwd_in_pdt_food_universal_antidote",
-        Ingredients = { Ingredient("fwd_in_pdt_material_snake_skin", 1),Ingredient("stinger", 2),Ingredient("fwd_in_pdt_material_realgar", 1),Ingredient("froglegs", 5)  },
+        Ingredients = { Ingredient("fwd_in_pdt_material_snake_skin", 1),Ingredient("stinger", 2),Ingredient("fwd_in_pdt_material_realgar", 1),Ingredient("froglegs", 2)  },
         atlas = "images/inventoryimages/fwd_in_pdt_food_universal_antidote.xml",
         image = "fwd_in_pdt_food_universal_antidote.tex",
     })

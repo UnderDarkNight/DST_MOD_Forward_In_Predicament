@@ -96,17 +96,18 @@ configuration_options =
         } or  {{description = "", data = false}},
         default = false,
     },
-    {
-        name = "compatibility_mode",
-        label = Check_Mod_is_Internal_Version() and "尝试兼容其他MOD" or "Compatibility mode with try",
-        hover = Check_Mod_is_Internal_Version() and "尝试兼容其他未知MOD" or "Try to be compatible with other unknown mods",
-        options = Check_Mod_is_Internal_Version() and 
-        {
-          {description = IsChinese() and "关" or "OFF", data = false},
-          {description = IsChinese() and "开" or "ON", data = true},
-        } or  {{description = "", data = false}},
-        default = false,
-    },
+    -- {
+    --     name = "compatibility_mode",
+    --     label = Check_Mod_is_Internal_Version() and "尝试兼容其他MOD" or "Compatibility mode with try",
+    --     hover = Check_Mod_is_Internal_Version() and "尝试兼容其他未知MOD" or "Try to be compatible with other unknown mods",
+    --     options = Check_Mod_is_Internal_Version() and 
+    --     {
+    --       {description = IsChinese() and "关" or "OFF", data = false},
+    --       {description = IsChinese() and "开" or "ON", data = true},
+    --     } or  {{description = "", data = false}},
+    --     default = false,
+    -- },
+    
     -- {
     --   name = "",
     --   label = "隔断测试2",

@@ -180,7 +180,7 @@ local function fn()
             return
         end
         -------- 额外概率掉耐久
-            if math.random(1000) < 300 then
+            if math.random(1000) < 50 then
                 inst.components.finiteuses:Use()
             end
         -------- 数据初始化

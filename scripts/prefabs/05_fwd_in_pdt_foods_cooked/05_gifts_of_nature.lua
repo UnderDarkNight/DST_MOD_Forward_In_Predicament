@@ -50,7 +50,7 @@ local function fn()
         if eater and eater:HasTag("player") then
             -- 血糖值增加10
             if eater.components.fwd_in_pdt_wellness then
-                eater.components.fwd_in_pdt_wellness:DoDelta_Glucose(10)
+                eater.components.fwd_in_pdt_wellness:DoDelta_Glucose(20)
                 eater.components.fwd_in_pdt_wellness:ForceRefresh()
             end
         end
@@ -62,7 +62,7 @@ local function fn()
     -- inst.components.perishable.onperishreplacement = "spoiled_food" -- 腐烂后变成腐烂食物
 
     inst.components.edible.hungervalue = 0
-    inst.components.edible.sanityvalue = -50
+    inst.components.edible.sanityvalue = -30
     inst.components.edible.healthvalue = -10
 
     inst:AddComponent("stackable") -- 可堆叠

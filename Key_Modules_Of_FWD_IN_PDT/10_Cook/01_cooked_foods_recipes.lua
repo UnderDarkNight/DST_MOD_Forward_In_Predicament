@@ -182,7 +182,7 @@
         priority = 10, -- 食谱优先级
         foodtype = GLOBAL.FOODTYPE.GOODIES, --料理的食物类型，比如这里定义的是肉类
         hunger = 0 , --吃后回饥饿值
-        sanity = -50 , --吃后回精神值
+        sanity = -30 , --吃后回精神值
         health = -10 , --吃后回血值
         stacksize = 1,  --- 每次烹饪得到个数
         perishtime = nil , --腐烂时间

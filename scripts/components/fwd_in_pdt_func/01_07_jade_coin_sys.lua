@@ -81,7 +81,7 @@ local function main_com(self)
                                 if need_black_coins <= 0 then
                                     return
                                 end
-                                if item_inst.components.stackable >= need_black_coins then
+                                if item_inst.components.stackable.stacksize >= need_black_coins then
                                     item_inst.components.stackable:Get(need_black_coins):Remove()
                                     need_black_coins = 0
                                 else

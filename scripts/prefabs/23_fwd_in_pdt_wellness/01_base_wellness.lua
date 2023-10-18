@@ -141,7 +141,7 @@ local function fn()
                 return
             end
 
-            if num == 0 then
+            if num <= 120 then
                 self:Add_Final_Radiance_Buff_By_CD()                
             end
 
@@ -165,12 +165,14 @@ local function fn()
                 end
             ----------------------- 160 以下
                 if num < 160 then
-                    self:Add_Health_Down_Task()
+                    -- self:Add_Health_Down_Task()
+                    self:Add_Wellness_Down_Task()
                 else
-                    self:Remove_Health_Down_Task()
+                    -- self:Remove_Health_Down_Task()
+                    self:Remove_Wellness_Down_Task()
                 end
-            ----------------------- 100 以下
-                if num < 100 then
+            ----------------------- 140 以下
+                if num < 140 then
                     self:Add_Speed_Down_Mult()
                 else
                     self:Remove_Speed_Down_Mult()
@@ -186,7 +188,7 @@ local function fn()
             function inst:Add_Speed_Up_Mult()
                 if not self._____speed_up_mult_added_flag then
                     self._____speed_up_mult_added_flag = true
-                    self.player.components.locomotor:SetExternalSpeedMultiplier(self,self.prefab,1.1)
+                    self.player.components.locomotor:SetExternalSpeedMultiplier(self,self.prefab,1.2)
                 end
             end    
             function inst:Remove_Speed_Up_Mult()
@@ -208,7 +210,7 @@ local function fn()
                     self.player.components.combat.externaldamagemultipliers:RemoveModifier(self)
                 end
             end
-        ---- 5秒扣一点 San 。 
+        ---- 10秒扣一点 San 。 
             function inst:Add_Sanity_Down_Task()
                 if self:HasTag("Final_Radiance") then
                     return
@@ -216,7 +218,7 @@ local function fn()
                 if self.__sanity_down_task == nil then
                     self.__sanity_down_task = self.player:DoPeriodicTask(1,function(player)
                         if player.components.sanity then
-                            player.components.sanity:DoDelta(-0.2,true)
+                            player.components.sanity:DoDelta(-0.1,true)
                         end
                     end)
                 end
@@ -227,7 +229,7 @@ local function fn()
                     self.__sanity_down_task = nil
                 end
             end
-        ---- 每2秒扣1血
+        ---- 每10秒扣1血
             function inst:Add_Health_Down_Task()
                 if self:HasTag("Final_Radiance") then
                     return
@@ -235,7 +237,7 @@ local function fn()
                 if self.__health_down_task == nil then
                     self.__health_down_task = self.player:DoPeriodicTask(1,function(player)
                         if player.components.health then
-                            player.components.health:DoDelta(-0.5,true,self.prefab)
+                            player.components.health:DoDelta(-0.1,true,self.prefab)
                             ------------------------------------------
                             -- --- 特殊死亡通告
                             --     local str = GetStringsTable()["health_down_death_announce"]
@@ -255,6 +257,24 @@ local function fn()
                 end
             end
         
+        ---- 每10秒掉1点体质
+            function inst:Add_Wellness_Down_Task()
+                if self:HasTag("Final_Radiance") then
+                    return
+                end
+                if self.__wellness_down_task == nil then
+                    self.__wellness_down_task = self.player:DoPeriodicTask(1,function()
+                        self.com:DoDelta_Wellness(-0.1)
+                    end)
+                end
+            end
+            function inst:Remove_Wellness_Down_Task()
+                if self.__wellness_down_task then
+                    self.__wellness_down_task:Cancel()
+                    self.__wellness_down_task = nil
+                end
+            end
+        
         ---- 移动速度减缓50%
             function inst:Add_Speed_Down_Mult()
                 if self:HasTag("Final_Radiance") then
@@ -262,7 +282,7 @@ local function fn()
                 end
                 if not self.__speed_down_mult_added_flag then
                     self.__speed_down_mult_added_flag = true
-                    self.player.components.locomotor:SetExternalSpeedMultiplier(self,self.prefab,0.5)
+                    self.player.components.locomotor:SetExternalSpeedMultiplier(self,self.prefab,0.8)
                 end
             end
             function inst:Remove_Speed_Down_Mult()
@@ -305,17 +325,17 @@ local function fn()
                     end
                     self.player:ListenForEvent("onhitother",self._player_final_radiance_event__onhitother)
 
-                    self.player:DoTaskInTime(180,function() --- 180s 后移除 增益效果
+                    self.player:DoTaskInTime(240,function() --- 240s 后移除 增益效果
                         self:RemoveTag("Final_Radiance")
                         self.player:RemoveEventCallback("onhitother",self._player_final_radiance_event__onhitother)
                         self._player_final_radiance_event__onhitother = nil
 
-                        ------------ 扣除血量 20% ，扣除上限 20%
+                        ------------ 扣除上限 20%
                             if self.player.components.health then
-                                local max_health = self.player.components.health.maxhealth
-                                local dmg = -1 * max_health * 0.2
-
-                                self.player.components.health:DoDelta(dmg,nil,self.prefab)
+                                -- 扣除血量 20% ，
+                                -- local max_health = self.player.components.health.maxhealth
+                                -- local dmg = -1 * max_health * 0.2
+                                -- self.player.components.health:DoDelta(dmg,nil,self.prefab)
                                 self.player.components.health:DeltaPenalty(0.2)
                             end
                         if self.com.DEBUGGING_MODE then
