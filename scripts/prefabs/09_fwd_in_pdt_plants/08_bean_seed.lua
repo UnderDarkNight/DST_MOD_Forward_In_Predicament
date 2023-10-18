@@ -28,6 +28,7 @@ local function fn()
     inst.AnimState:PlayAnimation("seed")
     -- local scale = 0.6
     -- inst.AnimState:SetScale(scale,scale,scale)
+    inst:AddTag("show_spoilage")
 
     inst.entity:SetPristine()
     -------------------------------------------------------------------
