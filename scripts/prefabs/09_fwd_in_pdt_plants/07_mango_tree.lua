@@ -226,7 +226,7 @@ local function fn()
             if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
                 return 10
             end
-            return 10*TUNING.TOTAL_DAY_TIME
+            return 3*TUNING.TOTAL_DAY_TIME
         end
         ---------------------
         --[[ 
