@@ -271,10 +271,14 @@ AddClassPostConstruct("screens/playerhud",function(self)
                     cd_key_input_enter_button:AddChild(Text(CODEFONT,45,"Enter",{ 255/255 , 255/255 ,255/255 , 1}))
                     cd_key_input_enter_button:SetOnDown(function()
                         print("input cd-key",text_box:GetLineEditString())
-                        ThePlayer.replica.fwd_in_pdt_func:RPC_PushEvent2("fwd_in_pdt_event.atm_enter_cd_key",tostring(text_box:GetLineEditString()))
+                        if not text_box:GetLineEditString() == "XXXX-XXXX-XXXX-XXXX" then
+                            ThePlayer.replica.fwd_in_pdt_func:RPC_PushEvent2("fwd_in_pdt_event.atm_enter_cd_key",tostring(text_box:GetLineEditString()))
+                        else
+                            print("error with default input cd-key   XXXX-XXXX-XXXX-XXXX")
+                        end
                         self.fwd_in_pdt_atm_widget_inst:DoTaskInTime(0.5,function()
                             hud:fwd_in_pdt_atm_close()                            
-                        end)                     
+                        end)
                     end)
             ------------------------------------------------------------
 
