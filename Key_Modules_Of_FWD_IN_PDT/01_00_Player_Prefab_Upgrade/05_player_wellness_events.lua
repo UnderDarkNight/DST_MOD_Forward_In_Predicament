@@ -139,6 +139,17 @@ AddPlayerPostInit(function(inst)
                     ["pineananas_cooked"] = 20,          --- 烤松萝
                     ["dish_murmurananas"] = 30,          --- 松萝咕咾肉
                     ["dish_sosweetjarkfruit"] = 40,          --- 甜到裂开的松萝蜜
+                    ["carrot"]  = 20,
+                    ["carrot_cooked"] = 20,
+                    ["berries"] = 10,
+                    ["berries_cooked"] = 10,
+                    ["dragonfruit"] = 20,
+                    ["dragonfruit_cooked"] = 20,
+                    ["fwd_in_pdt_food_mango_green"] = 20,
+                    ["wormlight_lesser"] = 20,
+                    ["evergreen"] = 20,
+                    ["cave_fern"]   = 10,
+
                 }
                 if prefab_list_with_vc_value[food_base_prefab] then
                     num = prefab_list_with_vc_value[food_base_prefab]
