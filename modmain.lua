@@ -131,28 +131,7 @@ modimport("Imports_for_FWD_IN_PDT/__All_imports_init.lua")	---- 所有 import  �
 				return false,""
 			end
 
-			-- local function block_by_prefab_loaded__old()		--- 检查某些 prefab 被加载了
-			-- 	local prefab_check_list = {
-			-- 		-- "fangcunhill","pigsy","monkey_king","book_myth",		-- 神话书说的某些prefab
-			-- 		"ancient_robots_assembly","rainforesttree_cone","cave_exit_vulcao",					-- 三合一 模组的东西。
-			-- 	}
-			-- 	for k,prefab_name  in pairs(prefab_check_list) do
-			-- 		if PrefabExists(tostring(prefab_name)) then
-			-- 			print("fwd_in_pdt error : Loading with the mod in the blocked list")							
-			-- 			local str = mod_display_name .. " : ".. tostring(Get_Block_Reason("prefab_block"))
-			-- 			if STRINGS.NAMES[string.upper(prefab_name)] then
-			-- 				str = str .. STRINGS.NAMES[string.upper(prefab_name)]
-			-- 			else
-			-- 				str = str .. "NONE"
-			-- 			end
-			-- 			return true,str
-			-- 		end
-			-- 	end
-			-- 	return false,""
-			-- end
-
-			local function block_by_prefab_loaded()  --- 检查某些 prefab 被加载了
-				-- print("info  start check block_by_prefab_loaded")
+			local function block_by_prefab_loaded()		--- 检查某些 prefab 被加载了
 				local blocked_prefab_name_list = {
 					-- ["fangcunhill"] = true,						-- 神话书说 的方寸山
 					-- ["pigsy"] = true,							-- 神话书说的 猪八戒
@@ -161,50 +140,76 @@ modimport("Imports_for_FWD_IN_PDT/__All_imports_init.lua")	---- 所有 import  �
 					["cave_exit_vulcao"]= true,					-- 三合一 模组的东西。
 
 				}
-				------ 代码参考来自 mods.lua
-				local runmodfn = function(fn,mod,modtype)
-					return (function(...)
-						if fn then
-							local status, r = xpcall( function() return fn(unpack(arg)) end, debug.traceback)
-							if not status then
-								pcall(function()
-									print("error calling "..modtype.." in mod "..ModInfoname(mod.modname)..": \n"..(r or ""))
-									ModManager:RemoveBadMod(mod.modname,r)
-									ModManager:DisplayBadMods()
-								end)
-								
-							else
-								return r
-							end
+				for prefab_name,flag  in pairs(blocked_prefab_name_list) do
+					if PrefabExists(tostring(prefab_name)) then
+						print("fwd_in_pdt error : Loading with the mod in the blocked list")							
+						local str = mod_display_name .. " : ".. tostring(Get_Block_Reason("prefab_block"))
+						if STRINGS.NAMES[string.upper(prefab_name)] then
+							str = str .. STRINGS.NAMES[string.upper(prefab_name)]
+						else
+							str = str .. "NONE"
 						end
-					end)
-				end
-
-				local loaded_modnames = ModManager:GetEnabledModNames() or {}
-				for i, modname in pairs(loaded_modnames) do
-					-- print("++++",modname)
-					local mod = ModManager:GetMod(modname)
-					if mod and mod.PrefabFiles then		--- 得到每个MOD的 PrefabFiles 表
-							for _, prefab_path in ipairs(mod.PrefabFiles) do	-- prefab lua 文件的路径
-								local ret = runmodfn( mod.LoadPrefabFile, mod, "LoadPrefabFile" )("prefabs/"..prefab_path, nil, MODS_ROOT..modname.."/")
-								if ret then
-									for _, prefab in ipairs(ret) do
-											-- print("Mod: "..ModInfoname(modname), "    "..prefab.name)
-											-- mod.Prefabs[prefab.name] = prefab
-										if blocked_prefab_name_list[prefab.name] then
-											local str = mod_display_name .. " : ".. tostring(Get_Block_Reason("prefab_block")) .. ModInfoname(modname)
-											return true,str
-										end
-										-- print("## -- ",prefab.name)
-									end
-								end
-
-							end
+						return true,str
 					end
 				end
-
 				return false,""
 			end
+
+			---------- 这个方法和 一些MOD冲突，尤其是 《能力勋章》这种hook prefab 注册函数的
+							-- local function block_by_prefab_loaded__old()  --- 检查某些 prefab 被加载了
+							-- 	-- print("info  start check block_by_prefab_loaded")
+							-- 	local blocked_prefab_name_list = {
+							-- 		-- ["fangcunhill"] = true,						-- 神话书说 的方寸山
+							-- 		-- ["pigsy"] = true,							-- 神话书说的 猪八戒
+							-- 		["ancient_robots_assembly"] = true,			-- 三合一 模组的东西。
+							-- 		["rainforesttree_cone"]= true,				-- 三合一 模组的东西。
+							-- 		["cave_exit_vulcao"]= true,					-- 三合一 模组的东西。
+
+							-- 	}
+							-- 	------ 代码参考来自 mods.lua
+							-- 	local runmodfn = function(fn,mod,modtype)
+							-- 		return (function(...)
+							-- 			if fn then
+							-- 				local status, r = xpcall( function() return fn(unpack(arg)) end, debug.traceback)
+							-- 				if not status then
+							-- 					pcall(function()
+							-- 						print("error calling "..modtype.." in mod "..ModInfoname(mod.modname)..": \n"..(r or ""))
+							-- 						ModManager:RemoveBadMod(mod.modname,r)
+							-- 						ModManager:DisplayBadMods()
+							-- 					end)
+												
+							-- 				else
+							-- 					return r
+							-- 				end
+							-- 			end
+							-- 		end)
+							-- 	end
+
+							-- 	local loaded_modnames = ModManager:GetEnabledModNames() or {}
+							-- 	for i, modname in pairs(loaded_modnames) do
+							-- 		-- print("++++",modname)
+							-- 		local mod = ModManager:GetMod(modname)
+							-- 		if mod and mod.PrefabFiles then		--- 得到每个MOD的 PrefabFiles 表
+							-- 				for _, prefab_path in ipairs(mod.PrefabFiles) do	-- prefab lua 文件的路径
+							-- 					local ret = runmodfn( mod.LoadPrefabFile, mod, "LoadPrefabFile" )("prefabs/"..prefab_path, nil, MODS_ROOT..modname.."/")
+							-- 					if ret then
+							-- 						for _, prefab in ipairs(ret) do
+							-- 								-- print("Mod: "..ModInfoname(modname), "    "..prefab.name)
+							-- 								-- mod.Prefabs[prefab.name] = prefab
+							-- 							if blocked_prefab_name_list[prefab.name] then
+							-- 								local str = mod_display_name .. " : ".. tostring(Get_Block_Reason("prefab_block")) .. ModInfoname(modname)
+							-- 								return true,str
+							-- 							end
+							-- 							-- print("## -- ",prefab.name)
+							-- 						end
+							-- 					end
+
+							-- 				end
+							-- 		end
+							-- 	end
+
+							-- 	return false,""
+							-- end
 
 			local function block_by_stack_size()		--- 检查叠堆上限
 				if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE__MAX_STACK_SIZE_CHECK_PASS then
