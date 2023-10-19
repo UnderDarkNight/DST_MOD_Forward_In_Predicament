@@ -154,21 +154,8 @@ AddPlayerPostInit(function(inst)
                 if prefab_list_with_vc_value[food_base_prefab] then
                     num = prefab_list_with_vc_value[food_base_prefab]
                 end
-                -------------------------------------------------------------------
-                --- 每天只能靠食物增加一次VC
-                    if not inst.components.fwd_in_pdt_wellness:Get("vc_value_by_food_blocked") then
-                        inst.components.fwd_in_pdt_wellness:Set("vc_value_by_food_blocked",true)                        
-                    else
-                        return 0
-                    end
-                -------------------------------------------------------------------
-
                 return num
             end
-            ---- 每天只能靠食物增加一次VC
-                inst:WatchWorldState("cycles", function()
-                    inst.components.fwd_in_pdt_wellness:Set("vc_value_by_food_blocked",false)
-                end)
 
         --------------- 特殊食物特殊事件
             local function special_event_by_food(inst,food)
@@ -221,7 +208,7 @@ AddPlayerPostInit(function(inst)
                 ----------- vc 值
                     local vc_delta_num = GetVcByFood(food)
                     if vc_delta_num ~= 0 then
-                        inst.components.fwd_in_pdt_wellness:DoDelta_Vitamin_C(vc_delta_num)
+                        inst.components.fwd_in_pdt_wellness:External_DoDelta_Vitamin_C(vc_delta_num)
                     end
                 ----------- 特殊事件
                     special_event_by_food(inst, food)

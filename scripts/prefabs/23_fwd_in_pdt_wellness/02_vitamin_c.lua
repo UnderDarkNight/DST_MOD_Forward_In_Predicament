@@ -69,13 +69,16 @@ local function fn()
                 self.com = com
                 self.player = com.inst  --- 玩家链路进来到这
             --------------------------------------------------------
-
             --------------------------------------------------------            
         end
     ------------------------------------------------------------------------------
     -- External_DoDelta 外部执行 DoDelta 用做限位的。
         function inst:External_DoDelta(num)
-            
+            if num <= 0 then
+                return
+            end
+            local delta_num = self:Get_VC_Improve_Num(num)
+            self.com:DoDelta_Vitamin_C(delta_num)
         end
     ------------------------------------------------------------------------------
     -- 重复添加的时候执行的函数
@@ -99,8 +102,12 @@ local function fn()
 
                             ，线性函数为：
                             y = （ k·x + b ）/100
+
+                    · VC 每天最多回复30点增加上线。每个周期 0.3
             ]]--                
             ------------------------------------------
+            self:VC_Improve_Num_Update()    --- 上限缓慢增加
+
             if self:Allow_Value_OnUpdate_Go_Down() then
                 self.com:DoDelta_Vitamin_C(-0.16)
             end
@@ -200,6 +207,27 @@ local function fn()
         function inst:Set_Value_Block_Go_Down_Update_Times(num)
             if type(num) == "number" then
                 self.com:Set("vc_value_go_down_in_update_check_times_num",num)
+            end
+        end
+    ------------------------------------------------------------------------------
+    --- VC 回复上限锁死函数
+        function inst:Get_VC_Improve_Num(num)
+            local current_num = self.com:Add("vc_improved_num",0)
+            if num <= current_num then                  -- 充足
+                self.com:Add("vc_improved_num",-num)
+                return num
+            else
+                self.com:Set("vc_improved_num",0)
+                return current_num
+            end
+        end
+
+        function inst:VC_Improve_Num_Update()
+            --- 每天30，,100个周期，每次 0.3
+            local max = 30
+            local current_num = self.com:Add("vc_improved_num",max/100)
+            if current_num >= max then
+                self.com:Set("vc_improved_num",max)
             end
         end
     ------------------------------------------------------------------------------
