@@ -677,7 +677,7 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             },
             ["fwd_in_pdt_welness_spider_poison"] = {
                 ["name"] = "蜘蛛毒",
-                ["treatment"] = { STRINGS.NAMES[string.upper("spidergland")] , "万能解毒剂" },
+                ["treatment"] = { STRINGS.NAMES[string.upper("spidergland")],STRINGS.NAMES[string.upper("healingsalve")] , "万能解毒剂" },
             },
             ["fwd_in_pdt_welness_bee_poison"] = {
                 ["name"] = "蜜蜂毒",
