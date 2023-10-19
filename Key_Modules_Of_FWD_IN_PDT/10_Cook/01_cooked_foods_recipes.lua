@@ -34,7 +34,7 @@
         sanity = 30, --吃后回精神值
         health = 20, --吃后回血值
         stacksize = 1,  --- 每次烹饪得到个数
-        perishtime = TUNING.PERISH_TWO_DAY, --腐烂时间
+        perishtime = TUNING.PERISH_TWO_DAY*5, --腐烂时间
         cooktime = TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE and 1/4 or 30/20, --烹饪时间(单位20s :  数字1 为 20s ,)
         potlevel = "low",  --- 锅里的贴图位置 low high  mid
         cookbook_tex = "fwd_in_pdt_food_mixed_potato_soup.tex", -- 在游戏内食谱书里的mod食物那一栏里显示的图标，tex在 atlas的xml里定义了，所以这里只写文件名即可
@@ -75,7 +75,7 @@
         sanity = 0, --吃后回精神值
         health = 20, --吃后回血值
         stacksize = 1,  --- 每次烹饪得到个数
-        perishtime = TUNING.PERISH_TWO_DAY, --腐烂时间
+        perishtime = TUNING.PERISH_TWO_DAY*5, --腐烂时间
         cooktime = TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE and 1/4 or 30/20, --烹饪时间(单位20s :  数字1 为 20s ,)
         potlevel = "low",   --- 锅里的贴图位置 low high  mid
         cookbook_tex = "fwd_in_pdt_food_steamed_orange_with_honey.tex", -- 在游戏内食谱书里的mod食物那一栏里显示的图标，tex在 atlas的xml里定义了，所以这里只写文件名即可
@@ -112,7 +112,7 @@
         sanity = 5 , --吃后回精神值
         health = 30 , --吃后回血值
         stacksize = 1,  --- 每次烹饪得到个数
-        perishtime = TUNING.PERISH_TWO_DAY, --腐烂时间
+        perishtime = TUNING.PERISH_TWO_DAY*5, --腐烂时间
         cooktime = TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE and 1/4 or 30/20, --烹饪时间(单位20s :  数字1 为 20s ,)
         potlevel = "low",  --- 锅里的贴图位置 low high  mid
         cookbook_tex = "fwd_in_pdt_food_scrambled_eggs_with_tomatoes.tex", -- 在游戏内食谱书里的mod食物那一栏里显示的图标，tex在 atlas的xml里定义了，所以这里只写文件名即可
@@ -151,7 +151,7 @@
         sanity = 0 , --吃后回精神值
         health = 0 , --吃后回血值
         stacksize = 1,  --- 每次烹饪得到个数
-        perishtime = TUNING.PERISH_SUPERFAST + TUNING.PERISH_TWO_DAY , --腐烂时间
+        perishtime = TUNING.PERISH_TWO_DAY * 5 , --腐烂时间
         cooktime = TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE and 1/4 or 30/20, --烹饪时间(单位20s :  数字1 为 20s ,)
         potlevel = "low",  --- 锅里的贴图位置 low high  mid
         cookbook_tex = "fwd_in_pdt_food_eggplant_casserole.tex", -- 在游戏内食谱书里的mod食物那一栏里显示的图标，tex在 atlas的xml里定义了，所以这里只写文件名即可
@@ -223,7 +223,7 @@
         sanity = 0 , --吃后回精神值
         health = -5 , --吃后回血值
         stacksize = 1,  --- 每次烹饪得到个数
-        perishtime = TUNING.PERISH_SUPERFAST , --腐烂时间
+        perishtime = TUNING.PERISH_TWO_DAY*5 , --腐烂时间
         cooktime = TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE and 1/4 or 30/20, --烹饪时间(单位20s :  数字1 为 20s ,)
         potlevel = "mid",   --- 锅里的贴图位置 low high  mid
         cookbook_tex = "fwd_in_pdt_food_snake_skin_jelly.tex", -- 在游戏内食谱书里的mod食物那一栏里显示的图标，tex在 atlas的xml里定义了，所以这里只写文件名即可
@@ -345,7 +345,7 @@
         sanity = 0 , --吃后回精神值
         health = -100 , --吃后回血值
         stacksize = 1,  --- 每次烹饪得到个数
-        perishtime = TUNING.PERISH_ONE_DAY, --腐烂时间
+        perishtime = TUNING.PERISH_ONE_DAY*10, --腐烂时间
         cooktime = TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE and 1/4 or 30/20, --烹饪时间(单位20s :  数字1 为 20s ,)
         potlevel = "mid",  --- 锅里的贴图位置 low high  mid
         cookbook_tex = "fwd_in_pdt_food_red_mushroom_soup.tex", -- 在游戏内食谱书里的mod食物那一栏里显示的图标，tex在 atlas的xml里定义了，所以这里只写文件名即可
@@ -380,7 +380,7 @@
         sanity = -100 , --吃后回精神值
         health = 0 , --吃后回血值
         stacksize = 1,  --- 每次烹饪得到个数
-        perishtime = TUNING.PERISH_ONE_DAY, --腐烂时间
+        perishtime = TUNING.PERISH_ONE_DAY*10, --腐烂时间
         cooktime = TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE and 1/4 or 30/20, --烹饪时间(单位20s :  数字1 为 20s ,)
         potlevel = "mid",  --- 锅里的贴图位置 low high  mid
         cookbook_tex = "fwd_in_pdt_food_green_mushroom_soup.tex", -- 在游戏内食谱书里的mod食物那一栏里显示的图标，tex在 atlas的xml里定义了，所以这里只写文件名即可
@@ -415,7 +415,7 @@
         sanity = 20 , --吃后回精神值
         health = 1 , --吃后回血值
         stacksize = 1,  --- 每次烹饪得到个数
-        perishtime = TUNING.PERISH_ONE_DAY, --腐烂时间
+        perishtime = TUNING.PERISH_ONE_DAY*8, --腐烂时间
         cooktime = TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE and 1/4 or 30/20, --烹饪时间(单位20s :  数字1 为 20s ,)
         potlevel = "low",  --- 锅里的贴图位置 low high  mid
         cookbook_tex = "fwd_in_pdt_food_tofu.tex", -- 在游戏内食谱书里的mod食物那一栏里显示的图标，tex在 atlas的xml里定义了，所以这里只写文件名即可
@@ -450,7 +450,7 @@
         sanity = 0 , --吃后回精神值
         health = 1 , --吃后回血值
         stacksize = 1,  --- 每次烹饪得到个数
-        perishtime = TUNING.PERISH_ONE_DAY, --腐烂时间
+        perishtime = TUNING.PERISH_ONE_DAY*10, --腐烂时间
         cooktime = TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE and 1/4 or 30/20, --烹饪时间(单位20s :  数字1 为 20s ,)
         potlevel = "low",  --- 锅里的贴图位置 low high  mid
         cookbook_tex = "fwd_in_pdt_food_cooked_milk.tex", -- 在游戏内食谱书里的mod食物那一栏里显示的图标，tex在 atlas的xml里定义了，所以这里只写文件名即可
@@ -490,7 +490,7 @@
         sanity = -20 , --吃后回精神值
         health = 0 , --吃后回血值
         stacksize = 1,  --- 每次烹饪得到个数
-        perishtime = TUNING.PERISH_SUPERFAST, --腐烂时间
+        perishtime = TUNING.PERISH_TWO_DAY*5, --腐烂时间
         cooktime = TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE and 1/4 or 30/20, --烹饪时间(单位20s :  数字1 为 20s ,)
         potlevel = "low",  --- 锅里的贴图位置 low high  mid
         cookbook_tex = "fwd_in_pdt_food_coffee.tex", -- 在游戏内食谱书里的mod食物那一栏里显示的图标，tex在 atlas的xml里定义了，所以这里只写文件名即可
@@ -598,7 +598,7 @@
         sanity = 0 , --吃后回精神值
         health = 0 , --吃后回血值
         stacksize = 1,  --- 每次烹饪得到个数
-        perishtime = TUNING.PERISH_SUPERFAST + TUNING.PERISH_TWO_DAY, --腐烂时间
+        perishtime = TUNING.PERISH_TWO_DAY * 5 , --腐烂时间
         cooktime = TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE and 1/4 or 30/20, --烹饪时间(单位20s :  数字1 为 20s ,)
         potlevel = "low",  --- 锅里的贴图位置 low high  mid
         cookbook_tex = "fwd_in_pdt_food_mango_ice_drink.tex", -- 在游戏内食谱书里的mod食物那一栏里显示的图标，tex在 atlas的xml里定义了，所以这里只写文件名即可
@@ -632,7 +632,7 @@
         sanity = 5 , --吃后回精神值
         health = 3 , --吃后回血值
         stacksize = 1,  --- 每次烹饪得到个数
-        perishtime = TUNING.PERISH_TWO_DAY, --腐烂时间
+        perishtime = TUNING.PERISH_TWO_DAY*5, --腐烂时间
         cooktime = TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE and 1/4 or 30/20, --烹饪时间(单位20s :  数字1 为 20s ,)
         potlevel = "low",  --- 锅里的贴图位置 low high  mid
         cookbook_tex = "fwd_in_pdt_food_cooked_rice.tex", -- 在游戏内食谱书里的mod食物那一栏里显示的图标，tex在 atlas的xml里定义了，所以这里只写文件名即可
@@ -666,7 +666,7 @@
         sanity = 5 , --吃后回精神值
         health = 3 , --吃后回血值
         stacksize = 1,  --- 每次烹饪得到个数
-        perishtime = TUNING.PERISH_TWO_DAY, --腐烂时间
+        perishtime = TUNING.PERISH_TWO_DAY*5, --腐烂时间
         cooktime = TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE and 1/4 or 30/20, --烹饪时间(单位20s :  数字1 为 20s ,)
         potlevel = "low",  --- 锅里的贴图位置 low high  mid
         cookbook_tex = "fwd_in_pdt_food_bread.tex", -- 在游戏内食谱书里的mod食物那一栏里显示的图标，tex在 atlas的xml里定义了，所以这里只写文件名即可
@@ -704,7 +704,7 @@
         sanity = 5 , --吃后回精神值
         health = 30 , --吃后回血值
         stacksize = 1,  --- 每次烹饪得到个数
-        perishtime = TUNING.PERISH_TWO_DAY, --腐烂时间
+        perishtime = TUNING.PERISH_TWO_DAY*5, --腐烂时间
         cooktime = TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE and 1/4 or 30/20, --烹饪时间(单位20s :  数字1 为 20s ,)
         potlevel = "low",  --- 锅里的贴图位置 low high  mid
         cookbook_tex = "fwd_in_pdt_food_congee_with_meat_and_thousand_year_old_eggs.tex", -- 在游戏内食谱书里的mod食物那一栏里显示的图标，tex在 atlas的xml里定义了，所以这里只写文件名即可

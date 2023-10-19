@@ -56,7 +56,7 @@ local function fn()
     end)
 
     inst:AddComponent("perishable") -- 可腐烂的组件
-    inst.components.perishable:SetPerishTime(TUNING.PERISH_SUPERFAST + TUNING.PERISH_TWO_DAY)
+    inst.components.perishable:SetPerishTime(TUNING.PERISH_TWO_DAY*5)
     inst.components.perishable:StartPerishing()
     inst.components.perishable.onperishreplacement = "spoiled_food" -- 腐烂后变成腐烂食物
 
