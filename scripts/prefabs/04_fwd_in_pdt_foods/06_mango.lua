@@ -46,7 +46,8 @@ local function common_fn()
 
 
     inst:AddComponent("edible") -- 可食物组件
-    inst.components.edible.foodtype = FOODTYPE.BERRY
+    -- inst.components.edible.foodtype = FOODTYPE.BERRY
+    inst.components.edible.foodtype = FOODTYPE.VEGGIE
     inst.components.edible:SetOnEatenFn(function(inst,eater)
     end)
     inst.components.edible.hungervalue = 0
