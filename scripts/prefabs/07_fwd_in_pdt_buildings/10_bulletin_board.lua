@@ -20,7 +20,7 @@ local assets =
         local function player_active(inst,player)
             local daily_datas = inst.components.fwd_in_pdt_data:Get("daily_datas") or {}
             if not daily_datas[player.userid] then
-                if not TheWorld:HasTag("cave") and LANGUAGE ~= "ch" then
+                if not TheWorld:HasTag("cave") and (LANGUAGE ~= "ch" or player:HasTag("fwd_in_pdt_tag.vip")) then
                     player.components.inventory:GiveItem(SpawnPrefab("fwd_in_pdt_item_advertising_leaflet"))
                 end
             end
