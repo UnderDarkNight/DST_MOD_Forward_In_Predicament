@@ -267,43 +267,44 @@ modimport("Imports_for_FWD_IN_PDT/__All_imports_init.lua")	---- 所有 import  �
 				-- 		end
 				-- end
 			-------------------------------------------------------------------------------
-			AddPlayerPostInit(function(player_inst)	---- 玩家进入后再执行。检查。
-				if not TheWorld.ismastersim or TUNING["Forward_In_Predicament.Config"].compatibility_mode then
-					return
-				end
-				if block_check_pass__flag then
-					return
-				end
+			if not TUNING["Forward_In_Predicament.Config"].compatibility_mode then
+					AddPlayerPostInit(function(player_inst)	---- 玩家进入后再执行。检查。
+						if not TheWorld.ismastersim  then
+							return
+						end
+						if block_check_pass__flag then
+							return
+						end
 
-				player_inst:DoTaskInTime(10,function()
-					------ 玩家进入世界后 再检查一次
-					if not need_2_block then	--- 工坊id
-						need_2_block,block_reason_str = block_by_workshop_id()
-					end	
-					if not need_2_block then	---- 某些prefab 
-						need_2_block,block_reason_str = block_by_prefab_loaded()
-					end
-					if not need_2_block then	---- 最大叠堆数量
-						need_2_block,block_reason_str = block_by_stack_size()						
-					end
-					if not need_2_block then	---- 洞穴存在否
-						need_2_block,block_reason_str = block_by_no_cave()						
-					end
+						player_inst:DoTaskInTime(10,function()
+							------ 玩家进入世界后 再检查一次
+							if not need_2_block then	--- 工坊id
+								need_2_block,block_reason_str = block_by_workshop_id()
+							end	
+							if not need_2_block then	---- 某些prefab 
+								need_2_block,block_reason_str = block_by_prefab_loaded()
+							end
+							if not need_2_block then	---- 最大叠堆数量
+								need_2_block,block_reason_str = block_by_stack_size()						
+							end
+							if not need_2_block then	---- 洞穴存在否
+								need_2_block,block_reason_str = block_by_no_cave()						
+							end
 
-					if need_2_block then
-						local temp_inst = CreateEntity()
-						temp_inst:DoPeriodicTask(1,function()
-							TheNet:SystemMessage(block_reason_str)							
+							if need_2_block then
+								local temp_inst = CreateEntity()
+								temp_inst:DoPeriodicTask(1,function()
+									TheNet:SystemMessage(block_reason_str)							
+								end)
+								temp_inst:DoTaskInTime(15,function()
+									Quit_The_Game()
+								end)
+							else
+								block_check_pass__flag = true
+							end
 						end)
-						temp_inst:DoTaskInTime(15,function()
-							Quit_The_Game()
-						end)
-					else
-						block_check_pass__flag = true
-					end
-				end)
-			end)
-
+					end)
+			end
 			if need_2_block then
 				print("FWD_IN_PDT Error : Load with the mods in blocked list")
 				print("Error",block_reason_str)

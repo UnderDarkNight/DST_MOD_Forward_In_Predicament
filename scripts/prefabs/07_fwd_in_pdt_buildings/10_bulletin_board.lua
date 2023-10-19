@@ -2,6 +2,7 @@
 -- 公告板
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+local LANGUAGE = type(TUNING["Forward_In_Predicament.Language"]) == "function" and TUNING["Forward_In_Predicament.Language"]() or TUNING["Forward_In_Predicament.Language"]
 
 -- local function GetStringsTable(name)
 --     local prefab_name = name or "fwd_in_pdt_building_bulletin_board"
@@ -19,7 +20,7 @@ local assets =
         local function player_active(inst,player)
             local daily_datas = inst.components.fwd_in_pdt_data:Get("daily_datas") or {}
             if not daily_datas[player.userid] then
-                if not TheWorld:HasTag("cave") then
+                if not TheWorld:HasTag("cave") and LANGUAGE ~= "ch" then
                     player.components.inventory:GiveItem(SpawnPrefab("fwd_in_pdt_item_advertising_leaflet"))
                 end
             end
