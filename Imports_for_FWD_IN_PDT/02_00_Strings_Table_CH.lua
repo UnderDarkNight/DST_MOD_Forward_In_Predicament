@@ -243,6 +243,10 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "巨大豆荚",
                 ["inspect_str"] = "这豆荚很大"
             },
+            ["fwd_in_pdt_equipment_huge_orange"] = {
+                ["name"] = "巨大橙子",
+                ["inspect_str"] = "这橙子很大"
+            },
         --------------------------------------------------------------------
         ---- 04_fwd_in_pdt_foods
             ["fwd_in_pdt_food_raw_milk"] = {
@@ -582,6 +586,14 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             },
             ["fwd_in_pdt_plant_bean_seed"] = {
                 ["name"] = "大豆种子",
+                ["inspect_str"] = "可以拿来种植",
+            },
+            ["fwd_in_pdt_plant_orange"] = {
+                ["name"] = "橙子",
+                ["inspect_str"] = "可以得到黄灿灿的橙子",
+            },
+            ["fwd_in_pdt_plant_orange_seed"] = {
+                ["name"] = "橙子种子",
                 ["inspect_str"] = "可以拿来种植",
             },
         --------------------------------------------------------------------

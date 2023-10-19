@@ -55,6 +55,7 @@ local files_name = {
 		"fwd_in_pdt_plant_coffeebush",								--- 咖啡树
 		"fwd_in_pdt_plant_mango_tree",								--- 芒果树
 		"fwd_in_pdt_plant_bean",									--- 大豆
+		"fwd_in_pdt_plant_orange",									--- 橙子
 
 	-------------------------------------------------------------------------------------------------
 	---- 10_fwd_in_pdt_minerals

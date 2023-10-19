@@ -51,6 +51,7 @@ local files_name = {
 		"fwd_in_pdt_equipment_cursed_pig",						--- 诅咒猪雕像
 		"fwd_in_pdt_equipment_glass_beefalo",					--- 玻璃牛雕像
 		"fwd_in_pdt_equipment_huge_soybean",					--- 巨大豆荚
+		"fwd_in_pdt_equipment_huge_orange",						--- 巨大橙子
 	---------------------------------------------------------------------------------------
 	-- 04_fwd_in_pdt_foods
 		"fwd_in_pdt_food_raw_milk",								--- 生牛奶
@@ -107,6 +108,7 @@ local files_name = {
 		"fwd_in_pdt_plant_coffeebush_item",							    --- 咖啡树
 		"fwd_in_pdt_plant_mango_tree_item",							    --- 芒果树芽
 		"fwd_in_pdt_plant_bean_seed",							    	--- 大豆种子
+		"fwd_in_pdt_plant_orange_seed",							    	--- 橙子种子
 	---------------------------------------------------------------------------------------
 
 }

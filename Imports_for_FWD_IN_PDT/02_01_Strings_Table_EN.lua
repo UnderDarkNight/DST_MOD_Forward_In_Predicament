@@ -235,6 +235,10 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "Huge Soybean Pods",
                 ["inspect_str"] = "Very Huge"
             },
+            ["fwd_in_pdt_equipment_huge_orange"] = {
+                ["name"] = "Huge Orange",
+                ["inspect_str"] = "Very Huge"
+            },
         --------------------------------------------------------------------
         ---- 04_fwd_in_pdt_foods
             ["fwd_in_pdt_food_raw_milk"] = {
@@ -575,6 +579,14 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             },
             ["fwd_in_pdt_plant_bean_seed"] = {
                 ["name"] = "Bean Seeds",
+                ["inspect_str"] = "It can be used for planting.",
+            },
+            ["fwd_in_pdt_plant_orange"] = {
+                ["name"] = "Orange",
+                ["inspect_str"] = "You can get yellow oranges",
+            },
+            ["fwd_in_pdt_plant_orange_seed"] = {
+                ["name"] = "Orange Seed",
                 ["inspect_str"] = "It can be used for planting.",
             },
         --------------------------------------------------------------------

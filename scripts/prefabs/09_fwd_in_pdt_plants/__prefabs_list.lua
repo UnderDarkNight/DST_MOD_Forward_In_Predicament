@@ -32,6 +32,8 @@ local prefabs_name_list = {
     "07_mango_tree_item",                   --- 芒果树芽穂
     "08_bean",                              --- 大豆
     "08_bean_seed",                         --- 大豆种子
+    "09_orange",                            --- 橙子
+    "09_orange_seed",                       --- 橙子种子
 }
 
 

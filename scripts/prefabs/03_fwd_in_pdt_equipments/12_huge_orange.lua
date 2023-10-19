@@ -22,14 +22,14 @@
 
 local assets =
 {
-    Asset("ANIM", "anim/fwd_in_pdt_equipment_huge_soybean.zip"),
-    Asset( "IMAGE", "images/inventoryimages/fwd_in_pdt_equipment_huge_soybean.tex" ),  -- 背包贴图
-    Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_equipment_huge_soybean.xml" ),
+    Asset("ANIM", "anim/fwd_in_pdt_equipment_huge_orange.zip"),
+    Asset( "IMAGE", "images/inventoryimages/fwd_in_pdt_equipment_huge_orange.tex" ),  -- 背包贴图
+    Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_equipment_huge_orange.xml" ),
 }
 
 local function onequip(inst, owner)
     
-    owner.AnimState:OverrideSymbol("swap_body", "fwd_in_pdt_equipment_huge_soybean", "swap_body")
+    owner.AnimState:OverrideSymbol("swap_body", "fwd_in_pdt_equipment_huge_orange", "swap_body")
     -- owner.AnimState:Show("ARM_carry")
     -- owner.AnimState:Hide("ARM_normal")
 end
@@ -51,8 +51,8 @@ local function fn()
     MakeHeavyObstaclePhysics(inst, PHYSICS_RADIUS)
     inst:SetPhysicsRadiusOverride(PHYSICS_RADIUS)
 
-    inst.AnimState:SetBank("fwd_in_pdt_equipment_huge_soybean")
-    inst.AnimState:SetBuild("fwd_in_pdt_equipment_huge_soybean")
+    inst.AnimState:SetBank("fwd_in_pdt_equipment_huge_orange")
+    inst.AnimState:SetBuild("fwd_in_pdt_equipment_huge_orange")
     inst.AnimState:PlayAnimation("idle")
 
     inst:AddTag("heavy")
@@ -97,8 +97,8 @@ local function fn()
     ---- 物品组件
         inst:AddComponent("inventoryitem")
         -- inst.components.inventoryitem:ChangeImageName("spear")
-        inst.components.inventoryitem.imagename = "fwd_in_pdt_equipment_huge_soybean"
-        inst.components.inventoryitem.atlasname = "images/inventoryimages/fwd_in_pdt_equipment_huge_soybean.xml"
+        inst.components.inventoryitem.imagename = "fwd_in_pdt_equipment_huge_orange"
+        inst.components.inventoryitem.atlasname = "images/inventoryimages/fwd_in_pdt_equipment_huge_orange.xml"
         inst.components.inventoryitem:SetSinks(true)
         inst.components.inventoryitem.cangoincontainer = false
 
@@ -125,10 +125,10 @@ local function fn()
             -- SpawnPrefab("fwd_in_pdt_fx_collapse"):PushEvent("Set",{
             --     pt = Vector3(inst.Transform:GetWorldPosition())
             -- })
-            local loots = {"fwd_in_pdt_plant_bean_seed"}
+            local loots = {"fwd_in_pdt_plant_orange_seed"}
             local num = math.random(3,8)
             for i = 1, num, 1 do
-                table.insert(loots,"fwd_in_pdt_food_soybeans")
+                table.insert(loots,"fwd_in_pdt_food_orange")
             end
             inst.components.lootdropper:SetLoot(loots)
             inst.components.lootdropper:DropLoot()
@@ -140,9 +140,9 @@ local function fn()
     ---------------------------------------------------------------------------------------------
         -- inst:AddComponent("submersible")
         -- inst:AddComponent("symbolswapdata")
-        -- inst.components.symbolswapdata:SetData("fwd_in_pdt_equipment_huge_soybean", "swap_body")
+        -- inst.components.symbolswapdata:SetData("fwd_in_pdt_equipment_huge_orange", "swap_body")
     ---------------------------------------------------------------------------------------------
     return inst
 end
 
-return Prefab("fwd_in_pdt_equipment_huge_soybean", fn, assets)
+return Prefab("fwd_in_pdt_equipment_huge_orange", fn, assets)

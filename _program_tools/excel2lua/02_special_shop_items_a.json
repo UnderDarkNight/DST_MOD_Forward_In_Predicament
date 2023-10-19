@@ -56,6 +56,14 @@
         "atlas": ""
     },
     {
+        "name": "橙子种子",
+        "prefab": "fwd_in_pdt_plant_orange_seed",
+        "cost": 20.0,
+        "num2give": 1.0,
+        "image": "",
+        "atlas": ""
+    },
+    {
         "name": "蛇皮地板",
         "prefab": "turf_fwd_in_pdt_turf_snakeskin",
         "cost": 8.0,

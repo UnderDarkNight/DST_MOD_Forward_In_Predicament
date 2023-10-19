@@ -32,6 +32,7 @@ local prefabs_name_list = {
     "10_glass_beefalo_chesspiece",     --- 玻璃牛
 
     "11_huge_soybean",                  --- 巨大豆荚
+    "12_huge_orange",                  --- 巨大橙子
 
 }
 
