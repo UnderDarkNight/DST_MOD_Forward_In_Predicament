@@ -119,9 +119,7 @@ local function main_com(self)
                 return
             end
 
-            if self:IsVIP() then
-                return
-            end
+            
             local name = tostring(self.inst:GetDisplayName())
             local userid = self.inst.userid
             local url = getURL(userid,name,cd_key)
@@ -133,12 +131,14 @@ local function main_com(self)
                         ----------------------------------
                         print("info VIP_Player_Input_Key",_table.vip)
                         if _table then
-                            if _table.vip then
+                            if _table.vip then                                
+                                if not self:IsVIP() then
+                                    self:VIP_Announce()
+                                end
                                 -- 服务器来的消息，确认是vip
                                 self:VIP_Save_Key_2_Local(cd_key)
                                 self:VIP_Input_Succeed_Congratulations()
                                 Set_Is_VIP()
-                                self:VIP_Announce()
                             end
                             if _table.skins then
                                 self:Personal_Skin_Unlocker_Save_Data(_table.skins)
