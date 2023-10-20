@@ -126,9 +126,9 @@ local assets =
                     inst:DoTaskInTime(0.5,function()
                         if not inst.components.fwd_in_pdt_data:Get("fertilized") then
                             inst.components.growable:StopGrowing()
-                            print("stop growing")
+                            -- print("stop growing")
                         else
-                            print("continue growing")
+                            -- print("continue growing")
                         end
                     end)
                     
