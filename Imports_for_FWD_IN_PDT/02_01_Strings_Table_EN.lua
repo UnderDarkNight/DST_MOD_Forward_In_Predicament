@@ -586,11 +586,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "It can be used for planting.",
             },
             ["fwd_in_pdt_plant_orange"] = {
-                ["name"] = "Orange",
+                ["name"] = "Orange Tree",
                 ["inspect_str"] = "You can get yellow oranges",
             },
             ["fwd_in_pdt_plant_orange_seed"] = {
-                ["name"] = "Orange Seed",
+                ["name"] = "Orange Tree Seed",
                 ["inspect_str"] = "It can be used for planting.",
             },
         --------------------------------------------------------------------

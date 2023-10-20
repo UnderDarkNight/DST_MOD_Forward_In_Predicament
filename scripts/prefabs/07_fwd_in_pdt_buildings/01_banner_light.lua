@@ -127,6 +127,8 @@ local function ground_fx()
     inst:AddTag("NOCLICK")      --- 不可点击
     inst:AddTag("CLASSIFIED")   --  私密的，client 不可观测， FindEntity 默认过滤
     inst:AddTag("NOBLOCK")      -- 不会影响种植和放置
+    inst:AddTag("quake_blocker")  --- 屏蔽地震落石
+
     inst.Transform:SetRotation(math.random(350))
 
     if not TheWorld.ismastersim then

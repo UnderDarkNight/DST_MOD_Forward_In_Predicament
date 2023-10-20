@@ -44,6 +44,7 @@ local function fn()
     inst:AddTag("structure")
     inst:AddTag("fwd_in_pdt_building_atm")
     inst:AddTag("antlion_sinkhole_blocker")
+    inst:AddTag("quake_blocker")  --- 屏蔽地震落石
 
     
     inst.entity:SetPristine()

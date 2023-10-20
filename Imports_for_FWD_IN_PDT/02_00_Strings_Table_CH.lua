@@ -593,11 +593,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "可以拿来种植",
             },
             ["fwd_in_pdt_plant_orange"] = {
-                ["name"] = "橙子",
+                ["name"] = "橙子树",
                 ["inspect_str"] = "可以得到黄灿灿的橙子",
             },
             ["fwd_in_pdt_plant_orange_seed"] = {
-                ["name"] = "橙子种子",
+                ["name"] = "橙子树种子",
                 ["inspect_str"] = "可以拿来种植",
             },
         --------------------------------------------------------------------
