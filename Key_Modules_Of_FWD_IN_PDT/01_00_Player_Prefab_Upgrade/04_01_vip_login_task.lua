@@ -19,21 +19,23 @@ AddPlayerPostInit(function(inst)
             local flag_time = inst.components.fwd_in_pdt_func:Get("vip_daily_annouce_flag_time")
             if flag_time ~= current_time then
                 ------------------------------------------------------------------------------------------
-                    -- print("info daily vip announce task start")
-                    local display_name = inst:GetDisplayName()
-                    local base_str = GetStringsTable()["succeed_announce"]
-                    local ret_str = string.gsub(base_str, "XXXXXX", tostring(display_name))                        
-                    for k, temp_player in pairs(AllPlayers) do
-                        if temp_player and temp_player:HasTag("player") and temp_player.components.fwd_in_pdt_func and temp_player.components.fwd_in_pdt_func.Wisper then
-                                temp_player.components.fwd_in_pdt_func:Wisper({
-                                    m_colour = {0,255,255} ,                          ---- 内容颜色
-                                    s_colour = {255,255,0},                         ---- 发送者颜色
-                                    icondata = "profileflair_shadowhand",        ---- 图标
-                                    message = ret_str,                                 ---- 文字内容
-                                    sender_name = GetStringsTable()["bad_key.talker"],                               ---- 发送者名字
-                                })
-                        end
-                    end
+                    -- -- print("info daily vip announce task start")
+                    -- local display_name = inst:GetDisplayName()
+                    -- local base_str = GetStringsTable()["succeed_announce"]
+                    -- local ret_str = string.gsub(base_str, "XXXXXX", tostring(display_name))                        
+                    -- for k, temp_player in pairs(AllPlayers) do
+                    --     if temp_player and temp_player:HasTag("player") and temp_player.components.fwd_in_pdt_func and temp_player.components.fwd_in_pdt_func.Wisper then
+                    --             temp_player.components.fwd_in_pdt_func:Wisper({
+                    --                 m_colour = {0,255,255} ,                          ---- 内容颜色
+                    --                 s_colour = {255,255,0},                         ---- 发送者颜色
+                    --                 icondata = "profileflair_shadowhand",        ---- 图标
+                    --                 message = ret_str,                                 ---- 文字内容
+                    --                 sender_name = GetStringsTable()["bad_key.talker"],                               ---- 发送者名字
+                    --             })
+                    --     end
+                    -- end
+                ------------------------------------------------------------------------------------------
+                inst.components.fwd_in_pdt_func:VIP_Announce()
                 ------------------------------------------------------------------------------------------
                 inst.components.fwd_in_pdt_func:Set("vip_daily_annouce_flag_time",current_time)
 

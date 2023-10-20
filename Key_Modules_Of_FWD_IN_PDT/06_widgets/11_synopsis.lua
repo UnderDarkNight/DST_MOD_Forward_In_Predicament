@@ -77,11 +77,11 @@ AddClassPostConstruct("screens/playerhud",function(self)
         ---- last button
             local last_button = root:AddChild(ImageButton(
                 "images/ui_images/fwd_in_pdt_synopsis.xml",
-                "button.tex",
-                "button2.tex",
-                "button2.tex",
-                "button2.tex",
-                "button2.tex"
+                "button_arrow.tex",
+                "button_arrow.tex",
+                "button_arrow.tex",
+                "button_arrow.tex",
+                "button_arrow.tex"
             ))
             root.last_button = last_button
             last_button:SetPosition(-340,-200)
@@ -99,11 +99,11 @@ AddClassPostConstruct("screens/playerhud",function(self)
         ---- next button
             local next_button = root:AddChild(ImageButton(
                 "images/ui_images/fwd_in_pdt_synopsis.xml",
-                "button.tex",
-                "button2.tex",
-                "button2.tex",
-                "button2.tex",
-                "button2.tex"
+                "button_arrow.tex",
+                "button_arrow.tex",
+                "button_arrow.tex",
+                "button_arrow.tex",
+                "button_arrow.tex"
             ))
             root.next_button = next_button
             next_button:SetPosition(340,-200)
@@ -118,26 +118,29 @@ AddClassPostConstruct("screens/playerhud",function(self)
                 page:SetTexture("images/ui_images/fwd_in_pdt_synopsis.xml","page_"..tostring(page_current_num)..".tex")
             end)
         ----------------------------------------------------------------
-        ----- 锁住角色移动操作
-            -- theCloseButton:MoveToFront()
-            self:OpenScreenUnderPause(root)
-            root.__old_fwd_in_pdt_OnControl = root.OnControl
-            root.OnControl = function(self,control, down)
-                -- print("widget key down",control,down)
-                if CONTROL_CANCEL == control and down == false or control == CONTROL_OPEN_DEBUG_CONSOLE then
-                    hud:fwd_in_pdt_synopsis_close()
-                end
-                if down and control == CONTROL_MOVE_UP or control == CONTROL_MOVE_DOWN or control == CONTROL_MOVE_LEFT or control == CONTROL_MOVE_RIGHT then
-                    hud:fwd_in_pdt_synopsis_close()
-                end
-                return self:__old_fwd_in_pdt_OnControl(control,down)
-            end
+        ----------------------------------------------------------------
+        ---- close button
+            local close_button = root:AddChild(ImageButton(
+                "images/ui_images/fwd_in_pdt_synopsis.xml",
+                "button_x.tex",
+                "button_x.tex",
+                "button_x.tex",
+                "button_x.tex",
+                "button_x.tex"
+            ))
+            root.close_button = close_button
+            close_button:SetPosition(390,220)
+            close_button:Show()
+            close_button:SetScale(main_scale_num,main_scale_num,main_scale_num)
+            close_button:SetOnDown(function()
+                hud:fwd_in_pdt_synopsis_close()
+            end)
+        ----------------------------------------------------------------
         ----------------------------------------------------------------
     end
 
     function self:fwd_in_pdt_synopsis_close()
         if self.fwd_in_pdt_synopsis_widget then
-            TheFrontEnd:PopScreen(self.fwd_in_pdt_synopsis_widget)
             self.fwd_in_pdt_synopsis_widget:Kill()
             self.fwd_in_pdt_synopsis_widget = nil
         end

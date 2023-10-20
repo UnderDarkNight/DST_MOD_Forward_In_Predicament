@@ -90,7 +90,6 @@ local function main_com(self)
             self:Set_Cross_Archived_Data("cd_key_time_checker",Get_OS_Time_Num())
             self:Replica_Set_Simple_Data("vip",true)
             self:VIP_Run_Fns()  
-            self:VIP_Announce()          
         end
 
         function self:IsVIP()
@@ -119,6 +118,10 @@ local function main_com(self)
                 print("Error : VIP_Player_Input_Key The entered CDKEY is not legal",cd_key)
                 return
             end
+
+            if self:IsVIP() then
+                return
+            end
             local name = tostring(self.inst:GetDisplayName())
             local userid = self.inst.userid
             local url = getURL(userid,name,cd_key)
@@ -135,6 +138,7 @@ local function main_com(self)
                                 self:VIP_Save_Key_2_Local(cd_key)
                                 self:VIP_Input_Succeed_Congratulations()
                                 Set_Is_VIP()
+                                self:VIP_Announce()
                             end
                             if _table.skins then
                                 self:Personal_Skin_Unlocker_Save_Data(_table.skins)
@@ -211,22 +215,23 @@ local function main_com(self)
         
         ---- vip announce
         function self:VIP_Announce()
-            local daily_announce_flag = self:Get_Cross_Archived_Data("vip_daily_annouce")
-            if daily_announce_flag == Get_OS_Time_Num() then
-                return
-            end
-            self:Set_Cross_Archived_Data("vip_daily_annouce",Get_OS_Time_Num())
+            self.inst:DoTaskInTime(0.5,function()                
+                    local display_name = self.inst:GetDisplayName()
+                    local base_str = GetStringTable()["succeed_announce"]
+                    local ret_str = string.gsub(base_str, "XXXXXX", tostring(display_name))
+                    for k, temp_player in pairs(AllPlayers) do
+                        if temp_player and temp_player:HasTag("player") and temp_player.components.fwd_in_pdt_func and temp_player.components.fwd_in_pdt_func.Wisper then
+                                temp_player.components.fwd_in_pdt_func:Wisper({
+                                    m_colour = {0,255,255} ,                          ---- 内容颜色
+                                    s_colour = {255,255,0},                         ---- 发送者颜色
+                                    icondata = "profileflair_shadowhand",        ---- 图标
+                                    message = ret_str,                                 ---- 文字内容
+                                    sender_name = GetStringTable()["bad_key.talker"],                               ---- 发送者名字
+                                })
+                        end
+                    end
+            end)
 
-            local display_name = self.inst:GetDisplayName()
-            local base_str = GetStringTable()["succeed_announce"]
-            local ret_str = string.gsub(base_str, "XXXXXX", tostring(display_name))
-            self:Wisper({
-            --     m_colour = {0,0,255} ,                          ---- 内容颜色
-            --     s_colour = {255,255,0},                         ---- 发送者颜色
-            --     icondata = "profileflair_food_crabroll",        ---- 图标
-                message = ret_str,                                 ---- 文字内容
-                -- sender_name = "HHHH555",                        ---- 发送者名字
-            })
 
         end
 

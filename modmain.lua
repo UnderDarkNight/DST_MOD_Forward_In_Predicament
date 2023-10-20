@@ -70,11 +70,13 @@ modimport("Imports_for_FWD_IN_PDT/__All_imports_init.lua")	---- 所有 import  �
 
 ------- 提前加载这些公共函数，给检测 屏蔽 prefab 的时候调用。
 -- 已经移动到  【 Imports_for_FWD_IN_PDT\_require_module_for_prefab_block.lua  】
--- require "prefabutil"
--- require "maputil"
--- require "vecutil"
--- require "datagrid"
--- require("worldsettingsutil")
+if not TUNING["Forward_In_Predicament.Config"].compatibility_mode then
+		require("prefabutil")
+		require("maputil")
+		require("vecutil")
+		require("datagrid")
+		require("worldsettingsutil")
+end
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --- 为保证本MOD 的良好顺畅体验，屏蔽掉一些容易造成崩溃的MOD，或者检测到不利于本MOD运行的情况
