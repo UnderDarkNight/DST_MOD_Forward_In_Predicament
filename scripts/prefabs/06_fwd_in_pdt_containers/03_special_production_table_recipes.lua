@@ -401,6 +401,23 @@ return {
             }
         },
     -------------------------------------------------------------------------------------------------------------
+    -------------------------------------------------------------------------------------------------------------
+    ---- 鼹鼠背包
+        {
+            source = {     
+                { prefab = "mole" , num = 1 } , { prefab = "molehat" , num = 1  } ,  { prefab = "mole" , num = 1  } ,
+                {                           } , { prefab = "mole" , num = 1     } ,  {                            } ,
+                { prefab = "mole" , num = 1 } , {                               } ,  { prefab = "mole" , num = 1  } ,
+            },
+            ret = {
+                prefab = "fwd_in_pdt_equipment_mole_backpack",
+                num = 1,
+                overwrite_str = "x 1",
+                atlas =  GetInventoryItemAtlas("fwd_in_pdt_equipment_mole_backpack.tex"),
+                image =  "fwd_in_pdt_equipment_mole_backpack.tex",
+            }
+        },
+    -------------------------------------------------------------------------------------------------------------
 
 
 

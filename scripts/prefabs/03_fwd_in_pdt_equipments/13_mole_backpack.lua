@@ -48,7 +48,23 @@ local function fn()
 
     inst.entity:SetPristine()
 
+    
+    --------------------------------------------------------------------
+    --- 容器安装
+        if TheWorld.ismastersim then
+            inst:AddComponent("container")
+            inst.components.container:WidgetSetup("backpack")
+        else
+            inst.OnEntityReplicated = function()
+                local container = inst.replica.container or inst.replica._.container
+                if container then
+                    container:WidgetSetup("backpack")
+                end
+            end
+        end
+    --------------------------------------------------------------------
     if not TheWorld.ismastersim then
+
         return inst
     end
 
@@ -66,25 +82,27 @@ local function fn()
     inst:AddComponent("waterproofer")
     inst.components.waterproofer:SetEffectiveness(0)
 
-    inst:AddComponent("container")
-    inst.components.container:WidgetSetup("backpack")
-    -- inst.components.container:WidgetSetup("krampus_sack")
-
     MakeHauntableLaunchAndDropFirstItem(inst)
     ------------------------------------------------------------------------------------------------------------
     --- 背包机制
+        local light_items_prefab_list = {
+            ["wormlight"] = true,          --- 发光浆果
+            ["wormlight_lesser"] = true,   --- 小发光浆果
+            ["lightbulb"] = true,          --- 荧光果
+        }
         inst:ListenForEvent("itemget",function(inst,_table)
-            local prefab_list = {
-                ["wormlight"] = true,          --- 发光浆果
-                ["wormlight_lesser"] = true,   --- 小发光浆果
-                ["lightbulb"] = true,          --- 荧光果
-            }
-            if _table and _table.item and prefab_list[_table.item.prefab] then
+
+            if _table and _table.item and light_items_prefab_list[_table.item.prefab] then
                 local tempItem = _table.item                
                 if tempItem.components.perishable then
                     tempItem.components.perishable:StopPerishing()
                     tempItem.components.perishable:SetPercent(1)
                 end
+
+                if inst.__light == nil then
+                    inst.__light = inst:SpawnChild("minerhatlight")                    
+                end
+
             end
         end)
 
@@ -94,6 +112,16 @@ local function fn()
                 if tempItem.components.perishable then
                     tempItem.components.perishable:StartPerishing()
                 end
+            end
+            local light_on_flag = false
+            inst.components.container:ForEachItem(function(item)
+                if item and item.prefab and light_items_prefab_list[item.prefab] then
+                    light_on_flag = true
+                end
+            end)
+            if light_on_flag == false and inst.__light then
+                inst.__light:Remove()
+                inst.__light = nil
             end
         end)
     ------------------------------------------------------------------------------------------------------------
