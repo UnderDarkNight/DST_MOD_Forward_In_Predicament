@@ -52,6 +52,7 @@ local files_name = {
 		"fwd_in_pdt_equipment_glass_beefalo",					--- 玻璃牛雕像
 		"fwd_in_pdt_equipment_huge_soybean",					--- 巨大豆荚
 		"fwd_in_pdt_equipment_huge_orange",						--- 巨大橙子
+		"fwd_in_pdt_equipment_mole_backpack",					--- 鼹鼠背包
 	---------------------------------------------------------------------------------------
 	-- 04_fwd_in_pdt_foods
 		"fwd_in_pdt_food_raw_milk",								--- 生牛奶

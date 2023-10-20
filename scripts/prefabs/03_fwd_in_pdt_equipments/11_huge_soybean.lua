@@ -139,8 +139,10 @@ local function fn()
         inst.components.hauntable:SetHauntValue(TUNING.HAUNT_TINY)
     ---------------------------------------------------------------------------------------------
         -- inst:AddComponent("submersible")
-        -- inst:AddComponent("symbolswapdata")
-        -- inst.components.symbolswapdata:SetData("fwd_in_pdt_equipment_huge_soybean", "swap_body")
+    ---------------------------------------------------------------------------------------------
+    --- 放到大力士健身房的动画替换
+        inst:AddComponent("symbolswapdata")
+        inst.components.symbolswapdata:SetData("fwd_in_pdt_equipment_huge_soybean", "swap_body")
     ---------------------------------------------------------------------------------------------
     return inst
 end

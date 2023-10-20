@@ -139,8 +139,14 @@ local function fn()
         inst.components.hauntable:SetHauntValue(TUNING.HAUNT_TINY)
     ---------------------------------------------------------------------------------------------
         -- inst:AddComponent("submersible")
-        -- inst:AddComponent("symbolswapdata")
-        -- inst.components.symbolswapdata:SetData("fwd_in_pdt_equipment_huge_orange", "swap_body")
+    ---------------------------------------------------------------------------------------------
+    --- 放到大力士健身房的动画替换
+        inst:AddComponent("symbolswapdata")
+        inst.components.symbolswapdata:SetData("fwd_in_pdt_equipment_huge_orange", "swap_body")
+    ---------------------------------------------------------------------------------------------
+    ---- 可放农作物台上称重
+        -- inst:AddComponent("weighable")
+        -- inst.components.weighable.type = TROPHYSCALE_TYPES.OVERSIZEDVEGGIES
     ---------------------------------------------------------------------------------------------
     return inst
 end

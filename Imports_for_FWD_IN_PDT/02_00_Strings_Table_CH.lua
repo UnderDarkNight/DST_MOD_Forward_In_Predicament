@@ -247,6 +247,10 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "巨大橙子",
                 ["inspect_str"] = "这橙子很大"
             },
+            ["fwd_in_pdt_equipment_mole_backpack"] = {
+                ["name"] = "零食鼠背包",
+                ["inspect_str"] = "还算凑合"
+            },
         --------------------------------------------------------------------
         ---- 04_fwd_in_pdt_foods
             ["fwd_in_pdt_food_raw_milk"] = {

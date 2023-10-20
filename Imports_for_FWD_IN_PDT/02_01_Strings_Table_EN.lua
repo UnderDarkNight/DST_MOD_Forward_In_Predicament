@@ -239,6 +239,10 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "Huge Orange",
                 ["inspect_str"] = "Very Huge"
             },
+            ["fwd_in_pdt_equipment_mole_backpack"] = {
+                ["name"] = "Mole Backpack",
+                ["inspect_str"] = "Mole Backpack"
+            },
         --------------------------------------------------------------------
         ---- 04_fwd_in_pdt_foods
             ["fwd_in_pdt_food_raw_milk"] = {
