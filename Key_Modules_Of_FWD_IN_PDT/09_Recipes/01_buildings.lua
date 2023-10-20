@@ -10,12 +10,12 @@ end
 
 ----------------------------------------------------------------------------------------------------------------------------------------------
 -- 添加分类栏目
-table.insert(Assets,      Asset("ATLAS", "images/ui_images/fwd_in_pdt_buildings.xml")                         )     --  -- 载入贴图文件
-table.insert(Assets,      Asset("IMAGE", "images/ui_images/fwd_in_pdt_buildings.tex")                         )     --  -- 载入贴图文件
-RegisterInventoryItemAtlas("images/ui_images/fwd_in_pdt_buildings.xml", "fwd_in_pdt_buildings.tex")  -- 注册贴图文件【必须要做】
-AddRecipeFilter({name="FWD_IN_PDT_BUILDINGS", atlas = "images/ui_images/fwd_in_pdt_buildings.xml",	image = "fwd_in_pdt_buildings.tex"})
-STRINGS.UI.CRAFTING_FILTERS["FWD_IN_PDT_BUILDINGS"] = GetStringsTable("fwd_in_pdt_ui_craftingmenu")["FWD_IN_PDT_BUILDINGS"] or ""
---------------------------------------------------------------------------------------------------------------------------------------------
+-- table.insert(Assets,      Asset("ATLAS", "images/ui_images/fwd_in_pdt_buildings.xml")                         )     --  -- 载入贴图文件
+-- table.insert(Assets,      Asset("IMAGE", "images/ui_images/fwd_in_pdt_buildings.tex")                         )     --  -- 载入贴图文件
+-- RegisterInventoryItemAtlas("images/ui_images/fwd_in_pdt_buildings.xml", "fwd_in_pdt_buildings.tex")  -- 注册贴图文件【必须要做】
+-- AddRecipeFilter({name="FWD_IN_PDT_BUILDINGS", atlas = "images/ui_images/fwd_in_pdt_buildings.xml",	image = "fwd_in_pdt_buildings.tex"})
+-- STRINGS.UI.CRAFTING_FILTERS["FWD_IN_PDT_BUILDINGS"] = GetStringsTable("fwd_in_pdt_ui_craftingmenu")["FWD_IN_PDT_BUILDINGS"] or ""
+-- --------------------------------------------------------------------------------------------------------------------------------------------
 require("recipes_filter")
 
 
