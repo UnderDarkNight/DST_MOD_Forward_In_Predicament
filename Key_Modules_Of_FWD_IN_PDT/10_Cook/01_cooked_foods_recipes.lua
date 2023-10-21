@@ -509,7 +509,7 @@
 ----- 生理盐水
     local fwd_in_pdt_food_saline_medicine = {
         test = function(cooker, names, tags)
-            return (names.saltrock or 0) >= 1 and (names.ice or 0) >= 2 and (names.veggie or 0) >=1
+            return (names.saltrock or 0) >= 1 and (names.ice or 0) >= 2 and (tags.veggie or 0) >=1
             -- local saltrock = names.saltrock or 0
             -- local ice = names.ice or 0
             -- local veggie = tags.veggie or 0
@@ -519,8 +519,8 @@
             -- return false
         end,
         name = "fwd_in_pdt_food_saline_medicine", -- 料理名
-        weight = 10, -- 食谱权重
-        priority = 10, -- 食谱优先级
+        weight = 100, -- 食谱权重
+        priority = 100, -- 食谱优先级
         foodtype = GLOBAL.FOODTYPE.GOODIES, --料理的食物类型，比如这里定义的是肉类
         hunger = 0 , --吃后回饥饿值
         sanity = 0 , --吃后回精神值

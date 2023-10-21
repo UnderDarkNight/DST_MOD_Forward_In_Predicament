@@ -50,6 +50,7 @@ local function fn()
         if eater and eater:HasTag("player") then
             -- 一天内VC不降低
             if eater.components.fwd_in_pdt_wellness then
+                eater.components.fwd_in_pdt_wellness:DoDelta_Vitamin_C(20)
                 local vc_inst = eater.components.fwd_in_pdt_wellness:Get_Debuff("fwd_in_pdt_wellness_vitamin_c")
                 if vc_inst then
                     vc_inst:Set_Value_Block_Go_Down_Update_Times(100)
