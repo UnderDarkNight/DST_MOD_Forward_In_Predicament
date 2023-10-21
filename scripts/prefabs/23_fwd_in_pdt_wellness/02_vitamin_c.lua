@@ -178,11 +178,11 @@ local function fn()
                         return
                     end
                     if self.player.components.sanity.DoDelta then
-                        player.components.sanity:DoDelta(-1,true)
+                        player.components.sanity:DoDelta(-0.2,true)
                     end
                 end)
                 if self.com.DEBUGGING_MODE then
-                    print("VC 值过低，启动每秒 -1 San 的任务")
+                    print("VC 值过低，启动每秒 -0.2 San 的任务")
                 end
             end
         end
