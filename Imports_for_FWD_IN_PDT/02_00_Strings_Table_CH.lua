@@ -249,7 +249,10 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             },
             ["fwd_in_pdt_equipment_mole_backpack"] = {
                 ["name"] = "零食鼠背包",
-                ["inspect_str"] = "还算凑合"
+                ["inspect_str"] = "还算凑合",
+                ["name.panda"] = "熊猫背包",
+                ["name.cat"] = "猫钱钱背包",
+                ["name.rabbit"] = "粉兔兔背包",
             },
         --------------------------------------------------------------------
         ---- 04_fwd_in_pdt_foods

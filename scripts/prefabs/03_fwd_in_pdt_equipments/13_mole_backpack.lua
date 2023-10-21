@@ -1,12 +1,78 @@
+-------------------------------------------------------------------------------------------------------------------------------
+--- 鼹鼠背包
+-------------------------------------------------------------------------------------------------------------------------------
+    local function GetStringsTable(name)
+        local prefab_name = name or "fwd_in_pdt_equipment_mole_backpack"
+        local LANGUAGE = type(TUNING["Forward_In_Predicament.Language"]) == "function" and TUNING["Forward_In_Predicament.Language"]() or TUNING["Forward_In_Predicament.Language"]
+        return TUNING["Forward_In_Predicament.Strings"][LANGUAGE][prefab_name] or {}
+    end
+-------------------------------------------------------------------------------------------------------------------------------
+
 local assets =
 {
     Asset("ANIM", "anim/fwd_in_pdt_equipment_mole_backpack.zip"),
 
+    --- 皮肤
+    Asset("ANIM", "anim/fwd_in_pdt_equipment_mole_backpack_panda.zip"),
+    Asset( "IMAGE", "images/inventoryimages/fwd_in_pdt_equipment_mole_backpack_panda.tex" ),  -- 背包贴图
+    Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_equipment_mole_backpack_panda.xml" ),
+    --- 皮肤
+    Asset("ANIM", "anim/fwd_in_pdt_equipment_mole_backpack_cat.zip"),
+    Asset( "IMAGE", "images/inventoryimages/fwd_in_pdt_equipment_mole_backpack_cat.tex" ),  -- 背包贴图
+    Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_equipment_mole_backpack_cat.xml" ),
+    --- 皮肤
+    Asset("ANIM", "anim/fwd_in_pdt_equipment_mole_backpack_rabbit.zip"),
+    Asset( "IMAGE", "images/inventoryimages/fwd_in_pdt_equipment_mole_backpack_rabbit.tex" ),  -- 背包贴图
+    Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_equipment_mole_backpack_rabbit.xml" ),
 }
 
+
+-------------------------------------------------------------------------------------------------------------------------------
+---- 皮肤API 套件
+    ---- 物品用的skin数据
+    local skins_data_item = {
+        ["fwd_in_pdt_equipment_mole_backpack_panda"] = {             --- 皮肤名字，全局唯一。
+            bank = "fwd_in_pdt_equipment_mole_backpack_panda",                               --- 制作完成后切换的 bank
+            build = "fwd_in_pdt_equipment_mole_backpack_panda",                              --- 制作完成后切换的 build
+            atlas = "images/inventoryimages/fwd_in_pdt_equipment_mole_backpack_panda.xml",   --- 【制作栏】皮肤显示的贴图，
+            image = "fwd_in_pdt_equipment_mole_backpack_panda",                              --- 【制作栏】皮肤显示的贴图， 不需要 .tex
+            name = GetStringsTable()["name.panda"],                                          --- 【制作栏】皮肤的名字
+            onequip_bank = "fwd_in_pdt_equipment_mole_backpack_panda"
+        },
+        ["fwd_in_pdt_equipment_mole_backpack_cat"] = {             --- 皮肤名字，全局唯一。
+            bank = "fwd_in_pdt_equipment_mole_backpack_cat",                               --- 制作完成后切换的 bank
+            build = "fwd_in_pdt_equipment_mole_backpack_cat",                              --- 制作完成后切换的 build
+            atlas = "images/inventoryimages/fwd_in_pdt_equipment_mole_backpack_cat.xml",   --- 【制作栏】皮肤显示的贴图，
+            image = "fwd_in_pdt_equipment_mole_backpack_cat",                              --- 【制作栏】皮肤显示的贴图， 不需要 .tex
+            name = GetStringsTable()["name.cat"],                                          --- 【制作栏】皮肤的名字
+            onequip_bank = "fwd_in_pdt_equipment_mole_backpack_cat"
+        },
+        ["fwd_in_pdt_equipment_mole_backpack_rabbit"] = {             --- 皮肤名字，全局唯一。
+            bank = "fwd_in_pdt_equipment_mole_backpack_rabbit",                               --- 制作完成后切换的 bank
+            build = "fwd_in_pdt_equipment_mole_backpack_rabbit",                              --- 制作完成后切换的 build
+            atlas = "images/inventoryimages/fwd_in_pdt_equipment_mole_backpack_rabbit.xml",   --- 【制作栏】皮肤显示的贴图，
+            image = "fwd_in_pdt_equipment_mole_backpack_rabbit",                              --- 【制作栏】皮肤显示的贴图， 不需要 .tex
+            name = GetStringsTable()["name.rabbit"],                                          --- 【制作栏】皮肤的名字
+            onequip_bank = "fwd_in_pdt_equipment_mole_backpack_rabbit"
+        },
+    }
+
+    FWD_IN_PDT_MOD_SKIN.SKIN_INIT(skins_data_item,"fwd_in_pdt_equipment_mole_backpack")     --- 往总表注册所有皮肤
+
+    local function Set_ReSkin_API_Default_Animate(inst,bank,build,minimap)      -- 在 inst.AnimState:PlayAnimation() 前启用本函数
+        FWD_IN_PDT_MOD_SKIN.Set_ReSkin_API_Default_Animate(inst,bank,build,minimap)
+    end
+          
+-------------------------------------------------------------------------------------------------------------------------------
+
+
+
 local function onequip(inst, owner)
-    owner.AnimState:OverrideSymbol("backpack", "fwd_in_pdt_equipment_mole_backpack", "swap_body")
-    owner.AnimState:OverrideSymbol("swap_body", "fwd_in_pdt_equipment_mole_backpack", "swap_body")    
+    local skinname = tostring(inst.skinname)
+    local bank = skins_data_item[skinname] and skins_data_item[skinname].onequip_bank
+
+    owner.AnimState:OverrideSymbol("backpack",bank or "fwd_in_pdt_equipment_mole_backpack", "swap_body")
+    owner.AnimState:OverrideSymbol("swap_body",bank or "fwd_in_pdt_equipment_mole_backpack", "swap_body")    
     inst.components.container:Open(owner)
 end
 
@@ -43,8 +109,9 @@ local function fn()
     --waterproofer (from waterproofer component) added to pristine state for optimization
     inst:AddTag("waterproofer")
 
-    local swap_data = {bank = "fwd_in_pdt_equipment_mole_backpack", anim = "idle"}
-    MakeInventoryFloatable(inst, "med", 0.1, 0.65, nil, nil, swap_data)
+    -- local swap_data = {bank = "fwd_in_pdt_equipment_mole_backpack", anim = "idle"}
+    -- MakeInventoryFloatable(inst, "med", 0.1, 0.65, nil, nil, swap_data)
+    MakeInventoryFloatable(inst, "med", 0.1, 0.65)
 
     inst.entity:SetPristine()
 
@@ -63,6 +130,20 @@ local function fn()
             end
         end
     --------------------------------------------------------------------
+    --------------------------------------------------------------------
+    ---- Skin API Register
+        Set_ReSkin_API_Default_Animate(inst,"fwd_in_pdt_equipment_mole_backpack","fwd_in_pdt_equipment_mole_backpack")
+        if TheWorld.ismastersim then
+            inst:AddComponent("fwd_in_pdt_func"):Init("skin")
+
+            inst:AddComponent("inventoryitem")
+            inst.components.inventoryitem:fwd_in_pdt_icon_init("fwd_in_pdt_equipment_mole_backpack","images/inventoryimages/fwd_in_pdt_equipment_mole_backpack.xml")
+            inst.components.inventoryitem.cangoincontainer = false
+
+            inst:AddComponent("named")
+            inst.components.named:SetName_fwd_in_pdt(GetStringsTable()["name"])
+        end
+    --------------------------------------------------------------------
     if not TheWorld.ismastersim then
 
         return inst
@@ -70,8 +151,8 @@ local function fn()
 
     inst:AddComponent("inspectable")
 
-    inst:AddComponent("inventoryitem")
-    inst.components.inventoryitem.cangoincontainer = false
+    -- inst:AddComponent("inventoryitem")
+    -- inst.components.inventoryitem.cangoincontainer = false
 
     inst:AddComponent("equippable")
     inst.components.equippable.equipslot = EQUIPSLOTS.BODY

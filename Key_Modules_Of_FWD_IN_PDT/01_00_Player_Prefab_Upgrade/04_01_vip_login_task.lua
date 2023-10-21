@@ -92,6 +92,12 @@ AddPlayerPostInit(function(inst)
                         ["fwd_in_pdt_building_special_production_table"] = {
                             "fwd_in_pdt_building_special_production_table_punk",
                         },
+                    ---- 鼹鼠背包
+                        ["fwd_in_pdt_equipment_mole_backpack"] = {
+                            -- "fwd_in_pdt_equipment_mole_backpack_panda",  --- 免费送
+                            -- "fwd_in_pdt_equipment_mole_backpack_cat",    --- 单独发送
+                            "fwd_in_pdt_equipment_mole_backpack_rabbit",    --- VIP
+                        },
 
                 }
                 inst.components.fwd_in_pdt_func:SkinAPI__Unlock_Skin(list)

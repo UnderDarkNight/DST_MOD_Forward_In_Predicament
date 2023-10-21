@@ -24,6 +24,9 @@ modimport("Key_Modules_Of_FWD_IN_PDT/01_00_Player_Prefab_Upgrade/04_01_vip_login
 modimport("Key_Modules_Of_FWD_IN_PDT/01_00_Player_Prefab_Upgrade/05_player_wellness_events.lua")   
  --- 体质值 相关的监听事件，以及疾病获取。
 
+modimport("Key_Modules_Of_FWD_IN_PDT/01_00_Player_Prefab_Upgrade/06_player_default_unlock_skins.lua")   
+ --- 默认送给玩家的皮肤
+
 
 
 
