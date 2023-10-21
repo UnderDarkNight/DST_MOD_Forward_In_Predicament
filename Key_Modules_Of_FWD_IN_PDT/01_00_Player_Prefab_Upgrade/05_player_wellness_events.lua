@@ -222,24 +222,47 @@ AddPlayerPostInit(function(inst)
 
     ----------------------------------------------------------------------------------------------------------
     -----------  季节变换后触发的事件    
+                ---  只会得一次
             inst:WatchWorldState("cycles",function()
                 inst:DoTaskInTime(math.random(100),function()
-                    if TheWorld.state.isspring and TheWorld.state.seasonprogress <= 2 then
+                    if TheWorld.state.isspring then
                         --- 春天的前两天
-                        if math.random(1000) < 200 then -- 20% 得发烧
-                            inst.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_fever")
-                        end
-                        if math.random(1000) < 200 then -- 20% 得咳嗽
-                            inst.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_cough")
+                        if TheWorld.state.seasonprogress <= 2 then
+                                if math.random(1000) < 200 then -- 20% 得发烧
+                                        if not inst.components.fwd_in_pdt_wellness:Get("fever_block") then
+                                                    inst.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_fever")
+                                                    inst.components.fwd_in_pdt_wellness:Set("fever_block",true)
+                                        end
+                                end
+                                if math.random(1000) < 200 then -- 20% 得咳嗽
+                                    if not inst.components.fwd_in_pdt_wellness:Get("cough_block") then
+                                                    inst.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_cough")
+                                                    inst.components.fwd_in_pdt_wellness:Set("cough_block",true)
+                                    end
+                                end
+                        else
+                            inst.components.fwd_in_pdt_wellness:Set("fever_block",false)
+                            inst.components.fwd_in_pdt_wellness:Set("cough_block",false)
                         end
 
-                    elseif TheWorld.state.iswinter and TheWorld.state.seasonprogress <= 2 then
+                    elseif TheWorld.state.iswinter then
                         --- 冬天的前两天
-                        if math.random(1000) < 200 then -- 20% 得发烧
-                            inst.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_fever")
-                        end
-                        if math.random(1000) < 200 then -- 20% 得咳嗽
-                            inst.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_cough")
+                        if TheWorld.state.seasonprogress <= 2 then
+                                if math.random(1000) < 200 then -- 20% 得发烧
+                                    if not inst.components.fwd_in_pdt_wellness:Get("fever_block") then                                    
+                                                inst.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_fever")
+                                                inst.components.fwd_in_pdt_wellness:Set("fever_block",true)
+                                    end
+                                end
+                                if math.random(1000) < 200 then -- 20% 得咳嗽
+                                    if not inst.components.fwd_in_pdt_wellness:Get("cough_block") then
+                                                inst.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_cough")
+                                                inst.components.fwd_in_pdt_wellness:Set("cough_block",true)
+                                    end
+                                end
+                        else
+                            inst.components.fwd_in_pdt_wellness:Set("fever_block",false)
+                            inst.components.fwd_in_pdt_wellness:Set("cough_block",false)
                         end
                     end
 

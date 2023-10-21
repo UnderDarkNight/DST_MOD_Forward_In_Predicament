@@ -220,17 +220,17 @@ local flg,error_code = pcall(function()
                 -- local TileManager = require("tilemanager")
                 -- print(WORLD_TILES[string.upper("fwd_in_pdt_turf_test")])
     ----------------------------------------------------------------------------------------------------------------
-    for k, temp_player in pairs(AllPlayers) do
-        if temp_player and temp_player:HasTag("player") and temp_player.components.fwd_in_pdt_func and temp_player.components.fwd_in_pdt_func.Wisper then
-                temp_player.components.fwd_in_pdt_func:Wisper({
-                    m_colour = {0,255,255} ,                          ---- 内容颜色
-                    s_colour = {255,255,0},                         ---- 发送者颜色
-                    icondata = "profileflair_shadowhand",        ---- 图标
-                    message = "6666666666666666",                                 ---- 文字内容
-                    sender_name = "FWD",                               ---- 发送者名字
-                })
-        end
-    end
+    -- for k, temp_player in pairs(AllPlayers) do
+    --     if temp_player and temp_player:HasTag("player") and temp_player.components.fwd_in_pdt_func and temp_player.components.fwd_in_pdt_func.Wisper then
+    --             temp_player.components.fwd_in_pdt_func:Wisper({
+    --                 m_colour = {0,255,255} ,                          ---- 内容颜色
+    --                 s_colour = {255,255,0},                         ---- 发送者颜色
+    --                 icondata = "profileflair_shadowhand",        ---- 图标
+    --                 message = "6666666666666666",                                 ---- 文字内容
+    --                 sender_name = "FWD",                               ---- 发送者名字
+    --             })
+    --     end
+    -- end
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)
