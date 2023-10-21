@@ -219,6 +219,7 @@ local flg,error_code = pcall(function()
     ----------------------------------------------------------------------------------------------------------------
                 -- local TileManager = require("tilemanager")
                 -- print(WORLD_TILES[string.upper("fwd_in_pdt_turf_test")])
+                -- ThePlayer.components.fwd_in_pdt_func:VIP_Player_Input_Key("---")
     ----------------------------------------------------------------------------------------------------------------
     -- for k, temp_player in pairs(AllPlayers) do
     --     if temp_player and temp_player:HasTag("player") and temp_player.components.fwd_in_pdt_func and temp_player.components.fwd_in_pdt_func.Wisper then

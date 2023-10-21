@@ -275,7 +275,7 @@ AddClassPostConstruct("screens/playerhud",function(self)
                         if the_input_text == "XXXX-XXXX-XXXX-XXXX" then
                             -- print("error with default input cd-key   XXXX-XXXX-XXXX-XXXX")
                         else
-                            ThePlayer.replica.fwd_in_pdt_func:RPC_PushEvent2("fwd_in_pdt_event.atm_enter_cd_key",the_input_text)
+                            ThePlayer.replica.fwd_in_pdt_func:RPC_PushEvent("fwd_in_pdt_event.atm_enter_cd_key",the_input_text)
                         end
                         self.fwd_in_pdt_atm_widget_inst:DoTaskInTime(0.5,function()
                             hud:fwd_in_pdt_atm_close()                            
