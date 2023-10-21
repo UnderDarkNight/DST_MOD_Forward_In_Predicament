@@ -272,6 +272,19 @@ AddPlayerPostInit(function(inst)
     ----------- 官方道具物品使用
             
     ----------------------------------------------------------------------------------------------------------
+    ----------- 死亡后清除中毒值，和所有毒
+            inst:ListenForEvent("death",function()
+                local poisons = {
+                    ["fwd_in_pdt_welness_snake_poison"] = true,
+                    ["fwd_in_pdt_welness_frog_poison"] = true,
+                    ["fwd_in_pdt_welness_spider_poison"] = true,
+                    ["fwd_in_pdt_welness_bee_poison"] = true,
+                }
+                for poison_prefab, v in pairs(poisons) do
+                    inst.components.fwd_in_pdt_wellness:Remove_Debuff(poison_prefab)
+                end
+                inst.components.fwd_in_pdt_wellness:SetCurrent_Poison(0)
+            end)
     ----------------------------------------------------------------------------------------------------------
     ----------------------------------------------------------------------------------------------------------
     ----------------------------------------------------------------------------------------------------------

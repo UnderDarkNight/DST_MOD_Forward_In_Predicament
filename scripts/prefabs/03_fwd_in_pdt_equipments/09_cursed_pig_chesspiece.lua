@@ -74,18 +74,27 @@ local function fn()
             if doer and item and item.components.stackable then
                 local num = item.components.stackable.stacksize
                 item:Remove()
-                local ret_num = inst.components.fwd_in_pdt_data:Add("food_num",num)
-                local coins_num = math.floor(ret_num/3)
-                doer.SoundEmitter:PlaySound("dontstarve/pig/oink")
-                if coins_num >= 1 then
-                    doer.SoundEmitter:PlaySound("dontstarve/pig/PigKingThrowGold")
-                    TheWorld.components.fwd_in_pdt_func:Throw_Out_Items({
-                            target = doer,
-                            name = "fwd_in_pdt_item_jade_coin_green",
-                            num = coins_num,
-                    })
-                    inst.components.fwd_in_pdt_data:Add("food_num",coins_num*-3)
-                end
+                ---- 3:1 兑换
+                        -- local ret_num = inst.components.fwd_in_pdt_data:Add("food_num",num)
+                        -- local coins_num = math.floor(ret_num/3)
+                        -- doer.SoundEmitter:PlaySound("dontstarve/pig/oink")
+                        -- if coins_num >= 1 then
+                        --     doer.SoundEmitter:PlaySound("dontstarve/pig/PigKingThrowGold")
+                        --     TheWorld.components.fwd_in_pdt_func:Throw_Out_Items({
+                        --             target = doer,
+                        --             name = "fwd_in_pdt_item_jade_coin_green",
+                        --             num = coins_num,
+                        --     })
+                        --     inst.components.fwd_in_pdt_data:Add("food_num",coins_num*-3)
+                        -- end
+                --- 1:1 兑换
+                doer.SoundEmitter:PlaySound("dontstarve/pig/PigKingThrowGold")
+                TheWorld.components.fwd_in_pdt_func:Throw_Out_Items({
+                        target = doer,
+                        name = "fwd_in_pdt_item_jade_coin_green",
+                        num = num,
+                }) 
+                
             end
             return true
         end)

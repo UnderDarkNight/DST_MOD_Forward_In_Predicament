@@ -102,6 +102,24 @@ local function fn()
         inst:ListenForEvent("on_landed",shadow_init)
         shadow_init(inst)
     -------------------------------------------------------------------
+    --- 燃烧出币
+        inst:ListenForEvent("temp_burnt",function(_,pt)
+            TheWorld.components.fwd_in_pdt_func:Throw_Out_Items({
+                target = pt,
+                name = "fwd_in_pdt_item_jade_coin_green",
+                num = 5,
+            })
+        end)
+        inst:ListenForEvent("fueltaken",function(_,_table)  --- 被当做燃料
+            if _table and _table.taker then
+                inst:PushEvent("temp_burnt",Vector3(_table.taker.Transform:GetWorldPosition()))
+                -- print("fake error fueltaken")
+            end
+        end)
+        inst:ListenForEvent("onburnt",function() -- 被点火
+            inst:PushEvent("temp_burnt",Vector3(inst.Transform:GetWorldPosition()))            
+        end)
+    -------------------------------------------------------------------
 
     return inst
 end

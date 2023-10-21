@@ -127,7 +127,7 @@ local function fn()
         inst:ListenForEvent("fueltaken",function(_,_table)  --- 被当做燃料
             if _table and _table.taker then
                 inst:PushEvent("temp_burnt",Vector3(_table.taker.Transform:GetWorldPosition()))
-                print("fake error fueltaken")
+                -- print("fake error fueltaken")
             end
         end)
         inst:ListenForEvent("onburnt",function() -- 被点火
