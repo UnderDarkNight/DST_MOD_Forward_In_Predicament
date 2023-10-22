@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------
 --- 装备 ，武器
 --- 极寒火腿棒
---- 绿法杖分解代码在【_Key_Modules_Of_FWD_IN_PDT\09_Recipes\03_element_core_weapon_recipes_for_green_staff.lua】
+--- 绿法杖分解代码在【Key_Modules_Of_FWD_IN_PDT\09_Recipes\03_element_core_weapon_recipes_for_green_staff.lua】
 
 --------------------------------------------------------------------------
 

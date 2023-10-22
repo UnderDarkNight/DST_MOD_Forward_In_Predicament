@@ -17,7 +17,7 @@
 -- 动作的显示文本api SetActionDisplayStrByIndex 参数为 index ，对应文本和index 需要前往 GetStringsTable("fwd_in_pdt_com_special_acceptable") 添加和查看。
 -- 封装了添加API SetActionDisplayStr(index,action_name) ，但是容易被后来者覆盖，注意命名避让。
 
--- 动作交互注册于 【_Key_Modules_Of_FWD_IN_PDT\05_Actions\04_item_acceptable_action.lua】。
+-- 动作交互注册于 【Key_Modules_Of_FWD_IN_PDT\05_Actions\04_item_acceptable_action.lua】。
 
 
 

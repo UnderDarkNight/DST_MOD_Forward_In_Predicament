@@ -6,7 +6,7 @@
 --- fwd_in_pdt_com_action_fail_reason:Add_Reason(reason_name,talk_str)  添加失败原因标记位，和对应的文本内容。 用于非玩家。
 --- fwd_in_pdt_com_action_fail_reason:Inser_Fail_Talk_Str(str)   添加玩家用的专属失败话语。优先级高于非玩家对象。
 
--- 需要hook官方函数，具体在 【_Key_Modules_Of_FWD_IN_PDT\05_Actions\00_action_fail_string_api.lua】 查看。
+-- 需要hook官方函数，具体在 【Key_Modules_Of_FWD_IN_PDT\05_Actions\00_action_fail_string_api.lua】 查看。
 ----------------------------------------------------------------------------------------------------------------------------------
 local fwd_in_pdt_com_action_fail_reason = Class(function(self, inst)
     self.inst = inst
