@@ -83,7 +83,9 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
         ---- 01_fwd_in_pdt_items
             ["fwd_in_pdt_gift_pack"] = {
                 ["name"] = "礼物盒",
-                ["inspect_str"] = "一个礼物盒"
+                ["inspect_str"] = "一个礼物盒",
+                ["name.opening_gift_box"] = "新手生存礼盒",
+                ["name.vip"] = "VIP 礼物盒",
             },
             ["fwd_in_pdt_item_ice_core"] = {
                 ["name"] = "极冰冷核",

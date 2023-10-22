@@ -16,8 +16,9 @@ modimport("Key_Modules_Of_FWD_IN_PDT/01_00_Player_Prefab_Upgrade/02_recipes_maki
 modimport("Key_Modules_Of_FWD_IN_PDT/01_00_Player_Prefab_Upgrade/03_daily_task.lua")   
  --- 日常任务系统/签到
 
-modimport("Key_Modules_Of_FWD_IN_PDT/01_00_Player_Prefab_Upgrade/04_00_login_announce_task.lua")   
- --- 登录通告
+modimport("Key_Modules_Of_FWD_IN_PDT/01_00_Player_Prefab_Upgrade/04_00_login_task.lua")   
+ --- 登录执行任务
+ 
 modimport("Key_Modules_Of_FWD_IN_PDT/01_00_Player_Prefab_Upgrade/04_01_vip_login_task.lua")   
  --- VIP专属内容执行函数
 

@@ -74,7 +74,9 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
         ---- 01_fwd_in_pdt_items
             ["fwd_in_pdt_gift_pack"] = {
                 ["name"] = "Gift Box",
-                ["inspect_str"] = "A Gift Box"
+                ["inspect_str"] = "A Gift Box",
+                ["name.opening_gift_box"] = "Newbie Survival Gift Box",
+                ["name.vip"] = "VIP Gift Box",
             },
             ["fwd_in_pdt_item_ice_core"] = {
                 ["name"] = "Ice Core Stone",

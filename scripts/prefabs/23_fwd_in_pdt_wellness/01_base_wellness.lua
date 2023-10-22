@@ -188,7 +188,7 @@ local function fn()
             function inst:Add_Speed_Up_Mult()
                 if not self._____speed_up_mult_added_flag then
                     self._____speed_up_mult_added_flag = true
-                    self.player.components.locomotor:SetExternalSpeedMultiplier(self,self.prefab,1.2)
+                    self.player.components.locomotor:SetExternalSpeedMultiplier(self,self.prefab,1.4)
                 end
             end    
             function inst:Remove_Speed_Up_Mult()
@@ -318,7 +318,7 @@ local function fn()
                                 if player.components.health then
                                     player_max_health = player.components.health:GetMaxWithPenalty()
                                 end
-                                local dmg = -1 * player_max_health * 0.05
+                                local dmg = -1 * player_max_health * 0.25
                                 target.components.health:DoDelta(dmg,true)
                             end
                         end

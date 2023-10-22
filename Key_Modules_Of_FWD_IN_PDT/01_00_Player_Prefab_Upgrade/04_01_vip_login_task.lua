@@ -125,7 +125,7 @@ AddPlayerPostInit(function(inst)
 
                         local gift_pack = SpawnPrefab("fwd_in_pdt_gift_pack")
                         gift_pack:PushEvent("Set",{
-                            name = "VIP Gift Pack",
+                            name = GetStringsTable("fwd_in_pdt_gift_pack")["name.vip"],
                             inspect_str = "VIP Gift Pack",
                             skin_num = math.random(6),   -- 1~6
                             items = {
@@ -136,6 +136,13 @@ AddPlayerPostInit(function(inst)
                                         {"nightstick",1},
                                         {"fwd_in_pdt_food_bread",2},
                                     },
+                        --  new_anim = {               ----- 其他皮肤数据
+                        --     bank = "",
+                        --     build = "",
+                        --     anim = "",
+                        --     imagename = "",
+                        --     atlasname = "",
+                        --  },
                         })
                         inst.components.inventory:GiveItem(gift_pack)
 
