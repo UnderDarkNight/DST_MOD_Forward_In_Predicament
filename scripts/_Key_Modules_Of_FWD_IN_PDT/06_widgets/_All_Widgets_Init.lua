@@ -26,3 +26,5 @@ modimport("scripts/_Key_Modules_Of_FWD_IN_PDT/06_widgets/10_advertising.lua")   
 
 modimport("scripts/_Key_Modules_Of_FWD_IN_PDT/06_widgets/11_synopsis.lua")    --- MOD说明书
 
+modimport("scripts/_Key_Modules_Of_FWD_IN_PDT/06_widgets/12_widgets_text_bug_fix.lua")    --- 修复某个奇怪的BUG使用
+
