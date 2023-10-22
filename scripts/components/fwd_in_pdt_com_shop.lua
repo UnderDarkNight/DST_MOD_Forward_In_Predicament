@@ -95,11 +95,27 @@ end,nil,
     function fwd_in_pdt_com_shop:Refresh_Items_List()   ---- 刷新列表
         local list_a = GetRandomInTable(self.Items_List_A,self.Num_A)
         local list_b = GetRandomInTable(self.Items_List_B,self.Num_B)
-        for k, v in pairs(list_b) do
-            table.insert(list_a,v)
+        local final_list = {}
+        local final_list_flags = {}
+
+        -- for k, v in pairs(list_b) do
+        --     table.insert(list_a,v)
+        -- end
+        for k, item_cmd_table in pairs(list_a) do
+            if item_cmd_table and item_cmd_table.prefab and final_list_flags[item_cmd_table.prefab] == nil then
+                final_list_flags[item_cmd_table.prefab] = true
+                table.insert(final_list,item_cmd_table)
+            end
         end
-        self.DisplayItemsTable =  list_a
-        self:Send_List_2_Client(list_a)
+        for k, item_cmd_table in pairs(list_b) do
+            if item_cmd_table and item_cmd_table.prefab and final_list_flags[item_cmd_table.prefab] == nil then
+                final_list_flags[item_cmd_table.prefab] = true
+                table.insert(final_list,item_cmd_table)
+            end
+        end
+
+        self.DisplayItemsTable =  final_list
+        self:Send_List_2_Client(final_list)
     end
 
     function fwd_in_pdt_com_shop:GetItemDataByPrefab(prefab)

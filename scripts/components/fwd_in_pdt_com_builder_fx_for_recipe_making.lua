@@ -1,6 +1,6 @@
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -- 制作物品的时候播放的特效
--- 挂载去 builder:DoBuild   【Key_Modules_Of_FWD_IN_PDT\02_Original_Components_Upgrade\01_builder_fx_for_recipe_making.lua】
+-- 挂载去 builder:DoBuild   【_Key_Modules_Of_FWD_IN_PDT\02_Original_Components_Upgrade\01_builder_fx_for_recipe_making.lua】
 
 -- Add_Fx_Fn 给对应的prefab 加 fn，  
 --  可以单个添加 Add_Fx_Fn("yellowstaff",fn)

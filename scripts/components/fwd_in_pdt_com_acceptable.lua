@@ -17,7 +17,7 @@
 -- 动作的显示文本api SetActionDisplayStrByIndex 参数为 index ，对应文本和index 需要前往 GetStringsTable("fwd_in_pdt_com_acceptable") 添加和查看。
 -- 封装了添加API SetActionDisplayStr(index,action_name) ，但是容易被后来者覆盖，注意命名避让。
 
--- 动作交互注册于 【Key_Modules_Of_FWD_IN_PDT\05_Actions\04_item_acceptable_action.lua】。
+-- 动作交互注册于 【_Key_Modules_Of_FWD_IN_PDT\05_Actions\04_item_acceptable_action.lua】。
 
 -- 常用API:
 -- 【可选】 fwd_in_pdt_com_acceptable:SetCanAccept(flag)  -- 设置是否可以使用本组件交互 ，默认可以。
@@ -34,7 +34,7 @@ local fwd_in_pdt_com_acceptable = Class(function(self, inst)
     self.__on_accept_fn = nil   ---- 物品接受的时候执行 fn(inst,item,doer)
     self._accept_sg_action = "give"        ---- 默认动作。 --- SGWilson 里面的
     self._accept_action_str_index = "DEFAULT"   -- 默认动作文本index
-    self._inser_table_index = "FWD_IN_PDT_COM_ACCEPTABLE_ACTION"  --- 具体前往 Key_Modules_Of_FWD_IN_PDT\05_Actions\04_item_acceptable_action.lua 参考
+    self._inser_table_index = "FWD_IN_PDT_COM_ACCEPTABLE_ACTION"  --- 具体前往 _Key_Modules_Of_FWD_IN_PDT\05_Actions\04_item_acceptable_action.lua 参考
     self.__pre_action_fn = nil
 
 

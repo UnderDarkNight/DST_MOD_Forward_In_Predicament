@@ -98,7 +98,7 @@ local function main_com(fwd_in_pdt_func)
         end
     --------------------------------------------------------------------------------------------------------------------------------------------
     --- 设置新创建玩家的出生点。
-        --- 配合 【Key_Modules_Of_FWD_IN_PDT\01_Original_Prefabs_Upgrade\01_01_theworld_player_spawner.lua】 实现
+        --- 配合 【_Key_Modules_Of_FWD_IN_PDT\01_Original_Prefabs_Upgrade\01_01_theworld_player_spawner.lua】 实现
         --- fn 为nil 的时候 return fn
         --- fn 需要 return Vector3
         function fwd_in_pdt_func:Get_Or_Set_New_Spawn_Pt_Fn(fn)

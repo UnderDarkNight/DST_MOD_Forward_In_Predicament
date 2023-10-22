@@ -6,7 +6,7 @@
 --- Item_Tile_Icon_Fx_SetDisplay(true)  开启/关闭动画。默认情况是 开启。
 
 --- 对应的动画需要在250x250 pix 范围内制作。
---- 【Key_Modules_Of_FWD_IN_PDT\06_widgets\04_itemtile_icon_fx_anim.lua】
+--- 【_Key_Modules_Of_FWD_IN_PDT\06_widgets\04_itemtile_icon_fx_anim.lua】
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 local function main_com(fwd_in_pdt_func)

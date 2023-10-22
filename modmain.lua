@@ -7,7 +7,7 @@ GLOBAL.setmetatable(env,{__index=function(t,k) return GLOBAL.rawget(GLOBAL,k) en
 -- 
 --  If anyone wants to add additional language support themselves, 
 --  please add this function before this mod is loaded (set a higher priority)  : TUNING["Forward_In_Predicament.Language"]
---	and then mount a text table in the format of /Imports_for_FWD_IN_PDT/02_01_Strings_Table_EN.lua
+--	and then mount a text table in the format of /_Imports_for_FWD_IN_PDT/02_01_Strings_Table_EN.lua
 --  The missing language text is automatically read from the "ch" text
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 TUNING["Forward_In_Predicament.Language"] = TUNING["Forward_In_Predicament.Language"] or function()
@@ -64,12 +64,12 @@ end
 Assets = {}
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-modimport("Imports_for_FWD_IN_PDT/__All_imports_init.lua")	---- 所有 import  文本库（语言库），素材库
+modimport("scripts/_Imports_for_FWD_IN_PDT/__All_imports_init.lua")	---- 所有 import  文本库（语言库），素材库
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ------- 提前加载这些公共函数，给检测 屏蔽 prefab 的时候调用。
--- 已经移动到  【 Imports_for_FWD_IN_PDT\_require_module_for_prefab_block.lua  】
+-- 已经移动到  【 _Imports_for_FWD_IN_PDT\_require_module_for_prefab_block.lua  】
 if not TUNING["Forward_In_Predicament.Config"].compatibility_mode then
 		require("prefabutil")
 		require("maputil")
@@ -320,12 +320,12 @@ end
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-modimport("Key_Modules_Of_FWD_IN_PDT/_All_Key_Modules_Init.lua")	---- 载入关键功能模块,在 prefab 加载之前，方便皮肤的API HOOK
+modimport("scripts/_Key_Modules_Of_FWD_IN_PDT/_All_Key_Modules_Init.lua")	---- 载入关键功能模块,在 prefab 加载之前，方便皮肤的API HOOK
 
 PrefabFiles = {  "forward_in_predicament__all_prefabs"  }		---- 通过总入口 加载所有prefab。
 
 
 if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE == true then
-	modimport("test_fn/_Load_All_debug_fn.lua")	---- 载入测试用的模块
+	modimport("scripts/test_fn/_Load_All_debug_fn.lua")	---- 载入测试用的模块
 end
 -- dofile(resolvefilepath("test_fn/test.lua"))
