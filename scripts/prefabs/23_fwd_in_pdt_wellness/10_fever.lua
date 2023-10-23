@@ -139,7 +139,7 @@ local function fn()
                         --[[
                             往 74℃ 聚拢,到达发热掉血的程度
                         ]]--
-                        if player.components.temperature then
+                        if player.components.temperature and not player:HasTag("playerghost") then
                             local current_num = player.components.temperature:GetCurrent()                            
                             local delta_num = math.abs( (current_num - 74)/5 )
                             player.components.temperature:DoDelta(delta_num)                            
