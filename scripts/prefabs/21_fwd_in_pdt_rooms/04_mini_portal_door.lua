@@ -59,7 +59,7 @@ local function fn()
                 local portal_door = TheSim:FindFirstEntityWithTag("multiplayer_portal")
                 if portal_door then
                     local x,y,z = portal_door.Transform:GetWorldPosition()
-                    doer.components.fwd_in_pdt_func:Transform2PT(x,0,z)
+                    doer.components.fwd_in_pdt_func:Transform2PT2(x,0,z)
                     -----------------------------------------------------------------
                     --- 让玩家面向摄像机，以及触发门的特效
                         local camera_down_pt = doer.components.fwd_in_pdt_func:TheCamera_GetDownVec() or Vector3(0,0,0)
@@ -118,7 +118,7 @@ local function fn()
                 else
                     z = z - math.random(80)/100                    
                 end
-                player.components.fwd_in_pdt_func:Transform2PT(x,y,z)
+                player.components.fwd_in_pdt_func:Transform2PT2(x,y,z)
             end
         end)
     -------------------------------------------------------------------------------------

@@ -94,7 +94,7 @@
 ----- 番茄炒蛋
     local fwd_in_pdt_food_scrambled_eggs_with_tomatoes = {
         test = function(cooker, names, tags)
-            return ( names.egg and names.egg == 2 )
+            return ( tags.egg and tags.egg == 2 )
                 and ( (names.tomato or 0) + (names.tomato_cooked or 0) >= 2 )
             -- local tomatoes_value = names.tomato or 0
             -- local tomato_cooked_value = names.tomato_cooked or 0

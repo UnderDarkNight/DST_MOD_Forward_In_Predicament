@@ -171,6 +171,39 @@ local function main_com(fwd_in_pdt_func)
             end)
         end
     --------------------------------------------------------------------------------------------------------------------------------------------
+    ---- 传送去指定位置并检查,避免洞穴存档的时候传送出错.支持缺省为 Vector3(...)
+        function fwd_in_pdt_func:Transform2PT2(Vector3_or_x,yy,zz)
+            if self.inst:HasTag("playerghost") then
+                return
+            end
+            local x,y,z = Vector3_or_x,yy,zz
+            if type(Vector3_or_x) == "table" and Vector3_or_x.x and Vector3_or_x.y and Vector3_or_x.z then
+                x,y,z = Vector3_or_x.x,Vector3_or_x.y,Vector3_or_x.z
+            elseif type(Vector3_or_x) == "number" and type(yy) == "number" and type(zz) == "number" then
+                x,y,z = Vector3_or_x,yy,zz
+            else
+                return
+            end
+            if self.inst.sg then
+                self.inst.sg:GoToState("forcetele")
+            end
+            self.inst.Transform:SetPosition(x,y,z)
+            self.inst:ScreenFade(true, 2)
+
+            self.TempData.________Transform2PT__task = self.inst:DoPeriodicTask(0.2,function()
+                if self.inst:GetDistanceSqToPoint(x,y,z) < 1 then
+                    self.TempData.________Transform2PT__task:Cancel()
+                    self.TempData.________Transform2PT__task = nil
+                    if self.inst.sg then
+                        self.inst.sg:GoToState("idle")
+                    end
+                    self.inst.Transform:SetPosition(x,0,z)
+                else
+                    self.inst.Transform:SetPosition(x,1,z)
+                end
+            end)
+        end
+    --------------------------------------------------------------------------------------------------------------------------------------------
     ---- 给指定数量的物品（用来减少卡顿）
         function fwd_in_pdt_func:GiveItemByPrefab(prefab,num)
             -- print("main info fwd_in_pdt_func:GiveItemByPrefab",prefab,num)

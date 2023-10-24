@@ -225,7 +225,7 @@ local function fn()
     --- 季节检查和限定生长
         inst:ListenForEvent("season_check",function()
             -- autumn , winter , spring , summer
-            if TheWorld.state.season == "winter" or TheWorld.state.season == "spring" then
+            if TheWorld.state.season == "winter" or TheWorld.state.season == "autumn" then
                 inst.components.growable:StartGrowing()
             else
                 inst.components.growable:StopGrowing()

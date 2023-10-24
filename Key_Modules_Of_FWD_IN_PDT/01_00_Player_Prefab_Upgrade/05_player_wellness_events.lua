@@ -149,6 +149,7 @@ AddPlayerPostInit(function(inst)
                     ["wormlight_lesser"] = 20,
                     ["evergreen"] = 20,
                     ["cave_fern"]   = 10,
+                    ["monsterlasagna"]   = 30,  -- 怪物千层饼
 
                 }
                 if prefab_list_with_vc_value[food_base_prefab] then
