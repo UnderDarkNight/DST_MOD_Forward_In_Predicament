@@ -95,12 +95,21 @@ local function main_com(self)
         end
         self.TempData.Cross_Archived_Data.__Data = self.TempData.Cross_Archived_Data.__Data or {}
         self.TempData.Cross_Archived_Data.__Data[name] = data
-        self:RPC_PushEvent2("fwd_in_pdt_event.Set_Cross_Archived_Data_To_Client",self.TempData.Cross_Archived_Data.__Data)
+        -- self:RPC_PushEvent("fwd_in_pdt_event.Set_Cross_Archived_Data_To_Client",self.TempData.Cross_Archived_Data.__Data)
+        self:Cross_Archived_Data_RPC_Server2Client(self.TempData.Cross_Archived_Data.__Data)
+    end
+    --------------------------------------------------------------------------------------------------------------------
+    function self:Cross_Archived_Data_RPC_Server2Client(data)
+        SendModRPCToClient(CLIENT_MOD_RPC[TUNING["Forward_In_Predicament.RPC_NAMESPACE"]]["cross_archived_data.server2client"],self.inst,json.encode(data or {}))
     end
     --------------------------------------------------------------------------------------------------------------------
 end
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 local function replica(self)
+    --------------------------------------------------------------------------------------------------------------------
+    function self:Cross_Archived_Data_RPC_Client2Server(data)
+        SendModRPCToServer(MOD_RPC[TUNING["Forward_In_Predicament.RPC_NAMESPACE"]]["cross_archived_data.client2server"],json.encode(data or {}))
+    end
     --------------------------------------------------------------------------------------------------------------------
     ----- 往 replica 注册执行函数
     local function send_data_2_server(inst)
@@ -108,7 +117,8 @@ local function replica(self)
             return
         end
         local ret_table = Get_Cross_Archived_Data_By_userid(inst.userid) or {}
-        inst.replica.fwd_in_pdt_func:RPC_PushEvent2("fwd_in_pdt_event.Get_Cross_Archived_Data_From_Client",ret_table)
+        -- inst.replica.fwd_in_pdt_func:RPC_PushEvent2("fwd_in_pdt_event.Get_Cross_Archived_Data_From_Client",ret_table)
+        self:Cross_Archived_Data_RPC_Client2Server(ret_table)
         inst:PushEvent("fwd_in_pdt_event.Cross_Archived_Data_Send_2_Server_Finish")     --- 给client 挂个事件监听
         if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
             print("fwd_in_pdt info: send all Cross_Archived_Data to Server",inst)
