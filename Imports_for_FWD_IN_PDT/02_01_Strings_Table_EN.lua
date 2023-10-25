@@ -29,8 +29,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             },
             ["fwd_in_pdt_cd_key_sys"] = {
                 ["succeed_announce"] = "There was a loud bang in the sky, and VIP member [ XXXXXXX ] made a shiny appearance",
-                ["bad_key.talker"] = "【Fwd ind Predicament】",
+                ["talker"] = "【Fwd ind Predicament】",
                 ["bad_key.str"] = "The same CD-KEY as other players is detected, please pay attention to privacy protection ! ! ! !",
+                ["check_start"] = "Start checking the CD-KEY entered by the player :  ",
+                ["check_fail"] = "Invalid CD-KEY entered by player",
+                ["check_server_fail"] = "Failed to connect to the CD-KEY server",
             },
             ["fwd_in_pdt_other_poison_frog"] = {
                 ["name"] = "Poison Dart Frog",                

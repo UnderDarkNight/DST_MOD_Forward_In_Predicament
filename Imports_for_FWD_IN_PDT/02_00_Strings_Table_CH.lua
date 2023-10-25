@@ -35,8 +35,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             },
             ["fwd_in_pdt_cd_key_sys"] = {
                 ["succeed_announce"] = "天空一声巨响，VIP会员【 XXXXXX 】闪亮登场",
-                ["bad_key.talker"] = "【负重前行】",
+                ["talker"] = "【负重前行】",
                 ["bad_key.str"] = "检测到和其他玩家相同的CD-KEY，请注意隐私保护！！",
+                ["check_start"] = "开始检查玩家输入的CD-KEY:  ",
+                ["check_fail"] = "玩家输入的CD-KEY无效",
+                ["check_server_fail"] = "连接CD-KEY服务器失败",
             },
             ["fwd_in_pdt_other_poison_frog"] = {
                 ["name"] = "箭毒娃",                

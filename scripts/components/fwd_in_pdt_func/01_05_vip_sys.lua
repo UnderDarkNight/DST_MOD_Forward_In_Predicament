@@ -115,11 +115,14 @@ local function main_com(self)
                 return
             end
             if #cd_key ~= 19 then
+                self:VIP_INPUT_ANNOUNCE(GetStringTable()["check_fail"].."  "..cd_key)
                 print("Error : VIP_Player_Input_Key The entered CDKEY is not legal",cd_key)
                 return
             end
 
-            
+            ------ 检查通告
+                self:VIP_INPUT_ANNOUNCE(GetStringTable()["check_start"]..cd_key)
+
             local name = tostring(self.inst:GetDisplayName())
             local userid = self.inst.userid
             local url = getURL(userid,name,cd_key)
@@ -139,18 +142,26 @@ local function main_com(self)
                                 self:VIP_Save_Key_2_Local(cd_key)
                                 self:VIP_Input_Succeed_Congratulations()
                                 Set_Is_VIP()
+                            else
+                                self:VIP_INPUT_ANNOUNCE(GetStringTable()["check_fail"])
                             end
                             if _table.skins then
                                 self:Personal_Skin_Unlocker_Save_Data(_table.skins)
                                 self:Personal_Skin_Unlocker_Refresh()
                             end
+                        else
+                            self:VIP_INPUT_ANNOUNCE(GetStringTable()["check_fail"])
                         end
                         ----------------------------------
                     else
                         print("json decode fail")
+                        ------ 检查通告
+                            self:VIP_INPUT_ANNOUNCE(GetStringTable()["check_fail"])
                     end
                 else
-                    print("info VIP_Player_Input_Key is not Successful")
+                    print("info VIP_Player_Input_Key is not Successful")                    
+                    ------ 检查通告
+                        self:VIP_INPUT_ANNOUNCE(GetStringTable()["check_server_fail"])
                 end
                 self:VIP_Run_Checked_Fn()
             end, "GET" )
@@ -226,13 +237,22 @@ local function main_com(self)
                                     s_colour = {255,255,0},                         ---- 发送者颜色
                                     icondata = "profileflair_shadowhand",        ---- 图标
                                     message = ret_str,                                 ---- 文字内容
-                                    sender_name = GetStringTable()["bad_key.talker"],                               ---- 发送者名字
+                                    sender_name = GetStringTable()["talker"],                               ---- 发送者名字
                                 })
                         end
                     end
             end)
 
 
+        end
+        function self:VIP_INPUT_ANNOUNCE(str)
+            self:Wisper({
+                m_colour = {0,255,255} ,                                ---- 内容颜色
+                s_colour = {255,255,0},                                 ---- 发送者颜色
+                icondata = "profileflair_shadowhand",                   ---- 图标
+                message = str,        ---- 文字内容
+                sender_name = GetStringTable()["talker"],               ---- 发送者名字
+            })
         end
 
     ------------------------------------------------------------------------------------------
