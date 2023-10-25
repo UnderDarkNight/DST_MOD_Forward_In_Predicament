@@ -160,8 +160,32 @@ return function(self)
     end            
     if self.is_replica ~= true then        --- 不是replica
         main_com(self)
-    else      
-        replica(self)
+    else
+        --------- 只在客户端上加载这部分模块
+        local load_replica_side = false
+        local function TheWorld_Has_Cave()
+            local world_shards_table = Shard_GetConnectedShards()
+            local the_world_has_cave = false
+            for k, v in pairs(world_shards_table) do
+                if k then
+                    the_world_has_cave = true
+                    break
+                end
+            end
+            return the_world_has_cave
+        end
+        if TheWorld_Has_Cave()  then
+            if not TheWorld.ismastersim then
+                load_replica_side = true
+            end
+        else
+            load_replica_side = true
+        end
+
+
+        if load_replica_side then
+            replica(self)
+        end
     end
 
 end
