@@ -174,14 +174,24 @@ local function fn()
         inst:AddComponent("spellcaster")
         inst.components.spellcaster.canuseontargets = true
         inst.components.spellcaster:SetCanCastFn(function(doer,target,pos)
-            if target and target.components.finiteuses and target.components.finiteuses:GetPercent() < 1 and target.prefab ~= inst.prefab then
-                return true
+            if target and target.prefab ~= inst.prefab then
+                if target.components.finiteuses and target.components.finiteuses:GetPercent() < 1 then
+                    return true
+                end
+                if target.components.armor and target.components.armor:GetPercent() < 1 then
+                    return true
+                end
             end
             return false
         end)
         inst.components.spellcaster:SetSpellFn(function(inst,target,pos,doer)
             inst.components.finiteuses:Use()
-            target.components.finiteuses:SetPercent(1)
+            if target.components.finiteuses then
+                target.components.finiteuses:SetPercent(1)
+            end
+            if target.components.armor then
+                target.components.armor:SetPercent(1)
+            end
             SpawnPrefab("fwd_in_pdt_fx_knowledge_flash"):PushEvent("Set",{
                 pt = Vector3(target.Transform:GetWorldPosition()),
                 color = Vector3(51/255,255/255,51/255)
