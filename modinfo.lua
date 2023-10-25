@@ -96,17 +96,17 @@ configuration_options =
         } or  {{description = "", data = false}},
         default = false,
     },
-    {
-        name = "compatibility_mode",
-        label = IsChinese() and "尝试兼容其他MOD" or "Compatibility mode with try",
-        hover = IsChinese() and "尝试兼容其他未知MOD" or "Try to be compatible with other unknown mods",
-        options = 
-        {
-          {description = IsChinese() and "关" or "OFF", data = false},
-          {description = IsChinese() and "开" or "ON", data = true},
-        } ,
-        default = false,
-    },
+    -- {
+    --     name = "compatibility_mode",
+    --     label = IsChinese() and "尝试兼容其他MOD" or "Compatibility mode with try",
+    --     hover = IsChinese() and "尝试兼容其他未知MOD" or "Try to be compatible with other unknown mods",
+    --     options = 
+    --     {
+    --       {description = IsChinese() and "关" or "OFF", data = false},
+    --       {description = IsChinese() and "开" or "ON", data = true},
+    --     } ,
+    --     default = false,
+    -- },
     
     -- {
     --   name = "",
