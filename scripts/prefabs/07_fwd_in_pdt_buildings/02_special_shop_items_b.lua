@@ -23,5 +23,13 @@ return{
 		["num2give"] = 10.0,
 		["image"] = "fwd_in_pdt_turf_snakeskin.tex",
 		["atlas"] = "images/inventoryimages/fwd_in_pdt_turf_snakeskin.xml"
+	},
+	{
+		["name"] = "蛇皮",
+		["prefab"] = "fwd_in_pdt_material_snake_skin",
+		["cost"] = 10.0,
+		["num2give"] = 5.0,
+		["image"] = "",
+		["atlas"] = ""
 	}
 }
