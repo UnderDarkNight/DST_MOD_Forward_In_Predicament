@@ -82,7 +82,33 @@ modimport("Imports_for_FWD_IN_PDT/__All_imports_init.lua")	---- 所有 import  �
 
 modimport("Key_Modules_Of_FWD_IN_PDT/_All_Key_Modules_Init.lua")	---- 载入关键功能模块,在 prefab 加载之前，方便皮肤的API HOOK
 
-PrefabFiles = {  "forward_in_predicament__all_prefabs"  }		---- 通过总入口 加载所有prefab。
+-- PrefabFiles = {  "forward_in_predicament__all_prefabs"  }		---- 通过总入口 加载所有prefab。
+PrefabFiles = { ---- 通过总入口 加载所有prefab。
+	 "00_fwd_in_pdt_others",
+	 "01_fwd_in_pdt_items",
+	 "02_fwd_in_pdt_materials",
+	 "03_fwd_in_pdt_equipments",
+	 "04_fwd_in_pdt_foods",
+	 "05_fwd_in_pdt_foods_cooked",
+	 "06_fwd_in_pdt_containers",
+	 "07_fwd_in_pdt_buildings",
+	 "08_fwd_in_pdt_resources",
+	 "09_fwd_in_pdt_plants",
+	 "10_fwd_in_pdt_minerals",
+	 "11_fwd_in_pdt_animals",
+	 "12_fwd_in_pdt_boss",
+	 "13_fwd_in_pdt_pets",
+	 "14_fwd_in_pdt_turfs",
+	 "15_fwd_in_pdt_debuffs",
+	 "16_fwd_in_pdt_spells",
+	 "17_fwd_in_pdt_FX",
+	 "18_fwd_in_pdt_projectiles",
+	 "19_fwd_in_pdt_characters",
+	 "20_fwd_in_pdt_events",
+	 "21_fwd_in_pdt_rooms",
+	 "22_fwd_in_pdt_npc",
+	 "23_fwd_in_pdt_wellness",
+}		
 
 
 if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE == true then

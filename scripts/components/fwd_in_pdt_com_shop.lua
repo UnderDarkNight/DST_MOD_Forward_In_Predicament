@@ -180,6 +180,7 @@ end,nil,
         if player.components.fwd_in_pdt_func:Jade_Coin__Has(cost) then
             player.components.fwd_in_pdt_func:Jade_Coin__Spend(cost)
             player.components.fwd_in_pdt_func:GiveItemByPrefab(prefab,num2give)
+            player.SoundEmitter:PlaySound("dontstarve/common/together/celestial_orb/active")
         else
             if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
                 print("钱不够")
@@ -246,6 +247,7 @@ end,nil,
             end
         -------- 第三步，给货币
             player.components.fwd_in_pdt_func:GiveItemByPrefab("fwd_in_pdt_item_jade_coin_green",num2give)
+            player.SoundEmitter:PlaySound("dontstarve/common/together/celestial_orb/active")
 
 
 
