@@ -140,7 +140,7 @@ AddClassPostConstruct("screens/playerhud",function(self)
                         v:Disable()
                     end
                     display_selection(image_name)
-                    ThePlayer:DoTaskInTime(3,function()
+                    ThePlayer:DoTaskInTime(2,function()
                         hud:fwd_in_pdt_doll_clamping_machine_close()
                         ThePlayer.replica.fwd_in_pdt_func:RPC_PushEvent2("doll_clamping_machine_selected")
                     end)
