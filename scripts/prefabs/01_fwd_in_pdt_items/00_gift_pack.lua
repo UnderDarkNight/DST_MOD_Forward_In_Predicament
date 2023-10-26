@@ -6,9 +6,9 @@ end
 
 local assets =
 {
-    -- Asset("ANIM", "anim/panda_fisherman_supply_pack.zip"),
-    -- Asset( "IMAGE", "images/inventoryimages/panda_fisherman_supply_pack.tex" ),  -- 背包贴图
-    -- Asset( "ATLAS", "images/inventoryimages/panda_fisherman_supply_pack.xml" ),
+    Asset("ANIM", "anim/fwd_in_pdt_gift_pack.zip"),
+    Asset( "IMAGE", "images/inventoryimages/fwd_in_pdt_gift_pack.tex" ),
+    Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_gift_pack.xml" ),
 }
 
 local function unwrapped_Fn(inst, pos, doer)
@@ -142,6 +142,7 @@ local function fn()
     --         anim = "",
     --         imagename = "",
     --         atlasname = "",
+    --         scale = 1,
     --      },
     -- }
     ---------------------------------------
@@ -249,6 +250,8 @@ local function fn()
             inst.AnimState:PlayAnimation(tostring(_table.new_anim.anim),true)
             inst.components.inventoryitem.imagename = _table.new_anim.imagename
             inst.components.inventoryitem.atlasname = _table.new_anim.atlasname
+            local scale = _table.new_anim.scale or 1
+            inst.AnimState:SetScale(scale,scale,scale)
         end
 
         if _table.name then

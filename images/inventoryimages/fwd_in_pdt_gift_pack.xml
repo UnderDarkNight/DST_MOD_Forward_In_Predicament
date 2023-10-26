@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Atlas>
+	<Texture filename="fwd_in_pdt_gift_pack.tex" />
+	<Elements>
+		<Element name="fwd_in_pdt_gift_pack_1.tex" u1="0.001" u2="0.16696875" v2="0.5380625" v1="0.3056875" variant="" />
+		<Element name="fwd_in_pdt_gift_pack_10.tex" u1="0.672875" u2="0.90915625" v2="0.999" v1="0.751" variant="" />
+		<Element name="fwd_in_pdt_gift_pack_11.tex" u1="0.49709375" u2="0.74509375" v2="0.749" v1="0.51271875" variant="" />
+		<Element name="fwd_in_pdt_gift_pack_12.tex" u1="0.74709375" u2="0.952125" v2="0.749" v1="0.501" variant="" />
+		<Element name="fwd_in_pdt_gift_pack_2.tex" u1="0.001" u2="0.24509375" v2="0.3036875" v1="0.0556875" variant="" />
+		<Element name="fwd_in_pdt_gift_pack_3.tex" u1="0.24709375" u2="0.483375" v2="0.51071875" v1="0.26271875" variant="" />
+		<Element name="fwd_in_pdt_gift_pack_4.tex" u1="0.485375" u2="0.733375" v2="0.51071875" v1="0.2744375" variant="" />
+		<Element name="fwd_in_pdt_gift_pack_5.tex" u1="0.001" u2="0.249" v2="0.999" v1="0.77834375" variant="" />
+		<Element name="fwd_in_pdt_gift_pack_6.tex" u1="0.251" u2="0.46384375" v2="0.999" v1="0.751" variant="" />
+		<Element name="fwd_in_pdt_gift_pack_7.tex" u1="0.001" u2="0.249" v2="0.77634375" v1="0.5400625" variant="" />
+		<Element name="fwd_in_pdt_gift_pack_8.tex" u1="0.251" u2="0.49509375" v2="0.749" v1="0.51271875" variant="" />
+		<Element name="fwd_in_pdt_gift_pack_9.tex" u1="0.46584375" u2="0.670875" v2="0.999" v1="0.766625" variant="" />
+	</Elements>
+</Atlas>

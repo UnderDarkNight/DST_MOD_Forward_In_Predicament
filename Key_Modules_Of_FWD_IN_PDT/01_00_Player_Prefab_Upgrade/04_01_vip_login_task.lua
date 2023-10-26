@@ -124,10 +124,11 @@ AddPlayerPostInit(function(inst)
                         TheWorld.components.fwd_in_pdt_data:Set(flag,true)
 
                         local gift_pack = SpawnPrefab("fwd_in_pdt_gift_pack")
+                        local skin_num = tostring(math.random(12))
                         gift_pack:PushEvent("Set",{
                             name = GetStringsTable("fwd_in_pdt_gift_pack")["name.vip"],
                             inspect_str = "VIP Gift Pack",
-                            skin_num = math.random(6),   -- 1~6
+                            -- skin_num = math.random(6),   -- 1~6
                             items = {
                                         {"log",1},
                                         {"goldnugget",2},
@@ -136,15 +137,24 @@ AddPlayerPostInit(function(inst)
                                         {"nightstick",1},
                                         {"fwd_in_pdt_food_bread",2},
                                     },
-                        --  new_anim = {               ----- 其他皮肤数据
-                        --     bank = "",
-                        --     build = "",
-                        --     anim = "",
-                        --     imagename = "",
-                        --     atlasname = "",
-                        --  },
+                                new_anim = {               ----- 其他皮肤数据
+                                    bank = "fwd_in_pdt_gift_pack",
+                                    build = "fwd_in_pdt_gift_pack",
+                                    anim = "fwd_in_pdt_gift_pack_"..skin_num,
+                                    scale = 2,
+                                    imagename = "fwd_in_pdt_gift_pack_"..skin_num,
+                                    atlasname = "images/inventoryimages/fwd_in_pdt_gift_pack.xml",
+                                 },
                         })
-                        inst.components.inventory:GiveItem(gift_pack)
+                        -- inst.components.inventory:GiveItem(gift_pack)
+                        local camera_down_vector = inst.components.fwd_in_pdt_func:TheCamera_GetDownVec() or Vector3(0,0,0)
+                        local x,y,z = inst.Transform:GetWorldPosition()
+                        local dis = 3.5
+                        x = camera_down_vector.x*dis + x
+                        y = 20
+                        z = camera_down_vector.z*dis + z
+                        gift_pack.Transform:SetPosition(x, y, z)
+
 
         end)
 
