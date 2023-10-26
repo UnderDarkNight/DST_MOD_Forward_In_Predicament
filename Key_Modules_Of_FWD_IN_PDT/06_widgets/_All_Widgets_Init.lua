@@ -28,3 +28,6 @@ modimport("Key_Modules_Of_FWD_IN_PDT/06_widgets/11_synopsis.lua")    --- MOD说�
 
 modimport("Key_Modules_Of_FWD_IN_PDT/06_widgets/12_widgets_text_bug_fix.lua")    --- 修复某个奇怪的BUG使用
 
+modimport("Key_Modules_Of_FWD_IN_PDT/06_widgets/13_doll_clamping_machine.lua")    --- 娃娃机UI
+
+

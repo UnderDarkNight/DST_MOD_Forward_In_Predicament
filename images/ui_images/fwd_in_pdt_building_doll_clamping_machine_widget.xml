@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Atlas>
+	<Texture filename="fwd_in_pdt_building_doll_clamping_machine_widget.tex" />
+	<Elements>
+		<Element name="background.tex" u1="0.001" u2="0.78415625" v2="0.999" v1="0.3203359375" variant="" />
+		<Element name="ragdoll_1.tex" u1="0.001" u2="0.188453125" v2="0.3183359375" v1="0.170921875" variant="" />
+		<Element name="ragdoll_2.tex" u1="0.78615625" u2="0.9687265625" v2="0.999" v1="0.846703125" variant="" />
+		<Element name="ragdoll_3.tex" u1="0.001" u2="0.180640625" v2="0.168921875" v1="0.018578125" variant="" />
+		<Element name="ragdoll_4.tex" u1="0.190453125" u2="0.375953125" v2="0.3183359375" v1="0.1484609375" variant="" />
+		<Element name="ragdoll_5.tex" u1="0.78615625" u2="0.95603125" v2="0.844703125" v1="0.70021875" variant="" />
+		<Element name="ragdoll_6.tex" u1="0.377953125" u2="0.543921875" v2="0.3183359375" v1="0.1601796875" variant="" />
+		<Element name="ragdoll_7.tex" u1="0.78615625" u2="0.9706796875" v2="0.69821875" v1="0.534203125" variant="" />
+		<Element name="ragdoll_8.tex" u1="0.545921875" u2="0.71775" v2="0.3183359375" v1="0.1601796875" variant="" />
+		<Element name="ragdoll_9.tex" u1="0.377953125" u2="0.5615" v2="0.1581796875" v1="0.002953125" variant="" />
+	</Elements>
+</Atlas>

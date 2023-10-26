@@ -233,6 +233,31 @@ local flg,error_code = pcall(function()
     --     end
     -- end
     ----------------------------------------------------------------------------------------------------------------
+    --- 娃娃机事件调试 
+        -- ThePlayer.HUD:fwd_in_pdt_doll_clamping_machine_open()
+        -- ThePlayer:PushEvent("doll_clamping_machine_selected",1)
+        -- ThePlayer.components.sleeper:AddSleepiness(100,30)
+
+        -- local function HearPanFlute(inst)
+        --     if inst and not inst:HasTag("playerghost") and
+        --         not (inst.components.freezable ~= nil and inst.components.freezable:IsFrozen()) and
+        --         not (inst.components.pinnable ~= nil and inst.components.pinnable:IsStuck()) and
+        --         not (inst.components.fossilizable ~= nil and inst.components.fossilizable:IsFossilized()) then
+        --         local mount = inst.components.rider ~= nil and inst.components.rider:GetMount() or nil
+        --         if mount ~= nil then
+        --             mount:PushEvent("ridersleep", { sleepiness = 10, sleeptime = TUNING.PANFLUTE_SLEEPTIME })
+        --         end
+        --         if inst.components.sleeper ~= nil then
+        --             inst.components.sleeper:AddSleepiness(10, TUNING.PANFLUTE_SLEEPTIME)
+        --         elseif inst.components.grogginess ~= nil then
+        --             inst.components.grogginess:AddGrogginess(10, TUNING.PANFLUTE_SLEEPTIME)
+        --         else
+        --             inst:PushEvent("knockedout")
+        --         end
+        --     end
+        -- end
+        -- HearPanFlute(ThePlayer)
+    ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)
 

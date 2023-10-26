@@ -19,7 +19,7 @@ AddPlayerPostInit(function(inst)
             local flag_str = inst.userid..".opening_gift_box"
             if not TheWorld.components.fwd_in_pdt_data:Get(flag_str) then
                 TheWorld.components.fwd_in_pdt_data:Set(flag_str,true)
-                inst:DoTaskInTime(1,function()
+                inst:DoTaskInTime(3,function()
                     -- inst.components.fwd_in_pdt_func:GiveItemByName("fwd_in_pdt_item_mod_synopsis",1)
                     local gift_box = SpawnPrefab("fwd_in_pdt_gift_pack")
                     local skin_num = tostring(math.random(12))
@@ -45,9 +45,17 @@ AddPlayerPostInit(function(inst)
                     local camera_down_vector = inst.components.fwd_in_pdt_func:TheCamera_GetDownVec() or Vector3(0,0,0)
                     local x,y,z = inst.Transform:GetWorldPosition()
                     local dis = 2.5
-                    x = camera_down_vector.x*dis + x
+                    local x_fix = math.random(15)/10
+                    local z_fix = math.random(15)/10
+                    if math.random(100)<50 then
+                        x_fix = x_fix * -1
+                    end
+                    if math.random(100)<50 then
+                        z_fix = z_fix * -1
+                    end
+                    x = camera_down_vector.x*dis + x + x_fix
                     y = 20
-                    z = camera_down_vector.z*dis + z
+                    z = camera_down_vector.z*dis + z + z_fix
                     gift_box.Transform:SetPosition(x, y, z)
                 end)
             end

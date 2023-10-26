@@ -245,7 +245,25 @@ local function special_tree_outside(inst)
                 player:ListenForEvent("unequip",inst.__onequipt_check_event_for_player)
                 player:AddTag("fwd_in_pdt__rooms_quirky_red_tree_special.__onequipt_check_event_for_player")
             end
-
+            ------ 靠近说话
+                local function wisper2player()
+                    player.components.fwd_in_pdt_func:Wisper({
+                        m_colour = {190/255,65/255,28/255} ,                          ---- 内容颜色
+                        -- s_colour = {255,255,0},                         ---- 发送者颜色
+                        -- icondata = "profileflair_shadowhand",        ---- 图标
+                        message = GetStringsTable()["wisper_str"],                                 ---- 文字内容
+                        -- sender_name = "",                               ---- 发送者名字
+                    })
+                end
+                local index_str = "player_close."..player.userid
+                if not inst.components.fwd_in_pdt_func:Get(index_str) then
+                    inst.components.fwd_in_pdt_func:Set(index_str,true)
+                    wisper2player()
+                else
+                    if math.random(1000) <= 100 then
+                        wisper2player()
+                    end
+                end
         end)
         inst.components.playerprox:SetOnPlayerFar(function(inst,player)
             -- inst:PushEvent("hide_door")

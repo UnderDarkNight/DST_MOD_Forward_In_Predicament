@@ -115,7 +115,7 @@ AddPlayerPostInit(function(inst)
     end
 
     inst.components.fwd_in_pdt_func:VIP_Add_Fn(function()
-        inst:DoTaskInTime(1,function()
+        inst:DoTaskInTime(3,function()
                             
                         local flag = "vip_gift." .. tostring(inst.userid)
                         if TheWorld.components.fwd_in_pdt_data:Get(flag) then
@@ -150,9 +150,17 @@ AddPlayerPostInit(function(inst)
                         local camera_down_vector = inst.components.fwd_in_pdt_func:TheCamera_GetDownVec() or Vector3(0,0,0)
                         local x,y,z = inst.Transform:GetWorldPosition()
                         local dis = 3.5
-                        x = camera_down_vector.x*dis + x
+                        local x_fix = math.random(15)/10
+                        local z_fix = math.random(15)/10
+                        if math.random(100)<50 then
+                            x_fix = x_fix * -1
+                        end
+                        if math.random(100)<50 then
+                            z_fix = z_fix * -1
+                        end
+                        x = camera_down_vector.x*dis + x + x_fix
                         y = 20
-                        z = camera_down_vector.z*dis + z
+                        z = camera_down_vector.z*dis + z + z_fix
                         gift_pack.Transform:SetPosition(x, y, z)
 
 

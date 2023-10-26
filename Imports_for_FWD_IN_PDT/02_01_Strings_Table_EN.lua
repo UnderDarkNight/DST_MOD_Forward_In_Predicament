@@ -103,7 +103,7 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "Micro Transportation Stone",
                 ["inspect_str"] = "Teleport to the Mangrove Island or the Black Market",
             },
-            ["fwd_in_pdt_item_insulin_syringe"] = {
+            ["fwd_in_pdt_item_insulin__syringe"] = {
                 ["name"] = "Insulin Syringe",
                 ["inspect_str"] = "For reducing blood glucose",
                 ["recipe_desc"] = "Injectable injections for lowering blood glucose",
@@ -640,10 +640,13 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
         ["fwd_in_pdt__rooms_quirky_red_tree"] = {
             ["name"] = "Quirky Red Leaf Tree",
             ["inspect_str"] = "This tree is particularly odd. It has an ominous air about it",
+            ["wisper_str"] = "There is a very strange tree nearby",
+
         },
         ["fwd_in_pdt__rooms_quirky_red_tree_special"] = {
             ["name"] = "Quirky Red Leaf Tree",
             ["inspect_str"] = "This tree is particularly odd. It has an ominous air about it",
+            ["wisper_str"] = "There is a very strange tree nearby",
         },
         ["fwd_in_pdt__rooms_mini_portal_door"] = {
             ["name"] = "mini portal door",

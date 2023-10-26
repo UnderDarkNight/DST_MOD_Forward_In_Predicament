@@ -94,9 +94,9 @@
 --------------------------------------------------------------------------------------------------------------------------------------------
 ---- 胰岛素注射器(暂留)
 --------------------------------------------------------------------------------------------------------------------------------------------
-                -- AddRecipeToFilter("fwd_in_pdt_item_insulin_syringe",string.upper("fwd_in_pdt_building_medical_check_up_machine"))     ---- 添加物品到目标标签
+                -- AddRecipeToFilter("fwd_in_pdt_item_insulin__syringe",string.upper("fwd_in_pdt_building_medical_check_up_machine"))     ---- 添加物品到目标标签
                 -- AddRecipe2(
-                --     "fwd_in_pdt_item_insulin_syringe",            --  --  inst.prefab  实体名字
+                --     "fwd_in_pdt_item_insulin__syringe",            --  --  inst.prefab  实体名字
                 --     { Ingredient("spidergland", 10),Ingredient("stinger", 2) }, 
                 --     TECH[string.upper("fwd_in_pdt_building_medical_check_up_machine")], --- TECH.NONE
                 --     {
@@ -104,12 +104,12 @@
                 --         -- no_deconstruction=true,
                 --         -- builder_tag = "npng_tag.has_green_amulet",    --------- -- 【builder_tag】只给指定tag的角色能制造这件物品，角色添加/移除 tag 都能立马解锁/隐藏该物品
                 --         -- placer = "fwd_in_pdt_building_medical_check_up_machine_placer",                       -------- 建筑放置器        
-                --         atlas = "images/inventoryimages/fwd_in_pdt_item_insulin_syringe.xml",
-                --         image = "fwd_in_pdt_item_insulin_syringe.tex",
+                --         atlas = "images/inventoryimages/fwd_in_pdt_item_insulin__syringe.xml",
+                --         image = "fwd_in_pdt_item_insulin__syringe.tex",
                 --     },
                 --     {string.upper("fwd_in_pdt_building_medical_check_up_machine")}
                 -- )
-                -- RemoveRecipeFromFilter("fwd_in_pdt_item_insulin_syringe","MODS")                       -- -- 在【模组物品】标签里移除这个。
+                -- RemoveRecipeFromFilter("fwd_in_pdt_item_insulin__syringe","MODS")                       -- -- 在【模组物品】标签里移除这个。
 --------------------------------------------------------------------------------------------------------------------------------------------
 local function Add_Recipe_2_Machine(cmd_table)
     -- cmd_table = {
@@ -148,20 +148,20 @@ end
 --- 胰岛素注射器debug。排头的第一个容易出现无法制作的情况，没空查看原因。用一个隐藏的替代。
 --------------------------------------------------------------------------------------------------------------------------------------------
     Add_Recipe_2_Machine({
-        prefab = "fwd_in_pdt_item_insulin_syringe",
+        prefab = "fwd_in_pdt_item_insulin__syringe",
         Ingredients = { },
         builder_tag = "fwd_in_pdt_test33333333333366666",
-        atlas = "images/inventoryimages/fwd_in_pdt_item_insulin_syringe.xml",
-        image = "fwd_in_pdt_item_insulin_syringe.tex",
+        atlas = "images/inventoryimages/fwd_in_pdt_item_insulin__syringe.xml",
+        image = "fwd_in_pdt_item_insulin__syringe.tex",
     })
 --------------------------------------------------------------------------------------------------------------------------------------------
 --- 胰岛素注射器
 --------------------------------------------------------------------------------------------------------------------------------------------
     Add_Recipe_2_Machine({
-        prefab = "fwd_in_pdt_item_insulin_syringe",
+        prefab = "fwd_in_pdt_item_insulin__syringe",
         Ingredients = { Ingredient("bird_egg", 3),Ingredient("stinger", 2)  },
-        atlas = "images/inventoryimages/fwd_in_pdt_item_insulin_syringe.xml",
-        image = "fwd_in_pdt_item_insulin_syringe.tex",
+        atlas = "images/inventoryimages/fwd_in_pdt_item_insulin__syringe.xml",
+        image = "fwd_in_pdt_item_insulin__syringe.tex",
     })
 --------------------------------------------------------------------------------------------------------------------------------------------
 --- 雄黄解毒剂

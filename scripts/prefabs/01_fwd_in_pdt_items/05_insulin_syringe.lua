@@ -3,12 +3,10 @@
 -- 胰岛素注射器
 --------------------------------------------------------------------------
 
-
-
 local assets = {
     Asset("ANIM", "anim/fwd_in_pdt_item_insulin_syringe.zip"), 
-    Asset( "IMAGE", "images/inventoryimages/fwd_in_pdt_item_insulin_syringe.tex" ),  -- 背包贴图
-    Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_item_insulin_syringe.xml" ),
+    Asset( "IMAGE", "images/inventoryimages/fwd_in_pdt_item_insulin__syringe.tex" ),  -- 背包贴图
+    Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_item_insulin__syringe.xml" ),
 }
 
 local function fn()
@@ -50,7 +48,7 @@ local function fn()
             return false
         end)
         inst.components.fwd_in_pdt_com_workable:SetSGAction("dolongaction")
-        inst.components.fwd_in_pdt_com_workable:SetActionDisplayStr("fwd_in_pdt_item_insulin_syringe",STRINGS.ACTIONS.USEITEM)
+        inst.components.fwd_in_pdt_com_workable:SetActionDisplayStr("fwd_in_pdt_item_insulin__syringe",STRINGS.ACTIONS.USEITEM)
     --------------------------------------------------------------------------
     
     if not TheWorld.ismastersim then
@@ -62,8 +60,8 @@ local function fn()
 
     inst:AddComponent("inventoryitem")
     -- inst.components.inventoryitem:ChangeImageName("leafymeatburger")
-    inst.components.inventoryitem.imagename = "fwd_in_pdt_item_insulin_syringe"
-    inst.components.inventoryitem.atlasname = "images/inventoryimages/fwd_in_pdt_item_insulin_syringe.xml"
+    inst.components.inventoryitem.imagename = "fwd_in_pdt_item_insulin__syringe"
+    inst.components.inventoryitem.atlasname = "images/inventoryimages/fwd_in_pdt_item_insulin__syringe.xml"
     
     --------------------------------------------------------------------------
     inst:AddComponent("stackable") -- 可堆叠
@@ -87,9 +85,7 @@ local function fn()
         end
         inst:ListenForEvent("on_landed",shadow_init)
         shadow_init(inst)
-    -------------------------------------------------------------------
-    
+    -------------------------------------------------------------------    
     return inst
 end
-
-return Prefab("fwd_in_pdt_item_insulin_syringe", fn, assets)
+return Prefab("fwd_in_pdt_item_insulin__syringe", fn, assets)

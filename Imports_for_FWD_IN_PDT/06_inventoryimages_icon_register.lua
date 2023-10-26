@@ -17,7 +17,7 @@ local files_name = {
 		"fwd_in_pdt_item_jade_coin_green"	, 					--- 玉龙币·翠
 		"fwd_in_pdt_item_jade_coin_black"	, 					--- 玉龙币·墨
 		"fwd_in_pdt_item_transport_stone"	, 					--- 传送石
-		"fwd_in_pdt_item_insulin_syringe"	, 					--- 胰岛素注射器
+		"fwd_in_pdt_item_insulin__syringe"	, 					--- 胰岛素注射器
 		"fwd_in_pdt_item_disease_treatment_book"	, 			--- 《伤寒病论》
 		"fwd_in_pdt_item_book_of_harvest"	, 					--- 《丰收之书》
 		"fwd_in_pdt_item_medical_certificate"	, 					--- 诊断单

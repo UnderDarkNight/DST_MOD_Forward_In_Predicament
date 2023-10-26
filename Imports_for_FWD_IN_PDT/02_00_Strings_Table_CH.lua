@@ -112,7 +112,7 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "微型传送石",
                 ["inspect_str"] = "传送到红树岛或者黑市",
             },
-            ["fwd_in_pdt_item_insulin_syringe"] = {
+            ["fwd_in_pdt_item_insulin__syringe"] = {
                 ["name"] = "胰岛素注射器",
                 ["inspect_str"] = "降低血糖用的",
                 ["recipe_desc"] = "降低血糖用的注射针剂",
@@ -647,10 +647,13 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             ["fwd_in_pdt__rooms_quirky_red_tree"] = {
                 ["name"] = "古怪的红叶树",
                 ["inspect_str"] = "这树木特别古怪，有种不祥的气息",
+                ["wisper_str"] = "附近有一棵很奇怪的树",
             },
             ["fwd_in_pdt__rooms_quirky_red_tree_special"] = {
                 ["name"] = "古怪的红叶树",
                 ["inspect_str"] = "这树木特别古怪，有种不祥的气息",
+                ["wisper_str"] = "附近有一棵很奇怪的树",
+
             },
             ["fwd_in_pdt__rooms_mini_portal_door"] = {
                 ["name"] = "迷你传送门",
