@@ -1,5 +1,20 @@
-
+-- print("Fake error +++++++++++++++++++++")
+-- print("Fake error +++++++++++++++++++++")
+-- print("Fake error +++++++++++++++++++++")
+-- print("Fake error +++++++++++++++++++++")
+-- print("Fake error +++++++++++++++++++++")
+-- if env then
+--     print("666",env.AddComponentAction)
+-- end
+-- print(AddComponentAction,GLOBAL.AddComponentAction)
 require("componentactions")
+local AddComponentAction = GLOBAL.AddComponentAction
+-- print(AddComponentAction,GLOBAL.AddComponentAction)
+-- print("Fake error +++++++++++++++++++++")
+--[[
+    【重要笔记】  env.AddComponentAction  和  GLOBAL.AddComponentAction  是两条不同的函数。后者有 modname 参数。
+     env.AddComponentAction 通常缺省为 AddComponentAction 。如果长期有错误，则需要喜欢为 GLOBAL 的那一条
+]]
 
 
 local FWD_IN_PDT_WHIP_ACTION = Action({mount_valid = true,distance = 6})

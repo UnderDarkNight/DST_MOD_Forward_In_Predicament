@@ -3,6 +3,7 @@
 --- 
 --------------------------------------------------------------------------------
 require("componentactions")
+local AddComponentAction = GLOBAL.AddComponentAction
 --------------------------------------------------------------------------------
 local function GetStringsTable(name)
     local prefab_name = name or "sleeping_tent_action"

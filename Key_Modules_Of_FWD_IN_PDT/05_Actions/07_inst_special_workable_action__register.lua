@@ -1,4 +1,5 @@
 require("componentactions")
+local AddComponentAction = GLOBAL.AddComponentAction
 
 --------------------------------------------------------------------------------
 --- fwd_in_pdt_com_special_workable 的交互动作，可以自定义形态
