@@ -443,7 +443,7 @@ local events = {
     ------ 11 : 生成礼包，内含：鸟蛋X10、高脚鸟蛋X5、皮蛋X5
         {
             id = 11,
-            weight = 1,
+            weight = 3,
             fn = function(inst,player)
 
                 local pt = TheWorld.components.fwd_in_pdt_func:GetSpawnPoint(inst,math.random(10))
@@ -846,7 +846,7 @@ local events = {
     ------ 24 : 生成礼包，内含：2 - 8 个 红宝石项链
         {
             id = 24,
-            weight = 1,
+            weight = 3,
             fn = function(inst,player)
                 local num = math.random(2,8)
                 local  items = {}
@@ -885,7 +885,7 @@ local events = {
     ------ 25 : 生成礼包，内含：各种宝石
         {
             id = 25,
-            weight = 2,
+            weight = 5,
             fn = function(inst,player)
 
                 local pt = TheWorld.components.fwd_in_pdt_func:GetSpawnPoint(inst,math.random(10))
