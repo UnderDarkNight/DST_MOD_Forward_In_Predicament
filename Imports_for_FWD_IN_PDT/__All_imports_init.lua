@@ -16,3 +16,6 @@ modimport("Imports_for_FWD_IN_PDT/05_Chat_Message_Icons.lua")	---- 添加 聊天
 
 modimport("Imports_for_FWD_IN_PDT/06_inventoryimages_icon_register.lua")	---- 物品图标统一注册
 modimport("Imports_for_FWD_IN_PDT/07_minimap_icon_register.lua")	        ---- 地图图标统一注册
+
+
+modimport("Imports_for_FWD_IN_PDT/08_componentactions_crash_fix.lua")	        ---- 尝试做个补丁
