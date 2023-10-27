@@ -187,7 +187,11 @@ local function main_com(fwd_in_pdt_func)
             if self.inst.sg then
                 self.inst.sg:GoToState("forcetele")
             end
-            self.inst.Transform:SetPosition(x,y,z)
+            if self.inst.Physics then
+                self.inst.Physics:Teleport(x,1,z)
+            else
+                self.inst.Transform:SetPosition(x,y,z)
+            end
             self.inst:ScreenFade(true, 2)
 
             self.TempData.________Transform2PT__task = self.inst:DoPeriodicTask(0.2,function()
@@ -197,9 +201,17 @@ local function main_com(fwd_in_pdt_func)
                     if self.inst.sg then
                         self.inst.sg:GoToState("idle")
                     end
-                    self.inst.Transform:SetPosition(x,0,z)
+                    if self.inst.Physics then
+                        self.inst.Physics:Teleport(x,0,z)
+                    else
+                        self.inst.Transform:SetPosition(x,0,z)
+                    end
                 else
-                    self.inst.Transform:SetPosition(x,1,z)
+                    if self.inst.Physics then
+                        self.inst.Physics:Teleport(x,1,z)
+                    else
+                        self.inst.Transform:SetPosition(x,1,z)
+                    end
                 end
             end)
         end
