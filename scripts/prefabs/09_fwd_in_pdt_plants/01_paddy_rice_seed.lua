@@ -43,7 +43,8 @@ local assets =
                     if pt and pt.x then
                         -- SpawnPrefab("fwd_in_pdt_plant_paddy_rice").Transform:SetPosition(pt.x, pt.y, pt.z)
                         SpawnPrefab("fwd_in_pdt_plant_paddy_rice"):PushEvent("_OnPlanted",{pt = pt})
-                    end            
+                        inst.components.stackable:Get():Remove()
+                    end
                 end
                 inst.components.deployable:SetDeployMode(DEPLOYMODE.PLANT)
                 -- inst.components.deployable:SetDeploySpacing(DEPLOYSPACING.MEDIUM)   

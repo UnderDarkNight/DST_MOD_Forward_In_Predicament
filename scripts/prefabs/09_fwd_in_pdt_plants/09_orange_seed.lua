@@ -63,6 +63,7 @@ local function fn()
         inst.components.deployable.ondeploy = function(inst, pt, deployer)
             if pt and pt.x then
                 SpawnPrefab("fwd_in_pdt_plant_orange"):PushEvent("_OnPlanted",{pt = pt})
+                inst.components.stackable:Get():Remove()
             end            
         end
         inst.components.deployable:SetDeployMode(DEPLOYMODE.PLANT)

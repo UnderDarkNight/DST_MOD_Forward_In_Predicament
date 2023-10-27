@@ -59,6 +59,7 @@ local function fn()
                 local coffeebush = SpawnPrefab("fwd_in_pdt_plant_coffeebush")
                 coffeebush.components.pickable:OnTransplant()
                 coffeebush.Transform:SetPosition(pt.x, pt.y, pt.z)
+                inst.components.stackable:Get():Remove()
             end            
         end
         inst.components.deployable:SetDeployMode(DEPLOYMODE.PLANT)
