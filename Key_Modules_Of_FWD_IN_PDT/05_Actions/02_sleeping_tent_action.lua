@@ -1,7 +1,8 @@
-
 --------------------------------------------------------------------------------
 --- 自制帐篷组件相关动作
 --- 
+--------------------------------------------------------------------------------
+require("componentactions")
 --------------------------------------------------------------------------------
 local function GetStringsTable(name)
     local prefab_name = name or "sleeping_tent_action"
@@ -41,7 +42,7 @@ AddComponentAction("SCENE", "fwd_in_pdt_com_sleeping_tent", function(inst, doer,
     if doer and inst and inst.components.fwd_in_pdt_com_sleeping_tent and inst.components.fwd_in_pdt_com_sleeping_tent:Check_Can_Join(doer) then
         table.insert(actions, ACTIONS.FWD_IN_PDT_SLEEPING_TENT)
     end
-end)
+end,modname)
 
 AddStategraphActionHandler("wilson",ActionHandler(FWD_IN_PDT_SLEEPING_TENT,function(inst)
     -- return "give"

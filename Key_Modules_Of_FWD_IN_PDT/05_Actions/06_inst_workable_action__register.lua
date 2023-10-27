@@ -1,4 +1,4 @@
-
+require("componentactions")
 --------------------------------------------------------------------------------
 --- fwd_in_pdt_com_workable 的交互动作，可以自定义形态
 --- hook GetActionFailString 函数可以做动作失败 str
@@ -70,13 +70,13 @@ AddComponentAction("SCENE", "fwd_in_pdt_com_workable" , function(inst, doer, act
         --   table.insert(actions, ACTIONS.FWD_IN_PDT_COM_WORKABLE_ACTION)
         table.insert(actions, ACTIONS[inst.components.fwd_in_pdt_com_workable:GetSGActionInserIndex()])
     end
-end)
+end,modname)
 AddComponentAction("INVENTORY", "fwd_in_pdt_com_workable" , function(inst, doer, actions, right_click)    -------    物品一类交互使用
     if doer and inst and inst.components.fwd_in_pdt_com_workable and inst.components.fwd_in_pdt_com_workable:WorkTest(doer,right_click) then
         --   table.insert(actions, ACTIONS.FWD_IN_PDT_COM_WORKABLE_ACTION)        
         table.insert(actions, ACTIONS[inst.components.fwd_in_pdt_com_workable:GetSGActionInserIndex()])
     end
-end)
+end,modname)
 
 
 

@@ -1,3 +1,4 @@
+require("componentactions")
 
 
 -----------------------------------------------------------------------------------------------------
@@ -49,7 +50,7 @@ AddComponentAction("EQUIPPED", "fwd_in_pdt_com_skins_tool" , function(inst, doer
             table.insert(actions, ACTIONS.FWD_IN_PDT_RESKIN_ACTION_LAST)
         end
     end
-end)
+end,modname)
 
 
 AddStategraphActionHandler("wilson",ActionHandler(FWD_IN_PDT_RESKIN_ACTION_NEXT,function(inst)

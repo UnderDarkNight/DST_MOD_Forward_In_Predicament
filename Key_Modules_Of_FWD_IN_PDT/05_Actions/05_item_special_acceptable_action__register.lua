@@ -1,3 +1,4 @@
+require("componentactions")
 
 --------------------------------------------------------------------------------
 --- fwd_in_pdt_com_special_acceptable 的交互动作，可以自定义形态
@@ -61,7 +62,7 @@ AddComponentAction("USEITEM", "inventoryitem", function(item, doer, target, acti
 
             end
     end
-end)
+end,modname)
 
 
 AddStategraphActionHandler("wilson",ActionHandler(FWD_IN_PDT_COM_SPECIAL_ACCEPTABLE_ACTION,function(player)

@@ -1,3 +1,4 @@
+require("componentactions")
 
 --------------------------------------------------------------------------------
 --- fwd_in_pdt_com_special_workable 的交互动作，可以自定义形态
@@ -68,13 +69,13 @@ AddComponentAction("SCENE", "fwd_in_pdt_com_special_workable" , function(inst, d
         --   table.insert(actions, ACTIONS.FWD_IN_PDT_COM_SPECIAL_WORKABLE_ACTION)
         table.insert(actions, ACTIONS[inst.components.fwd_in_pdt_com_special_workable:GetSGActionInserIndex()])
     end
-end)
+end,modname)
 AddComponentAction("INVENTORY", "fwd_in_pdt_com_special_workable" , function(inst, doer, actions, right_click)-------    物品一类交互使用
     if doer and inst and inst.components.fwd_in_pdt_com_special_workable and inst.components.fwd_in_pdt_com_special_workable:WorkTest(doer,right_click) then
         --   table.insert(actions, ACTIONS.FWD_IN_PDT_COM_SPECIAL_WORKABLE_ACTION)
         table.insert(actions, ACTIONS[inst.components.fwd_in_pdt_com_special_workable:GetSGActionInserIndex()])
     end
-end)
+end,modname)
 
 
 AddStategraphActionHandler("wilson",ActionHandler(FWD_IN_PDT_COM_SPECIAL_WORKABLE_ACTION,function(player)

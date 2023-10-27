@@ -1,3 +1,4 @@
+require("componentactions")
 
 --------------------------------------------------------------------------------
 --- fwd_in_pdt_com_acceptable 的交互动作，可以自定义形态
@@ -62,7 +63,7 @@ AddAction(FWD_IN_PDT_COM_ACCEPTABLE_ACTION)
 
 --         end
 --     end
--- end)
+-- end,modname)
 
 
 AddStategraphActionHandler("wilson",ActionHandler(FWD_IN_PDT_COM_ACCEPTABLE_ACTION,function(player)

@@ -87,6 +87,9 @@ local function fn()
             if not TheWorld.ismastersim then
                 return
             end
+            if item.replica.stackable:StackSize() < inst.__cost_num then
+                return false
+            end
             doer.components.fwd_in_pdt_func:RPC_PushEvent2("doll_clamping_machine_start")
             item.components.stackable:Get(inst.__cost_num):Remove()
             if item:IsValid() then

@@ -1,4 +1,5 @@
 
+require("componentactions")
 
 
 local FWD_IN_PDT_WHIP_ACTION = Action({mount_valid = true,distance = 6})
@@ -25,7 +26,7 @@ AddComponentAction("EQUIPPED", "fwd_in_pdt_com_whip" , function(inst, doer, targ
     if right and target and target ~= doer and inst.components.fwd_in_pdt_com_whip:CanCastSpell(doer,target) then
         table.insert(actions, ACTIONS.FWD_IN_PDT_WHIP_ACTION)
     end
-end)
+end,modname)
 
 AddStategraphActionHandler("wilson",ActionHandler(FWD_IN_PDT_WHIP_ACTION,function(inst)
     return "dojostleaction"
