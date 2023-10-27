@@ -516,6 +516,9 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "Doll Clamping Machine",
                 ["inspect_str"] = "Try your luck.",
                 ["action_str"] = "Invest in",
+                ["gift_box.medical_kit"] = "Medical kit",
+                ["gift_box.boss"] = "Boss Drop Supply Pack",
+
             },
         --------------------------------------------------------------------
         ---- 08_fwd_in_pdt_resources

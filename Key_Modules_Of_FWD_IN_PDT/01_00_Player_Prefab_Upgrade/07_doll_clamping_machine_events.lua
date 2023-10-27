@@ -3,6 +3,12 @@
 ---- 权重越高越容易概率获得
 ---- 场地  7x7 格子。半径 14
 -----------------------------------------------------------------------------------------------------------------------------------------
+local function GetStringsTable(name)
+    local prefab_name = name or "fwd_in_pdt_building_doll_clamping_machine"
+    local LANGUAGE = type(TUNING["Forward_In_Predicament.Language"]) == "function" and TUNING["Forward_In_Predicament.Language"]() or TUNING["Forward_In_Predicament.Language"]
+    return TUNING["Forward_In_Predicament.Strings"][LANGUAGE][prefab_name] or {}
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
 local events = {
     ------------------------------------------------------------------------------------------
     ------ 5s内清空饱食度
@@ -102,6 +108,144 @@ local events = {
                             end
                         end)
                     end
+
+            end,
+        },
+    ------------------------------------------------------------------------------------------
+    ------ 生成礼物包，内含：雄黄饮剂 x2，万能解毒剂 x2，胰岛素针x2，蜂蜜膏药X2，强心针X2，治疗膏药X2
+        {
+            id = 4,
+            weight = 1,
+            fn = function(inst,player)
+
+                local pt = TheWorld.components.fwd_in_pdt_func:GetSpawnPoint(inst,math.random(10))
+
+                SpawnPrefab("fwd_in_pdt_fx_sky_door"):PushEvent("Set",{
+                    pt = Vector3(pt.x,pt.y+1,pt.z),
+                    scale = Vector3(2.5,1,2.5)
+                })
+                inst:DoTaskInTime(3,function()
+                    
+                            local gift_pack = SpawnPrefab("fwd_in_pdt_gift_pack")
+                            local skin_num = tostring(math.random(12))
+                            gift_pack:PushEvent("Set",{
+                                name = GetStringsTable()["gift_box.medical_kit"],
+                                inspect_str =  GetStringsTable()["gift_box.medical_kit"],
+                                items = {
+                                            {"fwd_in_pdt_item_insulin__syringe",2},
+                                            {"fwd_in_pdt_food_andrographis_paniculata_botany",2},
+                                            {"fwd_in_pdt_food_universal_antidote",2},
+                                            {"bandage",2},
+                                            {"lifeinjector",2},
+                                            {"healingsalve",2},
+                                        },
+                                    new_anim = {               ----- 其他皮肤数据
+                                        bank = "fwd_in_pdt_gift_pack",
+                                        build = "fwd_in_pdt_gift_pack",
+                                        anim = "fwd_in_pdt_gift_pack_"..skin_num,
+                                        scale = 2,
+                                        imagename = "fwd_in_pdt_gift_pack_"..skin_num,
+                                        atlasname = "images/inventoryimages/fwd_in_pdt_gift_pack.xml",
+                                    },
+                            })
+                            gift_pack.Transform:SetPosition(pt.x,8,pt.z)
+                end)
+
+            end,
+        },
+    ------------------------------------------------------------------------------------------
+    ------ 各大BOSS掉落材料里，抽选 9 个进背包
+        {
+            id = 5,
+            weight = 1,
+            fn = function(inst,player)
+                local boss_items = {"horrorfuel","lunarplant_husk","minotaurhorn","deerclops_eyeball","malbatross_beak","dragon_scales",
+                                    "shroom_skin","steelwool","glommerfuel","honeycomb","royal_jelly","plantmeat",
+                                    "mandrake","nightmarefuel","moonrocknugget","moonglass","purebrilliance","dreadstone","gnarwail_horn",
+                                }
+                local flag_num = 9
+                local ret_item_prefab = {}
+                for i = 1, 1000, 1 do
+                    local temp_prefab = boss_items[math.random(#boss_items)]
+                    if ret_item_prefab[temp_prefab] == nil then
+                        ret_item_prefab[temp_prefab] = math.random(3)
+                        flag_num = flag_num - 1
+                    end
+                    if flag_num <= 0 then
+                        break
+                    end
+                end
+
+                local items = {}
+                for prefab, num in pairs(ret_item_prefab) do
+                    table.insert(items,{prefab,num})
+                end
+
+                local pt = TheWorld.components.fwd_in_pdt_func:GetSpawnPoint(inst,math.random(10))
+                SpawnPrefab("fwd_in_pdt_fx_sky_door"):PushEvent("Set",{
+                    pt = Vector3(pt.x,pt.y+1,pt.z),
+                    scale = Vector3(2.5,1,2.5)
+                })
+                inst:DoTaskInTime(3,function()
+                    
+                            local gift_pack = SpawnPrefab("fwd_in_pdt_gift_pack")
+                            local skin_num = tostring(math.random(12))
+                            gift_pack:PushEvent("Set",{
+                                name = GetStringsTable()["gift_box.boss"],
+                                inspect_str =  GetStringsTable()["gift_box.boss"],
+                                items = items,
+                                    new_anim = {               ----- 其他皮肤数据
+                                        bank = "fwd_in_pdt_gift_pack",
+                                        build = "fwd_in_pdt_gift_pack",
+                                        anim = "fwd_in_pdt_gift_pack_"..skin_num,
+                                        scale = 2,
+                                        imagename = "fwd_in_pdt_gift_pack_"..skin_num,
+                                        atlasname = "images/inventoryimages/fwd_in_pdt_gift_pack.xml",
+                                    },
+                            })
+                            gift_pack.Transform:SetPosition(pt.x,8,pt.z)
+                end)
+
+            end,
+        },
+    ------------------------------------------------------------------------------------------
+    ------ 生成礼包，内含：玻璃x10，月岩x10，亮茄道具（武器、装备、者材料X10 中的一个）
+        {
+            id = 5,
+            weight = 1,
+            fn = function(inst,player)
+
+
+                local items = {
+                    {"moonglass",10},
+                    {"moonrocknugget",10},
+                }
+                
+
+                local pt = TheWorld.components.fwd_in_pdt_func:GetSpawnPoint(inst,math.random(10))
+                SpawnPrefab("fwd_in_pdt_fx_sky_door"):PushEvent("Set",{
+                    pt = Vector3(pt.x,pt.y+1,pt.z),
+                    scale = Vector3(2.5,1,2.5)
+                })
+                inst:DoTaskInTime(3,function()
+                    
+                            local gift_pack = SpawnPrefab("fwd_in_pdt_gift_pack")
+                            local skin_num = tostring(math.random(12))
+                            gift_pack:PushEvent("Set",{
+                                name = GetStringsTable()["gift_box.boss"],
+                                inspect_str =  GetStringsTable()["gift_box.boss"],
+                                items = items,
+                                    new_anim = {               ----- 其他皮肤数据
+                                        bank = "fwd_in_pdt_gift_pack",
+                                        build = "fwd_in_pdt_gift_pack",
+                                        anim = "fwd_in_pdt_gift_pack_"..skin_num,
+                                        scale = 2,
+                                        imagename = "fwd_in_pdt_gift_pack_"..skin_num,
+                                        atlasname = "images/inventoryimages/fwd_in_pdt_gift_pack.xml",
+                                    },
+                            })
+                            gift_pack.Transform:SetPosition(pt.x,8,pt.z)
+                end)
 
             end,
         },

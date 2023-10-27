@@ -46,7 +46,12 @@ end
 
 local function Set_Cross_Archived_Data_By_userid(userid,_table)
     local temp_json_data = Read_All_Json_Data() or {}
-    temp_json_data[userid] = _table
+    -- temp_json_data[userid] = _table
+    temp_json_data[userid] = temp_json_data[userid] or {}
+    for index, value in pairs(_table) do
+        temp_json_data[userid][index] = value
+    end
+    temp_json_data = deepcopy(temp_json_data)
     Write_All_Json_Data(temp_json_data)
 end
 --------------------------------------------------------------------------------------------------------------------

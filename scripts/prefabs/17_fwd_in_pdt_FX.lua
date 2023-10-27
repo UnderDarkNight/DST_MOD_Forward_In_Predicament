@@ -12,6 +12,7 @@ local Prefabs_name_list = {
     "08_orange_leaves_fall_down",            --- 橙色树叶落下
     "09_flame_up",            --- 火焰冒出
     "10_red_leaves_fall_down",            --- 红色树叶落下
+    "11_sky_door",            --- 天空的传送门
 }
 
 

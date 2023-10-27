@@ -45,6 +45,12 @@ local function main_com(self)
 
 
     ------------------------------------------------------------------------------------------
+        function self:VIP_Save_Key_2_TheWorld(cd_key)
+            TheWorld.components.fwd_in_pdt_data:Set("cd_key."..self.inst.userid,cd_key)
+        end
+        function self:VIP_Get_Key_From_TheWorld()
+            return TheWorld.components.fwd_in_pdt_data:Get("cd_key."..self.inst.userid)            
+        end
 
         function self:VIP_Save_Key_2_Local(cd_key)
             self:Set_Cross_Archived_Data("cd_key",cd_key)
@@ -140,6 +146,7 @@ local function main_com(self)
                                 end
                                 -- 服务器来的消息，确认是vip
                                 self:VIP_Save_Key_2_Local(cd_key)
+                                self:VIP_Save_Key_2_TheWorld(cd_key)
                                 self:VIP_Input_Succeed_Congratulations()
                                 Set_Is_VIP()
                             else
@@ -190,6 +197,7 @@ local function main_com(self)
                             if _table.vip then
                                 -- 服务器来的消息，确认是vip
                                 self:VIP_Save_Key_2_Local(cd_key)
+                                self:VIP_Save_Key_2_TheWorld(cd_key)
                                 self:VIP_Input_Succeed_Congratulations()
                                 Set_Is_VIP()
                             end
@@ -257,23 +265,34 @@ local function main_com(self)
 
     ------------------------------------------------------------------------------------------
     ----- 主入口，读取到本地存档的数据时候就执行。
-        self:Add_Cross_Archived_Data_Special_Onload_Fn(function()
-            ----------- 无法确认国外的玩家访问服务器的稳定性，需要设置国外玩家更频繁的连接验证服务器。
-            if self:VIP_Get_Local_Key() then    ---- 如果储存有 cd-key
-
-                    if self:IsVIP() then    --- 如果是 vip ，则运行相关的执行代码。
-                        self:VIP_Run_Fns()
-                        local time_flag = Get_OS_Time_Num()
-                        local vip_time_check_flag = self:Get_Cross_Archived_Data("cd_key_time_checker")
-                        if time_flag ~= vip_time_check_flag or not LANGUAGE_IS_CH() then    --- 然后判断日戳，或者语言。
-                            self:VIP_Check_Task_Start()
-                        end
-                    else
-                        self:VIP_Check_Task_Start()
+        local function normal_check_key_from_cross_archived_data_fn()
+                        ----------- 无法确认国外的玩家访问服务器的稳定性，需要设置国外玩家更频繁的连接验证服务器。
+                        if self:VIP_Get_Local_Key() then    ---- 如果储存有 cd-key
+                            if self:IsVIP() then    --- 如果是 vip ，则运行相关的执行代码。
+                                self:VIP_Run_Fns()
+                                local time_flag = Get_OS_Time_Num()
+                                local vip_time_check_flag = self:Get_Cross_Archived_Data("cd_key_time_checker")
+                                if time_flag ~= vip_time_check_flag or not LANGUAGE_IS_CH() then    --- 然后判断日戳，或者语言。
+                                    self:VIP_Check_Task_Start()
+                                end
+                            else
+                                self:VIP_Check_Task_Start()
+                            end
+        
                     end
+        end
+        self:Add_Cross_Archived_Data_Special_Onload_Fn(normal_check_key_from_cross_archived_data_fn)
 
-            end
-
+        ------- 用来处理 cd-key 无故丢失
+        self:Add_Cross_Archived_Data_Special_Onload_Fn(function()
+            self.inst:DoTaskInTime(3,function()
+                local key_from_theworld = self:VIP_Get_Key_From_TheWorld()
+                local key_from_cross_archived_data = self:VIP_Get_Local_Key()
+                if key_from_theworld ~= key_from_cross_archived_data then
+                    self:VIP_Save_Key_2_Local(key_from_theworld)
+                    normal_check_key_from_cross_archived_data_fn()
+                end
+            end)
         end)
 end
 

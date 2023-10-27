@@ -523,6 +523,8 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "夹娃娃机",
                 ["inspect_str"] = "可以试试手气",
                 ["action_str"] = "投入",
+                ["gift_box.medical_kit"] = "医疗补给包",
+                ["gift_box.boss"] = "BOSS掉落补给包",
             },
         --------------------------------------------------------------------
         ---- 08_fwd_in_pdt_resources
