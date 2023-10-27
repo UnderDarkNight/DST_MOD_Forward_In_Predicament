@@ -70,20 +70,25 @@ local function fn()
         -- end)
         
     -------------------------------------------------------------------------------------
+        inst.__cost_num = 10
+    -------------------------------------------------------------------------------------
         inst:AddComponent("fwd_in_pdt_com_acceptable")
         -- inst.components.fwd_in_pdt_com_acceptable:SetSGAction("fwd_in_pdt_special_pick")
         inst.components.fwd_in_pdt_com_acceptable:SetActionDisplayStr("fwd_in_pdt_building_doll_clamping_machine",GetStringsTable()["action_str"])
         inst.components.fwd_in_pdt_com_acceptable:SetTestFn(function(inst,item,doer,right_click)
             if item and item.prefab == "fwd_in_pdt_item_jade_coin_green" then
-                return true
+                if item.replica.stackable:StackSize() >= inst.__cost_num then
+                    return true
+                end
             end
+            return false
         end)
         inst.components.fwd_in_pdt_com_acceptable:SetOnAcceptFn(function(inst,item,doer)
             if not TheWorld.ismastersim then
                 return
             end
             doer.components.fwd_in_pdt_func:RPC_PushEvent2("doll_clamping_machine_start")
-            item.components.stackable:Get():Remove()
+            item.components.stackable:Get(inst.__cost_num):Remove()
             if item:IsValid() then
                 doer.components.inventory:ReturnActiveActionItem(item)
             end

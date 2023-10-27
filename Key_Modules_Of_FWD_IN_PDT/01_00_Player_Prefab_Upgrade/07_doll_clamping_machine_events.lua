@@ -512,10 +512,11 @@ local events = {
                     range = 9,
                     num = 6,
                 })
+                local monster_prefabs = {"fused_shadeling","shadowthrall_horns","shadowthrall_wings","shadowthrall_hands"}
                 for i, pt in pairs(locations) do
                     inst:DoTaskInTime(i-1,function()
                             SpawnPrefab("fwd_in_pdt_fx_collapse"):PushEvent("Set",{pt = pt})
-                            local monster = SpawnPrefab("fused_shadeling")
+                            local monster = SpawnPrefab(monster_prefabs[math.random(#monster_prefabs)])
                             monster.Transform:SetPosition(pt.x,0,pt.z)
                             monster:DoTaskInTime(0.5,function()
                                 monster.components.combat:SuggestTarget(monster:GetNearestPlayer(true))
