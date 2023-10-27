@@ -518,7 +518,15 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["action_str"] = "Invest in",
                 ["gift_box.medical_kit"] = "Medical kit",
                 ["gift_box.boss"] = "Boss Drop Supply Pack",
-
+                ["gift_box.lunar"] = "Lunar Supply Pack",
+                ["gift_box.shadow"] = "Shadow Supply Pack",
+                ["gift_box.egg"] = "Eggs Supply Pack",
+                ["gift_box.coffee"] = "Coffee Supply Pack",
+                ["gift_box.ruins"] = "Ruins Supply Pack",
+                ["gift_box.greenamulet"] = "Green Light Supply Pack",
+                ["gift_box.eyeturret_item"] = "Eyeturret Supply Pack",
+                ["gift_box.amulet"] = "Red Amulet Supply Pack",
+                ["gift_box.gems"] = "Gems Supply Pack",
             },
         --------------------------------------------------------------------
         ---- 08_fwd_in_pdt_resources

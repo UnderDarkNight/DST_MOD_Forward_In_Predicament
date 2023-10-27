@@ -525,6 +525,15 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["action_str"] = "投入",
                 ["gift_box.medical_kit"] = "医疗补给包",
                 ["gift_box.boss"] = "BOSS掉落补给包",
+                ["gift_box.lunar"] = "月光守护者礼包",
+                ["gift_box.shadow"] = "暗影守护者礼包",
+                ["gift_box.egg"] = "蛋蛋礼盒",
+                ["gift_box.coffee"] = "提神礼盒",
+                ["gift_box.ruins"] = "铥矿补给包",
+                ["gift_box.greenamulet"] = "绿光补给包",
+                ["gift_box.eyeturret_item"] = "远古炮台补给包",
+                ["gift_box.amulet"] = "可以作死补给包",
+                ["gift_box.gems"] = "亮晶晶补给包",
             },
         --------------------------------------------------------------------
         ---- 08_fwd_in_pdt_resources
