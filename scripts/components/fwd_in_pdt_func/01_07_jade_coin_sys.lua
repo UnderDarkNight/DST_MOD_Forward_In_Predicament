@@ -231,7 +231,7 @@ local function main_com(self)
             end
         --------- 存钱取钱
             function self:Jade_Coin__ATM_SaveMoney(num) ---- 存钱
-                if type(num) ~= "number" or num < 0 or self:Get_Cross_Archived_Data("jade_coins_in_atm_save_money_lock") then
+                if type(num) ~= "number" or num < 0 then
                     return
                 end
                 if not self:Jade_Coin__Has(num) then
@@ -241,8 +241,7 @@ local function main_com(self)
                 local old_num = self:Jade_Coin__ATM_Get() or 0
                 local new_num = old_num + num
                 self:Jade_Coin__ATM_Set(new_num)
-                self:Replica_Set_Simple_Data("jade_coins_in_atm",new_num)   -- 给 client 端hud读取
-                self:Set_Cross_Archived_Data("jade_coins_in_atm_save_money_lock",true)
+                self:Replica_Set_Simple_Data("jade_coins_in_atm",new_num)   -- 给 client 端hud读取                
             end
             function self:Jade_Coin__ATM_WithdrawMoney(num) -- 取钱
                 if type(num) ~= "number" or num <= 0 then
@@ -276,17 +275,6 @@ local function main_com(self)
             self:Add_Cross_Archived_Data_Special_Onload_Fn(function()
                 self:Replica_Set_Simple_Data("jade_coins_in_atm",self:Jade_Coin__ATM_Get() or 0)   -- 给 client 端hud读取                
             end)
-            -------- 存档储存后解锁
-                -- self.inst:WatchWorldState("cycles",function()
-                --     self.inst:DoTaskInTime(10,function()
-                --          self:Set_Cross_Archived_Data("jade_coins_in_atm_save_money_lock",false)                   
-                --     end)
-                -- end)
-                TheWorld:ListenForEvent("ms_save",function()
-                    self.inst:DoTaskInTime(3,function()
-                        self:Set_Cross_Archived_Data("jade_coins_in_atm_save_money_lock",false)
-                    end)
-                end)
     ----------------------------------------------------------
 end
 

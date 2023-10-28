@@ -8,12 +8,12 @@ author = "可爱的小亨、GAGA、幕夜之下"
 ---                   第二位为大版本号，进行主题更新、大DLC发布的时候进行增量。
 ---                   第一位暂时预留。 
 ----------------------------------------------------------------------------
-local the_version = "0.00.00.0008"
+local the_version = "0.01.00.00046"
 
 
 
 local function Check_Mod_is_Internal_Version()
-  if folder_name and (folder_name == "Forward In Predicament" or folder_name == "workshop-3041511769") then
+  if folder_name and (folder_name == "Forward_In_Predicament" or folder_name == "workshop-3041511769") then
       return true
   end
   return false

@@ -1,5 +1,5 @@
-require("componentactions")
-local AddComponentAction = GLOBAL.AddComponentAction
+-- require("componentactions")
+-- local AddComponentAction = GLOBAL.AddComponentAction
 
 
 -----------------------------------------------------------------------------------------------------

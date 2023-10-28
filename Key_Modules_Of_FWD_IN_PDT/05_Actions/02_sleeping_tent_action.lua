@@ -2,8 +2,8 @@
 --- 自制帐篷组件相关动作
 --- 
 --------------------------------------------------------------------------------
-require("componentactions")
-local AddComponentAction = GLOBAL.AddComponentAction
+-- require("componentactions")
+-- local AddComponentAction = GLOBAL.AddComponentAction
 --------------------------------------------------------------------------------
 local function GetStringsTable(name)
     local prefab_name = name or "sleeping_tent_action"

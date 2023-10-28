@@ -186,19 +186,19 @@ AddClassPostConstruct("screens/playerhud",function(self)
                 end)
             end)
             ---- 说明（每天一次）
-                    save_button.txt = save_button:AddChild(Text(CODEFONT,50,"每天只能一次\n                        Limited to once per day",{ 255/255 , 255/255 ,255/255 , 1}))
-                    save_button.txt:SetPosition(240,0)
-                    save_button.txt:Hide()
-                        save_button.OnGainFocus__temp_old__ = save_button.OnGainFocus
-                        save_button.OnGainFocus = function(self,...)
-                            self.txt:Show()
-                            return self:OnGainFocus__temp_old__(...)
-                        end
-                        save_button.OnLoseFocus__temp_old__ = save_button.OnLoseFocus
-                        save_button.OnLoseFocus = function(self,...)
-                            self.txt:Hide()
-                            return self:OnLoseFocus__temp_old__(...)
-                        end
+                    -- save_button.txt = save_button:AddChild(Text(CODEFONT,50,"每天只能一次\n                        Limited to once per day",{ 255/255 , 255/255 ,255/255 , 1}))
+                    -- save_button.txt:SetPosition(240,0)
+                    -- save_button.txt:Hide()
+                    --     save_button.OnGainFocus__temp_old__ = save_button.OnGainFocus
+                    --     save_button.OnGainFocus = function(self,...)
+                    --         self.txt:Show()
+                    --         return self:OnGainFocus__temp_old__(...)
+                    --     end
+                    --     save_button.OnLoseFocus__temp_old__ = save_button.OnLoseFocus
+                    --     save_button.OnLoseFocus = function(self,...)
+                    --         self.txt:Hide()
+                    --         return self:OnLoseFocus__temp_old__(...)
+                    --     end
         ----------------------------------------------------------------
         --- 取款按钮
             local withdraw_button = root:AddChild(ImageButton(
