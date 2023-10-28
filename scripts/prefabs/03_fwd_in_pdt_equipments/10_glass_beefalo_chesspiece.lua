@@ -58,34 +58,51 @@ local function fn()
     inst:AddTag("heavy")
 
     inst.entity:SetPristine()
-    -- ---------------------------------------------------------------------------------------------
-    -- -- 物品贸易
-    --     inst:AddComponent("fwd_in_pdt_com_acceptable")
-    --     inst.components.fwd_in_pdt_com_acceptable:SetTestFn(function(inst,item,doer,right_click)
-    --         if TheWorld.state.isnewmoon and item and item.prefab == "bonestew" then
-    --             return true
-    --         end
-    --         return false
-    --     end)
-    --     inst.components.fwd_in_pdt_com_acceptable:SetOnAcceptFn(function(inst,item,doer)
-    --         if not TheWorld.ismastersim then
-    --             return
-    --         end
-    --         if doer and item and item.components.stackable then
-    --             local num = item.components.stackable.stacksize
-    --             item:Remove()
-    --             doer.SoundEmitter:PlaySound("dontstarve/pig/PigKingThrowGold")
-    --             doer.SoundEmitter:PlaySound("dontstarve/pig/oink")
-    --             TheWorld.components.fwd_in_pdt_func:Throw_Out_Items({
-    --                     target = doer,
-    --                     name = "fwd_in_pdt_item_jade_coin_green",
-    --                     num = num,
-    --             })
-    --         end
-    --         return true
-    --     end)
-    --     inst.components.fwd_in_pdt_com_acceptable:SetActionDisplayStr("fwd_in_pdt_equipment_glass_pig",STRINGS.ACTIONS.APPLYCONSTRUCTION.OFFER)
-    -- ---------------------------------------------------------------------------------------------
+    ---------------------------------------------------------------------------------------------
+    -- 花费数额
+        inst.__cost_num = 5
+        if TheWorld.ismastersim then
+            require("prefabs/03_fwd_in_pdt_equipments/10_glass_beefalo_chesspiece_events")(inst)
+        end
+    ---------------------------------------------------------------------------------------------
+    -- 物品贸易
+        inst:AddComponent("fwd_in_pdt_com_acceptable")
+        inst.components.fwd_in_pdt_com_acceptable:SetTestFn(function(inst,item,doer,right_click)
+            if item and item.prefab == "beefalofeed" and item.replica.stackable and item.replica.stackable:StackSize() >= inst.__cost_num then
+                return true
+            end
+            return false
+        end)
+        inst.components.fwd_in_pdt_com_acceptable:SetOnAcceptFn(function(inst,item,doer)
+            if not TheWorld.ismastersim then
+                return
+            end
+            if not (inst and item and doer) then
+                return false
+            end
+
+            if item.replica.stackable:StackSize() < inst.__cost_num then
+                return false
+            end
+
+            -- if doer and item and item.components.stackable then
+            --     local num = item.components.stackable.stacksize
+            --     item:Remove()
+            --     doer.SoundEmitter:PlaySound("dontstarve/pig/PigKingThrowGold")
+            --     doer.SoundEmitter:PlaySound("dontstarve/pig/oink")
+            --     TheWorld.components.fwd_in_pdt_func:Throw_Out_Items({
+            --             target = doer,
+            --             name = "fwd_in_pdt_item_jade_coin_green",
+            --             num = num,
+            --     })
+            -- end
+            doer.SoundEmitter:PlaySound("dontstarve/beefalo/puke_out")
+            item.components.stackable:Get(5):Remove()
+            inst:PushEvent("item_accepted",doer)
+            return true
+        end)
+        inst.components.fwd_in_pdt_com_acceptable:SetActionDisplayStr("fwd_in_pdt_equipment_glass_pig",STRINGS.ACTIONS.APPLYCONSTRUCTION.OFFER)
+    ---------------------------------------------------------------------------------------------
     if not TheWorld.ismastersim then
         return inst
     end

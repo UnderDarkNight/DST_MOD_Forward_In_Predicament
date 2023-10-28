@@ -5,7 +5,12 @@
 -- DoTaskInTime 0 的时候由 client 的 replica 上传到 server 
 -- 相关的检查需要时间延后一点。
 ------------------------------------------------------------------------------------------------
-
+local function IsClientSide()
+    if TheNet:IsDedicated() then
+        return false
+    end
+    return true
+end
 
 --------------------------------------------------------------------------------------------------------------------
             --- 基础的文件读写函数
@@ -45,6 +50,10 @@ local function Get_Cross_Archived_Data_By_userid(userid)
 end
 
 local function Set_Cross_Archived_Data_By_userid(userid,_table)
+    if not IsClientSide() then  --- 只在客户端这一侧执行数据写入
+        return
+    end
+
     local temp_json_data = Read_All_Json_Data() or {}
     -- temp_json_data[userid] = _table
     temp_json_data[userid] = temp_json_data[userid] or {}
@@ -166,31 +175,33 @@ return function(self)
     if self.is_replica ~= true then        --- 不是replica
         main_com(self)
     else
-        --------- 只在客户端上加载这部分模块
-        local load_replica_side = false
-        local function TheWorld_Has_Cave()
-            local world_shards_table = Shard_GetConnectedShards()
-            local the_world_has_cave = false
-            for k, v in pairs(world_shards_table) do
-                if k then
-                    the_world_has_cave = true
-                    break
-                end
-            end
-            return the_world_has_cave
-        end
-        if TheWorld_Has_Cave()  then
-            if not TheWorld.ismastersim then
-                load_replica_side = true
-            end
-        else
-            load_replica_side = true
-        end
+        replica(self)
+
+        -- --------- 只在客户端上加载这部分模块
+        -- local load_replica_side = false
+        -- local function TheWorld_Has_Cave()
+        --     local world_shards_table = Shard_GetConnectedShards()
+        --     local the_world_has_cave = false
+        --     for k, v in pairs(world_shards_table) do
+        --         if k then
+        --             the_world_has_cave = true
+        --             break
+        --         end
+        --     end
+        --     return the_world_has_cave
+        -- end
+        -- if TheWorld_Has_Cave()  then
+        --     if not TheWorld.ismastersim then
+        --         load_replica_side = true
+        --     end
+        -- else
+        --     load_replica_side = true
+        -- end
 
 
-        if load_replica_side then
-            replica(self)
-        end
+        -- if load_replica_side then
+        --     replica(self)
+        -- end
     end
 
 end

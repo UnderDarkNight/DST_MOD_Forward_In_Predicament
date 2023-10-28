@@ -242,7 +242,8 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             },
             ["fwd_in_pdt_equipment_glass_beefalo"] = {
                 ["name"] = "玻璃牛雕像",
-                ["inspect_str"] = "这雕像栩栩如生"
+                ["inspect_str"] = "这雕像栩栩如生",
+                ["gift_box"] = "牛牛礼包"
             },
             ["fwd_in_pdt_equipment_huge_soybean"] = {
                 ["name"] = "巨大豆荚",

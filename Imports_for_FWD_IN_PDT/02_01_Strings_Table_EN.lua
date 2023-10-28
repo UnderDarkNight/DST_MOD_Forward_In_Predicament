@@ -234,7 +234,8 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             },
             ["fwd_in_pdt_equipment_glass_beefalo"] = {
                 ["name"] = "Glass Beefalo Statue",
-                ["inspect_str"] = "The statue is so lifelike ."
+                ["inspect_str"] = "The statue is so lifelike .",
+                ["gift_box"] = "Beefalo Gift Pack"
             },
             ["fwd_in_pdt_equipment_huge_soybean"] = {
                 ["name"] = "Huge Soybean Pods",

@@ -166,6 +166,7 @@ local function main_com(self)
             --     prefab = "log",     --- 要丢的物品
             --     num = 1,            --- 丢的数量
             --     player = inst,       --- 玩家inst
+            --     item_fn = function(item) end,  --- 物品的函数
             -- }
                 local function launchitem(item, angle)
                     local speed = math.random() * 4 + 2
@@ -173,7 +174,7 @@ local function main_com(self)
                     item.Physics:SetVel(speed * math.cos(angle), math.random() * 2 + 8, speed * math.sin(angle))
                 end
             
-                local function ontradeforgold(pt, player,prefab_name,target_num)  -- 代码来自猪王
+                local function ontradeforgold(pt, player,prefab_name,target_num,item_fn)  -- 代码来自猪王
                     target_num = target_num or 1
 
                     local x, y, z = pt.x,pt.y,pt.z
@@ -190,6 +191,9 @@ local function main_com(self)
                 
                     for k = 1, target_num do
                         local nug = SpawnPrefab(prefab_name)
+                        if type(item_fn) == "function" then
+                            item_fn(nug)
+                        end
                         nug.Transform:SetPosition(x, y, z)
                         launchitem(nug, angle or 0)
                     end
@@ -200,7 +204,8 @@ local function main_com(self)
                 local prefab = cmd_table.prefab
                 local pt = cmd_table.pt or  Vector3(self.inst.Transform:GetWorldPosition())
                 local player = cmd_table.player
-                ontradeforgold(pt, player, prefab, num)
+                local item_fn = cmd_table.item_fn
+                ontradeforgold(pt, player, prefab, num,item_fn)
             end
 
         end

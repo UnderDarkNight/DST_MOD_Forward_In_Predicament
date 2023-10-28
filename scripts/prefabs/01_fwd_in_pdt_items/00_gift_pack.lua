@@ -127,11 +127,11 @@ local function fn()
     -----------------------------------------------------------------------------------
     -- 用 Event("Set",_table) 添加物品到包里。 格式： num 如果 小于1，则是概率，random < num 的时候放置1个
     -- _table = {
-    --      items = {
+    --      items = {                       --- 无法放入容器的东西 num 必须为1
     --                {"log",num,fn},
-    --                {"goldnugget",1,fn}
+    --                {"goldnugget",1,fn}，
     --      },
-    --      special_items = {   ----- 特殊的无法进入容器的物品  --- 使用 code
+    --      special_items = {   ----- 特殊的无法进入容器的物品  --- 使用 code。不需要玩家填。是个记录器。
     --      },    
     --      name = "pack name",
     --      inspect_str = "66666666",
