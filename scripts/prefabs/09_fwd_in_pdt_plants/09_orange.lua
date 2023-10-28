@@ -229,7 +229,7 @@ local function fn()
                     inst.AnimState:PlayAnimation("step_1") 
                     change_type_by_step(inst,1)
                 end,      
-                growfn = fn,                                                        -- DoGrowth 的时候执行（时间到了）
+                growfn = nil,                                                        -- DoGrowth 的时候执行（时间到了）
             },
             {
                 name = "step2",     --- 阶段2

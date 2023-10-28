@@ -273,48 +273,54 @@ local function fn()
                     fertilize_check_by_step(inst,1)
                     pickable_check_by_step(inst,1)
                 end,      
-                growfn = fn,                                                        -- DoGrowth 的时候执行（时间到了）
+                growfn = function(inst)
+                    
+                end,                                                        -- DoGrowth 的时候执行（时间到了）
             },
             {
                 name = "step2",     --- 阶段2
                 time = function(inst) return grow_time_by_step(inst,2) end,
                 fn = function(inst)
-                    inst.AnimState:PlayAnimation("step1_to_step2")
-                    inst.AnimState:PushAnimation("step2")
+                    inst.AnimState:PlayAnimation("step2",true)
                     fertilize_check_by_step(inst,2)
                     pickable_check_by_step(inst,2)
-                    inst.SoundEmitter:PlaySound("dontstarve/wilson/pickup_reeds")
-
                 end,
-                growfn = fn,
+                growfn = function(inst)
+                    inst.AnimState:PlayAnimation("step1_to_step2")
+                    inst.AnimState:PushAnimation("step2",true)
+                    inst.SoundEmitter:PlaySound("dontstarve/wilson/pickup_reeds")
+                end,
             },
             {
                 name = "step3",    --- 阶段3
                 time = function(inst) return grow_time_by_step(inst,3) end,
                 fn = function(inst)
-                    inst.AnimState:PlayAnimation("step2_to_step3")
-                    inst.AnimState:PushAnimation("step3")
+                    inst.AnimState:PlayAnimation("step3",true)
                     fertilize_check_by_step(inst,3)
                     pickable_check_by_step(inst,3)
-                    inst.SoundEmitter:PlaySound("dontstarve/wilson/pickup_reeds")
-
                 end,         
-                growfn = fn,
+                growfn = function(inst)
+                    inst.AnimState:PlayAnimation("step2_to_step3")
+                    inst.AnimState:PushAnimation("step3",true)
+                    inst.SoundEmitter:PlaySound("dontstarve/wilson/pickup_reeds")
+                end,
             },
             {
                 name = "step4",
                 time = function(inst) return grow_time_by_step(inst,4) end,
                 fn = function(inst)
-                    inst.AnimState:PlayAnimation("step3_to_step4")
-                    inst.AnimState:PushAnimation("step4")
+                    inst.AnimState:PlayAnimation("step4",true)
                     fertilize_check_by_step(inst,4)
                     pickable_check_by_step(inst,4)
+                end, 
+                growfn = function(inst)
+                    inst.AnimState:PlayAnimation("step3_to_step4")
+                    inst.AnimState:PushAnimation("step4",true)
                     inst:DoTaskInTime(1.2, function()
                         inst.AnimState:SetTime(math.random(5000)/1000)
                     end)
                     inst.SoundEmitter:PlaySound("dontstarve/wilson/pickup_reeds")
-                end, 
-                growfn = fn,
+                end,
             },
         }
 

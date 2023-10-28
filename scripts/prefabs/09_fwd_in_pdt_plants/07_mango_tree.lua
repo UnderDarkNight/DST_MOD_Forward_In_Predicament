@@ -295,7 +295,7 @@ local function fn()
                     inst.AnimState:SetTime(math.random(5000)/1000)
                     inst.SoundEmitter:PlaySound("dontstarve/forest/treeGrow")
                 end,         
-                growfn = fn,
+                growfn = nil,
             },
         }
 

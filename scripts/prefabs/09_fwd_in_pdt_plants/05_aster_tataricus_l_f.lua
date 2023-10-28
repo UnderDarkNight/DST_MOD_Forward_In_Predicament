@@ -22,7 +22,7 @@ local assets =
             inst.components.pickable.canbepicked = false
         end
     end
-    local function add_workable_action(inst)
+    local function add_pickable_action(inst)
         if not TheWorld.ismastersim then
             return
         end
@@ -104,14 +104,8 @@ local function fn()
 
 
     inst.entity:SetPristine()
-    ------------------------------------------------------------------------------------
-    --- 采收
-        add_workable_action(inst)
-    ------------------------------------------------------------------------------------
-    --- 施肥
-        add_fertilize_acceptable(inst)
-    ------------------------------------------------------------------------------------
-    ------------------------------------------------------------------------------------
+
+    -- ------------------------------------------------------------------------------------
     if not TheWorld.ismastersim then
         return inst
     end
@@ -131,7 +125,16 @@ local function fn()
             inst:Remove()
         end)
         inst.components.workable:SetWorkLeft(1)
+
     ------------------------------------------
+    ------------------------------------------------------------------------------------
+    --- 采收
+        add_pickable_action(inst)
+    ------------------------------------------------------------------------------------
+    --- 施肥
+        add_fertilize_acceptable(inst)
+    ------------------------------------------------------------------------------------
+
     --- 种植
         inst:AddComponent("growable")
         local function grow_time_by_step(inst,step) 
@@ -150,36 +153,42 @@ local function fn()
                     pickable_check_by_step(inst,1)
                     inst:PushEvent("season_check")
                 end,      
-                growfn = fn,                                                        -- DoGrowth 的时候执行（时间到了）
+                growfn = function(inst)
+                    
+                end,                                                        -- DoGrowth 的时候执行（时间到了）
             },
             {
                 name = "step2",     --- 阶段2
                 time = function(inst) return grow_time_by_step(inst,2) end,
                 fn = function(inst)
-                    inst.AnimState:PlayAnimation("step1_to_step2")
-                    inst.AnimState:PushAnimation("step2")
+                    inst.AnimState:PlayAnimation("step2",true)
                     fertilize_check_by_step(inst,2)
                     pickable_check_by_step(inst,2)
-                    inst.SoundEmitter:PlaySound("dontstarve/wilson/pickup_reeds")
                     inst:PushEvent("season_check")
                 end,
-                growfn = fn,
+                growfn = function(inst)
+                    inst.AnimState:PlayAnimation("step1_to_step2")
+                    inst.AnimState:PushAnimation("step2",true)
+                    inst.SoundEmitter:PlaySound("dontstarve/wilson/pickup_reeds")
+                end,
             },
             {
                 name = "step3",    --- 阶段3
                 time = function(inst) return grow_time_by_step(inst,3) end,
                 fn = function(inst)
-                    inst.AnimState:PlayAnimation("step2_to_step3")
-                    inst.AnimState:PushAnimation("step3")
+                    inst.AnimState:PlayAnimation("step3",true)
                     fertilize_check_by_step(inst,3)
-                    pickable_check_by_step(inst,3)
+                    pickable_check_by_step(inst,3)                    
+                    inst:PushEvent("season_check")
+                end,         
+                growfn = function(inst)
+                    inst.AnimState:PlayAnimation("step2_to_step3")
+                    inst.AnimState:PushAnimation("step3",true)
                     inst:DoTaskInTime(0.6,function()
                         inst.AnimState:SetTime(math.random(5000)/1000)
                     end)
                     inst.SoundEmitter:PlaySound("dontstarve/wilson/pickup_reeds")
-                    inst:PushEvent("season_check")
-                end,         
-                growfn = fn,
+                end,
             },
         }
 
@@ -188,6 +197,7 @@ local function fn()
         inst.components.growable.springgrowth = true
         inst.components.growable:StartGrowing()
         inst.components.growable.magicgrowable = true
+
 
         inst:AddComponent("simplemagicgrower")  --- 魔法书
         inst.components.simplemagicgrower:SetLastStage(#inst.components.growable.stages)
