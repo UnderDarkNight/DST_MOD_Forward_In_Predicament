@@ -258,7 +258,7 @@ local flg,error_code = pcall(function()
         -- end
         -- HearPanFlute(ThePlayer)
     ----------------------------------------------------------------------------------------------------------------
-            
+    ThePlayer:PushEvent("learnrecipe", { teacher = ThePlayer, recipe = "fwd_in_pdt_building_special_cookpot" })
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)

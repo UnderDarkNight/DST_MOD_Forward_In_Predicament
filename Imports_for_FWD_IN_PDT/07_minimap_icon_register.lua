@@ -28,6 +28,7 @@ local files_name = {
 		"fwd_in_pdt_building_special_production_table",				--- 特殊工作台
 		"fwd_in_pdt_building_special_production_table_punk",				--- 特殊工作台（朋克皮肤）
 		"fwd_in_pdt_building_fermenter",							--- 发酵缸
+		"fwd_in_pdt_building_special_cookpot",							--- 万能烹饪锅
 	-------------------------------------------------------------------------------------------------
 	---- 07_fwd_in_pdt_buildings
 		"fwd_in_pdt_building_special_shop",							--- 纪念品商店

@@ -149,4 +149,25 @@ AddRecipe2(
 RemoveRecipeFromFilter("fwd_in_pdt_building_fermenter","MODS")                       -- -- 在【模组物品】标签里移除这个。
 
 
+--------------------------------------------------------------------------------------------------------------------------------------------
+---- 混沌万能锅
+--------------------------------------------------------------------------------------------------------------------------------------------
+AddRecipeToFilter("fwd_in_pdt_building_special_cookpot","COOKING")     ---- 添加物品到目标标签
+AddRecipe2(
+    "fwd_in_pdt_building_special_cookpot",            --  --  inst.prefab  实体名字
+    { Ingredient("fwd_in_pdt_material_chaotic_eyeball", 1),Ingredient("charcoal", 6),Ingredient("twigs", 6),Ingredient("cutstone", 3) }, 
+    TECH.LOST, --- TECH.NONE
+    {
+        -- nounlock=true,
+        no_deconstruction=true,
+        -- builder_tag = "npng_tag.has_green_amulet",    --------- -- 【builder_tag】只给指定tag的角色能制造这件物品，角色添加/移除 tag 都能立马解锁/隐藏该物品
+        placer = "fwd_in_pdt_building_special_cookpot_placer",                       -------- 建筑放置器        
+        atlas = "images/map_icons/fwd_in_pdt_building_special_cookpot.xml",
+        image = "fwd_in_pdt_building_special_cookpot.tex",
+    },
+    {"COOKING"}
+)
+RemoveRecipeFromFilter("fwd_in_pdt_building_special_cookpot","MODS")                       -- -- 在【模组物品】标签里移除这个。
+
+
 

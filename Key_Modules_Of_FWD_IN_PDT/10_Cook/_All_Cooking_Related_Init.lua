@@ -13,6 +13,9 @@ modimport("Key_Modules_Of_FWD_IN_PDT/10_Cook/02_portablespicer.lua")    --- 便�
 modimport("Key_Modules_Of_FWD_IN_PDT/10_Cook/03_portablespicer_recipes.lua")    --- 便携香料站 配方
 
 
+modimport("Key_Modules_Of_FWD_IN_PDT/10_Cook/04_special_cookpot_recipes.lua")    --- 万能锅配方注册
+
+
 
 
 

@@ -8,6 +8,7 @@ local Prefabs_name_list = {
     "04_atractylodes_macrocephala",      -- 苍术
     "05_pinellia_ternata",               -- 半夏
     "06_aster_tataricus_l_f",            -- 紫苑
+    "07_chaotic_eyeball",            -- 混沌眼球
 
 }
 

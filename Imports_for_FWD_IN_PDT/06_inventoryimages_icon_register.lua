@@ -37,6 +37,11 @@ local files_name = {
 		"fwd_in_pdt_material_atractylodes_macrocephala",				--- 苍术
 		"fwd_in_pdt_material_pinellia_ternata",							--- 半夏
 		"fwd_in_pdt_material_aster_tataricus_l_f",						--- 紫苑
+		"fwd_in_pdt_material_chaotic_eyeball",						--- 混沌眼球
+		"fwd_in_pdt_material_chaotic_cookpot_puzzle_1",						--- 混沌万能锅碎片
+		"fwd_in_pdt_material_chaotic_cookpot_puzzle_2",						--- 混沌万能锅碎片
+		"fwd_in_pdt_material_chaotic_cookpot_puzzle_3",						--- 混沌万能锅碎片
+		"fwd_in_pdt_material_chaotic_cookpot_puzzle_4",						--- 混沌万能锅碎片
 
 	---------------------------------------------------------------------------------------
 	-- 03_fwd_in_pdt_equipments

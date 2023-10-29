@@ -6,6 +6,7 @@ local Prefabs_name_list = {
     "02_moon_jewelry_lamp",                   --- 天体宝珠灯
     "03_special_production_table",            --- 特殊工作台
     "04_fermenter",                           --- 发酵缸
+    "05_special_cookpot",                     --- 万能烹饪锅
 
 }
 

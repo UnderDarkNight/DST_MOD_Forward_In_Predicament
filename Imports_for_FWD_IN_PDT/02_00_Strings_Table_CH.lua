@@ -198,6 +198,26 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "紫苑",
                 ["inspect_str"] = "采摘下来的药材",
             },
+            ["fwd_in_pdt_material_chaotic_eyeball"] = {
+                ["name"] = "混沌眼球",
+                ["inspect_str"] = "这眼球里充满混沌能量",
+            },
+            ["fwd_in_pdt_material_chaotic_cookpot_puzzle_1"] = {
+                ["name"] = "混沌万能锅碎片 I",
+                ["inspect_str"] = "一块图纸碎片",
+            },
+            ["fwd_in_pdt_material_chaotic_cookpot_puzzle_2"] = {
+                ["name"] = "混沌万能锅碎片 II",
+                ["inspect_str"] = "一块图纸碎片",
+            },
+            ["fwd_in_pdt_material_chaotic_cookpot_puzzle_3"] = {
+                ["name"] = "混沌万能锅碎片 III",
+                ["inspect_str"] = "一块图纸碎片",
+            },
+            ["fwd_in_pdt_material_chaotic_cookpot_puzzle_4"] = {
+                ["name"] = "混沌万能锅碎片 IV",
+                ["inspect_str"] = "一块图纸碎片",
+            },
         --------------------------------------------------------------------
         ---- 03_fwd_in_pdt_equipments
             ["fwd_in_pdt_eq_mirror_whip"] = {
@@ -459,6 +479,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["recipe_desc"] = "能用来发酵一些食物",
                 ["inspect_str_burnt"] = "已经烧毁了",
                 ["action_str"] = "开始发酵"
+            },
+            ["fwd_in_pdt_building_special_cookpot"] = {
+                ["name"] = "混沌万能锅",
+                ["inspect_str"] = "能烹饪出不少食物",
+                ["recipe_desc"] = "能烹饪出不少食物",
             },
         --------------------------------------------------------------------
         ---- 07_fwd_in_pdt_buildings

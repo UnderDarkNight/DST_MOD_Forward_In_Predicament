@@ -194,6 +194,26 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "Aster tataricus L.f.",
                 ["inspect_str"] = "Picked herbs",
             },
+            ["fwd_in_pdt_material_chaotic_eyeball"] = {
+                ["name"] = "Chaotic Eyeball",
+                ["inspect_str"] = "This eyeball is filled with chaotic energy.",
+            },
+            ["fwd_in_pdt_material_chaotic_cookpot_puzzle_1"] = {
+                ["name"] = "Chaotic Cookpot Puzzle I",
+                ["inspect_str"] = "A fragment of a blueprint",
+            },
+            ["fwd_in_pdt_material_chaotic_cookpot_puzzle_2"] = {
+                ["name"] = "Chaotic Cookpot Puzzle II",
+                ["inspect_str"] = "A fragment of a blueprint",
+            },
+            ["fwd_in_pdt_material_chaotic_cookpot_puzzle_3"] = {
+                ["name"] = "Chaotic Cookpot Puzzle III",
+                ["inspect_str"] = "A fragment of a blueprint",
+            },
+            ["fwd_in_pdt_material_chaotic_cookpot_puzzle_4"] = {
+                ["name"] = "Chaotic Cookpot Puzzle IV",
+                ["inspect_str"] = "A fragment of a blueprint",
+            },
         --------------------------------------------------------------------
         ---- 03_fwd_in_pdt_equipments
             ["fwd_in_pdt_equipment_blazing_nightmaresword"] = {
@@ -416,6 +436,14 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "A favorite among bodybuilders",
                 ["oneat_desc"] = "No muscle atrophy",
             },
+            ["fwd_in_pdt_food_stinky_tofu_salad"] = {
+                ["name"] = "Stinky Tofu Salad",
+                ["inspect_str"] = "It tastes awful, but it's delicious",
+            },
+            ["fwd_in_pdt_food_stinky_tofu_bolognese"] = {
+                ["name"] = "Stinky Tofu Bolognese",
+                ["inspect_str"] = "It tastes awful, but it's delicious",
+            },
         --------------------------------------------------------------------
         ---- 06_fwd_in_pdt_containers
             ["fwd_in_pdt_fish_farm"] = {
@@ -445,13 +473,10 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str_burnt"] = "It's burned.",
                 ["action_str"] = "Fester"
             },
-            ["fwd_in_pdt_food_stinky_tofu_salad"] = {
-                ["name"] = "Stinky Tofu Salad",
-                ["inspect_str"] = "It tastes awful, but it's delicious",
-            },
-            ["fwd_in_pdt_food_stinky_tofu_bolognese"] = {
-                ["name"] = "Stinky Tofu Bolognese",
-                ["inspect_str"] = "It tastes awful, but it's delicious",
+            ["fwd_in_pdt_building_special_cookpot"] = {
+                ["name"] = "混沌万能锅",
+                ["inspect_str"] = "能烹饪出不少食物",
+                ["recipe_desc"] = "能烹饪出不少食物",
             },
         --------------------------------------------------------------------
         ---- 07_fwd_in_pdt_buildings

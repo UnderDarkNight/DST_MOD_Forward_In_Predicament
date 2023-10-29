@@ -71,5 +71,37 @@ return{
 		["num2give"] = 1.0,
 		["image"] = "",
 		["atlas"] = ""
+	},
+	{
+		["name"] = "混沌万能锅碎片",
+		["prefab"] = "fwd_in_pdt_material_chaotic_cookpot_puzzle_1",
+		["cost"] = 100.0,
+		["num2give"] = 1.0,
+		["image"] = "",
+		["atlas"] = ""
+	},
+	{
+		["name"] = "混沌万能锅碎片",
+		["prefab"] = "fwd_in_pdt_material_chaotic_cookpot_puzzle_2",
+		["cost"] = 100.0,
+		["num2give"] = 1.0,
+		["image"] = "",
+		["atlas"] = ""
+	},
+	{
+		["name"] = "混沌万能锅碎片",
+		["prefab"] = "fwd_in_pdt_material_chaotic_cookpot_puzzle_3",
+		["cost"] = 100.0,
+		["num2give"] = 1.0,
+		["image"] = "",
+		["atlas"] = ""
+	},
+	{
+		["name"] = "混沌万能锅碎片",
+		["prefab"] = "fwd_in_pdt_material_chaotic_cookpot_puzzle_4",
+		["cost"] = 100.0,
+		["num2give"] = 1.0,
+		["image"] = "",
+		["atlas"] = ""
 	}
 }

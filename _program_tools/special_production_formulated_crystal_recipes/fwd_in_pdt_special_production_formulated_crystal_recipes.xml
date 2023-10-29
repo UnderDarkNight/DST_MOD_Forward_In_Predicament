@@ -2,25 +2,26 @@
 <Atlas>
 	<Texture filename="fwd_in_pdt_special_production_formulated_crystal_recipes.tex" />
 	<Elements>
-		<Element name="fwd_in_pdt_special_production_formulated_crystal_recipe_1.tex" u1="0.146263671875" u2="0.2909921875" v2="0.26413671875" v1="0.0742421875" variant="" />
-		<Element name="fwd_in_pdt_special_production_formulated_crystal_recipe_10.tex" u1="0.001" u2="0.141333984375" v2="0.8202890625" v1="0.6347890625" variant="" />
-		<Element name="fwd_in_pdt_special_production_formulated_crystal_recipe_11.tex" u1="0.143578125" u2="0.28269140625" v2="0.999" v1="0.8222890625" variant="" />
-		<Element name="fwd_in_pdt_special_production_formulated_crystal_recipe_12.tex" u1="0.143333984375" u2="0.280982421875" v2="0.8202890625" v1="0.64211328125" variant="" />
-		<Element name="fwd_in_pdt_special_production_formulated_crystal_recipe_13.tex" u1="0.28469140625" u2="0.423560546875" v2="0.999" v1="0.8222890625" variant="" />
-		<Element name="fwd_in_pdt_special_production_formulated_crystal_recipe_14.tex" u1="0.282982421875" u2="0.422095703125" v2="0.8202890625" v1="0.6347890625" variant="" />
-		<Element name="fwd_in_pdt_special_production_formulated_crystal_recipe_15.tex" u1="0.001" u2="0.139380859375" v2="0.6327890625" v1="0.45803125" variant="" />
-		<Element name="fwd_in_pdt_special_production_formulated_crystal_recipe_16.tex" u1="0.001" u2="0.139380859375" v2="0.45603125" v1="0.28078515625" variant="" />
-		<Element name="fwd_in_pdt_special_production_formulated_crystal_recipe_17.tex" u1="0.141380859375" u2="0.27976171875" v2="0.6327890625" v1="0.456078125" variant="" />
-		<Element name="fwd_in_pdt_special_production_formulated_crystal_recipe_18.tex" u1="0.001" u2="0.144263671875" v2="0.27878515625" v1="0.09816796875" variant="" />
-		<Element name="fwd_in_pdt_special_production_formulated_crystal_recipe_19.tex" u1="0.28176171875" u2="0.420630859375" v2="0.6327890625" v1="0.4551015625" variant="" />
-		<Element name="fwd_in_pdt_special_production_formulated_crystal_recipe_2.tex" u1="0.2929921875" u2="0.44870703125" v2="0.4531015625" v1="0.25734765625" variant="" />
-		<Element name="fwd_in_pdt_special_production_formulated_crystal_recipe_20.tex" u1="0.146263671875" u2="0.283912109375" v2="0.4531015625" v1="0.26613671875" variant="" />
-		<Element name="fwd_in_pdt_special_production_formulated_crystal_recipe_3.tex" u1="0.2929921875" u2="0.439185546875" v2="0.25534765625" v1="0.0635" variant="" />
-		<Element name="fwd_in_pdt_special_production_formulated_crystal_recipe_4.tex" u1="0.425560546875" u2="0.57077734375" v2="0.999" v1="0.81008203125" variant="" />
-		<Element name="fwd_in_pdt_special_production_formulated_crystal_recipe_5.tex" u1="0.424095703125" u2="0.57321875" v2="0.80808203125" v1="0.616234375" variant="" />
-		<Element name="fwd_in_pdt_special_production_formulated_crystal_recipe_6.tex" u1="0.57277734375" u2="0.71335546875" v2="0.999" v1="0.823265625" variant="" />
-		<Element name="fwd_in_pdt_special_production_formulated_crystal_recipe_7.tex" u1="0.57521875" u2="0.717994140625" v2="0.821265625" v1="0.63771875" variant="" />
-		<Element name="fwd_in_pdt_special_production_formulated_crystal_recipe_8.tex" u1="0.45070703125" u2="0.5917734375" v2="0.614234375" v1="0.428734375" variant="" />
-		<Element name="fwd_in_pdt_special_production_formulated_crystal_recipe_9.tex" u1="0.001" u2="0.141578125" v2="0.999" v1="0.8222890625" variant="" />
+		<Element name="fwd_in_pdt_special_production_formulated_crystal_recipe_1.tex" u1="0.4375234375" u2="0.582251953125" v2="0.999" v1="0.80910546875" variant="" />
+		<Element name="fwd_in_pdt_special_production_formulated_crystal_recipe_10.tex" u1="0.001" u2="0.141333984375" v2="0.6327890625" v1="0.4472890625" variant="" />
+		<Element name="fwd_in_pdt_special_production_formulated_crystal_recipe_11.tex" u1="0.282494140625" u2="0.421607421875" v2="0.81882421875" v1="0.64211328125" variant="" />
+		<Element name="fwd_in_pdt_special_production_formulated_crystal_recipe_12.tex" u1="0.282494140625" u2="0.420142578125" v2="0.999" v1="0.82082421875" variant="" />
+		<Element name="fwd_in_pdt_special_production_formulated_crystal_recipe_13.tex" u1="0.141380859375" u2="0.28025" v2="0.8115" v1="0.6347890625" variant="" />
+		<Element name="fwd_in_pdt_special_production_formulated_crystal_recipe_14.tex" u1="0.141380859375" u2="0.280494140625" v2="0.999" v1="0.8135" variant="" />
+		<Element name="fwd_in_pdt_special_production_formulated_crystal_recipe_15.tex" u1="0.001" u2="0.139380859375" v2="0.82175390625" v1="0.64699609375" variant="" />
+		<Element name="fwd_in_pdt_special_production_formulated_crystal_recipe_16.tex" u1="0.001" u2="0.139380859375" v2="0.999" v1="0.82375390625" variant="" />
+		<Element name="fwd_in_pdt_special_production_formulated_crystal_recipe_17.tex" u1="0.441185546875" u2="0.57956640625" v2="0.4570078125" v1="0.280296875" variant="" />
+		<Element name="fwd_in_pdt_special_production_formulated_crystal_recipe_18.tex" u1="0.584251953125" u2="0.727515625" v2="0.81003515625" v1="0.62941796875" variant="" />
+		<Element name="fwd_in_pdt_special_production_formulated_crystal_recipe_19.tex" u1="0.4375234375" u2="0.576392578125" v2="0.6366953125" v1="0.4590078125" variant="" />
+		<Element name="fwd_in_pdt_special_production_formulated_crystal_recipe_2.tex" u1="0.2929921875" u2="0.44870703125" v2="0.25241796875" v1="0.0566640625" variant="" />
+		<Element name="fwd_in_pdt_special_production_formulated_crystal_recipe_20.tex" u1="0.584251953125" u2="0.721900390625" v2="0.999" v1="0.81203515625" variant="" />
+		<Element name="fwd_in_pdt_special_production_formulated_crystal_recipe_21.tex" u1="0.4375234375" u2="0.57175390625" v2="0.80710546875" v1="0.6386953125" variant="" />
+		<Element name="fwd_in_pdt_special_production_formulated_crystal_recipe_3.tex" u1="0.2929921875" u2="0.439185546875" v2="0.446265625" v1="0.25441796875" variant="" />
+		<Element name="fwd_in_pdt_special_production_formulated_crystal_recipe_4.tex" u1="0.145775390625" u2="0.2909921875" v2="0.2675546875" v1="0.07863671875" variant="" />
+		<Element name="fwd_in_pdt_special_production_formulated_crystal_recipe_5.tex" u1="0.286400390625" u2="0.4355234375" v2="0.64011328125" v1="0.448265625" variant="" />
+		<Element name="fwd_in_pdt_special_production_formulated_crystal_recipe_6.tex" u1="0.143578125" u2="0.28415625" v2="0.4452890625" v1="0.2695546875" variant="" />
+		<Element name="fwd_in_pdt_special_production_formulated_crystal_recipe_7.tex" u1="0.001" u2="0.143775390625" v2="0.266578125" v1="0.08303125" variant="" />
+		<Element name="fwd_in_pdt_special_production_formulated_crystal_recipe_8.tex" u1="0.143333984375" u2="0.284400390625" v2="0.6327890625" v1="0.4472890625" variant="" />
+		<Element name="fwd_in_pdt_special_production_formulated_crystal_recipe_9.tex" u1="0.001" u2="0.141578125" v2="0.4452890625" v1="0.268578125" variant="" />
 	</Elements>
 </Atlas>

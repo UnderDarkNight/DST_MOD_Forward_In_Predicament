@@ -31,3 +31,5 @@ modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/11_bee
 modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/12_razor.lua")    --- 修改 剃刀，使用有概率出血
 
 modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/13_evergreen_tree.lua")    --- 修改 常青树
+
+modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/14_cookpot_upgrade_2_chaotic_type.lua")    --- 修改 烹饪锅，可以用【混沌眼球】升级

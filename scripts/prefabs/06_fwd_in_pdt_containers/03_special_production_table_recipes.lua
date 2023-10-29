@@ -418,6 +418,23 @@ return {
             }
         },
     -------------------------------------------------------------------------------------------------------------
+    -------------------------------------------------------------------------------------------------------------
+    ---- 混沌眼球
+        {
+            source = {     
+                { prefab = "deerclops_eyeball" , num = 1 } , {                                            } ,  { prefab = "deerclops_eyeball" , num = 1  } ,
+                {                                        } , { prefab = "deerclops_eyeball" , num = 1     } ,  {                            } ,
+                { prefab = "nightmarefuel" , num = 1     } , {                                            } ,  { prefab = "nightmarefuel" , num = 1  } ,
+            },
+            ret = {
+                prefab = "fwd_in_pdt_material_chaotic_eyeball",
+                num = 1,
+                -- overwrite_str = "x 1",
+                atlas =  GetInventoryItemAtlas("fwd_in_pdt_material_chaotic_eyeball.tex"),
+                image =  "fwd_in_pdt_material_chaotic_eyeball.tex",
+            }
+        },
+    -------------------------------------------------------------------------------------------------------------
 
 
 

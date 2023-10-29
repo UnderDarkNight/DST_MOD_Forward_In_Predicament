@@ -65,33 +65,41 @@ return{
 		["atlas"] = ""
 	},
 	{
-		["name"] = "蛇皮地板",
-		["prefab"] = "turf_fwd_in_pdt_turf_snakeskin",
-		["cost"] = 8.0,
-		["num2give"] = 10.0,
-		["image"] = "",
-		["atlas"] = ""
-	},
-	{
-		["name"] = "格子地皮",
-		["prefab"] = "turf_fwd_in_pdt_turf_grasslawn",
-		["cost"] = 8.0,
-		["num2give"] = 10.0,
-		["image"] = "",
-		["atlas"] = ""
-	},
-	{
-		["name"] = "猪镇石板路",
-		["prefab"] = "turf_fwd_in_pdt_turf_cobbleroad",
-		["cost"] = 8.0,
-		["num2give"] = 10.0,
-		["image"] = "",
-		["atlas"] = ""
-	},
-	{
 		["name"] = "坎普斯背包",
 		["prefab"] = "krampus_sack",
 		["cost"] = 500.0,
+		["num2give"] = 1.0,
+		["image"] = "",
+		["atlas"] = ""
+	},
+	{
+		["name"] = "混沌万能锅碎片",
+		["prefab"] = "fwd_in_pdt_material_chaotic_cookpot_puzzle_1",
+		["cost"] = 100.0,
+		["num2give"] = 1.0,
+		["image"] = "",
+		["atlas"] = ""
+	},
+	{
+		["name"] = "混沌万能锅碎片",
+		["prefab"] = "fwd_in_pdt_material_chaotic_cookpot_puzzle_2",
+		["cost"] = 100.0,
+		["num2give"] = 1.0,
+		["image"] = "",
+		["atlas"] = ""
+	},
+	{
+		["name"] = "混沌万能锅碎片",
+		["prefab"] = "fwd_in_pdt_material_chaotic_cookpot_puzzle_3",
+		["cost"] = 100.0,
+		["num2give"] = 1.0,
+		["image"] = "",
+		["atlas"] = ""
+	},
+	{
+		["name"] = "混沌万能锅碎片",
+		["prefab"] = "fwd_in_pdt_material_chaotic_cookpot_puzzle_4",
+		["cost"] = 100.0,
 		["num2give"] = 1.0,
 		["image"] = "",
 		["atlas"] = ""
