@@ -34,13 +34,19 @@ AddPrefabPostInit(
                             end
                             
                             ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------     
+                            -- ----------------------------------------------------------------------
+                            --     pcall(function()
+                            --         ---- 尝试兼容 烹饪配方显示  workshop-727774324
+                            --         -- if type(GLOBAL.AddCookingPot) == "function" then
+                            --         --     pcall(GLOBAL.AddCookingPot,"fwd_in_pdt_building_special_cookpot")
+                            --         -- end
+                            --         global("COOKINGPOTS")
+                            --         COOKINGPOTS = COOKINGPOTS or {}
+                            --         COOKINGPOTS["fwd_in_pdt_building_special_cookpot"] = {}
+                            --     end)
+                            --     ----------------------------------------------------------------------
                             ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------     
             end)
         end)
     end
 )
-
----- 尝试兼容 烹饪配方显示  workshop-727774324
-if GLOBAL.AddCookingPot then
-    GLOBAL.AddCookingPot("fwd_in_pdt_building_special_cookpot")
-end
