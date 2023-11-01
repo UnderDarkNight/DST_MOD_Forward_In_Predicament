@@ -154,6 +154,10 @@ local function fn()
         -- inst:AddComponent("symbolswapdata")
         -- inst.components.symbolswapdata:SetData("fwd_in_pdt_equipment_glass_beefalo", "swap_body")
     ---------------------------------------------------------------------------------------------
+            --- 放到大力士健身房的动画替换
+            inst:AddComponent("symbolswapdata")
+            inst.components.symbolswapdata:SetData("fwd_in_pdt_equipment_glass_beefalo", "swap_body")
+        ---------------------------------------------------------------------------------------------
     return inst
 end
 
