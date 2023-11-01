@@ -330,13 +330,14 @@ TheWorld.state = {
 TUNING = {}
 -------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
---                                        没洞穴          洞穴（本地进程）   洞穴（远程服务器）
--- TheNet:GetIsClient()                   false            true                  false
--- TheNet:GetIsHosting()                  false            true                  true
--- TheNet:GetIsMasterSimulation()          true            false                 true
--- TheNet:GetIsServer()                    true            false                 true
--- TheNet:GetIsServerAdmin()               true            true                  true
--- TheNet:GetIsServerOwner()               true            true                  true
+--                                        洞穴端（本地进程）        客户端（带洞穴）                    客户端（不带洞穴）
+-- TheNet:GetIsClient()                         false                   true                            false
+-- TheNet:GetIsHosting()                        true                    true                            false
+-- TheNet:GetIsMasterSimulation()               false                   false                           true
+-- TheNet:GetIsServer()                         false                   false                           true
+-- TheNet:GetIsServerAdmin()                    false                   true                            true
+-- TheNet:GetIsServerOwner()                    false                   true                            true
+-- TheNet:IsDedicated()                         true                    false                           false
 
 --  TheNet:GetIsClient() == false and TheNet:GetIsMasterSimulation() == true   ---------- 用来判断单纯的没洞穴的存档。
 -------------------------------------------------------------------------------------------------------------------------------------------------------------

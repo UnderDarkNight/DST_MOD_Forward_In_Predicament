@@ -22,6 +22,7 @@ local function fn()
     MakeInventoryFloatable(inst)
 
     inst:AddTag("deployedplant")
+    inst:AddTag("icebox_valid")
 
     inst.AnimState:SetBank("fwd_in_pdt_plant_orange")
     inst.AnimState:SetBuild("fwd_in_pdt_plant_orange")

@@ -39,6 +39,7 @@ end
 --------------------------------------------------------------------------------------------
 ---- 统一 func 初始化列表
 TUNING["Forward_In_Predicament.World_Com_Func"] = {"map_modifier","normal_api"}
+TUNING["Forward_In_Predicament.Player_Com_Func"] = {"player","rpc","cross_archived_data_sys","camera","picksound","pre_dodelta","vip","daily_task","normal_api","jade_coin_sys","personal_skin_unlocker"}
 
 
 

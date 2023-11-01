@@ -258,7 +258,9 @@ local flg,error_code = pcall(function()
         -- end
         -- HearPanFlute(ThePlayer)
     ----------------------------------------------------------------------------------------------------------------
-    ThePlayer:PushEvent("learnrecipe", { teacher = ThePlayer, recipe = "fwd_in_pdt_building_special_cookpot" })
+    -- ThePlayer:PushEvent("learnrecipe", { teacher = ThePlayer, recipe = "fwd_in_pdt_building_special_cookpot" })
+    ----------------------------------------------------------------------------------------------------------------
+    -- ThePlayer.components.talker:Say(ThePlayer.components.fwd_in_pdt_func:IsAdmin() and "有管理员权限" or "没管理员权限")
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)

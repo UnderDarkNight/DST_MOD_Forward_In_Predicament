@@ -340,6 +340,18 @@ local function placer_postinit_fn(inst)
     inst.AnimState:PlayAnimation("cooking_loop",true)
 end
 
+----------------------------------------------------------------------
+if not TheNet:IsDedicated() then
+    -- pcall(function()
+    --     if type(GLOBAL.AddCookingPot) == "function" then
+    --         pcall(GLOBAL.AddCookingPot,"fwd_in_pdt_building_special_cookpot")
+    --     end
+    -- end)
+--     global("COOKINGPOTS")
+--     COOKINGPOTS = COOKINGPOTS or {}
+--     COOKINGPOTS["fwd_in_pdt_building_special_cookpot"] = {}
+end
+----------------------------------------------------------------------
 
 return Prefab("fwd_in_pdt_building_special_cookpot", fn,assets),
         MakePlacer("fwd_in_pdt_building_special_cookpot_placer", "fwd_in_pdt_building_special_cookpot", "fwd_in_pdt_building_special_cookpot", "idle_empty", nil, nil, nil, nil, nil, nil, placer_postinit_fn)

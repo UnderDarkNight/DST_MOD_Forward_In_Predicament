@@ -50,3 +50,29 @@ AddPrefabPostInit(
         end)
     end
 )
+
+
+
+-- print("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+-- local cmd = {
+--     ["GetIsClient"] = false,
+--     ["GetIsHosting"]= false,
+--     ["GetIsMasterSimulation"]= false,
+--     ["GetIsServer"]= false,
+--     ["GetIsServerAdmin"]= false,
+--     ["GetIsServerOwner"]= false,
+--     ["IsDedicated"]= false,
+-- }
+-- -- local TheNet_Temp = getmetatable(TheNet).__index
+-- -- for index, value in pairs(TheNet_Temp) do
+-- --     if type(value) == "function" then
+-- --         pcall(function()
+-- --             print(index, TheNet[index](TheNet))
+-- --         end)
+-- --     end
+-- -- end
+-- for index, v in pairs(cmd) do
+--     print(index,TheNet[index](TheNet))
+-- end
+
+-- print("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")

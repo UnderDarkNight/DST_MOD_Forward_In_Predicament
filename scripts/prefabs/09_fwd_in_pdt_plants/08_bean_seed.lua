@@ -29,6 +29,7 @@ local function fn()
     -- local scale = 0.6
     -- inst.AnimState:SetScale(scale,scale,scale)
     inst:AddTag("show_spoilage")
+    inst:AddTag("icebox_valid")
 
     inst.entity:SetPristine()
     -------------------------------------------------------------------
