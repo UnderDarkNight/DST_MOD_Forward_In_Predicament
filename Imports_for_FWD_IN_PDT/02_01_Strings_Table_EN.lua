@@ -168,6 +168,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name2"] = " ( Read )"
 
             },
+            ["fwd_in_pdt_item_adrenaline_injection"] = {
+                ["name"] = "Adrenaline Injection",
+                ["inspect_str"] = "Respond with a small amount of Wellness, the more you use it in the short term the less effective it will be",
+                ["recipe_desc"] = "Respond with a small amount of Wellness, the more you use it in the short term the less effective it will be",
+            },
         --------------------------------------------------------------------
         ---- 02_fwd_in_pdt_materials
             ["fwd_in_pdt_material_tree_resin"] = {

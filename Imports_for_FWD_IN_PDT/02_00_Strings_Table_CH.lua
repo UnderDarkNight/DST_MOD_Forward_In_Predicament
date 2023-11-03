@@ -172,6 +172,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "一张广告",
                 ["name2"] = " （ 已读 ）"
             },
+            ["fwd_in_pdt_item_adrenaline_injection"] = {
+                ["name"] = "肾上腺素注射剂",
+                ["inspect_str"] = "回复少量体质值，短期内使用越多效果越差",
+                ["recipe_desc"] = "回复少量体质值，短期内使用越多效果越差",
+            },
         --------------------------------------------------------------------
         ---- 02_fwd_in_pdt_materials
             ["fwd_in_pdt_material_tree_resin"] = {

@@ -21,6 +21,7 @@ local Prefabs_name_list = {
     "16_synopsis",                       -- MOD说明书
     "17_advertising_leaflet",            -- 广告单
     "18_chaotic_cookpot_puzzles",        -- 混沌万能锅碎片
+    "19_adrenaline_injection",           -- 肾上腺注射剂
 
 
 

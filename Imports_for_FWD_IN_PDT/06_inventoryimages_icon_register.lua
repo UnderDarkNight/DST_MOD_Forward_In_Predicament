@@ -29,6 +29,7 @@ local files_name = {
 		"fwd_in_pdt_item_glass_pig_skin"	,				    --- 玻璃猪皮
 		"fwd_in_pdt_item_glass_horn"	,				  	    --- 玻璃号角
 		"fwd_in_pdt_item_advertising_leaflet"	, 				--- 广告单
+		"fwd_in_pdt_item_adrenaline_injection"	, 				--- 肾上腺素注射剂
 	---------------------------------------------------------------------------------------
 	-- 02_fwd_in_pdt_materials
 		"fwd_in_pdt_material_tree_resin",						--- 树脂
