@@ -545,7 +545,7 @@
 ----- 酸奶冰淇淋
     local fwd_in_pdt_food_yogurt_ice_cream = {
         test = function(cooker, names, tags)
-            return (names.fwd_in_pdt_food_yogurt or 0) >= 2 and (names.ice or 0)>=2 and (names.twigs or 0) >= 2
+            return (names.fwd_in_pdt_food_yogurt or 0) >= 2 and (names.ice or 0)>=1 and (names.twigs or 0) >= 1
             -- local fwd_in_pdt_food_yogurt = names.fwd_in_pdt_food_yogurt or 0
             -- local ice = names.ice or 0
             -- local twigs = names.twigs or 0
