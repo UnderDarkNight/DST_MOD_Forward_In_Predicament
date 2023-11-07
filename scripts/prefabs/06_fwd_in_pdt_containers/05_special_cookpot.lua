@@ -272,6 +272,7 @@ local function fn()
     inst.components.stewer.ondonecooking = donecookfn
     inst.components.stewer.onharvest = harvestfn
     inst.components.stewer.onspoil = spoilfn
+    inst.components.stewer.cooktimemult = 0.5 -- 烹饪时间减半
 
     inst:AddComponent("container")
     inst.components.container:WidgetSetup("cookpot")
