@@ -27,8 +27,9 @@ AddPlayerPostInit(function(inst)
                         gift_box:PushEvent("Set",{
                                 items = {
                                         {"fwd_in_pdt_item_mod_synopsis",1},
-                                        {"fwd_in_pdt_food_aster_tataricus_l_f_pills",1},
+                                        {"fwd_in_pdt_food_aster_tataricus_l_f_pills",2},
                                         {"fwd_in_pdt_food_gifts_of_nature",1},
+                                        {"fwd_in_pdt_item_transport_stone",1},
                                 },
                                 name = GetStringsTable("fwd_in_pdt_gift_pack")["name.opening_gift_box"],
                                 inspect_str = GetStringsTable("fwd_in_pdt_gift_pack")["inspect_str"],
