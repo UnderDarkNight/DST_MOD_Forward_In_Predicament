@@ -51,7 +51,7 @@ local function fn()
                 elseif current_value <= 180 then
                     doer.components.fwd_in_pdt_wellness:DoDelta_Wellness(30)                    
                 end
-
+                doer.components.fwd_in_pdt_wellness:ForceRefresh()
 
                 if inst.components.stackable then
                     inst.components.stackable:Get():Remove()
