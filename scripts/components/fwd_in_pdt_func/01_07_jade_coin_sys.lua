@@ -28,7 +28,16 @@ local function main_com(self)
                 if num <= has_green_coins then   
                         print("绿币足够",has_green_coins,has_black_coins)
                         local need_to_remove_num = num
-                        self.inst.components.inventory:ForEachItem(function(item_inst)  
+
+                        local function each_item_search_fn(item_inst)
+                            --------------------------------------------------------------------------------------------------
+                            ---- 某些自带容器的物品进行扫描。
+                                if item_inst and item_inst.components.container then
+                                    item_inst.components.container:ForEachItem(each_item_search_fn)
+                                    return
+                                end
+                            --------------------------------------------------------------------------------------------------
+
                             if not (item_inst and  item_inst.prefab == "fwd_in_pdt_item_jade_coin_green" ) then
                                 return
                             end
@@ -43,8 +52,9 @@ local function main_com(self)
                                 need_to_remove_num = need_to_remove_num - item_inst.components.stackable.stacksize
                                 item_inst:Remove()
                             end
-                            
-                        end)
+                        end
+
+                        self.inst.components.inventory:ForEachItem(each_item_search_fn)
 
                     return true
                 end
