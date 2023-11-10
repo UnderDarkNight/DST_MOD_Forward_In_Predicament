@@ -36,8 +36,23 @@ local function fn()
                 return
             end
             if doer and doer.components.fwd_in_pdt_wellness then
+
                 doer.components.fwd_in_pdt_wellness:External_DoDelta_Wellness(20)
                 doer.components.fwd_in_pdt_wellness:ForceRefresh()
+
+                local current_value = doer.components.fwd_in_pdt_wellness:GetCurrent_Wellness()
+                if current_value <= 100 then
+                    doer.components.fwd_in_pdt_wellness:DoDelta_Wellness(150)
+                    if doer.components.health then
+                        doer.components.health:DeltaPenalty(0.5)
+                    end
+                elseif current_value <= 160 then
+                    doer.components.fwd_in_pdt_wellness:DoDelta_Wellness(60)
+                elseif current_value <= 180 then
+                    doer.components.fwd_in_pdt_wellness:DoDelta_Wellness(30)                    
+                end
+
+
                 if inst.components.stackable then
                     inst.components.stackable:Get():Remove()
                 else

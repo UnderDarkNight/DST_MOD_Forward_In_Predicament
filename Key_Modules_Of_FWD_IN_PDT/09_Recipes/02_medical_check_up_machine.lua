@@ -127,7 +127,8 @@ local function Add_Recipe_2_Machine(cmd_table)
     AddRecipe2(
         cmd_table.prefab,            --  --  inst.prefab  实体名字
         cmd_table.Ingredients or {}, 
-        TECH[string.upper("fwd_in_pdt_building_medical_check_up_machine")], --- TECH.NONE
+        -- TECH[string.upper("fwd_in_pdt_building_medical_check_up_machine")], --- TECH.NONE
+        TECH.NONE, --- TECH.NONE
         {
             nounlock=true,
             no_deconstruction=true,
@@ -138,6 +139,7 @@ local function Add_Recipe_2_Machine(cmd_table)
             numtogive = cmd_table.numtogive,
             sg_state = cmd_table.sg_state,
             actionstr = cmd_table.actionstr,
+            station_tag = "fwd_in_pdt_building_medical_check_up_machine",
         },
         {string.upper("fwd_in_pdt_building_medical_check_up_machine")}
     )

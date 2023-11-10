@@ -38,7 +38,7 @@ local function fn()
     inst.AnimState:PlayAnimation("idle", true)
 
     inst:AddTag("structure")
-
+    inst:AddTag("fwd_in_pdt_building_medical_check_up_machine")
 
     inst.entity:SetPristine()
 

@@ -222,10 +222,10 @@ local function fn()
                                 return
                             end 
                             if player.components.health then
-                                player.components.health:DoDelta(0.2,true)
+                                player.components.health:DoDelta(1/20,true)
                             end
                             if player.components.sanity then
-                                player.components.sanity:DoDelta(0.5,true)
+                                player.components.sanity:DoDelta(1/20,true)
                             end
                         end)
                         if self.com.DEBUGGING_MODE then

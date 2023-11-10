@@ -96,12 +96,10 @@ local function fn()
 
 
                     · 贡献光环函数说明：
-                            0  => 15   点的时候，不提供任何加成
-                            15 => 90   点的时候，【每天】提供  0  =>  +2 的加成 。 
-                            90 => 100  点的时候，【每天】提供 +2  =>  +5 的加成。
+                            0  => 30   点的时候，【每天】提供 -0.1
+                            31 => 90   点的时候，【每天】提供 +2 的加成 。 
+                            90 => 100  点的时候，【每天】提供 +5 的加成。
 
-                            ，线性函数为：
-                            y = （ k·x + b ）/100
 
                     · VC 每天最多回复30点增加上线。每个周期 0.3
             ]]--                
@@ -114,24 +112,12 @@ local function fn()
 
             local value ,percent,max = self.com:GetCurrent_Vitamin_C()
             local delta_num = 0
-            if value < 15 then
-                delta_num = 0
+            if value <= 30 then
+                delta_num = -10/100
             elseif value < 90 then
-                -- 15 => 90
-                local k = 2/(90-15)
-                local b = -0.4
-                local y = ( k * value + b) / 100
-                -- self.com:DoDelta_Wellness(y)
-                delta_num = y
-            elseif value < 100 then
-                local k = 0.3
-                local b = -25
-                local y = (k*value + b)/100
-                -- self.com:DoDelta_Wellness(y)
-                delta_num = y
-            else
-                -- self.com:DoDelta_Wellness(0.05)
-                delta_num = 0.05
+                delta_num = 2/100
+            elseif value <= 100 then
+                delta_num = 5/100
             end
             -- if self.com.DEBUGGING_MODE then
             --     print("本周期 VC 值",value,"光环贡献了",delta_num)
@@ -161,7 +147,7 @@ local function fn()
     -- 根据VC值执行惩罚函数
         function inst:Penalize_Player_By_Value(num)
             if self.player then
-                if num < 15 then
+                if num <= 30 then
                         self:Add_Sanity_Down_Task()
                 else
                         self:Remove_Sanity_Down_Task()
@@ -179,6 +165,9 @@ local function fn()
                     end
                     if self.player.components.sanity.DoDelta then
                         player.components.sanity:DoDelta(-0.2,true)
+                    end
+                    if self.player.components.health.DoDelta then
+                        player.components.health:DoDelta(-0.3,true)
                     end
                 end)
                 if self.com.DEBUGGING_MODE then

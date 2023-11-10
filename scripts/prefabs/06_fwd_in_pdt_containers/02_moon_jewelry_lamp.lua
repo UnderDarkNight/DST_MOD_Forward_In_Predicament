@@ -232,7 +232,8 @@ local function fn()
     MakeObstaclePhysics(inst, .5)
 
     inst.Light:Enable(false)
-    inst.Light:SetRadius(1.5)   -- 光照半径
+    -- inst.Light:SetRadius(1.5)   -- 光照半径
+    inst.Light:SetRadius(2.5)   -- 光照半径
     inst.Light:SetFalloff(.5)   -- 距离衰减速度（越大衰减越快）
     -- inst.Light:SetIntensity(0.6)    --- 光照强度 --- 靠task 渐变亮度
     inst.Light:SetColour(235 / 255, 255 / 255, 255 / 255)   --- 颜色 RGB
