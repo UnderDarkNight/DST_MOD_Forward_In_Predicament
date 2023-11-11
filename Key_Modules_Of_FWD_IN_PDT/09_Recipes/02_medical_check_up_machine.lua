@@ -170,7 +170,7 @@ end
 --------------------------------------------------------------------------------------------------------------------------------------------
     Add_Recipe_2_Machine({
         prefab = "fwd_in_pdt_item_adrenaline_injection",
-        Ingredients = { Ingredient("spidergland", 20),Ingredient("stinger", 2)  },
+        Ingredients = { Ingredient("spidergland", 10),Ingredient("stinger", 5) ,Ingredient("froglegs", 5) },
         atlas = "images/inventoryimages/fwd_in_pdt_item_adrenaline_injection.xml",
         image = "fwd_in_pdt_item_adrenaline_injection.tex",
     })

@@ -14,7 +14,7 @@ local function main_com(self)
             return self.inst.replica.fwd_in_pdt_func:Jade_Coin__GetAllNum()
         end
 
-        function self:Jade_Coin__Spend(num)
+        function self:Jade_Coin__Spend__old(num)
             if type(num) ~= "number" then
                 return false
             end
@@ -176,6 +176,131 @@ local function main_com(self)
 
 
 
+        end
+        function self:Jade_Coin__Spend(num)
+            if type(num) ~= "number" then
+                return false
+            end
+
+            local has_green_coins = 0
+            local has_black_coins = 0
+
+
+            local function each_item_search_fn___num_count(item_inst)
+                if item_inst == nil then
+                    return
+                end
+                if item_inst.components.container then
+                    item_inst.components.container:ForEachItem(each_item_search_fn___num_count)
+                    return
+                end
+
+                if item_inst.prefab == "fwd_in_pdt_item_jade_coin_green" then
+                    has_green_coins = item_inst.components.stackable.stacksize + has_green_coins
+                    return
+                end
+                if item_inst.prefab == "fwd_in_pdt_item_jade_coin_black" then
+                    has_black_coins = item_inst.components.stackable.stacksize + has_black_coins
+                    return
+                end
+            end
+            self.inst.components.inventory:ForEachItem(each_item_search_fn___num_count)
+
+            if num > (has_green_coins + 100*has_black_coins) then
+                -- print("不够货币",has_green_coins,has_black_coins)
+                return false
+            end
+            -- print("当前货币",has_green_coins,has_black_coins)
+            -------------------------------------------------------------------------------------------------------------------
+            --- 单独绿币足够
+                            if num <= has_green_coins then
+                                local need_2_remove_num = num
+                                local function each_item_search_fn___remove(item_inst)
+                                    if item_inst == nil then
+                                        return
+                                    end
+                                    if item_inst.components.container then
+                                        item_inst.components.container:ForEachItem(each_item_search_fn___remove)
+                                        return
+                                    end
+                                    if need_2_remove_num <= 0 then
+                                        return
+                                    end
+                                    if item_inst.prefab ~= "fwd_in_pdt_item_jade_coin_green" then
+                                        return
+                                    end
+                                    
+                                    local current_stack_num = item_inst.components.stackable.stacksize
+                                    if need_2_remove_num <= current_stack_num then
+                                        item_inst.components.stackable:Get(need_2_remove_num):Remove()
+                                        need_2_remove_num = 0
+                                    else
+                                        item_inst:Remove()
+                                        need_2_remove_num = need_2_remove_num - current_stack_num
+                                    end
+                                end
+                                self.inst.components.inventory:ForEachItem(each_item_search_fn___remove)
+                                return true
+                            end
+            -------------------------------------------------------------------------------------------------------------------
+            --- 绿币不够，黑币来凑
+                    --- 第一步，删除所有绿币
+                            local function each_item_search_fn___remove(item_inst)
+                                if item_inst == nil then
+                                    return
+                                end
+                                if item_inst.components.container then
+                                    item_inst.components.container:ForEachItem(each_item_search_fn___remove)
+                                    return
+                                end
+
+                                if item_inst.prefab == "fwd_in_pdt_item_jade_coin_green" then
+                                    item_inst:Remove()
+                                end                                
+                            end
+                            self.inst.components.inventory:ForEachItem(each_item_search_fn___remove)
+                            num = num - has_green_coins
+                    --- 第二步，计算黑币消耗数量
+                            local need_green_coins = num%100 
+                            local need_black_coins = math.floor(num/100) + 1
+                            local give_back_green_num = 100 - need_green_coins
+
+                            local need_2_remove_num = need_black_coins
+                            local function each_item_search_fn__black_remove(item_inst)
+                                if item_inst == nil then
+                                    return
+                                end
+                                if item_inst.components.container then
+                                    item_inst.components.container:ForEachItem(each_item_search_fn__black_remove)
+                                    return
+                                end
+                                if need_black_coins <= 0 then
+                                    return
+                                end                                    
+                                if item_inst.prefab ~= "fwd_in_pdt_item_jade_coin_black" then
+                                    return
+                                end
+
+                                local current_stack_num = item_inst.components.stackable.stacksize
+                                if need_2_remove_num <= current_stack_num then
+                                    item_inst.components.stackable:Get(need_2_remove_num):Remove()
+                                    need_2_remove_num = 0
+                                else
+                                    item_inst:Remove()
+                                    need_2_remove_num = need_2_remove_num - current_stack_num
+                                end
+                            end
+                            self.inst.components.inventory:ForEachItem(each_item_search_fn__black_remove)
+                            self:GiveItemByPrefab("fwd_in_pdt_item_jade_coin_green",give_back_green_num)
+                            
+
+
+            -------------------------------------------------------------------------------------------------------------------
+
+
+
+
+            return true
         end
     ----------------------------------------------------------
     --- ATM
