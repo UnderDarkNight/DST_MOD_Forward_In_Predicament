@@ -155,7 +155,7 @@ local function fn()
         ------ 10s 执行一次咳嗽动作
             function inst:Add_Cough_Action_Task()
                 if self.___cough_action_task == nil then
-                    self.___cough_action_task = self.player:DoPeriodicTask(10, function(player)
+                    self.___cough_action_task = self.player:DoPeriodicTask(30, function(player)
                         if player and player.sg and player.sg.GoToState and not player:HasTag("playerghost") then
                             player.sg:GoToState("fwd_in_pdt_wellness_cough")
                             self.___net_entity:set(self)    --- 下发自己 inst ,触发 客户端 的 player.sg:GoToState

@@ -167,7 +167,7 @@ local function fn()
                         player.components.sanity:DoDelta(-0.2,true)
                     end
                     if self.player.components.health.DoDelta then
-                        player.components.health:DoDelta(-0.3,true)
+                        player.components.health:DoDelta(-0.1,true)
                     end
                 end)
                 if self.com.DEBUGGING_MODE then
