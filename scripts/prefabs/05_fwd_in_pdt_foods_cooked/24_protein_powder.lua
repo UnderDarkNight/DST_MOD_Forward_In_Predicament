@@ -74,12 +74,6 @@ local function fn()
         local function shadow_init(inst)
             if inst:IsOnOcean(false) then       --- 如果在海里（不包括船）
                 inst.AnimState:Hide("SHADOW")
-                -- local x,y,z = inst.Transform:GetWorldPosition()
-                -- SpawnPrefab("fwd_in_pdt_fx_waterspout"):PushEvent("Set",{
-                --     pt = Vector3(x,0,z),
-                --     scale = Vector3(0.5,0.5,0.5),
-                -- })
-                -- inst:Remove()
             else                                
                 inst.AnimState:Show("SHADOW")
             end

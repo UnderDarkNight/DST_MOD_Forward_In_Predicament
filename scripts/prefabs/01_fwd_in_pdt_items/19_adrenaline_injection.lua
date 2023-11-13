@@ -77,6 +77,8 @@ local function fn()
     -- inst.components.inventoryitem:ChangeImageName("leafymeatburger")
     inst.components.inventoryitem.imagename = "fwd_in_pdt_item_adrenaline_injection"
     inst.components.inventoryitem.atlasname = "images/inventoryimages/fwd_in_pdt_item_adrenaline_injection.xml"
+    inst.components.inventoryitem:SetSinks(true)    -- 掉水里消失
+
     
     --------------------------------------------------------------------------
     inst:AddComponent("stackable") -- 可堆叠
@@ -87,13 +89,13 @@ local function fn()
     --- 落水影子
         local function shadow_init(inst)
             if inst:IsOnOcean(false) then       --- 如果在海里（不包括船）
-                -- inst.AnimState:Hide("SHADOW")
-                local x,y,z = inst.Transform:GetWorldPosition()
-                SpawnPrefab("fwd_in_pdt_fx_splash_sink"):PushEvent("Set",{
-                    pt = Vector3(x,0,z),
-                    -- scale = Vector3(0.3,0.3,0.3),
-                })
-                inst:Remove()
+                inst.AnimState:Hide("SHADOW")
+                -- local x,y,z = inst.Transform:GetWorldPosition()
+                -- SpawnPrefab("fwd_in_pdt_fx_splash_sink"):PushEvent("Set",{
+                --     pt = Vector3(x,0,z),
+                --     -- scale = Vector3(0.3,0.3,0.3),
+                -- })
+                -- inst:Remove()
             else                                
                 inst.AnimState:Show("SHADOW")
             end
