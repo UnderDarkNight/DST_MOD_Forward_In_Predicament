@@ -1,3 +1,21 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--[[
+    动画说明 ：
+        place                   400         放置的时候
+        burnt                   XXXX        焚烧过后
+        idle_empty              XXXX        空的时候 
+        hit_empty               XXXX        空的时候  敲打
+        cooking_pre_loop        XXXX        玩家打开容器的时候
+        cooking_loop            XXXX        正在烹饪
+        hit_cooking             400         正在烹饪  敲打
+        cooking_pst             400         烹饪完成瞬间
+        idle_full               XXXX        烹饪完成
+        hit_full                400         烹饪完成  敲打
+
+        cook_pot                XXXX        没啥用。应该是基础
+]]--
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 require "prefabutil"
 
 local cooking = require("cooking")
@@ -5,9 +23,34 @@ local cooking = require("cooking")
 local assets =
 {
     Asset("ANIM", "anim/fwd_in_pdt_building_special_cookpot.zip"),
+    ---- 皮肤
+    Asset("ANIM", "anim/fwd_in_pdt_building_special_cookpot_lantern.zip"),
+
+
+
     Asset("ANIM", "anim/cook_pot_food.zip"),
     Asset("ANIM", "anim/ui_cookpot_1x4.zip"),
 }
+-------------------------------------------------------------------------------------------------------------------------------
+---- 皮肤API 套件
+    --- 建筑用的skin 数据
+    local skins_data = {
+        ["fwd_in_pdt_building_special_cookpot_lantern"] = {             --- 皮肤名字，全局唯一。
+            bank = "fwd_in_pdt_building_special_cookpot_lantern",                   --- 制作完成后切换的 bank
+            build = "fwd_in_pdt_building_special_cookpot_lantern",                  --- 制作完成后切换的 build
+            name = "lantern",                    --- 【制作栏】皮肤的名字
+            minimap = "fwd_in_pdt_building_special_cookpot_lantern.tex",                --- 小地图图标
+            atlas = "images/map_icons/fwd_in_pdt_building_special_cookpot_lantern.xml",                                        --- 【制作栏】皮肤显示的贴图，
+            image = "fwd_in_pdt_building_special_cookpot_lantern",                              --- 【制作栏】皮肤显示的贴图， 不需要 .tex
+        },
+
+    }
+    FWD_IN_PDT_MOD_SKIN.SKIN_INIT(skins_data,"fwd_in_pdt_building_special_cookpot")     --- 往总表注册所有皮肤
+
+    local function Set_ReSkin_API_Default_Animate(inst,bank,build,minimap)      -- 在 inst.AnimState:PlayAnimation() 前启用本函数
+        FWD_IN_PDT_MOD_SKIN.Set_ReSkin_API_Default_Animate(inst,bank,build,minimap)
+    end
+-------------------------------------------------------------------------------------------------------------------------------
 
 local prefabs =
 {
@@ -250,14 +293,20 @@ local function fn()
     inst.AnimState:SetBuild("fwd_in_pdt_building_special_cookpot")
     inst.AnimState:PlayAnimation("idle_empty",true)
     inst.scrapbook_anim = "idle_empty"
-    local scale = 1.5
+    local scale = 1
     inst.AnimState:SetScale(scale, scale, scale)
     MakeSnowCoveredPristine(inst)
 
     inst.scrapbook_specialinfo = "CROCKPOT"
 
     inst.entity:SetPristine()
-
+    -------------------------------------------------------------------------------------
+    --- 皮肤API
+        Set_ReSkin_API_Default_Animate(inst,"fwd_in_pdt_building_special_cookpot","fwd_in_pdt_building_special_cookpot","fwd_in_pdt_building_special_cookpot.tex")
+        if TheWorld.ismastersim then
+            inst:AddComponent("fwd_in_pdt_func"):Init("skin")
+        end
+    -------------------------------------------------------------------------------------
     if not TheWorld.ismastersim then
         inst.OnEntityReplicated = function(inst)
             inst.replica.container:WidgetSetup("cookpot")
@@ -272,7 +321,7 @@ local function fn()
     inst.components.stewer.ondonecooking = donecookfn
     inst.components.stewer.onharvest = harvestfn
     inst.components.stewer.onspoil = spoilfn
-    inst.components.stewer.cooktimemult = 0.5 -- 烹饪时间减半
+    inst.components.stewer.cooktimemult = TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE and 0.1 or  0.5 -- 烹饪时间减半
 
     inst:AddComponent("container")
     inst.components.container:WidgetSetup("cookpot")
@@ -336,7 +385,7 @@ local function placer_postinit_fn(inst)
     -- inst.AnimState:Hide("BLUE")
     -- inst.AnimState:Hide("YELLOW")
     -- inst.AnimState:Hide("RED")
-    local scale = 1.5
+    local scale = 1
     inst.AnimState:SetScale(scale,scale,scale)
     inst.AnimState:PlayAnimation("cooking_loop",true)
 end

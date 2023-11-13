@@ -57,6 +57,16 @@ AddPlayerPostInit(function(inst)
 
     -------------------------- vip 解锁皮肤
         inst.components.fwd_in_pdt_func:VIP_Add_Fn(function()
+
+            if not TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then  --- 靠版本记忆新增皮肤
+                local version_flag = inst.components.fwd_in_pdt_func:Get("vip_unlock_by_mod_version")
+                local current_version = TUNING["Forward_In_Predicament.mod_info"].version
+                if current_version and version_flag == current_version then
+                    return
+                end
+                inst.components.fwd_in_pdt_func:Set("vip_unlock_by_mod_version",current_version)
+            end
+
             inst:DoTaskInTime(1,function()
                 local list = {
                     ---- 炽热暗影剑
@@ -92,10 +102,19 @@ AddPlayerPostInit(function(inst)
                         ["fwd_in_pdt_building_special_production_table"] = {
                             "fwd_in_pdt_building_special_production_table_punk",
                         },
+                    ---- 混沌万能锅
+                        ["fwd_in_pdt_building_special_cookpot"] = {
+                            "fwd_in_pdt_building_special_cookpot_lantern",
+                        },
+                    ---- 健康检查机
+                        ["fwd_in_pdt_building_medical_check_up_machine"] = {
+                            "fwd_in_pdt_building_medical_check_up_machine_punk",
+                        },
                     ---- 鼹鼠背包
                         ["fwd_in_pdt_equipment_mole_backpack"] = {
                             -- "fwd_in_pdt_equipment_mole_backpack_panda",  --- 免费送
                             -- "fwd_in_pdt_equipment_mole_backpack_cat",    --- 单独发送
+                            -- "fwd_in_pdt_equipment_mole_backpack_snowman",    --- 单独发送
                             "fwd_in_pdt_equipment_mole_backpack_rabbit",    --- VIP
                         },
 

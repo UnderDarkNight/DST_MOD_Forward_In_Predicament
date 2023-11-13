@@ -35,7 +35,7 @@ local assets =
             bank = "fwd_in_pdt_building_special_production_table_punk",                   --- 制作完成后切换的 bank
             build = "fwd_in_pdt_building_special_production_table_punk",                  --- 制作完成后切换的 build
             name = "punk",                    --- 【制作栏】皮肤的名字
-            minimap = "fwd_in_pdt_building_special_production_table_punk",                --- 小地图图标
+            minimap = "fwd_in_pdt_building_special_production_table_punk.tex",                --- 小地图图标
             atlas = "images/map_icons/fwd_in_pdt_building_special_production_table_punk.xml",                                        --- 【制作栏】皮肤显示的贴图，
             image = "fwd_in_pdt_building_special_production_table_punk",                              --- 【制作栏】皮肤显示的贴图， 不需要 .tex
         },
@@ -302,7 +302,7 @@ local function fn()
         Add_Workable(inst)
     -------------------------------------------------------------------------------------
     --- 皮肤API
-        Set_ReSkin_API_Default_Animate(inst,"fwd_in_pdt_building_special_production_table","fwd_in_pdt_building_special_production_table","fwd_in_pdt_building_special_production_table")
+        Set_ReSkin_API_Default_Animate(inst,"fwd_in_pdt_building_special_production_table","fwd_in_pdt_building_special_production_table","fwd_in_pdt_building_special_production_table.tex")
         if TheWorld.ismastersim then
             inst:AddComponent("fwd_in_pdt_func"):Init("skin")
 

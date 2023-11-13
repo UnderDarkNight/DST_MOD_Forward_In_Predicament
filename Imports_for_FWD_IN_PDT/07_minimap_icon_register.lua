@@ -28,7 +28,8 @@ local files_name = {
 		"fwd_in_pdt_building_special_production_table",				--- 特殊工作台
 		"fwd_in_pdt_building_special_production_table_punk",				--- 特殊工作台（朋克皮肤）
 		"fwd_in_pdt_building_fermenter",							--- 发酵缸
-		"fwd_in_pdt_building_special_cookpot",							--- 万能烹饪锅
+		"fwd_in_pdt_building_special_cookpot",						--- 万能烹饪锅
+		"fwd_in_pdt_building_special_cookpot_lantern",				--- 万能烹饪锅【神灯皮肤】
 	-------------------------------------------------------------------------------------------------
 	---- 07_fwd_in_pdt_buildings
 		"fwd_in_pdt_building_special_shop",							--- 纪念品商店
@@ -36,6 +37,7 @@ local files_name = {
 		"fwd_in_pdt_building_cuisines_shop",					    --- 美食商店
 		"fwd_in_pdt_building_hotel",					    		--- 旅店
 		"fwd_in_pdt_building_medical_check_up_machine",				--- 健康检查机
+		"fwd_in_pdt_building_medical_check_up_machine_punk",		--- 健康检查机【朋克皮肤】
 		"fwd_in_pdt_building_paddy_windmill",						--- 稻田风车
 		"fwd_in_pdt_building_pawnshop",								--- 当铺
 		"fwd_in_pdt_building_atm",									--- ATM

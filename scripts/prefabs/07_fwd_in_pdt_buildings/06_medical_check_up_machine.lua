@@ -12,7 +12,32 @@ end
 local assets =
 {
     Asset("ANIM", "anim/fwd_in_pdt_building_medical_check_up_machine.zip"),
+
+    ------- 皮肤
+    Asset("ANIM", "anim/fwd_in_pdt_building_medical_check_up_machine_punk.zip"),
 }
+
+-------------------------------------------------------------------------------------------------------------------------------
+---- 皮肤API 套件
+    --- 建筑用的skin 数据
+    local skins_data = {
+        ["fwd_in_pdt_building_medical_check_up_machine_punk"] = {             --- 皮肤名字，全局唯一。
+            bank = "fwd_in_pdt_building_medical_check_up_machine_punk",                   --- 制作完成后切换的 bank
+            build = "fwd_in_pdt_building_medical_check_up_machine_punk",                  --- 制作完成后切换的 build
+            name = "punk",                    --- 【制作栏】皮肤的名字
+            minimap = "fwd_in_pdt_building_medical_check_up_machine_punk.tex",                --- 小地图图标
+            atlas = "images/map_icons/fwd_in_pdt_building_medical_check_up_machine_punk.xml",                                        --- 【制作栏】皮肤显示的贴图，
+            image = "fwd_in_pdt_building_medical_check_up_machine_punk",                              --- 【制作栏】皮肤显示的贴图， 不需要 .tex
+        },
+
+    }
+    FWD_IN_PDT_MOD_SKIN.SKIN_INIT(skins_data,"fwd_in_pdt_building_medical_check_up_machine")     --- 往总表注册所有皮肤
+
+    local function Set_ReSkin_API_Default_Animate(inst,bank,build,minimap)      -- 在 inst.AnimState:PlayAnimation() 前启用本函数
+        FWD_IN_PDT_MOD_SKIN.Set_ReSkin_API_Default_Animate(inst,bank,build,minimap)
+    end
+-------------------------------------------------------------------------------------------------------------------------------
+
 local function fn()
     local inst = CreateEntity()
 
@@ -42,6 +67,14 @@ local function fn()
 
     inst.entity:SetPristine()
 
+    -------------------------------------------------------------------------------------
+    --- 皮肤API
+        Set_ReSkin_API_Default_Animate(inst,"fwd_in_pdt_building_medical_check_up_machine","fwd_in_pdt_building_medical_check_up_machine","fwd_in_pdt_building_medical_check_up_machine.tex")
+        if TheWorld.ismastersim then
+            inst:AddComponent("fwd_in_pdt_func"):Init("skin")
+
+        end
+    -------------------------------------------------------------------------------------
     if not TheWorld.ismastersim then
         return inst
     end

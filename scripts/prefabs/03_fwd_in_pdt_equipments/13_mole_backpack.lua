@@ -24,6 +24,10 @@ local assets =
     Asset("ANIM", "anim/fwd_in_pdt_equipment_mole_backpack_rabbit.zip"),
     Asset( "IMAGE", "images/inventoryimages/fwd_in_pdt_equipment_mole_backpack_rabbit.tex" ),  -- 背包贴图
     Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_equipment_mole_backpack_rabbit.xml" ),
+    --- 皮肤
+    Asset("ANIM", "anim/fwd_in_pdt_equipment_mole_backpack_snowman.zip"),
+    Asset( "IMAGE", "images/inventoryimages/fwd_in_pdt_equipment_mole_backpack_snowman.tex" ),  -- 背包贴图
+    Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_equipment_mole_backpack_snowman.xml" ),
 }
 
 
@@ -54,6 +58,14 @@ local assets =
             image = "fwd_in_pdt_equipment_mole_backpack_rabbit",                              --- 【制作栏】皮肤显示的贴图， 不需要 .tex
             name = GetStringsTable()["name.rabbit"],                                          --- 【制作栏】皮肤的名字
             onequip_bank = "fwd_in_pdt_equipment_mole_backpack_rabbit"
+        },
+        ["fwd_in_pdt_equipment_mole_backpack_snowman"] = {             --- 皮肤名字，全局唯一。
+            bank = "fwd_in_pdt_equipment_mole_backpack_snowman",                               --- 制作完成后切换的 bank
+            build = "fwd_in_pdt_equipment_mole_backpack_snowman",                              --- 制作完成后切换的 build
+            atlas = "images/inventoryimages/fwd_in_pdt_equipment_mole_backpack_snowman.xml",   --- 【制作栏】皮肤显示的贴图，
+            image = "fwd_in_pdt_equipment_mole_backpack_snowman",                              --- 【制作栏】皮肤显示的贴图， 不需要 .tex
+            name = GetStringsTable()["name.snowman"],                                          --- 【制作栏】皮肤的名字
+            onequip_bank = "fwd_in_pdt_equipment_mole_backpack_snowman"
         },
     }
 

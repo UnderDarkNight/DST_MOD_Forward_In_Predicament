@@ -284,6 +284,7 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name.panda"] = "熊猫背包",
                 ["name.cat"] = "猫钱钱背包",
                 ["name.rabbit"] = "粉兔兔背包",
+                ["name.snowman"] = "雪人背包",
             },
         --------------------------------------------------------------------
         ---- 04_fwd_in_pdt_foods
