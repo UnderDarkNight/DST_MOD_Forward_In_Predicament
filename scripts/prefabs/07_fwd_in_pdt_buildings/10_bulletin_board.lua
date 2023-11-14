@@ -42,7 +42,9 @@ local assets =
                     end
 
                     local ret_cmd_table = cmd_tables_for_random[math.random(#cmd_tables_for_random)]
-                    task_scroll_item:PushEvent("Set",ret_cmd_table)
+                    local ret_task_index = ret_cmd_table.index
+
+                    task_scroll_item:PushEvent("Set",ret_task_index)
                     player.components.inventory:GiveItem(task_scroll_item)
 
                 end

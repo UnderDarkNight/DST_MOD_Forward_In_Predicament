@@ -290,11 +290,9 @@ local flg,error_code = pcall(function()
     ----------------------------------------------------------------------------------------------------------------
                         -- ThePlayer.HUD:fwd_in_pdt_task_scroll_widget_open()
                         local item = SpawnPrefab("fwd_in_pdt_task_scroll__items_ask")
-                        local cmd_tables = item:Get_Missons_Cmd_Tables()["fwd_in_pdt_task_scroll__ice"]
-                        -- for k, v in pairs(cmd_tables) do
-                        --     print(k,v)
-                        -- end
-                        item:PushEvent("Set",cmd_tables)
+                        -- item:PushEvent("Set","fwd_in_pdt_task_scroll__ice")
+                        -- item:PushEvent("Set","fwd_in_pdt_task_scroll__fertilizer")
+                        item:PushEvent("Set","fwd_in_pdt_task_scroll__yellowstaff")
                         ThePlayer.components.inventory:GiveItem(item)
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")

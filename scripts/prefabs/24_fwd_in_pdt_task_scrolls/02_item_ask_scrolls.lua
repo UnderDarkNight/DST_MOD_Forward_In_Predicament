@@ -48,18 +48,33 @@ local function fn()
             return require("prefabs/24_fwd_in_pdt_task_scrolls/02_item_ask_scrolls___tasks") or {}
         end
     -----------------------------------------------------------------------------------
-        inst:ListenForEvent("Set",function(_,cmd_table)
-            if type(cmd_table) ~= "table" then
+    ---- 配置该物品的 任务内容
+        inst:ListenForEvent("Set",function(_,task_index)
+
+            if type(task_index) ~= "string" then
                 return
             end
-            inst.components.fwd_in_pdt_data:Set("data",cmd_table)
+            local cmd_table = inst:Get_Missons_Cmd_Tables()[task_index]
+
+            inst.components.fwd_in_pdt_data:Set("task_index",task_index)
             inst.components.fwd_in_pdt_com_task_scroll:Init({
                 atlas = cmd_table.atlas,
                 image = cmd_table.image,
                 x = cmd_table.x or -50,
                 y = cmd_table.y or 0,
             })
+            if type(cmd_table.submit_fn) == "function" then
+                inst.components.fwd_in_pdt_com_task_scroll:Add_Submit_Fn(cmd_table.submit_fn)
+            end
             inst.Ready = true
+        end)
+        inst:DoTaskInTime(0,function()
+            if inst.Ready ~= true then
+                local task_index = inst.components.fwd_in_pdt_data:Get("task_index")
+                if task_index then
+                    inst:PushEvent("Set",task_index)
+                end
+            end
         end)
     -----------------------------------------------------------------------------------
     ---- 法术施放
@@ -90,7 +105,8 @@ local function fn()
             inst.components.fwd_in_pdt_com_task_scroll:Add_Submit_Fn(function(inst,doer)
                 -- print("error fwd_in_pdt_com_task_scroll submit task",inst,doer)
                 ---------------------------------------------------------------------------------
-                    local cmd_table = inst.components.fwd_in_pdt_data:Get("data") or {}
+                    local index = inst.components.fwd_in_pdt_data:Get("task_index") or "nil"
+                    local cmd_table = inst:Get_Missons_Cmd_Tables()[index] or {}
                     local item_ask_num = cmd_table.item_num or 5
                     local item_ask_prefab = cmd_table.item_prefab or "fertilizer"
                     local gift_box_items = cmd_table.gift_box_items or {
@@ -194,14 +210,7 @@ local function fn()
             end)
 
 
-            inst:DoTaskInTime(0,function()
-                if inst.Ready ~= true then
-                    local cmd_table = inst.components.fwd_in_pdt_data:Get("data")
-                    if cmd_table then
-                        inst:PushEvent("Set",cmd_table)
-                    end
-                end
-            end)
+
 
 
         end
