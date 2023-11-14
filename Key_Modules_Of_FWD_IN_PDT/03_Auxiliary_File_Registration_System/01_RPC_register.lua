@@ -71,3 +71,13 @@
 
 
 ---------------------------------------------------------------------------------------------------------------------------------
+---------- RPC 上传任务卷轴事件和执行
+    AddModRPCHandler(TUNING["Forward_In_Predicament.RPC_NAMESPACE"], "fwd_in_pdt_com_task_scroll.client2server", function(player_inst,inst) ----- Register on the server
+        -- 客户端回传 event 给 服务端,player_inst 为来源玩家客户端。
+        if inst and player_inst and inst.components.fwd_in_pdt_com_task_scroll then
+            inst.components.fwd_in_pdt_com_task_scroll:Submit_Task(player_inst)
+        end
+    end)
+    -- SendModRPCToServer(MOD_RPC[TUNING["Forward_In_Predicament.RPC_NAMESPACE"]]["fwd_in_pdt_com_task_scroll.client2server"],inst)
+
+---------------------------------------------------------------------------------------------------------------------------------

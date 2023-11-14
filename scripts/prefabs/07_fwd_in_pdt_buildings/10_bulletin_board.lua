@@ -26,6 +26,29 @@ local assets =
             end
             daily_datas[player.userid] = true
             inst.components.fwd_in_pdt_data:Set("daily_datas",daily_datas)
+            -----------------------------------------------------------------------------------------
+            ---- 送玩家卷轴
+                -- TheWorld.state.cycles
+                local current_task_flag = player.components.fwd_in_pdt_data:Get("task_scroll_cd_days_flag") or 0
+                if ( TheWorld.state.cycles - current_task_flag >= 5 ) or TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
+                    player.components.fwd_in_pdt_data:Set("task_scroll_cd_days_flag",TheWorld.state.cycles)
+
+                    local task_scroll_item = SpawnPrefab("fwd_in_pdt_task_scroll__items_ask")
+                    local all_cmd_tables = task_scroll_item:Get_Missons_Cmd_Tables()
+                    
+                    local cmd_tables_for_random = {}
+                    for index, cmd_table in pairs(all_cmd_tables) do
+                        table.insert(cmd_tables_for_random,cmd_table)
+                    end
+
+                    local ret_cmd_table = cmd_tables_for_random[math.random(#cmd_tables_for_random)]
+                    task_scroll_item:PushEvent("Set",ret_cmd_table)
+                    player.components.inventory:GiveItem(task_scroll_item)
+
+                end
+
+
+            -----------------------------------------------------------------------------------------
         end
     ---- event setup
         local function ad_event_setup(inst)

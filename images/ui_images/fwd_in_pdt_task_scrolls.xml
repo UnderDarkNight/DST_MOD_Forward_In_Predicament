@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Atlas>
+	<Texture filename="fwd_in_pdt_task_scrolls.tex" />
+	<Elements>
+		<Element name="fwd_in_pdt_task_scroll__beefalohat.tex" u1="0.727318359375" u2="0.87058203125" v2="0.76706640625" v1="0.5371328125" variant="" />
+		<Element name="fwd_in_pdt_task_scroll__black_coin.tex" u1="0.001" u2="0.144263671875" v2="0.999" v1="0.76906640625" variant="" />
+		<Element name="fwd_in_pdt_task_scroll__bonestew.tex" u1="0.001" u2="0.144263671875" v2="0.76706640625" v1="0.5371328125" variant="" />
+		<Element name="fwd_in_pdt_task_scroll__butterflywings.tex" u1="0.146263671875" u2="0.28952734375" v2="0.999" v1="0.76906640625" variant="" />
+		<Element name="fwd_in_pdt_task_scroll__dragonfruit.tex" u1="0.146263671875" u2="0.28952734375" v2="0.76706640625" v1="0.5371328125" variant="" />
+		<Element name="fwd_in_pdt_task_scroll__eyebrellahat.tex" u1="0.29152734375" u2="0.434791015625" v2="0.999" v1="0.76906640625" variant="" />
+		<Element name="fwd_in_pdt_task_scroll__fertilizer.tex" u1="0.29152734375" u2="0.434791015625" v2="0.76706640625" v1="0.5371328125" variant="" />
+		<Element name="fwd_in_pdt_task_scroll__green_coin.tex" u1="0.001" u2="0.144263671875" v2="0.5351328125" v1="0.30519921875" variant="" />
+		<Element name="fwd_in_pdt_task_scroll__honeycomb.tex" u1="0.001" u2="0.144263671875" v2="0.30319921875" v1="0.073265625" variant="" />
+		<Element name="fwd_in_pdt_task_scroll__ice.tex" u1="0.146263671875" u2="0.28952734375" v2="0.5351328125" v1="0.30519921875" variant="" />
+		<Element name="fwd_in_pdt_task_scroll__mango.tex" u1="0.146263671875" u2="0.28952734375" v2="0.30319921875" v1="0.073265625" variant="" />
+		<Element name="fwd_in_pdt_task_scroll__mango_tree_item.tex" u1="0.29152734375" u2="0.434791015625" v2="0.5351328125" v1="0.30519921875" variant="" />
+		<Element name="fwd_in_pdt_task_scroll__mole.tex" u1="0.29152734375" u2="0.434791015625" v2="0.30319921875" v1="0.073265625" variant="" />
+		<Element name="fwd_in_pdt_task_scroll__monstermeat.tex" u1="0.436791015625" u2="0.5800546875" v2="0.999" v1="0.76906640625" variant="" />
+		<Element name="fwd_in_pdt_task_scroll__petals.tex" u1="0.436791015625" u2="0.5800546875" v2="0.76706640625" v1="0.5371328125" variant="" />
+		<Element name="fwd_in_pdt_task_scroll__phlegm.tex" u1="0.5820546875" u2="0.725318359375" v2="0.999" v1="0.76906640625" variant="" />
+		<Element name="fwd_in_pdt_task_scroll__pidereggsack.tex" u1="0.436791015625" u2="0.5800546875" v2="0.5351328125" v1="0.30519921875" variant="" />
+		<Element name="fwd_in_pdt_task_scroll__rumstick.tex" u1="0.5820546875" u2="0.725318359375" v2="0.76706640625" v1="0.5371328125" variant="" />
+		<Element name="fwd_in_pdt_task_scroll__taffy.tex" u1="0.727318359375" u2="0.87058203125" v2="0.999" v1="0.76906640625" variant="" />
+		<Element name="fwd_in_pdt_task_scroll__tree_resin.tex" u1="0.436791015625" u2="0.5800546875" v2="0.30319921875" v1="0.073265625" variant="" />
+		<Element name="fwd_in_pdt_task_scroll__yellowstaff.tex" u1="0.5820546875" u2="0.725318359375" v2="0.5351328125" v1="0.30519921875" variant="" />
+	</Elements>
+</Atlas>

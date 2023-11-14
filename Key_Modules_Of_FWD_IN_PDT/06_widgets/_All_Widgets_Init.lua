@@ -30,4 +30,6 @@ modimport("Key_Modules_Of_FWD_IN_PDT/06_widgets/12_widgets_text_bug_fix.lua")   
 
 modimport("Key_Modules_Of_FWD_IN_PDT/06_widgets/13_doll_clamping_machine.lua")    --- 娃娃机UI
 
+modimport("Key_Modules_Of_FWD_IN_PDT/06_widgets/14_task_scroll.lua")    --- 任务卷轴
+
 

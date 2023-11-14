@@ -262,7 +262,40 @@ local flg,error_code = pcall(function()
     ----------------------------------------------------------------------------------------------------------------
     -- ThePlayer.components.talker:Say(ThePlayer.components.fwd_in_pdt_func:IsAdmin() and "有管理员权限" or "没管理员权限")
     ----------------------------------------------------------------------------------------------------------------
-    print(ThePlayer.components.fwd_in_pdt_func:Jade_Coin__Spend(101))
+    -- print(ThePlayer.components.fwd_in_pdt_func:Jade_Coin__Spend(101))
+    ----------------------------------------------------------------------------------------------------------------
+    --- 地图解锁
+            -------   doer.player_classified.MapExplorer  组件 有很多函数
+
+            -- ---- 只能去除阴影。但是没内部inst
+            --     local   minimap = TheSim:FindFirstEntityWithTag("minimap")
+            --     -- minimap.MiniMap:ShowArea(0,0,0, 10000)
+            --     minimap.MiniMap:ShowArea(0,0,0, 500)
+            --     ThePlayer.player_classified.MapExplorer:RevealArea(x,0,y)
+            -- ---- 阴影和内部一起展示
+            --     for xx=-1600,1600,35 do
+            --          for yy=-1600,1600,35 do
+            --                 ThePlayer.player_classified.MapExplorer:RevealArea(xx,0,yy) 
+            --         end
+            --     end
+            -- ThePlayer.player_classified.MapExplorer:RevealArea(x,0,y) ---- 只显示一个屏幕的区域（默认，对角直径40）
+            -- ThePlayer.player_classified.MapExplorer:RevealArea(x+20,0,y)
+            -------------------------------------------------------
+                    -- print(type(ThePlayer.player_classified.MapExplorer))
+
+                    -- local temp_MapExplorer = getmetatable(ThePlayer.player_classified.MapExplorer).__index
+                    -- for k, v in pairs(temp_MapExplorer) do
+                    --     print(k,v)
+                    -- end
+    ----------------------------------------------------------------------------------------------------------------
+                        -- ThePlayer.HUD:fwd_in_pdt_task_scroll_widget_open()
+                        local item = SpawnPrefab("fwd_in_pdt_task_scroll__items_ask")
+                        local cmd_tables = item:Get_Missons_Cmd_Tables()["fwd_in_pdt_task_scroll__ice"]
+                        -- for k, v in pairs(cmd_tables) do
+                        --     print(k,v)
+                        -- end
+                        item:PushEvent("Set",cmd_tables)
+                        ThePlayer.components.inventory:GiveItem(item)
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)

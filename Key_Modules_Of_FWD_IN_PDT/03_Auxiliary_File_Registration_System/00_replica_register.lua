@@ -15,3 +15,4 @@
 AddReplicableComponent("fwd_in_pdt_func")  --- 关键主函数
 AddReplicableComponent("fwd_in_pdt_wellness")  --- 体质值模块的函数
 AddReplicableComponent("fwd_in_pdt_com_shop")  --- 商店模块
+AddReplicableComponent("fwd_in_pdt_com_task_scroll")  --- 任务卷轴系统

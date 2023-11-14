@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Atlas>
+	<Texture filename="fwd_in_pdt_task_scroll_base.tex" />
+	<Elements>
+		<Element name="background.tex" u1="0.001" u2="0.62790625" v2="0.999" v1="0.401390625" variant="" />
+		<Element name="close_button.tex" u1="0.001" u2="0.04245703125" v2="0.399390625" v1="0.3144765625" variant="" />
+		<Element name="finish_button.tex" u1="0.001" u2="0.06540625" v2="0.3124765625" v1="0.20803125" variant="" />
+	</Elements>
+</Atlas>

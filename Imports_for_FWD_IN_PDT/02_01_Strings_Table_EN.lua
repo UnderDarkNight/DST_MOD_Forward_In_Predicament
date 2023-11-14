@@ -80,6 +80,8 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "A Gift Box",
                 ["name.opening_gift_box"] = "Newbie Survival Gift Box",
                 ["name.vip"] = "VIP Gift Box",
+                ["name.task_scroll"] = "Mission Completion Gift Box",
+
             },
             ["fwd_in_pdt_item_ice_core"] = {
                 ["name"] = "Ice Core Stone",
@@ -745,6 +747,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["treatment"] = { "Disease Treatment Magic Book","Aster Tataricus L.F Pills","Cooked Milk , Mix Potato Soup , Steamed Orange With Honey"},
             },
         --------------------------------------------------------------------
+            ---- 24_fwd_in_pdt_task_scrolls
+            ["fwd_in_pdt_task_scroll__test"] = {
+                ["name"] = "Mission Scroll",
+                ["inspect_str"] = "Missions posted by others",
+            },
         --------------------------------------------------------------------
 
 }

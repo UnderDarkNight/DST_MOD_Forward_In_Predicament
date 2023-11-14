@@ -30,6 +30,7 @@ local file_folders = {
     "21_fwd_in_pdt_rooms",            -- 房间/岛屿 创建相关资源
     "22_fwd_in_pdt_npc",              -- NPC
     "23_fwd_in_pdt_wellness",         -- 体质值相关的
+    "24_fwd_in_pdt_task_scrolls",     -- 任务卷轴    
 }
 
 
