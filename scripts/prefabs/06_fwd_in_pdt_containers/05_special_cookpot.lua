@@ -153,27 +153,29 @@ local function SetProductSymbol(inst, product, overridebuild)
     local build = (recipe ~= nil and recipe.overridebuild) or overridebuild or "cook_pot_food"
     local overridesymbol = (recipe ~= nil and recipe.overridesymbolname) or product
 
-    -- if potlevel == "high" then
-    --     inst.AnimState:Show("swap_high")
-    --     inst.AnimState:Hide("swap_mid")
-    --     inst.AnimState:Hide("swap_low")
-    -- elseif potlevel == "low" then
-    --     inst.AnimState:Hide("swap_high")
-    --     inst.AnimState:Hide("swap_mid")
-    --     inst.AnimState:Show("swap_low")
-    -- else
-    --     inst.AnimState:Hide("swap_high")
-    --     inst.AnimState:Show("swap_mid")
-    --     inst.AnimState:Hide("swap_low")
-    -- end
-    -- print("info SetProductSymbol",build,overridesymbol)
-    -- inst.AnimState:OverrideSymbol("swap_cooked", build, overridesymbol) ---- 用官方的这一条出状况了
-    
-    if cooking.IsModCookerFood(product) then
-        inst.AnimState:OverrideSymbol("swap_cooked", build, overridesymbol)
+    --------------------------------------- 
+    --- 必须这段 隐藏显示的操作，才能让各种MOD食物显示正常。
+    if potlevel == "high" then
+        inst.AnimState:Show("swap_high")
+        inst.AnimState:Hide("swap_mid")
+        inst.AnimState:Hide("swap_low")
+    elseif potlevel == "low" then
+        inst.AnimState:Hide("swap_high")
+        inst.AnimState:Hide("swap_mid")
+        inst.AnimState:Show("swap_low")
     else
-        inst.AnimState:OverrideSymbol("swap_cooked", "cook_pot_food", overridesymbol)
+        inst.AnimState:Hide("swap_high")
+        inst.AnimState:Show("swap_mid")
+        inst.AnimState:Hide("swap_low")
     end
+    -- print("info SetProductSymbol",build,overridesymbol)
+    inst.AnimState:OverrideSymbol("swap_cooked", build, overridesymbol) ---- 用官方的这一条出状况了
+    
+    -- if cooking.IsModCookerFood(product) then
+    --     inst.AnimState:OverrideSymbol("swap_cooked", build, overridesymbol)
+    -- else
+    --     inst.AnimState:OverrideSymbol("swap_cooked", "cook_pot_food", overridesymbol)
+    -- end
 
 end
 

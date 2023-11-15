@@ -49,33 +49,35 @@ local function fn()
         end
     -----------------------------------------------------------------------------------
     ---- 配置该物品的 任务内容
-        inst:ListenForEvent("Set",function(_,task_index)
+        if TheWorld.ismastersim then
+                inst:ListenForEvent("Set",function(_,task_index)
 
-            if type(task_index) ~= "string" then
-                return
-            end
-            local cmd_table = inst:Get_Missons_Cmd_Tables()[task_index]
+                    if type(task_index) ~= "string" then
+                        return
+                    end
+                    local cmd_table = inst:Get_Missons_Cmd_Tables()[task_index]
 
-            inst.components.fwd_in_pdt_data:Set("task_index",task_index)
-            inst.components.fwd_in_pdt_com_task_scroll:Init({
-                atlas = cmd_table.atlas,
-                image = cmd_table.image,
-                x = cmd_table.x or -50,
-                y = cmd_table.y or 0,
-            })
-            if type(cmd_table.submit_fn) == "function" then
-                inst.components.fwd_in_pdt_com_task_scroll:Add_Submit_Fn(cmd_table.submit_fn)
-            end
-            inst.Ready = true
-        end)
-        inst:DoTaskInTime(0,function()
-            if inst.Ready ~= true then
-                local task_index = inst.components.fwd_in_pdt_data:Get("task_index")
-                if task_index then
-                    inst:PushEvent("Set",task_index)
-                end
-            end
-        end)
+                    inst.components.fwd_in_pdt_data:Set("task_index",task_index)
+                    inst.components.fwd_in_pdt_com_task_scroll:Init({
+                        atlas = cmd_table.atlas,
+                        image = cmd_table.image,
+                        x = cmd_table.x or -50,
+                        y = cmd_table.y or 0,
+                    })
+                    if type(cmd_table.submit_fn) == "function" then
+                        inst.components.fwd_in_pdt_com_task_scroll:Add_Submit_Fn(cmd_table.submit_fn)
+                    end
+                    inst.Ready = true
+                end)
+                inst:DoTaskInTime(0,function()
+                    if inst.Ready ~= true then
+                        local task_index = inst.components.fwd_in_pdt_data:Get("task_index")
+                        if task_index then
+                            inst:PushEvent("Set",task_index)
+                        end
+                    end
+                end)
+        end
     -----------------------------------------------------------------------------------
     ---- 法术施放
         inst:AddComponent("fwd_in_pdt_com_workable")

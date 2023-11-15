@@ -18,14 +18,14 @@ local assets =
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     ---- 玩家激活广告牌
         local function player_active(inst,player)
-            local daily_datas = inst.components.fwd_in_pdt_data:Get("daily_datas") or {}
-            if not daily_datas[player.userid] then
-                if not TheWorld:HasTag("cave") and (LANGUAGE ~= "ch" or player:HasTag("fwd_in_pdt_tag.vip")) then
-                    player.components.inventory:GiveItem(SpawnPrefab("fwd_in_pdt_item_advertising_leaflet"))
-                end
-            end
-            daily_datas[player.userid] = true
-            inst.components.fwd_in_pdt_data:Set("daily_datas",daily_datas)
+            -- local daily_datas = inst.components.fwd_in_pdt_data:Get("daily_datas") or {}
+            -- if not daily_datas[player.userid] then
+            --     if not TheWorld:HasTag("cave") and (LANGUAGE ~= "ch" or player:HasTag("fwd_in_pdt_tag.vip")) then
+            --         player.components.inventory:GiveItem(SpawnPrefab("fwd_in_pdt_item_advertising_leaflet"))
+            --     end
+            -- end
+            -- daily_datas[player.userid] = true
+            -- inst.components.fwd_in_pdt_data:Set("daily_datas",daily_datas)
             -----------------------------------------------------------------------------------------
             ---- 送玩家卷轴
                 -- TheWorld.state.cycles
@@ -46,9 +46,19 @@ local assets =
 
                     task_scroll_item:PushEvent("Set",ret_task_index)
                     player.components.inventory:GiveItem(task_scroll_item)
-
+                    -----------------------------------------------------------------------
+                    ----- 领取超过 100 次任务，就能领到广告单
+                        local cross_archive_data__get_task_scroll_times = player.components.fwd_in_pdt_func:Get_Cross_Archived_Data("task_scrolls_num") or 0
+                        cross_archive_data__get_task_scroll_times = cross_archive_data__get_task_scroll_times + 1
+                        player.components.fwd_in_pdt_func:Set_Cross_Archived_Data("task_scrolls_num",cross_archive_data__get_task_scroll_times)
+                        if cross_archive_data__get_task_scroll_times >= 100 then
+                            player.components.inventory:GiveItem(SpawnPrefab("fwd_in_pdt_item_advertising_leaflet"))
+                        end
+                    -----------------------------------------------------------------------
                 end
 
+
+            -----------------------------------------------------------------------------------------
 
             -----------------------------------------------------------------------------------------
         end
