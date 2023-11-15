@@ -167,7 +167,7 @@ return
             item_num = 20,                                                   --- 物品需求数量
             item_prefab = "fwd_in_pdt_food_mango",                                            --- 物品需求的prefab
             gift_box_items = {                                              --- 奖励包裹里的内容
-                {"mango_ice_drink",1},
+                {"fwd_in_pdt_food_mango_ice_drink",1},
             }
         },
 
