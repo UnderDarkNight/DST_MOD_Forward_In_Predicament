@@ -28,7 +28,7 @@
         end,
         name = "fwd_in_pdt_food_mixed_potato_soup", -- 料理名
         weight = 10, -- 食谱权重
-        priority = 10, -- 食谱优先级
+        priority = 999, -- 食谱优先级
         foodtype = GLOBAL.FOODTYPE.MEAT, --料理的食物类型，比如这里定义的是肉类
         hunger = 150, --吃后回饥饿值
         sanity = 30, --吃后回精神值
@@ -69,7 +69,7 @@
         end,
         name = "fwd_in_pdt_food_steamed_orange_with_honey", -- 料理名
         weight = 10, -- 食谱权重
-        priority = 10, -- 食谱优先级
+        priority = 999, -- 食谱优先级
         foodtype = GLOBAL.FOODTYPE.GOODIES, --料理的食物类型，比如这里定义的是肉类
         hunger = 37.5, --吃后回饥饿值
         sanity = 0, --吃后回精神值
@@ -106,7 +106,7 @@
         end,
         name = "fwd_in_pdt_food_scrambled_eggs_with_tomatoes", -- 料理名
         weight = 10, -- 食谱权重
-        priority = 10, -- 食谱优先级
+        priority = 999, -- 食谱优先级
         foodtype = GLOBAL.FOODTYPE.VEGGIE, --料理的食物类型，比如这里定义的是肉类
         hunger = 75 , --吃后回饥饿值
         sanity = 5 , --吃后回精神值
@@ -145,7 +145,7 @@
         end,
         name = "fwd_in_pdt_food_eggplant_casserole", -- 料理名
         weight = 10, -- 食谱权重
-        priority = 10, -- 食谱优先级
+        priority = 999, -- 食谱优先级
         foodtype = GLOBAL.FOODTYPE.MEAT, --料理的食物类型，比如这里定义的是肉类
         hunger = 37.5 , --吃后回饥饿值
         sanity = 0 , --吃后回精神值
@@ -179,7 +179,7 @@
         end,
         name = "fwd_in_pdt_food_gifts_of_nature", -- 料理名
         weight = 10, -- 食谱权重
-        priority = 10, -- 食谱优先级
+        priority = 999, -- 食谱优先级
         foodtype = GLOBAL.FOODTYPE.GOODIES, --料理的食物类型，比如这里定义的是肉类
         hunger = 0 , --吃后回饥饿值
         sanity = -30 , --吃后回精神值
@@ -217,7 +217,7 @@
         end,
         name = "fwd_in_pdt_food_snake_skin_jelly", -- 料理名
         weight = 10, -- 食谱权重
-        priority = 10, -- 食谱优先级
+        priority = 999, -- 食谱优先级
         foodtype = GLOBAL.FOODTYPE.MEAT, --料理的食物类型，比如这里定义的是肉类
         hunger = 62.5 , --吃后回饥饿值
         sanity = 0 , --吃后回精神值
@@ -246,7 +246,7 @@
         end,
         name = "fwd_in_pdt_food_atractylodes_macrocephala_pills", -- 料理名
         weight = 10, -- 食谱权重
-        priority = 10, -- 食谱优先级
+        priority = 999, -- 食谱优先级
         foodtype = GLOBAL.FOODTYPE.GOODIES, --料理的食物类型，比如这里定义的是肉类
         hunger = 0, --吃后回饥饿值
         sanity = 0, --吃后回精神值
@@ -275,7 +275,7 @@
         end,
         name = "fwd_in_pdt_food_pinellia_ternata_pills", -- 料理名
         weight = 10, -- 食谱权重
-        priority = 10, -- 食谱优先级
+        priority = 999, -- 食谱优先级
         foodtype = GLOBAL.FOODTYPE.GOODIES, --料理的食物类型，比如这里定义的是肉类
         hunger = 0, --吃后回饥饿值
         sanity = 0, --吃后回精神值
@@ -339,7 +339,7 @@
         end,
         name = "fwd_in_pdt_food_red_mushroom_soup", -- 料理名
         weight = 10, -- 食谱权重
-        priority = 10, -- 食谱优先级
+        priority = 999, -- 食谱优先级
         foodtype = GLOBAL.FOODTYPE.GOODIES, --料理的食物类型，比如这里定义的是肉类
         hunger = 0 , --吃后回饥饿值
         sanity = 0 , --吃后回精神值
@@ -374,7 +374,7 @@
         end,
         name = "fwd_in_pdt_food_green_mushroom_soup", -- 料理名
         weight = 10, -- 食谱权重
-        priority = 10, -- 食谱优先级
+        priority = 999, -- 食谱优先级
         foodtype = GLOBAL.FOODTYPE.GOODIES, --料理的食物类型，比如这里定义的是肉类
         hunger = 0 , --吃后回饥饿值
         sanity = -100 , --吃后回精神值
@@ -409,7 +409,7 @@
         end,
         name = "fwd_in_pdt_food_tofu", -- 料理名
         weight = 10, -- 食谱权重
-        priority = 10, -- 食谱优先级
+        priority = 999, -- 食谱优先级
         foodtype = GLOBAL.FOODTYPE.GOODIES, --料理的食物类型，比如这里定义的是肉类
         hunger = 25 , --吃后回饥饿值
         sanity = 20 , --吃后回精神值
@@ -444,7 +444,7 @@
         end,
         name = "fwd_in_pdt_food_cooked_milk", -- 料理名
         weight = 10, -- 食谱权重
-        priority = 10, -- 食谱优先级
+        priority = 999, -- 食谱优先级
         foodtype = GLOBAL.FOODTYPE.GOODIES, --料理的食物类型，比如这里定义的是肉类
         hunger = 10 , --吃后回饥饿值
         sanity = 0 , --吃后回精神值
@@ -484,7 +484,7 @@
         end,
         name = "fwd_in_pdt_food_coffee", -- 料理名
         weight = 10, -- 食谱权重
-        priority = 10, -- 食谱优先级
+        priority = 999, -- 食谱优先级
         foodtype = GLOBAL.FOODTYPE.GOODIES, --料理的食物类型，比如这里定义的是肉类
         hunger = 0 , --吃后回饥饿值
         sanity = -20 , --吃后回精神值
@@ -520,7 +520,7 @@
         end,
         name = "fwd_in_pdt_food_saline_medicine", -- 料理名
         weight = 100, -- 食谱权重
-        priority = 100, -- 食谱优先级
+        priority = 9990, -- 食谱优先级
         foodtype = GLOBAL.FOODTYPE.GOODIES, --料理的食物类型，比如这里定义的是肉类
         hunger = 0 , --吃后回饥饿值
         sanity = 0 , --吃后回精神值
@@ -556,7 +556,7 @@
         end,
         name = "fwd_in_pdt_food_yogurt_ice_cream", -- 料理名
         weight = 10, -- 食谱权重
-        priority = 10, -- 食谱优先级
+        priority = 999, -- 食谱优先级
         foodtype = GLOBAL.FOODTYPE.GOODIES, --料理的食物类型，比如这里定义的是肉类
         hunger = 12.5 , --吃后回饥饿值
         sanity = 30 , --吃后回精神值
@@ -592,7 +592,7 @@
         end,
         name = "fwd_in_pdt_food_mango_ice_drink", -- 料理名
         weight = 10, -- 食谱权重
-        priority = 10, -- 食谱优先级
+        priority = 999, -- 食谱优先级
         foodtype = GLOBAL.FOODTYPE.GOODIES, --料理的食物类型，比如这里定义的是肉类
         hunger = 0 , --吃后回饥饿值
         sanity = 0 , --吃后回精神值
@@ -626,7 +626,7 @@
         end,
         name = "fwd_in_pdt_food_cooked_rice", -- 料理名
         weight = 10, -- 食谱权重
-        priority = 10, -- 食谱优先级
+        priority = 999, -- 食谱优先级
         foodtype = GLOBAL.FOODTYPE.VEGGIE, --料理的食物类型，比如这里定义的是肉类
         hunger = 120 , --吃后回饥饿值
         sanity = 5 , --吃后回精神值
@@ -660,7 +660,7 @@
         end,
         name = "fwd_in_pdt_food_bread", -- 料理名
         weight = 10, -- 食谱权重
-        priority = 10, -- 食谱优先级
+        priority = 999, -- 食谱优先级
         foodtype = GLOBAL.FOODTYPE.VEGGIE, --料理的食物类型，比如这里定义的是肉类
         hunger = 62.5 , --吃后回饥饿值
         sanity = 5 , --吃后回精神值
@@ -698,7 +698,7 @@
         end,
         name = "fwd_in_pdt_food_congee_with_meat_and_thousand_year_old_eggs", -- 料理名
         weight = 10, -- 食谱权重
-        priority = 10, -- 食谱优先级
+        priority = 999, -- 食谱优先级
         foodtype = GLOBAL.FOODTYPE.MEAT, --料理的食物类型，比如这里定义的是肉类
         hunger = 120 , --吃后回饥饿值
         sanity = 5 , --吃后回精神值
@@ -732,7 +732,7 @@
         end,
         name = "fwd_in_pdt_food_protein_powder", -- 料理名
         weight = 10, -- 食谱权重
-        priority = 10, -- 食谱优先级
+        priority = 999, -- 食谱优先级
         foodtype = GLOBAL.FOODTYPE.VEGGIE, --料理的食物类型，比如这里定义的是肉类
         hunger = 0 , --吃后回饥饿值
         sanity = 0 , --吃后回精神值
