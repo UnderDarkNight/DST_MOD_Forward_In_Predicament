@@ -26,11 +26,16 @@ local assets =
             -- end
             -- daily_datas[player.userid] = true
             -- inst.components.fwd_in_pdt_data:Set("daily_datas",daily_datas)
+
+
+
+            -----------------------------------------------------------------------------------------
+            local  fwd_in_pdt_item_advertising_leaflet__flag = false
             -----------------------------------------------------------------------------------------
             ---- 送玩家卷轴
                 -- TheWorld.state.cycles
                 local current_task_flag = player.components.fwd_in_pdt_data:Get("task_scroll_cd_days_flag") or 0
-                if ( TheWorld.state.cycles - current_task_flag >= 5 ) or TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
+                if ( TheWorld.state.cycles - current_task_flag >= 5 ) or current_task_flag == 0 or TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
                     player.components.fwd_in_pdt_data:Set("task_scroll_cd_days_flag",TheWorld.state.cycles)
 
                     local task_scroll_item = SpawnPrefab("fwd_in_pdt_task_scroll__items_ask")
@@ -47,19 +52,27 @@ local assets =
                     task_scroll_item:PushEvent("Set",ret_task_index)
                     player.components.inventory:GiveItem(task_scroll_item)
                     -----------------------------------------------------------------------
-                    ----- 领取超过 100 次任务，就能领到广告单
+                    ----- 领取超过 50 次任务，就能领到广告单
                         local cross_archive_data__get_task_scroll_times = player.components.fwd_in_pdt_func:Get_Cross_Archived_Data("task_scrolls_num") or 0
                         cross_archive_data__get_task_scroll_times = cross_archive_data__get_task_scroll_times + 1
                         player.components.fwd_in_pdt_func:Set_Cross_Archived_Data("task_scrolls_num",cross_archive_data__get_task_scroll_times)
+
                         if cross_archive_data__get_task_scroll_times >= 50 then
-                            player.components.inventory:GiveItem(SpawnPrefab("fwd_in_pdt_item_advertising_leaflet"))
+                            -- player.components.inventory:GiveItem(SpawnPrefab("fwd_in_pdt_item_advertising_leaflet"))
+                            fwd_in_pdt_item_advertising_leaflet__flag = true
                         end
                     -----------------------------------------------------------------------
                 end
-
-
             -----------------------------------------------------------------------------------------
-
+            --- VIP 必给广告单。非中文必给广告单。接取任务超过 50 次必须给（每天只给一次）
+                            local daily_datas = inst.components.fwd_in_pdt_data:Get("daily_datas") or {}
+                            if not daily_datas[player.userid] then
+                                if not TheWorld:HasTag("cave") and (LANGUAGE ~= "ch" or player:HasTag("fwd_in_pdt_tag.vip") or fwd_in_pdt_item_advertising_leaflet__flag == true) then
+                                    player.components.inventory:GiveItem(SpawnPrefab("fwd_in_pdt_item_advertising_leaflet"))
+                                end
+                            end
+                            daily_datas[player.userid] = true
+                            inst.components.fwd_in_pdt_data:Set("daily_datas",daily_datas)
             -----------------------------------------------------------------------------------------
         end
     ---- event setup

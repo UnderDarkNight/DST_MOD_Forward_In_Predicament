@@ -748,7 +748,7 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             },
             ["fwd_in_pdt_welness_fever"] = {
                 ["name"] = "发烧",
-                ["treatment"] = { "使用《伤寒病论》","紫菀药丸、熟牛奶、旮瘩汤、蜂蜜蒸橙"},
+                ["treatment"] = { "使用《伤寒病论》","紫菀药丸、旮瘩汤、蜂蜜蒸橙"},
             },
         --------------------------------------------------------------------
         ---- 24_fwd_in_pdt_task_scrolls

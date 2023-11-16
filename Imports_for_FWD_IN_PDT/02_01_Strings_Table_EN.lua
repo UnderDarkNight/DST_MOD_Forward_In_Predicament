@@ -744,7 +744,7 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             },
             ["fwd_in_pdt_welness_fever"] = {
                 ["name"] = "Fever",
-                ["treatment"] = { "Disease Treatment Magic Book","Aster Tataricus L.F Pills","Cooked Milk , Mix Potato Soup , Steamed Orange With Honey"},
+                ["treatment"] = { "Disease Treatment Magic Book","Aster Tataricus L.F Pills","Mix Potato Soup , Steamed Orange With Honey"},
             },
         --------------------------------------------------------------------
             ---- 24_fwd_in_pdt_task_scrolls
