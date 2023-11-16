@@ -288,12 +288,23 @@ local flg,error_code = pcall(function()
                     --     print(k,v)
                     -- end
     ----------------------------------------------------------------------------------------------------------------
-                        -- ThePlayer.HUD:fwd_in_pdt_task_scroll_widget_open()
-                        local item = SpawnPrefab("fwd_in_pdt_task_scroll__items_ask")
-                        -- item:PushEvent("Set","fwd_in_pdt_task_scroll__ice")
-                        -- item:PushEvent("Set","fwd_in_pdt_task_scroll__fertilizer")
-                        item:PushEvent("Set","fwd_in_pdt_task_scroll__yellowstaff")
-                        ThePlayer.components.inventory:GiveItem(item)
+                        -- -- ThePlayer.HUD:fwd_in_pdt_task_scroll_widget_open()
+                        -- local item = SpawnPrefab("fwd_in_pdt_task_scroll__items_ask")
+                        -- -- item:PushEvent("Set","fwd_in_pdt_task_scroll__ice")
+                        -- -- item:PushEvent("Set","fwd_in_pdt_task_scroll__fertilizer")
+                        -- item:PushEvent("Set","fwd_in_pdt_task_scroll__yellowstaff")
+                        -- ThePlayer.components.inventory:GiveItem(item)
+    ----------------------------------------------------------------------------------------------------------------
+    --- 烹饪锅贴图调试
+            local cooking = require("cooking")
+            -- local recipe = cooking.GetRecipe("cookpot", "bonestew")
+            -- for k, v in pairs(recipe) do
+            --     print(k,v)
+            -- end
+            local foods = require("preparedfoods")
+            for k, v in pairs(foods["bonestew"]) do
+                print(k,v)
+            end
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)

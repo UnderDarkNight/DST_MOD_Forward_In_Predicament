@@ -147,12 +147,25 @@ end
 
 local function SetProductSymbol(inst, product, overridebuild)
     -- inst.AnimState:ClearOverrideSymbol("swap_cooked")
+    local preparedfoods = require("preparedfoods")
+    local portable_foods = require("preparedfoods_warly")
 
     local recipe = cooking.GetRecipe(inst.prefab, product)
+
+    if preparedfoods[product] then  ---- 普通烹饪锅
+        recipe = preparedfoods[product]
+        overridebuild = nil             --- AddCookerRecipe 使用这个函数，即便添加的是官方的食谱，也会有这个参数碍事，必须清空。
+    end
+
+    if portable_foods[product] then         ---- 大厨锅料理
+        recipe = portable_foods[product]
+        overridebuild = nil             --- AddCookerRecipe 使用这个函数，即便添加的是官方的食谱，也会有这个参数碍事，必须清空。
+    end
+
     local potlevel = recipe ~= nil and recipe.potlevel or nil
     local build = (recipe ~= nil and recipe.overridebuild) or overridebuild or "cook_pot_food"
     local overridesymbol = (recipe ~= nil and recipe.overridesymbolname) or product
-
+    -- print("+++++++++",build,overridebuild,overridesymbol)
     --------------------------------------- 
     -- if potlevel == "high" then
     --     inst.AnimState:Show("swap_high")
@@ -170,11 +183,23 @@ local function SetProductSymbol(inst, product, overridebuild)
     -- -- print("info SetProductSymbol",build,overridesymbol)
     -- inst.AnimState:OverrideSymbol("swap_cooked", build, overridesymbol) ---- 单独用官方的这一条出状况了，某些食物不显示了
     
-    if cooking.IsModCookerFood(product) then
-        inst.AnimState:OverrideSymbol("swap_cooked", build, overridesymbol)
-    else
-        inst.AnimState:OverrideSymbol("swap_cooked", "cook_pot_food", overridesymbol)
-    end
+
+
+    inst.AnimState:Show("swap_mid")
+    inst.AnimState:OverrideSymbol("swap_cooked", build, overridesymbol) 
+
+    -- print("++++",product)
+    -- for k, v in pairs(recipe) do
+    --     print(k,v)
+    -- end
+
+
+
+    -- if cooking.IsModCookerFood(product) then
+    --     inst.AnimState:OverrideSymbol("swap_cooked", build, overridesymbol)
+    -- else
+    --     inst.AnimState:OverrideSymbol("swap_cooked", "cook_pot_food", overridesymbol)
+    -- end
 
 end
 
