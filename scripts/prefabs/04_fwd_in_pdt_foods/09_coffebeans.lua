@@ -67,6 +67,7 @@ local function fn()
     -------------------------------------------------------------------
     --- 可燃
         MakeSmallBurnable(inst, TUNING.TINY_BURNTIME)
+        MakeSmallPropagator(inst)   -- 可被其他物品引燃
         inst:AddComponent("fuel")
         inst.components.fuel.fuelvalue = TUNING.TINY_FUEL
     -------------------------------------------------------------------

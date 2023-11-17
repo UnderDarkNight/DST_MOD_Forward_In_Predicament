@@ -196,6 +196,7 @@ local function fn()
     --------------------------------------------------------------------------
     MakeHauntableLaunch(inst)
     MakeSmallBurnable(inst, TUNING.MED_BURNTIME)
+    MakeSmallPropagator(inst)   -- 可被其他物品引燃
     inst:AddComponent("fuel")
     inst.components.fuel.fuelvalue = TUNING.MED_FUEL
     -------------------------------------------------------------------
