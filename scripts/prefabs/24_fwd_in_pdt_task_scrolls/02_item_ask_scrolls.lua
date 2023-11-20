@@ -91,7 +91,7 @@ local function fn()
             inst.components.fwd_in_pdt_com_task_scroll:Open(doer)
             return true
         end)
-        inst.components.fwd_in_pdt_com_workable:SetSGAction("dolongaction")
+        inst.components.fwd_in_pdt_com_workable:SetSGAction("give")
         inst.components.fwd_in_pdt_com_workable:SetActionDisplayStr("fwd_in_pdt_task_scrolls",STRINGS.ACTIONS.READ)
     -----------------------------------------------------------------------------------
     ---- 任务信息交互组件

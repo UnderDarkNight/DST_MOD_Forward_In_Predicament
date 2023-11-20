@@ -135,9 +135,9 @@ return
             y = 0,                                                          --- 图片偏移y
 
             item_num = 1,                                                   --- 物品需求数量
-            item_prefab = "eyebrellahat",                                            --- 物品需求的prefab
+            item_prefab = "beefalohat",                                            --- 物品需求的prefab
             gift_box_items = {                                              --- 奖励包裹里的内容
-                {"fwd_in_pdt_item_jade_coin_green",20},
+                {"fwd_in_pdt_item_glass_horn",1},
             }
         },
 
@@ -195,7 +195,7 @@ return
             y = 0,                                                          --- 图片偏移y
 
             item_num = 10,                                                   --- 物品需求数量
-            item_prefab = "rumstick",                                            --- 物品需求的prefab
+            item_prefab = "drumstick",                                            --- 物品需求的prefab
             gift_box_items = {                                              --- 奖励包裹里的内容
                 {"fwd_in_pdt_item_jade_coin_green",50},
             }
@@ -225,7 +225,7 @@ return
             y = 0,                                                          --- 图片偏移y
 
             item_num = 10,                                                   --- 物品需求数量
-            item_prefab = "pidereggsack",                                   --- 物品需求的prefab
+            item_prefab = "spidereggsack",                                   --- 物品需求的prefab
             gift_box_items = {                                              --- 奖励包裹里的内容
                 {"fwd_in_pdt_item_jade_coin_green",10},
             }
@@ -246,7 +246,7 @@ return
             }
         },
 
-    --蜂巢*10任务
+    --蜜脾*10任务
         ["fwd_in_pdt_task_scroll__honeycomb"] = {
             index = "fwd_in_pdt_task_scroll__honeycomb",                          --- 任务index
             atlas = "images/ui_images/fwd_in_pdt_task_scrolls.xml",         --- 卷轴显示的图片
