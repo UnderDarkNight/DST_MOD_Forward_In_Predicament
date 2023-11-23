@@ -178,7 +178,7 @@ local function fn()
 
                 -- print("info fwd_in_pdt_com_task_scroll succeed")
                 ----------------------------------------------------------------------------------------------------
-                        local pt = TheWorld.components.fwd_in_pdt_func:GetSpawnPoint(doer,math.random(3))
+                        local pt = TheWorld.components.fwd_in_pdt_func:GetSpawnPoint(doer,math.random(3)) or Vector3(doer.Transform:GetWorldPosition())
                         SpawnPrefab("fwd_in_pdt_fx_sky_door"):PushEvent("Set",{
                             pt = Vector3(pt.x,pt.y+1,pt.z),
                             scale = Vector3(2.5,1,2.5)
