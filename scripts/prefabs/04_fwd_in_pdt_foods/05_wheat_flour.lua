@@ -25,6 +25,7 @@ local function fn()
     -- inst.AnimState:SetScale(1.5,1.5,1.5)
     -- MakeInventoryFloatable(inst)
     inst:AddTag("show_spoilage")
+    inst:AddTag("icebox_valid")
 
     inst.entity:SetPristine()
     
