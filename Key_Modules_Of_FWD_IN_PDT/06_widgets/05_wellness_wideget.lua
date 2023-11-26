@@ -94,7 +94,7 @@ AddClassPostConstruct("widgets/controls", function(self, owner)
                     end
                 end
 
-                owner:DoPeriodicTask(0.3,function()
+                owner:DoPeriodicTask(2,function()
                     root:LocationScaleFix()
                 end)
         -----------------------------------------------------------------------------------------------------------------
