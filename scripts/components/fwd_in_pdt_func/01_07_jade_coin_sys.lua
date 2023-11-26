@@ -14,170 +14,7 @@ local function main_com(self)
             return self.inst.replica.fwd_in_pdt_func:Jade_Coin__GetAllNum()
         end
 
-        function self:Jade_Coin__Spend__old(num)
-            if type(num) ~= "number" then
-                return false
-            end
-            if not self:Jade_Coin__Has(num) then
-                return false
-            end 
-            local flag_green,has_green_coins = self.inst.replica.inventory:Has("fwd_in_pdt_item_jade_coin_green",1,true)
-            local flag_black,has_black_coins = self.inst.replica.inventory:Has("fwd_in_pdt_item_jade_coin_black",1,true)
-            -- print("目前拥有 绿",has_green_coins,"黑",has_black_coins)
-            -------- 单独绿币足够了
-                if num <= has_green_coins then   
-                        print("绿币足够",has_green_coins,has_black_coins)
-                        local need_to_remove_num = num
-
-                        local function each_item_search_fn(item_inst)
-                            --------------------------------------------------------------------------------------------------
-                            ---- 某些自带容器的物品进行扫描。
-                                if item_inst and item_inst.components.container then
-                                    item_inst.components.container:ForEachItem(each_item_search_fn)
-                                    return
-                                end
-                            --------------------------------------------------------------------------------------------------
-
-                            if not (item_inst and  item_inst.prefab == "fwd_in_pdt_item_jade_coin_green" ) then
-                                return
-                            end
-                            if  need_to_remove_num <= 0 then    --- 凑够数了，后面不继续了
-                                return
-                            end
-
-                            if item_inst.components.stackable.stacksize >= need_to_remove_num then
-                                item_inst.components.stackable:Get(need_to_remove_num):Remove()
-                                need_to_remove_num = 0
-                            else
-                                need_to_remove_num = need_to_remove_num - item_inst.components.stackable.stacksize
-                                item_inst:Remove()
-                            end
-                        end
-
-                        self.inst.components.inventory:ForEachItem(each_item_search_fn)
-
-                    return true
-                end
-            ------- 绿币不够，黑币来凑
-                
-                local need_green_coins = num%100 
-                local need_black_coins = math.floor(num/100)
-                -- print("绿币不够 need ",need_green_coins,need_black_coins)
-
-                if need_green_coins <= has_green_coins and need_black_coins <= has_black_coins  then --- 已有的绿币足够,黑币足够，直接清场。
-                        -- print("已有的绿币足够,黑币足够，直接清场")
-                        self.inst.components.inventory:ForEachItem(function(item_inst)  
-                            if not item_inst then
-                                return
-                            end
-
-                            if item_inst.prefab == "fwd_in_pdt_item_jade_coin_green"  then
-
-                                if  need_green_coins <= 0 then    --- 凑够数了，后面不继续了
-                                    return
-                                end
-
-                                if item_inst.components.stackable.stacksize >= need_green_coins then
-                                    item_inst.components.stackable:Get(need_green_coins):Remove()
-                                    need_green_coins = 0
-                                else
-                                    need_green_coins = need_green_coins - item_inst.components.stackable.stacksize
-                                    item_inst:Remove()
-                                end
-
-                            end
-
-                            if item_inst.prefab == "fwd_in_pdt_item_jade_coin_black" then
-                                if need_black_coins <= 0 then
-                                    return
-                                end
-                                if item_inst.components.stackable.stacksize >= need_black_coins then
-                                    item_inst.components.stackable:Get(need_black_coins):Remove()
-                                    need_black_coins = 0
-                                else
-                                    need_black_coins = need_black_coins - item_inst.components.stackable.stacksize
-                                    item_inst:Remove() 
-                                end
-                            end
-                            
-                        end)
-                    return true
-                else        ----- 绿币不够 
-                        -- print("绿币不够，黑币填充")
-
-                        ------ 删掉所有绿币
-                        local current_green_coins = 0   -- 计数删了多少绿币
-                        local need_2_remove_item_inst = {}  --- 后面统一删除，先添加到这个表里
-                        self.inst.components.inventory:ForEachItem(function(item_inst)
-                            if item_inst and item_inst.prefab == "fwd_in_pdt_item_jade_coin_green" then
-                                current_green_coins = current_green_coins + item_inst.components.stackable.stacksize
-                                -- item_inst:Remove()
-                                need_2_remove_item_inst[item_inst] = true
-                            end
-                        end)
-
-                        num = num - current_green_coins    -- 需要继续删多少绿币
-                        need_black_coins = need_black_coins + 1     -- 黑币消耗+1
-                        local rest_green_coins_num = 100 - num          -- 需要退还多少绿币
-                        -- print("------green",need_green_coins,has_green_coins)
-                        -- print("------black",need_black_coins,has_black_coins)
-                        if need_black_coins > has_black_coins then  -- 黑币不够，计算失败
-                            return false
-                        end
-                        --- 黑币足够，删光已有的绿币，和足够的黑币。
-                            for k, v in pairs(need_2_remove_item_inst) do
-                                if k and v then
-                                    k:Remove()
-                                end
-                            end
-                            self.inst.components.inventory:ForEachItem(function(item_inst)
-                                if not (item_inst and item_inst.prefab == "fwd_in_pdt_item_jade_coin_black") then
-                                    return
-                                end
-                                if need_black_coins <= 0 then
-                                    return
-                                end
-                                if item_inst.components.stackable.stacksize >= need_black_coins then
-                                    item_inst.components.stackable:Get(need_black_coins):Remove()
-                                    need_black_coins = 0
-                                else
-                                    need_black_coins = need_black_coins - item_inst.components.stackable.stacksize
-                                    item_inst:Remove()
-                                end
-                            end)
-                        --- 退还绿币,做避免卡顿处理
-                            local rest_green_coins_inst = SpawnPrefab("fwd_in_pdt_item_jade_coin_green")
-                            local temp_max_stack_num = rest_green_coins_inst.components.stackable.maxsize
-
-                            local temp_rest_num = rest_green_coins_num%temp_max_stack_num   -- 不够一组的数量
-                            local temp_stack_num = math.floor(rest_green_coins_num/temp_max_stack_num)  -- 组数
-                            if temp_rest_num >= 0 then
-                                rest_green_coins_inst.components.stackable.stacksize = temp_rest_num
-                                self.inst.components.inventory:GiveItem(rest_green_coins_inst)
-                            else
-                                rest_green_coins_inst:Remove()
-                            end
-
-                            if temp_stack_num > 0 then
-                                while temp_stack_num > 0 do
-                                    local temp_item_inst = SpawnPrefab("fwd_in_pdt_item_jade_coin_green")
-                                    temp_item_inst.components.stackable.stacksize = temp_max_stack_num
-                                    self.inst.components.inventory:GiveItem(temp_item_inst)
-                                    temp_stack_num = temp_stack_num - 1
-                                end
-                            end
-
-                    return true
-
-
-
-                end
-
-
-
-
-        end
-        function self:Jade_Coin__Spend(num)
+        function self:Jade_Coin__Spend_old(num)
             if type(num) ~= "number" then
                 return false
             end
@@ -301,6 +138,95 @@ local function main_com(self)
 
 
             return true
+        end
+
+        function self:Jade_Coin__Spend(num)
+            if type(num) ~= "number" then
+                return false
+            end
+
+
+            local the_green_coins_inst = {}
+            local the_black_coins_inst = {}
+            local function each_item_search_fn___num_count(item_inst)
+                if item_inst == nil then
+                    return
+                end
+                if item_inst.components.container then
+                    item_inst.components.container:ForEachItem(each_item_search_fn___num_count)
+                    return
+                end
+
+                if item_inst.prefab == "fwd_in_pdt_item_jade_coin_green" then
+                    the_green_coins_inst[item_inst] = item_inst.components.stackable.stacksize
+                    return
+                end
+                if item_inst.prefab == "fwd_in_pdt_item_jade_coin_black" then
+                    the_black_coins_inst[item_inst] = item_inst.components.stackable.stacksize
+                    return
+                end
+            end
+            self.inst.components.inventory:ForEachItem(each_item_search_fn___num_count)
+
+
+            local has_green_coins = 0
+            local has_black_coins = 0
+
+            for k, v in pairs(the_green_coins_inst) do
+                has_green_coins = has_green_coins + v
+            end
+            for k, v in pairs(the_black_coins_inst) do
+                has_black_coins = has_black_coins + v
+            end
+
+            if (has_green_coins + 100*has_black_coins) < num then
+                return false
+            end
+
+            ----------- 单独绿币足够
+                    if has_green_coins >= num then
+                        local need_num = num
+                        for temp_inst, temp_num in pairs(the_green_coins_inst) do
+                            if temp_num <= need_num then
+                                temp_inst:Remove()
+                                need_num = need_num - temp_num
+                            else
+                                temp_inst.components.stackable:Get(need_num):Remove()
+                                need_num = 0                                
+                            end
+                            if need_num <= 0 then
+                                break
+                            end
+                        end
+                        return true
+                    end
+            ---------- 绿币不够，黑币来凑
+                    local need_num = num
+
+                    ----- 第一步，计算需要删除的黑币，和返还的绿币
+                        local need_black_num = math.ceil(need_num/100)
+                        local give_back_green_num = -(need_num - 100*need_black_num)
+
+                        -- print("+++++",need_num,need_black_num,give_back_green_num)
+                    ----- 第二步，删除黑币
+                        for temp_inst, temp_num in pairs(the_black_coins_inst) do
+                            if temp_num <= need_black_num then
+                                temp_inst:Remove()
+                                need_black_num = need_black_num - temp_num
+                            else
+                                temp_inst.components.stackable:Get(need_black_num):Remove()
+                                need_black_num = 0
+                            end
+                            if need_black_num <= 0 then
+                                break
+                            end
+                        end
+                    ----- 第三步，返还绿币
+                        if give_back_green_num >= 1 then
+                            self:GiveItemByPrefab("fwd_in_pdt_item_jade_coin_green",give_back_green_num)
+                        end
+
+                    return true
         end
     ----------------------------------------------------------
     --- ATM

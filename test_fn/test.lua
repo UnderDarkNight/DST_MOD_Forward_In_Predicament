@@ -262,7 +262,7 @@ local flg,error_code = pcall(function()
     ----------------------------------------------------------------------------------------------------------------
     -- ThePlayer.components.talker:Say(ThePlayer.components.fwd_in_pdt_func:IsAdmin() and "有管理员权限" or "没管理员权限")
     ----------------------------------------------------------------------------------------------------------------
-    -- print(ThePlayer.components.fwd_in_pdt_func:Jade_Coin__Spend(101))
+    print(ThePlayer.components.fwd_in_pdt_func:Jade_Coin__Spend(100))
     ----------------------------------------------------------------------------------------------------------------
     --- 地图解锁
             -------   doer.player_classified.MapExplorer  组件 有很多函数
@@ -295,16 +295,16 @@ local flg,error_code = pcall(function()
                         -- item:PushEvent("Set","fwd_in_pdt_task_scroll__yellowstaff")
                         -- ThePlayer.components.inventory:GiveItem(item)
     ----------------------------------------------------------------------------------------------------------------
-    --- 烹饪锅贴图调试
-            local cooking = require("cooking")
-            -- local recipe = cooking.GetRecipe("cookpot", "bonestew")
-            -- for k, v in pairs(recipe) do
-            --     print(k,v)
-            -- end
-            local foods = require("preparedfoods")
-            for k, v in pairs(foods["bonestew"]) do
-                print(k,v)
-            end
+    -- --- 烹饪锅贴图调试
+    --         local cooking = require("cooking")
+    --         -- local recipe = cooking.GetRecipe("cookpot", "bonestew")
+    --         -- for k, v in pairs(recipe) do
+    --         --     print(k,v)
+    --         -- end
+    --         local foods = require("preparedfoods")
+    --         for k, v in pairs(foods["bonestew"]) do
+    --             print(k,v)
+    --         end
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)
