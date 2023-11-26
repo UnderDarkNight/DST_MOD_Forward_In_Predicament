@@ -112,8 +112,18 @@ AddPlayerPostInit(function(inst)
         local cooking_ingredients = cooking.ingredients
         -------------- 血糖值
             local function GetGluByFood(food)
+                local prefab_list_with_glu_value = {
+                    -- ["tomato"] = 20,                     --- 番茄
+                }
+
                 local num = 0
                 local food_base_prefab = food.nameoverride or food.prefab 
+
+                ----- 靠prefab 定义血糖值
+                if type(prefab_list_with_glu_value[food_base_prefab]) == "number" then
+                    return prefab_list_with_glu_value[food_base_prefab]
+                end
+
                 if food:HasTag("honeyed") then
                     num = 10
                 elseif cooking_ingredients[food_base_prefab] and cooking_ingredients[food_base_prefab].tags and cooking_ingredients[food_base_prefab].tags["sweetener"] then
