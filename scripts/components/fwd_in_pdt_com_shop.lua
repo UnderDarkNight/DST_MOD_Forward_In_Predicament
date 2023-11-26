@@ -178,8 +178,9 @@ end,nil,
         end
 
         if player.components.fwd_in_pdt_func:Jade_Coin__Has(cost) then
-            player.components.fwd_in_pdt_func:Jade_Coin__Spend(cost)
-            player.components.fwd_in_pdt_func:GiveItemByPrefab(prefab,num2give)
+            if player.components.fwd_in_pdt_func:Jade_Coin__Spend(cost) then            
+                player.components.fwd_in_pdt_func:GiveItemByPrefab(prefab,num2give)
+            end
             player.SoundEmitter:PlaySound("dontstarve/common/together/celestial_orb/active")
         else
             if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then

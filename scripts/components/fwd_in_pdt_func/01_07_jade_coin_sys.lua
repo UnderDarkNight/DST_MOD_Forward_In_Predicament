@@ -156,6 +156,13 @@ local function main_com(self)
                     item_inst.components.container:ForEachItem(each_item_search_fn___num_count)
                     return
                 end
+                if item_inst.components.inventoryitem == nil then
+                    return
+                end
+                
+                if item_inst.components.inventoryitem:GetGrandOwner() ~= self.inst then
+                    return
+                end
 
                 if item_inst.prefab == "fwd_in_pdt_item_jade_coin_green" then
                     the_green_coins_inst[item_inst] = item_inst.components.stackable.stacksize
@@ -298,11 +305,12 @@ local function main_com(self)
                 if not self:Jade_Coin__Has(num) then
                     return
                 end
-                self:Jade_Coin__Spend(num)
-                local old_num = self:Jade_Coin__ATM_Get() or 0
-                local new_num = old_num + num
-                self:Jade_Coin__ATM_Set(new_num)
-                self:Replica_Set_Simple_Data("jade_coins_in_atm",new_num)   -- 给 client 端hud读取                
+                if self:Jade_Coin__Spend(num) then
+                    local old_num = self:Jade_Coin__ATM_Get() or 0
+                    local new_num = old_num + num
+                    self:Jade_Coin__ATM_Set(new_num)
+                    self:Replica_Set_Simple_Data("jade_coins_in_atm",new_num)   -- 给 client 端hud读取      
+                end          
             end
             function self:Jade_Coin__ATM_WithdrawMoney(num) -- 取钱
                 if type(num) ~= "number" or num <= 0 then
