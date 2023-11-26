@@ -152,7 +152,7 @@ local function main_com(self)
                 if item_inst == nil then
                     return
                 end
-                if item_inst.components.container then
+                if item_inst.components.container and item_inst.components.inventoryitem and item_inst.components.inventoryitem:GetGrandOwner() == self.inst then
                     item_inst.components.container:ForEachItem(each_item_search_fn___num_count)
                     return
                 end
