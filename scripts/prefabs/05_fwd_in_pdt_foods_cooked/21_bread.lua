@@ -49,23 +49,19 @@ local function fn()
     inst.components.edible.foodtype = FOODTYPE.VEGGIE
     inst.components.edible:SetOnEatenFn(function(inst,eater)
         if eater and eater:HasTag("player") then
-            --- 20个任务，共恢复 30饱食度
-            if eater.components.hunger then
-                for i = 1, 20, 1 do
-                    eater:DoTaskInTime(i,function()
-                        eater.components.hunger:DoDelta(1.5)
-                    end)
-                end
-            end
-        end
-    end)
-    inst.components.edible:SetOnEatenFn(function(inst,eater)
-        if eater and eater:HasTag("player") then
             -- 血糖值增加5
-            if eater.components.fwd_in_pdt_wellness then
-                eater.components.fwd_in_pdt_wellness:DoDelta_Glucose(5)
-                eater.components.fwd_in_pdt_wellness:ForceRefresh()
-            end
+                if eater.components.fwd_in_pdt_wellness then
+                    eater.components.fwd_in_pdt_wellness:DoDelta_Glucose(5)
+                    eater.components.fwd_in_pdt_wellness:ForceRefresh()
+                end
+            --- 20个任务，共恢复 30饱食度
+                if eater.components.hunger then
+                    for i = 1, 20, 1 do
+                        eater:DoTaskInTime(i,function()
+                            eater.components.hunger:DoDelta(1.5)
+                        end)
+                    end
+                end
         end
     end)
     
