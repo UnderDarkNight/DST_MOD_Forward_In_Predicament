@@ -59,7 +59,16 @@ local function fn()
             end
         end
     end)
-
+    inst.components.edible:SetOnEatenFn(function(inst,eater)
+        if eater and eater:HasTag("player") then
+            -- 血糖值增加5
+            if eater.components.fwd_in_pdt_wellness then
+                eater.components.fwd_in_pdt_wellness:DoDelta_Glucose(5)
+                eater.components.fwd_in_pdt_wellness:ForceRefresh()
+            end
+        end
+    end)
+    
     inst:AddComponent("perishable") -- 可腐烂的组件
     inst.components.perishable:SetPerishTime(TUNING.PERISH_TWO_DAY*5)
     inst.components.perishable:StartPerishing()

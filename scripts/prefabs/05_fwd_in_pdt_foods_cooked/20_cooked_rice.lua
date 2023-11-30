@@ -46,7 +46,15 @@ local function fn()
 
     inst:AddComponent("edible") -- 可食物组件
     inst.components.edible.foodtype = FOODTYPE.VEGGIE
-    inst.components.edible:SetOnEatenFn(function(inst,eater)
+        inst.components.edible:SetOnEatenFn(function(inst,eater)
+            if eater and eater:HasTag("player") then
+                -- 血糖值增加10
+                if eater.components.fwd_in_pdt_wellness then
+                    eater.components.fwd_in_pdt_wellness:DoDelta_Glucose(10)
+                    eater.components.fwd_in_pdt_wellness:ForceRefresh()
+                end
+            end
+        end)
         -- if eater and eater:HasTag("player") then
         --     ---- 给计时器添加 时间，超过1天的算一天。
         --     if eater.components.npng_database:Add("npng_debuff_vitamin_c_retention_buff",480) > 480 then
@@ -57,7 +65,6 @@ local function fn()
         --         eater:AddDebuff("npng_debuff_vitamin_c_retention_buff","npng_debuff_vitamin_c_retention_buff")
         --     end
         -- end
-    end)
 
     inst:AddComponent("perishable") -- 可腐烂的组件
     inst.components.perishable:SetPerishTime(TUNING.PERISH_TWO_DAY*5)
