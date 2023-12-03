@@ -55,30 +55,56 @@ local function fn_green()
             end
 
             local need_num = 100
+            local green_coin_insts = {}
+            local all_num = 0
+
             doer.components.inventory:ForEachItem(function(item_inst)
-                if item_inst and item_inst.prefab == "fwd_in_pdt_item_jade_coin_green" then
-                    if need_num <= 0 then
-                        return
-                    end
-                    if item_inst.components.stackable.stacksize >= need_num then
-                        item_inst.components.stackable:Get(need_num):Remove()
-                        need_num = 0
-                    else
-                        -- local max_num = item_inst.components.stackable.maxsize
-                        local current_num = item_inst.components.stackable.stacksize
-                        if current_num <= need_num then
-                            item_inst:Remove()
-                            need_num = need_num - current_num
-                        else
-                            local rest_num = current_num - need_num
-                            item_inst.components.stackable.stacksize = rest_num
-                            need_num = 0
-                        end
-
-                    end
-
+                if item_inst and item_inst.prefab == "fwd_in_pdt_item_jade_coin_green" and item_inst.components.inventoryitem:GetGrandOwner() == doer then
+                    green_coin_insts[item_inst] = item_inst.components.stackable.stacksize
+                    all_num = all_num + item_inst.components.stackable.stacksize
                 end
             end)
+            if all_num < need_num then
+                return
+            end
+
+            for temp_item,temp_num  in pairs(green_coin_insts) do
+                if temp_num <= need_num then
+                    temp_item:Remove()
+                    need_num = need_num - temp_num
+                else
+                    temp_item.components.stackable:Get(need_num):Remove()
+                    need_num = 0
+                end
+                if need_num <= 0 then
+                    break
+                end
+            end
+
+            -- doer.components.inventory:ForEachItem(function(item_inst)
+            --     if item_inst and item_inst.prefab == "fwd_in_pdt_item_jade_coin_green" then
+            --         if need_num <= 0 then
+            --             return
+            --         end
+            --         if item_inst.components.stackable.stacksize >= need_num then
+            --             item_inst.components.stackable:Get(need_num):Remove()
+            --             need_num = 0
+            --         else
+            --             -- local max_num = item_inst.components.stackable.maxsize
+            --             local current_num = item_inst.components.stackable.stacksize
+            --             if current_num <= need_num then
+            --                 item_inst:Remove()
+            --                 need_num = need_num - current_num
+            --             else
+            --                 local rest_num = current_num - need_num
+            --                 item_inst.components.stackable.stacksize = rest_num
+            --                 need_num = 0
+            --             end
+
+            --         end
+
+            --     end
+            -- end)
 
 
             doer.components.inventory:GiveItem(SpawnPrefab("fwd_in_pdt_item_jade_coin_black"))

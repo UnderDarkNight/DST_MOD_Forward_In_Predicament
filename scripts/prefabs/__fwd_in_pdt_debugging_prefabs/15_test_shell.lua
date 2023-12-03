@@ -17,8 +17,16 @@ local assets =
 local function onequip(inst, owner)
 
     --     owner.AnimState:OverrideSymbol("lantern_overlay", "swap_eye_shield", "swap_shield")
-        owner.AnimState:OverrideSymbol("lantern_overlay", "fwd_in_pdt_equipment_test_shell", "fps_1")
 
+-----------------------------------------------------------------------------
+    local fx = SpawnPrefab("fwd_in_pdt_equipment_test_shell_fx")
+    fx.entity:SetParent(owner.entity)  --- 挂载到玩家inst 上
+    fx.entity:AddFollower()
+    fx.Follower:FollowSymbol(owner.GUID, "swap_object",   0,    0  ,         0  )
+    ------------------------               目标图层      偏移X   偏移Y         图层顺序（负数则在玩家之后）
+
+    inst.fx = fx
+-----------------------------------------------------------------------------
 
 
 
@@ -34,6 +42,12 @@ end
 local function onunequip(inst, owner)
     owner.AnimState:Hide("ARM_carry")
     owner.AnimState:Show("ARM_normal")
+    --------------------------------------------------
+    if inst.fx then
+        inst.fx:Remove()
+        inst.fx = nil
+    end
+    --------------------------------------------------
 
 
     owner:RemoveEventCallback("onattackother", inst._weaponused_callback)
@@ -44,30 +58,30 @@ local function onunequip(inst, owner)
 end
 
 
--- local function fx()
---     local inst = CreateEntity()
---     inst.entity:AddTransform()
---     inst.entity:AddAnimState()
---     inst.entity:AddNetwork()
---     inst.entity:AddSoundEmitter()
+local function fx()
+    local inst = CreateEntity()
+    inst.entity:AddTransform()
+    inst.entity:AddAnimState()
+    inst.entity:AddNetwork()
+    inst.entity:AddSoundEmitter()
 
---     inst:AddTag("INLIMBO")
---     inst:AddTag("FX")
+    inst:AddTag("INLIMBO")
+    inst:AddTag("FX")
 
---     -- FX:ListenForEvent("animqueueover",FX.Remove)
---     -- FX:ListenForEvent("animoever",FX.Remove)
+    -- FX:ListenForEvent("animqueueover",FX.Remove)
+    -- FX:ListenForEvent("animoever",FX.Remove)
 
---     inst.AnimState:SetBank("fwd_in_pdt_equipment_test_shell")
---     inst.AnimState:SetBuild("fwd_in_pdt_equipment_test_shell")
---     inst.AnimState:PlayAnimation("fx",true)
---     inst.AnimState:SetFinalOffset(1)
+    inst.AnimState:SetBank("fwd_in_pdt_equipment_test_shell")
+    inst.AnimState:SetBuild("fwd_in_pdt_equipment_test_shell")
+    inst.AnimState:PlayAnimation("fx",true)
+    inst.AnimState:SetFinalOffset(1)
 
---     -- inst.AnimState:Pause()
---     -- inst.AnimState:SetScale(1.3,1.3,1.3)
---     inst.Transform:SetFourFaced()
+    -- inst.AnimState:Pause()
+    -- inst.AnimState:SetScale(1.3,1.3,1.3)
+    inst.Transform:SetFourFaced()
 
---     return inst
--- end
+    return inst
+end
 
 local function fn()
     local inst = CreateEntity()
@@ -135,4 +149,4 @@ local function fn()
     return inst
 end
 
-return Prefab("fwd_in_pdt_equipment_test_shell", fn, assets)
+return Prefab("fwd_in_pdt_equipment_test_shell", fn, assets),Prefab("fwd_in_pdt_equipment_test_shell_fx", fx, assets)
