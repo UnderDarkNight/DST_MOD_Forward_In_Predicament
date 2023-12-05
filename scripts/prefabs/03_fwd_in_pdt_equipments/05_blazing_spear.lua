@@ -156,7 +156,7 @@ local function fn()
                 inst.components.finiteuses:Use()
             end
         -------- 一定概率斩杀影怪
-            if target:HasTag("shadow") and not target:HasTag("epic") and math.random(1000) < 300 then
+            if target:HasTag("shadow") and not target:HasTag("epic") and math.random(1000) < ( TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE and 7000 or 300) then
                 if target.components.lootdropper then
                     target:RemoveComponent("lootdropper")
                 end
