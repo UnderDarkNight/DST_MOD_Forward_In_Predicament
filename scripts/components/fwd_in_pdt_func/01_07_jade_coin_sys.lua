@@ -309,7 +309,14 @@ local function main_com(self)
                     local old_num = self:Jade_Coin__ATM_Get() or 0
                     local new_num = old_num + num
                     self:Jade_Coin__ATM_Set(new_num)
-                    self:Replica_Set_Simple_Data("jade_coins_in_atm",new_num)   -- 给 client 端hud读取      
+                    -------------------------------------------------------------------------------
+                        self:Replica_Set_Simple_Data("jade_coins_in_atm",new_num)   -- 给 client 端hud读取
+                            for i = 1, 50, 1 do  --- 为避免 netvars 更新不及时造成显示问题，多刷新那么几下，下发数据。
+                                self.inst:DoTaskInTime(i*0.5,function()
+                                    self:Replica_Set_Simple_Data("temp_force_update_num",math.random(1000))                            
+                                end)
+                            end
+                    -------------------------------------------------------------------------------
                 end          
             end
             function self:Jade_Coin__ATM_WithdrawMoney(num) -- 取钱
@@ -325,8 +332,14 @@ local function main_com(self)
                 end
                 local rest_num = current_num - out_num
                 self:Jade_Coin__ATM_Set(rest_num)
-                self:Replica_Set_Simple_Data("jade_coins_in_atm",rest_num)  -- 给 client 端hud读取
-
+                -------------------------------------------------------------------------------
+                    self:Replica_Set_Simple_Data("jade_coins_in_atm",rest_num)  -- 给 client 端hud读取
+                    for i = 1, 50, 1 do  --- 为避免 netvars 更新不及时造成显示问题，多刷新那么几下，下发数据。
+                        self.inst:DoTaskInTime(i*0.5,function()
+                            self:Replica_Set_Simple_Data("temp_force_update_num",math.random(1000))                            
+                        end)
+                    end
+                -------------------------------------------------------------------------------
                 if out_num >= 1 then
                     self:GiveItemByPrefab("fwd_in_pdt_item_jade_coin_green",out_num)
                 end
