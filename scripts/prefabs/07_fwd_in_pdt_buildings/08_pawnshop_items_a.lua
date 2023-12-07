@@ -107,7 +107,7 @@ return{
 	{
 		["name"] = "麋鹿鹅羽毛",
 		["prefab"] = "goose_feather",
-		["cost"] = 1.0,
+		["cost"] = 10.0,
 		["num2give"] = 10.0,
 		["image"] = "",
 		["atlas"] = ""
@@ -156,7 +156,7 @@ return{
 		["name"] = "药酒（棱镜）",
 		["prefab"] = "dish_medicinalliquor",
 		["cost"] = 1.0,
-		["num2give"] = 20.0,
+		["num2give"] = 5,
 		["image"] = "dish_medicinalliquor.tex",
 		["atlas"] = "images/inventoryimages/dish_medicinalliquor.xml"
 	}
