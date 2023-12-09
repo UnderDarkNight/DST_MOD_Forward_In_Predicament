@@ -213,7 +213,10 @@ local function fn()
                 if target.components.lootdropper then
                     target:RemoveComponent("lootdropper")
                 end
-                target.components.health:DoDelta(target.components.health.maxhealth*2)
+                -- target.components.health:DoDelta(target.components.health.maxhealth*2)
+                if target.components.combat then
+                    target.components.combat:GetAttacked(attacker,target.components.health.maxhealth*2)
+                end
                 return
             end
 

@@ -143,13 +143,13 @@ local function fn()
     
 
     inst:AddComponent("weapon")
-    inst.components.weapon:SetDamage(90)
+    inst.components.weapon:SetDamage(118)
 
     -------
 
     inst:AddComponent("finiteuses")
-    inst.components.finiteuses:SetMaxUses(500)
-    inst.components.finiteuses:SetUses(500)
+    inst.components.finiteuses:SetMaxUses(5000)
+    inst.components.finiteuses:SetUses(5000)
     inst.components.finiteuses:SetOnFinished(function()         ---- 耐久用完的时候
         local owner = inst.components.inventoryitem.owner
         if owner and owner:HasTag("player") and owner.components.inventory then
@@ -221,9 +221,9 @@ local function fn()
         inst.components.weapon.GetDamage__fwd_in_pdt_old = inst.components.weapon.GetDamage
         inst.components.weapon.GetDamage = function(self,...)
             if TheWorld.state.israining then
-                return 90*1.25
+                return 118*1.25
             else
-                return 90
+                return 118
             end
         end
     ---------------------------------------------------------------------------------------------

@@ -157,13 +157,13 @@ local function fn()
     
 
     inst:AddComponent("weapon")
-    inst.components.weapon:SetDamage(90)
+    inst.components.weapon:SetDamage(118)
 
     -------
 
     inst:AddComponent("finiteuses")
-    inst.components.finiteuses:SetMaxUses(500)
-    inst.components.finiteuses:SetUses(500)
+    inst.components.finiteuses:SetMaxUses(5000)
+    inst.components.finiteuses:SetUses(5000)
     inst.components.finiteuses:SetOnFinished(function()         ---- 耐久用完的时候
         local owner = inst.components.inventoryitem.owner
         if owner and owner:HasTag("player") and owner.components.inventory then
@@ -203,7 +203,10 @@ local function fn()
                 if target.components.lootdropper then
                     target:RemoveComponent("lootdropper")
                 end
-                target.components.health:DoDelta(target.components.health.maxhealth*2)
+                -- target.components.health:DoDelta(target.components.health.maxhealth*2)
+                if target.components.combat then
+                    target.components.combat:GetAttacked(attacker,target.components.health.maxhealth*2)
+                end
                 return
             end
 

@@ -129,14 +129,14 @@ local function fn()
 
 
     inst:AddComponent("weapon")
-    inst.components.weapon:SetDamage(TUNING.SPEAR_DAMAGE)
+    inst.components.weapon:SetDamage(59.5)
     inst.components.weapon:SetRange(2.5,2.5)
 
     -------
 
     inst:AddComponent("finiteuses")
-    inst.components.finiteuses:SetMaxUses(150)
-    inst.components.finiteuses:SetUses(150)
+    inst.components.finiteuses:SetMaxUses(1000)
+    inst.components.finiteuses:SetUses(1000)
     inst.components.finiteuses:SetOnFinished(inst.Remove)
 
     
@@ -188,9 +188,9 @@ local function fn()
         inst.components.weapon.GetDamage__fwd_in_pdt_old = inst.components.weapon.GetDamage
         inst.components.weapon.GetDamage = function(self,...)
             if TheWorld.state.israining then
-                return 34*1.25
+                return 59.5*1.25
             else
-                return 34
+                return 59.5
             end
         end
     ---------------------------------------------------------------------------------------------

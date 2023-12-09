@@ -128,13 +128,13 @@ local function fn()
 
 
     inst:AddComponent("weapon")
-    inst.components.weapon:SetDamage(34)
+    inst.components.weapon:SetDamage(59.5)
     inst.components.weapon:SetRange(2.5,2.5)
     -------
 
     inst:AddComponent("finiteuses")
-    inst.components.finiteuses:SetMaxUses(150)
-    inst.components.finiteuses:SetUses(150)
+    inst.components.finiteuses:SetMaxUses(1000)
+    inst.components.finiteuses:SetUses(1000)
     inst.components.finiteuses:SetOnFinished(inst.Remove)
 
     
@@ -160,7 +160,10 @@ local function fn()
                 if target.components.lootdropper then
                     target:RemoveComponent("lootdropper")
                 end
-                target.components.health:DoDelta(target.components.health.maxhealth*2)
+                -- target.components.health:DoDelta(target.components.health.maxhealth*2)
+                if target.components.combat then
+                    target.components.combat:GetAttacked(attacker,target.components.health.maxhealth*2)
+                end
                 return
             end
 
