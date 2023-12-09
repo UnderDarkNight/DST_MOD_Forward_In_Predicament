@@ -25,7 +25,7 @@ local flg,error_code = pcall(function()
     -- local mid_tile_x , mid_tile_y = TheWorld.Map:GetTileCoordsAtPoint(x,0,z)
     -- print("tile",mid_tile_x,mid_tile_y)
 
-    -- print("current tile ",TheWorld.Map:GetTileAtPoint(x,y,z))
+    print("current tile ",TheWorld.Map:GetTileAtPoint(x,y,z))
 
     -- print("current tile ",TheWorld.Map:GetTileAtPoint(ThePlayer.Transform:GetWorldPosition()))
     -- TheWorld.Map:SetTile(mid_tile_x,mid_tile_y,4)
@@ -262,7 +262,7 @@ local flg,error_code = pcall(function()
     ----------------------------------------------------------------------------------------------------------------
     -- ThePlayer.components.talker:Say(ThePlayer.components.fwd_in_pdt_func:IsAdmin() and "有管理员权限" or "没管理员权限")
     ----------------------------------------------------------------------------------------------------------------
-    print(ThePlayer.components.fwd_in_pdt_func:Jade_Coin__Spend(100))
+    -- print(ThePlayer.components.fwd_in_pdt_func:Jade_Coin__Spend(100))
     ----------------------------------------------------------------------------------------------------------------
     --- 地图解锁
             -------   doer.player_classified.MapExplorer  组件 有很多函数

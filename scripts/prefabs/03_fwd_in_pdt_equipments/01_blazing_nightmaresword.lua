@@ -189,6 +189,10 @@ local function fn()
 
 
     -------------------------------------------------------------------------------------------
+    ----- 位面伤害
+        inst:AddComponent("planardamage")
+        inst.components.planardamage:SetBaseDamage(20)
+    -------------------------------------------------------------------------------------------
     ----- 攻击的时候执行的代码
     inst.components.weapon:SetOnAttack(function(inst,attacker,target)
         if not ( target and attacker ) then

@@ -144,7 +144,10 @@ local function fn()
 
     MakeHauntableLaunch(inst)
 
-
+    -------------------------------------------------------------------------------------------
+    ----- 位面伤害
+        inst:AddComponent("planardamage")
+        inst.components.planardamage:SetBaseDamage(20)
     ---------------------------------------------------------------------------------------------
     --- 添加长矛特殊效果代码
     inst.components.weapon:SetOnAttack(function(inst,attacker,target)

@@ -19,11 +19,15 @@ for k, prefab_name in pairs(target_rocks) do
 
 
                                             inst:ListenForEvent("onremove",function()
-                                                SpawnPrefab("fwd_in_pdt_natural_resources_spawner"):PushEvent("Set",{
-                                                    pt = Vector3(inst.Transform:GetWorldPosition()),
-                                                    prefab = target_rocks[math.random(#target_rocks)],
-                                                    days = math.random(15, 30),
-                                                })
+                                                local x,y,z = inst.Transform:GetWorldPosition()
+                                                local current_tile = TheWorld.Map:GetTileAtPoint(x,y,z)
+                                                if current_tile == 4 or current_tile == 31 then
+                                                    SpawnPrefab("fwd_in_pdt_natural_resources_spawner"):PushEvent("Set",{
+                                                        pt = Vector3(inst.Transform:GetWorldPosition()),
+                                                        prefab = target_rocks[math.random(#target_rocks)],
+                                                        days = math.random(15, 30),
+                                                    })
+                                                end
                                             end)
 
                                         end
