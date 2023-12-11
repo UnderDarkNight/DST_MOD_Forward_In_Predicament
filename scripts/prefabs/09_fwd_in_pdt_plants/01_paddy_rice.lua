@@ -111,13 +111,23 @@ local assets =
         ------------------------
             inst.components.pickable.picksound = "dontstarve/wilson/pickup_reeds"
             inst.components.pickable:SetOnPickedFn(function(inst,doer)  --- 被玩家采集后执行
+                -- print("+++++++6666666666666666+++",doer)
                 local rice_num = 5
                 if inst.components.fwd_in_pdt_data:Get("fertilized") then
                     rice_num = 10
                 end
-                doer.SoundEmitter:PlaySound("dontstarve/wilson/pickup_reeds")            
-
-                doer.components.fwd_in_pdt_func:GiveItemByPrefab("fwd_in_pdt_plant_paddy_rice_seed",rice_num)
+                if doer:HasTag("player") then
+                    doer.SoundEmitter:PlaySound("dontstarve/wilson/pickup_reeds")
+                    doer.components.fwd_in_pdt_func:GiveItemByPrefab("fwd_in_pdt_plant_paddy_rice_seed",rice_num)
+                else
+                    TheWorld.components.fwd_in_pdt_func:Throw_Out_Items({
+                            target = inst,
+                            name = "fwd_in_pdt_plant_paddy_rice_seed",
+                            num = rice_num,    -- default
+                            range = 2, -- default
+                            height = 3,-- default
+                    })
+                end
                 inst:Remove()
             end)
         ------------------------

@@ -134,16 +134,48 @@ local assets =
                     
                 --- 玩家采集
                     inst.components.pickable:SetOnPickedFn(function(inst,doer)  --- 被玩家采集后执行
+                        local item_prefab = "fwd_in_pdt_food_orange"
+                        local seed_prefab = "fwd_in_pdt_plant_orange_seed"
                         if inst.components.fwd_in_pdt_data:Get("fertilized") then
-                            doer.components.fwd_in_pdt_func:GiveItemByPrefab("fwd_in_pdt_food_orange",math.random(3,6))
-                            doer.components.fwd_in_pdt_func:GiveItemByPrefab("fwd_in_pdt_plant_orange_seed",math.random(5))
+                                    if doer:HasTag("player") then
+                                        doer.components.fwd_in_pdt_func:GiveItemByPrefab(item_prefab,math.random(3,6))
+                                        doer.components.fwd_in_pdt_func:GiveItemByPrefab(seed_prefab,math.random(5))
+                                        doer.SoundEmitter:PlaySound("dontstarve/wilson/pickup_reeds")        
+
+                                    else
+                                        TheWorld.components.fwd_in_pdt_func:Throw_Out_Items({
+                                                target = inst,
+                                                name = item_prefab,
+                                                num = math.random(3,6),    -- default
+                                                range = 2, -- default
+                                                height = 3,-- default
+                                        })
+                                        TheWorld.components.fwd_in_pdt_func:Throw_Out_Items({
+                                                target = inst,
+                                                name = "fwd_in_pdt_plant_orange_seed",
+                                                num = math.random(5),    -- default
+                                                range = 2, -- default
+                                                height = 3,-- default
+                                        })
+                                    end
                         else
-                            doer.components.fwd_in_pdt_func:GiveItemByPrefab("fwd_in_pdt_food_orange",math.random(3))
-                            if math.random(100) <= 30 then
-                                doer.components.fwd_in_pdt_func:GiveItemByPrefab("fwd_in_pdt_plant_orange_seed",math.random(3))
-                            end
+                            if doer:HasTag("player") then
+                                    doer.components.fwd_in_pdt_func:GiveItemByPrefab(item_prefab,math.random(3))
+                                    if math.random(100) <= 30 then
+                                        doer.components.fwd_in_pdt_func:GiveItemByPrefab(seed_prefab,math.random(3))
+                                    end
+                                    doer.SoundEmitter:PlaySound("dontstarve/wilson/pickup_reeds")        
+
+                                else
+                                        TheWorld.components.fwd_in_pdt_func:Throw_Out_Items({
+                                                target = inst,
+                                                name = item_prefab,
+                                                num = math.random(3),    -- default
+                                                range = 2, -- default
+                                                height = 3,-- default
+                                        })
+                                end
                         end
-                        doer.SoundEmitter:PlaySound("dontstarve/wilson/pickup_reeds")        
                         inst:Remove()
                     end)
             --------------------------------------------------------------------

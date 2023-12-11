@@ -31,17 +31,51 @@ local assets =
             inst.components.pickable.picksound = "dontstarve/wilson/pickup_reeds"
             inst.components.pickable:SetOnPickedFn(function(inst,doer)  --- 被玩家采集后执行
 
-                if not inst.components.fwd_in_pdt_data:Get("fertilized") then   --- 没施肥
-                    doer.components.fwd_in_pdt_func:GiveItemByPrefab("fwd_in_pdt_material_aster_tataricus_l_f",1)
-                else    
-                    --- 施肥给2个，概率得种子
-                    doer.components.fwd_in_pdt_func:GiveItemByPrefab("fwd_in_pdt_material_aster_tataricus_l_f",2)
-                    if math.random(1000) < 100 then
-                        doer.components.fwd_in_pdt_func:GiveItemByPrefab("fwd_in_pdt_plant_aster_tataricus_l_f_seed",math.random(3))
-                    end
-                end
-                doer.SoundEmitter:PlaySound("dontstarve/wilson/pickup_reeds")
-                inst:Remove()
+                                local item_prefab = "fwd_in_pdt_material_aster_tataricus_l_f"
+                                local seed_prefab = "fwd_in_pdt_plant_aster_tataricus_l_f_seed"
+                                if not inst.components.fwd_in_pdt_data:Get("fertilized") then   --- 没施肥
+                                    if doer:HasTag("player") then
+                                            doer.components.fwd_in_pdt_func:GiveItemByPrefab(item_prefab,1)
+                                            doer.SoundEmitter:PlaySound("dontstarve/wilson/pickup_reeds")
+
+                                    else
+                                            TheWorld.components.fwd_in_pdt_func:Throw_Out_Items({
+                                                target = inst,
+                                                name = item_prefab,
+                                                num = 1,    -- default
+                                                range = 2, -- default
+                                                height = 3,-- default
+                                            })
+                                    end
+                                else    
+                                    --- 施肥给2个，概率得种子
+                                    if doer:HasTag("player") then
+                                            doer.components.fwd_in_pdt_func:GiveItemByPrefab(item_prefab,2)
+                                            if math.random(1000) < 100 then
+                                                doer.components.fwd_in_pdt_func:GiveItemByPrefab(seed_prefab,math.random(3))
+                                            end
+                                            doer.SoundEmitter:PlaySound("dontstarve/wilson/pickup_reeds")                                    
+                                    else
+                                            TheWorld.components.fwd_in_pdt_func:Throw_Out_Items({
+                                                target = inst,
+                                                name = item_prefab,
+                                                num = 2,    -- default
+                                                range = 2, -- default
+                                                height = 3,-- default
+                                            })
+                                            if math.random(1000) < 100 then
+                                                TheWorld.components.fwd_in_pdt_func:Throw_Out_Items({
+                                                    target = inst,
+                                                    name = seed_prefab,
+                                                    num = math.random(3),    -- default
+                                                    range = 2, -- default
+                                                    height = 3,-- default
+                                                })
+                                            end
+                                    end
+                                end
+
+                        inst:Remove()
             end)
         ------------------------
         ---- 自己封装个API 方便一些
