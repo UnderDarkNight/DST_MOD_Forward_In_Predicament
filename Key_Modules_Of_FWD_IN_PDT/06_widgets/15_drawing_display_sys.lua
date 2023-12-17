@@ -38,6 +38,7 @@ AddClassPostConstruct("screens/playerhud",function(self)
         --     time = 5 ,      --- 默认3秒后删除
         --     speed = 1,      --- 默认播放速度
         --     scale = 1,      --- 默认缩放
+        --     a = 1 ,         --- 透明度
         --     location = 1,   --[[
         --                         以左上角为1开始。右下角为9。屏幕锚点为9个
         --                         1   2    3
@@ -127,6 +128,10 @@ AddClassPostConstruct("screens/playerhud",function(self)
                 if cmd_table.speed then
                     ui_anim:SetSpeed(cmd_table.speed)
                 end
+                if type(cmd_table.a) == "number" then
+                    ui_anim:GetAnimState():SetMultColour(1,1,1,cmd_table.a)
+                end
+
                 ui_anim:Add_Animqueueover_Fn(function()
                     -- print(" drawing display  animqueueover")
                     root:Kill()
