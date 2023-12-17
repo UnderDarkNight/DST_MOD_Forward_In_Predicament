@@ -12,8 +12,31 @@ end
 local assets =
 {
     Asset("ANIM", "anim/fwd_in_pdt_building_paddy_windmill.zip"),
+    Asset("ANIM", "anim/fwd_in_pdt_building_paddy_windmill_pink.zip"),
     Asset("ANIM", "anim/fwd_in_pdt_building_paddy_windmill___paddy.zip"),
 }
+
+-------------------------------------------------------------------------------------------------------------------------------
+---- 皮肤API 套件
+    ---- 物品用的skin数据
+    local skins_data_item = {
+        ["fwd_in_pdt_building_paddy_windmill_pink"] = {             --- 皮肤名字，全局唯一。
+            bank = "fwd_in_pdt_building_paddy_windmill_pink",                               --- 制作完成后切换的 bank
+            build = "fwd_in_pdt_building_paddy_windmill_pink",                              --- 制作完成后切换的 build
+            atlas = "images/map_icons/fwd_in_pdt_building_paddy_windmill_pink.xml",                                        --- 【制作栏】皮肤显示的贴图，
+            image = "fwd_in_pdt_building_paddy_windmill_pink",                              --- 【制作栏】皮肤显示的贴图， 不需要 .tex
+            minimap = "fwd_in_pdt_building_paddy_windmill_pink.tex",                --- 小地图图标
+            -- name = "尖锐",                                                                         --- 【制作栏】皮肤的名字
+        },
+    }
+
+    FWD_IN_PDT_MOD_SKIN.SKIN_INIT(skins_data_item,"fwd_in_pdt_building_paddy_windmill")     --- 往总表注册所有皮肤
+
+    local function Set_ReSkin_API_Default_Animate(inst,bank,build,minimap)      -- 在 inst.AnimState:PlayAnimation() 前启用本函数
+        FWD_IN_PDT_MOD_SKIN.Set_ReSkin_API_Default_Animate(inst,bank,build,minimap)
+    end
+          
+-------------------------------------------------------------------------------------------------------------------------------
 
 local function fn()
     local inst = CreateEntity()
@@ -25,7 +48,7 @@ local function fn()
     inst.entity:AddSoundEmitter()
 
     inst.entity:AddMiniMapEntity()
-    inst.MiniMapEntity:SetIcon("fwd_in_pdt_building_paddy_windmill.tex")
+    -- inst.MiniMapEntity:SetIcon("fwd_in_pdt_building_paddy_windmill.tex")
 
     MakeObstaclePhysics(inst, 1.5)
 
@@ -42,7 +65,13 @@ local function fn()
     
     inst.entity:SetPristine()
 
-
+    -------------------------------------------------------
+    ---- Skin API Register
+        Set_ReSkin_API_Default_Animate(inst,"fwd_in_pdt_building_paddy_windmill","fwd_in_pdt_building_paddy_windmill","fwd_in_pdt_building_paddy_windmill.tex")
+        if TheWorld.ismastersim then
+            inst:AddComponent("fwd_in_pdt_func"):Init("skin")            
+        end
+    -------------------------------------------------------
     if not TheWorld.ismastersim then
         return inst
     end

@@ -110,6 +110,10 @@ AddPlayerPostInit(function(inst)
                         ["fwd_in_pdt_building_medical_check_up_machine"] = {
                             "fwd_in_pdt_building_medical_check_up_machine_punk",
                         },
+                    ---- 水稻风车
+                        ["fwd_in_pdt_building_paddy_windmill"] = {
+                            "fwd_in_pdt_building_paddy_windmill_pink",
+                        },
                     ---- 鼹鼠背包
                         ["fwd_in_pdt_equipment_mole_backpack"] = {
                             -- "fwd_in_pdt_equipment_mole_backpack_panda",  --- 免费送

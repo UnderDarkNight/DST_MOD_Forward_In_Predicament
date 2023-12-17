@@ -39,6 +39,7 @@ local files_name = {
 		"fwd_in_pdt_building_medical_check_up_machine",				--- 健康检查机
 		"fwd_in_pdt_building_medical_check_up_machine_punk",		--- 健康检查机【朋克皮肤】
 		"fwd_in_pdt_building_paddy_windmill",						--- 稻田风车
+		"fwd_in_pdt_building_paddy_windmill_pink",					--- 稻田风车
 		"fwd_in_pdt_building_pawnshop",								--- 当铺
 		"fwd_in_pdt_building_atm",									--- ATM
 		"fwd_in_pdt_building_bulletin_board",						--- 公告板
