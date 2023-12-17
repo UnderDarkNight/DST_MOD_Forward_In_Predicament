@@ -32,4 +32,6 @@ modimport("Key_Modules_Of_FWD_IN_PDT/06_widgets/13_doll_clamping_machine.lua")  
 
 modimport("Key_Modules_Of_FWD_IN_PDT/06_widgets/14_task_scroll.lua")    --- 任务卷轴
 
+modimport("Key_Modules_Of_FWD_IN_PDT/06_widgets/15_drawing_display_sys.lua")    --- 立绘播放
+
 

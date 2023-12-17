@@ -81,3 +81,16 @@
     -- SendModRPCToServer(MOD_RPC[TUNING["Forward_In_Predicament.RPC_NAMESPACE"]]["fwd_in_pdt_com_task_scroll.client2server"],inst)
 
 ---------------------------------------------------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------------------------------------------------
+---------- RPC 下发 立绘播放 事件
+AddClientModRPCHandler(TUNING["Forward_In_Predicament.RPC_NAMESPACE"],"drawing",function(json_data)
+    if ThePlayer and json_data then
+        local cmd_table = json.decode(json_data)
+        if cmd_table then
+            ThePlayer.HUD:fwd_in_pdt_drawing_display(cmd_table)
+        end
+    end
+end)
+-- SendModRPCToClient(CLIENT_MOD_RPC[TUNING["Forward_In_Predicament.RPC_NAMESPACE"]]["drawing"],inst.userid,json.encode(json_data))
+-- 给 指定userid 的客户端发送RPC

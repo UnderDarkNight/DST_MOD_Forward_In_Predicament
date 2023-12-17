@@ -25,7 +25,7 @@ local flg,error_code = pcall(function()
     -- local mid_tile_x , mid_tile_y = TheWorld.Map:GetTileCoordsAtPoint(x,0,z)
     -- print("tile",mid_tile_x,mid_tile_y)
 
-    print("current tile ",TheWorld.Map:GetTileAtPoint(x,y,z))
+    -- print("current tile ",TheWorld.Map:GetTileAtPoint(x,y,z))
 
     -- print("current tile ",TheWorld.Map:GetTileAtPoint(ThePlayer.Transform:GetWorldPosition()))
     -- TheWorld.Map:SetTile(mid_tile_x,mid_tile_y,4)
@@ -305,6 +305,18 @@ local flg,error_code = pcall(function()
     --         for k, v in pairs(foods["bonestew"]) do
     --             print(k,v)
     --         end
+    ----------------------------------------------------------------------------------------------------------------
+    ThePlayer:PushEvent("fwd_in_pdt.drawing.display",{
+        bank = "fwd_in_pdt_drawing_test",
+        build = "fwd_in_pdt_drawing_test",
+        anim = "idle",
+        scale = 0.3,
+        speed = 2,
+        loop = true,
+        id = "555",
+        location = 7,
+        kill = true,
+    })
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)
