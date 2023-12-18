@@ -30,6 +30,7 @@ local files_name = {
 		"fwd_in_pdt_item_glass_horn"	,				  	    --- 玻璃号角
 		"fwd_in_pdt_item_advertising_leaflet"	, 				--- 广告单
 		"fwd_in_pdt_item_adrenaline_injection"	, 				--- 肾上腺素注射剂
+		"fwd_in_pdt_item_bloody_flask"	, 						--- 卡尔的血瓶
 	---------------------------------------------------------------------------------------
 	-- 02_fwd_in_pdt_materials
 		"fwd_in_pdt_material_tree_resin",						--- 树脂
@@ -59,6 +60,8 @@ local files_name = {
 		"fwd_in_pdt_equipment_huge_soybean",					--- 巨大豆荚
 		"fwd_in_pdt_equipment_huge_orange",						--- 巨大橙子
 		"fwd_in_pdt_equipment_mole_backpack",					--- 鼹鼠背包
+		"fwd_in_pdt_equipment_vampire_sword",					--- 吸血鬼剑
+		"fwd_in_pdt_equipment_vampire_sword_laser",				--- 吸血鬼剑-激光皮肤
 	---------------------------------------------------------------------------------------
 	-- 04_fwd_in_pdt_foods
 		"fwd_in_pdt_food_raw_milk",								--- 生牛奶

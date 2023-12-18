@@ -35,6 +35,9 @@ modimport("Key_Modules_Of_FWD_IN_PDT/05_Actions/15_special_pick_action.lua")    
 
 modimport("Key_Modules_Of_FWD_IN_PDT/05_Actions/16_shave_action_upgrade.lua")       --- 修改 剃刀相关动作和出发事件
 
+modimport("Key_Modules_Of_FWD_IN_PDT/05_Actions/17_special_quick_eat_action.lua")       --- SG动作，特殊吃东西。
+modimport("Key_Modules_Of_FWD_IN_PDT/05_Actions/18_special_eat_action.lua")             --- SG动作，特殊吃东西。
+
 
 
 

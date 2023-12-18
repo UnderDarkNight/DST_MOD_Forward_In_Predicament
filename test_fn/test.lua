@@ -306,18 +306,23 @@ local flg,error_code = pcall(function()
     --             print(k,v)
     --         end
     ----------------------------------------------------------------------------------------------------------------
-    ThePlayer:PushEvent("fwd_in_pdt.drawing.display",{
-        bank = "fwd_in_pdt_drawing_test",
-        build = "fwd_in_pdt_drawing_test",
-        anim = "idle",
-        scale = 0.3,
-        speed = 2,
-        loop = true,
-        -- id = "555",
-        location = 7,
-        -- kill = true,
-        a = 0.5,
-    })
+    --- 立绘播放
+        -- ThePlayer:PushEvent("fwd_in_pdt.drawing.display",{
+        --     bank = "fwd_in_pdt_drawing_test",
+        --     build = "fwd_in_pdt_drawing_test",
+        --     anim = "idle",
+        --     scale = 0.3,
+        --     speed = 2,
+        --     loop = true,
+        --     -- id = "555",
+        --     location = 7,
+        --     -- kill = true,
+        --     a = 0.5,
+        -- })
+    ----------------------------------------------------------------------------------------------------------------
+    --- 
+            -- ThePlayer.components.health.currenthealth = 20
+            ThePlayer.components.fwd_in_pdt_wellness:Remove_Debuff("fwd_in_pdt_welness_carl_thirst_for_blood")
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)

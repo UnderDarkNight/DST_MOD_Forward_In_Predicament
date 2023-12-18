@@ -38,6 +38,10 @@ local prefabs_name_list = {
     "09_flame_up",            --- 火焰冒出
     "10_red_leaves_fall_down",            --- 红色树叶落下
     "11_sky_door",            --- 天空的传送门
+    "12_shadow_shell",              --- 暗影护盾
+    "13_shadow_feather",            --- 暗影羽毛
+    "14_shadow_bats",               --- 暗影主教的蝙蝠
+
     
 }
 

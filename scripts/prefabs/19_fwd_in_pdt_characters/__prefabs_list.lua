@@ -27,16 +27,26 @@ local Prefabs_addr_base = string.sub(temp_addr,1,temp_str_index2) .. "/"    --- 
 -- local Prefabs_addr_base = "scripts/prefabs/01_fwd_in_pdt_items/"               --- 文件夹路径
 local prefabs_name_list = {
 
-
+    
 
 }
 
 
 ---------------------------------------------------------------------------
+---- 通过开关加载/关闭 角色
+if TUNING["Forward_In_Predicament.Config"].ALLOW_CHARACTERS then
+    local temp_file_list = {
+        "01_01_carl_none",          ---- 皮肤prefab
+        "01_02_carl",               ---- 角色prefab
+    }
+    for k, v in pairs(temp_file_list) do
+        table.insert(prefabs_name_list,v)
+    end
+end
+---------------------------------------------------------------------------
 ---- 正在测试的物品
 if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE == true then
     local debugging_name_list = {
-
 
 
     }

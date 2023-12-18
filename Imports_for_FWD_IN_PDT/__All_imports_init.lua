@@ -21,3 +21,5 @@ modimport("Imports_for_FWD_IN_PDT/07_minimap_icon_register.lua")	        ---- �
 modimport("Imports_for_FWD_IN_PDT/08_componentactions_crash_fix.lua")	        ---- 尝试做个补丁
 
 modimport("Imports_for_FWD_IN_PDT/09_drawings.lua")	        ---- 立绘用的动画素材统一在这加载
+
+modimport("Imports_for_FWD_IN_PDT/10_load_characters_assets.lua")	        ---- 角色相关的素材文件

@@ -161,6 +161,28 @@ configuration_options =
       },
       default = "Admin",
     },
+----------------------------------------------------------------------------------------------------------
+----- 角色相关的管理设置
+    {
+      name = "FFFFFFF",
+      label = IsChinese() and "角色相关设置" or "Character-related settings", --- 隔断测试
+      hover = "",
+      options = {{description = "", data = 0}},
+      default = 0,
+    },
+
+    {
+      name = "ALLOW_CHARACTERS",
+      label = IsChinese() and "加载角色" or "Load Characters",
+      hover = IsChinese() and "允许使用本MOD的角色" or "The characters in this mod are allowed to be used",
+      options =
+      {
+        {description = IsChinese() and "加载" or "ON", data = true},
+        {description = IsChinese() and "不加载" or "OFF", data = false},
+      },
+      default = true,
+    },
+----------------------------------------------------------------------------------------------------------
 
   
 }

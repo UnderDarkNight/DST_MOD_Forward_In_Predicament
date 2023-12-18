@@ -33,3 +33,5 @@ modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/12_raz
 modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/13_evergreen_tree.lua")    --- 修改 常青树
 
 modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/14_cookpot_upgrade_2_chaotic_type.lua")    --- 修改 烹饪锅，可以用【混沌眼球】升级
+
+modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/15_shadowheart.lua")    --- 修改 暗影心房，可以被特定角色吃

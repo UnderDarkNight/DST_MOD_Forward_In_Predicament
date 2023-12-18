@@ -48,6 +48,10 @@ local prefabs_name_list = {
     "11_04_food_effect_thousand_year_old_egg",          -- 皮蛋 的 buff
     "11_05_food_effect_protein_powder",                 -- 蛋白质粉 的 buff
 
+    "12_01_character_buff_carl_thirst_for_blood",                 -- 角色卡尔专属buff
+    "12_02_character_buff_carl_thirst_for_blood__shadowheart",    -- 角色卡尔专属buff  暗影心房用的
+    "12_03_character_buff_carl_shadowheart_damage",               -- 角色卡尔专属buff  暗影心房用的
+
     
 }
 

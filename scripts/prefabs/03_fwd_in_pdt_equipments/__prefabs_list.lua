@@ -48,6 +48,8 @@ local prefabs_name_list = {
 
     "13_mole_backpack",                  --- 鼹鼠背包
 
+    "14_vampire_sword",                     --- 蝙蝠剑
+
     
 }
 

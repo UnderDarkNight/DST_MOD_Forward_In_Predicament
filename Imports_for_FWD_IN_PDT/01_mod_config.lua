@@ -13,6 +13,10 @@ TUNING["Forward_In_Predicament.Config"].Element_Core_Probability = GetModConfigD
 TUNING["Forward_In_Predicament.Config"].ATM_CROSS_ARCHIVE = GetModConfigData("ATM_CROSS_ARCHIVE")     --- 跨存档ATM
 
 
+---- 角色相关的操作
+TUNING["Forward_In_Predicament.Config"].ALLOW_CHARACTERS = GetModConfigData("ALLOW_CHARACTERS")     --- 允许使用角色
+
+
 
 
 

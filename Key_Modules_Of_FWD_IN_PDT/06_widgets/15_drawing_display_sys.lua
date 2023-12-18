@@ -46,6 +46,7 @@ AddClassPostConstruct("screens/playerhud",function(self)
         --                         7   8    9
         --                     ]]----
         --     ---
+        --     pt = vector3(0,0,0),
         --     id = "",        --- 用来外部控制强制关闭。可以为 nil
         --     kill = false,   --- 配合id 用来强制关闭
         -- }
@@ -92,7 +93,10 @@ AddClassPostConstruct("screens/playerhud",function(self)
             --------- 设置缩放
                 local scale = cmd_table.scale or 1
                 ui_anim:SetScale(scale,scale,scale)
-
+            --------- 坐标偏移
+                if type(cmd_table.pt) == "table" and cmd_table.pt.x and cmd_table.pt.y then
+                    ui_anim:SetPosition(cmd_table.pt.x,cmd_table.pt.y)
+                end
             --------- 添加动画函数、时间监听函数 animqueueover  animover 事件 
                 ---- 先添加函数
                     function ui_anim:PlayAnimation(anim,loop_flag)
@@ -120,11 +124,19 @@ AddClassPostConstruct("screens/playerhud",function(self)
                 ui_anim:SetBank(cmd_table.bank)
                 ui_anim:SetBuild(cmd_table.build)
                 ui_anim:PlayAnimation(cmd_table.anim, cmd_table.loop)
-                if type(cmd_table.push) == "table" then
-                    for k, v in pairs(cmd_table.push) do
-                        ui_anim:PushAnimation(v,cmd_table.loop)
+                    if type(cmd_table.push) == "table" then
+                        for k, v in pairs(cmd_table.push) do
+                            ui_anim:PushAnimation(v,cmd_table.loop)
+                        end
+                    else
+                        ui_anim:Add_Animover_Fn(function()
+                            -- print(" drawing display  animqueueover")
+                            root:Kill()
+                            if cmd_table.id ~= nil then
+                                hud.fwd_in_pdt_drawing_display__widget_children_by_id[cmd_table.id] = nil
+                            end
+                        end)
                     end
-                end
                 if cmd_table.speed then
                     ui_anim:SetSpeed(cmd_table.speed)
                 end

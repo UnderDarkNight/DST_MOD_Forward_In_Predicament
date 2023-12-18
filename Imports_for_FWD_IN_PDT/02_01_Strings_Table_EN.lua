@@ -175,6 +175,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "Respond with a small amount of Wellness, the more you use it in the short term the less effective it will be",
                 ["recipe_desc"] = "Respond with a small amount of Wellness, the more you use it in the short term the less effective it will be",
             },
+            ["fwd_in_pdt_item_bloody_flask"] = {
+                ["name"] = "Carl's bloody flask of desire.",
+                ["inspect_str"] = "There's a flask of blood in there .",
+                ["recipe_desc"] = "Flask your own blood .",
+            },
         --------------------------------------------------------------------
         ---- 02_fwd_in_pdt_materials
             ["fwd_in_pdt_material_tree_resin"] = {
@@ -280,6 +285,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name.rabbit"] = "Rabbit Backpack",
                 ["name.snowman"] = "Snowman Backpac",
 
+            },
+            ["fwd_in_pdt_equipment_vampire_sword"] = {
+                ["name"] = "Vampire Sword",
+                ["inspect_str"] = "That's a pretty mean sword.",
+                ["recipe_desc"] = "That's a pretty mean sword.",
             },
         --------------------------------------------------------------------
         ---- 04_fwd_in_pdt_foods
@@ -679,6 +689,9 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
         ---- 18_fwd_in_pdt_projectiles
         --------------------------------------------------------------------
         ---- 19_fwd_in_pdt_characters
+            ["fwd_in_pdt_carl"] = {
+                ["death_thirst_for_blood"] = "[ {XXXX} ] died of thirst for blood. Too bad. Gotta work harder to get it .",
+            },
         --------------------------------------------------------------------
         ---- 20_fwd_in_pdt_events
         --------------------------------------------------------------------

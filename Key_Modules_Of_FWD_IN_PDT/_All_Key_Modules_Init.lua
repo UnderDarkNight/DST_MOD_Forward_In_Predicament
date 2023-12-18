@@ -45,6 +45,9 @@ modimport("Key_Modules_Of_FWD_IN_PDT/10_Cook/_All_Cooking_Related_Init.lua")
 modimport("Key_Modules_Of_FWD_IN_PDT/12_turfs/_All_Turfs_Related_Init.lua")
 --- 地皮相关的注册
 
+modimport("Key_Modules_Of_FWD_IN_PDT/11_characters/_all_characters_related_init.lua")
+--- 角色相关的注册
+
 
 
 -------------- 不同版本开发专用的调试区域

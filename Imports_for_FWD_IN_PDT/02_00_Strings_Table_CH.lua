@@ -178,6 +178,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "回复少量体质值，短期内使用越多效果越差",
                 ["recipe_desc"] = "回复少量体质值，短期内使用越多效果越差",
             },
+            ["fwd_in_pdt_item_bloody_flask"] = {
+                ["name"] = "卡尔渴望的血瓶",
+                ["inspect_str"] = "里面一大瓶鲜血",
+                ["recipe_desc"] = "把自己的鲜血装瓶里",
+            },
         --------------------------------------------------------------------
         ---- 02_fwd_in_pdt_materials
             ["fwd_in_pdt_material_tree_resin"] = {
@@ -286,6 +291,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name.cat"] = "猫钱钱背包",
                 ["name.rabbit"] = "粉兔兔背包",
                 ["name.snowman"] = "雪人背包",
+            },
+            ["fwd_in_pdt_equipment_vampire_sword"] = {
+                ["name"] = "吸血鬼之剑",
+                ["inspect_str"] = "这剑很凶的样子",
+                ["recipe_desc"] = "这剑很凶的样子",
             },
         --------------------------------------------------------------------
         ---- 04_fwd_in_pdt_foods
@@ -684,6 +694,9 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
         ---- 18_fwd_in_pdt_projectiles
         --------------------------------------------------------------------
         ---- 19_fwd_in_pdt_characters
+            ["fwd_in_pdt_carl"] = {
+                ["death_thirst_for_blood"] = "【{XXXX}】死于对鲜血的渴望，太惨了，还得更加努力获得鲜血才行",
+            },
         --------------------------------------------------------------------
         ---- 20_fwd_in_pdt_events
         --------------------------------------------------------------------

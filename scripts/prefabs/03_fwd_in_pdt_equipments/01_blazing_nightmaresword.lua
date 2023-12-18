@@ -204,9 +204,9 @@ local function fn()
             end
         -------- 一定概率斩杀影怪
             if target:HasTag("shadow") and not target:HasTag("epic") and  math.random(1000) < ( TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE and 7000 or 300)  then
-                if target.components.lootdropper then
-                    target:RemoveComponent("lootdropper")
-                end
+                -- if target.components.lootdropper then
+                --     target:RemoveComponent("lootdropper")
+                -- end
                 -- target.components.health:DoDelta(target.components.health.maxhealth*2)
                 if target.components.combat then
                     target.components.combat:GetAttacked(attacker,target.components.health.maxhealth*2)

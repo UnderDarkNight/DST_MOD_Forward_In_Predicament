@@ -98,6 +98,10 @@ AddPlayerPostInit(function(inst)
                             "fwd_in_pdt_equipment_repair_staff_glass_short",
                             "fwd_in_pdt_equipment_repair_staff_glass_long",
                         },
+                    ---- 吸血鬼之剑
+                        ["fwd_in_pdt_equipment_vampire_sword"] = {
+                            "fwd_in_pdt_equipment_vampire_sword_laser",
+                        },
                     ---- 特殊工作台
                         ["fwd_in_pdt_building_special_production_table"] = {
                             "fwd_in_pdt_building_special_production_table_punk",

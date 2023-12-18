@@ -15,6 +15,8 @@
 ---- 【temperature】 PreDoDelta_Add_Temperature_Fn/PreDoDelta_Remove_Temperature_Fn  =>  fn(temperature_com,delta)
 ---- 【moisture】 PreDoDelta_Add_Moisture_Fn/PreDoDelta_Remove_Moisture_Fn  => fn(moisture_com,num,no_announce)
 
+---- 【combat-GetAttacked】 PreGetAttacked_Add_Fn/PreGetAttacked_Remove_Fn => fn(combat_com,attacker, damage, weapon, stimuli, spdamage)
+
 ---- 【笔记】 体温组件没那么严格，而且官方提供了 Event("temperaturedelta"
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -191,6 +193,29 @@ local function main_com(fwd_in_pdt_func)
                     num,no_announce = fn(self,num,no_announce)
                 end
                 return self:DoDelta__old__fwd_in_pdt_for_pre(num, no_announce)
+            end
+        end
+    ----------------------------------------------------------------------------------------
+    ---- combat 组件 的 GetAttacked
+        fwd_in_pdt_func.TempData.PreDoDelta.__GetAttacked_fns = {}
+        function fwd_in_pdt_func:PreGetAttacked_Add_Fn(fn)
+            if type(fn) == "function" then
+                table.insert( self.TempData.PreDoDelta.__GetAttacked_fns,fn)
+            end
+        end
+        function fwd_in_pdt_func:PreGetAttacked_Remove_Fn(fn)
+            if type(fn) == "function" then
+                self.TempData.PreDoDelta.__GetAttacked_fns = remove_fn_from_table(self.TempData.PreDoDelta.__GetAttacked_fns,fn)
+            end
+        end
+
+        if inst.components.combat then
+            inst.components.combat.GetAttacked__old_fwd_in_pdt_for_pre = inst.components.combat.GetAttacked
+            inst.components.combat.GetAttacked = function(self,attacker, damage, weapon, stimuli, spdamage)
+                for k, fn in pairs(self.inst.components.fwd_in_pdt_func.TempData.PreDoDelta.__GetAttacked_fns) do
+                    attacker, damage, weapon, stimuli, spdamage = fn(self,attacker, damage, weapon, stimuli, spdamage)
+                end
+                return self:GetAttacked__old_fwd_in_pdt_for_pre(attacker, damage, weapon, stimuli, spdamage)
             end
         end
     ----------------------------------------------------------------------------------------
