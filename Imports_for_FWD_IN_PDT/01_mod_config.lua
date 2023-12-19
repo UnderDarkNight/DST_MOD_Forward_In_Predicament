@@ -15,6 +15,8 @@ TUNING["Forward_In_Predicament.Config"].ATM_CROSS_ARCHIVE = GetModConfigData("AT
 
 ---- 角色相关的操作
 TUNING["Forward_In_Predicament.Config"].ALLOW_CHARACTERS = GetModConfigData("ALLOW_CHARACTERS")     --- 允许使用角色
+TUNING["Forward_In_Predicament.Config"].SPELL_KEY_A = GetModConfigData("SPELL_KEY_A")     --- 允许使用角色
+TUNING["Forward_In_Predicament.Config"].SPELL_KEY_B = GetModConfigData("SPELL_KEY_B")     --- 允许使用角色
 
 
 

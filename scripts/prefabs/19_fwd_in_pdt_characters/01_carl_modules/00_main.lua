@@ -8,6 +8,10 @@ return function(inst)
         "prefabs/19_fwd_in_pdt_characters/01_carl_modules/03_combat_and_blood",         ---- 吸血和硬直
         "prefabs/19_fwd_in_pdt_characters/01_carl_modules/04_thirst_for_blood",         ---- 渴血
         "prefabs/19_fwd_in_pdt_characters/01_carl_modules/05_eater",                    ---- 吃东西
+        "prefabs/19_fwd_in_pdt_characters/01_carl_modules/06_spell_cd_display_sys",     ---- 技能CD显示系统
+        "prefabs/19_fwd_in_pdt_characters/01_carl_modules/07_key_listener",             ---- 键盘按键监听
+        "prefabs/19_fwd_in_pdt_characters/01_carl_modules/08_spell_a",                  ---- 技能A
+        "prefabs/19_fwd_in_pdt_characters/01_carl_modules/09_spell_b",                  ---- 技能B
     }
     for k, lua_addr in pairs(modules) do
         local temp_fn = require(lua_addr)

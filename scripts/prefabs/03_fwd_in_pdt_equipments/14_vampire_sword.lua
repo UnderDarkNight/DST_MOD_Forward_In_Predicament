@@ -99,10 +99,10 @@ local function fn()
                 inst.components.fwd_in_pdt_func:SkinAPI__SetReSkinToolFn(function()
                     -- Attack_Fx(inst)
                     -- print("fake error SkinAPI__SetReSkinToolFn")
-                    SpawnPrefab("fwd_in_pdt_fx_shadow_bats"):PushEvent("Set",{
+                    SpawnPrefab("fwd_in_pdt_fx_red_bats"):PushEvent("Set",{
                         target = inst,
-                        scale = 0.5,
-                        color = Vector3(255,0,0),
+                        scale = 0.7,
+                        -- color = Vector3(1,1,1),
                         speed = 3,
                         sound = "dontstarve/creatures/bat/bat_explode",
                     })
@@ -180,9 +180,10 @@ local function fn()
                 for k, temp_target in pairs(ret_targets) do
                     temp_target.components.combat:GetAttacked(attacker,40)                    
                 end
-                SpawnPrefab("fwd_in_pdt_fx_shadow_bats"):PushEvent("Set",{
+                SpawnPrefab("fwd_in_pdt_fx_red_bats"):PushEvent("Set",{
                     target = target,
-                    color = Vector3(255,0,0),
+                    -- color = Vector3(1,1,1),
+                    -- a = 0.5,
                     speed = 4,
                     sound = math.random(100)< 50 and "dontstarve/creatures/bat/bat_explode" or nil,
                 })

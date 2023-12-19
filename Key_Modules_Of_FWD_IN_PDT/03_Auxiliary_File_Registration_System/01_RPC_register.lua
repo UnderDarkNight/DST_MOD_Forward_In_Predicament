@@ -94,3 +94,12 @@ AddClientModRPCHandler(TUNING["Forward_In_Predicament.RPC_NAMESPACE"],"drawing",
 end)
 -- SendModRPCToClient(CLIENT_MOD_RPC[TUNING["Forward_In_Predicament.RPC_NAMESPACE"]]["drawing"],inst.userid,json.encode(json_data))
 -- 给 指定userid 的客户端发送RPC
+---------------------------------------------------------------------------------------------------------------------------------
+---------- RPC 下发 技能CD相关
+AddClientModRPCHandler(TUNING["Forward_In_Predicament.RPC_NAMESPACE"],"spell",function(index,value)
+    if ThePlayer and ThePlayer.replica.fwd_in_pdt_func and ThePlayer.replica.fwd_in_pdt_func.Spell_Set then
+        ThePlayer.replica.fwd_in_pdt_func:Spell_Set(index,value)
+    end
+end)
+-- SendModRPCToClient(CLIENT_MOD_RPC[TUNING["Forward_In_Predicament.RPC_NAMESPACE"]]["spell"],inst.userid,index,value)
+-- 给 指定userid 的客户端发送RPC

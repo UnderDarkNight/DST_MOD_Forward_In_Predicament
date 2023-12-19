@@ -322,7 +322,15 @@ local flg,error_code = pcall(function()
     ----------------------------------------------------------------------------------------------------------------
     --- 
             -- ThePlayer.components.health.currenthealth = 20
-            ThePlayer.components.fwd_in_pdt_wellness:Remove_Debuff("fwd_in_pdt_welness_carl_thirst_for_blood")
+            -- ThePlayer.components.fwd_in_pdt_wellness:Remove_Debuff("fwd_in_pdt_welness_carl_thirst_for_blood")
+            local fx = SpawnPrefab("fwd_in_pdt_fx_red_bats")
+            fx:PushEvent("Set",{
+                target = ThePlayer
+            })
+            -- fx.AnimState:PlayAnimation("loop_pst")
+            -- fx.AnimState:PlayAnimation("loop_pst")
+            -- fx.AnimState:PlayAnimation("loop_pst")
+            -- fx.AnimState:PlayAnimation("loop_pst")
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)

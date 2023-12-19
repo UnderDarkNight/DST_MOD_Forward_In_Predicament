@@ -41,6 +41,8 @@ local prefabs_name_list = {
     "12_shadow_shell",              --- 暗影护盾
     "13_shadow_feather",            --- 暗影羽毛
     "14_shadow_bats",               --- 暗影主教的蝙蝠
+    "15_red_bats",                  --- 红色蝙蝠群
+    "16_red_bats_mark",                  --- 红色蝙蝠群 标记模式
 
     
 }

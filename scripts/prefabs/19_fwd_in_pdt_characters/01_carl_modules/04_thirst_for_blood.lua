@@ -45,9 +45,9 @@ return function(inst)
                 end
 
             ----------------------------------------------------------------------
-            if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
-                print("渴血：",-target_delta_num)
-            end
+            -- if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
+            --     print("渴血：",-target_delta_num)
+            -- end
             if target_delta_num <= 0 then
                 return
             end

@@ -1,7 +1,7 @@
 local assets = {
     -- Asset("IMAGE", "images/inventoryimages/spell_reject_the_npc.tex"),
 	-- Asset("ATLAS", "images/inventoryimages/spell_reject_the_npc.xml"),
-	-- Asset("ANIM", "anim/npc_fx_chat_bubble.zip"),
+	Asset("ANIM", "anim/fwd_in_pdt_fx_red_bats.zip"),
 }
 
 
@@ -13,11 +13,11 @@ local function fx()
     inst.entity:AddAnimState()
     inst.entity:AddNetwork()
     -- inst.AnimState:SetBloomEffectHandle("shaders/anim.ksh")
-    inst.AnimState:SetBank("shadow_bishop")
-    inst.AnimState:SetBuild("shadow_bishop")
-    inst.AnimState:PlayAnimation("atk_side_loop_pre",false)
-    inst.AnimState:PushAnimation("atk_side_loop",false)
-    inst.AnimState:PushAnimation("atk_side_loop_pst",false)
+    inst.AnimState:SetBank("fwd_in_pdt_fx_red_bats")
+    inst.AnimState:SetBuild("fwd_in_pdt_fx_red_bats")
+    inst.AnimState:PlayAnimation("loop_pre")
+    inst.AnimState:PushAnimation("loop",true)
+    -- inst.AnimState:PushAnimation("loop_pst",false)
 
 
     inst.AnimState:SetFinalOffset(1)
@@ -27,7 +27,7 @@ local function fx()
     inst:AddTag("FX")
     inst:AddTag("NOCLICK")
 
-    inst:ListenForEvent("animqueueover",inst.Remove)
+    -- inst:ListenForEvent("animqueueover",inst.Remove)
 
     inst.entity:SetPristine()
 
@@ -81,7 +81,10 @@ local function fx()
 
         inst.Ready = true
     end)
-
+    inst:ListenForEvent("Remove",function()
+        inst.AnimState:PlayAnimation("loop_pst")
+        inst:ListenForEvent("animover",inst.Remove)
+    end)
     inst:DoTaskInTime(0,function()
         if inst.Ready ~= true then
             inst:Remove()
@@ -91,4 +94,4 @@ local function fx()
     return inst
 end
 
-return Prefab("fwd_in_pdt_fx_shadow_bats",fx,assets)
+return Prefab("fwd_in_pdt_fx_red_bats_mark",fx,assets)

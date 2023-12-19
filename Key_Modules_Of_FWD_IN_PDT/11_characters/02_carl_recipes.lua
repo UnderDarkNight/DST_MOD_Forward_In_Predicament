@@ -10,7 +10,7 @@ AddRecipe2(
     { Ingredient(CHARACTER_INGREDIENT.HEALTH, 50) }, 
     TECH.NONE, --- TECH.NONE
     {
-        nounlock=true,
+        -- nounlock=true,
         no_deconstruction=true,
         builder_tag = "fwd_in_pdt_carl",    --------- -- 【builder_tag】只给指定tag的角色能制造这件物品，角色添加/移除 tag 都能立马解锁/隐藏该物品
         atlas = "images/inventoryimages/fwd_in_pdt_item_bloody_flask.xml",
@@ -28,7 +28,7 @@ AddRecipe2(
     { Ingredient(CHARACTER_INGREDIENT.HEALTH, 800) }, 
     TECH.NONE, --- TECH.NONE
     {
-        nounlock=true,
+        -- nounlock=true,
         no_deconstruction=true,
         builder_tag = "fwd_in_pdt_carl",    --------- -- 【builder_tag】只给指定tag的角色能制造这件物品，角色添加/移除 tag 都能立马解锁/隐藏该物品
         atlas = "images/inventoryimages/fwd_in_pdt_equipment_vampire_sword.xml",
