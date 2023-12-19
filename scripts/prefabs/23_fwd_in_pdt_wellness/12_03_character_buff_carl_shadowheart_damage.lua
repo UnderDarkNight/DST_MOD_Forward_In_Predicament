@@ -83,6 +83,15 @@ local function fn()
                 end
             --------------------------------------------------------
                 self.player.components.combat.externaldamagemultipliers:SetModifier(self,2)
+            --------------------------------------------------------
+            --- 更换外观
+                self.player.components.skinner:SetSkinName("fwd_in_pdt_carl_skin_flame")
+                local fx = self.player:SpawnChild("fwd_in_pdt_fx_flame_up")
+                fx:PushEvent("Set",{
+                    pt = Vector3(0,0,0),
+                    scale = Vector3(2,2,2),
+                    sound = "dontstarve/common/fireAddFuel"            
+                })
             --------------------------------------------------------            
             
         end
@@ -98,6 +107,12 @@ local function fn()
             if self.com.DEBUGGING_MODE then
                 print("重复吃 暗影心房 伤害增幅 了")
             end
+            local fx = self.player:SpawnChild("fwd_in_pdt_fx_flame_up")
+            fx:PushEvent("Set",{
+                pt = Vector3(0,0,0),
+                scale = Vector3(2,2,2),
+                sound = "dontstarve/common/fireAddFuel"            
+            })
         end
     ------------------------------------------------------------------------------
     -- 周期性刷新的时候执行
@@ -121,6 +136,17 @@ local function fn()
             end
             self.com:Set("fwd_in_pdt_welness_carl_shadowheart_damage_timer",nil)
             self.player.components.combat.externaldamagemultipliers:RemoveModifier(self)
+            -------------------------------------------------------------
+            ---- 移除外观
+                self.player.components.skinner:SetSkinName("")
+                local fx = self.player:SpawnChild("fwd_in_pdt_fx_flame_up")
+                fx:PushEvent("Set",{
+                    pt = Vector3(0,0,0),
+                    scale = Vector3(2,2,2),
+                    sound = "dontstarve/common/fireAddFuel"            
+                })
+            -------------------------------------------------------------
+
         end
 
     ------------------------------------------------------------------------------

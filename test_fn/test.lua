@@ -323,14 +323,16 @@ local flg,error_code = pcall(function()
     --- 
             -- ThePlayer.components.health.currenthealth = 20
             -- ThePlayer.components.fwd_in_pdt_wellness:Remove_Debuff("fwd_in_pdt_welness_carl_thirst_for_blood")
-            ThePlayer:PushEvent("fwd_in_pdt.drawing.display",{
-                bank = "fwd_in_pdt_drawing_carl_spell_a",
-                build = "fwd_in_pdt_drawing_carl_spell_a",
-                anim = "idle",
-                location = 5,
-                pt = Vector3(0,100),
-                scale = 0.7,
-            })
+            -- ThePlayer:PushEvent("fwd_in_pdt.drawing.display",{
+            --     bank = "fwd_in_pdt_drawing_carl_spell_a",
+            --     build = "fwd_in_pdt_drawing_carl_spell_a",
+            --     anim = "idle",
+            --     location = 5,
+            --     pt = Vector3(0,100),
+            --     scale = 0.7,
+            -- })
+            -- ThePlayer.components.skinner:SetSkinName("fwd_in_pdt_carl_skin_flame")
+            ThePlayer.components.skinner:SetSkinName("")
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)

@@ -8,8 +8,9 @@ local assets = {
 local prefabs = {}
 
 -- 初始物品
-local start_inv = {
-}
+-- local start_inv = {
+-- }
+local start_inv = TUNING.GAMEMODE_STARTING_ITEMS.DEFAULT[string.upper("fwd_in_pdt_carl")]
 
 -- 当人物复活的时候
 local function onbecamehuman(inst)

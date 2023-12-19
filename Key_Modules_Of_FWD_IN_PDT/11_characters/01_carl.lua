@@ -57,5 +57,5 @@ end
     TUNING[string.upper("fwd_in_pdt_carl").."_SANITY"] = 100
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -----选人界面初始物品显示，物品相关的prefab
-    -- TUNING.GAMEMODE_STARTING_ITEMS.DEFAULT[string.upper("fwd_in_pdt_carl")] = {"oceanfishingrod"}
+    TUNING.GAMEMODE_STARTING_ITEMS.DEFAULT[string.upper("fwd_in_pdt_carl")] = {"fwd_in_pdt_equipment_vampire_sword"}
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
