@@ -29,7 +29,7 @@ return function(inst)
     ---------------------------------------------------------------------------------------------------------------------------------------
     ---- 普通攻击
         inst:ListenForEvent("onhitother",function(_,_table)
-            if _table and _table.target and HasSoul(_table.target) and _table.target.brainfn and (_table.damage or 0) > 0 then
+            if _table and _table.target and HasSoul(_table.target) and (_table.damage or 0) > 0 then
                 inst.components.health:DoDelta(10,true)
                 _table.target:AddTag("fwd_in_pdt_tag.attacked_by_carl")
             end
@@ -37,7 +37,7 @@ return function(inst)
     ---------------------------------------------------------------------------------------------------------------------------------------
     ---- 用蝙蝠剑的时候 额外吸血
         inst:ListenForEvent("fwd_in_pdt_event.vampire_sword_hit_target",function(_,target)
-            if target and HasSoul(target) and target.brainfn then
+            if target and HasSoul(target) then
                 inst.components.health:DoDelta(10,true)
             end
         end)
@@ -74,7 +74,8 @@ return function(inst)
 
         local _onentitydeathfn = function(src, data) 
             local target = data.inst
-            if target and target:HasTag("fwd_in_pdt_tag.attacked_by_carl") and not target:HasTag("fwd_in_pdt_bloody_flask_flag") then
+            print("entity_death",target)
+            if target and not target:HasTag("fwd_in_pdt_bloody_flask_flag") then
                 target:AddTag("fwd_in_pdt_bloody_flask_flag")
 
                 if not HasSoul(target) then --- 使用 沃拓克斯 的灵魂判定
@@ -82,10 +83,10 @@ return function(inst)
                 end
 
                 local x,y,z = target.Transform:GetWorldPosition()
-                -- local temp_players = TheSim:FindEntities(x, y, z, 50, {"fwd_in_pdt_carl"}, {"playerghost"}, nil)                
-                -- if #temp_players <= 0  then  --- 附近没卡尔、且没被卡尔打过，跳过
-                --     return
-                -- end
+                local temp_players = TheSim:FindEntities(x, y, z, 50, {"fwd_in_pdt_carl"}, {"playerghost"}, nil)                
+                if not(#temp_players > 0 or target:HasTag("fwd_in_pdt_tag.attacked_by_carl") )then  --- 附近没卡尔或者没被卡尔打死过
+                    return
+                end
 
                 local num = 1
                 if target:HasTag("epic") then

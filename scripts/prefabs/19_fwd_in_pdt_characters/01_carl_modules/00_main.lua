@@ -23,5 +23,6 @@ return function(inst)
     inst:AddTag("fwd_in_pdt_carl") --- 给自己上标记 tag 。通常用于武器、制作栏专属
 
     inst:AddTag("playermonster")   --- 会被中立怪物攻击
+    inst:AddTag("monster")
 
 end
