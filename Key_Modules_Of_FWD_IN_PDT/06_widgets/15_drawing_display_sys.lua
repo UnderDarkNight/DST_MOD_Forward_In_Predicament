@@ -49,6 +49,7 @@ AddClassPostConstruct("screens/playerhud",function(self)
         --     pt = vector3(0,0,0),
         --     id = "",        --- 用来外部控制强制关闭。可以为 nil
         --     kill = false,   --- 配合id 用来强制关闭
+        --     sound = "",
         -- }
 
         ----------------------------------
@@ -100,10 +101,10 @@ AddClassPostConstruct("screens/playerhud",function(self)
             --------- 添加动画函数、时间监听函数 animqueueover  animover 事件 
                 ---- 先添加函数
                     function ui_anim:PlayAnimation(anim,loop_flag)
-                        self.inst.AnimState:PlayAnimation(anim,loop_flag)
+                        self.inst.AnimState:PlayAnimation(anim,loop_flag or false)
                     end
                     function ui_anim:PushAnimation(anim,loop_flag)
-                        self.inst.AnimState:PushAnimation(anim,loop_flag)                        
+                        self.inst.AnimState:PushAnimation(anim,loop_flag or false)                        
                     end
                     function ui_anim:SetBank(bank)
                         self.inst.AnimState:SetBank(bank)
@@ -151,7 +152,11 @@ AddClassPostConstruct("screens/playerhud",function(self)
                         hud.fwd_in_pdt_drawing_display__widget_children_by_id[cmd_table.id] = nil
                     end
                 end)
-
+            --------------------- 声音
+                -- TheFocalPoint.SoundEmitter:PlaySound("dontstarve/HUD/click_negative", nil, .4)
+                if TheFocalPoint and cmd_table.sound then
+                    TheFocalPoint.SoundEmitter:PlaySound(cmd_table.sound)
+                end
 
     end
 

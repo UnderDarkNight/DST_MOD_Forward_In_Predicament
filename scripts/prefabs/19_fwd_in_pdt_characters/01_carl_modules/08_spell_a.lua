@@ -4,20 +4,98 @@
     技能 a 
     主技能
 
+    【主动】【技能】【蝙蝠环绕】：消耗【血瓶】50个释放，8min CD ： 暗影主教的特效，
+    （立绘）召唤蝙蝠环绕自己且同时攻击附近所有敌人（半径10），
+    每秒钟对该敌人敌人造成50（暗影心房100）点伤害持续50秒。期间玩家不会受到任何形式掉血。
 
 ]]--
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ---- 冷却
     local spell_cooldown_time = TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE and 30 or 480
+    local spell_item_cost_num = TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE and 5 or 50
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ---- 技能执行内容
     local function cast_spell(inst)
-            
+        local spell_timer = 51
+
+        local combat_block_fn = function(combat_com,attacker, damage, ...)  ----- 免疫伤害
+            local fx = combat_com.inst:SpawnChild("fwd_in_pdt_fx_shadow_shell")
+            fx:PushEvent("Set",{
+                pt = Vector3(0,0,0),
+                speed = 2,
+                color = Vector3(255,0,0)
+            })
+            damage = 0
+            return attacker,damage,...
+        end
+
+        inst.components.fwd_in_pdt_func:PreGetAttacked_Add_Fn(combat_block_fn)
+        inst._________________spell_a_task = inst:DoPeriodicTask(1,function()
+            spell_timer = spell_timer  - 1
+            -----------------------------------------------------------------
+                if spell_timer <= 0 then    ----- 时间到了
+                    inst._________________spell_a_task:Cancel()
+                    if inst._________________spell_a_task_mark_fx then
+                        inst._________________spell_a_task_mark_fx:PushEvent("Remove")
+                    end
+                    inst.components.fwd_in_pdt_func:PreGetAttacked_Remove_Fn(combat_block_fn)
+                end
+            -----------------------------------------------------------------
+            local heart_flag = inst.components.fwd_in_pdt_wellness:Get_Debuff("fwd_in_pdt_welness_carl_thirst_for_blood__shadowheart") ~= nil
+            local x,y,z = inst.Transform:GetWorldPosition()
+
+            local canthavetags = { "companion","isdead","player","INLIMBO", "notarget", "noattack", "flight", "invisible", "playerghost" ,"chester","hutch","wall","structure"}
+            local musthavetags = nil
+            local musthaveoneoftags = {"pig","rabbit","animal","smallcreature","epic","monster","insect"}
+            local ents = TheSim:FindEntities(x, 0, z, 10, musthavetags, canthavetags, musthaveoneoftags)
+            for k, temp_monster in pairs(ents) do
+                if temp_monster and temp_monster:IsValid() and temp_monster.components.combat and temp_monster.components.health then
+                    local fx = temp_monster:SpawnChild("fwd_in_pdt_fx_red_bats")
+                    fx:PushEvent("Set",{
+                        speed = 5,
+                        sound = math.random(100)< 20 and "dontstarve/creatures/bat/bat_explode" or nil,
+                    })
+                    temp_monster.components.health:DoDelta(heart_flag and -100 or -50)  ---- 造成伤害
+                    temp_monster.components.combat:SuggestTarget(inst)
+                    inst.components.health:DoDelta(10,true) --- 玩家吸血
+                end
+            end
+
+        end)
+        ----------------------------------------------------
+        -- 播放立绘
+            inst:PushEvent("fwd_in_pdt.drawing.display",{
+                bank = "fwd_in_pdt_drawing_carl_spell_a",
+                build = "fwd_in_pdt_drawing_carl_spell_a",
+                anim = "idle",
+                location = 5,
+                pt = Vector3(0,100),
+                scale = 0.7,
+                sound = "dontstarve/creatures/bat/bat_explode",
+            })
+            if inst.sg then
+                inst.sg:GoToState("combat_lunge_start")
+            end
+        ----------------------------------------------------
+        -- 给自己上标记
+            inst._________________spell_a_task_mark_fx = inst:SpawnChild("fwd_in_pdt_fx_red_bats_mark")
+            inst._________________spell_a_task_mark_fx:PushEvent("Set",{
+                pt = Vector3(0,3,0),
+                scale = 0.5,
+            })
+        ----------------------------------------------------
+
     end
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ---- 技能执行
     local function spell_cast_succeed(inst)
-        local item_cost_num = 5
+        ------------------------------------------------------------
+        ---- 骑牛不能施放
+            if inst.components.rider and inst.components.rider:IsRiding() then
+                return false
+            end
+        ------------------------------------------------------------
+        local item_cost_num = spell_item_cost_num
 
         local items = {}    --- index : item_inst , value : stack num
         local total_num = 0

@@ -4,7 +4,7 @@
     技能 b 
     辅助技能
 
-    使用 5个【血瓶】释放技能：自己恢复三维 100/50/50 。给附近半径30内所其他玩家上buff ： 每秒+5血 持续10秒。
+    使用 5个【血瓶】释放技能：自己恢复三维 100/50/50 。给所其他玩家上buff ： 每秒+5血 持续10秒。
 
 ]]--
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -14,9 +14,9 @@
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ---- 技能执行内容
     local function cast_spell(inst)
-        local x,y,z = inst.Transform:GetWorldPosition()
-        local ents = TheSim:FindEntities(x, y, z, 30, {"player"}, {"playerghost"}, nil)
-        for k, the_player in pairs(ents) do
+        -- local x,y,z = inst.Transform:GetWorldPosition()
+        -- local ents = TheSim:FindEntities(x, y, z, 30, {"player"}, {"playerghost"}, nil)
+        for k, the_player in pairs(AllPlayers) do
             if the_player and the_player.components.health then
                 the_player:AddDebuff("fwd_in_pdt_buff_carl_healing_bats."..tostring(math.random(10000)),"fwd_in_pdt_buff_carl_healing_bats")
             end

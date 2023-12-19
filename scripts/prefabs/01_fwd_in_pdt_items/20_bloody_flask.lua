@@ -135,7 +135,7 @@ local function fn()
         end)
         inst:DoTaskInTime(0,function()
             if inst.components.fwd_in_pdt_data:Get("picked") ~= true then
-                inst.__explode_task = inst:DoTaskInTime(10,function()
+                inst.__explode_task = inst:DoTaskInTime(math.random(8,15),function()
                     inst:PushEvent("explode")                    
                 end)
             end
@@ -151,7 +151,7 @@ local function fn()
             if inst.__explode_task then
                 inst.__explode_task:Cancel()
             end
-            inst.__explode_task = inst:DoTaskInTime(10,function()
+            inst.__explode_task = inst:DoTaskInTime(math.random(8,15),function()
                 inst:PushEvent("explode")                    
             end)
         end)

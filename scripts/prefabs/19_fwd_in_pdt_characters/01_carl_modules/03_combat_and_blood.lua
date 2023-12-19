@@ -74,7 +74,7 @@ return function(inst)
 
         local _onentitydeathfn = function(src, data) 
             local target = data.inst
-            print("entity_death",target)
+            -- print("entity_death",target)
             if target and not target:HasTag("fwd_in_pdt_bloody_flask_flag") then
                 target:AddTag("fwd_in_pdt_bloody_flask_flag")
 

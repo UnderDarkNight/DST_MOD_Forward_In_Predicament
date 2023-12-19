@@ -44,6 +44,7 @@ local temp_assets = {
 
 
         Asset("ANIM", "anim/fwd_in_pdt_carl_spell_bar.zip"),  --- 角色技能指示条
+        Asset("ANIM", "anim/fwd_in_pdt_drawing_carl_spell_a.zip"),  --- 技能立绘
 	---------------------------------------------------------------------------
 
 
