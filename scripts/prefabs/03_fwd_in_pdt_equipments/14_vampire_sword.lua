@@ -165,7 +165,7 @@ local function fn()
         ---- 找目标附近一圈的怪
         if target and attacker then
             local x,y,z = target.Transform:GetWorldPosition()
-            local canthavetags = { "companion","isdead","player","INLIMBO", "notarget", "noattack", "flight", "invisible", "playerghost" ,"chester","hutch","wall","structure"}
+            local canthavetags = { "fwd_in_pdt_animal_frog_hound","companion","isdead","player","INLIMBO", "notarget", "noattack", "flight", "invisible", "playerghost" ,"chester","hutch","wall","structure"}
             local musthavetags = nil
             local musthaveoneoftags = {"pig","rabbit","animal","smallcreature","epic","monster","insect"}
             local ents = TheSim:FindEntities(x, 0, z, 3, musthavetags, canthavetags, musthaveoneoftags)

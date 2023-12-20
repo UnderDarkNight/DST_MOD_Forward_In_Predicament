@@ -201,14 +201,22 @@ local function unique_mechanics_setup(inst)
             end
         end)
     ---------------------------------------------------------------------------------------------
-    --- 打卡尔是 4 倍伤害
+    --- 打卡尔是 6 倍伤害
         inst.components.combat.customdamagemultfn = function(inst,target,...)
             if target and target:HasTag("fwd_in_pdt_carl") then
-                return 4
+                return 6
             else
                 return 1
             end
         end
+    ---------------------------------------------------------------------------------------------
+    -- 减伤
+        -- if self.inst.components.damagetyperesist ~= nil then
+        --     damagetypemult = damagetypemult * self.inst.components.damagetyperesist:GetResist(attacker, weapon)
+        -- end
+        inst:AddComponent("damagetyperesist")
+        inst.components.damagetyperesist:AddResist("monster",inst,0.5,"monster_dmg_down")
+
     ---------------------------------------------------------------------------------------------
 
 end
@@ -236,7 +244,7 @@ local function fncommon()
     inst:AddTag("hostile")
     inst:AddTag("frog")             --- 归类为青蛙
     inst:AddTag("canbestartled")
-
+    inst:AddTag("fwd_in_pdt_animal_frog_hound")
 
     inst.AnimState:SetBank("hound")
     inst.AnimState:SetBuild("fwd_in_pdt_animal_frog_hound")
