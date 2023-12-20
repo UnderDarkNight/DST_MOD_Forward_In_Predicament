@@ -23,3 +23,5 @@ modimport("Imports_for_FWD_IN_PDT/08_componentactions_crash_fix.lua")	        --
 modimport("Imports_for_FWD_IN_PDT/09_drawings.lua")	        ---- 立绘用的动画素材统一在这加载
 
 modimport("Imports_for_FWD_IN_PDT/10_load_characters_assets.lua")	        ---- 角色相关的素材文件
+
+modimport("Imports_for_FWD_IN_PDT/11_load_sounds.lua")	        ---- 声音文件

@@ -661,6 +661,10 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
         ---- 10_fwd_in_pdt_minerals
         --------------------------------------------------------------------
         ---- 11_fwd_in_pdt_animals
+            ["fwd_in_pdt_animal_snake"] = {
+                ["name"] = "Snake",
+                ["inspect_str"] = "A snake lurking everywhere",
+            },
         --------------------------------------------------------------------
         ---- 12_fwd_in_pdt_boss
         --------------------------------------------------------------------

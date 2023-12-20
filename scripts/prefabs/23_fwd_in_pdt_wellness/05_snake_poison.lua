@@ -68,9 +68,12 @@ local function fn()
     -- 重复添加不会执行这个
         function inst:PreAttach(com)
             -- 蛇毒被食物屏蔽了，这个字段是计数器。
-            if com:Add("snake_poison_blocker_update_times",0) >= 0 then
+            -- print("info 蛇毒预检查")
+            if com:Add("snake_poison_blocker_update_times",0) <= 0 then
+                -- print("允许添加蛇毒")
                 return true
             else
+                -- print("不允许添加蛇毒")
                 return false
             end
         end

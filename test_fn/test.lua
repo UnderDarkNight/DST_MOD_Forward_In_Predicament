@@ -332,7 +332,8 @@ local flg,error_code = pcall(function()
             --     scale = 0.7,
             -- })
             -- ThePlayer.components.skinner:SetSkinName("fwd_in_pdt_carl_skin_flame")
-            ThePlayer.components.skinner:SetSkinName("")
+            -- ThePlayer.components.skinner:SetSkinName("")
+            -- ThePlayer.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_snake_poison")  
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)

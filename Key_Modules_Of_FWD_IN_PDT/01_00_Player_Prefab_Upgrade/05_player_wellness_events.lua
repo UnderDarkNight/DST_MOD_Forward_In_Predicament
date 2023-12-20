@@ -54,6 +54,12 @@ AddPlayerPostInit(function(inst)
                             inst.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_frog_poison")                        
                         end
                     end,
+                    ["fwd_in_pdt_animal_snake"] = function()            --- 蛇 20% 造成中毒
+                        if math.random(1000) <= 200 then
+                            -- print(" +++ 添加蛇毒 +++ ")
+                            inst.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_snake_poison")                        
+                        end
+                    end,
 
 
                 }

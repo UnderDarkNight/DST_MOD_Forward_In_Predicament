@@ -89,6 +89,7 @@ inst = {
             ["onhitotherfn"] = function(attacker, self_inst, damage, stimuli, weapon, damageresolved)end,
             target = inst,
             ["SetTarget"] = function(self,target) end,
+            ["SuggestTarget"] = function(self,target) end,
         },
         ["inspectable"] = {
             ["SetDescription"] = function(self,str)end,
