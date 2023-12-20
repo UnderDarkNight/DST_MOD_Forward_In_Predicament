@@ -335,6 +335,10 @@ local flg,error_code = pcall(function()
             -- ThePlayer.components.skinner:SetSkinName("")
             -- ThePlayer.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_snake_poison")  
     ----------------------------------------------------------------------------------------------------------------
+            local monster = SpawnPrefab("hound")
+            monster.Transform:SetPosition(x, y, z)
+            monster.AnimState:SetBuild("fwd_in_pdt_animal_frog_dog")
+    ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)
 

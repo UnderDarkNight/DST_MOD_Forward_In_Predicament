@@ -52,7 +52,7 @@ local function fn()
             end
 
             if doer.components.health then
-                doer.components.health:DoDelta(30,nil,inst.prefab)
+                doer.components.health:DoDelta(50,nil,inst.prefab)
             end
 
             return true

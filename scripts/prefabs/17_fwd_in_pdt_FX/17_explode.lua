@@ -68,6 +68,8 @@ local function fx()
         ------------------------------------------------------------------------------------------------------------------------------------
         if _table.sound then
             inst.SoundEmitter:PlaySound(_table.sound)
+        else
+            inst.SoundEmitter:PlaySound("dontstarve/common/together/fire_cracker")
         end
 
         if type(_table.speed) == "number" then

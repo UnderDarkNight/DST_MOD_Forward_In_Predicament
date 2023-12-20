@@ -665,6 +665,10 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "Snake",
                 ["inspect_str"] = "A snake lurking everywhere",
             },
+            ["fwd_in_pdt_animal_frog_hound"] = {
+                ["name"] = "Toad ? ? ?",
+                ["inspect_str"] = "This guy is supposed to be a frog.",
+            },
         --------------------------------------------------------------------
         ---- 12_fwd_in_pdt_boss
         --------------------------------------------------------------------

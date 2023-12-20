@@ -12,4 +12,5 @@
 modimport("Key_Modules_Of_FWD_IN_PDT/_Debugging_Modules/01_player_death.lua")    --- 
 modimport("Key_Modules_Of_FWD_IN_PDT/_Debugging_Modules/02_pigking_upgrade.lua")    --- 
 -- modimport("Key_Modules_Of_FWD_IN_PDT/_Debugging_Modules/03_player_in_dark_Charlie.lua")    --- 
+modimport("Key_Modules_Of_FWD_IN_PDT/_Debugging_Modules/04_green_dog.lua")    --- 
 

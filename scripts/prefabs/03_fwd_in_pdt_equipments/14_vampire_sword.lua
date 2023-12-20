@@ -1,6 +1,6 @@
 --------------------------------------------------------------------------
 --- 装备 ，武器
---- 极寒长矛
+--- 吸血鬼之剑
 --- 绿法杖分解代码在【Key_Modules_Of_FWD_IN_PDT\09_Recipes\03_element_core_weapon_recipes_for_green_staff.lua】
 --------------------------------------------------------------------------
 
@@ -138,14 +138,14 @@ local function fn()
 
 
     inst:AddComponent("weapon")
-    inst.components.weapon:SetDamage(40)
+    inst.components.weapon:SetDamage(85)
     inst.components.weapon:SetRange(1.5)
 
     -------
 
     inst:AddComponent("finiteuses")
-    inst.components.finiteuses:SetMaxUses(150)
-    inst.components.finiteuses:SetUses(150)
+    inst.components.finiteuses:SetMaxUses(900)
+    inst.components.finiteuses:SetUses(900)
     inst.components.finiteuses:SetOnFinished(inst.Remove)
 
     
@@ -168,7 +168,7 @@ local function fn()
             local canthavetags = { "companion","isdead","player","INLIMBO", "notarget", "noattack", "flight", "invisible", "playerghost" ,"chester","hutch","wall","structure"}
             local musthavetags = nil
             local musthaveoneoftags = {"pig","rabbit","animal","smallcreature","epic","monster","insect"}
-            local ents = TheSim:FindEntities(x, 0, z, 2, musthavetags, canthavetags, musthaveoneoftags)
+            local ents = TheSim:FindEntities(x, 0, z, 3, musthavetags, canthavetags, musthaveoneoftags)
             local ret_targets = {}  
             for k, temp_monster in pairs(ents) do
                 if temp_monster and temp_monster:IsValid() and temp_monster ~= target and target.components.combat then
@@ -178,7 +178,7 @@ local function fn()
 
             if #ret_targets > 0 then
                 for k, temp_target in pairs(ret_targets) do
-                    temp_target.components.combat:GetAttacked(attacker,40)                    
+                    temp_target.components.combat:GetAttacked(attacker,68)                    
                 end
                 SpawnPrefab("fwd_in_pdt_fx_red_bats"):PushEvent("Set",{
                     target = target,
