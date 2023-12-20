@@ -201,6 +201,15 @@ local function unique_mechanics_setup(inst)
             end
         end)
     ---------------------------------------------------------------------------------------------
+    --- 打卡尔是 4 倍伤害
+        inst.components.combat.customdamagemultfn = function(inst,target,...)
+            if target and target:HasTag("fwd_in_pdt_carl") then
+                return 4
+            else
+                return 1
+            end
+        end
+    ---------------------------------------------------------------------------------------------
 
 end
 -----------------------------------------------------------------------------
