@@ -186,6 +186,21 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "里面一大瓶鲜血",
                 ["recipe_desc"] = "把自己的鲜血装瓶里",
             },
+            ["fwd_in_pdt_item_treatment_from_internship_doctor"] = {
+                ["name"] = "实习医生",
+                ["succeed"] = "这个医生成功找到了你的病症，并进行了针对性治疗",
+                ["fail"] = "这个医生太菜了，没能看出你的病症。换个医生吧",
+            },
+            ["fwd_in_pdt_item_treatment_from_head_doctor"] = {
+                ["name"] = "主任医生",
+                ["succeed"] = "这个医生成功找到了你的病症，并进行了针对性治疗",
+                ["fail"] = "这个医生医术不行，没能看出你的病症。你的病情相当复杂。",
+            },
+            ["fwd_in_pdt_item_treatment_from_specialist_doctor"] = {
+                ["name"] = "主任医生",
+                ["succeed"] = "这个医生成功找到了你的病症，并进行了针对性治疗",
+                ["fail"] = "你的病情相当复杂，这个专家已经无力回天，也许换一个就行了。",
+            },
         --------------------------------------------------------------------
         ---- 02_fwd_in_pdt_materials
             ["fwd_in_pdt_material_tree_resin"] = {

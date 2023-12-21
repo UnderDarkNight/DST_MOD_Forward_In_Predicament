@@ -47,6 +47,7 @@ local prefabs_name_list = {
     "18_chaotic_cookpot_puzzles",        -- 混沌万能锅碎片
     "19_adrenaline_injection",           -- 肾上腺注射剂
     "20_bloody_flask",                   -- 卡尔收藏的血瓶
+    "21_treatment_from_doctor",          -- 来自医生的治疗
 }
 
 

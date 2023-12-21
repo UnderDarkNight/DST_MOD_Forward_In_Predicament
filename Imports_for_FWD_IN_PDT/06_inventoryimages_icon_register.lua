@@ -31,6 +31,9 @@ local files_name = {
 		"fwd_in_pdt_item_advertising_leaflet"	, 				--- 广告单
 		"fwd_in_pdt_item_adrenaline_injection"	, 				--- 肾上腺素注射剂
 		"fwd_in_pdt_item_bloody_flask"	, 						--- 卡尔的血瓶
+		"fwd_in_pdt_item_treatment_from_internship_doctor"	, 						--- 实习医生的治疗
+		"fwd_in_pdt_item_treatment_from_head_doctor"	, 							--- 主任医生的治疗
+		"fwd_in_pdt_item_treatment_from_internship_doctor"	, 						--- 专家医生的治疗
 	---------------------------------------------------------------------------------------
 	-- 02_fwd_in_pdt_materials
 		"fwd_in_pdt_material_tree_resin",						--- 树脂

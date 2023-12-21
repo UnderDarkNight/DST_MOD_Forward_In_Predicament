@@ -335,9 +335,16 @@ local flg,error_code = pcall(function()
             -- ThePlayer.components.skinner:SetSkinName("")
             -- ThePlayer.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_snake_poison")  
     ----------------------------------------------------------------------------------------------------------------
-            local monster = SpawnPrefab("hound")
-            monster.Transform:SetPosition(x, y, z)
-            monster.AnimState:SetBuild("fwd_in_pdt_animal_frog_dog")
+            -- local monster = SpawnPrefab("hound")
+            -- monster.Transform:SetPosition(x, y, z)
+            -- monster.AnimState:SetBuild("fwd_in_pdt_animal_frog_dog")
+    ----------------------------------------------------------------------------------------------------------------
+    ---- 
+            -- ThePlayer.components.inventory:GiveItem(SpawnPrefab("fwd_in_pdt_item_treatment_from_doctor"))
+            ThePlayer.components.fwd_in_pdt_func:Wisper({
+                    m_colour = {0,250,250} ,                          ---- 内容颜色
+                    message = "ABCDEFG",                            ---- 文字内容
+            })
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)

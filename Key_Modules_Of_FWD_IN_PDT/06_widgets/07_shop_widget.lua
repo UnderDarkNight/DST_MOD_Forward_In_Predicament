@@ -29,6 +29,10 @@ AddPlayerPostInit(function(inst)
                 inst.replica.fwd_in_pdt_func:RPC_PushEvent2("fwd_in_pdt_event.shop.close")                
             end)
 
+            inst:ListenForEvent("fwd_in_pdt_client_event.shop_close_cmd_by_server",function()   ---- 服务器强制下发关闭界面
+                inst.HUD:fwd_in_pdt_shop_close()
+            end)
+
         end
     end)
 end)

@@ -148,7 +148,7 @@ local function fn()
     ----- 商店
         inst:AddComponent("fwd_in_pdt_com_shop")
         inst.components.fwd_in_pdt_com_shop:SetListA(require("prefabs/07_fwd_in_pdt_buildings/11_hospital_items_a"))
-        inst.components.fwd_in_pdt_com_shop:SetNumA(3)
+        inst.components.fwd_in_pdt_com_shop:SetNumA(10)
         inst.components.fwd_in_pdt_com_shop:SetListB(require("prefabs/07_fwd_in_pdt_buildings/11_hospital_items_b"))
         inst.components.fwd_in_pdt_com_shop:SetNumB(5)
 

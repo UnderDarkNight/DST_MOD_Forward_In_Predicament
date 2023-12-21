@@ -183,6 +183,21 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "There's a flask of blood in there .",
                 ["recipe_desc"] = "Flask your own blood .",
             },
+            ["fwd_in_pdt_item_treatment_from_internship_doctor"] = {
+                ["name"] = "Internship",
+                ["succeed"] = "This doctor managed to find out what was wrong with you, and he treated you appropriately.",
+                ["fail"] = "This doctor is too much of a noob to see what's wrong with you. Get another doctor.",
+            },
+            ["fwd_in_pdt_item_treatment_from_head_doctor"] = {
+                ["name"] = "Head Doctor",
+                ["succeed"] = "This doctor managed to find out what was wrong with you, and he treated you appropriately.",
+                ["fail"] = "This doctor is not good enough to see what's wrong with you. Your condition is quite complex.",
+            },
+            ["fwd_in_pdt_item_treatment_from_specialist_doctor"] = {
+                ["name"] = "Specialist Doctor",
+                ["succeed"] = "This doctor managed to find out what was wrong with you, and he treated you appropriately.",
+                ["fail"] = "Your condition is quite complex and this specialist is no longer able to help, so maybe another one will do.",
+            },
         --------------------------------------------------------------------
         ---- 02_fwd_in_pdt_materials
             ["fwd_in_pdt_material_tree_resin"] = {
