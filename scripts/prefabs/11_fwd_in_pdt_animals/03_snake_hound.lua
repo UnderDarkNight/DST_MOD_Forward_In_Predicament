@@ -19,7 +19,7 @@ local assets =
 
 
 -- local brain = require("brains/houndbrain")
-local brain = require("brains/02_fwd_in_pdt_frog_hound_brain")
+local brain = require("brains/03_fwd_in_pdt_snake_hound_brain")
 
 local sounds =
 {
