@@ -91,7 +91,7 @@ end
             local tar_image = nil
             for num, temp_item in pairs(inst.components.container.slots) do
                 if temp_item and temp_item:IsValid() then
-                        local imagename = temp_item.components.inventoryitem.imagename or temp_item.prefab
+                        local imagename = temp_item.nameoverride or temp_item.components.inventoryitem.imagename or temp_item.prefab
                         imagename  = string.gsub(imagename,".tex", "") .. ".tex"
                         local atlasname = temp_item.components.inventoryitem.atlasname or GetInventoryItemAtlas(imagename)
                         if TheSim:AtlasContains(atlasname, imagename) then

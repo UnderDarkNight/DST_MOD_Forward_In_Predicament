@@ -368,7 +368,7 @@ local flg,error_code = pcall(function()
             -- end)
             for num, temp_item in pairs(inst.components.container.slots) do
                 if temp_item and temp_item:IsValid() then
-                        local imagename = temp_item.components.inventoryitem.imagename or temp_item.prefab
+                        local imagename = temp_item.nameoverride or temp_item.components.inventoryitem.imagename  or temp_item.prefab
                         imagename  = string.gsub(imagename,".tex", "") .. ".tex"
                         local atlasname = temp_item.components.inventoryitem.atlasname or GetInventoryItemAtlas(imagename)
                         if TheSim:AtlasContains(atlasname, imagename) then
@@ -389,7 +389,7 @@ local flg,error_code = pcall(function()
                 --     atlasname = resolvefilepath_soft(atlasname)                    
                 -- end
                 -- print(TheSim:AtlasContains(atlasname, imagename))
-                print("66666666",tar_image,tar_atlas)
+            print("66666666",tar_image,tar_atlas)
                 -- inst.AnimState:OverrideSymbol("SWAP_SIGN",atlasname,imagename)
             if tar_image and tar_atlas then
                 inst.AnimState:OverrideSymbol("SWAP_SIGN",tar_atlas,tar_image)
