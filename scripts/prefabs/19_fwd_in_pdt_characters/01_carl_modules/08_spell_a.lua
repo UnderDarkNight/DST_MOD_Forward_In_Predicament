@@ -50,7 +50,7 @@
             local canthavetags = { "companion","isdead","player","INLIMBO", "notarget", "noattack", "flight", "invisible", "playerghost" ,"chester","hutch","wall","structure"}
             local musthavetags = nil
             local musthaveoneoftags = {"pig","rabbit","animal","smallcreature","epic","monster","insect"}
-            local ents = TheSim:FindEntities(x, 0, z, 10, musthavetags, canthavetags, musthaveoneoftags)
+            local ents = TheSim:FindEntities(x, 0, z, 12, musthavetags, canthavetags, musthaveoneoftags)
             for k, temp_monster in pairs(ents) do
                 if temp_monster and temp_monster:IsValid() and temp_monster.components.combat and temp_monster.components.health then
                     local fx = temp_monster:SpawnChild("fwd_in_pdt_fx_red_bats")
