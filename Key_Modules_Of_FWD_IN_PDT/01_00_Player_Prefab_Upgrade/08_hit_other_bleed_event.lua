@@ -69,6 +69,9 @@ AddPlayerPostInit(function(inst)
             if inst.components.health then
                 for i = 1, 20, 1 do
                     inst:DoTaskInTime(i,function()
+                        if inst:HasTag("playerghost") then
+                            return
+                        end
                         local current_health = inst.components.health.currenthealth
                         if current_health > 1 then
                             inst.components.health:DoDelta(-1)
