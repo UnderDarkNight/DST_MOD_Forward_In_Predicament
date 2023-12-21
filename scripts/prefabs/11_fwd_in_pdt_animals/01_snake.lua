@@ -107,7 +107,24 @@ end
 -----------------------------------------------------------------------------
 --- 独有机制
     local function unique_mechanics_setup(inst)
-        
+		
+		------ 世界死够 50 条后 变异
+			inst:ListenForEvent("minhealth",function()
+					local num = TheWorld.components.fwd_in_pdt_data:Add("fwd_in_pdt_animal_snake.death",1)
+					if num >= ( TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE and 5 or 50 )  then
+						TheWorld.components.fwd_in_pdt_data:Set("fwd_in_pdt_animal_snake.death",0)
+						local x,y,z = inst.Transform:GetWorldPosition()
+						inst:Remove()
+						SpawnPrefab("fwd_in_pdt_fx_explode"):PushEvent("Set",{
+							pt = Vector3(x,y,z),
+							scale = 1.5,
+							color = Vector3(139/255,69/255,20/255),
+							MultColour_Flag = true,
+						})
+						SpawnPrefab("fwd_in_pdt_animal_snake_hound").Transform:SetPosition(x, y, z)
+
+					end
+			end)
     end
 -----------------------------------------------------------------------------
 

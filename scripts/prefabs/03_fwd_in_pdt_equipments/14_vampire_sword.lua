@@ -171,7 +171,7 @@ local function fn()
             local ents = TheSim:FindEntities(x, 0, z, 3, musthavetags, canthavetags, musthaveoneoftags)
             local ret_targets = {}  
             for k, temp_monster in pairs(ents) do
-                if temp_monster and temp_monster:IsValid() and temp_monster ~= target and target.components.combat then
+                if temp_monster and temp_monster:IsValid() and temp_monster ~= target and temp_monster.components.combat then
                    table.insert(ret_targets,temp_monster)                    
                 end
             end
