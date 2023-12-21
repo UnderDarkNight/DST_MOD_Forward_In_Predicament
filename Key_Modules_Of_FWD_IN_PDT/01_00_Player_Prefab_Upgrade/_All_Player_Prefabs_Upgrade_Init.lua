@@ -31,6 +31,9 @@ modimport("Key_Modules_Of_FWD_IN_PDT/01_00_Player_Prefab_Upgrade/06_player_defau
 modimport("Key_Modules_Of_FWD_IN_PDT/01_00_Player_Prefab_Upgrade/07_doll_clamping_machine_events.lua")   
  --- 娃娃机事件
 
+modimport("Key_Modules_Of_FWD_IN_PDT/01_00_Player_Prefab_Upgrade/08_hit_other_bleed_event.lua")   
+ --- 伤害太高造成的流血事件
+
 
 
 

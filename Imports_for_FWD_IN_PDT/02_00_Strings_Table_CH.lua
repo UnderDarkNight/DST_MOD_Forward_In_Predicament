@@ -44,6 +44,9 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             ["fwd_in_pdt_other_poison_frog"] = {
                 ["name"] = "箭毒娃",                
             },
+            ["fwd_in_pdt_event_hit_other_bleed"] = {
+                ["Death_Announce"] = "【{XXXX}】死于伤害过高造成的流血，下次别打那么高的伤害了",                
+            },
         --------------------------------------------------------------------
         ---- UI
             ["fwd_in_pdt_ui_craftingmenu"] = {        ---- 制作栏

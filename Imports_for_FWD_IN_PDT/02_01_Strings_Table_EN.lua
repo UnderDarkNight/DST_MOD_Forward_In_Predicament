@@ -38,6 +38,9 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             ["fwd_in_pdt_other_poison_frog"] = {
                 ["name"] = "Poison Dart Frog",                
             },
+            ["fwd_in_pdt_event_hit_other_bleed"] = {
+                ["Death_Announce"] = "[ {XXXX}] died from bleeding caused by too much damage, next time don't do so much damage",                
+            },
         --------------------------------------------------------------------
             ---- UI
             ["fwd_in_pdt_ui_craftingmenu"] = {        ---- 制作栏
