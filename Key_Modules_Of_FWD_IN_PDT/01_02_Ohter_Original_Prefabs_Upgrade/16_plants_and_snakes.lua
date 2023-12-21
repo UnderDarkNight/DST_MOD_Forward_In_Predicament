@@ -62,9 +62,6 @@
         "evergreen_tall",
         "evergreen_short",
         "evergreen_sparse",
-        "evergreen_sparse_normal",
-        "evergreen_sparse_tall",
-        "evergreen_sparse_short",
 
         "deciduoustree",
         "deciduoustree_normal",
@@ -91,7 +88,7 @@
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ---- 采集出蛇
     local pickable_prefabs = {
-        ["rock_avocado_bush"] = 0.2,                --- 石果树
+        ["rock_avocado_bush"] = 0.1,                --- 石果树
         ["berrybush"] = 0.1,                        --- 浆果
         ["berrybush2"] = 0.1,                       --- 浆果
         ["marsh_bush"] = 0.1,                       --- 尖刺灌木
@@ -100,8 +97,8 @@
         ["planted_flower"] = 0.1,                   --- 花
         ["flower_evil"] = 0.1,                      --- 花
         ["reeds"] = 0.1,                            --- 芦苇
-        ["bananabush"] = 0.2,                       --- 香蕉丛
-        ["monkeytail"] = 0.2,                       --- 猴尾草
+        ["bananabush"] = 0.1,                       --- 香蕉丛
+        ["monkeytail"] = 0.1,                       --- 猴尾草
     }
     for the_prefab, temp_num  in pairs(pickable_prefabs) do   
         AddPrefabPostInit(
