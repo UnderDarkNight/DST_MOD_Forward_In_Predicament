@@ -137,8 +137,8 @@ local function fn()
     inst.AnimState:SetBuild("fwd_in_pdt_container_tv_box")
     inst.AnimState:PlayAnimation("idle",true)
 
-    local scale = 1.5
-    inst.AnimState:SetScale(scale, scale, scale)
+    -- local scale = 1.5
+    -- inst.AnimState:SetScale(scale, scale, scale)
 
     inst:AddTag("structure")
     inst:AddTag("chest")
@@ -199,8 +199,8 @@ local function fn()
 end
 -----------------------------------------------------------------------------------------------
     local function placer_postinit_fn(inst)
-        local scale = 1.5
-        inst.AnimState:SetScale(scale,scale,scale)
+        -- local scale = 1.5
+        -- inst.AnimState:SetScale(scale,scale,scale)
         inst.AnimState:Hide("SNOW")
     end
 -----------------------------------------------------------------------------------------------

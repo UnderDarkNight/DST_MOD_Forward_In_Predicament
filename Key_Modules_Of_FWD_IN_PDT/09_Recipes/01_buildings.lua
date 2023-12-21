@@ -176,7 +176,7 @@ RemoveRecipeFromFilter("fwd_in_pdt_building_special_cookpot","MODS")            
 AddRecipeToFilter("fwd_in_pdt_container_tv_box","CONTAINERS")     ---- 添加物品到目标标签
 AddRecipe2(
     "fwd_in_pdt_container_tv_box",            --  --  inst.prefab  实体名字
-    { Ingredient("bluegem", 2),Ingredient("boards", 6)}, 
+    { Ingredient("gears", 2),Ingredient("boards", 6)}, 
     TECH.NONE, --- TECH.NONE
     {
         -- nounlock=true,
