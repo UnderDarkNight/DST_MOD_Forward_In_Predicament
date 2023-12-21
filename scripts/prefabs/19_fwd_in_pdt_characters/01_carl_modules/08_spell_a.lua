@@ -35,8 +35,11 @@
             -----------------------------------------------------------------
                 if spell_timer <= 0 then    ----- 时间到了
                     inst._________________spell_a_task:Cancel()
-                    if inst._________________spell_a_task_mark_fx then
-                        inst._________________spell_a_task_mark_fx:PushEvent("Remove")
+                    if inst._________________spell_a_task_mark_fx then  --- 移除所有特效
+                        for k, temp_fx in pairs(inst._________________spell_a_task_mark_fx) do
+                            temp_fx:PushEvent("Remove")                            
+                        end
+                        inst._________________spell_a_task_mark_fx = nil
                     end
                     inst.components.fwd_in_pdt_func:PreGetAttacked_Remove_Fn(combat_block_fn)
                 end
@@ -78,11 +81,26 @@
             end
         ----------------------------------------------------
         -- 给自己上标记
-            inst._________________spell_a_task_mark_fx = inst:SpawnChild("fwd_in_pdt_fx_red_bats_mark")
-            inst._________________spell_a_task_mark_fx:PushEvent("Set",{
+            inst._________________spell_a_task_mark_fx = {}
+            local temp_fx = inst:SpawnChild("fwd_in_pdt_fx_red_bats_mark")
+            temp_fx:PushEvent("Set",{
                 pt = Vector3(0,3,0),
                 scale = 0.5,
             })
+            table.insert(inst._________________spell_a_task_mark_fx,temp_fx)
+
+            local surround_locations =  TheWorld.components.fwd_in_pdt_func:GetSurroundPoints({
+                    target = Vector3(0,0,0),
+                    range = 10,
+                    num = 24
+            })
+            for k, temp_pt in pairs(surround_locations) do
+                local fx = inst:SpawnChild("fwd_in_pdt_fx_red_bats_mark")
+                fx:PushEvent("Set",{
+                    pt = temp_pt,
+                })
+                table.insert(inst._________________spell_a_task_mark_fx,fx)
+            end
         ----------------------------------------------------
 
     end
