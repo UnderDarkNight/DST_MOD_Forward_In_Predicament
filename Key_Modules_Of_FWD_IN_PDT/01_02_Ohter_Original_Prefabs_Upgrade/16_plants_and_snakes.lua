@@ -111,7 +111,7 @@
 
                 setup_snake_spawn_event(inst)
                 inst:ListenForEvent("picked",function()
-                    if not TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE and math.random(1000)/1000 > (1-pickable_prefabs[inst.prefab]) then
+                    if not TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE and math.random(1000)/1000 > (pickable_prefabs[inst.prefab]) then
                         return
                     end
                     inst:PushEvent("fwd_in_pdt_event.spawn_snake")
