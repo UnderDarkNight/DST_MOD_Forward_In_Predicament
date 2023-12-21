@@ -515,6 +515,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "能烹饪出不少食物",
                 ["recipe_desc"] = "能烹饪出不少食物",
             },
+            ["fwd_in_pdt_container_tv_box"] = {
+                ["name"] = "TV Box",
+                ["inspect_str"] = "There's something wrong with this TV.",
+                ["recipe_desc"] = "There's something wrong with this TV.",
+            },
         --------------------------------------------------------------------
         ---- 07_fwd_in_pdt_buildings
             ["fwd_in_pdt_building_mock_wall_grass"] = {

@@ -341,10 +341,69 @@ local flg,error_code = pcall(function()
     ----------------------------------------------------------------------------------------------------------------
     ---- 
             -- ThePlayer.components.inventory:GiveItem(SpawnPrefab("fwd_in_pdt_item_treatment_from_doctor"))
-            ThePlayer.components.fwd_in_pdt_func:Wisper({
-                    m_colour = {0,250,250} ,                          ---- 内容颜色
-                    message = "ABCDEFG",                            ---- 文字内容
-            })
+            -- ThePlayer.components.fwd_in_pdt_func:Wisper({
+            --         m_colour = {0,250,250} ,                          ---- 内容颜色
+            --         message = "ABCDEFG",                            ---- 文字内容
+            -- })
+    ----------------------------------------------------------------------------------------------------------------
+            local inst = TheSim:FindFirstEntityWithTag("fwd_in_pdt_container_tv_box")
+            local tar_atlas = nil
+            local tar_image = nil
+            -- inst.components.container:ForEachItem(function(temp_item)
+            --     if tar_item ~= nil then
+            --         return
+            --     end
+            --     if temp_item == nil then
+            --         return
+            --     end
+            --     tar_item = temp_item
+            --     -- local imagename = tar_item.components.inventoryitem.imagename or tar_item.prefab
+            --     -- imagename  = string.gsub(imagename_t,".tex", "") .. ".tex"
+            --     -- local atlasname = tar_item.components.inventoryitem.atlasname or GetInventoryItemAtlas(imagename)
+            --     -- if TheSim:AtlasContains(atlasname, imagename) then
+            --     --     tar_item = temp_item
+            --     --     tar_atlas = atlasname
+            --     --     tar_image = imagename
+            --     -- end
+            -- end)
+            for num, temp_item in pairs(inst.components.container.slots) do
+                if temp_item and temp_item:IsValid() then
+                        local imagename = temp_item.components.inventoryitem.imagename or temp_item.prefab
+                        imagename  = string.gsub(imagename,".tex", "") .. ".tex"
+                        local atlasname = temp_item.components.inventoryitem.atlasname or GetInventoryItemAtlas(imagename)
+                        if TheSim:AtlasContains(atlasname, imagename) then
+                            tar_atlas = atlasname
+                            tar_image = imagename
+                            break
+                        end
+                end
+            end
+
+
+                -- local imagename = tar_item.components.inventoryitem.imagename or tar_item.prefab
+                -- imagename  = string.gsub(imagename,".tex", "") .. ".tex"
+                -- local atlasname = tar_item.components.inventoryitem.atlasname or GetInventoryItemAtlas(imagename)
+
+                -- print(imagename,atlasname)
+                -- if not TheSim:AtlasContains(atlasname, imagename) then
+                --     atlasname = resolvefilepath_soft(atlasname)                    
+                -- end
+                -- print(TheSim:AtlasContains(atlasname, imagename))
+                print("66666666",tar_image,tar_atlas)
+                -- inst.AnimState:OverrideSymbol("SWAP_SIGN",atlasname,imagename)
+            if tar_image and tar_atlas then
+                inst.AnimState:OverrideSymbol("SWAP_SIGN",tar_atlas,tar_image)
+            else
+                inst.AnimState:ClearOverrideSymbol("SWAP_SIGN")
+            end
+
+    
+            
+    ----------------------------------------------------------------------------------------------------------------
+            -- print(type(package))
+            -- for k, v in pairs(package.loaded) do
+            --     print(k,v)
+            -- end
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)

@@ -170,4 +170,26 @@ AddRecipe2(
 RemoveRecipeFromFilter("fwd_in_pdt_building_special_cookpot","MODS")                       -- -- 在【模组物品】标签里移除这个。
 
 
+--------------------------------------------------------------------------------------------------------------------------------------------
+---- 电视机
+--------------------------------------------------------------------------------------------------------------------------------------------
+AddRecipeToFilter("fwd_in_pdt_container_tv_box","CONTAINERS")     ---- 添加物品到目标标签
+AddRecipe2(
+    "fwd_in_pdt_container_tv_box",            --  --  inst.prefab  实体名字
+    { Ingredient("bluegem", 2),Ingredient("boards", 6)}, 
+    TECH.NONE, --- TECH.NONE
+    {
+        -- nounlock=true,
+        no_deconstruction=true,
+        -- builder_tag = "npng_tag.has_green_amulet",    --------- -- 【builder_tag】只给指定tag的角色能制造这件物品，角色添加/移除 tag 都能立马解锁/隐藏该物品
+        placer = "fwd_in_pdt_container_tv_box_placer",                       -------- 建筑放置器        
+        atlas = "images/map_icons/fwd_in_pdt_container_tv_box.xml",
+        image = "fwd_in_pdt_container_tv_box.tex",
+        min_spacing = 1,
+    },
+    {"CONTAINERS"}
+)
+RemoveRecipeFromFilter("fwd_in_pdt_building_special_cookpot","MODS")                       -- -- 在【模组物品】标签里移除这个。
+
+
 

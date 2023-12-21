@@ -33,6 +33,7 @@ local prefabs_name_list = {
     "03_special_production_table",            --- 特殊工作台
     "04_fermenter",                           --- 发酵缸
     "05_special_cookpot",                     --- 万能烹饪锅
+    "06_tv_box",                              --- 电视机盒子
 
     
 }

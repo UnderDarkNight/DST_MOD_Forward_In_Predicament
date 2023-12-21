@@ -30,6 +30,7 @@ local files_name = {
 		"fwd_in_pdt_building_fermenter",							--- 发酵缸
 		"fwd_in_pdt_building_special_cookpot",						--- 万能烹饪锅
 		"fwd_in_pdt_building_special_cookpot_lantern",				--- 万能烹饪锅【神灯皮肤】
+		"fwd_in_pdt_container_tv_box",								--- 电视机
 	-------------------------------------------------------------------------------------------------
 	---- 07_fwd_in_pdt_buildings
 		"fwd_in_pdt_building_special_shop",							--- 纪念品商店

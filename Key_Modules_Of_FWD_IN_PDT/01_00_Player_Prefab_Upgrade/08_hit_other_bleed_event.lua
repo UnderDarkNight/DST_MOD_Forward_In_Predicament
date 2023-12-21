@@ -23,7 +23,7 @@ AddPlayerPostInit(function(inst)
 
 
     inst:ListenForEvent("onhitother",function(_,_table)
-        if not (_table and _table.target and _table.damage) then
+        if not (_table and _table.target and _table.target:IsValid() and _table.damage) then
             return
         end
 
