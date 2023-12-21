@@ -36,6 +36,6 @@ modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/14_coo
 
 modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/15_shadowheart.lua")    --- 修改 暗影心房，可以被特定角色吃
 
-modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/16_tress_and_snakes.lua")    --- 砍树出蛇
+modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/16_plants_and_snakes.lua")    --- 植物和蛇
 
 modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/17_frog_trans_2_hound.lua")    --- 青蛙变异
