@@ -353,6 +353,10 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "Coffee Beans",
                 ["inspect_str"] = "One by one, they're quite full.",
             },
+            ["fwd_in_pdt_food_dried_fruits"] = {
+                ["name"] = "Dried Fruits",
+                ["inspect_str"] = "Dried Fruits",
+            },
         --------------------------------------------------------------------
         ---- 05_fwd_in_pdt_foods_cooked
             ["fwd_in_pdt_food_mixed_potato_soup"] = {
@@ -511,14 +515,21 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["action_str"] = "Fester"
             },
             ["fwd_in_pdt_building_special_cookpot"] = {
-                ["name"] = "混沌万能锅",
-                ["inspect_str"] = "能烹饪出不少食物",
-                ["recipe_desc"] = "能烹饪出不少食物",
+                ["name"] = "Chaos All-Purpose Pot",
+                ["inspect_str"] = "I can cook a lot of food with it.",
+                ["recipe_desc"] = "I can cook a lot of food with it.",
             },
             ["fwd_in_pdt_container_tv_box"] = {
                 ["name"] = "TV Box",
                 ["inspect_str"] = "There's something wrong with this TV.",
                 ["recipe_desc"] = "There's something wrong with this TV.",
+            },
+            ["fwd_in_pdt_building_drying_rack"] = {
+                ["name"] = "Drying Rack",
+                ["inspect_str"] = "It can be used to air-dry some foods.",
+                ["recipe_desc"] = "It can be used to air-dry some foods.",
+                ["inspect_str_burnt"] = "It's burned.",
+                ["action_str"] = "Execute"
             },
         --------------------------------------------------------------------
         ---- 07_fwd_in_pdt_buildings

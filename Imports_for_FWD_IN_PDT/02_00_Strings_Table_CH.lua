@@ -359,6 +359,10 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "咖啡豆",
                 ["inspect_str"] = "一颗一颗相当饱满",
             },
+            ["fwd_in_pdt_food_dried_fruits"] = {
+                ["name"] = "果干",
+                ["inspect_str"] = "水果干",
+            },
         --------------------------------------------------------------------
         ---- 05_fwd_in_pdt_foods_cooked
             ["fwd_in_pdt_food_mixed_potato_soup"] = {
@@ -524,6 +528,13 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "电视机",
                 ["inspect_str"] = "这电视机有点不正常",
                 ["recipe_desc"] = "这电视机有点不正常",
+            },
+            ["fwd_in_pdt_building_drying_rack"] = {
+                ["name"] = "晾晒架",
+                ["inspect_str"] = "能用来风干一些食物",
+                ["recipe_desc"] = "能用来风干一些食物",
+                ["inspect_str_burnt"] = "已经烧毁了",
+                ["action_str"] = "捣鼓"
             },
         --------------------------------------------------------------------
         ---- 07_fwd_in_pdt_buildings

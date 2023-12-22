@@ -37,6 +37,7 @@ local prefabs_name_list = {
     "07_orange",                             --- 橙子
     "08_soybeans",                           --- 大豆
     "09_coffebeans",                         --- 咖啡豆
+    "10_dried_fruits",                       --- 水果干
 
 
     
