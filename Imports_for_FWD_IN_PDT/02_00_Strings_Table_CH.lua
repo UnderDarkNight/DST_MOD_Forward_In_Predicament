@@ -712,6 +712,10 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "变异蛇",
                 ["inspect_str"] = "这家伙居然有两个头",
             },
+            ["fwd_in_pdt_animal_ghost_hound"] = {
+                ["name"] = "幽灵猎犬",
+                ["inspect_str"] = "这家伙很难缠",
+            },
         --------------------------------------------------------------------
         ---- 12_fwd_in_pdt_boss
         --------------------------------------------------------------------

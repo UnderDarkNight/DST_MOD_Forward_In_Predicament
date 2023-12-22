@@ -30,6 +30,7 @@ local prefabs_name_list = {
     "01_snake",     ---- 蛇
     "02_frog_hound",     ---- 绿狗
     "03_snake_hound",     ---- 蛇狗
+    "04_ghost_hound",     ---- 鬼狗
 }
 
 

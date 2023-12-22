@@ -346,17 +346,59 @@ local flg,error_code = pcall(function()
             --         message = "ABCDEFG",                            ---- 文字内容
             -- })
     ----------------------------------------------------------------------------------------------------------------
-            SpawnPrefab("fwd_in_pdt_fx_explode"):PushEvent("Set",{
-                pt = Vector3(x,y,z),
-                scale = 1.5,
-                color = Vector3(139/255,69/255,20/255),
-                MultColour_Flag = true,
-            })
+            -- SpawnPrefab("fwd_in_pdt_fx_explode"):PushEvent("Set",{
+            --     pt = Vector3(x,y,z),
+            --     scale = 1.5,
+            --     color = Vector3(139/255,69/255,20/255),
+            --     MultColour_Flag = true,
+            -- })
     ----------------------------------------------------------------------------------------------------------------
-            -- print(type(package))
-            -- for k, v in pairs(package.loaded) do
-            --     print(k,v)
-            -- end
+                local on_boat_players = {}
+                for k, temp_player in pairs(AllPlayers) do
+                    local x,y,z = temp_player.Transform:GetWorldPosition()
+                    if TheWorld.Map:IsOceanAtPoint(x, 0, z,true) then
+                        table.insert(on_boat_players,temp_player)
+                    end                
+                end
+                
+                if #on_boat_players == 0 then  ---- 没有玩家在海上
+                    return
+                end
+
+                local ret_target_player = on_boat_players[math.random(#on_boat_players)]
+
+                local in_hand_item = ret_target_player.components.inventory:GetEquippedItem(EQUIPSLOTS.HANDS)
+
+                local torch_in_hand = false
+                if in_hand_item and in_hand_item.prefab == "torch" then
+                    torch_in_hand = true
+                end
+                if not ( torch_in_hand or math.random(1000)/1000 <= 0.05 ) then
+                    return
+                end
+                --------------------------------------------------------------------------------
+                ----- 找在 海上的那些个点
+                    local locations = TheWorld.components.fwd_in_pdt_func:GetSurroundPoints({
+                        target = ret_target_player,
+                        range = 25,
+                        num = 20
+                    })
+                    local locations_ocean = {}
+                    for k, temp_pt in pairs(locations) do
+                        if TheWorld.Map:IsOceanAtPoint(temp_pt.x, 0, temp_pt.z) then
+                            table.insert(locations_ocean,temp_pt)
+                        end
+                    end
+                    if #locations_ocean == 0 then
+                        return
+                    end
+                --------------------------------------------------------------------------------
+
+                local ghost_spawn_pt = locations_ocean[math.random(#locations_ocean)]
+                SpawnPrefab("fwd_in_pdt_animal_ghost_hound").Transform:SetPosition(ghost_spawn_pt.x, 0, ghost_spawn_pt.z)
+
+
+
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)
