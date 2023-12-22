@@ -47,11 +47,10 @@ AddPrefabPostInit(
                             if in_hand_item and in_hand_item.prefab == "torch" then
                                 torch_in_hand = true
                             end
-                            if not ( torch_in_hand or math.random(1000)/1000 <= (0.05 + TheWorld.components.fwd_in_pdt_data:Add("ghost_hound_event",0)  ) ) then
+                            if not ( torch_in_hand or math.random(1000)/1000 <= (0.01 + TheWorld.components.fwd_in_pdt_data:Add("ghost_hound_event",0)  ) ) then
                                 TheWorld.components.fwd_in_pdt_data:Add("ghost_hound_event",0.01)
                                 return
                             end
-                            TheWorld.components.fwd_in_pdt_data:Set("ghost_hound_event",0)
                             --------------------------------------------------------------------------------
                             ----- 找在 海上的那些个点
                                 local locations = TheWorld.components.fwd_in_pdt_func:GetSurroundPoints({
@@ -72,7 +71,8 @@ AddPrefabPostInit(
 
                             local ghost_spawn_pt = locations_ocean[math.random(#locations_ocean)]
                             SpawnPrefab("fwd_in_pdt_animal_ghost_hound").Transform:SetPosition(ghost_spawn_pt.x, 0, ghost_spawn_pt.z)
-
+                            TheWorld.components.fwd_in_pdt_data:Set("ghost_hound_event",0)
+                            
                 --------------------------------------------------------------------------------------------
             end)
         end)
