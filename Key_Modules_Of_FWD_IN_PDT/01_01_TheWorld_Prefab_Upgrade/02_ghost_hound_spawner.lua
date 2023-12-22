@@ -27,10 +27,12 @@ AddPrefabPostInit(
 
                             local on_boat_players = {}
                             for k, temp_player in pairs(AllPlayers) do
-                                local x,y,z = temp_player.Transform:GetWorldPosition()
-                                if TheWorld.Map:IsOceanAtPoint(x, 0, z,true) then
-                                    table.insert(on_boat_players,temp_player)
-                                end                
+                                if not temp_player:HasTag("playerghost") and temp_player.components.playercontroller then
+                                    local x,y,z = temp_player.Transform:GetWorldPosition()
+                                    if TheWorld.Map:IsOceanAtPoint(x, 0, z,true) then
+                                        table.insert(on_boat_players,temp_player)
+                                    end
+                                end
                             end
                             
                             if #on_boat_players == 0 then  ---- 没有玩家在海上
