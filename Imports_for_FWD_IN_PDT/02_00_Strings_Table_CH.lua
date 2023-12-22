@@ -746,6 +746,7 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
         ---- 19_fwd_in_pdt_characters
             ["fwd_in_pdt_carl"] = {
                 ["death_thirst_for_blood"] = "【{XXXX}】死于对鲜血的渴望，太惨了，还得更加努力获得鲜血才行",
+                ["spell_cost_not_enough"] = "血瓶数量不足，需要数量："
             },
         --------------------------------------------------------------------
         ---- 20_fwd_in_pdt_events

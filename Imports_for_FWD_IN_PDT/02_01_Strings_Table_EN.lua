@@ -741,6 +741,8 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
         ---- 19_fwd_in_pdt_characters
             ["fwd_in_pdt_carl"] = {
                 ["death_thirst_for_blood"] = "[ {XXXX} ] died of thirst for blood. Too bad. Gotta work harder to get it .",
+                ["spell_cost_not_enough"] = "Insufficient bloody flask, need quantity:"
+
             },
         --------------------------------------------------------------------
         ---- 20_fwd_in_pdt_events

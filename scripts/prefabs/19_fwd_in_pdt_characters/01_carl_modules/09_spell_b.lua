@@ -8,6 +8,12 @@
 
 ]]--
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+local function GetStringsTable(name)
+    local prefab_name = name or "fwd_in_pdt_carl"
+    local LANGUAGE = type(TUNING["Forward_In_Predicament.Language"]) == "function" and TUNING["Forward_In_Predicament.Language"]() or TUNING["Forward_In_Predicament.Language"]
+    return TUNING["Forward_In_Predicament.Strings"][LANGUAGE][prefab_name] or {}
+end
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ---- 冷却、消耗数量
     local spell_cooldown_time = TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE and 3 or 3
     local spell_item_cost_num = TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE and 5 or 5
@@ -63,6 +69,10 @@
         ------------------------------------------------------------
         ---- 数量不够，终止执行技能
             if total_num < item_cost_num then
+                inst.components.fwd_in_pdt_func:Wisper({
+                    m_colour = {250,0,0} ,                                                                      ---- 内容颜色
+                    message = GetStringsTable()["spell_cost_not_enough"]..tostring(item_cost_num),              ---- 文字内容
+                })
                 return false
             end
         ------------------------------------------------------------
