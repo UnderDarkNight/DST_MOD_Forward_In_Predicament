@@ -2,7 +2,7 @@ return {
     {
 		["name"] = "实习医生",
 		["prefab"] = "fwd_in_pdt_item_treatment_from_internship_doctor",
-		["cost"] = math.random(15,30),
+		["cost"] = math.random(1,10),
 		["num2give"] = 1.0,
 		["image"] = "fwd_in_pdt_item_treatment_from_internship_doctor.tex",
 		["atlas"] = "images/inventoryimages/fwd_in_pdt_item_treatment_from_internship_doctor.xml"
@@ -10,7 +10,7 @@ return {
     {
 		["name"] = "主任医生",
 		["prefab"] = "fwd_in_pdt_item_treatment_from_head_doctor",
-		["cost"] = math.random(50,80),
+		["cost"] = math.random(10,20),
 		["num2give"] = 1.0,
 		["image"] = "fwd_in_pdt_item_treatment_from_head_doctor.tex",
 		["atlas"] = "images/inventoryimages/fwd_in_pdt_item_treatment_from_head_doctor.xml"
@@ -18,7 +18,7 @@ return {
     {
 		["name"] = "专家医生",
 		["prefab"] = "fwd_in_pdt_item_treatment_from_specialist_doctor",
-		["cost"] = math.random(100,150),
+		["cost"] = math.random(20,30),
 		["num2give"] = 1.0,
 		["image"] = "fwd_in_pdt_item_treatment_from_specialist_doctor.tex",
 		["atlas"] = "images/inventoryimages/fwd_in_pdt_item_treatment_from_specialist_doctor.xml"

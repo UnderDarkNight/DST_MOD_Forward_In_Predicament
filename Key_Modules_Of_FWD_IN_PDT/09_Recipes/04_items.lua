@@ -12,7 +12,7 @@
 AddRecipeToFilter("fwd_in_pdt_item_talisman_that_repels_snakes","REFINE")     ---- 添加物品到目标标签
 AddRecipe2(
     "fwd_in_pdt_item_talisman_that_repels_snakes",            --  --  inst.prefab  实体名字
-    { Ingredient("fwd_in_pdt_material_realgar", 10),Ingredient("nightmarefuel", 10) }, 
+    { Ingredient("fwd_in_pdt_material_realgar", 1),Ingredient("nightmarefuel", 10) }, 
     TECH.NONE, --- TECH.NONE
     {
         -- nounlock=true,

@@ -42,8 +42,8 @@ local function fn()
     end
     --------------------------------------------------------------------------
         inst:AddComponent("finiteuses")
-        inst.components.finiteuses:SetMaxUses(50)
-        inst.components.finiteuses:SetUses(50)
+        inst.components.finiteuses:SetMaxUses(100)
+        inst.components.finiteuses:SetUses(100)
         inst.components.finiteuses:SetOnFinished(inst.Remove)
         inst:ListenForEvent("effect",function()
             inst.components.finiteuses:Use(1)
