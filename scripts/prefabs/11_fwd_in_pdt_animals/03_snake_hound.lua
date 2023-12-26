@@ -175,8 +175,18 @@ local function unique_mechanics_setup(inst)
                 if not TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE and math.random(1000)/1000 > 0.25 then
                     return
                 end
-
                 local x,y,z = inst.Transform:GetWorldPosition()
+                local ents = TheSim:FindEntities(x, y, z, 10, {"fwd_in_pdt_item_talisman_that_repels_snakes"}, nil, nil)
+                for k, item in pairs(ents) do
+                    if item and item:IsValid() then
+                        item:Remove()
+                        if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
+                            TheNet:Announce("成功屏蔽一群蛇")
+                        end
+                        return
+                    end
+                end
+
                 inst:Remove()
                 SpawnPrefab("fwd_in_pdt_fx_explode"):PushEvent("Set",{
                     pt = Vector3(x,y,z),
