@@ -34,6 +34,7 @@ local files_name = {
 		"fwd_in_pdt_item_treatment_from_internship_doctor"	, 						--- 实习医生的治疗
 		"fwd_in_pdt_item_treatment_from_head_doctor"	, 							--- 主任医生的治疗
 		"fwd_in_pdt_item_treatment_from_internship_doctor"	, 						--- 专家医生的治疗
+		"fwd_in_pdt_item_talisman_that_repels_snakes",			--- 避开蛇护符
 	---------------------------------------------------------------------------------------
 	-- 02_fwd_in_pdt_materials
 		"fwd_in_pdt_material_tree_resin",						--- 树脂

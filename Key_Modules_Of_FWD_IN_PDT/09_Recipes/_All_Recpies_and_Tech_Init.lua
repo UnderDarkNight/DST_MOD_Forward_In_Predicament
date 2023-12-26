@@ -9,6 +9,8 @@ modimport("Key_Modules_Of_FWD_IN_PDT/09_Recipes/02_medical_check_up_machine.lua"
 
 modimport("Key_Modules_Of_FWD_IN_PDT/09_Recipes/03_element_core_weapon_recipes_for_green_staff.lua")    --- 给绿色法杖拆元素装备用的
 
+modimport("Key_Modules_Of_FWD_IN_PDT/09_Recipes/04_items.lua")    --- 物品道具
+
 
 
 

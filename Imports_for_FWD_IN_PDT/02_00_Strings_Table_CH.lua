@@ -201,6 +201,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["succeed"] = "这个医生成功找到了你的病症，并进行了针对性治疗",
                 ["fail"] = "你的病情相当复杂，这个专家已经无力回天，也许换一个就行了。",
             },
+            ["fwd_in_pdt_item_talisman_that_repels_snakes"] = {
+                ["name"] = "避蛇护符",
+                ["inspect_str"] = "这东西有一定概率避免遭遇到蛇",
+                ["recipe_desc"] = "这东西有一定概率避免遭遇到蛇",
+            },
         --------------------------------------------------------------------
         ---- 02_fwd_in_pdt_materials
             ["fwd_in_pdt_material_tree_resin"] = {

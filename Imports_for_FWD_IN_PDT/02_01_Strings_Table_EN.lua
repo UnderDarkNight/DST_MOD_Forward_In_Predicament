@@ -198,6 +198,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["succeed"] = "This doctor managed to find out what was wrong with you, and he treated you appropriately.",
                 ["fail"] = "Your condition is quite complex and this specialist is no longer able to help, so maybe another one will do.",
             },
+            ["fwd_in_pdt_item_talisman_that_repels_snakes"] = {
+                ["name"] = "Talisman That Repels Snakes",
+                ["inspect_str"] = "This thing has a certain probability of avoiding encounters with snakes",
+                ["recipe_desc"] = "This thing has a certain probability of avoiding encounters with snakes",
+            },
         --------------------------------------------------------------------
         ---- 02_fwd_in_pdt_materials
             ["fwd_in_pdt_material_tree_resin"] = {

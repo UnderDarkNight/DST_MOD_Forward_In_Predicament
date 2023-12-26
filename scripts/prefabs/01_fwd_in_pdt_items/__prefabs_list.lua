@@ -48,6 +48,7 @@ local prefabs_name_list = {
     "19_adrenaline_injection",           -- 肾上腺注射剂
     "20_bloody_flask",                   -- 卡尔收藏的血瓶
     "21_treatment_from_doctor",          -- 来自医生的治疗
+    "22_talisman_that_repels_snakes",          -- 避蛇护符
 }
 
 
