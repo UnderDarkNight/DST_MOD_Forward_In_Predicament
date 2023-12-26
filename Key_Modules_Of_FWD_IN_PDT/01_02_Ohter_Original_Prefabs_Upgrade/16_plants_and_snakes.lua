@@ -14,7 +14,7 @@
 
             local ents = TheSim:FindEntities(x, y, z, 10, {"fwd_in_pdt_item_talisman_that_repels_snakes"}, nil, nil)
             for k, item in pairs(ents) do
-                if item and item:IsValid() and math.random(1000)/1000 < 0.5 then
+                if item and item:IsValid() and math.random(1000)/1000 < 0.7 then
                     item:PushEvent("effect")
                     if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
                         TheNet:Announce("成功屏蔽一条蛇")
