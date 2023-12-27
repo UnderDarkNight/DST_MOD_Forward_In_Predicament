@@ -138,6 +138,10 @@ AddPlayerPostInit(function(inst)
                     ["lg_sweat"] = 40,                    ---蜂蜜面包
                     ["lg_caomei"] = 20,                   ---草莓甜甜圈
                     ["lg_dangao"] = 20,                   ---生日蛋糕
+                    --以下是和小穹人物mod的兼容
+                    ["sora_tangjianzhuzi"] = 20,            ---糖煎竹子
+                    ["sora_qiaokeli"] = 20,                 ---甜心巧克力
+                    ["sora_tongluoshao"] = 20,              ---铜锣烧
                 }
 
                 local num = 0
@@ -193,6 +197,9 @@ AddPlayerPostInit(function(inst)
                     ["fasam_cinnabar_fruit_stew_kangkang"] = 10,   ---朱果炖康康
                     ["fasam_osmanthus_cake"] = 20,   ---桂花糕
                     ["fasam_osmanthus_tea"] = 30,    ---桂花茶
+                    --以下是和小穹人物mod的兼容
+                    ["sora_aping"] = 30,            ---阿瓶酱
+                    ["sora_banhua"] = 30,            ---花花沙拉
                 }
                 if prefab_list_with_vc_value[food_base_prefab] then
                     num = prefab_list_with_vc_value[food_base_prefab]

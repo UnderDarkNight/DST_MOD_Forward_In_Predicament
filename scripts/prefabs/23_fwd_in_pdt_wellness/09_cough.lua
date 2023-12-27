@@ -156,7 +156,7 @@ local function fn()
             function inst:Add_Cough_Action_Task()
                 if self.___cough_action_task == nil then
                     self.___cough_action_task = self.player:DoPeriodicTask(30, function(player)
-                        if player and player.sg and player.sg.GoToState and not player:HasTag("playerghost") then
+                        if player and player.sg and player.sg.GoToState and not player:HasTag("playerghost") and not player.sg:HasStateTag("dead") then
                             player.sg:GoToState("fwd_in_pdt_wellness_cough")
                             self.___net_entity:set(self)    --- 下发自己 inst ,触发 客户端 的 player.sg:GoToState
                             self:DoTaskInTime(3,function()          ---  延时重新下发另一个内容，让下一次 net_vars 可以继续下发
