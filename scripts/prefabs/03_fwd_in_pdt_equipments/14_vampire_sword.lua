@@ -26,7 +26,7 @@ local assets =
             build = "fwd_in_pdt_equipment_vampire_sword_laser",                              --- 制作完成后切换的 build
             atlas = "images/inventoryimages/fwd_in_pdt_equipment_vampire_sword_laser.xml",                                        --- 【制作栏】皮肤显示的贴图，
             image = "fwd_in_pdt_equipment_vampire_sword_laser",                              --- 【制作栏】皮肤显示的贴图， 不需要 .tex
-            name = "laser",                                                                         --- 【制作栏】皮肤的名字
+            name = "激光剑",                                                                         --- 【制作栏】皮肤的名字
             name_color = {255/255,0/255,0/255,255/255},
             onequip_bank = "fwd_in_pdt_equipment_vampire_sword_laser_swap"
         },

@@ -57,9 +57,9 @@ local function fn()
     inst.components.perishable:StartPerishing()
     inst.components.perishable.onperishreplacement = "spoiled_food" -- 腐烂后变成腐烂食物
 
-    inst.components.edible.hungervalue = 80
+    inst.components.edible.hungervalue = 40
     inst.components.edible.sanityvalue = 40
-    inst.components.edible.healthvalue = 0
+    inst.components.edible.healthvalue = 120
 
     inst:AddComponent("stackable") -- 可堆叠
     inst.components.stackable.maxsize = TUNING.STACK_SIZE_SMALLITEM
