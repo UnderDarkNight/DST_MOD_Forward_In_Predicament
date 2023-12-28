@@ -9,7 +9,7 @@
 
     被任何攻击有2s硬直，避免打群架的时候被控到死。每次触发会消耗 0.5 饥饿值。如果饥饿值为0 则无法触发硬直
 
-    打死一个怪得1血瓶,BOSS 得5 个。 被卡尔打过的怪才会掉。 
+    打死一个怪得1血瓶,BOSS 得10 个。 被卡尔打过的怪才会掉。 
 
     
 ]]--
@@ -38,7 +38,7 @@ return function(inst)
     ---- 用蝙蝠剑的时候 额外吸血
         inst:ListenForEvent("fwd_in_pdt_event.vampire_sword_hit_target",function(_,target)
             if target and HasSoul(target) then
-                inst.components.health:DoDelta(10,true)
+                inst.components.health:DoDelta(20,true)
             end
         end)
     ---------------------------------------------------------------------------------------------------------------------------------------
@@ -90,7 +90,7 @@ return function(inst)
 
                 local num = 1
                 if target:HasTag("epic") then
-                    num = 5
+                    num = 10
                 end
 
                 TheWorld.components.fwd_in_pdt_func:Throw_Out_Items({

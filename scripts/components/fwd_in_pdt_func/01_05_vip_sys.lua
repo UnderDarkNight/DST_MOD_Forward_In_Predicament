@@ -150,20 +150,20 @@ local function main_com(self)
                                 self:VIP_Input_Succeed_Congratulations()
                                 Set_Is_VIP()
                             else
-                                self:VIP_INPUT_ANNOUNCE(GetStringTable()["check_fail"])
+                                self:VIP_INPUT_ANNOUNCE(GetStringTable()["check_fail"].." . ErrorID 001")
                             end
                             if _table.skins then
                                 self:Personal_Skin_Unlocker_Save_Data(_table.skins)
                                 self:Personal_Skin_Unlocker_Refresh()
                             end
                         else
-                            self:VIP_INPUT_ANNOUNCE(GetStringTable()["check_fail"])
+                            self:VIP_INPUT_ANNOUNCE(GetStringTable()["check_fail"].." . ErrorID 002")
                         end
                         ----------------------------------
                     else
                         print("json decode fail")
                         ------ 检查通告
-                            self:VIP_INPUT_ANNOUNCE(GetStringTable()["check_fail"])
+                            self:VIP_INPUT_ANNOUNCE(GetStringTable()["check_fail"].." . ErrorID 003")
                     end
                 else
                     print("info VIP_Player_Input_Key is not Successful")                    

@@ -48,9 +48,9 @@ local function fn()
     inst.components.edible.foodtype = FOODTYPE.MEAT
     inst.components.edible:SetOnEatenFn(function(inst,eater)
         if eater and eater:HasTag("player") then
-            -- 血糖值变为30
+            -- 血糖值变为50
             if eater.components.fwd_in_pdt_wellness then
-                eater.components.fwd_in_pdt_wellness:SetCurrent_Glucose(30)
+                eater.components.fwd_in_pdt_wellness:SetCurrent_Glucose(50)
                 eater.components.fwd_in_pdt_wellness:ForceRefresh()
             end
         end

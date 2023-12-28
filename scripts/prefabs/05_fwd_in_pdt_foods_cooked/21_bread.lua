@@ -46,7 +46,7 @@ local function fn()
 
 
     inst:AddComponent("edible") -- 可食物组件
-    inst.components.edible.foodtype = FOODTYPE.VEGGIE
+    inst.components.edible.foodtype = FOODTYPE.GOODIES
     inst.components.edible:SetOnEatenFn(function(inst,eater)
         if eater and eater:HasTag("player") then
             -- 血糖值增加5

@@ -134,6 +134,7 @@
             return ( (names.eggplant or 0 ) + (names.eggplant_cooked or 0) >= 1 )
                 and (tags.meat and tags.meat >=1 )
                 and ( (tags.monster or 0) < 1)
+                and ((names.fwd_in_pdt_food_wheat_flour or 0) + (names.fwd_in_pdt_food_wheat_flour or 0) >=2 )
             -- local eggplant = names.eggplant or 0
             -- local eggplant_cooked = names.eggplant_cooked or 0
             -- local meat = tags.meat or 0
@@ -661,7 +662,7 @@
         name = "fwd_in_pdt_food_bread", -- 料理名
         weight = 10, -- 食谱权重
         priority = 999, -- 食谱优先级
-        foodtype = GLOBAL.FOODTYPE.VEGGIE, --料理的食物类型，比如这里定义的是肉类
+        foodtype = GLOBAL.FOODTYPE.GOODIES, --料理的食物类型，比如这里定义的是肉类
         hunger = 62.5 , --吃后回饥饿值
         sanity = 5 , --吃后回精神值
         health = 3 , --吃后回血值

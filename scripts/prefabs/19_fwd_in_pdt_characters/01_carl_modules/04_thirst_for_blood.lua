@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --[[
 
-    3.【被动】【渴血】时刻都在掉血（每1s掉5血）。使用【药膏】的回复效果很差、但是可以减少自动掉血的量（每秒-2），持续1天。
+    3.【被动】【渴血】时刻都在掉血（每1s掉3血）。使用【药膏】的回复效果很差、但是可以减少自动掉血的量（每秒-1），持续1天。
 
     蜜蜂膏药
     蜘蛛腺体
@@ -25,7 +25,7 @@ return function(inst)
     ---------------------------------------------------------------------------------------------------------------------
     --- 【渴血】 debuff
         local time = 1  --- 时间周期
-        local HP_delta = 5  --- 原始扣除量
+        local HP_delta = 3  --- 原始扣除量
 
         inst:DoPeriodicTask(time,function()
             if inst:HasTag("playerghost") then
@@ -37,7 +37,7 @@ return function(inst)
             ---- 有这些 buff 就减少扣血，或者不扣血
                 --- 吃 蜜蜂膏药得到的buff
                 if inst.components.fwd_in_pdt_wellness:Get_Debuff("fwd_in_pdt_welness_carl_thirst_for_blood") ~= nil then
-                    target_delta_num = 2
+                    target_delta_num = 1
                 end
                 --- 吃暗影心房得到的buff
                 if inst.components.fwd_in_pdt_wellness:Get_Debuff("fwd_in_pdt_welness_carl_thirst_for_blood__shadowheart") ~= nil then

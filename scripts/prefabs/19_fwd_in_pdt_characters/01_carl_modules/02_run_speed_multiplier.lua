@@ -27,8 +27,8 @@ return function(inst)
         else
             local health_percent = inst.components.health:GetPercent()
             local speed = 1
-            if health_percent >= 0.8 then
-                speed = 1.25
+            if health_percent >= 0.7 then
+                speed = 2.0
             elseif health_percent < 0.2 then
                 speed = 0.75
             end
