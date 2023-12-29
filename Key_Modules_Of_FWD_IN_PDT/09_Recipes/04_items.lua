@@ -22,7 +22,7 @@ AddRecipe2(
         atlas = "images/inventoryimages/fwd_in_pdt_item_talisman_that_repels_snakes.xml",
         image = "fwd_in_pdt_item_talisman_that_repels_snakes.tex",
     },
-    {"REFINE"}
+    {"REFINE","FWD_IN_PDT"}
 )
 RemoveRecipeFromFilter("fwd_in_pdt_item_talisman_that_repels_snakes","MODS")                       -- -- 在【模组物品】标签里移除这个。
 

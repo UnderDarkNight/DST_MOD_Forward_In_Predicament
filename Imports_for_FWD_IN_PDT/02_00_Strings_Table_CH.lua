@@ -50,7 +50,7 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
         --------------------------------------------------------------------
         ---- UI
             ["fwd_in_pdt_ui_craftingmenu"] = {        ---- 制作栏
-                ["FWD_IN_PDT_BUILDINGS"] = "黑夜建筑"
+                ["FWD_IN_PDT"] = "负重前行"
             },
         --------------------------------------------------------------------
         ---- actions

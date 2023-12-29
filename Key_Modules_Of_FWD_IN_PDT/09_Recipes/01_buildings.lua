@@ -10,12 +10,12 @@ end
 
 ----------------------------------------------------------------------------------------------------------------------------------------------
 -- 添加分类栏目
--- table.insert(Assets,      Asset("ATLAS", "images/ui_images/fwd_in_pdt_buildings.xml")                         )     --  -- 载入贴图文件
--- table.insert(Assets,      Asset("IMAGE", "images/ui_images/fwd_in_pdt_buildings.tex")                         )     --  -- 载入贴图文件
--- RegisterInventoryItemAtlas("images/ui_images/fwd_in_pdt_buildings.xml", "fwd_in_pdt_buildings.tex")  -- 注册贴图文件【必须要做】
--- AddRecipeFilter({name="FWD_IN_PDT_BUILDINGS", atlas = "images/ui_images/fwd_in_pdt_buildings.xml",	image = "fwd_in_pdt_buildings.tex"})
--- STRINGS.UI.CRAFTING_FILTERS["FWD_IN_PDT_BUILDINGS"] = GetStringsTable("fwd_in_pdt_ui_craftingmenu")["FWD_IN_PDT_BUILDINGS"] or ""
--- --------------------------------------------------------------------------------------------------------------------------------------------
+table.insert(Assets,      Asset("ATLAS", "images/ui_images/fwd_in_pdt_buildings.xml")                         )     --  -- 载入贴图文件
+table.insert(Assets,      Asset("IMAGE", "images/ui_images/fwd_in_pdt_buildings.tex")                         )     --  -- 载入贴图文件
+RegisterInventoryItemAtlas("images/ui_images/fwd_in_pdt_buildings.xml", "fwd_in_pdt_buildings.tex")  -- 注册贴图文件【必须要做】
+AddRecipeFilter({name="FWD_IN_PDT", atlas = "images/ui_images/fwd_in_pdt_buildings.xml",	image = "fwd_in_pdt_buildings.tex"})
+STRINGS.UI.CRAFTING_FILTERS["FWD_IN_PDT"] = GetStringsTable("fwd_in_pdt_ui_craftingmenu")["FWD_IN_PDT"] or ""
+--------------------------------------------------------------------------------------------------------------------------------------------
 require("recipes_filter")
 
 
@@ -63,7 +63,7 @@ AddRecipe2(
         atlas = "images/map_icons/fwd_in_pdt_building_paddy_windmill.xml",
         image = "fwd_in_pdt_building_paddy_windmill.tex",
     },
-    {"GARDENING","STRUCTURES"}
+    {"GARDENING","STRUCTURES","FWD_IN_PDT"}
 )
 RemoveRecipeFromFilter("fwd_in_pdt_building_paddy_windmill","MODS")                       -- -- 在【模组物品】标签里移除这个。
 
@@ -84,7 +84,7 @@ AddRecipe2(
         atlas = "images/map_icons/fwd_in_pdt_moom_jewelry_lamp.xml",
         image = "fwd_in_pdt_moom_jewelry_lamp.tex",
     },
-    {"CELESTIAL"}
+    {"CELESTIAL","FWD_IN_PDT"}
 )
 RemoveRecipeFromFilter("fwd_in_pdt_moom_jewelry_lamp","MODS")                       -- -- 在【模组物品】标签里移除这个。
 
@@ -104,7 +104,7 @@ AddRecipe2(
         atlas = "images/map_icons/fwd_in_pdt_fish_farm.xml",
         image = "fwd_in_pdt_fish_farm.tex",
     },
-    {"GARDENING","FISHING"}
+    {"GARDENING","FISHING","FWD_IN_PDT"}
 )
 RemoveRecipeFromFilter("fwd_in_pdt_fish_farm","MODS")                       -- -- 在【模组物品】标签里移除这个。
 
@@ -124,7 +124,7 @@ AddRecipe2(
         atlas = "images/map_icons/fwd_in_pdt_building_special_production_table.xml",
         image = "fwd_in_pdt_building_special_production_table.tex",
     },
-    {"PROTOTYPERS"}
+    {"PROTOTYPERS","FWD_IN_PDT"}
 )
 RemoveRecipeFromFilter("fwd_in_pdt_building_special_production_table","MODS")                       -- -- 在【模组物品】标签里移除这个。
 
@@ -144,7 +144,7 @@ AddRecipe2(
         atlas = "images/map_icons/fwd_in_pdt_building_fermenter.xml",
         image = "fwd_in_pdt_building_fermenter.tex",
     },
-    {"COOKING"}
+    {"COOKING","FWD_IN_PDT"}
 )
 RemoveRecipeFromFilter("fwd_in_pdt_building_fermenter","MODS")                       -- -- 在【模组物品】标签里移除这个。
 
@@ -165,7 +165,7 @@ AddRecipe2(
         atlas = "images/map_icons/fwd_in_pdt_building_special_cookpot.xml",
         image = "fwd_in_pdt_building_special_cookpot.tex",
     },
-    {"COOKING"}
+    {"COOKING","FWD_IN_PDT"}
 )
 RemoveRecipeFromFilter("fwd_in_pdt_building_special_cookpot","MODS")                       -- -- 在【模组物品】标签里移除这个。
 
@@ -187,7 +187,7 @@ AddRecipe2(
         image = "fwd_in_pdt_container_tv_box.tex",
         min_spacing = 1,
     },
-    {"CONTAINERS"}
+    {"CONTAINERS","FWD_IN_PDT"}
 )
 RemoveRecipeFromFilter("fwd_in_pdt_building_special_cookpot","MODS")                       -- -- 在【模组物品】标签里移除这个。
 
@@ -209,7 +209,7 @@ AddRecipe2(
         atlas = "images/map_icons/fwd_in_pdt_building_drying_rack.xml",
         image = "fwd_in_pdt_building_drying_rack.tex",
     },
-    {"COOKING"}
+    {"COOKING","FWD_IN_PDT"}
 )
 RemoveRecipeFromFilter("fwd_in_pdt_building_drying_rack","MODS")                       -- -- 在【模组物品】标签里移除这个。
 
