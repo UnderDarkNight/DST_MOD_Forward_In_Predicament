@@ -70,7 +70,7 @@
         name = "fwd_in_pdt_food_steamed_orange_with_honey", -- 料理名
         weight = 10, -- 食谱权重
         priority = 999, -- 食谱优先级
-        foodtype = GLOBAL.FOODTYPE.GOODIES, --料理的食物类型，比如这里定义的是肉类
+        foodtype = GLOBAL.FOODTYPE.GOODIES, --料理的食物类型，比如这里定义的是零食
         hunger = 37.5, --吃后回饥饿值
         sanity = 0, --吃后回精神值
         health = 20, --吃后回血值
@@ -95,7 +95,8 @@
     local fwd_in_pdt_food_scrambled_eggs_with_tomatoes = {
         test = function(cooker, names, tags)
             return ( tags.egg and tags.egg == 2 )
-                and ( (names.tomato or 0) + (names.tomato_cooked or 0) >= 2 )
+                and ( (names.tomato or 0) + (names.tomato_cooked or 0) >= 1 )
+                and ( names.honey and names.honey ==1 )
             -- local tomatoes_value = names.tomato or 0
             -- local tomato_cooked_value = names.tomato_cooked or 0
             -- local egg_value = tags.egg or 0
@@ -107,7 +108,7 @@
         name = "fwd_in_pdt_food_scrambled_eggs_with_tomatoes", -- 料理名
         weight = 10, -- 食谱权重
         priority = 999, -- 食谱优先级
-        foodtype = GLOBAL.FOODTYPE.VEGGIE, --料理的食物类型，比如这里定义的是肉类
+        foodtype = GLOBAL.FOODTYPE.VEGGIE, --料理的食物类型，比如这里定义的是素食
         hunger = 75 , --吃后回饥饿值
         sanity = 5 , --吃后回精神值
         health = 30 , --吃后回血值
@@ -181,7 +182,7 @@
         name = "fwd_in_pdt_food_gifts_of_nature", -- 料理名
         weight = 10, -- 食谱权重
         priority = 999, -- 食谱优先级
-        foodtype = GLOBAL.FOODTYPE.GOODIES, --料理的食物类型，比如这里定义的是肉类
+        foodtype = GLOBAL.FOODTYPE.GOODIES, --料理的食物类型，比如这里定义的是零食
         hunger = 0 , --吃后回饥饿值
         sanity = -30 , --吃后回精神值
         health = -10 , --吃后回血值
@@ -248,7 +249,7 @@
         name = "fwd_in_pdt_food_atractylodes_macrocephala_pills", -- 料理名
         weight = 10, -- 食谱权重
         priority = 999, -- 食谱优先级
-        foodtype = GLOBAL.FOODTYPE.GOODIES, --料理的食物类型，比如这里定义的是肉类
+        foodtype = GLOBAL.FOODTYPE.GOODIES, --料理的食物类型，比如这里定义的是零食
         hunger = 0, --吃后回饥饿值
         sanity = 0, --吃后回精神值
         health = 0, --吃后回血值
@@ -277,7 +278,7 @@
         name = "fwd_in_pdt_food_pinellia_ternata_pills", -- 料理名
         weight = 10, -- 食谱权重
         priority = 999, -- 食谱优先级
-        foodtype = GLOBAL.FOODTYPE.GOODIES, --料理的食物类型，比如这里定义的是肉类
+        foodtype = GLOBAL.FOODTYPE.GOODIES, --料理的食物类型，比如这里定义的是零食
         hunger = 0, --吃后回饥饿值
         sanity = 0, --吃后回精神值
         health = 0, --吃后回血值
@@ -306,7 +307,7 @@
         name = "fwd_in_pdt_food_aster_tataricus_l_f_pills", -- 料理名
         weight = 10, -- 食谱权重
         priority = 999999999999, -- 食谱优先级
-        foodtype = GLOBAL.FOODTYPE.GOODIES, --料理的食物类型，比如这里定义的是肉类
+        foodtype = GLOBAL.FOODTYPE.GOODIES, --料理的食物类型，比如这里定义的是零食
         hunger = 0, --吃后回饥饿值
         sanity = 0, --吃后回精神值
         health = 0, --吃后回血值
@@ -341,7 +342,7 @@
         name = "fwd_in_pdt_food_red_mushroom_soup", -- 料理名
         weight = 10, -- 食谱权重
         priority = 999, -- 食谱优先级
-        foodtype = GLOBAL.FOODTYPE.GOODIES, --料理的食物类型，比如这里定义的是肉类
+        foodtype = GLOBAL.FOODTYPE.GOODIES, --料理的食物类型，比如这里定义的是零食
         hunger = 0 , --吃后回饥饿值
         sanity = 0 , --吃后回精神值
         health = -100 , --吃后回血值
@@ -376,7 +377,7 @@
         name = "fwd_in_pdt_food_green_mushroom_soup", -- 料理名
         weight = 10, -- 食谱权重
         priority = 999, -- 食谱优先级
-        foodtype = GLOBAL.FOODTYPE.GOODIES, --料理的食物类型，比如这里定义的是肉类
+        foodtype = GLOBAL.FOODTYPE.GOODIES, --料理的食物类型，比如这里定义的是零食
         hunger = 0 , --吃后回饥饿值
         sanity = -100 , --吃后回精神值
         health = 0 , --吃后回血值
@@ -411,7 +412,7 @@
         name = "fwd_in_pdt_food_tofu", -- 料理名
         weight = 10, -- 食谱权重
         priority = 999, -- 食谱优先级
-        foodtype = GLOBAL.FOODTYPE.GOODIES, --料理的食物类型，比如这里定义的是肉类
+        foodtype = GLOBAL.FOODTYPE.GOODIES, --料理的食物类型，比如这里定义的是零食
         hunger = 25 , --吃后回饥饿值
         sanity = 20 , --吃后回精神值
         health = 1 , --吃后回血值
@@ -446,7 +447,7 @@
         name = "fwd_in_pdt_food_cooked_milk", -- 料理名
         weight = 10, -- 食谱权重
         priority = 999, -- 食谱优先级
-        foodtype = GLOBAL.FOODTYPE.GOODIES, --料理的食物类型，比如这里定义的是肉类
+        foodtype = GLOBAL.FOODTYPE.GOODIES, --料理的食物类型，比如这里定义的是零食
         hunger = 10 , --吃后回饥饿值
         sanity = 0 , --吃后回精神值
         health = 1 , --吃后回血值
@@ -486,7 +487,7 @@
         name = "fwd_in_pdt_food_coffee", -- 料理名
         weight = 10, -- 食谱权重
         priority = 999, -- 食谱优先级
-        foodtype = GLOBAL.FOODTYPE.GOODIES, --料理的食物类型，比如这里定义的是肉类
+        foodtype = GLOBAL.FOODTYPE.GOODIES, --料理的食物类型，比如这里定义的是零食
         hunger = 0 , --吃后回饥饿值
         sanity = -20 , --吃后回精神值
         health = 0 , --吃后回血值
@@ -522,7 +523,7 @@
         name = "fwd_in_pdt_food_saline_medicine", -- 料理名
         weight = 100, -- 食谱权重
         priority = 9990, -- 食谱优先级
-        foodtype = GLOBAL.FOODTYPE.GOODIES, --料理的食物类型，比如这里定义的是肉类
+        foodtype = GLOBAL.FOODTYPE.GOODIES, --料理的食物类型，比如这里定义的是零食
         hunger = 0 , --吃后回饥饿值
         sanity = 0 , --吃后回精神值
         health = 0 , --吃后回血值
@@ -558,7 +559,7 @@
         name = "fwd_in_pdt_food_yogurt_ice_cream", -- 料理名
         weight = 10, -- 食谱权重
         priority = 999, -- 食谱优先级
-        foodtype = GLOBAL.FOODTYPE.GOODIES, --料理的食物类型，比如这里定义的是肉类
+        foodtype = GLOBAL.FOODTYPE.GOODIES, --料理的食物类型，比如这里定义的是零食
         hunger = 12.5 , --吃后回饥饿值
         sanity = 30 , --吃后回精神值
         health = 20 , --吃后回血值
@@ -594,7 +595,7 @@
         name = "fwd_in_pdt_food_mango_ice_drink", -- 料理名
         weight = 10, -- 食谱权重
         priority = 999, -- 食谱优先级
-        foodtype = GLOBAL.FOODTYPE.GOODIES, --料理的食物类型，比如这里定义的是肉类
+        foodtype = GLOBAL.FOODTYPE.GOODIES, --料理的食物类型，比如这里定义的是零食
         hunger = 0 , --吃后回饥饿值
         sanity = 0 , --吃后回精神值
         health = 0 , --吃后回血值
@@ -628,7 +629,7 @@
         name = "fwd_in_pdt_food_cooked_rice", -- 料理名
         weight = 10, -- 食谱权重
         priority = 999, -- 食谱优先级
-        foodtype = GLOBAL.FOODTYPE.VEGGIE, --料理的食物类型，比如这里定义的是肉类
+        foodtype = GLOBAL.FOODTYPE.VEGGIE, --料理的食物类型，比如这里定义的是素食
         hunger = 120 , --吃后回饥饿值
         sanity = 5 , --吃后回精神值
         health = 3 , --吃后回血值
@@ -662,7 +663,7 @@
         name = "fwd_in_pdt_food_bread", -- 料理名
         weight = 10, -- 食谱权重
         priority = 999, -- 食谱优先级
-        foodtype = GLOBAL.FOODTYPE.GOODIES, --料理的食物类型，比如这里定义的是肉类
+        foodtype = GLOBAL.FOODTYPE.GOODIES, --料理的食物类型，比如这里定义的是零食
         hunger = 62.5 , --吃后回饥饿值
         sanity = 5 , --吃后回精神值
         health = 3 , --吃后回血值
@@ -734,7 +735,7 @@
         name = "fwd_in_pdt_food_protein_powder", -- 料理名
         weight = 10, -- 食谱权重
         priority = 999, -- 食谱优先级
-        foodtype = GLOBAL.FOODTYPE.VEGGIE, --料理的食物类型，比如这里定义的是肉类
+        foodtype = GLOBAL.FOODTYPE.VEGGIE, --料理的食物类型，比如这里定义的是素食
         hunger = 0 , --吃后回饥饿值
         sanity = 0 , --吃后回精神值
         health = 0 , --吃后回血值
