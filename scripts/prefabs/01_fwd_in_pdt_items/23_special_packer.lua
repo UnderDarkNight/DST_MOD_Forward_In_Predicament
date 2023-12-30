@@ -29,6 +29,9 @@ local function wrap_fn()
     end
 
     inst:AddComponent("inspectable")
+    inst:AddComponent("stackable")
+    inst.components.stackable.maxsize = TUNING.STACK_SIZE_SMALLITEM
+    
 
     inst:AddComponent("inventoryitem")
     inst.components.inventoryitem:ChangeImageName("giftwrap")
@@ -98,7 +101,8 @@ local function wrap_fn()
             })
             box.Transform:SetPosition(x, y, z)
             target:Remove()
-            inst:Remove()
+            -- inst:Remove()
+            inst.components.stackable:Get():Remove()
         -----------------------------------------------------------------------------------------------------
         return true
     end)
@@ -227,7 +231,7 @@ end
                     if temp_table.bank and temp_table.build and temp_table.anim then
                         inst.AnimState:SetBank(temp_table.bank)
                         inst.AnimState:SetBuild(temp_table.build)
-                        inst.AnimState:PlayAnimation(temp_table.anim)
+                        inst.AnimState:PlayAnimation(temp_table.anim,true)
                     end
                 end
                 return old_SetBuilder_fn(self,builder, recipe, invobject)
