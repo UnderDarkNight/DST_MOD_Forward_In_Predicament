@@ -49,6 +49,7 @@ local prefabs_name_list = {
     "20_bloody_flask",                   -- 卡尔收藏的血瓶
     "21_treatment_from_doctor",          -- 来自医生的治疗
     "22_talisman_that_repels_snakes",          -- 避蛇护符
+    "23_special_packer",                 -- 特殊包装纸
 }
 
 

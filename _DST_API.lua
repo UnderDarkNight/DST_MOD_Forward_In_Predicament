@@ -253,6 +253,7 @@ inst = {
     ["OnBuiltFn"] = function(self,doer)end,
     ["RemoveChild"] = function(self,inst) end,
     ["AddChild"] = function(self,child_inst)end,
+    ["GetSaveRecord"] = function(self) return "XXX" end,
     parent = inst,
     children = {inst,inst},
     OnEntityReplicated = {},
@@ -362,6 +363,9 @@ GLOBAL = {
 }
 
 SpawnPrefab = function(name)
+    return inst
+end
+SpawnSaveRecord = function(name)
     return inst
 end
 CreateEntity = function(...)

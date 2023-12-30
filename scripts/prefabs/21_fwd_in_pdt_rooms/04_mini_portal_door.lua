@@ -36,6 +36,7 @@ local function fn()
     inst:AddTag("structure")
     inst:AddTag("fwd_in_pdt__rooms_mini_portal_door")
     inst:AddTag("quake_blocker")  --- 屏蔽地震落石
+    inst:AddTag("irreplaceable")
 
     inst.entity:SetPristine()
     -------------------------------------------------------------------------------------

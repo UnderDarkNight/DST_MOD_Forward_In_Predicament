@@ -68,6 +68,7 @@ local function base_fn()
 
     -- inst:AddTag("fwd_in_pdt__rooms_quirky_red_tree")
     inst:AddTag("structure")
+    inst:AddTag("irreplaceable")
     inst:AddTag("antlion_sinkhole_blocker")
     inst:AddTag("quake_blocker")  --- 屏蔽地震落石
 

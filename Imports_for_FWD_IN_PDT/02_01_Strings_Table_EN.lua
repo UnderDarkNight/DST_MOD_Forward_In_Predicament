@@ -203,6 +203,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "This thing has a certain probability of avoiding encounters with snakes",
                 ["recipe_desc"] = "This thing has a certain probability of avoiding encounters with snakes",
             },
+            ["fwd_in_pdt_item_special_wrap"] = {
+                ["name"] = "Special Packing Wrap",
+                ["inspect_str"] = "This can be used to pack a lot of special things",
+                ["recipe_desc"] = "This can be used to pack a lot of special things",
+            },
         --------------------------------------------------------------------
         ---- 02_fwd_in_pdt_materials
             ["fwd_in_pdt_material_tree_resin"] = {

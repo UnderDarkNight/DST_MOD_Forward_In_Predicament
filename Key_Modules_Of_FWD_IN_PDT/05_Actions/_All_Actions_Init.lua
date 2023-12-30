@@ -39,6 +39,9 @@ modimport("Key_Modules_Of_FWD_IN_PDT/05_Actions/17_special_quick_eat_action.lua"
 modimport("Key_Modules_Of_FWD_IN_PDT/05_Actions/18_special_eat_action.lua")             --- SG动作，特殊吃东西。
 
 
+modimport("Key_Modules_Of_FWD_IN_PDT/05_Actions/19_special_packer.lua")             --- 特殊打包交互组件
+
+
 
 
 
