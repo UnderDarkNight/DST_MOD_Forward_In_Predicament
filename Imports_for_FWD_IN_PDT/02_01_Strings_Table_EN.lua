@@ -208,6 +208,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "This can be used to pack a lot of special things",
                 ["recipe_desc"] = "This can be used to pack a lot of special things",
             },
+            ["fwd_in_pdt_item_orthopedic_water"] = {
+                ["name"] = "Orthopedic Water",
+                ["inspect_str"] = "Used to treat fractures",
+                ["recipe_desc"] = "Used to treat fractures",
+            },
         --------------------------------------------------------------------
         ---- 02_fwd_in_pdt_materials
             ["fwd_in_pdt_material_tree_resin"] = {
@@ -820,6 +825,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             ["fwd_in_pdt_welness_fever"] = {
                 ["name"] = "Fever",
                 ["treatment"] = { "Disease Treatment Magic Book","Aster Tataricus L.F Pills","Mix Potato Soup , Steamed Orange With Honey"},
+            },
+            ["fwd_in_pdt_welness_fracture"] = {
+                ["name"] = "Fracture",
+                ["treatment"] = { "Use of orthopedic water ( hospital purchased )"},
+                ["debuff_attach_whisper"] = "You fractured yourself by accident.",
             },
         --------------------------------------------------------------------
             ---- 24_fwd_in_pdt_task_scrolls

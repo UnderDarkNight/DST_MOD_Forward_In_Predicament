@@ -23,4 +23,12 @@ return {
 		["image"] = "fwd_in_pdt_item_treatment_from_specialist_doctor.tex",
 		["atlas"] = "images/inventoryimages/fwd_in_pdt_item_treatment_from_specialist_doctor.xml"
 	},
+    {
+		["name"] = "正骨水",
+		["prefab"] = "fwd_in_pdt_item_orthopedic_water",
+		["cost"] = 8,
+		["num2give"] = 1.0,
+		["image"] = "fwd_in_pdt_item_orthopedic_water.tex",
+		["atlas"] = "images/inventoryimages/fwd_in_pdt_item_orthopedic_water.xml"
+	},
 }

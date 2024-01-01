@@ -353,8 +353,11 @@ local flg,error_code = pcall(function()
             --     MultColour_Flag = true,
             -- })
     ----------------------------------------------------------------------------------------------------------------
-            ThePlayer:AddTag("fwd_in_pdt_tag.carefulwalking")
+            -- ThePlayer:AddTag("fwd_in_pdt_tag.carefulwalking")
             -- ThePlayer:RemoveTag("fwd_in_pdt_tag.carefulwalking")
+            -- fwd_in_pdt_welness_fracture
+            ThePlayer.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_fracture")
+            -- ThePlayer.components.fwd_in_pdt_wellness:Remove_Debuff("fwd_in_pdt_welness_fracture")
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)

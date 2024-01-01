@@ -35,7 +35,10 @@ modimport("Key_Modules_Of_FWD_IN_PDT/01_00_Player_Prefab_Upgrade/08_hit_other_bl
  --- 伤害太高造成的流血事件
 
 modimport("Key_Modules_Of_FWD_IN_PDT/01_00_Player_Prefab_Upgrade/09_careful_walking.lua")   
- --- 谨慎走路状态
+ --- 谨慎走路状态(用来辅助骨折)
+
+modimport("Key_Modules_Of_FWD_IN_PDT/01_00_Player_Prefab_Upgrade/10_fracture_event.lua")   
+ --- 骨折
 
 
 

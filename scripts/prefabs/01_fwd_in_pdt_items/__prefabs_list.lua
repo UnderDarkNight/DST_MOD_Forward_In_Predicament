@@ -50,6 +50,7 @@ local prefabs_name_list = {
     "21_treatment_from_doctor",          -- 来自医生的治疗
     "22_talisman_that_repels_snakes",          -- 避蛇护符
     "23_special_packer",                 -- 特殊包装纸
+    "24_orthopedic_water",               -- 正骨水
 }
 
 

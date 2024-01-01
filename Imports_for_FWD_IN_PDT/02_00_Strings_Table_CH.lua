@@ -211,6 +211,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "这个可以用来打包很多特殊的东西",
                 ["recipe_desc"] = "这个可以用来打包很多特殊的东西",
             },
+            ["fwd_in_pdt_item_orthopedic_water"] = {
+                ["name"] = "正骨水",
+                ["inspect_str"] = "用来治疗骨折",
+                ["recipe_desc"] = "用来治疗骨折",
+            },
         --------------------------------------------------------------------
         ---- 02_fwd_in_pdt_materials
             ["fwd_in_pdt_material_tree_resin"] = {
@@ -823,6 +828,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             ["fwd_in_pdt_welness_fever"] = {
                 ["name"] = "发烧",
                 ["treatment"] = { "使用《伤寒病论》","紫菀药丸、旮瘩汤、蜂蜜蒸橙"},
+            },
+            ["fwd_in_pdt_welness_fracture"] = {
+                ["name"] = "骨折",
+                ["treatment"] = { "使用正骨水（医院购买）"},
+                ["debuff_attach_whisper"] = "你一个不小心把自己弄骨折了",
             },
         --------------------------------------------------------------------
         ---- 24_fwd_in_pdt_task_scrolls
