@@ -13,7 +13,7 @@ local the_version = "0.01.00.00046"
 
 
 local function Check_Mod_is_Internal_Version()
-  if folder_name and (folder_name == "Forward_In_Predicament" or folder_name == "workshop-3041511769") then
+  if folder_name and (folder_name == "Forward_In_Predicament" or folder_name == "DST_MOD_Forward_In_Predicament" or folder_name == "workshop-3041511769") then
       return true
   end
   return false

@@ -45,8 +45,16 @@ AddComponentPostInit("stewer", function(stewer_com)
     
     stewer_com.inst:ListenForEvent("fwd_in_pdt_event.stewer_finish",function(inst)
         if stewer_com:IsCooking() and not stewer_com:IsDone() then
-            -- dostew(inst,stewer_com)
-            stewer_com:LongUpdate(10000)    ---- 找到个更快捷的方法
+            if type(stewer_com.targettime) == "number" then 
+                -- dostew(inst,stewer_com)
+                -- stewer_com:LongUpdate(10000)    ---- 找到个更快捷的方法
+
+                    --- self.targettime - dt - GetTime() = 0
+                    local dt = stewer_com.targettime - GetTime()
+                    if dt > 0 then
+                        stewer_com:LongUpdate( dt )    ---- 找到个更快捷的方法
+                    end
+            end
         end
     end)
 

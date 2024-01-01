@@ -359,11 +359,11 @@ local flg,error_code = pcall(function()
             -- ThePlayer.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_fracture")
             -- ThePlayer.components.fwd_in_pdt_wellness:Remove_Debuff("fwd_in_pdt_welness_fracture")
     ----------------------------------------------------------------------------------------------------------------
-        ThePlayer:DoTaskInTime(1,function()
+        -- ThePlayer:DoTaskInTime(1,function()
             
-                    TheWorld:PushEvent("fwd_in_pdt_world_spawner.thief_2_player",ThePlayer)
-        end)
-
+        --             TheWorld:PushEvent("fwd_in_pdt_world_spawner.thief_2_player",ThePlayer)
+        -- end)
+            c_select():PushEvent("fwd_in_pdt_event.stewer_finish")
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)
