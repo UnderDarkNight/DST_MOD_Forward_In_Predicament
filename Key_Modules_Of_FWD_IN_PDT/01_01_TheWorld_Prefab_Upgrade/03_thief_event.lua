@@ -239,7 +239,7 @@ AddPrefabPostInit(
                     return
                 end
 
-                if TheWorld.state.cycles - player.components.fwd_in_pdt_data:Add("last_thief_event_day",0) 
+                if TheWorld.state.cycles - player.components.fwd_in_pdt_data:Add("last_thief_event_day",0) > 5
                     and ( TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE or math.random(1000)/1000 <= 0.3 ) then
 
                         player.components.fwd_in_pdt_data:Set("last_thief_event_day",TheWorld.state.cycles) 
