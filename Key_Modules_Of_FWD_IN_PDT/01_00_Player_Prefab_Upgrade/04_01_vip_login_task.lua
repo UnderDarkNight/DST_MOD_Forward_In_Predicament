@@ -106,6 +106,10 @@ AddPlayerPostInit(function(inst)
                         ["fwd_in_pdt_building_special_production_table"] = {
                             "fwd_in_pdt_building_special_production_table_punk",
                         },
+                    ---- 发酵缸
+                        -- ["fwd_in_pdt_building_fermenter"] = {
+                        --     "fwd_in_pdt_building_fermenter_honey",
+                        -- },
                     ---- 混沌万能锅
                         ["fwd_in_pdt_building_special_cookpot"] = {
                             "fwd_in_pdt_building_special_cookpot_lantern",

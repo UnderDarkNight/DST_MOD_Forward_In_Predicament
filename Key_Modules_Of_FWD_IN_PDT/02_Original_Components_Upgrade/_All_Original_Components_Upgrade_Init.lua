@@ -5,6 +5,8 @@
 
 -- modimport("Key_Modules_Of_FWD_IN_PDT/02_Original_Components_Upgrade/01_Attribute_Damage_System.lua")        --- 属性伤害分类组件
 
+modimport("Key_Modules_Of_FWD_IN_PDT/02_Original_Components_Upgrade/01_cookport_quick_finish_sys__with_com_stewer.lua")        --- 烹饪锅关键组件修改
+
 
 
 
