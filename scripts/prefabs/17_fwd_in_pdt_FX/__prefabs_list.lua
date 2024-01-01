@@ -44,6 +44,7 @@ local prefabs_name_list = {
     "15_red_bats",                  --- 红色蝙蝠群
     "16_red_bats_mark",             --- 红色蝙蝠群 标记模式
     "17_explode",                   --- 爆炸
+    "18_fx_spawn",                   --- 出入洞穴的特效
 
     
 }
