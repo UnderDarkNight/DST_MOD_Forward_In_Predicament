@@ -10,5 +10,8 @@ modimport("Key_Modules_Of_FWD_IN_PDT/01_01_TheWorld_Prefab_Upgrade/01_theworld_p
 modimport("Key_Modules_Of_FWD_IN_PDT/01_01_TheWorld_Prefab_Upgrade/02_ghost_hound_spawner.lua")    
 --- 幽灵狗 刷新器
 
+modimport("Key_Modules_Of_FWD_IN_PDT/01_01_TheWorld_Prefab_Upgrade/03_thief_event.lua")    
+--- 小偷 刷新器
+
 
 

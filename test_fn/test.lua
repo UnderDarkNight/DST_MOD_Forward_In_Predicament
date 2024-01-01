@@ -356,8 +356,14 @@ local flg,error_code = pcall(function()
             -- ThePlayer:AddTag("fwd_in_pdt_tag.carefulwalking")
             -- ThePlayer:RemoveTag("fwd_in_pdt_tag.carefulwalking")
             -- fwd_in_pdt_welness_fracture
-            ThePlayer.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_fracture")
+            -- ThePlayer.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_fracture")
             -- ThePlayer.components.fwd_in_pdt_wellness:Remove_Debuff("fwd_in_pdt_welness_fracture")
+    ----------------------------------------------------------------------------------------------------------------
+        ThePlayer:DoTaskInTime(1,function()
+            
+                    TheWorld:PushEvent("fwd_in_pdt_world_spawner.thief_2_player",ThePlayer)
+        end)
+
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)
