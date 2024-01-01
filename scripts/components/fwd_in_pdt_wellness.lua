@@ -470,20 +470,59 @@ nil,
         
         local mark_list = {}
         local ret_debuff_list = {}
-        for k, order in pairs(self.base_prefabs_orders) do ---- 先插入常驻的
-            local index = self.base_prefabs[order]
-            if index and self.debuffs[index] and not mark_list[index] then
-                table.insert(ret_debuff_list,index)
-                mark_list[index] = true
-            end
-        end
+        -- for k, order in pairs(self.base_prefabs_orders) do ---- 先插入常驻的
+        --     local index = self.base_prefabs[order]
+        --     if index and self.debuffs[index] and not mark_list[index] then                
+        --         table.insert(ret_debuff_list,index)
+        --         mark_list[index] = true
+        --     end
+        -- end
+        ------------------------------------------------------------------
+        --- 4个基础值 判定和插入
+            ----------- "fwd_in_pdt_wellnes"
+                mark_list["fwd_in_pdt_wellness"] = true
+                -- local current_wellness,percent_wellness,max_wellness = self:GetCurrent_Wellness()
+                -- if (percent_wellness or 1) < 0.5 then
+                --     table.insert(ret_debuff_list,"fwd_in_pdt_wellnes")
+                -- end
+                -- table.insert(ret_debuff_list,"fwd_in_pdt_wellness")
+            ----------- "fwd_in_pdt_wellness_vitamin_c"
+                mark_list["fwd_in_pdt_wellness_vitamin_c"] = true
+                local current_vitamin_c,percent_vitamin_c,max_vitamin_c = self:GetCurrent_Vitamin_C()
+                if (percent_vitamin_c or 1) < 0.5 then
+                    table.insert(ret_debuff_list,"fwd_in_pdt_wellness_vitamin_c")
+                end
+            ----------- "fwd_in_pdt_wellness_glucose"
+                mark_list["fwd_in_pdt_wellness_glucose"] = true
+                local current_glucose,percent_glucose,max_glucose = self:GetCurrent_Glucose()
+                if (percent_glucose or 1) < 0.5 then
+                    table.insert(ret_debuff_list,"fwd_in_pdt_wellness_glucose")
+                end
+            ----------- "fwd_in_pdt_wellness_poison"
+                mark_list["fwd_in_pdt_wellness_poison"] = true
+                local current_poison,percent_poison,max_poison = self:GetCurrent_Poison()
+                if (percent_poison or 0) > 0 then
+                    table.insert(ret_debuff_list,"fwd_in_pdt_wellness_poison")
+                end
+        ------------------------------------------------------------------
 
-        for index, debuff_inst in pairs(self.debuffs) do ---- 先插入常驻的
-            if index and debuff_inst and not mark_list[index] then
+
+
+        for index, debuff_inst in pairs(self.debuffs) do ---- 后插入其他
+            if index and debuff_inst and mark_list[index] ~= true then
                 table.insert(ret_debuff_list,index)
                 mark_list[index] = true
             end
         end
+        ------------------------------------------------------------------
+            if #ret_debuff_list == 0 then
+                table.insert(ret_debuff_list,"fwd_in_pdt_wellness")
+            end
+        ------------------------------------------------------------------
+            -- for k, v in pairs(ret_debuff_list) do
+            --     print(k,v)
+            -- end
+        ------------------------------------------------------------------
         
         return ret_debuff_list
     end
