@@ -550,6 +550,12 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str_burnt"] = "It's burned.",
                 ["action_str"] = "Execute"
             },
+            ["fwd_in_pdt_container_wallet"] = {
+                ["name"] = "Wallet",
+                ["inspect_str"] = "To facilitate the storage of coins",
+                ["recipe_desc"] = "To facilitate the storage of coins",
+                ["skin.piggy"] = "Piggy Tank"
+            },
         --------------------------------------------------------------------
         ---- 07_fwd_in_pdt_buildings
             ["fwd_in_pdt_building_mock_wall_grass"] = {

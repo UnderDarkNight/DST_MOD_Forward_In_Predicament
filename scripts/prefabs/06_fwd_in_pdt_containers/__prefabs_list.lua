@@ -35,6 +35,7 @@ local prefabs_name_list = {
     "05_special_cookpot",                     --- 万能烹饪锅
     "06_tv_box",                              --- 电视机盒子
     "07_drying_rack",                         --- 晾晒架
+    "08_wallet",                              --- 钱包
 
     
 }

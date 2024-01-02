@@ -118,6 +118,10 @@ AddPlayerPostInit(function(inst)
                         ["fwd_in_pdt_container_tv_box"] = {
                             "fwd_in_pdt_container_tv_box_laser",
                         },
+                    ---- 钱袋
+                        ["fwd_in_pdt_container_wallet"] = {
+                            "fwd_in_pdt_container_wallet_piggy",
+                        },
                     ---- 健康检查机
                         ["fwd_in_pdt_building_medical_check_up_machine"] = {
                             "fwd_in_pdt_building_medical_check_up_machine_punk",
