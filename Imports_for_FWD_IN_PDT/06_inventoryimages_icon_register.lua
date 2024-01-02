@@ -85,7 +85,13 @@ local files_name = {
 		"fwd_in_pdt_food_coffeebeans", 	    					--- 咖啡豆
 		"fwd_in_pdt_food_dried_fruits_mango", 	    			--- 芒果干
 		"fwd_in_pdt_food_dried_fruits_berries",					---浆果干
-
+		"fwd_in_pdt_food_dried_fruits_watermelons",				---西瓜干
+		"fwd_in_pdt_food_dried_fruits_pineananas",				---松萝干
+		"fwd_in_pdt_food_dried_fruits_dragonfruits",			---火龙果干
+		"fwd_in_pdt_food_dried_fruits_durians",					---榴莲干
+		"fwd_in_pdt_food_dried_fruits_pomegranates",			---石榴干
+		"fwd_in_pdt_food_dried_fruits_cave_bananas",			---香蕉干
+		"fwd_in_pdt_food_dried_fish",							---鱼干
 	---------------------------------------------------------------------------------------
 	-- 05_fwd_in_pdt_foods_cooked
 		"fwd_in_pdt_food_mixed_potato_soup",					--- 疙瘩汤

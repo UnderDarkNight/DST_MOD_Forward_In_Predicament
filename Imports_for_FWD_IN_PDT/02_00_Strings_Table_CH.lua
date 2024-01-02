@@ -397,6 +397,34 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "浆果干",
                 ["inspect_str"] = "香甜的浆果干",
             },
+            ["fwd_in_pdt_food_dried_fruits_watermelons"] = {
+                ["name"] = "西瓜干",
+                ["inspect_str"] = "香甜的西瓜干",
+            },
+            ["fwd_in_pdt_food_dried_fruits_pineananas"] = {
+                ["name"] = "松萝干",
+                ["inspect_str"] = "香甜的松萝干",
+            },
+            ["fwd_in_pdt_food_dried_fruits_dragonfruits"] = {
+                ["name"] = "火龙果干",
+                ["inspect_str"] = "香甜的火龙果干",
+            },
+            ["fwd_in_pdt_food_dried_fruits_durians"] = {
+                ["name"] = "榴莲干",
+                ["inspect_str"] = "香甜的榴莲干",
+            },
+            ["fwd_in_pdt_food_dried_fruits_pomegranates"] = {
+                ["name"] = "石榴干",
+                ["inspect_str"] = "香甜的石榴干",
+            },
+            ["fwd_in_pdt_food_dried_fruits_cave_bananas"] = {
+                ["name"] = "香蕉干",
+                ["inspect_str"] = "香甜的香蕉干",
+            },
+            ["fwd_in_pdt_food_dried_fish"] = {
+                ["name"] = "鱼干",
+                ["inspect_str"] = "鱼干",
+            },
         --------------------------------------------------------------------
         ---- 05_fwd_in_pdt_foods_cooked
             ["fwd_in_pdt_food_mixed_potato_soup"] = {

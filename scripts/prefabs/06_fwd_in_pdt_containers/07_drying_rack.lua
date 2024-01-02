@@ -276,7 +276,7 @@ local recipes = require("prefabs/06_fwd_in_pdt_containers/07_drying_rack_recipes
 
         -----------------------------------------------------------------------------
         --- 发酵天数
-            local days = TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE and 2 or 15
+            local days = TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE and 2 or 8
             inst.components.fwd_in_pdt_data:Set("cycle_days",days)  --- 储存一下 发酵总时间，方便外部调用
             inst:WatchWorldState("cycles", function()
                 if inst:HasTag("burnt") then

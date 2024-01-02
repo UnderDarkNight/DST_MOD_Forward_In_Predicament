@@ -391,6 +391,34 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "Dried Fruits Berries",
                 ["inspect_str"] = "Dried Fruits Berries",
             },
+            ["fwd_in_pdt_food_dried_fruits_watermelons"] = {
+                ["name"] = "Dried Fruits Watermelons",
+                ["inspect_str"] = "Dried Fruits Watermelons",
+            },
+            ["fwd_in_pdt_food_dried_fruits_pineananas"] = {
+                ["name"] = "Dried Fruits Pineananas",
+                ["inspect_str"] = "Dried Fruits Pineananas",
+            },
+            ["fwd_in_pdt_food_dried_fruits_dragonfruits"] = {
+                ["name"] = "Dried Fruits Dragonfruits",
+                ["inspect_str"] = "Dried Fruits Dragonfruits",
+            },
+            ["fwd_in_pdt_food_dried_fruits_durians"] = {
+                ["name"] = "Dried Fruits Durians",
+                ["inspect_str"] = "Dried Fruits Durians",
+            },
+            ["fwd_in_pdt_food_dried_fruits_pomegranates"] = {
+                ["name"] = "Dried Fruits Pomegranates",
+                ["inspect_str"] = "Dried Fruits Pomegranates",
+            },
+            ["fwd_in_pdt_food_dried_fruits_cave_bananas"] = {
+                ["name"] = "Dried Fruits Bananas",
+                ["inspect_str"] = "Dried Fruits Bananas",
+            },
+            ["fwd_in_pdt_food_dried_fish"] = {
+                ["name"] = "Dried Fruits Fish",
+                ["inspect_str"] = "Dried Fruits Fish",
+            },
         --------------------------------------------------------------------
         ---- 05_fwd_in_pdt_foods_cooked
             ["fwd_in_pdt_food_mixed_potato_soup"] = {
