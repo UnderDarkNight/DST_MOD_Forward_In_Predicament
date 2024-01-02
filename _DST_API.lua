@@ -39,6 +39,7 @@ inst = {
         ["SetSortOrder"] = function(self,num)      end,
         ["SetOrientation"] = function(self,num)      end,   --- ANIM_ORIENTATION.OnGround
         ["SetLayer"] = function(self,num)      end,         --- LAYER_WORLD_BACKGROUND
+        ["IsCurrentAnimation"] = function(self,name) return true end
 
     },
 

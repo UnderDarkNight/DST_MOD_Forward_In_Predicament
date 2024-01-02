@@ -66,6 +66,11 @@ local files_name = {
 		"fwd_in_pdt_equipment_mole_backpack",					--- 鼹鼠背包
 		"fwd_in_pdt_equipment_vampire_sword",					--- 吸血鬼剑
 		"fwd_in_pdt_equipment_vampire_sword_laser",				--- 吸血鬼剑-激光皮肤
+		"fwd_in_pdt_equipment_loong_balloon",					--- 龙气球
+		"fwd_in_pdt_equipment_balloon_evil_dragon",				--- 邪龙气球
+		"fwd_in_pdt_equipment_balloon_evil_dragon_green",		--- 邪龙气球（皮肤）
+		"fwd_in_pdt_equipment_balloon_bobble_loong",				--- 泡泡龙气球
+		"fwd_in_pdt_equipment_balloon_bobble_loong_green",		--- 泡泡龙气球（皮肤）
 	---------------------------------------------------------------------------------------
 	-- 04_fwd_in_pdt_foods
 		"fwd_in_pdt_food_raw_milk",								--- 生牛奶

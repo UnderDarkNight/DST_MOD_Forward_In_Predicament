@@ -324,6 +324,21 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "That's a pretty mean sword.",
                 ["recipe_desc"] = "That's a pretty mean sword.",
             },
+            ["fwd_in_pdt_equipment_loong_balloon"] = {
+                ["name"] = "Loong Balloon",
+                ["inspect_str"] = "That's a pretty nerdy Loong.",
+                ["recipe_desc"] = "That's a pretty nerdy Loong.",
+            },
+            ["fwd_in_pdt_equipment_balloon_evil_dragon"] = {
+                ["name"] = "Evil Dragon Balloon",
+                ["inspect_str"] = "This dragon is full of ferocity.",
+                ["recipe_desc"] = "This dragon is full of ferocity.",
+            },
+            ["fwd_in_pdt_equipment_balloon_bobble_loong"] = {
+                ["name"] = "Bobble Loong Balloon",
+                ["inspect_str"] = "This balloon is quite cute",
+                ["recipe_desc"] = "This balloon is quite cute",
+            },
         --------------------------------------------------------------------
         ---- 04_fwd_in_pdt_foods
             ["fwd_in_pdt_food_raw_milk"] = {
