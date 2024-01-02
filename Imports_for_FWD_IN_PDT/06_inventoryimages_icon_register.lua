@@ -114,6 +114,10 @@ local files_name = {
 
 
 	---------------------------------------------------------------------------------------
+	-- 06_fwd_in_pdt_containers
+		"fwd_in_pdt_container_wallet",							-- 钱包
+		"fwd_in_pdt_container_wallet_piggy",					-- 钱包（皮肤）
+	---------------------------------------------------------------------------------------
 	-- 09_fwd_in_pdt_plants
 		"fwd_in_pdt_plant_paddy_rice_seed",								--- 未脱壳的稻米
 		"fwd_in_pdt_plant_wheat_seed",									--- 麦子

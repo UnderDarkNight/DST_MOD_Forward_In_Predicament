@@ -551,6 +551,12 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str_burnt"] = "已经烧毁了",
                 ["action_str"] = "捣鼓"
             },
+            ["fwd_in_pdt_container_wallet"] = {
+                ["name"] = "钱袋",
+                ["inspect_str"] = "用来方便储存钱币的",
+                ["recipe_desc"] = "用来方便储存钱币的",
+                ["skin.piggy"] = "小猪储存罐"
+            },
         --------------------------------------------------------------------
         ---- 07_fwd_in_pdt_buildings
             ["fwd_in_pdt_building_mock_wall_grass"] = {

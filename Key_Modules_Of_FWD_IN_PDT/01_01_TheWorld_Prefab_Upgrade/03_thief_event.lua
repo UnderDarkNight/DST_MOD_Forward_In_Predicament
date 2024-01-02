@@ -239,11 +239,18 @@ AddPrefabPostInit(
                     return
                 end
 
-                if TheWorld.state.cycles - player.components.fwd_in_pdt_data:Add("last_thief_event_day",0) > 5
-                    and ( TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE or math.random(1000)/1000 <= 0.3 ) then
-
+                if TheWorld.state.cycles - player.components.fwd_in_pdt_data:Add("last_thief_event_day",0) > 5  then
+                    local probability = 0.3         --- 默认 30%概率
+                    if player.components.inventory:HasItemWithTag("fwd_in_pdt_container_wallet") then   --- 有钱包就 5%概率
+                        probability = 0.05
+                    end
+                    if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then  --- 测试模式 80%概率
+                        probability = 0.8
+                    end
+                    if  math.random(1000)/1000 <= probability then
                         player.components.fwd_in_pdt_data:Set("last_thief_event_day",TheWorld.state.cycles) 
                         TheWorld:PushEvent("fwd_in_pdt_world_spawner.thief_2_player",player)
+                    end
                 end
 
             end
