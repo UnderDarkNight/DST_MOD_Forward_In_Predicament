@@ -52,6 +52,7 @@ local function onequip(inst, owner)
 
     owner.AnimState:Show("ARM_carry")
     owner.AnimState:Hide("ARM_normal")
+    owner.AnimState:ClearOverrideSymbol("swap_object")
     -----------------------------------------------------------------------------
         local skinname = tostring(inst.skinname)
         local bank_build = skins_data_item[skinname] and skins_data_item[skinname].onequip_bank
@@ -96,6 +97,7 @@ local function onunequip(inst, owner)
 
     owner.AnimState:Hide("ARM_carry")
     owner.AnimState:Show("ARM_normal")
+    owner.AnimState:ClearOverrideSymbol("swap_object")
     -----------------------------------------------------------------------------
     --- 删除特效（气球）
         if inst.fx then

@@ -43,7 +43,7 @@ AddComponentPostInit("stewer", function(stewer_com)
         -- end
     ----------------------------------------------------------------------------------
     
-    stewer_com.inst:ListenForEvent("fwd_in_pdt_event.stewer_finish",function(inst)
+    stewer_com.inst:ListenForEvent("fwd_in_pdt_event.stewer.force_finish",function(inst)
         if stewer_com:IsCooking() and not stewer_com:IsDone() then
             if type(stewer_com.targettime) == "number" then 
                 -- dostew(inst,stewer_com)
@@ -57,5 +57,23 @@ AddComponentPostInit("stewer", function(stewer_com)
             end
         end
     end)
+
+    ----------------------------------------------------------------------------------
+    ---- 推送事件
+        local old_StartCooking_fn = stewer_com.StartCooking
+
+        stewer_com.StartCooking = function(self,doer,...)
+            old_StartCooking_fn(self,doer,...)
+            self.inst:DoTaskInTime(0.5,function()
+                if self:IsCooking() and not self:IsDone() then
+                    doer:PushEvent("fwd_in_pdt_event.stewer.cooking_started",self.inst)
+                end
+            end)
+        end
+
+    ----------------------------------------------------------------------------------
+
+
+
 
 end)
