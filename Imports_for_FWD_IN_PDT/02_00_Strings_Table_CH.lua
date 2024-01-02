@@ -330,6 +330,21 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "这剑很凶的样子",
                 ["recipe_desc"] = "这剑很凶的样子",
             },
+            ["fwd_in_pdt_equipment_loong_balloon"] = {
+                ["name"] = "呆龙气球",
+                ["inspect_str"] = "这条龙很呆的样子",
+                ["recipe_desc"] = "这条龙很呆的样子",
+            },
+            ["fwd_in_pdt_equipment_balloon_evil_dragon"] = {
+                ["name"] = "邪龙气球",
+                ["inspect_str"] = "这条龙充满了凶戾",
+                ["recipe_desc"] = "这条龙充满了凶戾",
+            },
+            ["fwd_in_pdt_equipment_balloon_bobble_loong"] = {
+                ["name"] = "泡泡龙气球",
+                ["inspect_str"] = "这气球相当可爱",
+                ["recipe_desc"] = "这气球相当可爱",
+            },
         --------------------------------------------------------------------
         ---- 04_fwd_in_pdt_foods
             ["fwd_in_pdt_food_raw_milk"] = {

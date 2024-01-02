@@ -50,6 +50,11 @@ local prefabs_name_list = {
 
     "14_vampire_sword",                     --- 蝙蝠剑
 
+    "15_ballon_in_hand_fx",             --- 气球 FX 统一，节省prefab
+    "16_loong_balloon",                 --- 龙气球
+    "17_balloon_evil_dragon",           --- 邪龙气球
+    "18_bobble_loong",                  --- 泡泡龙气球
+
     
 }
 
