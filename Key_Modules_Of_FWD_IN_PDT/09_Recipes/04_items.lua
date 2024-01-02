@@ -77,3 +77,20 @@
     )
     RemoveRecipeFromFilter("fwd_in_pdt_equipment_balloon_bobble_loong","MODS")                       -- -- 在【模组物品】标签里移除这个。
 
+--------------------------------------------------------------------------------------------------------------------------------------------
+---- 魔法锅铲
+--------------------------------------------------------------------------------------------------------------------------------------------
+    AddRecipeToFilter("fwd_in_pdt_equipment_magic_spatula","MAGIC")     ---- 添加物品到目标标签
+    AddRecipe2(
+        "fwd_in_pdt_equipment_magic_spatula",            --  --  inst.prefab  实体名字
+        { Ingredient("minotaurhorn", 2) ,Ingredient("nightmarefuel", 10 ) }, 
+        TECH.NONE, --- TECH.NONE
+        {
+            no_deconstruction=true,
+            atlas = "images/inventoryimages/fwd_in_pdt_equipment_magic_spatula.xml",
+            image = "fwd_in_pdt_equipment_magic_spatula.tex",
+        },
+        {"MAGIC","COOKING","FWD_IN_PDT"}
+    )
+    RemoveRecipeFromFilter("fwd_in_pdt_equipment_magic_spatula","MODS")                       -- -- 在【模组物品】标签里移除这个。
+

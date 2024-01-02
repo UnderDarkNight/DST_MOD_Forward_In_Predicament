@@ -69,8 +69,9 @@ local files_name = {
 		"fwd_in_pdt_equipment_loong_balloon",					--- 龙气球
 		"fwd_in_pdt_equipment_balloon_evil_dragon",				--- 邪龙气球
 		"fwd_in_pdt_equipment_balloon_evil_dragon_green",		--- 邪龙气球（皮肤）
-		"fwd_in_pdt_equipment_balloon_bobble_loong",				--- 泡泡龙气球
+		"fwd_in_pdt_equipment_balloon_bobble_loong",			--- 泡泡龙气球
 		"fwd_in_pdt_equipment_balloon_bobble_loong_green",		--- 泡泡龙气球（皮肤）
+		"fwd_in_pdt_equipment_magic_spatula",					--- 魔法锅铲
 	---------------------------------------------------------------------------------------
 	-- 04_fwd_in_pdt_foods
 		"fwd_in_pdt_food_raw_milk",								--- 生牛奶
