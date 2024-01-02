@@ -78,7 +78,8 @@ local files_name = {
 		"fwd_in_pdt_food_orange", 	    						--- 橙子
 		"fwd_in_pdt_food_soybeans", 	    					--- 大豆
 		"fwd_in_pdt_food_coffeebeans", 	    					--- 咖啡豆
-		"fwd_in_pdt_food_dried_fruits", 	    				--- 水果干
+		"fwd_in_pdt_food_dried_fruits_mango", 	    			--- 芒果干
+		"fwd_in_pdt_food_dried_fruits_berries",					---浆果干
 
 	---------------------------------------------------------------------------------------
 	-- 05_fwd_in_pdt_foods_cooked

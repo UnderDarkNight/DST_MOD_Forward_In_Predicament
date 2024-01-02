@@ -1,14 +1,14 @@
 --------------------------------------------------------------------------
 --- 食物
---- 水果干
+--- 浆果干
 --------------------------------------------------------------------------
 
 
 
 local assets = {
-    Asset("ANIM", "anim/fwd_in_pdt_food_dried_fruits.zip"), 
-    Asset( "IMAGE", "images/inventoryimages/fwd_in_pdt_food_dried_fruits.tex" ),  -- 背包贴图
-    Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_food_dried_fruits.xml" ),
+    Asset("ANIM", "anim/fwd_in_pdt_food_dried_fruits_berries.zip"), 
+    Asset( "IMAGE", "images/inventoryimages/fwd_in_pdt_food_dried_fruits_berries.tex" ),  -- 背包贴图
+    Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_food_dried_fruits_berries.xml" ),
 
 }
 
@@ -21,8 +21,8 @@ local function fn()
 
     MakeInventoryPhysics(inst)
 
-    inst.AnimState:SetBank("fwd_in_pdt_food_dried_fruits") -- 地上动画
-    inst.AnimState:SetBuild("fwd_in_pdt_food_dried_fruits") -- 材质包，就是anim里的zip包
+    inst.AnimState:SetBank("fwd_in_pdt_food_dried_fruits_berries") -- 地上动画
+    inst.AnimState:SetBuild("fwd_in_pdt_food_dried_fruits_berries") -- 材质包，就是anim里的zip包
     inst.AnimState:PlayAnimation("idle") -- 默认播放哪个动画
     -- inst.AnimState:SetScale(1.5,1.5,1.5)
     MakeInventoryFloatable(inst)
@@ -38,8 +38,8 @@ local function fn()
 
     inst:AddComponent("inventoryitem")
     -- -- inst.components.inventoryitem:ChangeImageName("leafymeatburger")
-    inst.components.inventoryitem.imagename = "fwd_in_pdt_food_dried_fruits"
-    inst.components.inventoryitem.atlasname = "images/inventoryimages/fwd_in_pdt_food_dried_fruits.xml"
+    inst.components.inventoryitem.imagename = "fwd_in_pdt_food_dried_fruits_berries"
+    inst.components.inventoryitem.atlasname = "images/inventoryimages/fwd_in_pdt_food_dried_fruits_berries.xml"
     inst.components.inventoryitem:SetSinks(true)    -- 掉水里消失
     --------------------------------------------------------------------------
     -- inst:AddComponent("perishable") -- 可腐烂的组件
@@ -50,19 +50,14 @@ local function fn()
 
 
     inst:AddComponent("edible") -- 可食物组件
-    inst.components.edible.foodtype = FOODTYPE.VEGGIE
+    inst.components.edible.foodtype = FOODTYPE.GOODIES
     inst.components.edible:SetOnEatenFn(function(inst,eater)
         if eater and eater:HasTag("player") then
-            -- Vc增加10
-            if eater.components.fwd_in_pdt_wellness then
-                eater.components.fwd_in_pdt_wellness:DoDelta_Vitamin_C(10)
-                eater.components.fwd_in_pdt_wellness:ForceRefresh()
-            end
         end
     end)
-    inst.components.edible.hungervalue = 20
-    inst.components.edible.sanityvalue = 5
-    inst.components.edible.healthvalue = 5
+    inst.components.edible.hungervalue = 10
+    inst.components.edible.sanityvalue = 10
+    inst.components.edible.healthvalue = 10
 
     inst:AddComponent("stackable") -- 可堆叠
     inst.components.stackable.maxsize = TUNING.STACK_SIZE_LARGEITEM
@@ -76,8 +71,8 @@ local function fn()
 end
 
 --- 设置可以放烹饪锅里
-AddIngredientValues({"fwd_in_pdt_food_dried_fruits"}, { 
+AddIngredientValues({"fwd_in_pdt_food_dried_fruits_berries"}, { 
     fruit = 2,
 })
 
-return Prefab("fwd_in_pdt_food_dried_fruits", fn, assets)
+return Prefab("fwd_in_pdt_food_dried_fruits_berries", fn, assets)

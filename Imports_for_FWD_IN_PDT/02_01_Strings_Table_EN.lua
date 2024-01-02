@@ -368,9 +368,13 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "Coffee Beans",
                 ["inspect_str"] = "One by one, they're quite full.",
             },
-            ["fwd_in_pdt_food_dried_fruits"] = {
-                ["name"] = "Dried Fruits",
-                ["inspect_str"] = "Dried Fruits",
+            ["fwd_in_pdt_food_dried_fruits_mango"] = {
+                ["name"] = "Dried Fruits Mango",
+                ["inspect_str"] = "Dried Fruits Mango",
+            },
+            ["fwd_in_pdt_food_dried_fruits_berries"] = {
+                ["name"] = "Dried Fruits Berries",
+                ["inspect_str"] = "Dried Fruits Berries",
             },
         --------------------------------------------------------------------
         ---- 05_fwd_in_pdt_foods_cooked

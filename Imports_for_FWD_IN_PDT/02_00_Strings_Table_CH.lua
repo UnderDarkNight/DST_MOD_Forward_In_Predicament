@@ -374,9 +374,13 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "咖啡豆",
                 ["inspect_str"] = "一颗一颗相当饱满",
             },
-            ["fwd_in_pdt_food_dried_fruits"] = {
-                ["name"] = "果干",
-                ["inspect_str"] = "水果干",
+            ["fwd_in_pdt_food_dried_fruits_mango"] = {
+                ["name"] = "芒果干",
+                ["inspect_str"] = "香甜的芒果干",
+            },
+            ["fwd_in_pdt_food_dried_fruits_berries"] = {
+                ["name"] = "浆果干",
+                ["inspect_str"] = "香甜的浆果干",
             },
         --------------------------------------------------------------------
         ---- 05_fwd_in_pdt_foods_cooked

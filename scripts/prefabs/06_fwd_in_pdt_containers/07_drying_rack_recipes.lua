@@ -1,37 +1,37 @@
 return {
     --- 浆果
-        ["berries"] = {            
-            product = "fwd_in_pdt_food_dried_fruits",
+        ["berries"] = {
+            product = "fwd_in_pdt_food_dried_fruits_berries",
             num = 1 ,
         },
     --- 多汁浆果
         ["berries_juicy"] = {
-            product = "fwd_in_pdt_food_dried_fruits",
+            product = "fwd_in_pdt_food_dried_fruits_berries",
             num = 1 ,
         },
     --- 香蕉
         ["cave_banana"] = {
-            product = "fwd_in_pdt_food_dried_fruits",
+            product = "fwd_in_pdt_food_dried_fruits_mango",
             num = 2 ,
         },
     --- 火龙果
         ["dragonfruit"] = {
-            product = "fwd_in_pdt_food_dried_fruits",
+            product = "fwd_in_pdt_food_dried_fruits_mango",
             num = 2 ,
         },
     --- 榴莲
         ["durian"] = {
-            product = "fwd_in_pdt_food_dried_fruits",
+            product = "fwd_in_pdt_food_dried_fruits_mango",
             num = 2 ,
         },
     --- 石榴
         ["pomegranate"] = {
-            product = "fwd_in_pdt_food_dried_fruits",
+            product = "fwd_in_pdt_food_dried_fruits_mango",
             num = 2 ,
         },
     --- 西瓜
         ["watermelon"] = {
-            product = "fwd_in_pdt_food_dried_fruits",
+            product = "fwd_in_pdt_food_dried_fruits_mango",
             num = 2 ,
         },
     --- 鸡腿
