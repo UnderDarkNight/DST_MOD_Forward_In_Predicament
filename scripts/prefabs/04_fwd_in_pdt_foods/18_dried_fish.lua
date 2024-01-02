@@ -72,7 +72,7 @@ end
 
 --- 设置可以放烹饪锅里
 AddIngredientValues({"fwd_in_pdt_food_dried_fish"}, { 
-    fruit = 2,
+    meat = 1, fish = 1,
 })
 
 return Prefab("fwd_in_pdt_food_dried_fish", fn, assets)
