@@ -34,6 +34,16 @@ return {
             product = "fwd_in_pdt_food_dried_fruits_mango",
             num = 2 ,
         },
+        --- 青芒果
+        ["fwd_in_pdt_food_mango_green"] = {
+            product = "fwd_in_pdt_food_dried_fruits_mango",
+            num = 2 ,
+        },
+        --- 黄芒果
+        ["fwd_in_pdt_food_mango"] = {
+            product = "fwd_in_pdt_food_dried_fruits_mango",
+            num = 5 ,
+        },
     --- 鸡腿
         ["drumstick"] = {
             product = "meat_dried",
