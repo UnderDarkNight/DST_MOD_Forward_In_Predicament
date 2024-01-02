@@ -241,7 +241,25 @@ AddPrefabPostInit(
 
                 if TheWorld.state.cycles - player.components.fwd_in_pdt_data:Add("last_thief_event_day",0) > 5  then
                     local probability = 0.3         --- 默认 30%概率
-                    if player.components.inventory:HasItemWithTag("fwd_in_pdt_container_wallet") then   --- 有钱包就 5%概率
+                    ---------------------------------------------------------------------------
+                        local fwd_in_pdt_container_wallet_flag = false
+                        local temp_container_insts = {}
+                        local each_item_fn = function(item)
+                            if item then
+                                if not fwd_in_pdt_container_wallet_flag and item.prefab == "fwd_in_pdt_container_wallet" then
+                                    fwd_in_pdt_container_wallet_flag = true
+                                elseif item.components.container then
+                                    temp_container_insts[item] = true
+                                end
+                            end
+                        end
+                        player.components.inventory:ForEachItem(each_item_fn)
+                        for temp_inst, v in pairs(temp_container_insts) do
+                            temp_inst.components.container:ForEachItem(each_item_fn)
+                        end
+                        -- print("fake error fwd_in_pdt_container_wallet_flag",fwd_in_pdt_container_wallet_flag)
+                    ---------------------------------------------------------------------------
+                    if fwd_in_pdt_container_wallet_flag then   --- 有钱包就 5%概率
                         probability = 0.05
                     end
                     if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then  --- 测试模式 80%概率
@@ -255,14 +273,20 @@ AddPrefabPostInit(
 
             end
         -------------------------------------------------------------------------------------------------
+        ---- 群体判定触发
+            inst:ListenForEvent("fwd_in_pdt_world_spawner.thief_2_all_player",function()
+                -- print("info fwd_in_pdt_world_spawner.thief_2_all_player  ")
+                for k, player in pairs(AllPlayers) do
+                    if player and player.components.playercontroller and not player:HasTag("playerghost") then
+                        single_player_decide_fn(player)
+                    end
+                end
+            end)
+        -------------------------------------------------------------------------------------------------
 
             inst:WatchWorldState("isnight",function()
                 inst:DoTaskInTime(TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE and 5 or math.random(30,60),function()
-                    for k, player in pairs(AllPlayers) do
-                        if player and player.components.playercontroller and not player:HasTag("playerghost") then
-                            single_player_decide_fn(player)
-                        end
-                    end
+                    inst:PushEvent("fwd_in_pdt_world_spawner.thief_2_all_player")
                 end)
             end)
         -------------------------------------------------------------------------------------------------

@@ -51,7 +51,7 @@ local function fn()
                 inst:Remove()
             end
 
-            ThePlayer.components.fwd_in_pdt_wellness:Remove_Debuff("fwd_in_pdt_welness_fracture")
+            doer.components.fwd_in_pdt_wellness:Remove_Debuff("fwd_in_pdt_welness_fracture")
 
 
             return true
