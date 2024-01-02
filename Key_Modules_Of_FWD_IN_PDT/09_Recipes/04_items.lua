@@ -32,7 +32,7 @@
     AddRecipeToFilter("fwd_in_pdt_equipment_loong_balloon","DECOR")     ---- 添加物品到目标标签
     AddRecipe2(
         "fwd_in_pdt_equipment_loong_balloon",            --  --  inst.prefab  实体名字
-        { Ingredient("mosquitosack", 2)}, 
+        { Ingredient("cutgrass", 2)}, 
         TECH.NONE, --- TECH.NONE
         {
             no_deconstruction=true,     
@@ -49,7 +49,7 @@
     AddRecipeToFilter("fwd_in_pdt_equipment_balloon_evil_dragon","DECOR")     ---- 添加物品到目标标签
     AddRecipe2(
         "fwd_in_pdt_equipment_balloon_evil_dragon",            --  --  inst.prefab  实体名字
-        { Ingredient("mosquitosack", 2)}, 
+        { Ingredient("cutgrass", 2)}, 
         TECH.NONE, --- TECH.NONE
         {
             no_deconstruction=true,     
@@ -66,7 +66,7 @@
     AddRecipeToFilter("fwd_in_pdt_equipment_balloon_bobble_loong","DECOR")     ---- 添加物品到目标标签
     AddRecipe2(
         "fwd_in_pdt_equipment_balloon_bobble_loong",            --  --  inst.prefab  实体名字
-        { Ingredient("mosquitosack", 2)}, 
+        { Ingredient("cutgrass", 2)}, 
         TECH.NONE, --- TECH.NONE
         {
             no_deconstruction=true,     
