@@ -345,6 +345,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "这气球相当可爱",
                 ["recipe_desc"] = "这气球相当可爱",
             },
+            ["fwd_in_pdt_equipment_magic_spatula"] = {
+                ["name"] = "魔法锅铲",
+                ["inspect_str"] = "这锅铲有魔法",
+                ["recipe_desc"] = "拿着去烹饪，可以消耗San加速",
+            },
         --------------------------------------------------------------------
         ---- 04_fwd_in_pdt_foods
             ["fwd_in_pdt_food_raw_milk"] = {

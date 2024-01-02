@@ -55,6 +55,8 @@ local prefabs_name_list = {
     "17_balloon_evil_dragon",           --- 邪龙气球
     "18_bobble_loong",                  --- 泡泡龙气球
 
+    "19_magic_spatula",                  --- 魔法锅铲
+
     
 }
 

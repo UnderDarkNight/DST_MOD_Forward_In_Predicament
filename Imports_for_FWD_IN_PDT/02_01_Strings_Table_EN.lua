@@ -339,6 +339,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "This balloon is quite cute",
                 ["recipe_desc"] = "This balloon is quite cute",
             },
+            ["fwd_in_pdt_equipment_magic_spatula"] = {
+                ["name"] = "Magic Spatula",
+                ["inspect_str"] = "This spatula has magic",
+                ["recipe_desc"] = "Take it to cook, you can consume San to speed up",
+            },
         --------------------------------------------------------------------
         ---- 04_fwd_in_pdt_foods
             ["fwd_in_pdt_food_raw_milk"] = {
