@@ -97,13 +97,9 @@ local function fn()
         end
         inst:ListenForEvent("add_combat_fn_2_player",function(_,player)
                     --------------------------------------------------------------------------------
-                    --- 特效
-                        local fx = player:SpawnChild("fwd_in_pdt_equipment_shield_of_light_cycle")
-                        if inst.___fx then
-                            inst.___fx:Remove()
-                        end
-                        inst.___fx = fx
-                        fx.Transform:SetPosition(0,1,0)
+                    if not (player and player:HasTag("player") and player.components.fwd_in_pdt_func and player.components.playercontroller) then
+                        return
+                    end
                     --------------------------------------------------------------------------------
                     --- 挂载函数
                         player.components.fwd_in_pdt_func:PreGetAttacked_Add_Fn(inst.___player_combat_fn)
@@ -119,27 +115,41 @@ local function fn()
                             player = inst.__link_player
                         end
                     --------------------------------------------------------------------------------
-                    -- 特效
-                        if inst.___fx then
-                            inst.___fx:Remove()
-                            inst.___fx = nil
-                        end
-                    --------------------------------------------------------------------------------
                     --- 挂载函数
+                    if (player and player:HasTag("player") and player.components.fwd_in_pdt_func and player.components.playercontroller) then
                         player.components.fwd_in_pdt_func:PreGetAttacked_Remove_Fn(inst.___player_combat_fn)
+                    end
+                    --------------------------------------------------------------------------------
+                    --- 
+                        inst.__link_player = nil
                     --------------------------------------------------------------------------------
         end)
     -------------------------------------------------------------------
     ----- 穿脱函数
         inst:ListenForEvent("equipped",function(_,_table)
-            if not (_table and _table.owner and _table.owner:HasTag("player") ) then
+            if not (_table and _table.owner ) then
                 return
             end
+            --------------------------------------------------------------------------------
+                --- 特效
+                local fx = _table.owner:SpawnChild("fwd_in_pdt_equipment_shield_of_light_cycle")
+                if inst.___fx then
+                    inst.___fx:Remove()
+                end
+                inst.___fx = fx
+                fx.Transform:SetPosition(0,1,0)
+            --------------------------------------------------------------------------------
             inst:PushEvent("add_combat_fn_2_player",_table.owner)
-
         end)
         inst:ListenForEvent("unequipped",function(_,_table)
-            if not (_table and _table.owner and _table.owner:HasTag("player") ) then
+            --------------------------------------------------------------------------------
+            -- 特效
+                if inst.___fx then
+                    inst.___fx:Remove()
+                    inst.___fx = nil
+                end
+            --------------------------------------------------------------------------------
+            if not (_table and _table.owner ) then
                 return
             end
             inst:PushEvent("remove_combat_fn_from_player",_table.owner)
