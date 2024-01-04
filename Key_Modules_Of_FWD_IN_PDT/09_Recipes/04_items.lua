@@ -94,3 +94,20 @@
     )
     RemoveRecipeFromFilter("fwd_in_pdt_equipment_magic_spatula","MODS")                       -- -- 在【模组物品】标签里移除这个。
 
+--------------------------------------------------------------------------------------------------------------------------------------------
+---- 光之护盾
+--------------------------------------------------------------------------------------------------------------------------------------------
+    AddRecipeToFilter("fwd_in_pdt_equipment_shield_of_light","MAGIC")     ---- 添加物品到目标标签
+    AddRecipe2(
+        "fwd_in_pdt_equipment_shield_of_light",            --  --  inst.prefab  实体名字
+        { Ingredient("yellowamulet", 1) ,Ingredient("ruinshat", 1 ),Ingredient("armorruins", 1 )  }, 
+        TECH.NONE, --- TECH.NONE
+        {
+            no_deconstruction=true,
+            atlas = "images/inventoryimages/fwd_in_pdt_equipment_shield_of_light.xml",
+            image = "fwd_in_pdt_equipment_shield_of_light.tex",
+        },
+        {"MAGIC","ARMOUR","FWD_IN_PDT"}
+    )
+    RemoveRecipeFromFilter("fwd_in_pdt_equipment_shield_of_light","MODS")                       -- -- 在【模组物品】标签里移除这个。
+

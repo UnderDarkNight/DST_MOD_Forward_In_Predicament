@@ -359,11 +359,34 @@ local flg,error_code = pcall(function()
             -- ThePlayer.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_fracture")
             -- ThePlayer.components.fwd_in_pdt_wellness:Remove_Debuff("fwd_in_pdt_welness_fracture")
     ----------------------------------------------------------------------------------------------------------------
-    TheWorld:DoTaskInTime(1,function()
+    -- TheWorld:DoTaskInTime(1,function()
             
-                    TheWorld:PushEvent("fwd_in_pdt_world_spawner.thief_2_all_player")
-        end)
+    --                 TheWorld:PushEvent("fwd_in_pdt_world_spawner.thief_2_all_player")
+    --     end)
             -- c_select():PushEvent("fwd_in_pdt_event.stewer_finish")
+    ----------------------------------------------------------------------------------------------------------------
+           local ents = TheSim:FindEntities(x, y, z, 30, {"fwd_in_pdt_equipment_shield_of_light"}, nil, nil)
+           for k, v in pairs(ents) do
+                if v and v.prefab == "fwd_in_pdt_equipment_shield_of_light" then
+                    local inst = v
+                    --------------------------------------------------------------------
+                        local fx = inst.___fx
+                        -- fx.AnimState:SetLayer(LAYER_WORLD)
+                        fx.AnimState:SetLayer(LAYER_BACKGROUND)
+                        -- fx.AnimState:SetOrientation(ANIM_ORIENTATION.BillBoard)
+                        fx.AnimState:SetOrientation(ANIM_ORIENTATION.OnGround)
+                        -- fx.AnimState:SetOrientation(ANIM_ORIENTATION.OnGroundFixed)
+                        inst.AnimState:SetSortOrder(-1)
+                        -- fx:Hide()
+                        -- for i = 0, 9, 1 do
+                        --     inst:DoTaskInTime(i*5,function()
+                        --         print("++++",i)
+                        --         fx.AnimState:SetLayer(i)
+                        --     end)
+                        -- end
+                    --------------------------------------------------------------------
+                end
+           end
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)

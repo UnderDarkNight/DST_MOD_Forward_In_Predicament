@@ -344,6 +344,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "This spatula has magic",
                 ["recipe_desc"] = "Take it to cook, you can consume San to speed up",
             },
+            ["fwd_in_pdt_equipment_shield_of_light"] = {
+                ["name"] = "Shield Of Light",
+                ["inspect_str"] = "Use light as a shield to block damage",
+                ["recipe_desc"] = "Use light as a shield to block damage",
+            },
         --------------------------------------------------------------------
         ---- 04_fwd_in_pdt_foods
             ["fwd_in_pdt_food_raw_milk"] = {

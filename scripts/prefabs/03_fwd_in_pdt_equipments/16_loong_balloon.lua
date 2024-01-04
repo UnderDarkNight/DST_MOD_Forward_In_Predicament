@@ -20,9 +20,7 @@ local assets =
 
 --------------------------------------------------------------------------------------------------
 local function onequip(inst, owner)
-    if not (owner and owner:HasTag("player") ) then
-        return
-    end
+
 
     owner.AnimState:Show("ARM_carry")
     owner.AnimState:Hide("ARM_normal")
@@ -38,6 +36,11 @@ local function onequip(inst, owner)
         fx.entity:SetParent(owner.entity)
         fx.entity:AddFollower()
         fx.Follower:FollowSymbol(owner.GUID, "swap_object",6.5, 0, -1)
+    -----------------------------------------------------------------------------
+    --- 非玩家跳过后面内容
+        if not (owner and owner:HasTag("player") ) then
+            return
+        end
     -----------------------------------------------------------------------------
     ---- 切换动作
         inst.player_sg_state_fn = inst.player_sg_state_fn or function()

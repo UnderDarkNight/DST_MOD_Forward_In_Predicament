@@ -56,6 +56,7 @@ local prefabs_name_list = {
     "18_bobble_loong",                  --- 泡泡龙气球
 
     "19_magic_spatula",                  --- 魔法锅铲
+    "20_shield_of_light",                --- 光之护盾
 
     
 }

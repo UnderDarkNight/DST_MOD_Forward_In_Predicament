@@ -44,6 +44,8 @@ local prefabs_name_list = {
     "11_hospital",                   -- 医院
     "12_doll_clamping_machine",      -- 娃娃机
 
+    "13_fence",                      -- 围栏
+
     
 }
 
