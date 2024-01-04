@@ -41,7 +41,7 @@ local function fn()
     inst.AnimState:PlayAnimation("idle")
 
 
-
+    inst:AddTag("fwd_in_pdt_equipment_shield_of_light")
     MakeInventoryPhysics(inst)
     MakeInventoryFloatable(inst, "med", nil, 0.6)
 
@@ -131,11 +131,11 @@ local function fn()
                 return
             end
             --------------------------------------------------------------------------------
-                --- 特效
-                local fx = _table.owner:SpawnChild("fwd_in_pdt_equipment_shield_of_light_cycle")
+            --- 特效
                 if inst.___fx then
                     inst.___fx:Remove()
                 end
+                local fx = _table.owner:SpawnChild("fwd_in_pdt_equipment_shield_of_light_cycle")
                 inst.___fx = fx
                 fx.Transform:SetPosition(0,1,0)
             --------------------------------------------------------------------------------
@@ -169,7 +169,7 @@ end
         inst.AnimState:SetBuild("fwd_in_pdt_equipment_shield_of_light")
         local scale_num = 1.5
         inst.AnimState:SetScale(scale_num, scale_num, scale_num)
-        inst.AnimState:SetLayer(LAYER_WORLD_DEBUG)
+        inst.AnimState:SetLayer(LAYER_BACKGROUND)
         inst.AnimState:SetOrientation(ANIM_ORIENTATION.OnGround)
         inst.AnimState:SetSortOrder(0)
         inst.AnimState:PlayAnimation("cycle",true)
@@ -187,25 +187,26 @@ end
 
 
         inst:DoTaskInTime(0,function()
+            local y = 0
             local fx_1 = SpawnPrefab("fwd_in_pdt_equipment_shield_of_light_fx")
             fx_1.entity:SetParent(inst.entity)
             fx_1.entity:AddFollower()
-            fx_1.Follower:FollowSymbol(inst.GUID, "pt_1", 0, 0, 0)
+            fx_1.Follower:FollowSymbol(inst.GUID, "pt_1", 0, y, 0)
 
             local fx_2 = SpawnPrefab("fwd_in_pdt_equipment_shield_of_light_fx")
             fx_2.entity:SetParent(inst.entity)
             fx_2.entity:AddFollower()
-            fx_2.Follower:FollowSymbol(inst.GUID, "pt_2", 0, 0, 0)
+            fx_2.Follower:FollowSymbol(inst.GUID, "pt_2", 0, y, 0)
 
             local fx_3 = SpawnPrefab("fwd_in_pdt_equipment_shield_of_light_fx")
             fx_3.entity:SetParent(inst.entity)
             fx_3.entity:AddFollower()
-            fx_3.Follower:FollowSymbol(inst.GUID, "pt_3", 0, 0, 0)
+            fx_3.Follower:FollowSymbol(inst.GUID, "pt_3", 0, y, 0)
 
             local fx_4 = SpawnPrefab("fwd_in_pdt_equipment_shield_of_light_fx")
             fx_4.entity:SetParent(inst.entity)
             fx_4.entity:AddFollower()
-            fx_4.Follower:FollowSymbol(inst.GUID, "pt_4", 0, 0, 0)
+            fx_4.Follower:FollowSymbol(inst.GUID, "pt_4", 0, y, 0)
 
         end)
         -- local fx = SpawnPrefab(fx_prefab)

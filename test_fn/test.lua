@@ -365,29 +365,25 @@ local flg,error_code = pcall(function()
     --     end)
             -- c_select():PushEvent("fwd_in_pdt_event.stewer_finish")
     ----------------------------------------------------------------------------------------------------------------
-           local ents = TheSim:FindEntities(x, y, z, 30, {"stageactor"}, nil, nil)
+           local ents = TheSim:FindEntities(x, y, z, 30, {"fwd_in_pdt_equipment_shield_of_light"}, nil, nil)
            for k, v in pairs(ents) do
-                if v and v.prefab == "sewing_mannequin" then
+                if v and v.prefab == "fwd_in_pdt_equipment_shield_of_light" then
                     local inst = v
                     --------------------------------------------------------------------
-                        if inst.fx then
-                            inst.fx:Remove()
-                            inst = nil
-                        end
-                    --------------------------------------------------------------------
-                        -- inst.AnimState:Hide("ARM_carry")
-                        -- inst.AnimState:Show("ARM_carry")
-                        -- inst.AnimState:OverrideSymbol("swap_object", "swap_nightmaresword", "swap_nightmaresword")
-
-                        -- local fx = SpawnPrefab("fwd_in_pdt_equipment_balloon_fx")
-                        -- inst.fx = fx
-                        -- fx.AnimState:SetBank("fwd_in_pdt_equipment_loong_balloon")
-                        -- fx.AnimState:SetBuild("fwd_in_pdt_equipment_loong_balloon")
-                        -- fx.AnimState:PlayAnimation("idle",true)
-                
-                        -- fx.entity:SetParent(inst.entity)
-                        -- fx.entity:AddFollower()
-                        -- fx.Follower:FollowSymbol(inst.GUID, "swap_object",6.5, 0, -1)
+                        local fx = inst.___fx
+                        -- fx.AnimState:SetLayer(LAYER_WORLD)
+                        fx.AnimState:SetLayer(LAYER_BACKGROUND)
+                        -- fx.AnimState:SetOrientation(ANIM_ORIENTATION.BillBoard)
+                        fx.AnimState:SetOrientation(ANIM_ORIENTATION.OnGround)
+                        -- fx.AnimState:SetOrientation(ANIM_ORIENTATION.OnGroundFixed)
+                        inst.AnimState:SetSortOrder(-1)
+                        -- fx:Hide()
+                        -- for i = 0, 9, 1 do
+                        --     inst:DoTaskInTime(i*5,function()
+                        --         print("++++",i)
+                        --         fx.AnimState:SetLayer(i)
+                        --     end)
+                        -- end
                     --------------------------------------------------------------------
                 end
            end
