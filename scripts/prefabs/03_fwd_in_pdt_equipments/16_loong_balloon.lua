@@ -20,9 +20,9 @@ local assets =
 
 --------------------------------------------------------------------------------------------------
 local function onequip(inst, owner)
-    if not (owner and owner:HasTag("player") ) then
-        return
-    end
+    -- if not (owner and owner:HasTag("player") ) then
+    --     return
+    -- end
 
     owner.AnimState:Show("ARM_carry")
     owner.AnimState:Hide("ARM_normal")
