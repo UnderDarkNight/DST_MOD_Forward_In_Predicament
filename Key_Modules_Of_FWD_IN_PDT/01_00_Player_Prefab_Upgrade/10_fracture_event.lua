@@ -26,7 +26,7 @@ AddPlayerPostInit(function(inst)
         if _table and (_table.action == ACTIONS.DIG or _table.action == ACTIONS.CHOP or _table.action == ACTIONS.MINE) then
             if TheWorld.state.isnight or TheWorld:HasTag("cave") or TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then --- 洞穴和夜晚都会触发判定
                 if inst.components.fwd_in_pdt_wellness:Get_Debuff("fwd_in_pdt_welness_fracture") == nil then
-                    if math.random(100000)/100000 <= ( TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE and 0.5 or 0.01) then
+                    if math.random(100000)/100000 <= ( TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE and 0.5 or 0.005) then
 
                                 inst.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_fracture")
                                 inst.components.fwd_in_pdt_func:Wisper({

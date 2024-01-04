@@ -24,7 +24,6 @@ local function fn()
     inst.AnimState:SetBloomEffectHandle("shaders/anim.ksh")
 
 
-
 	inst:AddTag("fwd_in_pdt_item_flame_core")
 
 	MakeInventoryPhysics(inst)
@@ -34,6 +33,11 @@ local function fn()
     if not TheWorld.ismastersim then
         return inst
     end
+
+--这个时候要注意  一些组件必须放在这个的后面  一些必须放在前面  具体用的时候去参考官方怎么弄的  以免产生bug--
+    inst:AddComponent("tradable")
+    inst.components.tradable.rocktribute = 6        ---延迟地震6*0.33天
+    inst.components.tradable.goldvalue = 30         ---价值30个金块
 
     inst:AddComponent("inspectable")
 

@@ -22,9 +22,11 @@ local function fn()
     inst.DynamicShadow:SetSize(0.7, 0.7)
     inst.AnimState:SetBloomEffectHandle("shaders/anim.ksh")
 
-
-
-	inst:AddTag("fwd_in_pdt_item_ice_core")
+    inst:AddComponent("tradable")
+    inst.components.tradable.rocktribute = 6        ---延迟地震6*0.33天
+    inst.components.tradable.goldvalue = 50         ---价值50个金块
+	
+    inst:AddTag("fwd_in_pdt_item_ice_core")
 
 	MakeInventoryPhysics(inst)
     MakeInventoryFloatable(inst, "med", nil, 0.77)
@@ -33,6 +35,11 @@ local function fn()
     if not TheWorld.ismastersim then
         return inst
     end
+    
+--这个时候要注意  一些组件必须放在这个的后面  一些必须放在前面  具体用的时候去参考官方怎么弄的  以免产生bug
+    inst:AddComponent("tradable")
+    inst.components.tradable.rocktribute = 6        ---延迟地震6*0.33天
+    inst.components.tradable.goldvalue = 50         ---价值30个金块
 
     inst:AddComponent("inspectable")
 
