@@ -130,6 +130,11 @@ AddPlayerPostInit(function(inst)
                         ["fwd_in_pdt_building_paddy_windmill"] = {
                             "fwd_in_pdt_building_paddy_windmill_pink",
                         },
+                    ---- 花围栏
+                        ["fwd_in_pdt_building_flower_fence_item"] = {
+                            "fwd_in_pdt_building_flower_fence_item_purple",
+                            "fwd_in_pdt_building_flower_fence_item_vines",
+                        },
                     ---- 鼹鼠背包
                         ["fwd_in_pdt_equipment_mole_backpack"] = {
                             -- "fwd_in_pdt_equipment_mole_backpack_panda",  --- 免费送

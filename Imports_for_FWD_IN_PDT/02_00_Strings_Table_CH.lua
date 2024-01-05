@@ -690,6 +690,18 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["gift_box.amulet"] = "可以作死补给包",
                 ["gift_box.gems"] = "亮晶晶补给包",
             },
+            ["fwd_in_pdt_building_flower_fence"] = {
+                ["name"] = "花栅栏",
+                ["inspect_str"] = "花栅栏",
+                ["recipe_desc"] = "花栅栏",
+                ["Purple"] = "紫花",
+                ["Vines"] = "藤条",
+            },
+            ["fwd_in_pdt_building_flower_fence_item"] = {
+                ["name"] = "花栅栏",
+                ["inspect_str"] = "花栅栏",
+                ["recipe_desc"] = "花栅栏",
+            },
         --------------------------------------------------------------------
         ---- 08_fwd_in_pdt_resources
             ["fwd_in_pdt_resource_glacier_huge"] = {

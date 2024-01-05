@@ -4,15 +4,92 @@
 ]]--
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     local function GetStringsTable(name)
-        local prefab_name = name or "fwd_in_pdt_building_doll_clamping_machine"
+        local prefab_name = name or "fwd_in_pdt_building_flower_fence"
         local LANGUAGE = type(TUNING["Forward_In_Predicament.Language"]) == "function" and TUNING["Forward_In_Predicament.Language"]() or TUNING["Forward_In_Predicament.Language"]
         return TUNING["Forward_In_Predicament.Strings"][LANGUAGE][prefab_name] or {}
     end
 
     local assets =
     {
-        Asset("ANIM", "anim/fwd_in_pdt_building_doll_clamping_machine.zip"),
+        Asset("ANIM", "anim/fwd_in_pdt_building_flower_fence.zip"),
+        Asset("ANIM", "anim/fwd_in_pdt_building_flower_fence_thin.zip"),
+        Asset( "IMAGE", "images/inventoryimages/fwd_in_pdt_building_flower_fence.tex" ),  -- 背包贴图
+        Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_building_flower_fence.xml" ),
+
+        Asset("ANIM", "anim/fwd_in_pdt_building_flower_fence_purple.zip"),
+        Asset("ANIM", "anim/fwd_in_pdt_building_flower_fence_thin_purple.zip"),
+        Asset( "IMAGE", "images/inventoryimages/fwd_in_pdt_building_flower_fence_purple.tex" ),  -- 背包贴图
+        Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_building_flower_fence_purple.xml" ),
+
+        Asset("ANIM", "anim/fwd_in_pdt_building_flower_fence_vines.zip"),
+        Asset("ANIM", "anim/fwd_in_pdt_building_flower_fence_thin_vines.zip"),
+        Asset( "IMAGE", "images/inventoryimages/fwd_in_pdt_building_flower_fence_vines.tex" ),  -- 背包贴图
+        Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_building_flower_fence_vines.xml" ),
     }
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---- 皮肤API 套件
+    --- 建筑用的skin 数据
+    local skins_data_fence = {
+        ["fwd_in_pdt_building_flower_fence_purple"] = {             --- 皮肤名字，全局唯一。
+            -- bank = "fwd_in_pdt_building_flower_fence_purple",                   --- 制作完成后切换的 bank
+            -- build = "fwd_in_pdt_building_flower_fence_purple",                  --- 制作完成后切换的 build
+            bank = "fwd_in_pdt_building_flower_fence_thin_purple",                   --- 制作完成后切换的 bank
+            build = "fwd_in_pdt_building_flower_fence_thin_purple",                  --- 制作完成后切换的 build
+            name = "Purple",                    --- 【制作栏】皮肤的名字
+            skin_link = "fwd_in_pdt_building_flower_fence_item_purple",              --- 链接对象，解锁其中一个，顺便解锁另一个。为的是同步解锁。
+            -- anims = {wide="fwd_in_pdt_building_flower_fence_purple", narrow="fwd_in_pdt_building_flower_fence_purple"}
+        },
+        ["fwd_in_pdt_building_flower_fence_vines"] = {             --- 皮肤名字，全局唯一。
+            -- bank = "fwd_in_pdt_building_flower_fence_vines",                   --- 制作完成后切换的 bank
+            -- build = "fwd_in_pdt_building_flower_fence_vines",                  --- 制作完成后切换的 build
+            bank = "fwd_in_pdt_building_flower_fence_thin_vines",                   --- 制作完成后切换的 bank
+            build = "fwd_in_pdt_building_flower_fence_thin_vines",                  --- 制作完成后切换的 build
+            name = "Vines",                    --- 【制作栏】皮肤的名字
+            skin_link = "fwd_in_pdt_building_flower_fence_item_vines",              --- 链接对象，解锁其中一个，顺便解锁另一个。为的是同步解锁。
+            -- anims = {wide="fwd_in_pdt_building_flower_fence_vines", narrow="fwd_in_pdt_building_flower_fence_vines"}
+
+        },
+
+    }
+    FWD_IN_PDT_MOD_SKIN.SKIN_INIT(skins_data_fence,"fwd_in_pdt_building_flower_fence")     --- 往总表注册所有皮肤
+
+
+    ---- 物品用的skin数据
+    local skins_data_item = {
+        ["fwd_in_pdt_building_flower_fence_item_purple"] = {             --- 皮肤名字，全局唯一。
+            bank = "fwd_in_pdt_building_flower_fence_purple",                   --- 制作完成后切换的 bank
+            build = "fwd_in_pdt_building_flower_fence_purple",                  --- 制作完成后切换的 build
+            atlas = "images/inventoryimages/fwd_in_pdt_building_flower_fence_purple.xml",   --- 【制作栏】皮肤显示的贴图，
+            image = "fwd_in_pdt_building_flower_fence_purple",      --- 【制作栏】皮肤显示的贴图， 不需要 .tex
+            name = GetStringsTable()["Purple"],                    --- 【制作栏】皮肤的名字
+            name_color = {106/255,90/255,205/255,255/255},
+            placed_skin_name = "fwd_in_pdt_building_flower_fence_purple",   --  给 inst.components.deployable.ondeploy  里生成切换用的
+            skin_link = "fwd_in_pdt_building_flower_fence_purple",               --- 链接对象，解锁其中一个，顺便解锁另一个。为的是同步解锁。
+            -- anims = {wide="fwd_in_pdt_building_flower_fence_purple", narrow="fwd_in_pdt_building_flower_fence_purple"}
+            
+        },
+
+        ["fwd_in_pdt_building_flower_fence_item_vines"] = {             --- 皮肤名字，全局唯一。
+            bank = "fwd_in_pdt_building_flower_fence_vines",                   --- 制作完成后切换的 bank
+            build = "fwd_in_pdt_building_flower_fence_vines",                  --- 制作完成后切换的 build
+            atlas = "images/inventoryimages/fwd_in_pdt_building_flower_fence_vines.xml",   --- 【制作栏】皮肤显示的贴图，
+            image = "fwd_in_pdt_building_flower_fence_vines",      --- 【制作栏】皮肤显示的贴图， 不需要 .tex
+            name = GetStringsTable()["Vines"],                    --- 【制作栏】皮肤的名字
+            name_color = {127/255,255/255,0/255,255/255},
+            placed_skin_name = "fwd_in_pdt_building_flower_fence_vines",   --  给 inst.components.deployable.ondeploy  里生成切换用的
+            skin_link = "fwd_in_pdt_building_flower_fence_vines",               --- 链接对象，解锁其中一个，顺便解锁另一个。为的是同步解锁。
+            -- anims = {wide="fwd_in_pdt_building_flower_fence_vines", narrow="fwd_in_pdt_building_flower_fence_vines"}            
+        },
+
+
+    }
+
+    FWD_IN_PDT_MOD_SKIN.SKIN_INIT(skins_data_item,"fwd_in_pdt_building_flower_fence_item")     --- 往总表注册所有皮肤
+
+    local function Set_ReSkin_API_Default_Animate(inst,bank,build,minimap)      -- 在 inst.AnimState:PlayAnimation() 前启用本函数
+        FWD_IN_PDT_MOD_SKIN.Set_ReSkin_API_Default_Animate(inst,bank,build,minimap)
+    end
+
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 require "prefabutil"
 -------------------------------------------------------------------------------
@@ -91,7 +168,7 @@ require "prefabutil"
             while neighbor ~= nil do
                 neighbor_e = CalcRotationEnum(neighbor.Transform:GetRotation())
 
-                if (neighbor.isdoor or neighbor.prefab == "fwd_in_pdt_building_flower_fence" or neighbor.prefab == "fence") and (this_e % (ROT_SIDES/2) == neighbor_e % (ROT_SIDES/2)) then
+                if (neighbor.isdoor or neighbor:HasTag("fence") or neighbor.prefab == "fence") and (this_e % (ROT_SIDES/2) == neighbor_e % (ROT_SIDES/2)) then
                     --found a parallel fence/gate neighbour!
                     break
                 end
@@ -111,7 +188,7 @@ require "prefabutil"
 
             if neighbor ~= nil then
                 --align with fence/gate neighbor if we're placing from behind. This exists so that you can fix a hole in a wall from the back of wall. Needed for the case where the camera is obstructed from placing from the front of the wall
-                if (neighbor.isdoor or neighbor.prefab == "fwd_in_pdt_building_flower_fence" or neighbor.prefab == "fence") and (this_e + ROT_SIDES/2) % ROT_SIDES == neighbor_e then
+                if (neighbor.isdoor or neighbor:HasTag("fence")  or neighbor.prefab == "fence") and (this_e + ROT_SIDES/2) % ROT_SIDES == neighbor_e then
                     rot = rot + 180
                     this_e = CalcRotationEnum(rot)
                 end
@@ -267,8 +344,8 @@ require "prefabutil"
 		inst:AddTag("rotatableobject")
 
 
-        inst.AnimState:SetBank("fence")
-        inst.AnimState:SetBuild("fence")
+        inst.AnimState:SetBank("fwd_in_pdt_building_flower_fence")
+        inst.AnimState:SetBuild("fwd_in_pdt_building_flower_fence")
         inst.AnimState:PlayAnimation("idle")
 
         MakeSnowCoveredPristine(inst)
@@ -285,13 +362,25 @@ require "prefabutil"
 
         -----------------------------------------------------------------------
         inst.entity:SetPristine()
+
+        --------------------------------------------------------------------
+            ---- Skin API Register
+            Set_ReSkin_API_Default_Animate(inst,"fwd_in_pdt_building_flower_fence_thin","fwd_in_pdt_building_flower_fence_thin")
+            if TheWorld.ismastersim then
+                inst:AddComponent("fwd_in_pdt_func"):Init("skin")
+
+                -- inst:AddComponent("inventoryitem")
+                -- inst.components.inventoryitem:fwd_in_pdt_icon_init("fwd_in_pdt_equipment_mole_backpack","images/inventoryimages/fwd_in_pdt_equipment_mole_backpack.xml")
+            end
+        --------------------------------------------------------------------
         if not TheWorld.ismastersim then
             return inst
         end
 
         inst:AddComponent("inspectable")
 
-        inst.anims = {wide="fence", narrow="fence_thin"}
+        -- inst.anims = {wide="fence", narrow="fence_thin"}
+        inst.anims = {wide="fwd_in_pdt_building_flower_fence_thin", narrow="fwd_in_pdt_building_flower_fence_thin"}
 
         inst:AddComponent("lootdropper")
         inst.components.lootdropper:SetLoot({ "twigs" })
@@ -336,6 +425,8 @@ require "prefabutil"
     local function ondeploywall(inst, pt, deployer, rot )
         local wall = SpawnPrefab("fwd_in_pdt_building_flower_fence")
         if wall ~= nil then
+            inst.components.fwd_in_pdt_func:SkinAPI__DeployItem(wall)
+
             local x = math.floor(pt.x) + .5
             local z = math.floor(pt.z) + .5
 
@@ -360,14 +451,23 @@ require "prefabutil"
 
         inst:AddTag("fencebuilder")
 
-        inst.AnimState:SetBank("fence")
-        inst.AnimState:SetBuild("fence")
+        inst.AnimState:SetBank("fwd_in_pdt_building_flower_fence")
+        inst.AnimState:SetBuild("fwd_in_pdt_building_flower_fence")
         inst.AnimState:PlayAnimation("inventory")
 
 		MakeInventoryFloatable(inst, "small", nil, 1.1)
 
         inst.entity:SetPristine()
+        --------------------------------------------------------------------
+            ---- Skin API Register
+            Set_ReSkin_API_Default_Animate(inst,"fwd_in_pdt_building_flower_fence","fwd_in_pdt_building_flower_fence")
+            if TheWorld.ismastersim then
+                inst:AddComponent("fwd_in_pdt_func"):Init("skin")
 
+                inst:AddComponent("inventoryitem")
+                inst.components.inventoryitem:fwd_in_pdt_icon_init("fwd_in_pdt_building_flower_fence","images/inventoryimages/fwd_in_pdt_building_flower_fence.xml")
+            end
+        --------------------------------------------------------------------
         if not TheWorld.ismastersim then
             return inst
         end
@@ -376,7 +476,7 @@ require "prefabutil"
         inst.components.stackable.maxsize = TUNING.STACK_SIZE_MEDITEM
 
         inst:AddComponent("inspectable")
-        inst:AddComponent("inventoryitem")
+        -- inst:AddComponent("inventoryitem")
 
         inst:AddComponent("deployable")
         inst.components.deployable.ondeploy = ondeploywall
@@ -398,11 +498,12 @@ require "prefabutil"
         inst.components.placer.onupdatetransform = function(inst)
             FixUpFenceOrientation(inst, nil)
         end
-        inst.anims = {wide="fence", narrow="fence_thin"}
+        -- inst.anims = {wide="fence", narrow="fence_thin"}
+        inst.anims = {wide="fwd_in_pdt_building_flower_fence_thin", narrow="fwd_in_pdt_building_flower_fence_thin"}
     end
 -------------------------------------------------------------------------------
 return Prefab("fwd_in_pdt_building_flower_fence", fence_fn, assets),
         Prefab("fwd_in_pdt_building_flower_fence_item", item_fn, assets),
-            MakePlacer("fwd_in_pdt_building_flower_fence_item_placer","fence","fence","idle",nil, nil, true, nil, 0, "eight",placer_fn)
+            MakePlacer("fwd_in_pdt_building_flower_fence_item_placer","fwd_in_pdt_building_flower_fence","fwd_in_pdt_building_flower_fence","idle",nil, nil, true, nil, 0, "eight",placer_fn)
 
 
