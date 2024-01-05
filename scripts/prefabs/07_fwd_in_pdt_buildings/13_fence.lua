@@ -438,6 +438,12 @@ require "prefabutil"
             FixUpFenceOrientation(wall, rot or 0)
 
             wall.SoundEmitter:PlaySound("dontstarve/common/place_structure_wood")
+
+            SpawnPrefab("fwd_in_pdt_fx_fence_flowers"):PushEvent("Set",{
+                pt = Vector3(x,1,z),
+                speed = 2,
+                scale = 0.5,
+            })
         end
     end
     local function item_fn()

@@ -189,11 +189,15 @@ local assets =
                 end
                 --- 玩家采集
                     inst.components.pickable:SetOnPickedFn(function(inst,doer)  --- 被玩家采集后执行
-                        doer.components.fwd_in_pdt_func:GiveItemByPrefab("fwd_in_pdt_equipment_huge_orange",1)
-                        if math.random(100) <= 30 then
-                            doer.components.fwd_in_pdt_func:GiveItemByPrefab("fwd_in_pdt_plant_orange_seed",math.random(3))
+                        if doer:HasTag("player") then
+                            doer.components.fwd_in_pdt_func:GiveItemByPrefab("fwd_in_pdt_equipment_huge_orange",1)
+                            if math.random(100) <= 30 then
+                                doer.components.fwd_in_pdt_func:GiveItemByPrefab("fwd_in_pdt_plant_orange_seed",math.random(3))
+                            end
+                            doer.SoundEmitter:PlaySound("dontstarve/wilson/pickup_reeds")
+                        else
+                            SpawnPrefab("fwd_in_pdt_equipment_huge_orange").Transform:SetPosition(inst.Transform:GetWorldPosition())
                         end
-                        doer.SoundEmitter:PlaySound("dontstarve/wilson/pickup_reeds")        
                         inst:Remove()
                     end)
             --------------------------------------------------------------------
