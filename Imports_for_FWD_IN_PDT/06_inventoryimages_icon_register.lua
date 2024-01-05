@@ -132,6 +132,11 @@ local files_name = {
 		"fwd_in_pdt_container_wallet",							-- 钱包
 		"fwd_in_pdt_container_wallet_piggy",					-- 钱包（皮肤）
 	---------------------------------------------------------------------------------------
+	-- 07_fwd_in_pdt_buildings
+		"fwd_in_pdt_building_flower_fence",						-- 花围栏
+		"fwd_in_pdt_building_flower_fence_purple",						-- 花围栏（皮肤）
+		"fwd_in_pdt_building_flower_fence_vines",						-- 花围栏（皮肤）
+	---------------------------------------------------------------------------------------
 	-- 09_fwd_in_pdt_plants
 		"fwd_in_pdt_plant_paddy_rice_seed",								--- 未脱壳的稻米
 		"fwd_in_pdt_plant_wheat_seed",									--- 麦子

@@ -213,3 +213,24 @@ AddRecipe2(
 )
 RemoveRecipeFromFilter("fwd_in_pdt_building_drying_rack","MODS")                       -- -- 在【模组物品】标签里移除这个。
 
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+---- 花围栏
+--------------------------------------------------------------------------------------------------------------------------------------------
+AddRecipeToFilter("fwd_in_pdt_building_flower_fence_item","STRUCTURES")     ---- 添加物品到目标标签
+AddRecipe2(
+    "fwd_in_pdt_building_flower_fence_item",            --  --  inst.prefab  实体名字
+    { Ingredient("twigs", 3), Ingredient("rope", 1) }, 
+    TECH.NONE, --- TECH.NONE
+    {
+        -- nounlock=true,
+        numtogive = 6,
+        no_deconstruction=true,
+        -- builder_tag = "npng_tag.has_green_amulet",    --------- -- 【builder_tag】只给指定tag的角色能制造这件物品，角色添加/移除 tag 都能立马解锁/隐藏该物品
+        atlas = "images/inventoryimages/fwd_in_pdt_building_flower_fence.xml",
+        image = "fwd_in_pdt_building_flower_fence.tex",
+    },
+    {"STRUCTURES","DECOR","FWD_IN_PDT"}
+)
+RemoveRecipeFromFilter("fwd_in_pdt_building_flower_fence_item","MODS")                       -- -- 在【模组物品】标签里移除这个。
+

@@ -686,6 +686,18 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["gift_box.amulet"] = "Red Amulet Supply Pack",
                 ["gift_box.gems"] = "Gems Supply Pack",
             },
+            ["fwd_in_pdt_building_flower_fence"] = {
+                ["name"] = "Flower Fence",
+                ["inspect_str"] = "Flower Fence",
+                ["recipe_desc"] = "Flower Fence",
+                ["Purple"] = "Purple",
+                ["Vines"] = "Vines",
+            },
+            ["fwd_in_pdt_building_flower_fence_item"] = {
+                ["name"] = "Flower Fence",
+                ["inspect_str"] = "Flower Fence",
+                ["recipe_desc"] = "Flower Fence",
+            },
         --------------------------------------------------------------------
         ---- 08_fwd_in_pdt_resources
             ["fwd_in_pdt_resource_glacier_huge"] = {
