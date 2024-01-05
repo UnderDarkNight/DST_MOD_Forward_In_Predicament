@@ -13,7 +13,7 @@
     AddRecipe2(
         "fwd_in_pdt_item_talisman_that_repels_snakes",            --  --  inst.prefab  实体名字
         { Ingredient("fwd_in_pdt_material_realgar", 1),Ingredient("nightmarefuel", 10) }, 
-        TECH.NONE, --- TECH.NONE
+        TECH.MAGIC_THREE, --- 魔法三本
         {
             -- nounlock=true,
             no_deconstruction=true,
@@ -83,8 +83,8 @@
     AddRecipeToFilter("fwd_in_pdt_equipment_magic_spatula","MAGIC")     ---- 添加物品到目标标签
     AddRecipe2(
         "fwd_in_pdt_equipment_magic_spatula",            --  --  inst.prefab  实体名字
-        { Ingredient("minotaurhorn", 2) ,Ingredient("nightmarefuel", 10 ) }, 
-        TECH.NONE, --- TECH.NONE
+        { Ingredient("minotaurhorn", 1) ,Ingredient("nightmarefuel", 10 ) }, 
+        TECH.ANCIENT_FOUR, --- 完整的远古塔
         {
             no_deconstruction=true,
             atlas = "images/inventoryimages/fwd_in_pdt_equipment_magic_spatula.xml",
@@ -100,8 +100,8 @@
     AddRecipeToFilter("fwd_in_pdt_equipment_shield_of_light","MAGIC")     ---- 添加物品到目标标签
     AddRecipe2(
         "fwd_in_pdt_equipment_shield_of_light",            --  --  inst.prefab  实体名字
-        { Ingredient("yellowamulet", 1) ,Ingredient("ruinshat", 1 ),Ingredient("armorruins", 1 )  }, 
-        TECH.NONE, --- TECH.NONE
+        { Ingredient("yellowamulet", 1) ,Ingredient("ruinshat", 3 ),Ingredient("armorruins", 3 )  }, 
+        TECH.ANCIENT_FOUR, --- 完整的远古塔
         {
             no_deconstruction=true,
             atlas = "images/inventoryimages/fwd_in_pdt_equipment_shield_of_light.xml",

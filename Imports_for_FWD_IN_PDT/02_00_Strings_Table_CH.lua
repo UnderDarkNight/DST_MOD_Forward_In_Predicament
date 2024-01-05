@@ -348,7 +348,7 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             ["fwd_in_pdt_equipment_magic_spatula"] = {
                 ["name"] = "魔法锅铲",
                 ["inspect_str"] = "这锅铲有魔法",
-                ["recipe_desc"] = "拿着去烹饪，可以消耗San加速",
+                ["recipe_desc"] = "拿着去烹饪,可以消耗San加速",
             },
             ["fwd_in_pdt_equipment_shield_of_light"] = {
                 ["name"] = "光之护盾",
