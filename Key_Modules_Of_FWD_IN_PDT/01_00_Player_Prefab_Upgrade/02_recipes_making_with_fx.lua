@@ -98,5 +98,15 @@ AddPlayerPostInit(function(inst)
             })
         end)
     ---------------------------------------------------------------------------------------------------
+    --- 花围栏
+        inst.components.fwd_in_pdt_com_builder_fx_for_recipe_making:Add_Fx_Fn({"fwd_in_pdt_building_flower_fence_item"},function(player,pt,rotation, skin)
+            local x,y,z = player.Transform:GetWorldPosition()
+            SpawnPrefab("fwd_in_pdt_fx_fence_flowers"):PushEvent("Set",{
+                pt = Vector3(x,2.7,z),
+                -- speed = 0.7,
+                scale = 0.5
+            })
+        end)
+    ---------------------------------------------------------------------------------------------------
 
 end)
