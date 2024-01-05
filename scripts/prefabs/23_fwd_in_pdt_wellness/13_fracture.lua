@@ -64,7 +64,10 @@ local function fn()
     ------------------------------------------------------------------------------
     -- 预添加本Debuff 的时候检查函数，如果通过，则添加，不通过，则不添加
         function inst:PreAttach(com)
-            return com.inst:HasTag("fwd_in_pdt_tag.fracture.block") and false or true
+            if com.inst:HasTag("fwd_in_pdt_tag.fracture.block") then
+                return false
+            end
+            return true
         end
     ------------------------------------------------------------------------------
     -- 添加的瞬间执行的函数组。直接绑定给父节点 
