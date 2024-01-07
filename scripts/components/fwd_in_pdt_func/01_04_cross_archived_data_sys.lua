@@ -45,8 +45,14 @@ local function Write_All_Json_Data(json_data)
 end
 
 local function Get_Cross_Archived_Data_By_userid(userid)
-    local temp_json_data = Read_All_Json_Data() or {}
-    return temp_json_data[userid] or {}                
+    local crash_flag , all_data_table = pcall(Read_All_Json_Data)
+    if crash_flag then
+        local temp_json_data = all_data_table
+        return temp_json_data[userid] or {}
+    else
+        print("error : Read_All_Json_Data fn crash")
+        return {}
+    end
 end
 
 local function Set_Cross_Archived_Data_By_userid(userid,_table)
