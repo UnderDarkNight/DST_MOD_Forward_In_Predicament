@@ -163,7 +163,7 @@ local assets =
                                         })
                                         TheWorld.components.fwd_in_pdt_func:Throw_Out_Items({
                                                 target = inst,
-                                                name = "fwd_in_pdt_plant_orange_seed",
+                                                name = seed_prefab,
                                                 num = math.random(5),    -- default
                                                 range = 2, -- default
                                                 height = 3,-- default

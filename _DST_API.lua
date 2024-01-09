@@ -42,6 +42,11 @@ inst = {
         ["IsCurrentAnimation"] = function(self,name) return true end
 
     },
+    ["Physics"] = {
+        ["Stop"] = function(self) end,
+        ["SetActive"] = function(self,flag) end,
+        ["Teleport"] = function(self,x,y,z) end,
+    },
 
     ["Transform"] = {
         ["SetScale"] = function(self,x,y,z) end,

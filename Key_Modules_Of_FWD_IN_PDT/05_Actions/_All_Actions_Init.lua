@@ -41,6 +41,8 @@ modimport("Key_Modules_Of_FWD_IN_PDT/05_Actions/18_special_eat_action.lua")     
 
 modimport("Key_Modules_Of_FWD_IN_PDT/05_Actions/19_special_packer.lua")             --- 特殊打包交互组件
 
+modimport("Key_Modules_Of_FWD_IN_PDT/05_Actions/20_special_fishing.lua")             --- 特殊钓鱼动作
+
 
 
 

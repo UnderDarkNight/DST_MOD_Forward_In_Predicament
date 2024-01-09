@@ -57,6 +57,7 @@ local prefabs_name_list = {
 
     "19_magic_spatula",                  --- 魔法锅铲
     "20_shield_of_light",                --- 光之护盾
+    "21_void_fishing_rod",                --- 虚空鱼竿
 
     
 }

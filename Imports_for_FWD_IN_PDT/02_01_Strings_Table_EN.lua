@@ -84,7 +84,7 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name.opening_gift_box"] = "Newbie Survival Gift Box",
                 ["name.vip"] = "VIP Gift Box",
                 ["name.task_scroll"] = "Mission Completion Gift Box",
-
+                ["name.void_box"] = "Void_Box",
             },
             ["fwd_in_pdt_item_ice_core"] = {
                 ["name"] = "Ice Core Stone",
@@ -348,6 +348,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "Shield Of Light",
                 ["inspect_str"] = "Use light as a shield to block damage",
                 ["recipe_desc"] = "Use light as a shield to block damage",
+            },
+            ["fwd_in_pdt_void_fishingrod"] = {
+                ["name"] = "Void Fishingrod",
+                ["inspect_str"] = "You can fish something out of the void.",
+                ["recipe_desc"] = "You can fish something out of the void.",
             },
         --------------------------------------------------------------------
         ---- 04_fwd_in_pdt_foods

@@ -166,10 +166,11 @@ local function main_com(self)
             --     prefab = "log",     --- 要丢的物品
             --     num = 1,            --- 丢的数量
             --     player = inst,       --- 玩家inst
+            --     speed = nil,         --- 速度
             --     item_fn = function(item) end,  --- 物品的函数
             -- }
                 local function launchitem(item, angle)
-                    local speed = math.random() * 4 + 2
+                    local speed = cmd_table.speed or math.random() * 4 + 2
                     angle = (angle + math.random() * 60 - 30) * DEGREES
                     item.Physics:SetVel(speed * math.cos(angle), math.random() * 2 + 8, speed * math.sin(angle))
                 end

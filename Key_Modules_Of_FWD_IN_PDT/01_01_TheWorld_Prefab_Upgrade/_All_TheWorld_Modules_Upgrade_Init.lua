@@ -13,5 +13,8 @@ modimport("Key_Modules_Of_FWD_IN_PDT/01_01_TheWorld_Prefab_Upgrade/02_ghost_houn
 modimport("Key_Modules_Of_FWD_IN_PDT/01_01_TheWorld_Prefab_Upgrade/03_thief_event.lua")    
 --- 小偷 刷新器
 
+modimport("Key_Modules_Of_FWD_IN_PDT/01_01_TheWorld_Prefab_Upgrade/04_void_fising_events.lua")    
+--- 虚空钓鱼的物品刷新器
+
 
 

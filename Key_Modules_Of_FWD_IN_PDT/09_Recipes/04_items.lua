@@ -110,4 +110,21 @@
         {"MAGIC","ARMOUR","FWD_IN_PDT"}
     )
     RemoveRecipeFromFilter("fwd_in_pdt_equipment_shield_of_light","MODS")                       -- -- 在【模组物品】标签里移除这个。
+--------------------------------------------------------------------------------------------------------------------------------------------
+---- 虚空钓竿
+--------------------------------------------------------------------------------------------------------------------------------------------
+    AddRecipeToFilter("fwd_in_pdt_void_fishingrod","MAGIC")     ---- 添加物品到目标标签
+    AddRecipe2(
+        "fwd_in_pdt_void_fishingrod",            --  --  inst.prefab  实体名字
+        { Ingredient("spidereggsack", 4) }, 
+        TECH.NONE, 
+        {
+            no_deconstruction=true,
+            -- atlas = "images/inventoryimages/fwd_in_pdt_equipment_shield_of_light.xml",
+            atlas = GetInventoryItemAtlas("fishingrod.tex"),
+            image = "fishingrod.tex",
+        },
+        {"MAGIC","FISHING","FWD_IN_PDT"}
+    )
+    RemoveRecipeFromFilter("fwd_in_pdt_void_fishingrod","MODS")                       -- -- 在【模组物品】标签里移除这个。
 

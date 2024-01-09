@@ -46,6 +46,17 @@ local flg,error_code = pcall(function()
         -- end
         -- print(TheWorld.Map:GetTileCoordsAtPoint(ThePlayer.Transform:GetWorldPosition()))
     ----------------------------------------------------------------------------------------------------------------
+        -- local tile_x,tile_y = TheWorld.Map:GetTileCoordsAtPoint(x,y,z)
+        -- print(tile_x,tile_y)
+
+        -- -- TheWorld.Map:SetTile(tile_x,tile_y,1)
+        -- for xx = 1, 5, 1 do
+        --     for yy = 1, 5, 1 do
+        --         TheWorld.Map:SetTile(tile_x+xx,tile_y+yy,1)
+        --     end
+        -- end
+
+    ----------------------------------------------------------------------------------------------------------------
     --- 洞穴穿越树木 测试
         -- local inst = TheSim:FindFirstEntityWithTag("fwd_in_pdt__rooms_mini_portal_door")
         -- -- local inst = TheSim:FindFirstEntityWithTag("fwd_in_pdt__special_island.gateway2")
@@ -365,28 +376,38 @@ local flg,error_code = pcall(function()
     --     end)
             -- c_select():PushEvent("fwd_in_pdt_event.stewer_finish")
     ----------------------------------------------------------------------------------------------------------------
-           local ents = TheSim:FindEntities(x, y, z, 30, {"fwd_in_pdt_equipment_shield_of_light"}, nil, nil)
-           for k, v in pairs(ents) do
-                if v and v.prefab == "fwd_in_pdt_equipment_shield_of_light" then
-                    local inst = v
-                    --------------------------------------------------------------------
-                        local fx = inst.___fx
-                        -- fx.AnimState:SetLayer(LAYER_WORLD)
-                        fx.AnimState:SetLayer(LAYER_BACKGROUND)
-                        -- fx.AnimState:SetOrientation(ANIM_ORIENTATION.BillBoard)
-                        fx.AnimState:SetOrientation(ANIM_ORIENTATION.OnGround)
-                        -- fx.AnimState:SetOrientation(ANIM_ORIENTATION.OnGroundFixed)
-                        inst.AnimState:SetSortOrder(-1)
-                        -- fx:Hide()
-                        -- for i = 0, 9, 1 do
-                        --     inst:DoTaskInTime(i*5,function()
-                        --         print("++++",i)
-                        --         fx.AnimState:SetLayer(i)
-                        --     end)
-                        -- end
-                    --------------------------------------------------------------------
-                end
-           end
+        --    local ents = TheSim:FindEntities(x, y, z, 30, {"fwd_in_pdt_equipment_shield_of_light"}, nil, nil)
+        --    for k, v in pairs(ents) do
+        --         if v and v.prefab == "fwd_in_pdt_equipment_shield_of_light" then
+        --             local inst = v
+        --             --------------------------------------------------------------------
+        --                 local fx = inst.___fx
+        --                 -- fx.AnimState:SetLayer(LAYER_WORLD)
+        --                 fx.AnimState:SetLayer(LAYER_BACKGROUND)
+        --                 -- fx.AnimState:SetOrientation(ANIM_ORIENTATION.BillBoard)
+        --                 fx.AnimState:SetOrientation(ANIM_ORIENTATION.OnGround)
+        --                 -- fx.AnimState:SetOrientation(ANIM_ORIENTATION.OnGroundFixed)
+        --                 inst.AnimState:SetSortOrder(-1)
+        --                 -- fx:Hide()
+        --                 -- for i = 0, 9, 1 do
+        --                 --     inst:DoTaskInTime(i*5,function()
+        --                 --         print("++++",i)
+        --                 --         fx.AnimState:SetLayer(i)
+        --                 --     end)
+        --                 -- end
+        --             --------------------------------------------------------------------
+        --         end
+        --    end
+    ----------------------------------------------------------------------------------------------------------------
+        -- print(TheWorld.Map:IsVisualGroundAtPoint(x,y,z))
+        -- print(TheWorld.Map:IsValidTileAtPoint(x,y,z))
+        -- local tile = TheWorld.Map:GetTileAtPoint(x,y,z)
+        -- print(GROUND.IMPASSABLE == tile )
+        TheWorld.fwd_in_pdt_events.void_fishing_hook = function()
+            -- return SpawnPrefab("deerclops")
+            -- return SpawnPrefab("krampus_sack")
+            return SpawnPrefab("bearger")
+        end
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)

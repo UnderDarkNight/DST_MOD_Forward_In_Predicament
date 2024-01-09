@@ -93,6 +93,7 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name.opening_gift_box"] = "新手生存礼盒",
                 ["name.vip"] = "VIP 礼物盒",
                 ["name.task_scroll"] = "任务礼盒",
+                ["name.void_box"] = "虚空礼盒",
             },
             ["fwd_in_pdt_item_ice_core"] = {
                 ["name"] = "极冰冷核",
@@ -354,6 +355,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "光之护盾",
                 ["inspect_str"] = "以光为盾，格挡伤害",
                 ["recipe_desc"] = "以光为盾，格挡伤害",
+            },
+            ["fwd_in_pdt_void_fishingrod"] = {
+                ["name"] = "虚空钓竿",
+                ["inspect_str"] = "能从虚空中钓出某些东西",
+                ["recipe_desc"] = "能从虚空中钓出某些东西",
             },
         --------------------------------------------------------------------
         ---- 04_fwd_in_pdt_foods

@@ -32,9 +32,10 @@ if GLOBAL.EntityScript.UnregisterComponentActions_fwd_in_pdt_old == nil then
         rawset(GLOBAL.EntityScript,"CollectActions_fwd_in_pdt_old",rawget(GLOBAL.EntityScript,"CollectActions"))
         rawset(GLOBAL.EntityScript, "CollectActions", function(self,...)
                 -- print("fwd_in_pdt_test CollectActions",self,...)
-            local crash_flg = pcall(self.CollectActions_fwd_in_pdt_old,self,...)
+            local crash_flg,crash_reason = pcall(self.CollectActions_fwd_in_pdt_old,self,...)
             if not crash_flg then
                 print("fwd_in_pdt error : CollectActions",self,...)
+                print(crash_reason)
             end
         end)
 
