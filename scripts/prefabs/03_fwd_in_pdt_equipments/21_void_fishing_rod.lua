@@ -141,13 +141,17 @@ local function fn()
                 -- target.Transform:SetPosition(0, 100, 0)
             ---------------------------------------------------------------------------------------
             --- 获取动画
-                local debugstring = target.entity:GetDebugString()
-                local bank, build, anim = debugstring:match("bank: (.+) build: (.+) anim: .+:(.+) Frame")
-                if (not bank) or (bank:find("FROMNUM")) then
-                    bank = target.prefab
-                end
-                if (not build) or (build:find("FROMNUM")) then
-                    build = target.prefab
+                local bank ,build,anim = nil,nil,nil
+                if target.AnimState then
+                    local debugstring = target.entity:GetDebugString()
+                    bank, build, anim = debugstring:match("bank: (.+) build: (.+) anim: .+:(.+) Frame")
+                    if (not bank) or (bank:find("FROMNUM")) and target.AnimState.GetBank then
+                        -- bank = target.prefab
+                        bank = target.AnimState:GetBank()
+                    end
+                    if (not build) or (build:find("FROMNUM")) then
+                        build = target.AnimState:GetBuild()
+                    end
                 end
             ---------------------------------------------------------------------------------------
                 local SaveRecord = target:GetSaveRecord()
