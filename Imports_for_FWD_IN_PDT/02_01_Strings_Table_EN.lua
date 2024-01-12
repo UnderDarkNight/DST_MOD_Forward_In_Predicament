@@ -703,6 +703,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "Flower Fence",
                 ["recipe_desc"] = "Flower Fence",
             },
+            ["fwd_in_pdt_building_lantern"] = {
+                ["name"] = "Flower Fence",
+                ["inspect_str"] = "Flower Fence",
+                ["recipe_desc"] = "Flower Fence",
+            },
         --------------------------------------------------------------------
         ---- 08_fwd_in_pdt_resources
             ["fwd_in_pdt_resource_glacier_huge"] = {

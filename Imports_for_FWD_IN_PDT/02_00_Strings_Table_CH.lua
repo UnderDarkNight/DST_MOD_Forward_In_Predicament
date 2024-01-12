@@ -708,6 +708,10 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "花栅栏",
                 ["recipe_desc"] = "花栅栏",
             },
+            ["fwd_in_pdt_building_lantern"] = {
+                ["name"] = "幡灯",
+                ["inspect_str"] = "幡旗飘荡",
+            },
         --------------------------------------------------------------------
         ---- 08_fwd_in_pdt_resources
             ["fwd_in_pdt_resource_glacier_huge"] = {
