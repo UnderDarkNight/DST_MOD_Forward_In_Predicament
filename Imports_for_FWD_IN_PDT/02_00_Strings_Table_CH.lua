@@ -709,8 +709,9 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["recipe_desc"] = "花栅栏",
             },
             ["fwd_in_pdt_building_lantern"] = {
-                ["name"] = "幡灯",
-                ["inspect_str"] = "幡旗飘荡",
+                ["name"] = "灯笼",
+                ["inspect_str"] = "有点过年的味道了",
+                ["recipe_desc"] = "龙年大吉"
             },
         --------------------------------------------------------------------
         ---- 08_fwd_in_pdt_resources

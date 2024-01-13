@@ -136,6 +136,7 @@ local files_name = {
 		"fwd_in_pdt_building_flower_fence",						-- 花围栏
 		"fwd_in_pdt_building_flower_fence_purple",						-- 花围栏（皮肤）
 		"fwd_in_pdt_building_flower_fence_vines",						-- 花围栏（皮肤）
+		"fwd_in_pdt_building_lantern",							-- 灯笼
 	---------------------------------------------------------------------------------------
 	-- 09_fwd_in_pdt_plants
 		"fwd_in_pdt_plant_paddy_rice_seed",								--- 未脱壳的稻米

@@ -15,6 +15,8 @@
 local assets =
 {
     Asset("ANIM", "anim/fwd_in_pdt_building_lantern.zip"),
+    Asset( "IMAGE", "images/map_icons/fwd_in_pdt_building_lantern.tex" ),  -- 背包贴图
+    Asset( "ATLAS", "images/map_icons/fwd_in_pdt_building_lantern.xml" ),
 }
 
 local function fn()
@@ -22,6 +24,8 @@ local function fn()
 
     inst.entity:AddTransform()
     inst.entity:AddAnimState()
+
+    inst.entity:AddMiniMapEntity()
     inst.entity:AddNetwork()
     inst.entity:AddLight()
 
@@ -31,8 +35,9 @@ local function fn()
     inst.Light:SetColour(255 / 255, 255 / 255, 255 / 255)
     inst.Light:Enable(false)
 
-    MakeObstaclePhysics(inst, 0.1)
+    MakeObstaclePhysics(inst, 1)
 
+    inst.MiniMapEntity:SetIcon("fwd_in_pdt_building_lantern.tex")
 
     inst.AnimState:SetBank("fwd_in_pdt_building_lantern")
     inst.AnimState:SetBuild("fwd_in_pdt_building_lantern")
@@ -50,8 +55,8 @@ local function fn()
         return inst
     end
    
-
     inst:AddComponent("inspectable")
+
 
 
     -------------------------------------------------------------------------------------
@@ -127,7 +132,6 @@ local function ground_fx()
     inst:AddTag("NOCLICK")      --- 不可点击
     inst:AddTag("CLASSIFIED")   --  私密的，client 不可观测， FindEntity 默认过滤
     inst:AddTag("NOBLOCK")      -- 不会影响种植和放置
-    
 
     inst.Transform:SetRotation(math.random(350))
 
@@ -153,6 +157,6 @@ local function ground_fx()
     return inst
 end
 
-
 return Prefab("fwd_in_pdt_building_lantern", fn, assets),
-            Prefab("fwd_in_pdt_building_lantern_fx", ground_fx, assets)
+            Prefab("fwd_in_pdt_building_lantern_fx", ground_fx, assets),
+            MakePlacer("fwd_in_pdt_building_lantern_placer")

@@ -221,7 +221,7 @@ AddRecipeToFilter("fwd_in_pdt_building_flower_fence_item","STRUCTURES")     ----
 AddRecipe2(
     "fwd_in_pdt_building_flower_fence_item",            --  --  inst.prefab  实体名字
     { Ingredient("twigs", 3), Ingredient("rope", 1) }, 
-    TECH.NONE, --- TECH.NONE
+    TECH.SCIENCE_TWO, --- TECH.NONE
     {
         -- nounlock=true,
         numtogive = 6,
@@ -233,4 +233,25 @@ AddRecipe2(
     {"STRUCTURES","DECOR","FWD_IN_PDT"}
 )
 RemoveRecipeFromFilter("fwd_in_pdt_building_flower_fence_item","MODS")                       -- -- 在【模组物品】标签里移除这个。
+--------------------------------------------------------------------------------------------------------------------------------------------
+---- 灯笼
+--------------------------------------------------------------------------------------------------------------------------------------------
+AddRecipeToFilter("fwd_in_pdt_building_lantern","STRUCTURES")     ---- 添加物品到目标标签
+AddRecipe2(
+    "fwd_in_pdt_building_lantern",            --  --  inst.prefab  实体名字
+    { Ingredient("twigs", 3), Ingredient("rope", 1) }, 
+    TECH.NONE, --- TECH.NONE
+    {
+        -- nounlock=true,
+        no_deconstruction=true,
+        -- builder_tag = "npng_tag.has_green_amulet",    --------- -- 【builder_tag】只给指定tag的角色能制造这件物品，角色添加/移除 tag 都能立马解锁/隐藏该物品
+        placer = "fwd_in_pdt_building_lantern_placer",                       -------- 建筑放置器        
+        atlas = "images/map_icons/fwd_in_pdt_building_lantern.xml",
+        image = "fwd_in_pdt_building_lantern.tex",
+    },
+    {"STRUCTURES","FWD_IN_PDT"}
+)
+RemoveRecipeFromFilter("fwd_in_pdt_building_lantern","MODS")                       -- -- 在【模组物品】标签里移除这个。
+
+
 
