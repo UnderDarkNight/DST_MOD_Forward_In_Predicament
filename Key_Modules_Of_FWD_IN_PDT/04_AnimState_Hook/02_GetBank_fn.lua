@@ -12,7 +12,7 @@ tempInst.entity:AddAnimState()
 
 local theAnimState = getmetatable(tempInst.AnimState).__index  ------ 侵入userdata 修改函数
 
-if theAnimState.GetBank == nil then
+if type(theAnimState) == "table" and theAnimState.GetBank == nil then
 
     local old_set_bank = theAnimState.SetBank
     theAnimState.temp_banks = theAnimState.temp_banks or {}
