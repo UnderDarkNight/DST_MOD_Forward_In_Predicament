@@ -86,6 +86,16 @@ local function fn()
         end
         inst:ListenForEvent("on_landed",shadow_init)
         shadow_init(inst)
+    -------------------------------------------------------------------
+        if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
+            inst.onPreBuilt = function(doer,inst)   --- 物品独有
+                print("info onPreBuilt test",doer,inst)
+            end
+            inst.OnBuilt = function(doer,inst)   --- 物品独有
+                print("info OnBuilt test",doer,inst)
+            end
+        end
+
     -------------------------------------------------------------------    
     return inst
 end

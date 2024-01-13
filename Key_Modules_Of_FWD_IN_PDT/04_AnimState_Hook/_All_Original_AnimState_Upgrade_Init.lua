@@ -12,6 +12,8 @@ end
 ------ 可以上线使用的模块
 modimport("Key_Modules_Of_FWD_IN_PDT/04_AnimState_Hook/00_PlayAnim_PushAnim.lua")    --- 更新 PlayAnimation 和 PushAnimation 
 
+modimport("Key_Modules_Of_FWD_IN_PDT/04_AnimState_Hook/02_GetBank_fn.lua")    --- 修改所有的 animstate 添加 核心函数 GetBank
+
 
 ---------------------------------------------------------------------------------------------------------------
 local function theAnimState_fn_Upgrade(theAnimState)

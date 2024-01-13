@@ -405,9 +405,28 @@ local flg,error_code = pcall(function()
         -- print(GROUND.IMPASSABLE == tile )
         TheWorld.fwd_in_pdt_events.void_fishing_hook = function()
             -- return SpawnPrefab("deerclops")
-            -- return SpawnPrefab("krampus_sack")
-            return SpawnPrefab("bearger")
+            return SpawnPrefab("krampus_sack")
+            -- return SpawnPrefab("bearger")
         end
+        -- local target = SpawnPrefab("krampus_sack")
+        -- -- local target = SpawnPrefab("log")
+        -- if target.AnimState then
+        --     local debugstring = target.entity:GetDebugString()
+        --     local bank, build, anim = debugstring:match("bank: (.+) build: (.+) anim: .+:(.+) Frame")
+        --     if (not bank) or (bank:find("FROMNUM")) and target.AnimState.GetBank then
+        --         -- bank = target.prefab
+        --         bank = target.AnimState:GetBank()
+        --     end
+        --     if (not build) or (build:find("FROMNUM")) then
+        --         build = target.prefab
+        --     end
+        --     -- print(debugstring)
+        --     print(bank,build,anim)
+
+        -- end
+
+        -- target:Remove()
+
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)

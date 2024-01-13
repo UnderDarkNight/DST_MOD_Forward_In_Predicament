@@ -67,20 +67,26 @@ local function wrap_fn()
     inst.components.fwd_in_pdt_special_packer:SetPackFn(function(target)
         local debugstring = target.entity:GetDebugString()
         -----------------------------------------------------------------------------------------------------
-        --- 这段逻辑直接复制【小穹MOD】
-            local bank, build, anim = debugstring:match("bank: (.+) build: (.+) anim: .+:(.+) Frame")
-            if (not bank) or (bank:find("FROMNUM")) then
-                bank = target.prefab -- 抢救一下吧
-            end
-            if (not build) or (build:find("FROMNUM")) then
-                build = target.prefab -- 抢救一下吧
-            end
+        --- 这段逻辑大部分来自【小穹MOD】，自己修改了一部分
+            local bank,build,anim = nil,nil,nil
+            if target.AnimState then
 
-            if target.skinname and not Prefabs[target.prefab .. "_placer"] then
-                local temp_inst = SpawnPrefab(target.prefab)
-                debugstring = temp_inst.entity:GetDebugString()
                 bank, build, anim = debugstring:match("bank: (.+) build: (.+) anim: .+:(.+) Frame")
-                temp_inst:Remove()
+                if (not bank) or (bank:find("FROMNUM")) and target.AnimState.GetBank then
+                    -- bank = target.prefab -- 抢救一下吧
+                    bank = target.AnimState:GetBank()
+                end
+                if (not build) or (build:find("FROMNUM")) then
+                    -- build = target.prefab -- 抢救一下吧
+                    build = target.AnimState:GetBuild()
+                end
+
+                if target.skinname and not Prefabs[target.prefab .. "_placer"] then
+                    local temp_inst = SpawnPrefab(target.prefab)
+                    debugstring = temp_inst.entity:GetDebugString()
+                    bank, build, anim = debugstring:match("bank: (.+) build: (.+) anim: .+:(.+) Frame")
+                    temp_inst:Remove()
+                end
             end
         -----------------------------------------------------------------------------------------------------
             if target and target.components.container and target.components.container:IsOpen() then
