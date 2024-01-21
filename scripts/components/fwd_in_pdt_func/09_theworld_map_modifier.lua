@@ -378,10 +378,10 @@ local function main_com(fwd_in_pdt_func)
             if temp_inst and temp_inst.Transform then
                 local tx,ty,tz = temp_inst.Transform:GetWorldPosition()
                 local temp_tile_x ,temp_tile_y = TheWorld.Map:GetTileXYAtPoint(tx, 0, tz)
-                if type(temp_tile_x) == "number" and type(temp_tile_y) == "number" and temp_tile_x <= map_w and temp_tile_y <= map_h then
+                pcall(function()
                     self.map_data.TileMap[temp_tile_y][temp_tile_x].ents = self.map_data.TileMap[temp_tile_y][temp_tile_x].ents or {}
                     table.insert(self.map_data.TileMap[temp_tile_y][temp_tile_x].ents,temp_inst)
-                end
+                end)
             end
         end
 
