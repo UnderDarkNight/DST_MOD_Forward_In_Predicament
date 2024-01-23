@@ -239,7 +239,7 @@ RemoveRecipeFromFilter("fwd_in_pdt_building_flower_fence_item","MODS")          
 AddRecipeToFilter("fwd_in_pdt_building_lantern","STRUCTURES")     ---- 添加物品到目标标签
 AddRecipe2(
     "fwd_in_pdt_building_lantern",            --  --  inst.prefab  实体名字
-    { Ingredient("twigs", 3), Ingredient("rope", 1) }, 
+    { Ingredient("yellowgem", 1), Ingredient("boards", 5), Ingredient("rope", 5) },
     TECH.NONE, --- TECH.NONE
     {
         -- nounlock=true,

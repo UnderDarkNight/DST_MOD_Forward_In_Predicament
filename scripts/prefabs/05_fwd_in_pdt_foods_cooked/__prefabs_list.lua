@@ -54,7 +54,7 @@ local prefabs_name_list = {
     "24_protein_powder",                             -- 蛋白质粉
     "25_stinky_tofu_salad",                          -- 臭豆腐沙拉
     "26_stinky_tofu_bolognese",                      -- 臭豆腐肉酱
-    --"27_braised_small_fish_in_brown_sauce"         --红烧小鱼仔
+    "27_garlic_cucumber",                            -- 拍黄瓜
     
 }
 

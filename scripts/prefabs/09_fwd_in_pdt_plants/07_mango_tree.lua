@@ -47,7 +47,14 @@ local assets =
             inst.components.fwd_in_pdt_com_workable:SetActionDisplayStr("fwd_in_pdt_plant_mango_tree",STRINGS.ACTIONS.PICK.HARVEST)
 
         end
-
+        local actionqueuer_status,actionqueuer_data = pcall(require,"components/actionqueuer")
+        if actionqueuer_status then
+            if AddActionQueuerAction then
+                AddActionQueuerAction("leftclick", "FWD_IN_PDT_COM_WORKABLE_ACTION", function(target)
+                    return target.prefab == "fwd_in_pdt_plant_mango_tree"
+                end)
+            end
+        end
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ---- 根据阶段切状态
     local function chop_tree(inst, chopper, chopsleft, numchops)

@@ -57,7 +57,7 @@ local function fn()
    
     inst:AddComponent("inspectable")
 
-
+    inst:AddComponent("lootdropper")
 
     -------------------------------------------------------------------------------------
     ---- 积雪监听执行
@@ -132,12 +132,14 @@ local function ground_fx()
     inst:AddTag("NOCLICK")      --- 不可点击
     inst:AddTag("CLASSIFIED")   --  私密的，client 不可观测， FindEntity 默认过滤
     inst:AddTag("NOBLOCK")      -- 不会影响种植和放置
+    inst:AddTag("structure")
 
     inst.Transform:SetRotation(math.random(350))
 
     if not TheWorld.ismastersim then
         return inst
     end
+
 
     inst:ListenForEvent("Set",function(_,_table)
         if type(_table) == "table" then
@@ -157,6 +159,12 @@ local function ground_fx()
     return inst
 end
 
+local function placer_postinit_fn(inst)
+    -- local scale = 1.5
+    -- inst.AnimState:SetScale(scale,scale,scale)
+    inst.AnimState:Hide("SNOW")
+end
+
 return Prefab("fwd_in_pdt_building_lantern", fn, assets),
             Prefab("fwd_in_pdt_building_lantern_fx", ground_fx, assets),
-            MakePlacer("fwd_in_pdt_building_lantern_placer")
+            MakePlacer("fwd_in_pdt_building_lantern_placer","fwd_in_pdt_building_lantern", "fwd_in_pdt_building_lantern", "idle", nil, nil, nil, nil, nil, nil, placer_postinit_fn ,nil, nil)

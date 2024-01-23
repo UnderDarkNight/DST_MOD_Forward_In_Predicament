@@ -568,6 +568,10 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "臭豆腐肉酱",
                 ["inspect_str"] = "味道难闻，但是很好吃",
             },
+            ["fwd_in_pdt_food_garlic_cucumber"] = {
+                ["name"] = "拍黄瓜",
+                ["inspect_str"] = "好吃的零食",
+            },
         --------------------------------------------------------------------
         ---- 06_fwd_in_pdt_containers
             ["fwd_in_pdt_fish_farm"] = {
