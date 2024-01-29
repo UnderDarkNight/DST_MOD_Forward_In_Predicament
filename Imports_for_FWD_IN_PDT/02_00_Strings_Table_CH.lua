@@ -441,6 +441,10 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "鱼干",
                 ["inspect_str"] = "鱼干",
             },
+            ["fwd_in_pdt_food_large_intestine"] = {
+                ["name"] = "猪大肠",
+                ["inspect_str"] = "好臭",
+            },
         --------------------------------------------------------------------
         ---- 05_fwd_in_pdt_foods_cooked
             ["fwd_in_pdt_food_mixed_potato_soup"] = {

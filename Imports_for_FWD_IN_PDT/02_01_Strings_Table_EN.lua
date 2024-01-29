@@ -434,6 +434,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "Dried Fruits Fish",
                 ["inspect_str"] = "Dried Fruits Fish",
             },
+            ["fwd_in_pdt_food_large_intestine"] = {
+                ["name"] = "Large Intestine",
+                ["inspect_str"] = "Dirty",
+            },
+
         --------------------------------------------------------------------
         ---- 05_fwd_in_pdt_foods_cooked
             ["fwd_in_pdt_food_mixed_potato_soup"] = {

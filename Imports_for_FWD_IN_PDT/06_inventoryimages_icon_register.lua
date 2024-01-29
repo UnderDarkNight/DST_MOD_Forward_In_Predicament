@@ -94,6 +94,7 @@ local files_name = {
 		"fwd_in_pdt_food_dried_fruits_pomegranates",			---石榴干
 		"fwd_in_pdt_food_dried_fruits_cave_bananas",			---香蕉干
 		"fwd_in_pdt_food_dried_fish",							---鱼干
+		"fwd_in_pdt_food_large_intestine",						---猪大肠
 	---------------------------------------------------------------------------------------
 	-- 05_fwd_in_pdt_foods_cooked
 		"fwd_in_pdt_food_mixed_potato_soup",					--- 疙瘩汤
