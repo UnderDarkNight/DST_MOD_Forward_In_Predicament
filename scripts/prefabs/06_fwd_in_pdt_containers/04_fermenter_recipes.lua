@@ -24,5 +24,10 @@ return {
             product = "fwd_in_pdt_food_stinky_tofu",
             num = 4 ,
         },
-
+        --这里和富贵险中求的兼容
+    --- 豆腐
+        ["ndnr_tofu"] = {
+            product = "fwd_in_pdt_food_stinky_tofu",
+            num = 4 ,
+        },
 }

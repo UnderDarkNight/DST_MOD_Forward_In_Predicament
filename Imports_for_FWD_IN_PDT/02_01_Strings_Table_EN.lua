@@ -438,7 +438,14 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "Large Intestine",
                 ["inspect_str"] = "Dirty",
             },
-
+            ["fwd_in_pdt_food_pig_liver"] = {
+                ["name"] = "Pig Liver",
+                ["inspect_str"] = "Bloody",
+            },
+            ["fwd_in_pdt_food_chicken_feet"] = {
+                ["name"] = "Chicken Feet",
+                ["inspect_str"] = "Chicken Feet",
+            },
         --------------------------------------------------------------------
         ---- 05_fwd_in_pdt_foods_cooked
             ["fwd_in_pdt_food_mixed_potato_soup"] = {

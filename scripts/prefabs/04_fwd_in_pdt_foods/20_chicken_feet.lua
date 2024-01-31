@@ -1,14 +1,14 @@
 --------------------------------------------------------------------------
 --- 食物
---- 猪大肠
+--- 鸡爪
 --------------------------------------------------------------------------
 
 
 
 local assets = {
-    Asset("ANIM", "anim/fwd_in_pdt_food_large_intestine.zip"), 
-    Asset( "IMAGE", "images/inventoryimages/fwd_in_pdt_food_large_intestine.tex" ),  -- 背包贴图
-    Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_food_large_intestine.xml" ),
+    Asset("ANIM", "anim/fwd_in_pdt_food_chicken_feet.zip"), 
+    Asset( "IMAGE", "images/inventoryimages/fwd_in_pdt_food_chicken_feet.tex" ),  -- 背包贴图
+    Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_food_chicken_feet.xml" ),
 }
 
 local function fn()
@@ -20,8 +20,8 @@ local function fn()
 
     MakeInventoryPhysics(inst)
 
-    inst.AnimState:SetBank("fwd_in_pdt_food_large_intestine") -- 地上动画
-    inst.AnimState:SetBuild("fwd_in_pdt_food_large_intestine") -- 材质包，就是anim里的zip包
+    inst.AnimState:SetBank("fwd_in_pdt_food_chicken_feet") -- 地上动画
+    inst.AnimState:SetBuild("fwd_in_pdt_food_chicken_feet") -- 材质包，就是anim里的zip包
     inst.AnimState:PlayAnimation("idle",true) -- 默认播放哪个动画
 
     MakeInventoryFloatable(inst)
@@ -37,8 +37,8 @@ local function fn()
 
     inst:AddComponent("inventoryitem")
     -- inst.components.inventoryitem:ChangeImageName("leafymeatburger")
-    inst.components.inventoryitem.imagename = "fwd_in_pdt_food_large_intestine"
-    inst.components.inventoryitem.atlasname = "images/inventoryimages/fwd_in_pdt_food_large_intestine.xml"
+    inst.components.inventoryitem.imagename = "fwd_in_pdt_food_chicken_feet"
+    inst.components.inventoryitem.atlasname = "images/inventoryimages/fwd_in_pdt_food_chicken_feet.xml"
 
     --------------------------------------------------------------------------
 
@@ -61,9 +61,9 @@ local function fn()
     inst.components.perishable:StartPerishing()
     inst.components.perishable.onperishreplacement = "spoiled_food" -- 腐烂后变成腐烂食物
 
-    inst.components.edible.hungervalue = 20
-    inst.components.edible.sanityvalue = -20
-    inst.components.edible.healthvalue = -5
+    inst.components.edible.hungervalue = 12.5
+    inst.components.edible.sanityvalue = -10
+    inst.components.edible.healthvalue = 5
 
     inst:AddComponent("stackable") -- 可堆叠
     inst.components.stackable.maxsize = TUNING.STACK_SIZE_SMALLITEM
@@ -86,8 +86,8 @@ local function fn()
 end
 
 --- 设置可以放烹饪锅里
-AddIngredientValues({"fwd_in_pdt_food_large_intestine"}, { 
-    meat = 0.5,monster = 1
+AddIngredientValues({"fwd_in_pdt_food_chicken_feet"}, { 
+    meat = 0.5
 })
 
-return Prefab("fwd_in_pdt_food_large_intestine", fn, assets)
+return Prefab("fwd_in_pdt_food_chicken_feet", fn, assets)

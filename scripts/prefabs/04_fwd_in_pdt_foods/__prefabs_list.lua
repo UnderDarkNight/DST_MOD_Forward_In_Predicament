@@ -47,6 +47,8 @@ local prefabs_name_list = {
     "17_dried_fruits_cave_bananas",          ---香蕉干
     "18_dried_fish",                         ---鱼干
     "19_large_intestine",                    ---猪大肠
+    "20_chicken_feet",                       ---鸡爪
+    "21_pig_liver",                          ---猪肝
 }
 
 

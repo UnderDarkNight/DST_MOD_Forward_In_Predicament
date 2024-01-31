@@ -142,6 +142,9 @@ AddPlayerPostInit(function(inst)
                     ["sora_tangjianzhuzi"] = 20,            ---糖煎竹子
                     ["sora_qiaokeli"] = 20,                 ---甜心巧克力
                     ["sora_tongluoshao"] = 20,              ---铜锣烧
+                    --以下是和枝江往事mod的兼容
+                    ["goodies_bamboon"] = 10,               ---竹筒饭
+                    ["goodies_carb"] = 10,                  ---蟹酿橙
                 }
 
                 local num = 0
@@ -169,37 +172,40 @@ AddPlayerPostInit(function(inst)
                 local food_base_prefab = food.nameoverride or food.prefab 
                 -------------------------------------------------------------------
                 local prefab_list_with_vc_value = {
-                    ["tomato"] = 5,                     --- 番茄
-                    ["tomato_cooked"] = 5,              --- 烤番茄
-                    ["pomegranate"] = 10,                --- 石榴
-                    ["pomegranate_cooked"] = 10,         --- 烤石榴
-                    ["carrot"]  = 5,                    ---胡萝卜
-                    ["carrot_cooked"] = 5,              ---烤胡萝卜
-                    ["berries"] = 10,                    ---浆果
-                    ["berries_cooked"] = 10,             ---烤浆果
-                    ["dragonfruit"] = 10,                ---火龙果
-                    ["dragonfruit_cooked"] = 10,         ---烤熟火龙果
-                    ["fwd_in_pdt_food_mango_green"] = 20,---青芒果
-                    ["wormlight_lesser"] = 20,           ---小发光浆果
-                    ["ratatouille"] = 30,                ---蔬菜杂烩
-                    ["cave_fern"] = 10,                  ---蕨类植物
-                    ["hotchili"] = 20,                   --- 辣椒炒肉
+                    ["tomato"] = 5,                                 --- 番茄
+                    ["tomato_cooked"] = 5,                          --- 烤番茄
+                    ["pomegranate"] = 10,                           --- 石榴
+                    ["pomegranate_cooked"] = 10,                    --- 烤石榴
+                    ["carrot"]  = 5,                                ---胡萝卜
+                    ["carrot_cooked"] = 5,                          ---烤胡萝卜
+                    ["berries"] = 10,                               ---浆果
+                    ["berries_cooked"] = 10,                        ---烤浆果
+                    ["dragonfruit"] = 10,                           ---火龙果
+                    ["dragonfruit_cooked"] = 10,                    ---烤熟火龙果
+                    ["fwd_in_pdt_food_mango_green"] = 20,           ---青芒果
+                    ["wormlight_lesser"] = 20,                      ---小发光浆果
+                    ["ratatouille"] = 30,                           ---蔬菜杂烩
+                    ["cave_fern"] = 10,                             ---蕨类植物
+                    ["hotchili"] = 20,                              --- 辣椒炒肉
                     --这里是和棱镜的兼容
-                    ["pineananas"] = 10,                 --- 松萝
-                    ["pineananas_cooked"] = 10,          --- 烤松萝
-                    ["dish_murmurananas"] = 30,          --- 松萝咕咾肉
-                    ["dish_sosweetjarkfruit"] = 40,      --- 甜到裂开的松萝蜜
+                    ["pineananas"] = 10,                            --- 松萝
+                    ["pineananas_cooked"] = 10,                     --- 烤松萝
+                    ["dish_murmurananas"] = 30,                     --- 松萝咕咾肉
+                    ["dish_sosweetjarkfruit"] = 40,                 --- 甜到裂开的松萝蜜
                     --以下是和海洋传说的兼容
-                    ["sashimi"] = 30,                    ---柠檬鲈鱼片
-                    ["lg_lemon_jelly"] = 30,             ---冻柠蜜
-                    ["lg_ning"] = 30,                     ---柠檬片
+                    ["sashimi"] = 30,                               ---柠檬鲈鱼片
+                    ["lg_lemon_jelly"] = 30,                        ---冻柠蜜
+                    ["lg_ning"] = 30,                               ---柠檬片
                     --以下是和山海密藏的兼容
-                    ["fasam_cinnabar_fruit_stew_kangkang"] = 10,   ---朱果炖康康
-                    ["fasam_osmanthus_cake"] = 20,   ---桂花糕
-                    ["fasam_osmanthus_tea"] = 30,    ---桂花茶
+                    ["fasam_cinnabar_fruit_stew_kangkang"] = 10,    ---朱果炖康康
+                    ["fasam_osmanthus_cake"] = 20,                  ---桂花糕
+                    ["fasam_osmanthus_tea"] = 30,                   ---桂花茶
                     --以下是和小穹人物mod的兼容
-                    ["sora_aping"] = 30,            ---阿瓶酱
-                    ["sora_banhua"] = 30,            ---花花沙拉
+                    ["sora_aping"] = 30,                            ---阿瓶酱
+                    ["sora_banhua"] = 30,                           ---花花沙拉
+                    --以下是和枝江往事的兼容
+                    ["goodies_rum"] = 20,                           ---海神朗姆
+                    ["zhijiang_veggie_tree"] = 20,                  ---圣诞素
                 }
                 if prefab_list_with_vc_value[food_base_prefab] then
                     num = prefab_list_with_vc_value[food_base_prefab]

@@ -445,6 +445,14 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "猪大肠",
                 ["inspect_str"] = "好臭",
             },
+            ["fwd_in_pdt_food_pig_liver"] = {
+                ["name"] = "猪肝",
+                ["inspect_str"] = "血淋淋的东西",
+            },
+            ["fwd_in_pdt_food_chicken_feet"] = {
+                ["name"] = "鸡爪",
+                ["inspect_str"] = "鸡你太美",
+            },
         --------------------------------------------------------------------
         ---- 05_fwd_in_pdt_foods_cooked
             ["fwd_in_pdt_food_mixed_potato_soup"] = {

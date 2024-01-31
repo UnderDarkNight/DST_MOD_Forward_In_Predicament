@@ -1,6 +1,5 @@
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
---- 让 月台的疯猪掉落猪大肠和猪肝  普通的疯猪不行
---- 100%掉落1个  30%额外掉落一个
+--- 让 火鸡掉落鸡爪
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -26,7 +25,7 @@
 -- )
 
 AddPrefabPostInit(
-    "moonpig",
+    "perd",
     function(inst)
         if not TheWorld.ismastersim then
             return
@@ -34,13 +33,11 @@ AddPrefabPostInit(
 
         inst:ListenForEvent("death",function()
             if inst.components.lootdropper then
-                local loot = inst.components.lootdropper.loot or {}                             ---100%给一个
-                    table.insert(loot,"fwd_in_pdt_food_large_intestine")
-                    table.insert(loot,"fwd_in_pdt_food_pig_liver")
-                    if math.random(100) <= 30 then                                              ---30%概率多一个
-                    table.insert(loot,"fwd_in_pdt_food_large_intestine")
-                    table.insert(loot,"fwd_in_pdt_food_pig_liver")
-                    end
+                local loot = inst.components.lootdropper.loot or {}
+                    table.insert(loot,"fwd_in_pdt_food_chicken_feet")
+                if math.random(100) <= 30 then
+                    table.insert(loot,"fwd_in_pdt_food_chicken_feet")
+                end
                 inst.components.lootdropper.loot = loot
             end
         end)
