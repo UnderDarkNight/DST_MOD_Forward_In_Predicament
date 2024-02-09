@@ -25,6 +25,7 @@ local files_name = {
 	---- 06_fwd_in_pdt_containers
 		"fwd_in_pdt_fish_farm",										--- 养鱼池
 		"fwd_in_pdt_moom_jewelry_lamp",								--- 天体珠宝灯
+		"fwd_in_pdt_moom_jewelry_lamp_moon",						--- 天体珠宝灯皮肤（月亮）
 		"fwd_in_pdt_building_special_production_table",				--- 特殊工作台
 		"fwd_in_pdt_building_special_production_table_punk",				--- 特殊工作台（朋克皮肤）
 		"fwd_in_pdt_building_fermenter",							--- 发酵缸
@@ -50,6 +51,7 @@ local files_name = {
 		"fwd_in_pdt_building_hospital",								--- 医院
 		"fwd_in_pdt_building_doll_clamping_machine",				--- 娃娃机
 		"fwd_in_pdt_building_lantern",								--- 灯笼
+		"fwd_in_pdt_building_lantern_moon",							--- 灯笼（月光皮肤）
 	-------------------------------------------------------------------------------------------------
 	---- 08_fwd_in_pdt_resources
 		"fwd_in_pdt_minimap_glacier"	, 							--- 冰川

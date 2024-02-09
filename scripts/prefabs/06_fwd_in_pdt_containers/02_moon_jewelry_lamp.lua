@@ -8,6 +8,7 @@ local assets =
     Asset( "ATLAS", "images/widget/fwd_in_pdt_moom_jewelry_lamp_slot_1.xml" ),
     Asset( "IMAGE", "images/widget/fwd_in_pdt_moom_jewelry_lamp_slot_2.tex" ), 
     Asset( "ATLAS", "images/widget/fwd_in_pdt_moom_jewelry_lamp_slot_2.xml" ),
+    Asset("ANIM", "anim/fwd_in_pdt_moom_jewelry_lamp_moon.zip"),
 }
 local function GetStringsTable(name)
     local prefab_name = name or "fwd_in_pdt_moom_jewelry_lamp"
@@ -16,6 +17,28 @@ local function GetStringsTable(name)
 end
 
 --------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---- 皮肤API 套件
+    --- 建筑用的skin 数据
+    local skins_data = {
+        ["fwd_in_pdt_moom_jewelry_lamp_moon"] = {             --- 皮肤名字，全局唯一。
+            bank = "fwd_in_pdt_moom_jewelry_lamp_moon",                   --- 制作完成后切换的 bank
+            build = "fwd_in_pdt_moom_jewelry_lamp_moon",                  --- 制作完成后切换的 build
+            name = "moon",                    --- 【制作栏】皮肤的名字
+            name_color = {255/255,185/255,15/255,255/255},
+            minimap = "fwd_in_pdt_moom_jewelry_lamp_moon.tex",                --- 小地图图标
+            atlas = "images/map_icons/fwd_in_pdt_moom_jewelry_lamp_moon.xml",                                        --- 【制作栏】皮肤显示的贴图，
+            image = "fwd_in_pdt_moom_jewelry_lamp_moon",                              --- 【制作栏】皮肤显示的贴图， 不需要 .tex
+        },
+
+    }
+    FWD_IN_PDT_MOD_SKIN.SKIN_INIT(skins_data,"fwd_in_pdt_moom_jewelry_lamp")     --- 往总表注册所有皮肤
+
+    local function Set_ReSkin_API_Default_Animate(inst,bank,build,minimap)      -- 在 inst.AnimState:PlayAnimation() 前启用本函数
+        FWD_IN_PDT_MOD_SKIN.Set_ReSkin_API_Default_Animate(inst,bank,build,minimap)
+    end
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ------ 界面安装组件
     local function container_Widget_change(theContainer)
@@ -258,10 +281,17 @@ local function fn()
 
 
     add_container_before_not_ismastersim_return(inst)
+
+    --- 皮肤API
+    Set_ReSkin_API_Default_Animate(inst,"fwd_in_pdt_moom_jewelry_lamp","fwd_in_pdt_moom_jewelry_lamp","fwd_in_pdt_moom_jewelry_lamp.tex")
+    if TheWorld.ismastersim then
+        inst:AddComponent("fwd_in_pdt_func"):Init("skin","normal_api")
+    end
+
     if not TheWorld.ismastersim then
         return inst
     end
-
+    
     -----------------------
     --- 被锤子拆解的组件
         inst:AddComponent("workable")
