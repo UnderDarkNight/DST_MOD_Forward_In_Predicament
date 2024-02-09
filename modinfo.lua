@@ -1,6 +1,14 @@
 author = "可爱的小亨、GAGA、幕夜之下"
 -- from stringutil.lua
 
+local function ChooseTranslationTable_Test(_table)
+  if ChooseTranslationTable then
+    return ChooseTranslationTable(_table)
+  else
+    return _table["zh"]
+  end
+end
+
 
 ----------------------------------------------------------------------------
 --- 版本号管理（暂定）：最后一位为内部开发版本号，或者修复小bug的时候进行增量。
@@ -33,9 +41,9 @@ local function GetName()
   }
 
   if Check_Mod_is_Internal_Version() then
-    return ChooseTranslationTable(temp_table_internal)
+    return ChooseTranslationTable_Test(temp_table_internal)
   end
-  return ChooseTranslationTable(temp_table)
+  return ChooseTranslationTable_Test(temp_table)
 end
 
 local function GetDesc()
@@ -48,7 +56,7 @@ local function GetDesc()
         这里描述不完。
       ]]
     }
-    local ret = the_version .. "  \n  "..ChooseTranslationTable(temp_table)
+    local ret = the_version .. "  \n  "..ChooseTranslationTable_Test(temp_table)
     return ret
 end
 
@@ -68,8 +76,12 @@ all_clients_require_mod = true
 priority = -10000000000  -- MOD加载优先级 影响某些功能的兼容性，比如官方Com 的 Hook
 
 
-local function IsChinese() 
+local function IsChinese()
+  if locale == nil then
+    return true
+  else
     return locale == "zh" or locate == "zht" or locate == "zhr" or false
+  end
 end
 local keys_option = {
   {description = "KEY_A", data = "KEY_A"},
