@@ -10,8 +10,12 @@ AddComponentPostInit("playercontroller", function(self)
         if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
             print("08_prefab_skin_sys  playercontroller",skin)
         end
-        if recipe and type(recipe) == "table" and skin and FWD_IN_PDT_MOD_SKIN.SKINS_DATA[skin] then
-            recipe.fwd_in_pdt_skin_data = skin
+        if recipe and type(recipe) == "table"  then
+            if skin and FWD_IN_PDT_MOD_SKIN.SKINS_DATA[skin] then
+                recipe.fwd_in_pdt_skin_data = skin
+            else
+                recipe.fwd_in_pdt_skin_data = nil
+            end
         end
         -- if skin and FWD_IN_PDT_MOD_SKIN.SKINS_DATA[skin] then -- 是模组的皮肤      --- 注销于2023.07.17 ，官方稍微修改了API，走了PREFAB_SKINS 和 PREFAB_SKINS_IDS 形式传递参数(rpc)。
         --     skin = nil
@@ -27,23 +31,35 @@ AddComponentPostInit("placer",function(self)
 
         ------------------------------------------------------------------------------------------------------------------
         --- 普通的从制作栏生成的 placer
-        if type(recipe) == "table" and recipe.fwd_in_pdt_skin_data then   
+        if type(recipe) == "table"  and builder and builder.replica.fwd_in_pdt_func and builder.replica.fwd_in_pdt_func.SkinAPI__Has_Skin  then   
                 -- print("SetBuilder_fwd_in_pdt_old",recipe.fwd_in_pdt_skin_data)
                 ---------------------------------------------------------
                 --- 修改placer_inst的皮肤。
-                local skin_name = recipe.fwd_in_pdt_skin_data
-                if skin_name and builder and builder.replica.fwd_in_pdt_func and builder.replica.fwd_in_pdt_func.SkinAPI__Has_Skin then
-                    if self.inst.AnimState and builder.replica.fwd_in_pdt_func:SkinAPI__Has_Skin(skin_name) then
-                        local skin_data = FWD_IN_PDT_MOD_SKIN.SKINS_DATA[tostring(skin_name)] or {}
-                        if skin_data.bank and skin_data.build then
-                            self.inst.AnimState:SetBank(skin_data.bank)
-                            self.inst.AnimState:SetBuild(skin_data.build)
-                        end    
-                        if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
-                            print("placer.SetBuilder",skin_data.prefab_name,skin_name) 
-                        end                        
-                        builder.replica.fwd_in_pdt_func:SkinAPI__Set_RPC_Data(skin_data.prefab_name,skin_name)
-                    end
+                if recipe.fwd_in_pdt_skin_data then
+                        local skin_name = recipe.fwd_in_pdt_skin_data
+                        print("info SetBuilder ++ ",recipe)
+
+                            if self.inst.AnimState and builder.replica.fwd_in_pdt_func:SkinAPI__Has_Skin(skin_name) then
+                                local skin_data = FWD_IN_PDT_MOD_SKIN.SKINS_DATA[tostring(skin_name)] or {}
+                                if skin_data.bank and skin_data.build then
+                                    self.inst.AnimState:SetBank(skin_data.bank)
+                                    self.inst.AnimState:SetBuild(skin_data.build)
+                                end    
+                                if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
+                                    print("placer.SetBuilder",skin_data.prefab_name,skin_name) 
+                                end                        
+                                builder.replica.fwd_in_pdt_func:SkinAPI__Set_RPC_Data(skin_data.prefab_name,skin_name)
+                            end
+                else
+
+                    -- print("fake error ",recipe)
+                    -- for k, v in pairs(recipe) do
+                    --     print(k,v)
+                    -- end
+
+                    local temp_prefab = recipe.product
+                    builder.replica.fwd_in_pdt_func:SkinAPI__Set_RPC_Data(temp_prefab,nil)
+                    
                 end
         end
         ------------------------------------------------------------------------------------------------------------------
@@ -64,6 +80,7 @@ AddComponentPostInit("placer",function(self)
             end
         end
         ------------------------------------------------------------------------------------------------------------------
+        -- recipe = nil
         return self:SetBuilder__skins_fwd_in_pdt_old(builder,recipe,deployable_item,...)
     end
 
