@@ -403,11 +403,11 @@ local flg,error_code = pcall(function()
         -- print(TheWorld.Map:IsValidTileAtPoint(x,y,z))
         -- local tile = TheWorld.Map:GetTileAtPoint(x,y,z)
         -- print(GROUND.IMPASSABLE == tile )
-        TheWorld.fwd_in_pdt_events.void_fishing_hook = function()
-            -- return SpawnPrefab("deerclops")
-            return SpawnPrefab("krampus_sack")
-            -- return SpawnPrefab("bearger")
-        end
+        -- TheWorld.fwd_in_pdt_events.void_fishing_hook = function()
+        --     -- return SpawnPrefab("deerclops")
+        --     return SpawnPrefab("krampus_sack")
+        --     -- return SpawnPrefab("bearger")
+        -- end
         -- local target = SpawnPrefab("krampus_sack")
         -- -- local target = SpawnPrefab("log")
         -- if target.AnimState then
@@ -427,6 +427,63 @@ local flg,error_code = pcall(function()
 
         -- target:Remove()
 
+    ----------------------------------------------------------------------------------------------------------------
+    --枪支动作试验
+        -- ThePlayer.AnimState:PlayAnimation("dart_lag")
+        -- ThePlayer.AnimState:PushAnimation("catch", false)
+    ----------------------------------------------------------------------------------------------------------------
+    --- 标签测试
+            -- local target_tags = 0
+            -- for i = 1, 1000, 1 do
+            --     if ThePlayer:HasTag("my_test_tag_"..tostring(i)) then
+            --         target_tags = target_tags + 1
+            --     end
+            -- end
+    ----------------------------------------------------------------------------------------------------------------
+        local cooking = require("cooking")
+
+        -- TUNING.temp_test_fn = function(inst)
+        --             -- local recipe = cooking.GetRecipe(inst.prefab, product)
+        --     -- local food_base_prefab = item_inst.nameoverride or item_inst.prefab
+        --     -- print(food_base_prefab)
+        --     -- local crash_flag,ret = pcall(function()
+        --     --     local recipe = cooking.GetRecipe("portablecookpot", food_base_prefab)   --- 获取大厨锅 的配方
+        --     --     print("recipe",recipe)
+        --     --     if recipe then
+        --     --         return true
+        --     --     end
+        --     --     return false
+        --     -- end)
+            
+        --     -- if crash_flag then
+        --     --     return ret
+        --     -- else
+        --     --     print("error")
+        --     --     print(ret)
+        --     --     return false
+        --     -- end
+        --     ---------------------------------------------------------------------------------------------------
+        --     local crash_flag,crash_reason = pcall(function()
+                
+        --         print("++++++++++++666666666666")
+
+                            
+                        
+
+        --     end)
+        --     if crash_flag == false then
+        --         print("Error")
+        --         print(crash_reason)
+        --     end
+        --     ---------------------------------------------------------------------------------------------------
+
+
+        -- end
+
+        local table_inst = TheSim:FindFirstEntityWithTag("fwd_in_pdt_container_mahogany_table")
+        -- table_inst.AnimState:Hide("TEMP_SLOT1")
+        -- table_inst.AnimState:Show("TEMP_SLOT4")
+        table_inst.AnimState:Hide("TEMP_SLOT4")
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)

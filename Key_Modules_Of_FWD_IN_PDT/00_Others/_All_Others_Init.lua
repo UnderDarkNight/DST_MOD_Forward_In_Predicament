@@ -16,3 +16,6 @@ modimport("Key_Modules_Of_FWD_IN_PDT/00_Others/04_Resurrection_Announce.lua")   
 
 modimport("Key_Modules_Of_FWD_IN_PDT/00_Others/06_pick_sound_customization.lua")    --- 自定义拾取声音，角色独有拾取声音
 
+
+modimport("Key_Modules_Of_FWD_IN_PDT/00_Others/07_equipment_type.lua")    --- 自动获取装备类型
+

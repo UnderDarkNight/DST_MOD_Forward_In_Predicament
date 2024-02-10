@@ -55,7 +55,7 @@ local prefabs_name_list = {
 if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE == true then
     local debugging_name_list = {
 
-
+        "15_temp_building",
 
     }
     for k, temp in pairs(debugging_name_list) do

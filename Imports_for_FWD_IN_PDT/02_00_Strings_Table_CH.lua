@@ -636,6 +636,12 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["recipe_desc"] = "用来方便储存钱币的",
                 ["skin.piggy"] = "小猪储存罐"
             },
+            ["fwd_in_pdt_container_mahogany_table"] = {
+                ["name"] = "红木桌",
+                ["inspect_str"] = "用来摆放食物",
+                ["inspect_str_burnt"] = "烧得很精彩",
+                ["recipe_desc"] = "用来摆放食物",
+            },
         --------------------------------------------------------------------
         ---- 07_fwd_in_pdt_buildings
             ["fwd_in_pdt_building_mock_wall_grass"] = {

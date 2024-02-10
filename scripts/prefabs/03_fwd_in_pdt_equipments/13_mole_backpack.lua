@@ -167,7 +167,8 @@ local function fn()
     -- inst.components.inventoryitem.cangoincontainer = false
 
     inst:AddComponent("equippable")
-    inst.components.equippable.equipslot = EQUIPSLOTS.BACK or EQUIPSLOTS.BEIBAO or EQUIPSLOTS.BAG or EQUIPSLOTS.BODY
+    -- inst.components.equippable.equipslot = EQUIPSLOTS.BACK or EQUIPSLOTS.BEIBAO or EQUIPSLOTS.BAG or EQUIPSLOTS.BODY
+    inst.components.equippable.equipslot = TUNING["Forward_In_Predicament.equip_slot"]:GetBackpackType() or EQUIPSLOTS.BODY
     inst.components.equippable:SetOnEquip(onequip)
     inst.components.equippable:SetOnUnequip(onunequip)
     inst.components.equippable:SetOnEquipToModel(onequiptomodel)

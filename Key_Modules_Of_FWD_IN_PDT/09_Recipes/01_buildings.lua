@@ -255,3 +255,25 @@ RemoveRecipeFromFilter("fwd_in_pdt_building_lantern","MODS")                    
 
 
 
+--------------------------------------------------------------------------------------------------------------------------------------------
+---- 红木桌
+--------------------------------------------------------------------------------------------------------------------------------------------
+AddRecipeToFilter("fwd_in_pdt_container_mahogany_table","STRUCTURES")     ---- 添加物品到目标标签
+AddRecipe2(
+    "fwd_in_pdt_container_mahogany_table",            --  --  inst.prefab  实体名字
+    {},
+    TECH.NONE, --- TECH.NONE
+    {
+        -- nounlock=true,
+        no_deconstruction=true,
+        -- builder_tag = "npng_tag.has_green_amulet",    --------- -- 【builder_tag】只给指定tag的角色能制造这件物品，角色添加/移除 tag 都能立马解锁/隐藏该物品
+        placer = "fwd_in_pdt_container_mahogany_table_placer",                       -------- 建筑放置器        
+        atlas = "images/map_icons/fwd_in_pdt_container_mahogany_table.xml",
+        image = "fwd_in_pdt_container_mahogany_table.tex",
+    },
+    {"STRUCTURES","FWD_IN_PDT"}
+)
+RemoveRecipeFromFilter("fwd_in_pdt_container_mahogany_table","MODS")                       -- -- 在【模组物品】标签里移除这个。
+
+
+

@@ -221,8 +221,8 @@ local function ground_fx()
 end
 
 local function placer_postinit_fn(inst)
-    -- local scale = 1.5
-    -- inst.AnimState:SetScale(scale,scale,scale)
+    local scale_num = 1.5
+    inst.AnimState:SetScale(scale_num,scale_num,scale_num)
     inst.AnimState:Hide("SNOW")
 end
 

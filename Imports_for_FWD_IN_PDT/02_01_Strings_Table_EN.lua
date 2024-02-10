@@ -630,6 +630,12 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["recipe_desc"] = "To facilitate the storage of coins",
                 ["skin.piggy"] = "Piggy Tank"
             },
+            ["fwd_in_pdt_container_mahogany_table"] = {
+                ["name"] = "Mahogany Table",
+                ["inspect_str"] = "For putting food on the table.",
+                ["inspect_str_burnt"] = "It burns wonderfully.",
+                ["recipe_desc"] = "For putting food on the table.",
+            },
         --------------------------------------------------------------------
         ---- 07_fwd_in_pdt_buildings
             ["fwd_in_pdt_building_mock_wall_grass"] = {
