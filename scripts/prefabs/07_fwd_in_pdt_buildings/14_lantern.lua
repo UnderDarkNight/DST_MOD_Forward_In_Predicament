@@ -85,10 +85,44 @@ local function fn()
    
     inst:AddComponent("inspectable")
 
+     -------------------------------------------------------------------------------------
+    ---- 掉落列表
     inst:AddComponent("lootdropper")
-
-    -------------------------------------------------------------------------------------
-    ---- 积雪监听执行
+    inst.components.lootdropper.GetRecipeLoot = function(self,...) 
+        local ret_loots = {"yellowgem","rope"}
+        for i = 1, 3, 1 do
+            if math.random(100) < 0 then
+                table.insert(ret_loots,"yellowgem")
+            end
+            -- if math.random(100) < 30 then
+            --     table.insert(ret_loots,"cutstone")
+            -- end
+            if math.random(100) < 30 then
+                table.insert(ret_loots,"rope")
+            end
+        end
+        -- if math.random(100) < 15 then
+        --     table.insert(ret_loots,"minifan")
+        -- end
+        -- if math.random(100) < 15 then
+        --     table.insert(ret_loots,"farm_plow_item")
+        -- end
+        return ret_loots
+    end
+    --- 敲打拆除
+    inst:ListenForEvent("_building_remove",function()
+        SpawnPrefab("fwd_in_pdt_fx_collapse"):PushEvent("Set",{
+            pt = Vector3(inst.Transform:GetWorldPosition())
+        })
+        inst:Remove()
+    end)
+    inst:AddComponent("workable")
+    inst.components.workable:SetWorkAction(ACTIONS.HAMMER)
+    inst.components.workable:SetWorkLeft(3)
+    inst.components.workable:SetOnFinishCallback(function()
+        inst:PushEvent("_building_remove")
+    end)
+--------------------------------------------------------
         local function snow_over_init(inst)
             if TheWorld.state.issnowcovered then
                 inst.AnimState:Show("SNOW")
@@ -157,9 +191,9 @@ local function ground_fx()
     
     inst:AddTag("INLIMBO")
     inst:AddTag("FX")
-    inst:AddTag("NOCLICK")      --- 不可点击
-    inst:AddTag("CLASSIFIED")   --  私密的，client 不可观测， FindEntity 默认过滤
-    inst:AddTag("NOBLOCK")      -- 不会影响种植和放置
+    -- inst:AddTag("NOCLICK")      --- 不可点击
+    -- inst:AddTag("CLASSIFIED")   --  私密的，client 不可观测， FindEntity 默认过滤
+    -- inst:AddTag("NOBLOCK")      -- 不会影响种植和放置
     inst:AddTag("structure")
 
     inst.Transform:SetRotation(math.random(350))
@@ -167,7 +201,6 @@ local function ground_fx()
     if not TheWorld.ismastersim then
         return inst
     end
-
 
     inst:ListenForEvent("Set",function(_,_table)
         if type(_table) == "table" then
