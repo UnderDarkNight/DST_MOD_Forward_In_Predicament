@@ -40,4 +40,9 @@ modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/16_pla
 
 modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/17_frog_trans_2_hound.lua")    --- 青蛙变异
 
-modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/18_moonpig.lua")    --- 修改 普通疯猪掉落猪大肠
+modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/18_moonpig_and_pigman.lua")    --- 修改 月台疯猪和普通猪人掉落猪大肠和猪肝
+
+modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/19_perd.lua")    --- 修改 火鸡掉落鸡爪
+
+modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/20_catcoon.lua")    --- 修改 猫 掉落 猫屎
+

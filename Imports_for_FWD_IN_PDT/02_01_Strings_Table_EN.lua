@@ -578,6 +578,10 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "Garlic Cucumber",
                 ["inspect_str"] = "Garlic cucumber",
             },
+            ["fwd_in_pdt_food_cat_feces"] = {
+                ["name"] = "Cat Feces",
+                ["inspect_str"] = "So dirty",
+            },
         --------------------------------------------------------------------
         ---- 06_fwd_in_pdt_containers
             ["fwd_in_pdt_fish_farm"] = {
@@ -782,14 +786,6 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "Seed of Aster tataricus L.f.",
                 ["inspect_str"] = "Seed of Aster tataricus L.f.",
             },
-            ["fwd_in_pdt_plant_coffeebush"] = {
-                ["name"] = "Coffee Bush",
-                ["inspect_str"] = "Strange coffee bush.",
-            },
-            ["fwd_in_pdt_plant_coffeebush_item"] = {
-                ["name"] = "Coffee Bush",
-                ["inspect_str"] = "Strange coffee bush.",
-            },
             ["fwd_in_pdt_plant_mango_tree"] = {
                 ["name"] = "Mango Tree",
                 ["inspect_str"] = "Strange Mango Tree",
@@ -813,6 +809,14 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             ["fwd_in_pdt_plant_orange_seed"] = {
                 ["name"] = "Orange Tree Seed",
                 ["inspect_str"] = "It can be used for planting.",
+            },
+            ["fwd_in_pdt_dug_coffeebush"] = {
+                ["name"] = "Coffee",
+                ["inspect_str"] = "It can be used for planting.",
+            },
+            ["fwd_in_pdt_coffeebush"] = {
+                ["name"] = "Coffee Bush",
+                ["inspect_str"] = "Strange coffee bush.",
             },
         --------------------------------------------------------------------
         ---- 10_fwd_in_pdt_minerals

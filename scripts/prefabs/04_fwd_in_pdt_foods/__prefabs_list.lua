@@ -49,6 +49,7 @@ local prefabs_name_list = {
     "19_large_intestine",                    ---猪大肠
     "20_chicken_feet",                       ---鸡爪
     "21_pig_liver",                          ---猪肝
+    "22_cat_feces",                          ---猫屎
 }
 
 

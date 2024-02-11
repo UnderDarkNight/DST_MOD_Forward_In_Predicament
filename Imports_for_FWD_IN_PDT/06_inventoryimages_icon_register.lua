@@ -97,6 +97,7 @@ local files_name = {
 		"fwd_in_pdt_food_large_intestine",						---猪大肠
 		"fwd_in_pdt_food_chicken_feet",							---鸡爪
 		"fwd_in_pdt_food_pig_liver",							---猪肝
+		"fwd_in_pdt_food_cat_feces",							---猫屎
 	---------------------------------------------------------------------------------------
 	-- 05_fwd_in_pdt_foods_cooked
 		"fwd_in_pdt_food_mixed_potato_soup",					--- 疙瘩汤
@@ -151,6 +152,8 @@ local files_name = {
 		"fwd_in_pdt_plant_mango_tree_item",							    --- 芒果树芽
 		"fwd_in_pdt_plant_bean_seed",							    	--- 大豆种子
 		"fwd_in_pdt_plant_orange_seed",							    	--- 橙子种子
+		"fwd_in_pdt_coffeebush",										--- 咖啡
+		"fwd_in_pdt_dug_coffeebush",									--- 咖啡丛
 	---------------------------------------------------------------------------------------
 	--- 24_fwd_in_pdt_task_scrolls 
 		"fwd_in_pdt_task_scroll",										--- 任务卷轴

@@ -453,6 +453,10 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "鸡爪",
                 ["inspect_str"] = "鸡你太美",
             },
+            ["fwd_in_pdt_food_cat_feces"] = {
+                ["name"] = "猫屎",
+                ["inspect_str"] = "这东西真的能吃嘛",
+            },
         --------------------------------------------------------------------
         ---- 05_fwd_in_pdt_foods_cooked
             ["fwd_in_pdt_food_mixed_potato_soup"] = {
@@ -787,14 +791,6 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "紫苑种子",
                 ["inspect_str"] = "紫苑的种子",
             },
-            ["fwd_in_pdt_plant_coffeebush"] = {
-                ["name"] = "咖啡丛",
-                ["inspect_str"] = "很奇怪的咖啡丛",
-            },
-            ["fwd_in_pdt_plant_coffeebush_item"] = {
-                ["name"] = "咖啡丛",
-                ["inspect_str"] = "很奇怪的咖啡丛",
-            },
             ["fwd_in_pdt_plant_mango_tree"] = {
                 ["name"] = "芒果树",
                 ["inspect_str"] = "奇特的芒果树",
@@ -817,6 +813,14 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             },
             ["fwd_in_pdt_plant_orange_seed"] = {
                 ["name"] = "橙子树种子",
+                ["inspect_str"] = "可以拿来种植",
+            },
+            ["fwd_in_pdt_coffeebush"] = {
+                ["name"] = "咖啡",
+                ["inspect_str"] = "很奇怪的咖啡丛",
+            },
+            ["fwd_in_pdt_dug_coffeebush"] = {
+                ["name"] = "咖啡丛",
                 ["inspect_str"] = "可以拿来种植",
             },
         --------------------------------------------------------------------
