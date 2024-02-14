@@ -37,8 +37,7 @@ local prefabs_name_list = {
     "04_pinellia_ternata_seed",             --- 半夏种子
     "05_aster_tataricus_l_f",               --- 紫苑
     "05_aster_tataricus_l_f_seed",          --- 紫苑种子
-    "06_coffeebush",                        --- 咖啡丛
-    "06_coffeebush_item",                   --- 咖啡丛
+    "06_coffeebush",                       --- 咖啡丛
     "07_mango_tree",                        --- 芒果树
     "07_mango_tree_item",                   --- 芒果树芽穂
     "08_bean",                              --- 大豆

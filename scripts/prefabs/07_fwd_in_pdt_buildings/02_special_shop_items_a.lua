@@ -34,11 +34,11 @@ return{
 	},
 	{
 		["name"] = "咖啡丛",
-		["prefab"] = "fwd_in_pdt_plant_coffeebush_item",
+		["prefab"] = "fwd_in_pdt_dug_coffeebush",
 		["cost"] = 20.0,
 		["num2give"] = 1.0,
-		["image"] = "fwd_in_pdt_plant_coffeebush_item.tex",
-		["atlas"] = "images/inventoryimages/fwd_in_pdt_plant_coffeebush_item.xml"
+		["image"] = "fwd_in_pdt_dug_coffeebush.tex",
+		["atlas"] = "images/inventoryimages/fwd_in_pdt_dug_coffeebush.xml"
 	},
 	{
 		["name"] = "芒果接穗",
