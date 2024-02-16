@@ -141,7 +141,7 @@ local function Add_Recipe_2_Machine(cmd_table)
             actionstr = cmd_table.actionstr,
             station_tag = "fwd_in_pdt_building_medical_check_up_machine",
         },
-        {string.upper("fwd_in_pdt_building_medical_check_up_machine"),"FWD_IN_PDT"}
+        {string.upper("fwd_in_pdt_building_medical_check_up_machine")}
     )
     RemoveRecipeFromFilter(cmd_table.prefab,"MODS")                       -- -- 在【模组物品】标签里移除这个。
 end
