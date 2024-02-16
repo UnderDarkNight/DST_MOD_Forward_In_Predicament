@@ -6,12 +6,12 @@
 ]]--
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-local assets =
-{
-    Asset("ANIM", "anim/fwd_in_pdt_equipment_shield_of_light.zip"),
-    Asset( "IMAGE", "images/inventoryimages/fwd_in_pdt_equipment_shield_of_light.tex" ),  -- 背包贴图
-    Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_equipment_shield_of_light.xml" ),
-}
+-- local assets =
+-- {
+--     Asset("ANIM", "anim/fwd_in_pdt_equipment_shield_of_light.zip"),
+--     Asset( "IMAGE", "images/inventoryimages/fwd_in_pdt_equipment_shield_of_light.tex" ),  -- 背包贴图
+--     Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_equipment_shield_of_light.xml" ),
+-- }
 local assets =
 {
     Asset("ANIM", "anim/fishingrod.zip"),

@@ -41,14 +41,14 @@ local function fn()
     inst.components.inventoryitem.atlasname = "images/inventoryimages/fwd_in_pdt_food_pig_liver.xml"
 
     --------------------------------------------------------------------------
-
+    inst.components.inventoryitem:SetSinks(true)    -- 掉水里消失
 
     inst:AddComponent("edible") -- 可食物组件
     inst.components.edible.foodtype = FOODTYPE.MEAT
     --恢复10Vc
     inst.components.edible:SetOnEatenFn(function(inst,eater)
         if eater and eater:HasTag("player") then
-            -- Vc增加10
+            -- Vc增加20
             if eater.components.fwd_in_pdt_wellness then
                 eater.components.fwd_in_pdt_wellness:DoDelta_Vitamin_C(20)
                 eater.components.fwd_in_pdt_wellness:ForceRefresh()
@@ -70,18 +70,7 @@ local function fn()
     inst:AddComponent("tradable")
 
     MakeHauntableLaunch(inst)
-    -------------------------------------------------------------------
-    --- 落水影子
-        local function shadow_init(inst)
-            if inst:IsOnOcean(false) then       --- 如果在海里（不包括船）
-                inst.AnimState:Hide("SHADOW")
-            else                                
-                inst.AnimState:Show("SHADOW")
-            end
-        end
-        inst:ListenForEvent("on_landed",shadow_init)
-        shadow_init(inst)
-    -------------------------------------------------------------------
+
     return inst
 end
 

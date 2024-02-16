@@ -36,7 +36,7 @@ local prefabs_name_list = {
     "06_tv_box",                              --- 电视机盒子
     "07_drying_rack",                         --- 晾晒架
     "08_wallet",                              --- 钱包
-    "09_mahogany table",                      --- 红木桌
+    "09_mahogany_table",                      --- 红木桌
 
     
 }

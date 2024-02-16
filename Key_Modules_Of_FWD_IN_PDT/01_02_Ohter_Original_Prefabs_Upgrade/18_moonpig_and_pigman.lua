@@ -58,7 +58,7 @@ AddPrefabPostInit(
         inst:ListenForEvent("death",function()
             if inst.components.lootdropper then
                 local loot = inst.components.lootdropper.loot or {}
-                    if math.random(100) <= 10 then                                              ---10%概率多一个
+                    if math.random(100) <= 10 then                                              ---10%概率给一个
                         table.insert(loot,"fwd_in_pdt_food_large_intestine")
                         table.insert(loot,"fwd_in_pdt_food_pig_liver")
                     end

@@ -177,7 +177,7 @@ AddRecipeToFilter("fwd_in_pdt_container_tv_box","CONTAINERS")     ---- 添加物
 AddRecipe2(
     "fwd_in_pdt_container_tv_box",            --  --  inst.prefab  实体名字
     { Ingredient("gears", 2),Ingredient("boards", 6),Ingredient("cutstone", 6)}, 
-    TECH.NONE, --- TECH.NONE
+    TECH.SCIENCE_TWO, --- TECH.NONE
     {
         -- nounlock=true,
         no_deconstruction=true,
@@ -240,7 +240,7 @@ AddRecipeToFilter("fwd_in_pdt_building_lantern","STRUCTURES")     ---- 添加物
 AddRecipe2(
     "fwd_in_pdt_building_lantern",            --  --  inst.prefab  实体名字
     { Ingredient("yellowgem", 1), Ingredient("boards", 5), Ingredient("rope", 5) },
-    TECH.NONE, --- TECH.NONE
+    TECH.SCIENCE_TWO, --- TECH.NONE
     {
         -- nounlock=true,
         no_deconstruction=true,
@@ -261,8 +261,8 @@ RemoveRecipeFromFilter("fwd_in_pdt_building_lantern","MODS")                    
 AddRecipeToFilter("fwd_in_pdt_container_mahogany_table","STRUCTURES")     ---- 添加物品到目标标签
 AddRecipe2(
     "fwd_in_pdt_container_mahogany_table",            --  --  inst.prefab  实体名字
-    {},
-    TECH.NONE, --- TECH.NONE
+    { Ingredient("bluegem", 1), Ingredient("boards", 2), Ingredient("rope", 5) },
+    TECH.SCIENCE_TWO, --- TECH.NONE
     {
         -- nounlock=true,
         no_deconstruction=true,

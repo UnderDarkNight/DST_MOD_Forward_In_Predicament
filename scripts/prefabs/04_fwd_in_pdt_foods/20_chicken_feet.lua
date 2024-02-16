@@ -42,7 +42,7 @@ local function fn()
 
     --------------------------------------------------------------------------
 
-
+    inst.components.inventoryitem:SetSinks(true)    -- 掉水里消失
     inst:AddComponent("edible") -- 可食物组件
     inst.components.edible.foodtype = FOODTYPE.MEAT
     --恢复10Vc
@@ -70,20 +70,9 @@ local function fn()
     inst:AddComponent("tradable")
 
     MakeHauntableLaunch(inst)
-    -------------------------------------------------------------------
-    --- 落水影子
-        local function shadow_init(inst)
-            if inst:IsOnOcean(false) then       --- 如果在海里（不包括船）
-                inst.AnimState:Hide("SHADOW")
-            else                                
-                inst.AnimState:Show("SHADOW")
-            end
-        end
-        inst:ListenForEvent("on_landed",shadow_init)
-        shadow_init(inst)
-    -------------------------------------------------------------------
+    
     return inst
-end
+ end
 
 --- 设置可以放烹饪锅里
 AddIngredientValues({"fwd_in_pdt_food_chicken_feet"}, { 
