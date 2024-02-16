@@ -74,7 +74,7 @@ RemoveRecipeFromFilter("fwd_in_pdt_building_paddy_windmill","MODS")             
 AddRecipe2(
     "fwd_in_pdt_moom_jewelry_lamp",            --  --  inst.prefab  实体名字
     { Ingredient("livinglog", 10),Ingredient("purplegem", 1),Ingredient("yellowgem", 1),Ingredient("moonrockcrater", 1) }, 
-    TECH.NONE, --- 天体宝珠
+    TECH.CELESTIAL_ONE, --- 天体宝珠
     {
         nounlock = true,
         no_deconstruction=true,

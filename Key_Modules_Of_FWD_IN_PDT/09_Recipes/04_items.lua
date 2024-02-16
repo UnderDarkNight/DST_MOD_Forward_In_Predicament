@@ -33,7 +33,7 @@
     AddRecipe2(
         "fwd_in_pdt_equipment_loong_balloon",            --  --  inst.prefab  实体名字
         { Ingredient("cutgrass", 2)}, 
-        TECH.NONE, --- TECH.NONE
+        TECH.SCIENCE_ONE, --- TECH.NONE
         {
             no_deconstruction=true,     
             atlas = "images/inventoryimages/fwd_in_pdt_equipment_loong_balloon.xml",
@@ -50,7 +50,7 @@
     AddRecipe2(
         "fwd_in_pdt_equipment_balloon_evil_dragon",            --  --  inst.prefab  实体名字
         { Ingredient("cutgrass", 2)}, 
-        TECH.NONE, --- TECH.NONE
+        TECH.SCIENCE_ONE, --- TECH.NONE
         {
             no_deconstruction=true,     
             atlas = "images/inventoryimages/fwd_in_pdt_equipment_balloon_evil_dragon.xml",
@@ -67,7 +67,7 @@
     AddRecipe2(
         "fwd_in_pdt_equipment_balloon_bobble_loong",            --  --  inst.prefab  实体名字
         { Ingredient("cutgrass", 2)}, 
-        TECH.NONE, --- TECH.NONE
+        TECH.SCIENCE_ONE, --- TECH.NONE
         {
             no_deconstruction=true,     
             atlas = "images/inventoryimages/fwd_in_pdt_equipment_balloon_bobble_loong.xml",
@@ -117,7 +117,7 @@
     AddRecipe2(
         "fwd_in_pdt_void_fishingrod",            --  --  inst.prefab  实体名字
         { Ingredient("spidereggsack", 4) }, 
-        TECH.NONE, 
+        TECH.SCIENCE_ONE, 
         {
             no_deconstruction=true,
             -- atlas = "images/inventoryimages/fwd_in_pdt_equipment_shield_of_light.xml",
