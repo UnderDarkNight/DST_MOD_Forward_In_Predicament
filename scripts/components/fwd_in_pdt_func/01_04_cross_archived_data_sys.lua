@@ -67,7 +67,8 @@ local function Set_Cross_Archived_Data_By_userid(userid,_table)
         temp_json_data[userid][index] = value
     end
     temp_json_data = deepcopy(temp_json_data)
-    Write_All_Json_Data(temp_json_data)
+    -- Write_All_Json_Data(temp_json_data)
+    pcall(Write_All_Json_Data,temp_json_data)
 end
 --------------------------------------------------------------------------------------------------------------------
 
