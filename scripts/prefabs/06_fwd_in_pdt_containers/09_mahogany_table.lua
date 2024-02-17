@@ -176,9 +176,12 @@
 
 
         end)
+        inst:ListenForEvent("onopen",function()                                     ---打开时播放冰箱的声音
+        inst.SoundEmitter:PlaySound("dontstarve/common/icebox_open")
+        end)
 
         inst:ListenForEvent("onclose",function()
-            
+            inst.SoundEmitter:PlaySound("dontstarve/common/icebox_close")           ---关闭时播放冰箱的声音
             -- for k, item_inst in pairs(inst.components.container.slots) do
             --     if item_inst and item_inst
             -- end
@@ -226,7 +229,12 @@ local function fn()
     -- inst:AddTag("chest")
     inst:AddTag("fwd_in_pdt_container_mahogany_table")
 
+    inst:AddTag("fridge")---等同于冰箱的保鲜
 
+    -- if Theworld.ismastersim then
+    --     inst:AddComponent("preserver")          --- 保鲜组件
+    --     inst.components.preserver.prerish_rate_multiplier = -1.1    ---负数就反鲜了
+    -- end
 
     inst.entity:SetPristine()
 
@@ -237,6 +245,8 @@ local function fn()
         return inst
     end
 
+    -- -- inst:AddComponent("preserver")          --- 保鲜组件
+    -- inst.components.preserver.prerish_rate_multiplier = -1.1    ---负数就反鲜了
     -----------------------------------------------------------------------------------
     ---- 可检查组件
         inst:AddComponent("inspectable") --
@@ -249,9 +259,32 @@ local function fn()
         end
 
     -----------------------------------------------------------------------------------
+    inst:ListenForEvent("itemget",function(_,_table)
+        inst.SoundEmitter:PlaySound("dontstarve/common/icebox_open")
+
+            if _table and _table.item then      ---- 停止腐烂计算
+                local tempItem = _table.item
+                if tempItem.components.perishable then
+                    tempItem.components.perishable:StopPerishing()
+                end
+            end
+
+    end)
+    inst:ListenForEvent("itemlose",function(inst,_table)    
+        inst.SoundEmitter:PlaySound("dontstarve/common/icebox_close")
+
+                if _table and _table.prev_item then  --- 恢复腐烂计算
+                    local tempItem = _table.prev_item
+                    if tempItem.components.perishable then
+                        tempItem.components.perishable:StartPerishing()
+                    end
+                end
+
+    end)
+    -----------------------------------------------------------------------------------
         add_container_close_event(inst)
     -----------------------------------------------------------------------------------
-
+    -- inst.components.perishable:SetPercent(1.0)--腐烂速率
     -----------------------------------------------------------------------------------
     ---- 积雪检查
         local function snow_init(inst)

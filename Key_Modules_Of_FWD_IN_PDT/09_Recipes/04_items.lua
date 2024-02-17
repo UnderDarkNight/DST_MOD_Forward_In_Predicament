@@ -32,8 +32,8 @@
     AddRecipeToFilter("fwd_in_pdt_equipment_loong_balloon","DECOR")     ---- 添加物品到目标标签
     AddRecipe2(
         "fwd_in_pdt_equipment_loong_balloon",            --  --  inst.prefab  实体名字
-        { Ingredient("cutgrass", 2)}, 
-        TECH.SCIENCE_ONE, --- TECH.NONE
+        { Ingredient("fwd_in_pdt_material_tree_resin", 2)}, 
+        TECH.SCIENCE_ONE, --- TECH.二本科技
         {
             no_deconstruction=true,     
             atlas = "images/inventoryimages/fwd_in_pdt_equipment_loong_balloon.xml",
@@ -49,8 +49,8 @@
     AddRecipeToFilter("fwd_in_pdt_equipment_balloon_evil_dragon","DECOR")     ---- 添加物品到目标标签
     AddRecipe2(
         "fwd_in_pdt_equipment_balloon_evil_dragon",            --  --  inst.prefab  实体名字
-        { Ingredient("cutgrass", 2)}, 
-        TECH.SCIENCE_ONE, --- TECH.NONE
+        { Ingredient("fwd_in_pdt_material_tree_resin", 2)}, 
+        TECH.SCIENCE_ONE, --- TECH.二本科技
         {
             no_deconstruction=true,     
             atlas = "images/inventoryimages/fwd_in_pdt_equipment_balloon_evil_dragon.xml",
@@ -66,8 +66,8 @@
     AddRecipeToFilter("fwd_in_pdt_equipment_balloon_bobble_loong","DECOR")     ---- 添加物品到目标标签
     AddRecipe2(
         "fwd_in_pdt_equipment_balloon_bobble_loong",            --  --  inst.prefab  实体名字
-        { Ingredient("cutgrass", 2)}, 
-        TECH.SCIENCE_ONE, --- TECH.NONE
+        { Ingredient("fwd_in_pdt_material_tree_resin", 2)}, 
+        TECH.SCIENCE_ONE, --- TECH.一本科技
         {
             no_deconstruction=true,     
             atlas = "images/inventoryimages/fwd_in_pdt_equipment_balloon_bobble_loong.xml",
@@ -117,7 +117,7 @@
     AddRecipe2(
         "fwd_in_pdt_void_fishingrod",            --  --  inst.prefab  实体名字
         { Ingredient("spidereggsack", 4) }, 
-        TECH.SCIENCE_ONE, 
+        TECH.SCIENCE_ONE, --- THCH.二本科技
         {
             no_deconstruction=true,
             -- atlas = "images/inventoryimages/fwd_in_pdt_equipment_shield_of_light.xml",

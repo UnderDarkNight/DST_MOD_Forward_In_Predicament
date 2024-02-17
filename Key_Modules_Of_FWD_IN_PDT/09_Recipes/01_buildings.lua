@@ -54,7 +54,7 @@ AddRecipeToFilter("fwd_in_pdt_building_paddy_windmill","GARDENING")     ---- 添
 AddRecipe2(
     "fwd_in_pdt_building_paddy_windmill",            --  --  inst.prefab  实体名字
     { Ingredient("boards", 10),Ingredient("rope", 10) }, 
-    TECH.SCIENCE_TWO, --- TECH.NONE
+    TECH.SCIENCE_TWO, --- TECH.二本科技
     {
         -- nounlock=true,
         no_deconstruction=true,
@@ -74,7 +74,7 @@ RemoveRecipeFromFilter("fwd_in_pdt_building_paddy_windmill","MODS")             
 AddRecipe2(
     "fwd_in_pdt_moom_jewelry_lamp",            --  --  inst.prefab  实体名字
     { Ingredient("livinglog", 10),Ingredient("purplegem", 1),Ingredient("yellowgem", 1),Ingredient("moonrockcrater", 1) }, 
-    TECH.CELESTIAL_ONE, --- 天体宝珠
+    TECH.CELESTIAL_ONE, --- TECH.天体宝珠
     {
         nounlock = true,
         no_deconstruction=true,
@@ -95,7 +95,7 @@ AddRecipeToFilter("fwd_in_pdt_fish_farm_kit","FISHING")     ---- 添加物品到
 AddRecipe2(
     "fwd_in_pdt_fish_farm_kit",            --  --  inst.prefab  实体名字
     { Ingredient("spoiled_food", 5),Ingredient("rope", 4),Ingredient("silk", 4) }, 
-    TECH.SCIENCE_TWO, --- TECH.NONE
+    TECH.SCIENCE_TWO, --- TECH.二本科技
     {
         -- nounlock=true,
         no_deconstruction=true,
@@ -115,7 +115,7 @@ AddRecipeToFilter("fwd_in_pdt_building_special_production_table","PROTOTYPERS") 
 AddRecipe2(
     "fwd_in_pdt_building_special_production_table",            --  --  inst.prefab  实体名字
     { Ingredient("charcoal", 4),Ingredient("boards", 4),Ingredient("cutstone", 4),Ingredient("moonrocknugget", 4)  }, 
-    TECH.SCIENCE_TWO, --- TECH.NONE
+    TECH.SCIENCE_TWO, --- TECH.二本科技
     {
         -- nounlock=true,
         no_deconstruction=true,
@@ -135,7 +135,7 @@ AddRecipeToFilter("fwd_in_pdt_building_fermenter","COOKING")     ---- 添加物�
 AddRecipe2(
     "fwd_in_pdt_building_fermenter",            --  --  inst.prefab  实体名字
     { Ingredient("ash", 4),Ingredient("poop", 2),Ingredient("compost", 4) }, 
-    TECH.SCIENCE_TWO, --- TECH.NONE
+    TECH.SCIENCE_TWO, --- TECH.二本科技
     {
         -- nounlock=true,
         no_deconstruction=true,
@@ -156,7 +156,7 @@ AddRecipeToFilter("fwd_in_pdt_building_special_cookpot","COOKING")     ---- 添�
 AddRecipe2(
     "fwd_in_pdt_building_special_cookpot",            --  --  inst.prefab  实体名字
     { Ingredient("fwd_in_pdt_material_chaotic_eyeball", 1),Ingredient("charcoal", 6),Ingredient("twigs", 6),Ingredient("cutstone", 3) }, 
-    TECH.LOST, --- TECH.NONE
+    TECH.LOST, --- TECH.蓝图
     {
         -- nounlock=true,
         no_deconstruction=true,
@@ -177,7 +177,7 @@ AddRecipeToFilter("fwd_in_pdt_container_tv_box","CONTAINERS")     ---- 添加物
 AddRecipe2(
     "fwd_in_pdt_container_tv_box",            --  --  inst.prefab  实体名字
     { Ingredient("gears", 2),Ingredient("boards", 6),Ingredient("cutstone", 6)}, 
-    TECH.SCIENCE_TWO, --- TECH.NONE
+    TECH.SCIENCE_TWO, --- TECH.二本科技
     {
         -- nounlock=true,
         no_deconstruction=true,
@@ -200,7 +200,7 @@ AddRecipeToFilter("fwd_in_pdt_building_drying_rack","COOKING")     ---- 添加�
 AddRecipe2(
     "fwd_in_pdt_building_drying_rack",            --  --  inst.prefab  实体名字
     { Ingredient("cutgrass", 20),Ingredient("boards", 10),Ingredient("twigs", 4) }, 
-    TECH.SCIENCE_TWO, --- TECH.NONE
+    TECH.SCIENCE_TWO, --- TECH.二本科技
     {
         -- nounlock=true,
         no_deconstruction=true,
@@ -221,7 +221,7 @@ AddRecipeToFilter("fwd_in_pdt_building_flower_fence_item","STRUCTURES")     ----
 AddRecipe2(
     "fwd_in_pdt_building_flower_fence_item",            --  --  inst.prefab  实体名字
     { Ingredient("twigs", 3), Ingredient("rope", 1) }, 
-    TECH.SCIENCE_TWO, --- TECH.NONE
+    TECH.SCIENCE_TWO, --- TECH.二本科技
     {
         -- nounlock=true,
         numtogive = 6,
@@ -240,7 +240,7 @@ AddRecipeToFilter("fwd_in_pdt_building_lantern","STRUCTURES")     ---- 添加物
 AddRecipe2(
     "fwd_in_pdt_building_lantern",            --  --  inst.prefab  实体名字
     { Ingredient("yellowgem", 1), Ingredient("boards", 5), Ingredient("rope", 5) },
-    TECH.SCIENCE_TWO, --- TECH.NONE
+    TECH.SCIENCE_TWO, --- TECH.二本科技
     {
         -- nounlock=true,
         no_deconstruction=true,
@@ -262,7 +262,7 @@ AddRecipeToFilter("fwd_in_pdt_container_mahogany_table","STRUCTURES")     ---- �
 AddRecipe2(
     "fwd_in_pdt_container_mahogany_table",            --  --  inst.prefab  实体名字
     { Ingredient("bluegem", 1), Ingredient("boards", 2), Ingredient("rope", 5) },
-    TECH.SCIENCE_TWO, --- TECH.NONE
+    TECH.SCIENCE_TWO, --- TECH.二本科技
     {
         -- nounlock=true,
         no_deconstruction=true,
