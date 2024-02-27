@@ -229,11 +229,12 @@ local function fn()
     -- inst:AddTag("chest")
     inst:AddTag("fwd_in_pdt_container_mahogany_table")
 
-    inst:AddTag("fridge")---等同于冰箱的保鲜
+    -- inst:AddTag("fridge")---等同于冰箱的保鲜，好像跟能给暖石降温必须要这个
 
     -- if Theworld.ismastersim then
-    --     inst:AddComponent("preserver")          --- 保鲜组件
-    --     inst.components.preserver.prerish_rate_multiplier = -1.1    ---负数就反鲜了
+        -- inst:AddComponent("preserver")          --- 保鲜组件
+        -- -- inst.components.preserver.prerish_rate_multiplier = -1    ---负数就反鲜了,直接用会导致问题
+        -- -- inst.components.perishable:SetPercent(1.0)--腐烂速率
     -- end
 
     inst.entity:SetPristine()
@@ -244,9 +245,6 @@ local function fn()
     if not TheWorld.ismastersim then
         return inst
     end
-
-    -- -- inst:AddComponent("preserver")          --- 保鲜组件
-    -- inst.components.preserver.prerish_rate_multiplier = -1.1    ---负数就反鲜了
     -----------------------------------------------------------------------------------
     ---- 可检查组件
         inst:AddComponent("inspectable") --
@@ -259,6 +257,7 @@ local function fn()
         end
 
     -----------------------------------------------------------------------------------
+    -- 保鲜的写法
     inst:ListenForEvent("itemget",function(_,_table)
         inst.SoundEmitter:PlaySound("dontstarve/common/icebox_open")
 

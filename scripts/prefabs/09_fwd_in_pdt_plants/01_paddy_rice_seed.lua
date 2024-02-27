@@ -14,6 +14,10 @@ local assets =
         if TheWorld.state.iswinter or TheWorld:HasTag("cave") then
             return false
         end
+    local plant = TheSim:FindEntities(x,y,z,.75,{"fwd_in_pdt_plant_paddy_rice"},nil,nil)
+        if plant and #plant > 0 then
+                return false
+        end
 
         if  TheSim:CountEntities(x, y, z, 5.5, {"fwd_in_pdt_building_paddy_windmill"}) == 1 
             and 0 == TheSim:CountEntities(x, y, z, 1.5, {"fwd_in_pdt_building_paddy_windmill"}) 
