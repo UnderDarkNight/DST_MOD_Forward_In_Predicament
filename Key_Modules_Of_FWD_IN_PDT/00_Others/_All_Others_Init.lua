@@ -19,3 +19,5 @@ modimport("Key_Modules_Of_FWD_IN_PDT/00_Others/06_pick_sound_customization.lua")
 
 modimport("Key_Modules_Of_FWD_IN_PDT/00_Others/07_equipment_type.lua")    --- 自动获取装备类型
 
+modimport("Key_Modules_Of_FWD_IN_PDT/00_Others/08_replica_event.lua")    --- replica 完成注册发送事件
+
