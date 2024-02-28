@@ -440,50 +440,97 @@ local flg,error_code = pcall(function()
             --     end
             -- end
     ----------------------------------------------------------------------------------------------------------------
-        local cooking = require("cooking")
+        -- local cooking = require("cooking")
 
-        -- TUNING.temp_test_fn = function(inst)
-        --             -- local recipe = cooking.GetRecipe(inst.prefab, product)
-        --     -- local food_base_prefab = item_inst.nameoverride or item_inst.prefab
-        --     -- print(food_base_prefab)
-        --     -- local crash_flag,ret = pcall(function()
-        --     --     local recipe = cooking.GetRecipe("portablecookpot", food_base_prefab)   --- 获取大厨锅 的配方
-        --     --     print("recipe",recipe)
-        --     --     if recipe then
-        --     --         return true
-        --     --     end
-        --     --     return false
-        --     -- end)
+        -- -- TUNING.temp_test_fn = function(inst)
+        -- --             -- local recipe = cooking.GetRecipe(inst.prefab, product)
+        -- --     -- local food_base_prefab = item_inst.nameoverride or item_inst.prefab
+        -- --     -- print(food_base_prefab)
+        -- --     -- local crash_flag,ret = pcall(function()
+        -- --     --     local recipe = cooking.GetRecipe("portablecookpot", food_base_prefab)   --- 获取大厨锅 的配方
+        -- --     --     print("recipe",recipe)
+        -- --     --     if recipe then
+        -- --     --         return true
+        -- --     --     end
+        -- --     --     return false
+        -- --     -- end)
             
-        --     -- if crash_flag then
-        --     --     return ret
-        --     -- else
-        --     --     print("error")
-        --     --     print(ret)
-        --     --     return false
-        --     -- end
-        --     ---------------------------------------------------------------------------------------------------
-        --     local crash_flag,crash_reason = pcall(function()
+        -- --     -- if crash_flag then
+        -- --     --     return ret
+        -- --     -- else
+        -- --     --     print("error")
+        -- --     --     print(ret)
+        -- --     --     return false
+        -- --     -- end
+        -- --     ---------------------------------------------------------------------------------------------------
+        -- --     local crash_flag,crash_reason = pcall(function()
                 
-        --         print("++++++++++++666666666666")
+        -- --         print("++++++++++++666666666666")
 
                             
                         
 
-        --     end)
-        --     if crash_flag == false then
-        --         print("Error")
-        --         print(crash_reason)
-        --     end
-        --     ---------------------------------------------------------------------------------------------------
+        -- --     end)
+        -- --     if crash_flag == false then
+        -- --         print("Error")
+        -- --         print(crash_reason)
+        -- --     end
+        -- --     ---------------------------------------------------------------------------------------------------
 
 
-        -- end
+        -- -- end
 
-        local table_inst = TheSim:FindFirstEntityWithTag("fwd_in_pdt_container_mahogany_table")
-        -- table_inst.AnimState:Hide("TEMP_SLOT1")
-        -- table_inst.AnimState:Show("TEMP_SLOT4")
-        table_inst.AnimState:Hide("TEMP_SLOT4")
+        -- local table_inst = TheSim:FindFirstEntityWithTag("fwd_in_pdt_container_mahogany_table")
+        -- -- table_inst.AnimState:Hide("TEMP_SLOT1")
+        -- -- table_inst.AnimState:Show("TEMP_SLOT4")
+        -- table_inst.AnimState:Hide("TEMP_SLOT4")
+    ----------------------------------------------------------------------------------------------------------------
+    --- 望远镜
+        -- ThePlayer.HUD.controls:ToggleMap()
+        -- local doer = ThePlayer
+        -- local numerodeitens = 450
+        -- -- if inst:HasTag("supertelescope") then
+        -- --     numerodeitens = 450
+        -- -- else
+        -- --     numerodeitens = 200
+        -- -- end
+        -- local dist = 1
+
+        -- local range_fix = 0
+
+        -- repeat
+        --     local angle = doer:GetRotation()
+        --     dist = dist + 1
+        --     local offset = Vector3(dist * math.cos(angle*DEGREES), 0, -dist*math.sin(angle*DEGREES))
+        --     local pt = Vector3(x,y,z)
+        --     local chestpos = pt + offset
+        --     local x, y, z = chestpos:Get()
+
+        --     -------------------coloca os itens------------------------
+        --     TheWorld.minimap.MiniMap:ShowArea(x, y, z, 30+range_fix)
+        --     doer.player_classified.MapExplorer:RevealArea(x, 0, z)
+        --     numerodeitens = numerodeitens - 1
+        --     -- range_fix = range_fix + 0.1
+        --     -----------------------------------------------------------
+        -- until
+        --     numerodeitens <= 0
+    
+    
+    ----------------------------------------------------------------------------------------------------------------
+    -- 地图
+
+
+        -- ThePlayer.HUD.controls:ToggleMap() -- 显示/隐藏地图
+
+        ThePlayer:DoTaskInTime(1,function()            
+        
+            -- ThePlayer.HUD.controls:ToggleMap()
+            ThePlayer:PushEvent("fwd_in_pdt_event.ToggleMap")
+        end)
+
+    ----------------------------------------------------------------------------------------------------------------
+        -- ThePlayer.AnimState:PlayAnimation("telescope")
+        -- ThePlayer.AnimState:PushAnimation("telescope_pst")
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)

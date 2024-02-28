@@ -73,6 +73,7 @@ local files_name = {
 		"fwd_in_pdt_equipment_balloon_bobble_loong_green",		--- 泡泡龙气球（皮肤）
 		"fwd_in_pdt_equipment_magic_spatula",					--- 魔法锅铲
 		"fwd_in_pdt_equipment_shield_of_light",					--- 光之护盾
+		"fwd_in_pdt_equipment_telescope",						--- 望远镜
 	---------------------------------------------------------------------------------------
 	-- 04_fwd_in_pdt_foods
 		"fwd_in_pdt_food_raw_milk",								--- 生牛奶

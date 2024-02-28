@@ -83,6 +83,9 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             ["fwd_in_pdt_com_weapon"] = { 
                 ["DEFAULT"] = "执行",
             },
+            ["fwd_in_pdt_com_telescope"] = { 
+                ["DEFAULT"] = "观察",
+            },
         --------------------------------------------------------------------
         ---- 00_fwd_in_pdt_others
         --------------------------------------------------------------------
@@ -360,6 +363,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "虚空钓竿",
                 ["inspect_str"] = "能从虚空中钓出某些东西",
                 ["recipe_desc"] = "能从虚空中钓出某些东西",
+            },
+            ["fwd_in_pdt_equipment_telescope"] = {
+                ["name"] = "望远镜",
+                ["inspect_str"] = "能观察远处的地方",
+                ["recipe_desc"] = "能观察远处的地方",
             },
         --------------------------------------------------------------------
         ---- 04_fwd_in_pdt_foods

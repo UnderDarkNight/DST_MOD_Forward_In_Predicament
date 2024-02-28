@@ -128,3 +128,21 @@
     )
     RemoveRecipeFromFilter("fwd_in_pdt_void_fishingrod","MODS")                       -- -- 在【模组物品】标签里移除这个。
 
+--------------------------------------------------------------------------------------------------------------------------------------------
+---- 望远镜
+--------------------------------------------------------------------------------------------------------------------------------------------
+    AddRecipeToFilter("fwd_in_pdt_equipment_telescope","TOOLS")     ---- 添加物品到目标标签
+    AddRecipe2(
+        "fwd_in_pdt_equipment_telescope",            --  --  inst.prefab  实体名字
+        { Ingredient("fwd_in_pdt_material_tree_resin", 4),Ingredient("livinglog", 4),Ingredient("moonglass", 1) }, 
+        TECH.SCIENCE_ONE, --- THCH.二本科技
+        {
+            no_deconstruction=true,
+            atlas = "images/inventoryimages/fwd_in_pdt_equipment_telescope.xml",
+            -- atlas = GetInventoryItemAtlas("fishingrod.tex"),
+            image = "fwd_in_pdt_equipment_telescope.tex",
+        },
+        {"TOOLS","FWD_IN_PDT"}
+    )
+    RemoveRecipeFromFilter("fwd_in_pdt_equipment_telescope","MODS")                       -- -- 在【模组物品】标签里移除这个。
+

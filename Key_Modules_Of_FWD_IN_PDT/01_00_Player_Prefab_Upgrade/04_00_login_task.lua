@@ -31,6 +31,7 @@ AddPlayerPostInit(function(inst)
                                         {"fwd_in_pdt_food_gifts_of_nature",1},
                                         {"fwd_in_pdt_item_transport_stone",1},
                                         {"fwd_in_pdt_item_orthopedic_water",1},
+                                        {"fwd_in_pdt_equipment_telescope",1},   --- 望远镜
                                 },
                                 name = GetStringsTable("fwd_in_pdt_gift_pack")["name.opening_gift_box"],
                                 inspect_str = GetStringsTable("fwd_in_pdt_gift_pack")["inspect_str"],

@@ -74,6 +74,9 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             ["fwd_in_pdt_com_weapon"] = { 
                 ["DEFAULT"] = "Do",
             },
+            ["fwd_in_pdt_com_telescope"] = { 
+                ["DEFAULT"] = "Observe",
+            },
         --------------------------------------------------------------------
         ---- 00_fwd_in_pdt_others
         --------------------------------------------------------------------
@@ -353,6 +356,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "Void Fishingrod",
                 ["inspect_str"] = "You can fish something out of the void.",
                 ["recipe_desc"] = "You can fish something out of the void.",
+            },
+            ["fwd_in_pdt_equipment_telescope"] = {
+                ["name"] = "Telescope",
+                ["inspect_str"] = "Able to observe distant places",
+                ["recipe_desc"] = "Able to observe distant places",
             },
         --------------------------------------------------------------------
         ---- 04_fwd_in_pdt_foods

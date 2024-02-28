@@ -43,6 +43,8 @@ modimport("Key_Modules_Of_FWD_IN_PDT/05_Actions/19_special_packer.lua")         
 
 modimport("Key_Modules_Of_FWD_IN_PDT/05_Actions/20_special_fishing.lua")             --- 特殊钓鱼动作
 
+modimport("Key_Modules_Of_FWD_IN_PDT/05_Actions/22_telescope.lua")             --- 特殊望远镜动作
+
 
 
 

@@ -59,6 +59,8 @@ local prefabs_name_list = {
     "20_shield_of_light",                --- 光之护盾
     "21_void_fishing_rod",                --- 虚空鱼竿
 
+    "22_telescope",                --- 望远镜
+
     
 }
 

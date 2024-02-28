@@ -40,6 +40,9 @@ modimport("Key_Modules_Of_FWD_IN_PDT/01_00_Player_Prefab_Upgrade/09_careful_walk
 modimport("Key_Modules_Of_FWD_IN_PDT/01_00_Player_Prefab_Upgrade/10_fracture_event.lua")   
  --- 骨折
 
+modimport("Key_Modules_Of_FWD_IN_PDT/01_00_Player_Prefab_Upgrade/11_map_controller.lua")   
+ --- 地图打开/关闭控制
+
 
 
 
