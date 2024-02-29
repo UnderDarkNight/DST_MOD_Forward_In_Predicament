@@ -485,52 +485,50 @@ local flg,error_code = pcall(function()
         -- -- table_inst.AnimState:Show("TEMP_SLOT4")
         -- table_inst.AnimState:Hide("TEMP_SLOT4")
     ----------------------------------------------------------------------------------------------------------------
-    --- 望远镜
-        -- ThePlayer.HUD.controls:ToggleMap()
-        -- local doer = ThePlayer
-        -- local numerodeitens = 450
-        -- -- if inst:HasTag("supertelescope") then
-        -- --     numerodeitens = 450
-        -- -- else
-        -- --     numerodeitens = 200
-        -- -- end
-        -- local dist = 1
-
-        -- local range_fix = 0
-
-        -- repeat
-        --     local angle = doer:GetRotation()
-        --     dist = dist + 1
-        --     local offset = Vector3(dist * math.cos(angle*DEGREES), 0, -dist*math.sin(angle*DEGREES))
-        --     local pt = Vector3(x,y,z)
-        --     local chestpos = pt + offset
-        --     local x, y, z = chestpos:Get()
-
-        --     -------------------coloca os itens------------------------
-        --     TheWorld.minimap.MiniMap:ShowArea(x, y, z, 30+range_fix)
-        --     doer.player_classified.MapExplorer:RevealArea(x, 0, z)
-        --     numerodeitens = numerodeitens - 1
-        --     -- range_fix = range_fix + 0.1
-        --     -----------------------------------------------------------
-        -- until
-        --     numerodeitens <= 0
-    
-    
-    ----------------------------------------------------------------------------------------------------------------
     -- 地图
-
-
         -- ThePlayer.HUD.controls:ToggleMap() -- 显示/隐藏地图
-
-        ThePlayer:DoTaskInTime(1,function()            
+        -- ThePlayer:DoTaskInTime(1,function()            
         
-            -- ThePlayer.HUD.controls:ToggleMap()
-            ThePlayer:PushEvent("fwd_in_pdt_event.ToggleMap")
-        end)
-
+        --     -- ThePlayer.HUD.controls:ToggleMap()
+        --     ThePlayer:PushEvent("fwd_in_pdt_event.ToggleMap")
+        -- end)
     ----------------------------------------------------------------------------------------------------------------
         -- ThePlayer.AnimState:PlayAnimation("telescope")
         -- ThePlayer.AnimState:PushAnimation("telescope_pst")
+    ----------------------------------------------------------------------------------------------------------------
+    ----
+            -- local range = 15
+            -- local ents = TheSim:FindEntities(x, y, z, range, {"structure"}, {"burnt"}, nil)
+            -- local ents_house = {}
+            -- for k, temp in pairs(ents) do
+            --     if temp and temp.prefab == "pighouse" then
+            --         table.insert(ents_house,temp)
+            --     end
+            -- end
+            -- for k, pighouse in pairs(ents_house) do
+            --     pighouse.SoundEmitter:PlaySound("dontstarve/common/pighouse_door")
+            --     local temp_pt = Vector3(pighouse.Transform:GetWorldPosition())
+            --     local pigman = SpawnPrefab("pigman")
+            --     pigman.Transform:SetPosition(temp_pt.x, 0, temp_pt.z)
+            --     -- if pigman.components.hauntable then
+            --     --     pigman.components.hauntable:Panic(30)
+            --     -- end
+            -- end
+
+            -- local pigmen = TheSim:FindEntities(x, y, z, range, {"pig"}, {"werepig"}, nil)
+            -- for k, pigman in pairs(pigmen) do
+            --     if pigman.components.hauntable then
+            --         pigman.components.hauntable:Panic(30)
+            --     end
+            -- end
+
+                -- local pigmen = TheSim:FindEntities(x, y, z, 15, {"pig"}, {"werepig"}, nil)
+                -- for k, pigman in pairs(pigmen) do
+                --     if pigman.components.werebeast then
+                --         pigman.components.werebeast:SetWere(300)
+                --     end
+                -- end
+
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)

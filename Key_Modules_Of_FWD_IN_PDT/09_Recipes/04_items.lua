@@ -146,3 +146,41 @@
     )
     RemoveRecipeFromFilter("fwd_in_pdt_equipment_telescope","MODS")                       -- -- 在【模组物品】标签里移除这个。
 
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+---- 猪人笛子
+--------------------------------------------------------------------------------------------------------------------------------------------
+    AddRecipeToFilter("fwd_in_pdt_item_pig_flute","TOOLS")     ---- 添加物品到目标标签
+    AddRecipe2(
+        "fwd_in_pdt_item_pig_flute",            --  --  inst.prefab  实体名字
+        { Ingredient("pigskin", 4),Ingredient("livinglog", 4) }, 
+        TECH.SCIENCE_ONE, --- THCH.二本科技
+        {
+            no_deconstruction=true,
+            atlas = "images/inventoryimages/fwd_in_pdt_item_pig_flute.xml",
+            -- atlas = GetInventoryItemAtlas("fishingrod.tex"),
+            image = "fwd_in_pdt_item_pig_flute.tex",
+        },
+        {"TOOLS","FWD_IN_PDT"}
+    )
+    RemoveRecipeFromFilter("fwd_in_pdt_item_pig_flute","MODS")                       -- -- 在【模组物品】标签里移除这个。
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+---- 疯猪笛子
+--------------------------------------------------------------------------------------------------------------------------------------------
+    AddRecipeToFilter("fwd_in_pdt_item_werepig_flute","TOOLS")     ---- 添加物品到目标标签
+    AddRecipe2(
+        "fwd_in_pdt_item_werepig_flute",            --  --  inst.prefab  实体名字
+        { Ingredient("fwd_in_pdt_item_cursed_pig_skin", 2),Ingredient("livinglog", 4) }, 
+        TECH.SCIENCE_ONE, --- THCH.二本科技
+        {
+            no_deconstruction=true,
+            atlas = "images/inventoryimages/fwd_in_pdt_item_werepig_flute.xml",
+            -- atlas = GetInventoryItemAtlas("fishingrod.tex"),
+            image = "fwd_in_pdt_item_werepig_flute.tex",
+        },
+        {"TOOLS","FWD_IN_PDT"}
+    )
+    RemoveRecipeFromFilter("fwd_in_pdt_item_werepig_flute","MODS")                       -- -- 在【模组物品】标签里移除这个。
+

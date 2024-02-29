@@ -62,6 +62,7 @@
         EntityScript.ReplicateComponent = function(self,name)
             self.ReplicateComponent_fwd_in_pdt_old_fn(self,name)
             self:PushEvent("fwd_in_pdt_event.OnEntityReplicated",name)
+            self:PushEvent("fwd_in_pdt_event.OnEntityReplicated."..tostring(name))
             -- self:DoTaskInTime(0,function()
             --     print("info fwd_in_pdt_event.OnEntityReplicated",self,name)
             -- end)

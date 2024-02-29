@@ -51,6 +51,9 @@ local prefabs_name_list = {
     "22_talisman_that_repels_snakes",          -- 避蛇护符
     "23_special_packer",                 -- 特殊包装纸
     "24_orthopedic_water",               -- 正骨水
+
+    "25_pig_flute",                   -- 猪猪笛子
+    "26_werepig_flute",               -- 疯猪笛子
 }
 
 

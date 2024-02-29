@@ -220,6 +220,16 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "用来治疗骨折",
                 ["recipe_desc"] = "用来治疗骨折",
             },
+            ["fwd_in_pdt_item_pig_flute"] = {
+                ["name"] = "猪猪笛子",
+                ["inspect_str"] = "让猪人受不了而逃离房子",
+                ["recipe_desc"] = "让猪人受不了而逃离房子",
+            },
+            ["fwd_in_pdt_item_werepig_flute"] = {
+                ["name"] = "疯猪笛子",
+                ["inspect_str"] = "让猪人受不了而发疯",
+                ["recipe_desc"] = "让猪人受不了而发疯",
+            },
         --------------------------------------------------------------------
         ---- 02_fwd_in_pdt_materials
             ["fwd_in_pdt_material_tree_resin"] = {

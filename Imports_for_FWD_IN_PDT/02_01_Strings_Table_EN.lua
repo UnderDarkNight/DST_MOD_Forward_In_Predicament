@@ -216,6 +216,16 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "Used to treat fractures",
                 ["recipe_desc"] = "Used to treat fractures",
             },
+            ["fwd_in_pdt_item_pig_flute"] = {
+                ["name"] = "Pig Flute",
+                ["inspect_str"] = "It's too much for the pigman to bear and they run away from the house.",
+                ["recipe_desc"] = "It's too much for the pigman to bear and they run away from the house.",
+            },
+            ["fwd_in_pdt_item_werepig_flute"] = {
+                ["name"] = "Werepig Flute",
+                ["inspect_str"] = "It's too much for the pig man to handle and he goes crazy.",
+                ["recipe_desc"] = "It's too much for the pig man to handle and he goes crazy.",
+            },
         --------------------------------------------------------------------
         ---- 02_fwd_in_pdt_materials
             ["fwd_in_pdt_material_tree_resin"] = {

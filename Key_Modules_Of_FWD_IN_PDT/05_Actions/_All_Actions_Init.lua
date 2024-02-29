@@ -45,6 +45,8 @@ modimport("Key_Modules_Of_FWD_IN_PDT/05_Actions/20_special_fishing.lua")        
 
 modimport("Key_Modules_Of_FWD_IN_PDT/05_Actions/22_telescope.lua")             --- 特殊望远镜动作
 
+modimport("Key_Modules_Of_FWD_IN_PDT/05_Actions/23_play_flute.lua")             --- 特殊笛子动作
+
 
 
 
