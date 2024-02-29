@@ -40,13 +40,14 @@ local function fn()
     --------------------------------------------------------------------------
     ---- 吹笛
         inst:ListenForEvent("fwd_in_pdt_event.OnEntityReplicated.fwd_in_pdt_com_play_flute",function()
-            inst.replica.fwd_in_pdt_com_play_flute:SetBuild("fwd_in_pdt_item_werepig_flute")
-            -- inst.replica.fwd_in_pdt_com_play_flute:SetLayer()
-            inst.replica.fwd_in_pdt_com_play_flute:SetSound("dontstarve/creatures/werepig/howl")
-            inst.replica.fwd_in_pdt_com_play_flute:SetTestFn(function(inst,doer)
+            local replica_com = inst.replica.fwd_in_pdt_com_play_flute or inst.replica._.fwd_in_pdt_com_play_flute
+            replica_com:SetBuild("fwd_in_pdt_item_werepig_flute")
+            -- replica_com:SetLayer()
+            replica_com:SetSound("dontstarve/creatures/werepig/howl")
+            replica_com:SetTestFn(function(inst,doer)
                 return true
             end)
-            inst.replica.fwd_in_pdt_com_play_flute:SetPreActionFn(function(inst,doer)
+            replica_com:SetPreActionFn(function(inst,doer)
                 -- print("info +++ play flute +++",doer)
             end)
 
