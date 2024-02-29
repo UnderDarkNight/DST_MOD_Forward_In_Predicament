@@ -45,7 +45,7 @@ local function fn()
             -- replica_com:SetLayer()
             -- replica_com:SetSound("dontstarve/creatures/werepig/howl")
             replica_com:SetTestFn(function(inst,doer)
-                return true
+                return inst.replica.inventoryitem:IsGrandOwner(doer) -- 在玩家身上才能使用
             end)
             replica_com:SetPreActionFn(function(inst,doer)
                 -- print("info +++ play flute +++",doer)
