@@ -74,7 +74,7 @@ local function fn()
                 local pigmen = TheSim:FindEntities(x, y, z, range, {"pig"}, {"werepig"}, nil)
                 for k, pigman in pairs(pigmen) do
                     if pigman.components.hauntable then
-                        pigman.components.hauntable:Panic(30)
+                        pigman.components.hauntable:Panic(300)
                     end
                 end
             ------- 消耗耐久度

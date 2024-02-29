@@ -42,7 +42,7 @@ local function fn()
         inst:ListenForEvent("fwd_in_pdt_event.OnEntityReplicated.fwd_in_pdt_com_play_flute",function()
             inst.replica.fwd_in_pdt_com_play_flute:SetBuild("fwd_in_pdt_item_werepig_flute")
             -- inst.replica.fwd_in_pdt_com_play_flute:SetLayer()
-            -- inst.replica.fwd_in_pdt_com_play_flute:SetSound()
+            inst.replica.fwd_in_pdt_com_play_flute:SetSound("dontstarve/creatures/werepig/howl")
             inst.replica.fwd_in_pdt_com_play_flute:SetTestFn(function(inst,doer)
                 return true
             end)
@@ -72,6 +72,12 @@ local function fn()
                     elseif pigman.components.werebeast then
                         pigman.components.werebeast:SetWere(300)
                         combat_task(pigman)
+                    end
+
+                    if pigman.components.hauntable then
+                        -- pigman.components.hauntable:Panic(30)
+                        pigman.components.hauntable.panictimer = 0
+                        pigman.components.hauntable.cooldowntimer = 0
                     end
                 end
             ------- 消耗耐久度

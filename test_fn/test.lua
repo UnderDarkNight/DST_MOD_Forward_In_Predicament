@@ -528,7 +528,10 @@ local flg,error_code = pcall(function()
                 --         pigman.components.werebeast:SetWere(300)
                 --     end
                 -- end
-
+                local sound = "dontstarve/creatures/werepig/howl"
+                -- local sound = "dontstarve/creatures/werepig/grunt"
+                -- local sound = "dontstarve/creatures/werepig/transformToWere"
+                ThePlayer.SoundEmitter:PlaySound(sound)
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)
