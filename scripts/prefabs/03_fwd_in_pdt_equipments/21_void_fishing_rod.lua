@@ -6,22 +6,48 @@
 ]]--
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
--- local assets =
--- {
---     Asset("ANIM", "anim/fwd_in_pdt_equipment_shield_of_light.zip"),
---     Asset( "IMAGE", "images/inventoryimages/fwd_in_pdt_equipment_shield_of_light.tex" ),  -- 背包贴图
---     Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_equipment_shield_of_light.xml" ),
--- }
 local assets =
 {
-    Asset("ANIM", "anim/fishingrod.zip"),
-    Asset("ANIM", "anim/swap_fishingrod.zip"),
+    Asset("ANIM", "anim/fwd_in_pdt_void_fishingrod.zip"),
+    Asset( "IMAGE", "images/inventoryimages/fwd_in_pdt_void_fishingrod.tex" ),  -- 背包贴图
+    Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_void_fishingrod.xml" ),
+
+    Asset("ANIM", "anim/fwd_in_pdt_void_fishingrod_flower.zip"),
+    Asset( "IMAGE", "images/inventoryimages/fwd_in_pdt_void_fishingrod_flower.tex" ),  -- 背包贴图
+    Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_void_fishingrod_flower.xml" ),
 }
 
+-------------------------------------------------------------------------------------------------------------------------------
+---- 皮肤API 套件
+    ---- 物品用的skin数据
+    local skins_data_item = {
+        ["fwd_in_pdt_void_fishingrod_flower"] = {             --- 皮肤名字，全局唯一。
+            bank = "fwd_in_pdt_void_fishingrod_flower",                               --- 制作完成后切换的 bank
+            build = "fwd_in_pdt_void_fishingrod_flower",                              --- 制作完成后切换的 build
+            atlas = "images/inventoryimages/fwd_in_pdt_void_fishingrod_flower.xml",                                        --- 【制作栏】皮肤显示的贴图，
+            image = "fwd_in_pdt_void_fishingrod_flower",                              --- 【制作栏】皮肤显示的贴图， 不需要 .tex
+            name = "flower",                                                                         --- 【制作栏】皮肤的名字
+            name_color = {0/255,255/255,0/255,255/255},
+            onequip_bank = "fwd_in_pdt_void_fishingrod_flower"
+        },
+    }
+
+    FWD_IN_PDT_MOD_SKIN.SKIN_INIT(skins_data_item,"fwd_in_pdt_void_fishingrod")     --- 往总表注册所有皮肤
+
+    local function Set_ReSkin_API_Default_Animate(inst,bank,build,minimap)      -- 在 inst.AnimState:PlayAnimation() 前启用本函数
+        FWD_IN_PDT_MOD_SKIN.Set_ReSkin_API_Default_Animate(inst,bank,build,minimap)
+    end
+          
+-------------------------------------------------------------------------------------------------------------------------------
+
+
 local function onequip (inst, owner)
-    owner.AnimState:OverrideSymbol("swap_object", "swap_fishingrod", "swap_fishingrod")
-    owner.AnimState:OverrideSymbol("fishingline", "swap_fishingrod", "fishingline")
-    owner.AnimState:OverrideSymbol("FX_fishing", "swap_fishingrod", "FX_fishing")
+    local skinname = tostring(inst.skinname)
+    local bank = skins_data_item[skinname] and skins_data_item[skinname].onequip_bank
+
+    owner.AnimState:OverrideSymbol("swap_object", bank or "fwd_in_pdt_void_fishingrod", "swap_fishingrod")
+    owner.AnimState:OverrideSymbol("fishingline", bank or "fwd_in_pdt_void_fishingrod", "fishingline")
+    owner.AnimState:OverrideSymbol("FX_fishing", bank or "fwd_in_pdt_void_fishingrod", "FX_fishing")
     owner.AnimState:Show("ARM_carry")
     owner.AnimState:Hide("ARM_normal")
 end
@@ -29,6 +55,7 @@ end
 local function onunequip(inst, owner)
     owner.AnimState:Hide("ARM_carry")
     owner.AnimState:Show("ARM_normal")
+    owner.AnimState:ClearOverrideSymbol("swap_object")
     owner.AnimState:ClearOverrideSymbol("fishingline")
     owner.AnimState:ClearOverrideSymbol("FX_fishing")
 end
@@ -49,8 +76,8 @@ local function fn()
 
     MakeInventoryPhysics(inst)
 
-    inst.AnimState:SetBank("fishingrod")
-    inst.AnimState:SetBuild("fishingrod")
+    inst.AnimState:SetBank("fwd_in_pdt_void_fishingrod")
+    inst.AnimState:SetBuild("fwd_in_pdt_void_fishingrod")
     inst.AnimState:PlayAnimation("idle")
 
     --fishingrod (from fishingrod component) added to pristine state for optimization
@@ -67,6 +94,14 @@ local function fn()
     -- inst.scrapbook_subcat = "tool"
 
     inst.entity:SetPristine()
+    ------------------------------------------------------------------------------
+    ---- Skin API Register
+        Set_ReSkin_API_Default_Animate(inst,"fwd_in_pdt_void_fishingrod","fwd_in_pdt_void_fishingrod")
+        if TheWorld.ismastersim then
+            inst:AddComponent("fwd_in_pdt_func"):Init("skin")
+            inst:AddComponent("inventoryitem")
+            inst.components.inventoryitem:fwd_in_pdt_icon_init("fwd_in_pdt_void_fishingrod","images/inventoryimages/fwd_in_pdt_void_fishingrod.xml")
+        end
     ------------------------------------------------------------------------------
         inst:AddComponent("fwd_in_pdt_com_special_fishingrod")
         inst.components.fwd_in_pdt_com_special_fishingrod:Add_Point_Check_Fn(function(inst,doer,pt)
@@ -88,13 +123,8 @@ local function fn()
             -- doer:GetDistanceSqToPoint(pt.x,pt.y,pt.z) <= 100
             -------------- 配置垂钓时间
                 local time = 5
-                local percentage = math.random(1000)/1000
-                if percentage < 0.1 then
-                    time = math.random(30,50)
-                elseif percentage < 0.2 then
-                    time = math.random(20,30)
-                else
-                    time = math.random(5,20)
+                if TheWorld.fwd_in_pdt_events and TheWorld.fwd_in_pdt_events.get_fishing_time then
+                    time = TheWorld.fwd_in_pdt_events.get_fishing_time()
                 end
                 inst.components.fwd_in_pdt_com_special_fishingrod:Set_Fishing_Time(time)
                 if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
@@ -215,10 +245,10 @@ local function fn()
 
     inst:AddComponent("inspectable")
 
-    inst:AddComponent("inventoryitem")
-    inst.components.inventoryitem:ChangeImageName("fishingrod")
-    -- inst.components.inventoryitem.imagename = "fwd_in_pdt_equipment_shield_of_light"
-    -- inst.components.inventoryitem.atlasname = "images/inventoryimages/fwd_in_pdt_equipment_shield_of_light.xml"
+    -- inst:AddComponent("inventoryitem")
+    -- -- inst.components.inventoryitem:ChangeImageName("fishingrod")
+    -- inst.components.inventoryitem.imagename = "fwd_in_pdt_void_fishingrod"
+    -- inst.components.inventoryitem.atlasname = "images/inventoryimages/fwd_in_pdt_void_fishingrod.xml"
 
     inst:AddComponent("equippable")
     inst.components.equippable:SetOnEquip(onequip)
@@ -230,7 +260,20 @@ local function fn()
     inst.components.finiteuses:SetOnFinished(inst.Remove)
 
     MakeHauntableLaunch(inst)
-
+    -------------------------------------------------------------------
+    --- 落水影子
+        local function shadow_init(inst)
+            if inst:IsOnOcean(false) then       --- 如果在海里（不包括船）
+                inst.AnimState:Hide("IDLE")
+                inst.AnimState:Show("WATER")
+            else                                
+                inst.AnimState:Show("IDLE")
+                inst.AnimState:Hide("WATER")
+            end
+        end
+        inst:ListenForEvent("on_landed",shadow_init)
+        shadow_init(inst)
+    -------------------------------------------------------------------
     return inst
 end
 

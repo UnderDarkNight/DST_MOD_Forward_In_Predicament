@@ -106,6 +106,10 @@ AddPlayerPostInit(function(inst)
                         ["fwd_in_pdt_equipment_vampire_sword"] = {
                             "fwd_in_pdt_equipment_vampire_sword_laser",
                         },
+                    ---- 虚空钓竿
+                        ["fwd_in_pdt_void_fishingrod"] = {
+                            "fwd_in_pdt_void_fishingrod_flower",
+                        },
                     ---- 特殊工作台
                         ["fwd_in_pdt_building_special_production_table"] = {
                             "fwd_in_pdt_building_special_production_table_punk",

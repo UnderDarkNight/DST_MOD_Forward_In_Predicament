@@ -43,7 +43,19 @@ AddPrefabPostInit(
         end
 
         inst.fwd_in_pdt_events = inst.fwd_in_pdt_events or {}
-        inst.fwd_in_pdt_events.void_fishing_hook = function(time)
+        inst.fwd_in_pdt_events.get_fishing_time = function()    ---- 钓鱼时间
+            local time = 5
+            local percentage = math.random(1000)/1000
+            if percentage < 0.1 then
+                time = math.random(30,50)
+            elseif percentage < 0.2 then
+                time = math.random(20,30)
+            else
+                time = math.random(5,20)
+            end
+            return time
+        end
+        inst.fwd_in_pdt_events.void_fishing_hook = function(time)   --- 根据时间进行概率计算
             -- 5-20    20-30   30-50
             if time <= 20 then
                             ----------------------------------------------------------

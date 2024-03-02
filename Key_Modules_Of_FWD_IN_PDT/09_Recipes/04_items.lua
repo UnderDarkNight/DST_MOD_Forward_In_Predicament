@@ -120,9 +120,9 @@
         TECH.SCIENCE_ONE, --- THCH.二本科技
         {
             no_deconstruction=true,
-            -- atlas = "images/inventoryimages/fwd_in_pdt_equipment_shield_of_light.xml",
-            atlas = GetInventoryItemAtlas("fishingrod.tex"),
-            image = "fishingrod.tex",
+            atlas = "images/inventoryimages/fwd_in_pdt_void_fishingrod.xml",
+            -- atlas = GetInventoryItemAtlas("fishingrod.tex"),
+            image = "fwd_in_pdt_void_fishingrod.tex",
         },
         {"MAGIC","FISHING","FWD_IN_PDT"}
     )
