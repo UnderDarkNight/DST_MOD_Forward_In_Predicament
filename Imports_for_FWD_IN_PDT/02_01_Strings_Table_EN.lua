@@ -658,6 +658,12 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str_burnt"] = "It burns wonderfully.",
                 ["recipe_desc"] = "For putting food on the table.",
             },
+            ["fwd_in_pdt_deep_freeze"] = {
+                ["name"] = "deep freeze",
+                ["inspect_str"] = "For putting food in it.",
+                ["inspect_str_burnt"] = "It burns wonderfully.",
+                ["recipe_desc"] = "For putting food on the table.",
+            },
         --------------------------------------------------------------------
         ---- 07_fwd_in_pdt_buildings
             ["fwd_in_pdt_building_mock_wall_grass"] = {

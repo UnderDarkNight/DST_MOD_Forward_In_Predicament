@@ -33,7 +33,7 @@
     AddRecipe2(
         "fwd_in_pdt_equipment_loong_balloon",            --  --  inst.prefab  实体名字
         { Ingredient("fwd_in_pdt_material_tree_resin", 2)}, 
-        TECH.SCIENCE_ONE, --- TECH.二本科技
+        TECH.SCIENCE_ONE, --- TECH.一本科技
         {
             no_deconstruction=true,     
             atlas = "images/inventoryimages/fwd_in_pdt_equipment_loong_balloon.xml",
@@ -50,7 +50,7 @@
     AddRecipe2(
         "fwd_in_pdt_equipment_balloon_evil_dragon",            --  --  inst.prefab  实体名字
         { Ingredient("fwd_in_pdt_material_tree_resin", 2)}, 
-        TECH.SCIENCE_ONE, --- TECH.二本科技
+        TECH.SCIENCE_ONE, --- TECH.一本科技
         {
             no_deconstruction=true,     
             atlas = "images/inventoryimages/fwd_in_pdt_equipment_balloon_evil_dragon.xml",
@@ -117,7 +117,7 @@
     AddRecipe2(
         "fwd_in_pdt_void_fishingrod",            --  --  inst.prefab  实体名字
         { Ingredient("spidereggsack", 4) }, 
-        TECH.SCIENCE_ONE, --- THCH.二本科技
+        TECH.SCIENCE_ONE, --- THCH.一本科技
         {
             no_deconstruction=true,
             atlas = "images/inventoryimages/fwd_in_pdt_void_fishingrod.xml",
@@ -134,8 +134,8 @@
     AddRecipeToFilter("fwd_in_pdt_equipment_telescope","TOOLS")     ---- 添加物品到目标标签
     AddRecipe2(
         "fwd_in_pdt_equipment_telescope",            --  --  inst.prefab  实体名字
-        { Ingredient("fwd_in_pdt_material_tree_resin", 4),Ingredient("livinglog", 4),Ingredient("moonglass", 1) }, 
-        TECH.SCIENCE_ONE, --- THCH.二本科技
+        { Ingredient("fwd_in_pdt_material_tree_resin", 8),Ingredient("livinglog", 2),Ingredient("moonglass", 1) }, 
+        TECH.SCIENCE_TWO, --- THCH.一本科技
         {
             no_deconstruction=true,
             atlas = "images/inventoryimages/fwd_in_pdt_equipment_telescope.xml",
@@ -154,7 +154,7 @@
     AddRecipe2(
         "fwd_in_pdt_item_pig_flute",            --  --  inst.prefab  实体名字
         { Ingredient("pigskin", 4),Ingredient("livinglog", 4) }, 
-        TECH.SCIENCE_ONE, --- THCH.二本科技
+        TECH.SCIENCE_ONE, --- THCH.一本科技
         {
             no_deconstruction=true,
             atlas = "images/inventoryimages/fwd_in_pdt_item_pig_flute.xml",
@@ -173,7 +173,7 @@
     AddRecipe2(
         "fwd_in_pdt_item_werepig_flute",            --  --  inst.prefab  实体名字
         { Ingredient("fwd_in_pdt_item_cursed_pig_skin", 2),Ingredient("livinglog", 4) }, 
-        TECH.SCIENCE_ONE, --- THCH.二本科技
+        TECH.SCIENCE_ONE, --- THCH.一本科技
         {
             no_deconstruction=true,
             atlas = "images/inventoryimages/fwd_in_pdt_item_werepig_flute.xml",
@@ -183,4 +183,56 @@
         {"TOOLS","FWD_IN_PDT"}
     )
     RemoveRecipeFromFilter("fwd_in_pdt_item_werepig_flute","MODS")                       -- -- 在【模组物品】标签里移除这个。
+--------------------------------------------------------------------------------------------------------------------------------------------
+---- 蛇皮地毯
+--------------------------------------------------------------------------------------------------------------------------------------------
+AddRecipeToFilter("turf_fwd_in_pdt_turf_snakeskin","TOOLS")     ---- 添加物品到目标标签
+AddRecipe2(
+    "turf_fwd_in_pdt_turf_snakeskin",            --  --  inst.prefab  实体名字
+    { Ingredient("fwd_in_pdt_material_snake_skin", 1),Ingredient("rope", 1) }, 
+    TECH.SCIENCE_TWO, --- THCH.二本科技
+    {
+        no_deconstruction=true,
+        atlas = "images/inventoryimages/fwd_in_pdt_turf_snakeskin.xml",
+        -- atlas = GetInventoryItemAtlas("fishingrod.tex"),
+        image = "fwd_in_pdt_turf_snakeskin.tex",
+    },
+    {"TOOLS","FWD_IN_PDT"}
+)
+RemoveRecipeFromFilter("turf_fwd_in_pdt_turf_snakeskin","MODS")                       -- -- 在【模组物品】标签里移除这个。
+--------------------------------------------------------------------------------------------------------------------------------------------
+---- 石砖地毯
+--------------------------------------------------------------------------------------------------------------------------------------------
+AddRecipeToFilter("turf_fwd_in_pdt_turf_cobbleroad","TOOLS")     ---- 添加物品到目标标签
+AddRecipe2(
+    "turf_fwd_in_pdt_turf_cobbleroad",            --  --  inst.prefab  实体名字
+    { Ingredient("cutstone", 2) }, 
+    TECH.SCIENCE_TWO, --- THCH.二本科技
+    {
+        no_deconstruction=true,
+        atlas = "images/inventoryimages/fwd_in_pdt_turf_cobbleroad.xml",
+        -- atlas = GetInventoryItemAtlas("fishingrod.tex"),
+        image = "fwd_in_pdt_turf_cobbleroad.tex",
+    },
+    {"TOOLS","FWD_IN_PDT"}
+)
+RemoveRecipeFromFilter("turf_fwd_in_pdt_turf_cobbleroad","MODS")                       -- -- 在【模组物品】标签里移除这个。
+--------------------------------------------------------------------------------------------------------------------------------------------
+---- 石砖地毯
+--------------------------------------------------------------------------------------------------------------------------------------------
+AddRecipeToFilter("turf_fwd_in_pdt_turf_grasslawn","TOOLS")     ---- 添加物品到目标标签
+AddRecipe2(
+    "turf_fwd_in_pdt_turf_grasslawn",            --  --  inst.prefab  实体名字
+    { Ingredient("rope", 2) }, 
+    TECH.SCIENCE_TWO, --- THCH.二本科技
+    {
+        no_deconstruction=true,
+        atlas = "images/inventoryimages/fwd_in_pdt_turf_grasslawn.xml",
+        -- atlas = GetInventoryItemAtlas("fishingrod.tex"),
+        image = "fwd_in_pdt_turf_grasslawn.tex",
+    },
+    {"TOOLS","FWD_IN_PDT"}
+)
+RemoveRecipeFromFilter("turf_fwd_in_pdt_turf_grasslawn","MODS")                       -- -- 在【模组物品】标签里移除这个。
+--------------------------------------------------------------------------------------------------------------------------------------------
 

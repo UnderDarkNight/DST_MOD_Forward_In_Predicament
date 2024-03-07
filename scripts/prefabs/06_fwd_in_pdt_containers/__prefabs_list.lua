@@ -37,7 +37,7 @@ local prefabs_name_list = {
     "07_drying_rack",                         --- 晾晒架
     "08_wallet",                              --- 钱包
     "09_mahogany_table",                      --- 红木桌
-
+    "10_deep_freeze",                         --- 冰柜
     
 }
 

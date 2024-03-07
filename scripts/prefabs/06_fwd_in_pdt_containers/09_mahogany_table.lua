@@ -259,7 +259,7 @@ local function fn()
     -----------------------------------------------------------------------------------
     -- 保鲜的写法
     inst:ListenForEvent("itemget",function(_,_table)
-        inst.SoundEmitter:PlaySound("dontstarve/common/icebox_open")
+        -- inst.SoundEmitter:PlaySound("dontstarve/common/icebox_open")
 
             if _table and _table.item then      ---- 停止腐烂计算
                 local tempItem = _table.item
@@ -270,7 +270,7 @@ local function fn()
 
     end)
     inst:ListenForEvent("itemlose",function(inst,_table)    
-        inst.SoundEmitter:PlaySound("dontstarve/common/icebox_close")
+        -- inst.SoundEmitter:PlaySound("dontstarve/common/icebox_close")
 
                 if _table and _table.prev_item then  --- 恢复腐烂计算
                     local tempItem = _table.prev_item
