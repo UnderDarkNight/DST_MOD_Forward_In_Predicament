@@ -163,7 +163,7 @@ local function onWatchWorldState(inst)
         refreshFoods(inst)
 end
 -------------------------------------------------------------------------------------
--- 被敲打拆除，掉出所有东西（不知道为什么幕夜大大给的不行，并且 用幕夜大大的 还会导致敲击结束不给掉落物）
+-- 被敲打拆除，掉出所有东西
 local function onhammered(inst, worker)
     inst.components.lootdropper:DropLoot()
     inst.components.container:DropEverything()
@@ -205,7 +205,10 @@ inst:AddComponent("inspectable")
     inst.components.workable:SetWorkAction(ACTIONS.HAMMER)
     inst.components.workable:SetWorkLeft(4)
     inst.components.workable:SetOnFinishCallback(onhammered)
-    inst.components.workable:SetOnWorkCallback(onhit) 
+    inst.components.workable:SetOnWorkCallback(onhit)
+    
+    inst:WatchWorldState( "isday", onWatchWorldState)
+    inst:WatchWorldState( "iscaveday", onWatchWorldState)
 -------------------------------------------------------------------------------------
     inst:ListenForEvent("onbuilt",function()
         inst.SoundEmitter:PlaySound("dontstarve/common/icebox_craft")

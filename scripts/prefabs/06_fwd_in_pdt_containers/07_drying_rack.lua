@@ -405,10 +405,12 @@ local function fn()
             })
             inst:Remove()
         end)
+        inst:AddComponent("lootdropper")---这个才能让官方的敲击实现掉落一半
         inst:AddComponent("workable")
         inst.components.workable:SetWorkAction(ACTIONS.HAMMER)
         inst.components.workable:SetWorkLeft(4)
         inst.components.workable:SetOnFinishCallback(function()
+            inst.components.lootdropper:DropLoot()----这个才能让官方的敲击实现掉落一半
             if inst.components.container then
                 inst.components.container:DropEverything()
             end

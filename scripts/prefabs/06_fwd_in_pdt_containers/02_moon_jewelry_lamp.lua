@@ -294,11 +294,13 @@ local function fn()
     
     -----------------------
     --- 被锤子拆解的组件
+        inst:AddComponent("lootdropper")---这个才能让官方的敲击实现掉落一半
         inst:AddComponent("workable")
         inst.components.workable:SetWorkAction(ACTIONS.HAMMER)
         inst.components.workable:SetWorkLeft(6)
-        -- inst.components.workable:SetOnWorkCallback(onworkfinished)   --- 每次敲击执行的代码，可以做敲击动画    
+        -- inst.components.workable:SetOnWorkCallback(onworkfinished)   --- 每次敲击执行的代码，可以做敲击动画
         inst.components.workable:SetOnFinishCallback(function()         --- 敲够次数后执行的代码
+            inst.components.lootdropper:DropLoot()----这个才能让官方的敲击实现掉落一半
             inst.components.container:DropEverything()
             SpawnPrefab('collapse_small').Transform:SetPosition(inst.Transform:GetWorldPosition())  --- 烟雾
             inst:Remove()

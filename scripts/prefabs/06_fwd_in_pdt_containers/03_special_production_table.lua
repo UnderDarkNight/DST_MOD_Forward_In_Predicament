@@ -346,16 +346,20 @@ local function fn()
     
     -------------------------------------------------------------------------------------
     ---- 被敲打拆除
+        inst:AddComponent("lootdropper")---这个才能让官方的敲击实现掉落一半
         inst:AddComponent("workable")
         inst.components.workable:SetWorkAction(ACTIONS.HAMMER)
         inst.components.workable:SetWorkLeft(5)
         -- inst.components.workable:SetOnWorkCallback(onhit)
         inst.components.workable:SetOnFinishCallback(function()
-            inst.components.container:DropEverything()
+            inst.components.lootdropper:DropLoot()----这个才能让官方的敲击实现掉落一半
+            if inst.components.container then
+                inst.components.container:DropEverything()
+            end
             SpawnPrefab("fwd_in_pdt_fx_collapse"):PushEvent("Set",{
                 pt = Vector3(inst.Transform:GetWorldPosition())
             })
-            inst:Remove()            
+            inst:Remove()
         end)
     -------------------------------------------------------------------------------------
     ---- 玩家建造后给一本说明书

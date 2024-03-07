@@ -21,7 +21,7 @@ local assets =
         ["fwd_in_pdt_building_fermenter_honey"] = {             --- 皮肤名字，全局唯一。
             bank = "fwd_in_pdt_building_fermenter_honey",                   --- 制作完成后切换的 bank
             build = "fwd_in_pdt_building_fermenter_honey",                  --- 制作完成后切换的 build
-            name = "Honey",                    --- 【制作栏】皮肤的名字
+            name = "蜜罐",                    --- 【制作栏】皮肤的名字
             name_color = {255/255,185/255,15/255,255/255},
             minimap = "fwd_in_pdt_building_fermenter_honey.tex",                --- 小地图图标
             atlas = "images/map_icons/fwd_in_pdt_building_fermenter_honey.xml",                                        --- 【制作栏】皮肤显示的贴图，
@@ -389,10 +389,12 @@ local function fn()
             })
             inst:Remove()
         end)
+        inst:AddComponent("lootdropper")
         inst:AddComponent("workable")
         inst.components.workable:SetWorkAction(ACTIONS.HAMMER)
         inst.components.workable:SetWorkLeft(4)
         inst.components.workable:SetOnFinishCallback(function()
+            inst.components.lootdropper:DropLoot()----这个才能让官方的敲击实现掉落一半
             if inst.components.container then
                 inst.components.container:DropEverything()
             end

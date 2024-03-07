@@ -15,7 +15,7 @@
         cook_pot                XXXX        没啥用。应该是基础
 ]]--
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
+--混沌锅--
 require "prefabutil"
 
 local cooking = require("cooking")
@@ -396,9 +396,9 @@ local function fn()
     ---- 拆除的时候掉落物品
         inst.components.lootdropper.GetRecipeLoot = function()
             if inst:HasTag("burnt") then
-                return {"charcoal","charcoal","rocks"}
+                return {"charcoal","charcoal","rocks","fwd_in_pdt_material_chaotic_eyeball"}
             else
-                return{"charcoal","charcoal","charcoal","cutstone","cutstone"}
+                return{"charcoal","charcoal","charcoal","cutstone","cutstone","fwd_in_pdt_material_chaotic_eyeball"}
             end
         end
     --------------------------------------------------------

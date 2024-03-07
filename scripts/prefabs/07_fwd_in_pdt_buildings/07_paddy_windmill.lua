@@ -100,40 +100,41 @@ local function fn()
                 paddy:Remove()
             end)
         end)
-    -------------------------------------------------------------------------------------
-    ---- 掉落列表
-        inst:AddComponent("lootdropper")
-        inst.components.lootdropper.GetRecipeLoot = function(self,...) 
-            local ret_loots = {"boards","rope"}
-            for i = 1, 3, 1 do
-                if math.random(100) < 30 then
-                    table.insert(ret_loots,"boards")
-                end
-                -- if math.random(100) < 30 then
-                --     table.insert(ret_loots,"cutstone")
-                -- end
-                if math.random(100) < 30 then
-                    table.insert(ret_loots,"rope")
-                end
-            end
-            -- if math.random(100) < 15 then
-            --     table.insert(ret_loots,"minifan")
-            -- end
-            -- if math.random(100) < 15 then
-            --     table.insert(ret_loots,"farm_plow_item")
-            -- end
-            return ret_loots
-        end
-    -------------------------------------------------------------------------------------
+    -- -------------------------------------------------------------------------------------
+    -- ---- 掉落列表
+    --     inst:AddComponent("lootdropper")
+    --     -- inst.components.lootdropper.GetRecipeLoot = function(self,...) 
+    --     --     local ret_loots = {"boards","rope"}
+    --     --     for i = 1, 3, 1 do
+    --     --         if math.random(100) < 30 then
+    --     --             table.insert(ret_loots,"boards")
+    --     --         end
+    --     --         -- if math.random(100) < 30 then
+    --     --         --     table.insert(ret_loots,"cutstone")
+    --     --         -- end
+    --     --         if math.random(100) < 30 then
+    --     --             table.insert(ret_loots,"rope")
+    --     --         end
+    --     --     end
+    --     --     -- if math.random(100) < 15 then
+    --     --     --     table.insert(ret_loots,"minifan")
+    --     --     -- end
+    --     --     -- if math.random(100) < 15 then
+    --     --     --     table.insert(ret_loots,"farm_plow_item")
+    --     --     -- end
+    --     --     return ret_loots
+    --     -- end
+    -- -------------------------------------------------------------------------------------
     ---- 被敲打拆除
         local function remove_rice_plant(inst)
-            
         end
+        inst:AddComponent("lootdropper")
         inst:AddComponent("workable")
         inst.components.workable:SetWorkAction(ACTIONS.HAMMER)
         inst.components.workable:SetWorkLeft(10)
         -- inst.components.workable:SetOnWorkCallback(onhit)
         inst.components.workable:SetOnFinishCallback(function()
+            inst.components.lootdropper:DropLoot()----这个才能让官方的敲击实现掉落一半
             local fx = SpawnPrefab("collapse_big")
             fx.Transform:SetPosition(inst.Transform:GetWorldPosition())
             --------------------------------------------------
