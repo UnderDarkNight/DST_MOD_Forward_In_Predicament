@@ -134,7 +134,7 @@
     AddRecipeToFilter("fwd_in_pdt_equipment_telescope","TOOLS")     ---- 添加物品到目标标签
     AddRecipe2(
         "fwd_in_pdt_equipment_telescope",            --  --  inst.prefab  实体名字
-        { Ingredient("fwd_in_pdt_material_tree_resin", 8),Ingredient("livinglog", 2),Ingredient("moonglass", 1) }, 
+        { Ingredient("fwd_in_pdt_material_tree_resin", 20),Ingredient("livinglog", 2),Ingredient("moonglass", 1) }, 
         TECH.SCIENCE_TWO, --- THCH.一本科技
         {
             no_deconstruction=true,
@@ -218,7 +218,7 @@ AddRecipe2(
 )
 RemoveRecipeFromFilter("turf_fwd_in_pdt_turf_cobbleroad","MODS")                       -- -- 在【模组物品】标签里移除这个。
 --------------------------------------------------------------------------------------------------------------------------------------------
----- 石砖地毯
+---- 草格地毯
 --------------------------------------------------------------------------------------------------------------------------------------------
 AddRecipeToFilter("turf_fwd_in_pdt_turf_grasslawn","TOOLS")     ---- 添加物品到目标标签
 AddRecipe2(
