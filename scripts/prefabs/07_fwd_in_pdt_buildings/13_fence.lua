@@ -26,9 +26,9 @@
         Asset( "IMAGE", "images/inventoryimages/fwd_in_pdt_building_flower_fence_vines.tex" ),  -- 背包贴图
         Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_building_flower_fence_vines.xml" ),
 
-        Asset("ANIM", "anim/fwd_in_pdt_building_flower_fence_mushroom.zip"),
-        Asset( "IMAGE", "images/inventoryimages/fwd_in_pdt_building_flower_fence_mushroom.tex" ),  -- 背包贴图
-        Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_building_flower_fence_mushroom.xml" ),
+        -- Asset("ANIM", "anim/fwd_in_pdt_building_flower_fence_mushroom.zip"),
+        -- Asset( "IMAGE", "images/inventoryimages/fwd_in_pdt_building_flower_fence_mushroom.tex" ),  -- 背包贴图
+        -- Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_building_flower_fence_mushroom.xml" ),
     }
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ---- 皮肤API 套件
