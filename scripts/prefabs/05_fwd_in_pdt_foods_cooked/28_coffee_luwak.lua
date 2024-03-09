@@ -40,7 +40,7 @@ local function fn()
     inst:AddComponent("inventoryitem")
     -- inst.components.inventoryitem:ChangeImageName("leafymeatburger")
     inst.components.inventoryitem.imagename = "fwd_in_pdt_food_coffee_luwak"
-    inst.components.inventoryitem.atlasname = "images/inventoryimages/fwd_in_pdt_food_coffee_luwaks.xml"
+    inst.components.inventoryitem.atlasname = "images/inventoryimages/fwd_in_pdt_food_coffee_luwak.xml"
 
     --------------------------------------------------------------------------
 

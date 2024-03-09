@@ -790,34 +790,34 @@ AddCookerRecipe("cookpot", fwd_in_pdt_food_garlic_cucumber) -- 将食谱添加�
 AddCookerRecipe("portablecookpot", fwd_in_pdt_food_garlic_cucumber) -- 将食谱添加进便携锅(大厨锅)
 ---------------------------------------------------------------------------------------------------------------------
 -- ----- 猫屎咖啡
--- local fwd_in_pdt_food_coffee_luwaks = {
---     test = function(cooker, names, tags)
---         return (names.fwd_in_pdt_food_coffeebeans or 0) >=3 and (names.fwd_in_pdt_food_cat_feces or 0) >=1
---         -- if fwd_in_pdt_food_soybeans >= 4  then
---         --     return true
---         -- end
---         -- return false
---     end,
---     name = "fwd_in_pdt_food_coffee_luwaks", -- 料理名
---     weight = 10, -- 食谱权重
---     priority = 999999999999, -- 食谱优先级
---     foodtype = GLOBAL.FOODTYPE.GODDIES, --料理的食物类型，比如这里定义的是零食
---     hunger = 0 , --吃后回饥饿值
---     sanity = 0 , --吃后回精神值
---     health = 0 , --吃后回血值
---     stacksize = 1,  --- 每次烹饪得到个数
---     perishtime = TUNING.PERISH_TWO_DAY, --腐烂时间
---     cooktime = TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE and 1/4 or 30/20, --烹饪时间(单位20s :  数字1 为 20s ,)
---     potlevel = "low",  --- 锅里的贴图位置 low high  mid
---     cookbook_tex = "fwd_in_pdt_food_coffee_luwaks.tex", -- 在游戏内食谱书里的mod食物那一栏里显示的图标，tex在 atlas的xml里定义了，所以这里只写文件名即可
---     cookbook_atlas = "images/inventoryimages/fwd_in_pdt_food_coffee_luwaks.xml",  
---     overridebuild = "fwd_in_pdt_food_coffee_luwaks",          ----- build (zip名字)
---     overridesymbolname = "png",     ----- scml 的图层名字（图片所在的文件夹名）
---     floater = {"med", nil, 0.55},
---     oneat_desc = GetStringsTable("fwd_in_pdt_food_coffee_luwaks")["oneat_desc"],    --- 副作用一栏显示的文本
---     cookbook_category = "cookpot"
--- }
+local fwd_in_pdt_food_coffee_luwak = {
+    test = function(cooker, names, tags)
+        return (names.fwd_in_pdt_food_coffeebeans or 0) >=3 and (names.fwd_in_pdt_food_cat_feces or 0) >=1
+        -- if fwd_in_pdt_food_soybeans >= 4  then
+        --     return true
+        -- end
+        -- return false
+    end,
+    name = "fwd_in_pdt_food_coffee_luwak", -- 料理名
+    weight = 10, -- 食谱权重
+    priority = 999999999999, -- 食谱优先级
+    foodtype = GLOBAL.FOODTYPE.GODDIES, --料理的食物类型，比如这里定义的是零食
+    hunger = 0 , --吃后回饥饿值
+    sanity = 0 , --吃后回精神值
+    health = 0 , --吃后回血值
+    stacksize = 1,  --- 每次烹饪得到个数
+    perishtime = TUNING.PERISH_TWO_DAY, --腐烂时间
+    cooktime = TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE and 1/4 or 30/20, --烹饪时间(单位20s :  数字1 为 20s ,)
+    potlevel = "low",  --- 锅里的贴图位置 low high  mid
+    cookbook_tex = "fwd_in_pdt_food_coffee_luwak.tex", -- 在游戏内食谱书里的mod食物那一栏里显示的图标，tex在 atlas的xml里定义了，所以这里只写文件名即可
+    cookbook_atlas = "images/inventoryimages/fwd_in_pdt_food_coffee_luwak.xml",  
+    overridebuild = "fwd_in_pdt_food_coffee_luwak",          ----- build (zip名字)
+    overridesymbolname = "png",     ----- scml 的图层名字（图片所在的文件夹名）
+    floater = {"med", nil, 0.55},
+    oneat_desc = GetStringsTable("fwd_in_pdt_food_coffee_luwak")["oneat_desc"],    --- 副作用一栏显示的文本
+    cookbook_category = "cookpot"
+}
 
--- AddCookerRecipe("cookpot", fwd_in_pdt_food_coffee_luwaks) -- 将食谱添加进普通锅
--- AddCookerRecipe("portablecookpot", fwd_in_pdt_food_coffee_luwaks) -- 将食谱添加进便携锅(大厨锅)
+AddCookerRecipe("cookpot", fwd_in_pdt_food_coffee_luwak) -- 将食谱添加进普通锅
+AddCookerRecipe("portablecookpot", fwd_in_pdt_food_coffee_luwak) -- 将食谱添加进便携锅(大厨锅)
 -- -- ---------------------------------------------------------------------------------------------------------------------

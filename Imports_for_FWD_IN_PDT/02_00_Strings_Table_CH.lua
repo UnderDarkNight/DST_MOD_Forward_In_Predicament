@@ -606,6 +606,10 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "拍黄瓜",
                 ["inspect_str"] = "好吃的零食",
             },
+            ["fwd_in_pdt_food_coffee_luwak"] = {
+                ["name"] = "猫屎咖啡",
+                ["inspect_str"] = "比原来的破咖啡好喝多了",
+            },
         --------------------------------------------------------------------
         ---- 06_fwd_in_pdt_containers
             ["fwd_in_pdt_fish_farm"] = {

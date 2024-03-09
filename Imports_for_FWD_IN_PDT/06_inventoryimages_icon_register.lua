@@ -132,6 +132,8 @@ local files_name = {
 		"fwd_in_pdt_food_stinky_tofu_salad",					--- 臭豆腐沙拉
 		"fwd_in_pdt_food_stinky_tofu_bolognese",				--- 臭豆腐肉酱
 		"fwd_in_pdt_food_garlic_cucumber",						--- 拍黄瓜
+		"fwd_in_pdt_food_coffee_luwak",							--- 猫屎咖啡
+		
 
 
 

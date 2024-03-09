@@ -600,6 +600,10 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "Cat Feces",
                 ["inspect_str"] = "So dirty",
             },
+            ["fwd_in_pdt_food_coffee_luwak"] = {
+                ["name"] = "Coffee Luwak",
+                ["inspect_str"] = "It tastes awful, but it's delicious",
+            },
         --------------------------------------------------------------------
         ---- 06_fwd_in_pdt_containers
             ["fwd_in_pdt_fish_farm"] = {
