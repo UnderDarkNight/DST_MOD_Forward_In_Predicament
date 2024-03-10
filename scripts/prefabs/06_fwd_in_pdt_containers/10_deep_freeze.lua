@@ -1,5 +1,5 @@
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
----- 示例冰箱
+---- 冰柜
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -152,32 +152,34 @@ local function fn()
     add_container_before_not_ismastersim_return(inst)   --- 安装容器界面
 -------------------------------------------------------------------------------------
 -- 反鲜，在打开的时候反鲜（成功）
-local function refreshFoods(inst)
-    for k,v in pairs(inst.components.container.slots) do
-        if v:IsValid() and v.components.perishable then
+    local function refreshFoods(inst)
+        for k,v in pairs(inst.components.container.slots) do
+            if v:IsValid() and v.components.perishable then
             v.components.perishable:SetPercent(1.0)
+            end
         end
     end
-end
-local function onWatchWorldState(inst)
+-------------------------------------------------------------------------------------
+    local function onWatchWorldState(inst)
         refreshFoods(inst)
-end
+    end
 -------------------------------------------------------------------------------------
 -- 被敲打拆除，掉出所有东西
-local function onhammered(inst, worker)
-    inst.components.lootdropper:DropLoot()
-    inst.components.container:DropEverything()
-    local fx = SpawnPrefab("collapse_small")
-    fx.Transform:SetPosition(inst.Transform:GetWorldPosition())
-    fx:SetMaterial("metal")
-    inst:Remove()
-end
+    local function onhammered(inst, worker)
+        inst.components.lootdropper:DropLoot()
+        inst.components.container:DropEverything()
+        local fx = SpawnPrefab("collapse_small")
+        fx.Transform:SetPosition(inst.Transform:GetWorldPosition())
+        fx:SetMaterial("metal")
+        inst:Remove()
+    end
+-------------------------------------------------------------------------------------
 -- 被意外拆除
-local function onhit(inst, worker)
-    inst.components.container:DropEverything()
-    inst.AnimState:PlayAnimation("idle")
-    inst.components.container:Close()
-end
+    local function onhit(inst, worker)
+        inst.components.container:DropEverything()
+        inst.AnimState:PlayAnimation("idle")
+        inst.components.container:Close()
+    end
 -------------------------------------------------------------------------------------
 
 
