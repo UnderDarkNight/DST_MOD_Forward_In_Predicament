@@ -21,14 +21,50 @@ local function BookFn(inst,reader)      -- 采摘
     --- 5x5 地皮， 长宽 20x20 ， 对角距离 22.82 ，半径 以 12
 
     local prefab_names = {
-        ["grass"] = true,           ---- 草
-        ["sapling"] = true,         ---- 树枝
+        ---官方原有的作物
+        ["grass"] = true,                            --- 草
+        ["sapling"] = true,                          --- 树枝
+        ["rock_avocado_bush"] = true,                --- 石果树
+        ["berrybush"] = true,                        --- 浆果
+        ["berrybush2"] = true,                       --- 浆果
+        ["reeds"] = true,                            --- 芦苇
+        ["bananabush"] = true,                       --- 香蕉丛
+        ["monkeytail"] = true,                       --- 猴尾草
+        ---官方的农田作物
+        ["farm_plant_asparagus"] = true,             --- 芦笋植株
+        ["farm_plant_carrot"] = true,                --- 胡萝卜植株
+        ["farm_plant_corn"] = true,                  --- 玉米植株
+        ["farm_plant_eggplant"] = true,              --- 茄子植株
+        ["farm_plant_garlic"] = true,                --- 大蒜植株
+        ["farm_plant_onion"] = true,                 --- 洋葱植株
+        ["farm_plant_pepper"] = true,                --- 辣椒植株
+        ["farm_plant_potato"] = true,                --- 秃头植株
+        ["farm_plant_pumpkin"] = true,               --- 南瓜植株
+        ["farm_plant_tomato"] = true,                --- 番茄植株
+        ["farm_plant_dragonfruit"] = true,           --- 火龙果植株
+        ["farm_plant_durian"] = true,                --- 榴莲植株
+        ["farm_plant_pomegranate"] = true,           --- 石榴植株
+        ["farm_plant_watermelon"] = true,            --- 西瓜植株
+
+        ---负重作物
         ["fwd_in_pdt_plant_paddy_rice"] = true,                 --- 稻米
         ["fwd_in_pdt_plant_wheat"] = true,                      --- 小麦
         ["fwd_in_pdt_plant_atractylodes_macrocephala"] = true,  --- 苍术
         ["fwd_in_pdt_plant_pinellia_ternata"] = true,           --- 半夏
         ["fwd_in_pdt_plant_aster_tataricus_l_f"] = true,        --- 紫苑
-        ["fwd_in_pdt_plant_coffeebush"] = true,                 --- 咖啡丛
+        ["fwd_in_pdt_plant_orange"] = true,                     --- 橙子树
+        ["fwd_in_pdt_plant_bean"] = true,                       --- 大豆植株
+        ["fwd_in_pdt_coffeebush"] = true,                       --- 咖啡丛
+
+        ---这里是和勋章兼容
+        ["farm_plant_medal_gift_fruit"] = true,                 --- 包果植株
+        ["farm_plant_immortal_fruit"] = true,                   --- 不朽果实植株
+
+        ---这里是和棱镜兼容
+        ["farm_plant_pineananas"] = true,                       --- 松萝植株
+        ["lilybush"] = true,                                    --- 蹄莲花丛
+        ["orchidbush"] = true,                                  --- 兰草花丛
+        ["rosebush"] = true,                                    --- 蔷薇花丛
     }
     local pick_num = 0
 
