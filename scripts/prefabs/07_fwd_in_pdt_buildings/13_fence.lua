@@ -26,9 +26,10 @@
         Asset( "IMAGE", "images/inventoryimages/fwd_in_pdt_building_flower_fence_vines.tex" ),  -- 背包贴图
         Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_building_flower_fence_vines.xml" ),
 
-        -- Asset("ANIM", "anim/fwd_in_pdt_building_flower_fence_mushroom.zip"),
-        -- Asset( "IMAGE", "images/inventoryimages/fwd_in_pdt_building_flower_fence_mushroom.tex" ),  -- 背包贴图
-        -- Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_building_flower_fence_mushroom.xml" ),
+        Asset("ANIM", "anim/fwd_in_pdt_building_flower_fence_mushroom.zip"),
+        Asset("ANIM", "anim/fwd_in_pdt_building_flower_fence_thin_mushroom.zip"),
+        Asset( "IMAGE", "images/inventoryimages/fwd_in_pdt_building_flower_fence_mushroom.tex" ),  -- 背包贴图
+        Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_building_flower_fence_mushroom.xml" ),
     }
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ---- 皮肤API 套件
@@ -50,6 +51,16 @@
             build = "fwd_in_pdt_building_flower_fence_thin_vines",                  --- 制作完成后切换的 build
             name = "Vines",                    --- 【制作栏】皮肤的名字
             skin_link = "fwd_in_pdt_building_flower_fence_item_vines",              --- 链接对象，解锁其中一个，顺便解锁另一个。为的是同步解锁。
+            -- anims = {wide="fwd_in_pdt_building_flower_fence_vines", narrow="fwd_in_pdt_building_flower_fence_vines"}
+
+        },
+        ["fwd_in_pdt_building_flower_fence_mushroom"] = {             --- 皮肤名字，全局唯一。
+            -- bank = "fwd_in_pdt_building_flower_fence_vines",                   --- 制作完成后切换的 bank
+            -- build = "fwd_in_pdt_building_flower_fence_vines",                  --- 制作完成后切换的 build
+            bank = "fwd_in_pdt_building_flower_fence_thin_mushroom",                   --- 制作完成后切换的 bank
+            build = "fwd_in_pdt_building_flower_fence_thin_mushroom",                  --- 制作完成后切换的 build
+            name = "Mushroom",                    --- 【制作栏】皮肤的名字
+            skin_link = "fwd_in_pdt_building_flower_fence_item_mushroom",              --- 链接对象，解锁其中一个，顺便解锁另一个。为的是同步解锁。
             -- anims = {wide="fwd_in_pdt_building_flower_fence_vines", narrow="fwd_in_pdt_building_flower_fence_vines"}
 
         },
@@ -82,6 +93,17 @@
             name_color = {127/255,255/255,0/255,255/255},
             placed_skin_name = "fwd_in_pdt_building_flower_fence_vines",   --  给 inst.components.deployable.ondeploy  里生成切换用的
             skin_link = "fwd_in_pdt_building_flower_fence_vines",               --- 链接对象，解锁其中一个，顺便解锁另一个。为的是同步解锁。
+            -- anims = {wide="fwd_in_pdt_building_flower_fence_vines", narrow="fwd_in_pdt_building_flower_fence_vines"}            
+        },
+        ["fwd_in_pdt_building_flower_fence_item_mushroom"] = {             --- 皮肤名字，全局唯一。
+            bank = "fwd_in_pdt_building_flower_fence_mushroom",                   --- 制作完成后切换的 bank
+            build = "fwd_in_pdt_building_flower_fence_mushroom",                  --- 制作完成后切换的 build
+            atlas = "images/inventoryimages/fwd_in_pdt_building_flower_fence_mushroom.xml",   --- 【制作栏】皮肤显示的贴图，
+            image = "fwd_in_pdt_building_flower_fence_mushroom",      --- 【制作栏】皮肤显示的贴图， 不需要 .tex
+            name = GetStringsTable()["Vines"],                    --- 【制作栏】皮肤的名字
+            name_color = {127/255,255/255,0/255,255/255},
+            placed_skin_name = "fwd_in_pdt_building_flower_fence_mushroom",   --  给 inst.components.deployable.ondeploy  里生成切换用的
+            skin_link = "fwd_in_pdt_building_flower_fence_mushroom",               --- 链接对象，解锁其中一个，顺便解锁另一个。为的是同步解锁。
             -- anims = {wide="fwd_in_pdt_building_flower_fence_vines", narrow="fwd_in_pdt_building_flower_fence_vines"}            
         },
 

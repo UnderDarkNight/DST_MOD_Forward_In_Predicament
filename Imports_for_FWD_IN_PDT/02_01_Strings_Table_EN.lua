@@ -750,6 +750,7 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["recipe_desc"] = "Flower Fence",
                 ["Purple"] = "Purple",
                 ["Vines"] = "Vines",
+                ["Mushroom"] = "Mushroom"
             },
             ["fwd_in_pdt_building_flower_fence_item"] = {
                 ["name"] = "Flower Fence",
