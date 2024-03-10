@@ -21,6 +21,7 @@ local function BookFn(inst,reader)      -- 采摘
     --- 5x5 地皮， 长宽 20x20 ， 对角距离 22.82 ，半径 以 12
 
     local prefab_names = {
+
         ---官方原有的作物
         ["grass"] = true,                            --- 草
         ["sapling"] = true,                          --- 树枝
@@ -30,7 +31,8 @@ local function BookFn(inst,reader)      -- 采摘
         ["reeds"] = true,                            --- 芦苇
         ["bananabush"] = true,                       --- 香蕉丛
         ["monkeytail"] = true,                       --- 猴尾草
-        ---官方的农田作物
+
+        ---官方的农田作物（注意不是prefab名字）
         ["farm_plant_asparagus"] = true,             --- 芦笋植株
         ["farm_plant_carrot"] = true,                --- 胡萝卜植株
         ["farm_plant_corn"] = true,                  --- 玉米植株
@@ -38,7 +40,7 @@ local function BookFn(inst,reader)      -- 采摘
         ["farm_plant_garlic"] = true,                --- 大蒜植株
         ["farm_plant_onion"] = true,                 --- 洋葱植株
         ["farm_plant_pepper"] = true,                --- 辣椒植株
-        ["farm_plant_potato"] = true,                --- 秃头植株
+        ["farm_plant_potato"] = true,                --- 土豆植株
         ["farm_plant_pumpkin"] = true,               --- 南瓜植株
         ["farm_plant_tomato"] = true,                --- 番茄植株
         ["farm_plant_dragonfruit"] = true,           --- 火龙果植株
@@ -65,6 +67,11 @@ local function BookFn(inst,reader)      -- 采摘
         ["lilybush"] = true,                                    --- 蹄莲花丛
         ["orchidbush"] = true,                                  --- 兰草花丛
         ["rosebush"] = true,                                    --- 蔷薇花丛
+
+        ---这里是和山海兼容
+
+        ---这里是和富贵兼容
+        ["ndnr_coffeebush"] = true,                             --- 咖啡树
     }
     local pick_num = 0
 
