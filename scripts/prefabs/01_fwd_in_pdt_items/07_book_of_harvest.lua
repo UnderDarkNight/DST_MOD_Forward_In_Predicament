@@ -68,7 +68,7 @@ local function BookFn(inst,reader)      -- 采摘
     }
     local pick_num = 0
 
-    local musthavetags = {"plant"}   --- 
+    local musthavetags = {"plant"}   
     -- local musthavetags = nil
     local canthavetags = {}
     local musthaveoneoftags = {}
