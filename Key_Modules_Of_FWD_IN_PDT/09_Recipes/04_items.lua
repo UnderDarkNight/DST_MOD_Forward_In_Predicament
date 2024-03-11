@@ -237,7 +237,7 @@ RemoveRecipeFromFilter("turf_fwd_in_pdt_turf_grasslawn","MODS")                 
 --------------------------------------------------------------------------------------------------------------------------------------------
 ---- 哈皮雨衣
 --------------------------------------------------------------------------------------------------------------------------------------------
-AddRecipeToFilter("fwd_in_pdt_frog_hound_skin_raincoat","DECOR")     ---- 添加物品到目标标签
+AddRecipeToFilter("fwd_in_pdt_frog_hound_skin_raincoat","RAIN","SUMMER")     ---- 添加物品到目标标签
 AddRecipe2(
     "fwd_in_pdt_frog_hound_skin_raincoat",            --  --  inst.prefab  实体名字
     { Ingredient("fwd_in_pdt_material_frog_hound_skin", 2),Ingredient("rope", 2)}, 
@@ -247,7 +247,7 @@ AddRecipe2(
         atlas = "images/inventoryimages/fwd_in_pdt_frog_hound_skin_raincoat.xml",
         image = "fwd_in_pdt_frog_hound_skin_raincoat.tex",
     },
-    {"DECOR","FWD_IN_PDT"}
+    {"RAIN","SUMMER","FWD_IN_PDT"}
 )
 RemoveRecipeFromFilter("fwd_in_pdt_frog_hound_skin_raincoat","MODS")                       -- -- 在【模组物品】标签里移除这个。
 
