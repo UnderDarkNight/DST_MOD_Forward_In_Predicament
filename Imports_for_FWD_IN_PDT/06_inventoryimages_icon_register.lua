@@ -20,7 +20,7 @@ local files_name = {
 		"fwd_in_pdt_item_insulin__syringe"	, 					--- 胰岛素注射器
 		"fwd_in_pdt_item_disease_treatment_book"	, 			--- 《伤寒病论》
 		"fwd_in_pdt_item_book_of_harvest"	, 					--- 《丰收之书》
-		"fwd_in_pdt_item_medical_certificate"	, 					--- 诊断单
+		"fwd_in_pdt_item_medical_certificate"	, 				--- 诊断单
 		"fwd_in_pdt_item_locked_book"	, 						--- 被锁住的书
 		"fwd_in_pdt_item_cursed_pig_skin"	,				    --- 被诅咒的猪皮
 		"fwd_in_pdt_item_book_of_gardening"	,				    --- 《园艺之书》
@@ -31,25 +31,26 @@ local files_name = {
 		"fwd_in_pdt_item_advertising_leaflet"	, 				--- 广告单
 		"fwd_in_pdt_item_adrenaline_injection"	, 				--- 肾上腺素注射剂
 		"fwd_in_pdt_item_bloody_flask"	, 						--- 卡尔的血瓶
-		"fwd_in_pdt_item_treatment_from_internship_doctor"	, 						--- 实习医生的治疗
-		"fwd_in_pdt_item_treatment_from_head_doctor"	, 							--- 主任医生的治疗
-		"fwd_in_pdt_item_treatment_from_internship_doctor"	, 						--- 专家医生的治疗
+		"fwd_in_pdt_item_treatment_from_internship_doctor"	, 	--- 实习医生的治疗
+		"fwd_in_pdt_item_treatment_from_head_doctor"	, 		--- 主任医生的治疗
+		"fwd_in_pdt_item_treatment_from_internship_doctor"	, 	--- 专家医生的治疗
 		"fwd_in_pdt_item_talisman_that_repels_snakes",			--- 避开蛇护符
 		"fwd_in_pdt_item_pig_flute",							--- 猪猪笛子
 		"fwd_in_pdt_item_werepig_flute",						--- 疯猪笛子
 	---------------------------------------------------------------------------------------
 	-- 02_fwd_in_pdt_materials
-		"fwd_in_pdt_material_tree_resin",						--- 树脂
-		"fwd_in_pdt_material_snake_skin",						--- 蛇皮
-		"fwd_in_pdt_material_realgar",							--- 雄黄矿
-		"fwd_in_pdt_material_atractylodes_macrocephala",				--- 苍术
-		"fwd_in_pdt_material_pinellia_ternata",							--- 半夏
-		"fwd_in_pdt_material_aster_tataricus_l_f",						--- 紫苑
+		"fwd_in_pdt_material_tree_resin",							--- 树脂
+		"fwd_in_pdt_material_snake_skin",							--- 蛇皮
+		"fwd_in_pdt_material_realgar",								--- 雄黄矿
+		"fwd_in_pdt_material_atractylodes_macrocephala",			--- 苍术
+		"fwd_in_pdt_material_pinellia_ternata",						--- 半夏
+		"fwd_in_pdt_material_aster_tataricus_l_f",					--- 紫苑
 		"fwd_in_pdt_material_chaotic_eyeball",						--- 混沌眼球
-		"fwd_in_pdt_material_chaotic_cookpot_puzzle_1",						--- 混沌万能锅碎片
-		"fwd_in_pdt_material_chaotic_cookpot_puzzle_2",						--- 混沌万能锅碎片
-		"fwd_in_pdt_material_chaotic_cookpot_puzzle_3",						--- 混沌万能锅碎片
-		"fwd_in_pdt_material_chaotic_cookpot_puzzle_4",						--- 混沌万能锅碎片
+		"fwd_in_pdt_material_chaotic_cookpot_puzzle_1",				--- 混沌万能锅碎片
+		"fwd_in_pdt_material_chaotic_cookpot_puzzle_2",				--- 混沌万能锅碎片
+		"fwd_in_pdt_material_chaotic_cookpot_puzzle_3",				--- 混沌万能锅碎片
+		"fwd_in_pdt_material_chaotic_cookpot_puzzle_4",				--- 混沌万能锅碎片
+		"fwd_in_pdt_material_frog_hound_skin",						--- 二蛤皮
 
 	---------------------------------------------------------------------------------------
 	-- 03_fwd_in_pdt_equipments
@@ -78,6 +79,7 @@ local files_name = {
 		"fwd_in_pdt_void_fishingrod",							--- 虚空鱼竿
 		"fwd_in_pdt_void_fishingrod_flower",					--- 虚空鱼竿（皮肤）
 		"fwd_in_pdt_equipment_telescope",						--- 望远镜
+		"fwd_in_pdt_frog_hound_skin_raincoat",					--- 哈皮雨衣
 	---------------------------------------------------------------------------------------
 	-- 04_fwd_in_pdt_foods
 		"fwd_in_pdt_food_raw_milk",								--- 生牛奶
@@ -107,10 +109,10 @@ local files_name = {
 	-- 05_fwd_in_pdt_foods_cooked
 		"fwd_in_pdt_food_mixed_potato_soup",					--- 疙瘩汤
 		"fwd_in_pdt_food_steamed_orange_with_honey",			--- 蜂蜜蒸橙
-		"fwd_in_pdt_food_scrambled_eggs_with_tomatoes",		--- 番茄炒蛋
+		"fwd_in_pdt_food_scrambled_eggs_with_tomatoes",			--- 番茄炒蛋
 		"fwd_in_pdt_food_eggplant_casserole",					--- 茄子盒
 		"fwd_in_pdt_food_gifts_of_nature",						--- 自然的馈赠
-		"fwd_in_pdt_food_snake_skin_jelly",					--- 蛇皮冻
+		"fwd_in_pdt_food_snake_skin_jelly",						--- 蛇皮冻
 		"fwd_in_pdt_food_atractylodes_macrocephala_pills",		--- 苍术药丸
 		"fwd_in_pdt_food_pinellia_ternata_pills",				--- 半夏药丸
 		"fwd_in_pdt_food_aster_tataricus_l_f_pills",			--- 紫苑药丸

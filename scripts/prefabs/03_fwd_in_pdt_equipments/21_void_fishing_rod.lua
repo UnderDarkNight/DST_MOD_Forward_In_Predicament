@@ -17,9 +17,6 @@ local assets =
     Asset( "IMAGE", "images/inventoryimages/fwd_in_pdt_void_fishingrod_flower.tex" ),  -- 背包贴图
     Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_void_fishingrod_flower.xml" ),  -- 花枝皮肤
 
-    -- Asset("ANIM", "anim/fwd_in_pdt_void_fishingrod_science.zip"),
-    -- Asset( "IMAGE", "images/inventoryimages/fwd_in_pdt_void_fishingrod_science.tex" ),  -- 背包贴图
-    -- Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_void_fishingrod_science.xml" ),  -- 科技皮肤
 }
 
 -------------------------------------------------------------------------------------------------------------------------------
@@ -35,15 +32,6 @@ local assets =
             name_color = {0/255,255/255,0/255,255/255},
             onequip_bank = "fwd_in_pdt_void_fishingrod_flower"
         },
-        -- ["fwd_in_pdt_void_fishingrod_science"] = {             --- 皮肤名字，全局唯一。
-        --     bank = "fwd_in_pdt_void_fishingrod_science",                               --- 制作完成后切换的 bank
-        --     build = "fwd_in_pdt_void_fishingrod_science",                              --- 制作完成后切换的 build
-        --     atlas = "images/inventoryimages/fwd_in_pdt_void_fishingrod_science.xml",                                        --- 【制作栏】皮肤显示的贴图，
-        --     image = "fwd_in_pdt_void_fishingrod_science",                              --- 【制作栏】皮肤显示的贴图， 不需要 .tex
-        --     name = "科技",                                                                         --- 【制作栏】皮肤的名字
-        --     name_color = {0/255,255/255,0/255,255/255},
-        --     onequip_bank = "fwd_in_pdt_void_fishingrod_science"
-        -- },
     }
 
     FWD_IN_PDT_MOD_SKIN.SKIN_INIT(skins_data_item,"fwd_in_pdt_void_fishingrod")     --- 往总表注册所有皮肤

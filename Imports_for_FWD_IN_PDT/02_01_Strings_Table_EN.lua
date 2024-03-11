@@ -272,6 +272,10 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "Chaotic Cookpot Puzzle IV",
                 ["inspect_str"] = "A fragment of a blueprint",
             },
+            ["fwd_in_pdt_material_frog_hound_skin"] = {
+                ["name"] = "Frog hound skin",
+                ["inspect_str"] = "This kind of skin can only be seen on frog hound",
+            },
         --------------------------------------------------------------------
         ---- 03_fwd_in_pdt_equipments
             ["fwd_in_pdt_equipment_blazing_nightmaresword"] = {
@@ -371,6 +375,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "Telescope",
                 ["inspect_str"] = "Able to observe distant places",
                 ["recipe_desc"] = "Able to observe distant places",
+            },
+            ["fwd_in_pdt_frog_hound_skin_raincoat"] = {
+                ["name"] = "Frog Hound Skin Raincoat",
+                ["inspect_str"] = "This is what makes every drop of water leak proof",
+                ["recipe_desc"] = "Water? It's useless",
             },
         --------------------------------------------------------------------
         ---- 04_fwd_in_pdt_foods

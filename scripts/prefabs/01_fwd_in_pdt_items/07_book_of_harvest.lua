@@ -31,6 +31,11 @@ local function BookFn(inst,reader)      -- 采摘
         ["reeds"] = true,                            --- 芦苇
         ["bananabush"] = true,                       --- 香蕉丛
         ["monkeytail"] = true,                       --- 猴尾草
+        ["flower_cave"] = true,                      --- 荧光果1
+        ["flower_cave_double"] = true,               --- 荧光果2
+        ["flower_cave_triple"] = true,               --- 荧光果3
+        --["mushroom_farm"] = true,                    --- 蘑菇农场（不行，估计也是采收动作的原因）
+
 
         ---官方的农田作物（注意不是prefab名字）
         ["farm_plant_asparagus"] = true,             --- 芦笋植株
@@ -72,6 +77,11 @@ local function BookFn(inst,reader)      -- 采摘
 
         ---这里是和富贵兼容
         ["ndnr_coffeebush"] = true,                             --- 咖啡树
+
+        ---这里是和海传的兼容
+        ["lg_lemon_tree"] = true,                               --- 柠檬树
+        ["lg_shumei_tree"] = true,                              --- 树莓树
+        
     }
     local pick_num = 0
 

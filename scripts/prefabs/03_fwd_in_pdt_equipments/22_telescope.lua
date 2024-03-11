@@ -1,3 +1,4 @@
+---望远镜
 local assets =
 {
     Asset("ANIM", "anim/fwd_in_pdt_equipment_telescope.zip"),
