@@ -45,7 +45,7 @@ local function fn()
 
     inst:AddComponent("edible") -- 可食物组件
     inst.components.edible.foodtype = FOODTYPE.MEAT
-    --恢复10Vc
+    --恢复20Vc
     inst.components.edible:SetOnEatenFn(function(inst,eater)
         if eater and eater:HasTag("player") then
             -- Vc增加20
