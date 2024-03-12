@@ -4,74 +4,127 @@
 --------------------------------------------------------------------------
 
 
-
 local assets = {
     Asset("ANIM", "anim/fwd_in_pdt_food_cat_feces.zip"), 
     Asset( "IMAGE", "images/inventoryimages/fwd_in_pdt_food_cat_feces.tex" ),  -- 背包贴图
     Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_food_cat_feces.xml" ),
 }
+local FERTILIZER_DEFS = require("prefabs/fertilizer_nutrient_defs").FERTILIZER_DEFS
+
+local function OnBurn(inst)
+    DefaultBurnFn(inst)
+    if inst.flies ~= nil then
+        inst.flies:Remove()
+        inst.flies = nil
+    end
+end
+
+local function FuelTaken(inst, taker)
+    local fx = taker.components.burnable ~= nil and taker.components.burnable.fxchildren[1] or nil
+    local x, y, z
+    if fx ~= nil and fx:IsValid() then
+        x, y, z = fx.Transform:GetWorldPosition()
+    else
+        x, y, z = taker.Transform:GetWorldPosition()
+    end
+    SpawnPrefab("poopcloud").Transform:SetPosition(x, y + 1, z)
+end
+
+local function OnDropped(inst)
+    if inst.flies == nil then
+        inst.flies = inst:SpawnChild("flies")
+    end
+end
+
+local function OnPickup(inst)
+    if inst.flies ~= nil then
+        inst.flies:Remove()
+        inst.flies = nil
+    end
+end
+
+local function GetFertilizerKey(inst)
+    return inst.prefab
+end
+
+local function fertilizerresearchfn(inst)
+    return inst:GetFertilizerKey()
+end
 
 local function fn()
+    local inst = CreateEntity()
 
-    local inst = CreateEntity() -- 创建实体
-    inst.entity:AddTransform() -- 添加xyz形变对象
-    inst.entity:AddAnimState() -- 添加动画状态
-    inst.entity:AddNetwork() -- 添加这一行才能让所有客户端都能看到这个实体
+    inst.entity:AddTransform()
+    inst.entity:AddAnimState()
+    inst.entity:AddSoundEmitter()
+    inst.entity:AddNetwork()
 
     MakeInventoryPhysics(inst)
 
-    inst.AnimState:SetBank("fwd_in_pdt_food_cat_feces") -- 地上动画
-    inst.AnimState:SetBuild("fwd_in_pdt_food_cat_feces") -- 材质包，就是anim里的zip包
-    inst.AnimState:PlayAnimation("idle",true) -- 默认播放哪个动画
+    inst.AnimState:SetBank("fwd_in_pdt_food_cat_feces")
+    inst.AnimState:SetBuild("fwd_in_pdt_food_cat_feces")
+    inst.AnimState:PlayAnimation("idle")
 
-    MakeInventoryFloatable(inst)
+    MakeInventoryFloatable(inst, "med", 0.1, 0.73)
+    MakeDeployableFertilizerPristine(inst)
+
+    inst:AddTag("fertilizerresearchable")
+
+    inst.GetFertilizerKey = GetFertilizerKey
 
     inst.entity:SetPristine()
-    
+
     if not TheWorld.ismastersim then
         return inst
     end
-    --------------------------------------------------------------------------
-    ------ 物品名 和检查文本
+
+    -- inst.AnimState:PushAnimation("idle", false)
+
     inst:AddComponent("inspectable")
 
     inst:AddComponent("inventoryitem")
-    -- inst.components.inventoryitem:ChangeImageName("leafymeatburger")
     inst.components.inventoryitem.imagename = "fwd_in_pdt_food_cat_feces"
     inst.components.inventoryitem.atlasname = "images/inventoryimages/fwd_in_pdt_food_cat_feces.xml"
 
-    --------------------------------------------------------------------------
-    inst.components.inventoryitem:SetSinks(true)    -- 掉水里消失
+    inst:AddComponent("stackable")
 
-    inst:AddComponent("edible") -- 可食物组件
-    inst.components.edible.foodtype = FOODTYPE.INEDIABLE
-    --恢复10Vc
-    inst.components.edible:SetOnEatenFn(function(inst,eater)
-        if eater and eater:HasTag("player") then
-            -- Vc增加10
-            if eater.components.fwd_in_pdt_wellness then
-                eater.components.fwd_in_pdt_wellness:DoDelta_Vitamin_C(20)
-                eater.components.fwd_in_pdt_wellness:ForceRefresh()
-            end
-        end
-    end)
+    inst:AddComponent("fertilizerresearchable")
+    inst.components.fertilizerresearchable:SetResearchFn(fertilizerresearchfn)
 
-    inst.components.edible.hungervalue = -10
-    inst.components.edible.sanityvalue = -10
-    inst.components.edible.healthvalue = -10
+    inst:AddComponent("fertilizer")
+    inst.components.fertilizer.fertilizervalue = TUNING.POOP_FERTILIZE
+    inst.components.fertilizer.soil_cycles = TUNING.POOP_SOILCYCLES
+    inst.components.fertilizer.withered_cycles = TUNING.POOP_WITHEREDCYCLES
+    inst.components.fertilizer:SetNutrients(FERTILIZER_DEFS.poop.nutrients)
 
-    inst:AddComponent("stackable") -- 可堆叠
-    inst.components.stackable.maxsize = TUNING.STACK_SIZE_SMALLITEM
-    inst:AddComponent("tradable")
+    inst:AddComponent("smotherer")
 
-    MakeHauntableLaunch(inst)
+    inst.components.inventoryitem:SetOnDroppedFn(OnDropped)
+    inst.components.inventoryitem:SetOnPickupFn(OnPickup)
+    inst.components.inventoryitem:SetOnPutInInventoryFn(OnPickup)
+
+    inst.flies = inst:SpawnChild("flies")
+
+    inst:AddComponent("fuel")
+    inst.components.fuel.fuelvalue = TUNING.MED_FUEL
+    inst.components.fuel:SetOnTakenFn(FuelTaken)
+
+    if TheNet:GetServerGameMode() == "quagmire" then
+        inst.components.fuel:SetOnTakenFn(nil)
+    end
+
+    MakeSmallBurnable(inst, TUNING.MED_BURNTIME)
+    inst.components.burnable:SetOnIgniteFn(OnBurn)
+    MakeSmallPropagator(inst)
+
+    MakeDeployableFertilizer(inst)
+    MakeHauntableLaunchAndIgnite(inst)
+
+    AddIngredientValues({"fwd_in_pdt_food_cat_feces"}, {
+        inediable = 1
+    })
 
     return inst
 end
-
---- 设置可以放烹饪锅里
-AddIngredientValues({"fwd_in_pdt_food_cat_feces"}, { 
-    inediable = 1
-})
 
 return Prefab("fwd_in_pdt_food_cat_feces", fn, assets)

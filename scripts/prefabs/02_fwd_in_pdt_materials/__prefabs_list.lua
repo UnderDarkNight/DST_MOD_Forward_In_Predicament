@@ -27,13 +27,14 @@ local Prefabs_addr_base = string.sub(temp_addr,1,temp_str_index2) .. "/"    --- 
 -- local Prefabs_addr_base = "scripts/prefabs/01_fwd_in_pdt_items/"               --- 文件夹路径
 local prefabs_name_list = {
 
-    "01_tree_resin",            -- 树脂
-    "02_snake_skin",            -- 蛇皮
-    "03_realgar",               -- 雄黄矿石
-    "04_atractylodes_macrocephala",      -- 苍术
-    "05_pinellia_ternata",               -- 半夏
-    "06_aster_tataricus_l_f",            -- 紫苑
-    "07_chaotic_eyeball",            -- 混沌眼球
+    "01_tree_resin",                        -- 树脂
+    "02_snake_skin",                        -- 蛇皮
+    "03_realgar",                           -- 雄黄矿石
+    "04_atractylodes_macrocephala",         -- 苍术
+    "05_pinellia_ternata",                  -- 半夏
+    "06_aster_tataricus_l_f",               -- 紫苑
+    "07_chaotic_eyeball",                   -- 混沌眼球
+    "08_frog_hound_skin",                   -- 二蛤皮
     
 }
 

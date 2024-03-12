@@ -146,6 +146,7 @@ AddPlayerPostInit(function(inst)
                         ["fwd_in_pdt_building_flower_fence_item"] = {
                             "fwd_in_pdt_building_flower_fence_item_purple",
                             "fwd_in_pdt_building_flower_fence_item_vines",
+                            "fwd_in_pdt_building_flower_fence_item_mushroom",
                         },
                     ---- 鼹鼠背包
                         ["fwd_in_pdt_equipment_mole_backpack"] = {

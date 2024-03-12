@@ -276,6 +276,10 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "混沌万能锅碎片 IV",
                 ["inspect_str"] = "一块图纸碎片",
             },
+            ["fwd_in_pdt_material_frog_hound_skin"] = {
+                ["name"] = "二蛤皮",
+                ["inspect_str"] = "这种皮只有在二蛤身上才能看到了",
+            },
         --------------------------------------------------------------------
         ---- 03_fwd_in_pdt_equipments
             ["fwd_in_pdt_eq_mirror_whip"] = {
@@ -378,6 +382,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "望远镜",
                 ["inspect_str"] = "能观察远处的地方",
                 ["recipe_desc"] = "能观察远处的地方",
+            },
+            ["fwd_in_pdt_frog_hound_skin_raincoat"] = {
+                ["name"] = "蛤皮雨衣",
+                ["inspect_str"] = "这才是滴水不漏",
+                ["recipe_desc"] = "阻挡一切水的进入",
             },
         --------------------------------------------------------------------
         ---- 04_fwd_in_pdt_foods
@@ -606,6 +615,10 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "拍黄瓜",
                 ["inspect_str"] = "好吃的零食",
             },
+            ["fwd_in_pdt_food_coffee_luwak"] = {
+                ["name"] = "猫屎咖啡",
+                ["inspect_str"] = "比原来的破咖啡好喝多了",
+            },
         --------------------------------------------------------------------
         ---- 06_fwd_in_pdt_containers
             ["fwd_in_pdt_fish_farm"] = {
@@ -752,6 +765,7 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["recipe_desc"] = "花栅栏",
                 ["Purple"] = "紫花",
                 ["Vines"] = "藤条",
+                ["Mushroom"] = "蘑菇"
             },
             ["fwd_in_pdt_building_flower_fence_item"] = {
                 ["name"] = "花栅栏",

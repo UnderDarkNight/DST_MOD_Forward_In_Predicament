@@ -7,9 +7,9 @@
 
 
 local assets = {
-    Asset("ANIM", "anim/fwd_in_pdt_food_coffee_luwak.zip"), 
-    Asset( "IMAGE", "images/inventoryimages/fwd_in_pdt_food_coffee_luwak.tex" ),  -- 背包贴图
-    Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_food_coffee_luwak.xml" ),
+    Asset("ANIM", "anim/fwd_in_pdt_food_meat_buns.zip"), 
+    Asset( "IMAGE", "images/inventoryimages/fwd_in_pdt_food_meat_buns.tex" ),  -- 背包贴图
+    Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_food_meat_buns.xml" ),
 }
 
 local function fn()
@@ -21,8 +21,8 @@ local function fn()
 
     MakeInventoryPhysics(inst)
 
-    inst.AnimState:SetBank("fwd_in_pdt_food_coffee_luwak") -- 地上动画
-    inst.AnimState:SetBuild("fwd_in_pdt_food_coffee_luwak") -- 材质包，就是anim里的zip包
+    inst.AnimState:SetBank("fwd_in_pdt_food_meat_buns") -- 地上动画
+    inst.AnimState:SetBuild("fwd_in_pdt_food_meat_buns") -- 材质包，就是anim里的zip包
     inst.AnimState:PlayAnimation("idle",true) -- 默认播放哪个动画
     -- inst.AnimState:SetScale(1.5,1.5,1.5)
     MakeInventoryFloatable(inst)
@@ -39,14 +39,14 @@ local function fn()
 
     inst:AddComponent("inventoryitem")
     -- inst.components.inventoryitem:ChangeImageName("leafymeatburger")
-    inst.components.inventoryitem.imagename = "fwd_in_pdt_food_coffee_luwak"
-    inst.components.inventoryitem.atlasname = "images/inventoryimages/fwd_in_pdt_food_coffee_luwak.xml"
+    inst.components.inventoryitem.imagename = "fwd_in_pdt_food_meat_buns"
+    inst.components.inventoryitem.atlasname = "images/inventoryimages/fwd_in_pdt_food_meat_buns.xml"
 
     --------------------------------------------------------------------------
 
 
     inst:AddComponent("edible") -- 可食物组件
-    inst.components.edible.foodtype = FOODTYPE.GOODIES                          --零食
+    inst.components.edible.foodtype = FOODTYPE.MEAT                          --肉
     inst.components.edible:SetOnEatenFn(function(inst,eater)
         if eater and eater:HasTag("player") then
             -- 添加咖啡buff

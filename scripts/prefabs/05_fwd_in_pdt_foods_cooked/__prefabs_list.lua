@@ -55,6 +55,7 @@ local prefabs_name_list = {
     "25_stinky_tofu_salad",                          -- 臭豆腐沙拉
     "26_stinky_tofu_bolognese",                      -- 臭豆腐肉酱
     "27_garlic_cucumber",                            -- 拍黄瓜
+    "28_coffee_luwak",                               -- 猫屎咖啡
     
 }
 

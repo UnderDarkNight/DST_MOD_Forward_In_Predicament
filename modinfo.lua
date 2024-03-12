@@ -16,7 +16,7 @@ end
 ---                   第二位为大版本号，进行主题更新、大DLC发布的时候进行增量。
 ---                   第一位暂时预留。 
 ----------------------------------------------------------------------------
-local the_version = "0.01.00.00085test"
+local the_version = "0.01.00.00090test"
 
 
 
@@ -52,8 +52,14 @@ local function GetDesc()
         Large amount of content
       ]],
       ["zh"] = [[
-        本MOD添加大量内容。
-        这里描述不完。
+        永恒大陆的负重小岛
+        饮食习惯带来的不同的体质值
+        玩家需要不被饿死，也不能吃多
+        注意荤素搭配
+        也要注意怪物会导致的中毒
+        夏天到来的中暑
+        秋天到来的梅雨季节
+        负重前行-----一款增加游戏可玩性的大型持续更新mod
       ]]
     }
     local ret = the_version .. "  \n  "..ChooseTranslationTable_Test(temp_table)
