@@ -17,6 +17,10 @@ local Text = require "widgets/text"
 local TEMPLATES = require "widgets/redux/templates"
 
 -------------------------------------------- 能量条的坐标储存
+if TUNING["Forward_In_Predicament.Config"].BUILD_MOD then
+    return
+end
+-------------------------------------------- 能量条的坐标储存
     AddPlayerPostInit(function(inst)    
 
         inst:ListenForEvent("fwd_in_pdt_event.Cross_Archived_Data_Send_2_Server_Finish",function()

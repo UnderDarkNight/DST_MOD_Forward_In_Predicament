@@ -46,6 +46,9 @@ function fwd_in_pdt_wellness:Get_The_Datas_From_Server(cmd_table)
 end
 
 function fwd_in_pdt_wellness:UpdateHUD()
+    if TUNING["Forward_In_Predicament.Config"].BUILD_MOD then
+        return
+    end
     if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
         -- local wellness = self:Get_Wellness()
         -- local vc = self:Get_Vitamin_C()

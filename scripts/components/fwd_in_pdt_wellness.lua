@@ -359,6 +359,9 @@ nil,
     end
 
     function fwd_in_pdt_wellness:start_update_task(update_time)
+        if TUNING["Forward_In_Predicament.Config"].BUILD_MOD then
+            return
+        end
         if self._______update_task == nil then
             self._______update_task = self.inst:DoPeriodicTask(update_time or 5,function()
                 self:update()
