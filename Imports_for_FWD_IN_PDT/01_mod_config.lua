@@ -1,6 +1,8 @@
 TUNING["Forward_In_Predicament.Config"] = {}
 TUNING["Forward_In_Predicament.Config"].Language = GetModConfigData("LANGUAGE")
 
+TUNING["Forward_In_Predicament.Config"].BUILD_MOD = GetModConfigData("BUILD_MOD")  --- 建家党模式
+
 TUNING["Forward_In_Predicament.Config"].compatibility_mode = GetModConfigData("compatibility_mode")
 
 

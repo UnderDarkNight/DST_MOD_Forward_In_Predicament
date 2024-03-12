@@ -146,6 +146,17 @@ configuration_options =
         } or  {{description = "", data = false}},
         default = false,
     },
+    {
+        name = "BUILD_MOD",
+        label = Check_Mod_is_Internal_Version() and "建家党模式" or "BUILD MOD",
+        hover = Check_Mod_is_Internal_Version() and "建家党模式" or "BUILD MOD",
+        options = Check_Mod_is_Internal_Version() and 
+        {
+          {description = IsChinese() and "关" or "OFF", data = false},
+          {description = IsChinese() and "开" or "ON", data = true},
+        } or  {{description = "", data = false}},
+        default = false,
+    },
     -- {
     --     name = "compatibility_mode",
     --     label = IsChinese() and "尝试兼容其他MOD" or "Compatibility mode with try",
