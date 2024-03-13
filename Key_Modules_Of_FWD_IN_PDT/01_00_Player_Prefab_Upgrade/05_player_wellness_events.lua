@@ -176,16 +176,17 @@ AddPlayerPostInit(function(inst)
                     ["tomato_cooked"] = 5,                          --- 烤番茄
                     ["pomegranate"] = 10,                           --- 石榴
                     ["pomegranate_cooked"] = 10,                    --- 烤石榴
-                    ["carrot"]  = 5,                                ---胡萝卜
-                    ["carrot_cooked"] = 5,                          ---烤胡萝卜
-                    ["berries"] = 10,                               ---浆果
-                    ["berries_cooked"] = 10,                        ---烤浆果
-                    ["dragonfruit"] = 10,                           ---火龙果
-                    ["dragonfruit_cooked"] = 10,                    ---烤熟火龙果
-                    ["fwd_in_pdt_food_mango_green"] = 20,           ---青芒果
-                    ["wormlight_lesser"] = 20,                      ---小发光浆果
-                    ["ratatouille"] = 30,                           ---蔬菜杂烩
-                    ["cave_fern"] = 10,                             ---蕨类植物
+                    ["carrot"]  = 5,                                --- 胡萝卜
+                    ["carrot_cooked"] = 5,                          --- 烤胡萝卜
+                    ["berries"] = 10,                               --- 浆果
+                    ["berries_cooked"] = 10,                        --- 烤浆果
+                    ["berries_juicy"] = 10,                         --- 多汁浆果
+                    ["dragonfruit"] = 10,                           --- 火龙果
+                    ["dragonfruit_cooked"] = 10,                    --- 烤熟火龙果
+                    ["fwd_in_pdt_food_mango_green"] = 20,           --- 青芒果
+                    ["wormlight_lesser"] = 20,                      --- 小发光浆果
+                    ["ratatouille"] = 30,                           --- 蔬菜杂烩
+                    ["cave_fern"] = 10,                             --- 蕨类植物
                     ["hotchili"] = 20,                              --- 辣椒炒肉
                     --这里是和棱镜的兼容
                     ["pineananas"] = 10,                            --- 松萝
