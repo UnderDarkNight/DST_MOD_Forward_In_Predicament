@@ -86,29 +86,30 @@ local function fn()
     inst:AddComponent("inspectable")
 
      -------------------------------------------------------------------------------------
-    ---- 掉落列表
-    inst:AddComponent("lootdropper")
-    inst.components.lootdropper.GetRecipeLoot = function(self,...) 
-        local ret_loots = {"yellowgem","rope"}
-        for i = 1, 3, 1 do
-            if math.random(100) < 0 then
-                table.insert(ret_loots,"yellowgem")
-            end
-            -- if math.random(100) < 30 then
-            --     table.insert(ret_loots,"cutstone")
-            -- end
-            if math.random(100) < 30 then
-                table.insert(ret_loots,"rope")
-            end
-        end
-        -- if math.random(100) < 15 then
-        --     table.insert(ret_loots,"minifan")
-        -- end
-        -- if math.random(100) < 15 then
-        --     table.insert(ret_loots,"farm_plow_item")
-        -- end
-        return ret_loots
-    end
+    -- ---- 掉落列表(废弃，但能用来参考)
+    -- inst:AddComponent("lootdropper")
+    -- inst.components.lootdropper.GetRecipeLoot = function(self,...) 
+    --     local ret_loots = {"yellowgem","rope"}
+    --     for i = 1, 3, 1 do
+    --         if math.random(100) < 0 then
+    --             table.insert(ret_loots,"yellowgem")
+    --         end
+    --         -- if math.random(100) < 30 then
+    --         --     table.insert(ret_loots,"cutstone")
+    --         -- end
+    --         if math.random(100) < 30 then
+    --             table.insert(ret_loots,"rope")
+    --         end
+    --     end
+    --     -- if math.random(100) < 15 then
+    --     --     table.insert(ret_loots,"minifan")
+    --     -- end
+    --     -- if math.random(100) < 15 then
+    --     --     table.insert(ret_loots,"farm_plow_item")
+    --     -- end
+    --     return ret_loots
+    -- end
+    -------------------------------------------------------------------------------------
     --- 敲打拆除
     inst:ListenForEvent("_building_remove",function()
         SpawnPrefab("fwd_in_pdt_fx_collapse"):PushEvent("Set",{

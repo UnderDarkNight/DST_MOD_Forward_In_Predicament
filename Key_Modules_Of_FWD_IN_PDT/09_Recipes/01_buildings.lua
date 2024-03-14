@@ -278,7 +278,7 @@ RemoveRecipeFromFilter("fwd_in_pdt_container_mahogany_table","MODS")            
 AddRecipeToFilter("fwd_in_pdt_deep_freeze","COOKING")     ---- 添加物品到目标标签
 AddRecipe2(
     "fwd_in_pdt_deep_freeze",            --  --  inst.prefab  实体名字
-    { Ingredient("bluegem", 2),Ingredient("gears", 2),Ingredient("bearger_fur", 1) }, 
+    { Ingredient("bluegem", 2), Ingredient("gears", 2), Ingredient("bearger_fur", 1) }, 
     TECH.SCIENCE_TWO, --- TECH.二本科技
     {
         -- nounlock=true,
@@ -292,7 +292,24 @@ AddRecipe2(
 )
 RemoveRecipeFromFilter("fwd_in_pdt_deep_freeze","MODS")                       -- -- 在【模组物品】标签里移除这个。
 --------------------------------------------------------------------------------------------------------------------------------------------
----- 混沌万能锅
-
+---- 盆栽
+--------------------------------------------------------------------------------------------------------------------------------------------
+AddRecipeToFilter("fwd_in_pdt_building_potting_a","STRUCTURES")     ---- 添加物品到目标标签
+AddRecipe2(
+    "fwd_in_pdt_building_potting_a",            --  --  inst.prefab  实体名字
+    { Ingredient("petals", 1), Ingredient("cutgrass", 2) }, 
+    TECH.SCIENCE_TWO, --- TECH.二本科技
+    {
+        -- nounlock=true,
+        no_deconstruction=true,
+        -- builder_tag = "npng_tag.has_green_amulet",    --------- -- 【builder_tag】只给指定tag的角色能制造这件物品，角色添加/移除 tag 都能立马解锁/隐藏该物品
+        placer = "fwd_in_pdt_building_potting_a_placer",                       -------- 建筑放置器,记住不是prefab替换  后面有个placer呢！
+        atlas = "images/inventoryimages/fwd_in_pdt_building_potting_a.xml", ---在哪注册的 一定要注意
+        image = "fwd_in_pdt_building_potting_a.tex",
+    },
+    {"STRUCTURES","FWD_IN_PDT"}
+)
+RemoveRecipeFromFilter("fwd_in_pdt_building_potting_a","MODS")                       -- -- 在【模组物品】标签里移除这个。
+--------------------------------------------------------------------------------------------------------------------------------------------
 
 
