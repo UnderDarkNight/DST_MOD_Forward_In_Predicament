@@ -135,7 +135,7 @@ local files_name = {
 		"fwd_in_pdt_food_stinky_tofu_bolognese",				--- 臭豆腐肉酱
 		"fwd_in_pdt_food_garlic_cucumber",						--- 拍黄瓜
 		"fwd_in_pdt_food_coffee_luwak",							--- 猫屎咖啡
-		
+
 
 
 
@@ -151,6 +151,7 @@ local files_name = {
 		"fwd_in_pdt_building_flower_fence_vines",						-- 花围栏（皮肤）
 		"fwd_in_pdt_building_flower_fence_mushroom",					-- 花围栏（皮肤）
 		"fwd_in_pdt_building_lantern",							-- 灯笼
+		"fwd_in_pdt_building_potting_a",						-- 盆栽
 	---------------------------------------------------------------------------------------
 	-- 09_fwd_in_pdt_plants
 		"fwd_in_pdt_plant_paddy_rice_seed",								--- 未脱壳的稻米

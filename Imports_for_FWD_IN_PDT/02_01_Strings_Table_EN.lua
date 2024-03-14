@@ -663,7 +663,7 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "Wallet",
                 ["inspect_str"] = "To facilitate the storage of coins",
                 ["recipe_desc"] = "To facilitate the storage of coins",
-                ["skin.piggy"] = "Piggy Tank"
+                ["skin.piggy"] = "Piggy Tank",
             },
             ["fwd_in_pdt_container_mahogany_table"] = {
                 ["name"] = "Mahogany Table",
@@ -676,6 +676,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "For putting food in it.",
                 ["inspect_str_burnt"] = "It burns wonderfully.",
                 ["recipe_desc"] = "For putting food on the table.",
+            },
+            ["fwd_in_pdt_building_potting_a"] = {
+                ["name"] = "Potting",
+                ["inspect_str"] = "The rabbits inside are lifelike.",
+                ["recipe_desc"] = "It's definitely right to use it to decorate the base.",
             },
         --------------------------------------------------------------------
         ---- 07_fwd_in_pdt_buildings

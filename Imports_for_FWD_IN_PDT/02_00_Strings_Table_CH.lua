@@ -765,7 +765,7 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["recipe_desc"] = "花栅栏",
                 ["Purple"] = "紫花",
                 ["Vines"] = "藤条",
-                ["Mushroom"] = "蘑菇"
+                ["Mushroom"] = "蘑菇",
             },
             ["fwd_in_pdt_building_flower_fence_item"] = {
                 ["name"] = "花栅栏",
@@ -775,7 +775,12 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             ["fwd_in_pdt_building_lantern"] = {
                 ["name"] = "灯笼",
                 ["inspect_str"] = "有点过年的味道了",
-                ["recipe_desc"] = "龙年大吉"
+                ["recipe_desc"] = "龙年大吉",
+            },
+            ["fwd_in_pdt_building_potting_a"] = {
+                ["name"] = "盆栽",
+                ["inspect_str"] = "这里面的兔子栩栩如生",
+                ["recipe_desc"] = "用它来装饰基地肯定没错",
             },
         --------------------------------------------------------------------
         ---- 08_fwd_in_pdt_resources
