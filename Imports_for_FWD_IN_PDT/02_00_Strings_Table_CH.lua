@@ -388,6 +388,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "这才是滴水不漏",
                 ["recipe_desc"] = "阻挡一切水的进入",
             },
+            ["fwd_in_pdt_equipment_ocean_fork"] = {
+                ["name"] = "填海叉",
+                ["inspect_str"] = "用来填海和挖海",
+                ["recipe_desc"] = "用来填海和挖海",
+            },
         --------------------------------------------------------------------
         ---- 04_fwd_in_pdt_foods
             ["fwd_in_pdt_food_raw_milk"] = {

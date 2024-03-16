@@ -47,6 +47,7 @@ local prefabs_name_list = {
     "18_fx_spawn",                  --- 出入洞穴的特效
     "19_fence_flower",              --- 围栏特效
     "20_miss",                      --- miss
+    "22_tile_outline",              --- tile_outline 边线框框
 
     
 }
