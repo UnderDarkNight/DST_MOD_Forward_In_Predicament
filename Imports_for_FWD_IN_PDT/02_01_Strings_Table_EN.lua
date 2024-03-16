@@ -381,6 +381,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "This is what makes every drop of water leak proof",
                 ["recipe_desc"] = "Water? It's useless",
             },
+            ["fwd_in_pdt_equipment_ocean_fork"] = {
+                ["name"] = "Ocean Fork",
+                ["inspect_str"] = "Used for reclamation and dredging",
+                ["recipe_desc"] = "Used for reclamation and dredging",
+            },
         --------------------------------------------------------------------
         ---- 04_fwd_in_pdt_foods
             ["fwd_in_pdt_food_raw_milk"] = {

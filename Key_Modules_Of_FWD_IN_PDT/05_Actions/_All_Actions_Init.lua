@@ -47,6 +47,8 @@ modimport("Key_Modules_Of_FWD_IN_PDT/05_Actions/22_telescope.lua")             -
 
 modimport("Key_Modules_Of_FWD_IN_PDT/05_Actions/23_play_flute.lua")             --- 特殊笛子动作
 
+modimport("Key_Modules_Of_FWD_IN_PDT/05_Actions/24_com_point_and_spell_caster.lua")             --- 特殊通用武器交互
+
 
 
 

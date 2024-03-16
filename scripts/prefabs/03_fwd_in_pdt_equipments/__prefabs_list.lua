@@ -51,6 +51,7 @@ local prefabs_name_list = {
     "21_void_fishing_rod",              --- 虚空鱼竿
     "22_telescope",                     --- 望远镜
     "23_frog_hound_skin_raincoat",      --- 哈皮雨衣
+    "24_ocean_fork",                    --- 填海叉
 
     
 }
