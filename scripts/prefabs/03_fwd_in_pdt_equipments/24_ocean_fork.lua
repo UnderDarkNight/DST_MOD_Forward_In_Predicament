@@ -82,7 +82,9 @@ local function fn()
                                 if inst.tile_outline then
                                     -- inst.tile_outline.Transform:SetPosition(tile_x,tile_y,tile_z)
                                     inst.tile_outline:PushEvent("Set",{
-                                        pt = Vector3(tile_x,tile_y,tile_z)
+                                        pt = Vector3(tile_x,tile_y,tile_z),
+                                        color = Vector3(0,255,0),
+                                        MultColour_Flag = true,
                                     })
                                 end
                             end
@@ -99,11 +101,23 @@ local function fn()
                         --- 地皮上有玩家
                             local ents = TheSim:FindEntities(tile_x, 0, tile_z, 2.2, {"player"}, {"playerghost"}, nil)
                             if #ents > 0 then
+                                if inst.tile_outline then
+                                    inst.tile_outline:PushEvent("Set",{
+                                        color = Vector3(255,0,0),
+                                        MultColour_Flag = true,
+                                    })
+                                end
                                 return false
                             end
                         -------------------------------------------------------------------
                         ---- 码头地皮
                             if TheWorld.Map:IsDockAtPoint(tile_x,0,tile_z) then
+                                if inst.tile_outline then
+                                    inst.tile_outline:PushEvent("Set",{
+                                        color = Vector3(255,0,0),
+                                        MultColour_Flag = true,
+                                    })
+                                end
                                 return false
                             end
                         -------------------------------------------------------------------
@@ -121,6 +135,12 @@ local function fn()
                             }
                             for k, temp_pt in pairs(outside_pts) do
                                 if TheWorld.Map:GetPlatformAtPoint(temp_pt.x, temp_pt.z) ~= nil then
+                                    if inst.tile_outline then
+                                        inst.tile_outline:PushEvent("Set",{
+                                            color = Vector3(255,0,0),
+                                            MultColour_Flag = true,
+                                        })
+                                    end
                                     return false
                                 end
                             end

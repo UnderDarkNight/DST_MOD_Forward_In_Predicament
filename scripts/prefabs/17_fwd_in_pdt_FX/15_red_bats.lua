@@ -41,7 +41,7 @@ local function fx()
         --     pt = Vector3(0,0,0),
         --     target = inst,
         --     color = Vector3(255,255,255),        -- color / colour 都行
-        --     MultColour_Flag = false ,        
+        --     MultColour_Flag = false ,
         --     a = 0.1,
         --     speed = 1,
         --     sound = ""
