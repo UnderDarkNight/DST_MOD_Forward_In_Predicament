@@ -256,8 +256,8 @@
     AddRecipeToFilter("fwd_in_pdt_equipment_ocean_fork","TOOLS")     ---- 添加物品到目标标签
     AddRecipe2(
         "fwd_in_pdt_equipment_ocean_fork",            --  --  inst.prefab  实体名字
-        { Ingredient("fwd_in_pdt_material_frog_hound_skin", 2),Ingredient("pitchfork", 1)}, 
-        TECH.SCIENCE_TWO, --- TECH.一本科技
+        { Ingredient("hermit_cracked_pearl", 1),Ingredient("pitchfork", 1)}, 
+        TECH.LOST, --- TECH.蓝图
         {
             no_deconstruction=true,     
             atlas = "images/inventoryimages/fwd_in_pdt_equipment_ocean_fork.xml",

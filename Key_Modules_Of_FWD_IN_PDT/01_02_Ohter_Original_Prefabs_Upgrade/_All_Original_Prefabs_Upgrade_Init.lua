@@ -46,3 +46,7 @@ modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/19_per
 
 modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/20_catcoon.lua")    --- 修改 猫 掉落 猫屎
 
+modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/21_fwd_in_pdt_animal_frog_hound.lua")    --- 修改 二蛤 掉落 二蛤皮
+
+modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/22_crabking.lua")    --- 修改 帝王蟹 掉落 填海叉蓝图
+

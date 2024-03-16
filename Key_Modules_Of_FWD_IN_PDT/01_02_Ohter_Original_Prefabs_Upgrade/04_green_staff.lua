@@ -1,7 +1,7 @@
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --[[
 
-    · 暗影剑
+    升级绿杖
 
 
 ]]--
@@ -31,7 +31,7 @@ AddPrefabPostInit(
                     return false
                 end
 
-                if item:HasTag("fwd_in_pdt_item_flame_core") and inst:HasTag("flame_core_enough") then  --- 冰核足够，不允许继续加了
+                if item:HasTag("fwd_in_pdt_item_flame_core") and inst:HasTag("flame_core_enough") then  --- 火核足够，不允许继续加了
                     return false
                 end
 

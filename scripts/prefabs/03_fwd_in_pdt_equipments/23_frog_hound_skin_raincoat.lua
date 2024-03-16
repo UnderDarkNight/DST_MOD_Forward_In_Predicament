@@ -1,3 +1,4 @@
+--哈皮雨衣
 local assets =
 {
     Asset( "ANIM", "anim/fwd_in_pdt_frog_hound_skin_raincoat.zip" ),

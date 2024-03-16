@@ -54,6 +54,7 @@ local files_name = {
 		"fwd_in_pdt_building_doll_clamping_machine",				--- 娃娃机
 		"fwd_in_pdt_building_lantern",								--- 灯笼
 		"fwd_in_pdt_building_lantern_moon",							--- 灯笼（月光皮肤）
+		"fwd_in_pdt_building_potting_cotton",						--- 棉花盆栽（盆栽皮肤）
 	-------------------------------------------------------------------------------------------------
 	---- 08_fwd_in_pdt_resources
 		"fwd_in_pdt_minimap_glacier"	, 							--- 冰川

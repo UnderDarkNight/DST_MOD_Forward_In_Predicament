@@ -255,8 +255,8 @@ local function fn()
     -------------------------------------------------------------------
     --- 耐久度
         inst:AddComponent("finiteuses")
-        inst.components.finiteuses:SetMaxUses(100)
-        inst.components.finiteuses:SetUses(100)
+        inst.components.finiteuses:SetMaxUses(2000)
+        inst.components.finiteuses:SetUses(2000)
         inst.components.finiteuses:SetOnFinished(inst.Remove)
     -------------------------------------------------------------------
     --- 落水影子

@@ -148,6 +148,10 @@ AddPlayerPostInit(function(inst)
                             "fwd_in_pdt_building_flower_fence_item_vines",
                             "fwd_in_pdt_building_flower_fence_item_mushroom",
                         },
+                     ---- 盆栽
+                        ["fwd_in_pdt_building_potting_a"] = {
+                        "fwd_in_pdt_building_potting_cotton",   ---棉花皮肤
+                        },
                     ---- 鼹鼠背包
                         ["fwd_in_pdt_equipment_mole_backpack"] = {
                             -- "fwd_in_pdt_equipment_mole_backpack_panda",  --- 免费送

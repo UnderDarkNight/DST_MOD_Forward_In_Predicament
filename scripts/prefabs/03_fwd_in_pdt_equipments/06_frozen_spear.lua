@@ -135,8 +135,8 @@ local function fn()
     -------
 
     inst:AddComponent("finiteuses")
-    inst.components.finiteuses:SetMaxUses(1000)
-    inst.components.finiteuses:SetUses(1000)
+    inst.components.finiteuses:SetMaxUses(300)
+    inst.components.finiteuses:SetUses(300)
     inst.components.finiteuses:SetOnFinished(inst.Remove)
 
     
