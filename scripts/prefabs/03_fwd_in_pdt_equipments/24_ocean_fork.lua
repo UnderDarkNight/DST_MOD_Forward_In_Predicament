@@ -57,63 +57,82 @@ local function fn()
                 if not right_click then
                     return false
                 end
-                if pt then
-                    -------------------------------------------------------------------
-                    --- 地皮中心点坐标
-                        local tile_x,tile_y,tile_z = TheWorld.Map:GetTileCenterPoint(pt.x,0,pt.z)
-                    -------------------------------------------------------------------
-                    --- 创建 虚线方框 指示器
-                        if inst.tile_outline == nil or not inst.tile_outline:IsValid() then
-                            inst.tile_outline = SpawnPrefab("fwd_in_pdt_fx_tile_outline")
-                            inst.tile_outline.Ready = true
-                            inst.tile_outline:DoPeriodicTask(1,function()   ---- 创建循环任务，叉子脱下或者被删了  ，就把框框删掉
-                                if not inst:IsValid() or not inst.replica.equippable:IsEquipped() then
-                                    inst.tile_outline:Remove()
-                                    inst.tile_outline = nil
+
+                local crash_flag,ret = pcall(function()
+                    if pt then
+                        -------------------------------------------------------------------
+                        --- 地皮中心点坐标 等参数
+                            local tile_x,tile_y,tile_z = TheWorld.Map:GetTileCenterPoint(pt.x,0,pt.z)
+                            local tile_map_x,tile_map_y = TheWorld.Map:GetTileXYAtPoint(tile_x,0,tile_z)
+    
+    
+                        -------------------------------------------------------------------
+                        --- 创建 虚线方框 指示器
+                            if not TheNet:IsDedicated() then --- 只在 client 端执行
+                                if inst.tile_outline == nil or not inst.tile_outline:IsValid() then
+                                    inst.tile_outline = SpawnPrefab("fwd_in_pdt_fx_tile_outline")
+                                    inst.tile_outline.Ready = true
+                                    inst.tile_outline:DoPeriodicTask(1,function()   ---- 创建循环任务，叉子脱下或者被删了  ，就把框框删掉
+                                        if not inst:IsValid() or not inst.replica.equippable:IsEquipped() then
+                                            inst.tile_outline:Remove()
+                                            inst.tile_outline = nil
+                                        end
+                                    end)
                                 end
-                            end)
-                        end
-                        if inst.tile_outline then
-                            -- inst.tile_outline.Transform:SetPosition(tile_x,tile_y,tile_z)
-                            inst.tile_outline:PushEvent("Set",{
-                                pt = Vector3(tile_x,tile_y,tile_z)
-                            })
-                        end
-                    -------------------------------------------------------------------
-                    --- 地皮上有玩家
-                        local ents = TheSim:FindEntities(tile_x, 0, tile_z, 2.2, {"player"}, {"playerghost"}, nil)
-                        if #ents > 0 then
-                            return false
-                        end
-                    -------------------------------------------------------------------
-                    ---- 码头地皮
-                        if TheWorld.Map:IsDockAtPoint(tile_x,0,tile_z) then
-                            return false
-                        end
-                    -------------------------------------------------------------------
-                    ---- 有船在那个位置
-                        local outside_pts = {
-                            Vector3(tile_x,0,tile_z),   --- 中心点
-                            Vector3(tile_x+2,0,tile_z+2),   --- 四角
-                            Vector3(tile_x+2,0,tile_z-2),   --- 四角
-                            Vector3(tile_x-2,0,tile_z+2),   --- 四角
-                            Vector3(tile_x-2,0,tile_z-2),   --- 四角
-                            Vector3(tile_x,0,tile_z+2),   --- 边线
-                            Vector3(tile_x,0,tile_z-2),   --- 边线
-                            Vector3(tile_x+2,0,tile_z),   --- 边线
-                            Vector3(tile_x-2,0,tile_z),   --- 边线
-                        }
-                        for k, temp_pt in pairs(outside_pts) do
-                            if TheWorld.Map:GetPlatformAtPoint(temp_pt.x, temp_pt.z) ~= nil then
+                                if inst.tile_outline then
+                                    -- inst.tile_outline.Transform:SetPosition(tile_x,tile_y,tile_z)
+                                    inst.tile_outline:PushEvent("Set",{
+                                        pt = Vector3(tile_x,tile_y,tile_z)
+                                    })
+                                end
+                            end
+                        -------------------------------------------------------------------
+                        ---- 超出地图尺寸
+                            local map_width,map_height = TheWorld.Map:GetSize()
+                            if tile_map_x > map_width or tile_map_x <= 0 then
                                 return false
                             end
-                        end
-                        
-                    -------------------------------------------------------------------
-                        return true
-                    -------------------------------------------------------------------
+                            if tile_map_y > map_height or tile_map_y <=0 then
+                                return false
+                            end
+                        -------------------------------------------------------------------
+                        --- 地皮上有玩家
+                            local ents = TheSim:FindEntities(tile_x, 0, tile_z, 2.2, {"player"}, {"playerghost"}, nil)
+                            if #ents > 0 then
+                                return false
+                            end
+                        -------------------------------------------------------------------
+                        ---- 码头地皮
+                            if TheWorld.Map:IsDockAtPoint(tile_x,0,tile_z) then
+                                return false
+                            end
+                        -------------------------------------------------------------------
+                        ---- 有船在那个位置
+                            local outside_pts = {
+                                Vector3(tile_x,0,tile_z),   --- 中心点
+                                Vector3(tile_x+2,0,tile_z+2),   --- 四角
+                                Vector3(tile_x+2,0,tile_z-2),   --- 四角
+                                Vector3(tile_x-2,0,tile_z+2),   --- 四角
+                                Vector3(tile_x-2,0,tile_z-2),   --- 四角
+                                Vector3(tile_x,0,tile_z+2),   --- 边线
+                                Vector3(tile_x,0,tile_z-2),   --- 边线
+                                Vector3(tile_x+2,0,tile_z),   --- 边线
+                                Vector3(tile_x-2,0,tile_z),   --- 边线
+                            }
+                            for k, temp_pt in pairs(outside_pts) do
+                                if TheWorld.Map:GetPlatformAtPoint(temp_pt.x, temp_pt.z) ~= nil then
+                                    return false
+                                end
+                            end
+                            
+                        -------------------------------------------------------------------
+                            return true
+                        -------------------------------------------------------------------
+                    end
+                end)
+                if crash_flag then
+                    return ret or false
                 end
-
                 return false
             end)
             replica_com:SetDistance(5.5)
@@ -153,6 +172,7 @@ local function fn()
                 ---- 地皮中心点
                     local tile_x,tile_y,tile_z = TheWorld.Map:GetTileCenterPoint(pt.x,0,pt.z)
                     local current_tile = TheWorld.Map:GetTileAtPoint(tile_x, 0, tile_z)
+                    local tile_map_x,tile_map_y = TheWorld.Map:GetTileXYAtPoint(tile_x,0,tile_z)
                 ------------------------------------------------------------------------------------------------------------------------
                 ---- 打印当前 tile
                     if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
@@ -163,26 +183,22 @@ local function fn()
                 ---- 目标位置是地面，改成 海洋/虚空   TheWorld.Map:SetTile(the_x,the_y, temp_tile)
                     if TheWorld.Map:IsLandTileAtPoint(tile_x,0,tile_z) then
                         if TheWorld:HasTag("cave") then
-                            local temp_xx,temp_yy = TheWorld.Map:GetTileXYAtPoint(tile_x,0,tile_z)
-                            TheWorld.Map:SetTile(temp_xx,temp_yy,1)
+                            TheWorld.Map:SetTile(tile_map_x,tile_map_y,1)
                         else
-                            local temp_xx,temp_yy = TheWorld.Map:GetTileXYAtPoint(tile_x,0,tile_z)
-                            TheWorld.Map:SetTile(temp_xx,temp_yy,202)
+                            TheWorld.Map:SetTile(tile_map_x,tile_map_y,202)
                         end
                         return true
                     end
                 ------------------------------------------------------------------------------------------------------------------------
                     ---- 目标位置是 虚空。切成陆地
                     if current_tile == 1 or TheWorld.Map:IsValidTileAtPoint(tile_x, 0, tile_z) then
-                        local temp_xx,temp_yy = TheWorld.Map:GetTileXYAtPoint(tile_x,0,tile_z)
-                        TheWorld.Map:SetTile(temp_xx,temp_yy,4)
+                        TheWorld.Map:SetTile(tile_map_x,tile_map_y,4)
                         return true
                     end
                 ------------------------------------------------------------------------------------------------------------------------
                 ---- 目标位置是 海洋。切成陆地
                     if TheWorld.Map:IsOceanAtPoint(tile_x, 0, tile_z) then
-                        local temp_xx,temp_yy = TheWorld.Map:GetTileXYAtPoint(tile_x,0,tile_z)
-                        TheWorld.Map:SetTile(temp_xx,temp_yy,4)
+                        TheWorld.Map:SetTile(tile_map_x,tile_map_y,4)
                         return true
                     end
                 ------------------------------------------------------------------------------------------------------------------------
