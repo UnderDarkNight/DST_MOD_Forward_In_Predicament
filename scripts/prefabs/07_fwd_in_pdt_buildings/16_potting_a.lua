@@ -48,8 +48,8 @@ local function fn()
     inst.AnimState:SetBuild("fwd_in_pdt_building_potting_a")
     inst.AnimState:PlayAnimation("idle",true)
 
-    local scale = 1.5
-    inst.AnimState:SetScale(scale, scale, scale)
+    -- local scale = 1.5
+    -- inst.AnimState:SetScale(scale, scale, scale)
 
     inst:AddTag("structure")
     -- inst:AddTag("chest")
