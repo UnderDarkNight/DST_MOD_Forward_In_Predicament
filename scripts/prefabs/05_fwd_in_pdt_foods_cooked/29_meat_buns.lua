@@ -1,7 +1,6 @@
 --------------------------------------------------------------------------
 --- 食物
---- 猫屎咖啡
---- 功能更强大，女武神也能吃（零食）
+--- 人肉包子
 --------------------------------------------------------------------------
 
 
@@ -41,37 +40,34 @@ local function fn()
     -- inst.components.inventoryitem:ChangeImageName("leafymeatburger")
     inst.components.inventoryitem.imagename = "fwd_in_pdt_food_meat_buns"
     inst.components.inventoryitem.atlasname = "images/inventoryimages/fwd_in_pdt_food_meat_buns.xml"
-
+    inst.components.inventoryitem:SetSinks(true)    -- 掉水里消失
     --------------------------------------------------------------------------
 
 
     inst:AddComponent("edible") -- 可食物组件
     inst.components.edible.foodtype = FOODTYPE.MEAT                          --肉
     inst.components.edible:SetOnEatenFn(function(inst,eater)
-        if eater and eater:HasTag("player") then
-            -- 添加咖啡buff
-            if eater.components.fwd_in_pdt_wellness then
-                eater.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_coffee_buff")
+        --- 1000伤害  非常牛   这里需要攻击组件
+        if eater.components.combat ~= nil then
+            local damage = 1000
+
+            --如果是一次性吃完类型的对象，伤害应该是整组算的
+            if eater.components.eater and eater.components.eater.eatwholestack then
+                damage = damage * inst.components.stackable:StackSize()
             end
-            -- 蘑菇蛋糕buff防催眠，吃的瞬间生效，也能解除月灵攻击造成的虚弱
-            -- 人物还是有打哈欠的动作  但不会被熊催眠了  会减速
-            if eater.components.grogginess ~= nil and                               --摇摇晃晃的组件
-                not (eater.components.health ~= nil and eater.components.health:IsDead()) and
-                not eater:HasTag("playerghost") then
-                eater.components.grogginess:ResetGrogginess()
-            end
-                eater:AddDebuff("shroomsleepresist", "buff_sleepresistance")
-            end
-        end)
+
+            eater.components.combat:GetAttacked(inst, damage)
+        end
+    end)
 
     inst:AddComponent("perishable") -- 可腐烂的组件
-    inst.components.perishable:SetPerishTime(TUNING.PERISH_TWO_DAY*5)
+    inst.components.perishable:SetPerishTime(TUNING.PERISH_TWO_DAY*10000)
     inst.components.perishable:StartPerishing()
     inst.components.perishable.onperishreplacement = "spoiled_food" -- 腐烂后变成腐烂食物
 
-    inst.components.edible.hungervalue = 12.5
-    inst.components.edible.sanityvalue = 50
-    inst.components.edible.healthvalue = 8
+    inst.components.edible.hungervalue = 150
+    inst.components.edible.sanityvalue = 150
+    inst.components.edible.healthvalue = 150
 
     inst:AddComponent("stackable") -- 可堆叠
     inst.components.stackable.maxsize = TUNING.STACK_SIZE_SMALLITEM
@@ -79,16 +75,6 @@ local function fn()
 
     MakeHauntableLaunch(inst)
     -------------------------------------------------------------------
-    --- 落水影子
-        local function shadow_init(inst)
-            if inst:IsOnOcean(false) then       --- 如果在海里（不包括船）
-                inst.AnimState:Hide("SHADOW")
-            else                                
-                inst.AnimState:Show("SHADOW")
-            end
-        end
-        inst:ListenForEvent("on_landed",shadow_init)
-        shadow_init(inst)
     -------------------------------------------------------------------
     inst:AddComponent("fwd_in_pdt_func"):Init("item_tile_fx")
     -- local r,g,b,a = 157/255 , 86/255 ,126/255 , 200/255
@@ -109,4 +95,4 @@ local function fn()
     return inst
 end
 
-return Prefab("fwd_in_pdt_food_coffee_luwak", fn, assets)
+return Prefab("fwd_in_pdt_food_meat_buns", fn, assets)

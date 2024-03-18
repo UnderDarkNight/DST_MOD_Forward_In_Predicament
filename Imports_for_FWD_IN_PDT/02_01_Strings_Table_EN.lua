@@ -600,23 +600,27 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             },
             ["fwd_in_pdt_food_stinky_tofu_salad"] = {
                 ["name"] = "Stinky Tofu Salad",
-                ["inspect_str"] = "It tastes awful, but it's delicious",
+                ["inspect_str"] = "It tastes awful, but it's delicious.",
             },
             ["fwd_in_pdt_food_stinky_tofu_bolognese"] = {
                 ["name"] = "Stinky Tofu Bolognese",
-                ["inspect_str"] = "It tastes awful, but it's delicious",
+                ["inspect_str"] = "It tastes awful, but it's delicious.",
             },
             ["fwd_in_pdt_food_garlic_cucumber"] = {
                 ["name"] = "Garlic Cucumber",
-                ["inspect_str"] = "Garlic cucumber",
+                ["inspect_str"] = "Garlic cucumber.",
             },
             ["fwd_in_pdt_food_cat_feces"] = {
                 ["name"] = "Cat Feces",
-                ["inspect_str"] = "So dirty",
+                ["inspect_str"] = "So dirty.",
             },
             ["fwd_in_pdt_food_coffee_luwak"] = {
                 ["name"] = "Coffee Luwak",
-                ["inspect_str"] = "It tastes awful, but it's delicious",
+                ["inspect_str"] = "It tastes awful, but it's delicious.",
+            },
+            ["fwd_in_pdt_food_meat_buns"] = {
+                ["name"] = "Human Meat Buns",
+                ["inspect_str"] = "The filling is very full and the taste is strong, but there is always a feeling that something is wrong.",
             },
         --------------------------------------------------------------------
         ---- 06_fwd_in_pdt_containers
