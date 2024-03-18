@@ -85,6 +85,11 @@ nil,
         end
     end
 ---------------------------------------------------------------------------------------------------
+----- 是否允许坐骑上使用
+    function fwd_in_pdt_com_point_and_target_spell_caster:SetAllowCastWhenRiding(flag)
+        self._allow_cast_when_riding = flag or false
+    end
+---------------------------------------------------------------------------------------------------
 ----- test 函数
     function fwd_in_pdt_com_point_and_target_spell_caster:SetTestFn(fn)
         if type(fn) == "function" then
@@ -92,6 +97,9 @@ nil,
         end
     end
     function fwd_in_pdt_com_point_and_target_spell_caster:Test(doer,target,pt,right_click)
+        if not self._allow_cast_when_riding and doer.replica.rider and doer.replica.rider:IsRiding() then
+            return false
+        end
         if self.__test_fn then
             return self.__test_fn(self.inst,doer,target,pt,right_click)
         end
