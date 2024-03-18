@@ -1,4 +1,5 @@
 return {
+    ---以下是和原版兼容
     --- 浆果
         ["berries"] = {
             product = "fwd_in_pdt_food_dried_fruits_berries",
@@ -32,21 +33,6 @@ return {
     --- 西瓜
         ["watermelon"] = {
             product = "fwd_in_pdt_food_dried_fruits_watermelons",
-            num = 2 ,
-        },
-    --- 青芒果
-        ["fwd_in_pdt_food_mango_green"] = {
-            product = "fwd_in_pdt_food_dried_fruits_mango",
-            num = 2 ,
-        },
-    --- 黄芒果
-        ["fwd_in_pdt_food_mango"] = {
-            product = "fwd_in_pdt_food_dried_fruits_mango",
-            num = 5 ,
-        },
-    ---松萝
-        ["pineananas"] = {
-            product = "fwd_in_pdt_food_dried_fruits_pineananas",
             num = 2 ,
         },
     --- 鸡腿
@@ -90,4 +76,28 @@ return {
             num = 2 ,
         },
 
+    ---以下是和棱镜兼容
+    --- 松萝
+        ["pineananas"] = {
+            product = "fwd_in_pdt_food_dried_fruits_pineananas",
+            num = 2 ,
+        },
+
+
+    ---以下是和负重兼容
+    --- 橙子
+        -- ["pineananas"] = {
+        --     product = "fwd_in_pdt_food_dried_fruits_pineananas",
+        --     num = 2 ,
+        -- },
+    --- 青芒果
+        ["fwd_in_pdt_food_mango_green"] = {
+        product = "fwd_in_pdt_food_dried_fruits_mango",
+        num = 2 ,
+        },
+    --- 黄芒果
+        ["fwd_in_pdt_food_mango"] = {
+            product = "fwd_in_pdt_food_dried_fruits_mango",
+            num = 5 ,
+        },
 }
