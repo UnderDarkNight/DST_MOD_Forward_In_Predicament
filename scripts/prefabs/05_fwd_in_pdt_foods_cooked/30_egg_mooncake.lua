@@ -45,7 +45,7 @@ local function fn()
 
 
     inst:AddComponent("edible") -- 可食物组件
-    inst.components.edible.foodtype = FOODTYPE.GOODIES                          --肉
+    inst.components.edible.foodtype = FOODTYPE.GOODIES                          --零食
     inst.components.edible:SetOnEatenFn(function(inst,eater)
 
         if eater.components.health ~= nil then
