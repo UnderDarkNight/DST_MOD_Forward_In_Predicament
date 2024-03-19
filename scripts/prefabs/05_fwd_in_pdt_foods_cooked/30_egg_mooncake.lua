@@ -51,7 +51,7 @@ local function fn()
         if eater.components.health ~= nil then
             --因为buff相关组件不支持相同buff叠加时的数据传输，所以这里自己定义了一个传输方式
             eater.buff_healthstorage_times = 50
-            eater:AddDebuff("buff_healthstorage", "buff_healthstorage")
+            eater:AddDebuff("fwd_in_pdt_buff_healthstorage", "fwd_in_pdt_buff_healthstorage")
         end
     end)
 

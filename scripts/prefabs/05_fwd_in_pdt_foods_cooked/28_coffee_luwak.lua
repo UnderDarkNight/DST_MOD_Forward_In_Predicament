@@ -60,7 +60,7 @@ local function fn()
                 not eater:HasTag("playerghost") then
                 eater.components.grogginess:ResetGrogginess()
             end
-                eater:AddDebuff("shroomsleepresist", "buff_sleepresistance")
+                eater:AddDebuff("shroomsleepresist", "buff_sleepresistance") --- 官方就有  不需要在食物里面定义了
             end
         end)
 

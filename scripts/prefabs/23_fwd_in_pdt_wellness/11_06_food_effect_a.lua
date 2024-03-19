@@ -1,4 +1,4 @@
--- 这是一个全部食物的effect，想让建家党也能享受食物buff
+-- 这是一个全部食物的effect
 local prefs = {}
 ------------------------------------------------------------------------------------------------
 local oppositeBuffs = {
@@ -228,8 +228,7 @@ end
 local function IsAlive(inst)
     return inst.components.health ~= nil and not inst.components.health:IsDead() and not inst:HasTag("playerghost")
 end
-
-
+------------------------------------------------------------------------------------------------
 -- 血库
 -- 自定义一个buff  每2s  +2血  50次任务  buff次数可以叠加  满血不加血  受伤自动开始
 ------------------------------------------------------------------------------------------------
@@ -274,7 +273,7 @@ local function BuffSet_healthstorage(buff, target)
 end
 
 MakeBuff({
-    name = "buff_healthstorage",
+    name = "fwd_in_pdt_buff_healthstorage",
     assets = nil,
     prefabs = nil,
     time_key = nil,
@@ -295,5 +294,6 @@ MakeBuff({
         buff.OnLoad = OnLoad_healthstorage --这个比OnAttached更早执行
     end
 })
+------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------
 return unpack(prefs)
