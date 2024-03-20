@@ -213,13 +213,13 @@ RemoveRecipeFromFilter("fwd_in_pdt_building_drying_rack","MODS")                
 
 
 --------------------------------------------------------------------------------------------------------------------------------------------
----- 花围栏
+---- 花栅栏
 --------------------------------------------------------------------------------------------------------------------------------------------
 AddRecipeToFilter("fwd_in_pdt_building_flower_fence_item","STRUCTURES")     ---- 添加物品到目标标签
 AddRecipe2(
     "fwd_in_pdt_building_flower_fence_item",            --  --  inst.prefab  实体名字
     { Ingredient("twigs", 3), Ingredient("rope", 1) }, 
-    TECH.SCIENCE_TWO, --- TECH.二本科技
+    TECH.SCIENCE_LOST, --- TECH.蓝图
     {
         -- nounlock=true,
         numtogive = 6,

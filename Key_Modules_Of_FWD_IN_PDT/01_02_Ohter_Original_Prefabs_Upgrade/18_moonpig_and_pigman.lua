@@ -32,22 +32,25 @@ AddPrefabPostInit(
         if not TheWorld.ismastersim then
             return
         end
-
         inst:ListenForEvent("death",function()
             if inst.components.lootdropper then
-                local loot = inst.components.lootdropper.loot or {}                             ---100%给一个
+                local loot = inst.components.lootdropper.loot or {}
                     table.insert(loot,"fwd_in_pdt_food_large_intestine")
                     table.insert(loot,"fwd_in_pdt_food_pig_liver")
-                    if math.random(100) <= 30 then                                              ---30%概率多一个
-                    table.insert(loot,"fwd_in_pdt_food_large_intestine")
-                    table.insert(loot,"fwd_in_pdt_food_pig_liver")
-                    end
+
+                if math.random(100) <= 30 then                                              ---30%概率给一个
+                        table.insert(loot,"fwd_in_pdt_food_large_intestine")
+                        table.insert(loot,"fwd_in_pdt_food_pig_liver")
+                end
                 inst.components.lootdropper.loot = loot
             end
         end)
 
     end
 )
+
+
+
 AddPrefabPostInit(
     "pigman",
     function(inst)
@@ -68,4 +71,3 @@ AddPrefabPostInit(
 
     end
 )
-
