@@ -57,6 +57,7 @@ local prefabs_name_list = {
     "27_garlic_cucumber",                            -- 拍黄瓜
     "28_coffee_luwak",                               -- 猫屎咖啡
     "29_meat_buns",                                  -- 人肉包子
+    "30_egg_mooncake",                               -- 蛋黄月饼
 }
 
 

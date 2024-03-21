@@ -478,6 +478,7 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "Chicken Feet",
                 ["inspect_str"] = "Chicken Feet",
             },
+            
         --------------------------------------------------------------------
         ---- 05_fwd_in_pdt_foods_cooked
             ["fwd_in_pdt_food_mixed_potato_soup"] = {
@@ -621,6 +622,10 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             ["fwd_in_pdt_food_meat_buns"] = {
                 ["name"] = "Human Meat Buns",
                 ["inspect_str"] = "The filling is very full and the taste is strong, but there is always a feeling that something is wrong.",
+            },
+            ["fwd_in_pdt_food_egg_mooncake"] = {
+                ["name"] = "Mooncake",
+                ["inspect_str"] = "I send my sorrowful heart to the bright moon, following the wind until the west of Yelang.",
             },
         --------------------------------------------------------------------
         ---- 06_fwd_in_pdt_containers

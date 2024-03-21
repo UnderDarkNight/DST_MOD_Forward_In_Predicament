@@ -137,6 +137,7 @@ local files_name = {
 		"fwd_in_pdt_food_garlic_cucumber",						--- 拍黄瓜
 		"fwd_in_pdt_food_coffee_luwak",							--- 猫屎咖啡
 		"fwd_in_pdt_food_meat_buns",							--- 人肉包子
+		"fwd_in_pdt_food_egg_mooncake",							--- 蛋黄月饼
 
 
 
