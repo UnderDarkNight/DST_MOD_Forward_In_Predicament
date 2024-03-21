@@ -16,7 +16,7 @@
         TECH.MAGIC_THREE, --- 魔法三本
         {
             -- nounlock=true,
-            no_deconstruction=true,
+            no_deconstruction=false,
             -- builder_tag = "npng_tag.has_green_amulet",    --------- -- 【builder_tag】只给指定tag的角色能制造这件物品，角色添加/移除 tag 都能立马解锁/隐藏该物品
             -- placer = "fwd_in_pdt_item_talisman_that_repels_snakes",                       -------- 建筑放置器        
             atlas = "images/inventoryimages/fwd_in_pdt_item_talisman_that_repels_snakes.xml",
@@ -35,7 +35,7 @@
         { Ingredient("fwd_in_pdt_material_tree_resin", 2)}, 
         TECH.SCIENCE_ONE, --- TECH.一本科技
         {
-            no_deconstruction=true,     
+            no_deconstruction=false,     
             atlas = "images/inventoryimages/fwd_in_pdt_equipment_loong_balloon.xml",
             image = "fwd_in_pdt_equipment_loong_balloon.tex",
         },
@@ -52,7 +52,7 @@
         { Ingredient("fwd_in_pdt_material_tree_resin", 2)}, 
         TECH.SCIENCE_ONE, --- TECH.一本科技
         {
-            no_deconstruction=true,     
+            no_deconstruction=false,     
             atlas = "images/inventoryimages/fwd_in_pdt_equipment_balloon_evil_dragon.xml",
             image = "fwd_in_pdt_equipment_balloon_evil_dragon.tex",
         },
@@ -69,7 +69,7 @@
         { Ingredient("fwd_in_pdt_material_tree_resin", 2)}, 
         TECH.SCIENCE_ONE, --- TECH.一本科技
         {
-            no_deconstruction=true,     
+            no_deconstruction=false,     
             atlas = "images/inventoryimages/fwd_in_pdt_equipment_balloon_bobble_loong.xml",
             image = "fwd_in_pdt_equipment_balloon_bobble_loong.tex",
         },
@@ -86,7 +86,7 @@
         { Ingredient("minotaurhorn", 1) ,Ingredient("nightmarefuel", 10 ) }, 
         TECH.ANCIENT_FOUR, --- 完整的远古塔
         {
-            no_deconstruction=true,
+            no_deconstruction=false,
             atlas = "images/inventoryimages/fwd_in_pdt_equipment_magic_spatula.xml",
             image = "fwd_in_pdt_equipment_magic_spatula.tex",
         },
@@ -103,7 +103,7 @@
         { Ingredient("yellowamulet", 1) ,Ingredient("ruinshat", 3 ),Ingredient("armorruins", 3 )  }, 
         TECH.ANCIENT_FOUR, --- 完整的远古塔
         {
-            no_deconstruction=true,
+            no_deconstruction=false,
             atlas = "images/inventoryimages/fwd_in_pdt_equipment_shield_of_light.xml",
             image = "fwd_in_pdt_equipment_shield_of_light.tex",
         },
@@ -119,7 +119,7 @@
         { Ingredient("spidereggsack", 4) }, 
         TECH.SCIENCE_ONE, --- THCH.一本科技
         {
-            no_deconstruction=true,
+            no_deconstruction=false,
             atlas = "images/inventoryimages/fwd_in_pdt_void_fishingrod.xml",
             -- atlas = GetInventoryItemAtlas("fishingrod.tex"),
             image = "fwd_in_pdt_void_fishingrod.tex",
@@ -137,7 +137,7 @@
         { Ingredient("fwd_in_pdt_material_tree_resin", 20),Ingredient("livinglog", 8),Ingredient("moonglass", 1) }, 
         TECH.SCIENCE_TWO, --- THCH.一本科技
         {
-            no_deconstruction=true,
+            no_deconstruction=false,
             atlas = "images/inventoryimages/fwd_in_pdt_equipment_telescope.xml",
             -- atlas = GetInventoryItemAtlas("fishingrod.tex"),
             image = "fwd_in_pdt_equipment_telescope.tex",
@@ -156,7 +156,7 @@
         { Ingredient("pigskin", 4),Ingredient("livinglog", 4) }, 
         TECH.SCIENCE_ONE, --- THCH.一本科技
         {
-            no_deconstruction=true,
+            no_deconstruction=false,
             atlas = "images/inventoryimages/fwd_in_pdt_item_pig_flute.xml",
             -- atlas = GetInventoryItemAtlas("fishingrod.tex"),
             image = "fwd_in_pdt_item_pig_flute.tex",
@@ -175,7 +175,7 @@
         { Ingredient("fwd_in_pdt_item_cursed_pig_skin", 2),Ingredient("livinglog", 4) }, 
         TECH.SCIENCE_ONE, --- THCH.一本科技
         {
-            no_deconstruction=true,
+            no_deconstruction=false,
             atlas = "images/inventoryimages/fwd_in_pdt_item_werepig_flute.xml",
             -- atlas = GetInventoryItemAtlas("fishingrod.tex"),
             image = "fwd_in_pdt_item_werepig_flute.tex",
@@ -192,7 +192,7 @@
         { Ingredient("fwd_in_pdt_material_snake_skin", 1),Ingredient("rope", 1) }, 
         TECH.SCIENCE_TWO, --- THCH.二本科技
         {
-            no_deconstruction=true,
+            no_deconstruction=false,
             atlas = "images/inventoryimages/fwd_in_pdt_turf_snakeskin.xml",
             -- atlas = GetInventoryItemAtlas("fishingrod.tex"),
             image = "fwd_in_pdt_turf_snakeskin.tex",
@@ -209,7 +209,7 @@
         { Ingredient("cutstone", 2) }, 
         TECH.SCIENCE_TWO, --- THCH.二本科技
         {
-            no_deconstruction=true,
+            no_deconstruction=false,
             atlas = "images/inventoryimages/fwd_in_pdt_turf_cobbleroad.xml",
             -- atlas = GetInventoryItemAtlas("fishingrod.tex"),
             image = "fwd_in_pdt_turf_cobbleroad.tex",
@@ -226,7 +226,7 @@
         { Ingredient("rope", 2) }, 
         TECH.SCIENCE_TWO, --- THCH.二本科技
         {
-            no_deconstruction=true,
+            no_deconstruction=false,
             atlas = "images/inventoryimages/fwd_in_pdt_turf_grasslawn.xml",
             -- atlas = GetInventoryItemAtlas("fishingrod.tex"),
             image = "fwd_in_pdt_turf_grasslawn.tex",
@@ -243,7 +243,7 @@
         { Ingredient("fwd_in_pdt_material_frog_hound_skin", 2),Ingredient("rope", 2)}, 
         TECH.SCIENCE_TWO, --- TECH.一本科技
         {
-            no_deconstruction=true,     
+            no_deconstruction=false,     
             atlas = "images/inventoryimages/fwd_in_pdt_frog_hound_skin_raincoat.xml",
             image = "fwd_in_pdt_frog_hound_skin_raincoat.tex",
         },
@@ -259,7 +259,7 @@
         { Ingredient("hermit_cracked_pearl", 1),Ingredient("pitchfork", 1)}, 
         TECH.LOST, --- TECH.蓝图
         {
-            no_deconstruction=true,     
+            no_deconstruction=false,     
             atlas = "images/inventoryimages/fwd_in_pdt_equipment_ocean_fork.xml",
             image = "fwd_in_pdt_equipment_ocean_fork.tex",
         },

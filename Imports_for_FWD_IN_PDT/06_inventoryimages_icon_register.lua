@@ -140,9 +140,6 @@ local files_name = {
 		"fwd_in_pdt_food_egg_mooncake",							--- 蛋黄月饼
 
 
-
-
-
 	---------------------------------------------------------------------------------------
 	-- 06_fwd_in_pdt_containers
 		"fwd_in_pdt_container_wallet",							-- 钱包
