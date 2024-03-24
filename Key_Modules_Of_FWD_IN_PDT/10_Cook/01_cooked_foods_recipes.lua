@@ -29,7 +29,7 @@
         name = "fwd_in_pdt_food_mixed_potato_soup", -- 料理名
         weight = 10, -- 食谱权重
         priority = 999, -- 食谱优先级
-        foodtype = GLOBAL.FOODTYPE.MEAT, --料理的食物类型，比如这里定义的是肉类
+        foodtype = GLOBAL.FOODTYPE.GOODIES, --料理的食物类型，比如这里定义的是肉类
         hunger = 150, --吃后回饥饿值
         sanity = 30, --吃后回精神值
         health = 20, --吃后回血值

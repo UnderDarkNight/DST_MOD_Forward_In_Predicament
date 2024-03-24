@@ -46,6 +46,7 @@ local function fn()
 
     inst:AddComponent("edible") -- 可食物组件
     inst.components.edible.foodtype = FOODTYPE.GOODIES
+    --FOODTYPE.ROUGHAGE  牛食
     inst.components.edible:SetOnEatenFn(function(inst,eater)
         -- if eater and eater:HasTag("player") then
         --     ---- 给计时器添加 时间，超过1天的算一天。
