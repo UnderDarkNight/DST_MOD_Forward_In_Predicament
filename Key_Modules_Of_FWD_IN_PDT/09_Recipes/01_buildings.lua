@@ -57,7 +57,7 @@ AddRecipe2(
     TECH.SCIENCE_TWO, --- TECH.二本科技
     {
         -- nounlock=true,
-        no_deconstruction=true,
+        no_deconstruction=false,
         -- builder_tag = "npng_tag.has_green_amulet",    --------- -- 【builder_tag】只给指定tag的角色能制造这件物品，角色添加/移除 tag 都能立马解锁/隐藏该物品
         placer = "fwd_in_pdt_building_paddy_windmill_placer",                       -------- 建筑放置器        
         atlas = "images/map_icons/fwd_in_pdt_building_paddy_windmill.xml",
@@ -77,7 +77,7 @@ AddRecipe2(
     TECH.CELESTIAL_ONE, --- TECH.天体宝珠
     {
         nounlock = true,
-        no_deconstruction=true,
+        no_deconstruction=false,
         station_tag = "fwd_in_pdt_tag.moonrockseed",   --- 科技物品必须带这个 tag （ 几乎等于天体宝珠 ）
         -- builder_tag = "npng_tag.has_green_amulet",    --------- -- 【builder_tag】只给指定tag的角色能制造这件物品，角色添加/移除 tag 都能立马解锁/隐藏该物品
         placer = "fwd_in_pdt_moom_jewelry_lamp_placer",                       -------- 建筑放置器        
@@ -98,7 +98,7 @@ AddRecipe2(
     TECH.SCIENCE_TWO, --- TECH.二本科技
     {
         -- nounlock=true,
-        no_deconstruction=true,
+        no_deconstruction=false,
         -- builder_tag = "npng_tag.has_green_amulet",    --------- -- 【builder_tag】只给指定tag的角色能制造这件物品，角色添加/移除 tag 都能立马解锁/隐藏该物品
         -- placer = "fwd_in_pdt_fish_farm_placer",                       -------- 建筑放置器        
         atlas = "images/map_icons/fwd_in_pdt_fish_farm.xml",
@@ -118,7 +118,7 @@ AddRecipe2(
     TECH.SCIENCE_TWO, --- TECH.二本科技
     {
         -- nounlock=true,
-        no_deconstruction=true,
+        no_deconstruction=false,
         -- builder_tag = "npng_tag.has_green_amulet",    --------- -- 【builder_tag】只给指定tag的角色能制造这件物品，角色添加/移除 tag 都能立马解锁/隐藏该物品
         placer = "fwd_in_pdt_building_special_production_table_placer",                       -------- 建筑放置器        
         atlas = "images/map_icons/fwd_in_pdt_building_special_production_table.xml",
@@ -138,7 +138,7 @@ AddRecipe2(
     TECH.SCIENCE_TWO, --- TECH.二本科技
     {
         -- nounlock=true,
-        no_deconstruction=true,
+        no_deconstruction=false,
         -- builder_tag = "npng_tag.has_green_amulet",    --------- -- 【builder_tag】只给指定tag的角色能制造这件物品，角色添加/移除 tag 都能立马解锁/隐藏该物品
         placer = "fwd_in_pdt_building_fermenter_placer",                       -------- 建筑放置器        
         atlas = "images/map_icons/fwd_in_pdt_building_fermenter.xml",
@@ -157,7 +157,7 @@ AddRecipe2(
     TECH.LOST, --- TECH.蓝图
     {
         -- nounlock=true,
-        no_deconstruction=true,
+        no_deconstruction=false,
         -- builder_tag = "npng_tag.has_green_amulet",    --------- -- 【builder_tag】只给指定tag的角色能制造这件物品，角色添加/移除 tag 都能立马解锁/隐藏该物品
         placer = "fwd_in_pdt_building_special_cookpot_placer",                       -------- 建筑放置器        
         atlas = "images/map_icons/fwd_in_pdt_building_special_cookpot.xml",
@@ -178,7 +178,7 @@ AddRecipe2(
     TECH.SCIENCE_TWO, --- TECH.二本科技
     {
         -- nounlock=true,
-        no_deconstruction=true,
+        no_deconstruction=false,
         -- builder_tag = "npng_tag.has_green_amulet",    --------- -- 【builder_tag】只给指定tag的角色能制造这件物品，角色添加/移除 tag 都能立马解锁/隐藏该物品
         placer = "fwd_in_pdt_container_tv_box_placer",                       -------- 建筑放置器        
         atlas = "images/map_icons/fwd_in_pdt_container_tv_box.xml",
@@ -201,7 +201,7 @@ AddRecipe2(
     TECH.SCIENCE_TWO, --- TECH.二本科技
     {
         -- nounlock=true,
-        no_deconstruction=true,
+        no_deconstruction=false,
         -- builder_tag = "npng_tag.has_green_amulet",    --------- -- 【builder_tag】只给指定tag的角色能制造这件物品，角色添加/移除 tag 都能立马解锁/隐藏该物品
         placer = "fwd_in_pdt_building_drying_rack_placer",                       -------- 建筑放置器        
         atlas = "images/map_icons/fwd_in_pdt_building_drying_rack.xml",
@@ -213,17 +213,17 @@ RemoveRecipeFromFilter("fwd_in_pdt_building_drying_rack","MODS")                
 
 
 --------------------------------------------------------------------------------------------------------------------------------------------
----- 花围栏
+---- 花栅栏
 --------------------------------------------------------------------------------------------------------------------------------------------
 AddRecipeToFilter("fwd_in_pdt_building_flower_fence_item","STRUCTURES")     ---- 添加物品到目标标签
 AddRecipe2(
     "fwd_in_pdt_building_flower_fence_item",            --  --  inst.prefab  实体名字
     { Ingredient("twigs", 3), Ingredient("rope", 1) }, 
-    TECH.SCIENCE_TWO, --- TECH.二本科技
+    TECH.SCIENCE_LOST, --- TECH.蓝图
     {
         -- nounlock=true,
         numtogive = 6,
-        no_deconstruction=true,
+        no_deconstruction=false,
         -- builder_tag = "npng_tag.has_green_amulet",    --------- -- 【builder_tag】只给指定tag的角色能制造这件物品，角色添加/移除 tag 都能立马解锁/隐藏该物品
         atlas = "images/inventoryimages/fwd_in_pdt_building_flower_fence.xml",
         image = "fwd_in_pdt_building_flower_fence.tex",
@@ -241,7 +241,7 @@ AddRecipe2(
     TECH.SCIENCE_TWO, --- TECH.二本科技
     {
         -- nounlock=true,
-        no_deconstruction=true,
+        no_deconstruction=false,
         -- builder_tag = "npng_tag.has_green_amulet",    --------- -- 【builder_tag】只给指定tag的角色能制造这件物品，角色添加/移除 tag 都能立马解锁/隐藏该物品
         placer = "fwd_in_pdt_building_lantern_placer",                       -------- 建筑放置器        
         atlas = "images/map_icons/fwd_in_pdt_building_lantern.xml",
@@ -263,7 +263,7 @@ AddRecipe2(
     TECH.SCIENCE_TWO, --- TECH.二本科技
     {
         -- nounlock=true,
-        no_deconstruction=true,
+        no_deconstruction=false,
         -- builder_tag = "npng_tag.has_green_amulet",    --------- -- 【builder_tag】只给指定tag的角色能制造这件物品，角色添加/移除 tag 都能立马解锁/隐藏该物品
         placer = "fwd_in_pdt_container_mahogany_table_placer",                       -------- 建筑放置器        
         atlas = "images/map_icons/fwd_in_pdt_container_mahogany_table.xml",
@@ -282,7 +282,7 @@ AddRecipe2(
     TECH.SCIENCE_TWO, --- TECH.二本科技
     {
         -- nounlock=true,
-        no_deconstruction=true,
+        no_deconstruction=false,
         -- builder_tag = "npng_tag.has_green_amulet",    --------- -- 【builder_tag】只给指定tag的角色能制造这件物品，角色添加/移除 tag 都能立马解锁/隐藏该物品
         placer = "fwd_in_pdt_deep_freeze_placer",                       -------- 建筑放置器        
         atlas = "images/map_icons/fwd_in_pdt_deep_freeze.xml",
@@ -301,7 +301,7 @@ AddRecipe2(
     TECH.SCIENCE_TWO, --- TECH.二本科技
     {
         -- nounlock=true,
-        no_deconstruction=true,
+        no_deconstruction=false,
         -- builder_tag = "npng_tag.has_green_amulet",    --------- -- 【builder_tag】只给指定tag的角色能制造这件物品，角色添加/移除 tag 都能立马解锁/隐藏该物品
         placer = "fwd_in_pdt_building_potting_a_placer",                       -------- 建筑放置器,记住不是prefab替换  后面有个placer呢！
         atlas = "images/inventoryimages/fwd_in_pdt_building_potting_a.xml", ---在哪注册的 一定要注意

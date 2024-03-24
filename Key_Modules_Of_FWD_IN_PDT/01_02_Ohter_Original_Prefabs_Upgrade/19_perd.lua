@@ -1,5 +1,5 @@
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
---- 让 火鸡掉落鸡爪
+--- 让 火鸡掉落鸡爪   掉落8个  真坑人
 --- 100%掉落1个  30%额外掉落一个
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -34,12 +34,10 @@ AddPrefabPostInit(
 
         inst:ListenForEvent("death",function()
             if inst.components.lootdropper then
-                local loot = inst.components.lootdropper.loot or {}
-                    table.insert(loot,"fwd_in_pdt_food_chicken_feet")
+                inst.components.lootdropper:SpawnLootPrefab("fwd_in_pdt_food_chicken_feet")
                 if math.random(100) <= 30 then
-                    table.insert(loot,"fwd_in_pdt_food_chicken_feet")
+                    inst.components.lootdropper:SpawnLootPrefab("fwd_in_pdt_food_chicken_feet")
                 end
-                inst.components.lootdropper.loot = loot
             end
         end)
 

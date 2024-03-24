@@ -10,9 +10,10 @@ AddPrefabPostInit(
 
         inst:ListenForEvent("death",function()
             if inst.components.lootdropper then
-                local loot = inst.components.lootdropper.loot or {}
-                    table.insert(loot,"fwd_in_pdt_equipment_ocean_fork_blueprint")
-                inst.components.lootdropper.loot = loot
+                inst.components.lootdropper:SpawnLootPrefab("fwd_in_pdt_equipment_ocean_fork_blueprint")
+                -- local loot = inst.components.lootdropper.loot or {}
+                --     table.insert(loot,"fwd_in_pdt_equipment_ocean_fork_blueprint")
+                -- inst.components.lootdropper.loot = loot
             end
         end)
 

@@ -16,7 +16,7 @@ return
             item_num = 5,                                                   --- 物品需求数量
             item_prefab = "fertilizer",                                     --- 物品需求的prefab
             gift_box_items = {                                              --- 奖励包裹里的内容
-                {"fwd_in_pdt_item_jade_coin_green",5},
+                {"fwd_in_pdt_item_jade_coin_green",math.random(1,10)},
                 {"fwd_in_pdt_plant_paddy_rice_seed",10},
             }
         },
@@ -32,7 +32,7 @@ return
             item_num = 1,                                                   --- 物品需求数量
             item_prefab = "yellowstaff",                                     --- 物品需求的prefab
             gift_box_items = {                                              --- 奖励包裹里的内容
-                {"fwd_in_pdt_item_jade_coin_green",20},
+                {"fwd_in_pdt_item_jade_coin_green",math.random(10,40)},
             }
         },
 
@@ -47,7 +47,7 @@ return
             item_num = 5,                                                   --- 物品需求数量
             item_prefab = "mole",                                           --- 物品需求的prefab
             gift_box_items = {                                              --- 奖励包裹里的内容
-                {"fwd_in_pdt_item_jade_coin_green",5},
+                {"fwd_in_pdt_item_jade_coin_green",math.random(5,15)},
             }
         },
 
@@ -62,7 +62,7 @@ return
             item_num = 10,                                                   --- 物品需求数量
             item_prefab = "dragonfruit",                                    --- 物品需求的prefab
             gift_box_items = {                                              --- 奖励包裹里的内容
-                {"fwd_in_pdt_item_jade_coin_green",5},
+                {"fwd_in_pdt_item_jade_coin_green",math.random(1,10)},
             }
         },
 
@@ -77,11 +77,11 @@ return
             item_num = 5,                                                   --- 物品需求数量
             item_prefab = "bonestew",                                       --- 物品需求的prefab
             gift_box_items = {                                              --- 奖励包裹里的内容
-                {"fwd_in_pdt_item_jade_coin_green",20},
+                {"fwd_in_pdt_item_jade_coin_green",math.random(20,30)},
             }
         },
 
-    --花*40任务 由于没有奖励的花墙蓝图暂时放置在这里
+    --花*40任务---花栅栏蓝图
         ["fwd_in_pdt_task_scroll__petals"] = {
         index = "fwd_in_pdt_task_scroll__petals",                         --- 任务index
             atlas = "images/ui_images/fwd_in_pdt_task_scrolls.xml",         --- 卷轴显示的图片
@@ -92,7 +92,7 @@ return
             item_num = 40,                                                   --- 物品需求数量
             item_prefab = "petals",                                       --- 物品需求的prefab
             gift_box_items = {                                              --- 奖励包裹里的内容
-                {"fwd_in_pdt_item_jade_coin_green",20},
+                {"fwd_in_pdt_building_flower_fence_blueprint",1},
             }
         },
 
@@ -107,7 +107,7 @@ return
             item_num = 10,                                                   --- 物品需求数量
             item_prefab = "taffy",                                            --- 物品需求的prefab
             gift_box_items = {                                              --- 奖励包裹里的内容
-                {"fwd_in_pdt_item_jade_coin_green",20},
+                {"fwd_in_pdt_item_jade_coin_green",math.random(20,30)},
             }
         },
 
@@ -122,7 +122,7 @@ return
             item_num = 1,                                                   --- 物品需求数量
             item_prefab = "eyebrellahat",                                            --- 物品需求的prefab
             gift_box_items = {                                              --- 奖励包裹里的内容
-                {"fwd_in_pdt_item_jade_coin_green",20},
+                {"fwd_in_pdt_item_jade_coin_green",math.random(30,40)},
             }
         },
 
@@ -152,7 +152,7 @@ return
             item_num = 40,                                                   --- 物品需求数量
             item_prefab = "ice",                                            --- 物品需求的prefab
             gift_box_items = {                                              --- 奖励包裹里的内容
-                {"fwd_in_pdt_item_jade_coin_green",5},
+                {"fwd_in_pdt_item_jade_coin_green",math.random(10,20)},
             }
         },
 
@@ -182,7 +182,7 @@ return
             item_num = 10,                                                   --- 物品需求数量
             item_prefab = "fwd_in_pdt_plant_mango_tree_item",                                            --- 物品需求的prefab
             gift_box_items = {                                              --- 奖励包裹里的内容
-                {"fwd_in_pdt_item_jade_coin_green",10},
+                {"fwd_in_pdt_item_jade_coin_green",math.random(40,50)},
             }
         },
 
@@ -197,7 +197,7 @@ return
             item_num = 10,                                                   --- 物品需求数量
             item_prefab = "drumstick",                                            --- 物品需求的prefab
             gift_box_items = {                                              --- 奖励包裹里的内容
-                {"fwd_in_pdt_item_jade_coin_green",50},
+                {"fwd_in_pdt_item_jade_coin_green",math.random(50,60)},
             }
         },
 
@@ -212,7 +212,7 @@ return
             item_num = 6,                                                   --- 物品需求数量
             item_prefab = "fwd_in_pdt_material_tree_resin",                 --- 物品需求的prefab
             gift_box_items = {                                              --- 奖励包裹里的内容
-                {"fwd_in_pdt_item_jade_coin_green",50},
+                {"fwd_in_pdt_item_jade_coin_green",math.random(50,60)},
             }
         },
 
@@ -227,7 +227,7 @@ return
             item_num = 10,                                                   --- 物品需求数量
             item_prefab = "spidereggsack",                                   --- 物品需求的prefab
             gift_box_items = {                                              --- 奖励包裹里的内容
-                {"fwd_in_pdt_item_jade_coin_green",10},
+                {"fwd_in_pdt_item_jade_coin_green",math.random(20,30)},
             }
         },
 
@@ -272,7 +272,7 @@ return
             item_num = 5,                                                   --- 物品需求数量
             item_prefab = "phlegm",                                   --- 物品需求的prefab
             gift_box_items = {                                              --- 奖励包裹里的内容
-                {"fwd_in_pdt_item_jade_coin_green",20},
+                {"fwd_in_pdt_item_jade_coin_green",math.random(50,60)},
             }
         },
 
@@ -302,7 +302,7 @@ return
             item_num = 5,                                                   --- 物品需求数量
             item_prefab = "fwd_in_pdt_item_jade_coin_green",                                   --- 物品需求的prefab
             gift_box_items = {                                              --- 奖励包裹里的内容
-                {"fwd_in_pdt_item_jade_coin_green",20},
+                {"fwd_in_pdt_item_jade_coin_green",math.random(10,20)},
             }
         },
 
@@ -317,7 +317,7 @@ return
             item_num = 1,                                                   --- 物品需求数量
             item_prefab = "fwd_in_pdt_item_jade_coin_black",                                   --- 物品需求的prefab
             gift_box_items = {                                              --- 奖励包裹里的内容
-                {"fwd_in_pdt_item_jade_coin_green",5},
+                {"fwd_in_pdt_item_jade_coin_green",math.random(80,120)},
             }
         },
 

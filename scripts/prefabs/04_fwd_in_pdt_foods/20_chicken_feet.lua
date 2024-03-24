@@ -46,15 +46,15 @@ local function fn()
     inst:AddComponent("edible") -- 可食物组件
     inst.components.edible.foodtype = FOODTYPE.MEAT
     --恢复10Vc
-    inst.components.edible:SetOnEatenFn(function(inst,eater)
-        if eater and eater:HasTag("player") then
-            -- Vc增加10
-            if eater.components.fwd_in_pdt_wellness then
-                eater.components.fwd_in_pdt_wellness:DoDelta_Vitamin_C(10)
-                eater.components.fwd_in_pdt_wellness:ForceRefresh()
-            end
-        end
-    end)
+    -- inst.components.edible:SetOnEatenFn(function(inst,eater)
+    --     if eater and eater:HasTag("player") then
+    --         -- Vc增加10
+    --         if eater.components.fwd_in_pdt_wellness then
+    --             eater.components.fwd_in_pdt_wellness:DoDelta_Vitamin_C(10)
+    --             eater.components.fwd_in_pdt_wellness:ForceRefresh()
+    --         end
+    --     end
+    -- end)
 
     inst:AddComponent("perishable") -- 可腐烂的组件
     inst.components.perishable:SetPerishTime(TUNING.PERISH_ONE_DAY*10)

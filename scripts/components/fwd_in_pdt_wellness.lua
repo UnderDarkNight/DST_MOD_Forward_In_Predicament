@@ -409,7 +409,7 @@ nil,
         end
     end
 ------------------------------------------------------------------------------------------------------------------------------
----- 单个debuff 的添加删除 等操作
+---- 单个debuff 的添加删除 等操作（建家党没法使用）
     function fwd_in_pdt_wellness:Add_Debuff(str)    --- 添加debuff
         if TUNING["Forward_In_Predicament.Config"].BUILD_MOD then
             return

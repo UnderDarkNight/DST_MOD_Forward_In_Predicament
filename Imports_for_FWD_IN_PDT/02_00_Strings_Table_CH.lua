@@ -624,6 +624,14 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "猫屎咖啡",
                 ["inspect_str"] = "比原来的破咖啡好喝多了",
             },
+            ["fwd_in_pdt_food_meat_buns"] = {
+                ["name"] = "人肉包子",
+                ["inspect_str"] = "馅料很饱满,味道很浓郁,但总感觉哪里不对",
+            },
+            ["fwd_in_pdt_food_egg_mooncake"] = {
+                ["name"] = "蛋黄月饼",
+                ["inspect_str"] = "我寄愁心与明月,随风直到夜郎西",
+            },
         --------------------------------------------------------------------
         ---- 06_fwd_in_pdt_containers
             ["fwd_in_pdt_fish_farm"] = {

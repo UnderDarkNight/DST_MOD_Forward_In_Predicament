@@ -47,6 +47,7 @@ local prefabs_name_list = {
     "11_03_food_effect_mango_ice_drink",                -- 杨枝甘露 的 buff
     "11_04_food_effect_thousand_year_old_egg",          -- 皮蛋 的 buff
     "11_05_food_effect_protein_powder",                 -- 蛋白质粉 的 buff
+    "11_06_food_effect_a",                              -- 这是一个全部食物的effect，想让建家党也能享受食物buff
 
     "12_01_character_buff_carl_thirst_for_blood",                 -- 角色卡尔专属buff
     "12_02_character_buff_carl_thirst_for_blood__shadowheart",    -- 角色卡尔专属buff  暗影心房用的

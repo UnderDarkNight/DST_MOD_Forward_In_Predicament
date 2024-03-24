@@ -81,7 +81,7 @@
         TECH.SCIENCE_TWO, --- TECH.NONE
         {
             -- nounlock=true,
-            -- no_deconstruction=true,
+            no_deconstruction=false,
             -- builder_tag = "npng_tag.has_green_amulet",    --------- -- 【builder_tag】只给指定tag的角色能制造这件物品，角色添加/移除 tag 都能立马解锁/隐藏该物品
             placer = "fwd_in_pdt_building_medical_check_up_machine_placer",                       -------- 建筑放置器        
             atlas = "images/map_icons/fwd_in_pdt_building_medical_check_up_machine.xml",

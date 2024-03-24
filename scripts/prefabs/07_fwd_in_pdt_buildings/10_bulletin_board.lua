@@ -52,12 +52,12 @@ local assets =
                     task_scroll_item:PushEvent("Set",ret_task_index)
                     player.components.inventory:GiveItem(task_scroll_item)
                     -----------------------------------------------------------------------
-                    ----- 领取超过 50 次任务，就能领到广告单
+                    ----- 领取超过 2 次任务，就能领到广告单
                         local cross_archive_data__get_task_scroll_times = player.components.fwd_in_pdt_func:Get_Cross_Archived_Data("task_scrolls_num") or 0
                         cross_archive_data__get_task_scroll_times = cross_archive_data__get_task_scroll_times + 1
                         player.components.fwd_in_pdt_func:Set_Cross_Archived_Data("task_scrolls_num",cross_archive_data__get_task_scroll_times)
 
-                        if cross_archive_data__get_task_scroll_times >= 50 then
+                        if cross_archive_data__get_task_scroll_times >= 2 then
                             -- player.components.inventory:GiveItem(SpawnPrefab("fwd_in_pdt_item_advertising_leaflet"))
                             fwd_in_pdt_item_advertising_leaflet__flag = true
                         end
