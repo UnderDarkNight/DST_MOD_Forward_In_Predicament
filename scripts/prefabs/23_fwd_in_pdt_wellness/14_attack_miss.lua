@@ -64,6 +64,13 @@ local function fn()
                 self.com = com
                 self.player = com.inst  --- 玩家链路进来到这
             --------------------------------------------------------
+            --self.player:AddTag("fwd_in_pdt_wellness.attackmiss") ---给个标签  便于使用的东西检测到，这个受到官方的限制，有空研究幕夜的tags系统
+        --------------------------------------------------------    
+            if self.com.DEBUGGING_MODE then
+               print(" ------------ 得到失明 debuff") 
+            end
+        --------------------------------------------------------     
+
             --- 添加Miss 判定 函数
                 local player = self.player
                 local temp_index_inst = self

@@ -533,7 +533,7 @@ local flg,error_code = pcall(function()
                 -- -- local sound = "dontstarve/creatures/werepig/transformToWere"
                 -- ThePlayer.SoundEmitter:PlaySound(sound)
     ----------------------------------------------------------------------------------------------------------------
-    ---- miss 测试
+    -- miss 测试
                     
                     -- ThePlayer.components.combat:Fwd_In_Pdt_Add_Miss_Check(ThePlayer,function(targ,...)
                     --     print("Miss target",targ)
@@ -548,7 +548,8 @@ local flg,error_code = pcall(function()
                     -- ThePlayer.components.fwd_in_pdt_wellness:Remove_Debuff("fwd_in_pdt_welness_attack_miss")
     ----------------------------------------------------------------------------------------------------------------
     -------
-        ThePlayer.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_mouse_and_camera_crazy")
+    -- 癫痫测试
+        --ThePlayer.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_mouse_and_camera_crazy")
         -- ThePlayer.components.fwd_in_pdt_wellness:Remove_Debuff("fwd_in_pdt_welness_mouse_and_camera_crazy")
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
