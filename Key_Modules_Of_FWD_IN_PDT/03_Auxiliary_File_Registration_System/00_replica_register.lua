@@ -20,3 +20,5 @@ AddReplicableComponent("fwd_in_pdt_com_task_scroll")  --- 任务卷轴系统
 AddReplicableComponent("fwd_in_pdt_com_play_flute")  --- 笛子播放
 
 AddReplicableComponent("fwd_in_pdt_com_point_and_target_spell_caster")  --- 通用武器交互组件
+
+AddReplicableComponent("fwd_in_pdt_com_tag_sys")  --- 自制tag系统

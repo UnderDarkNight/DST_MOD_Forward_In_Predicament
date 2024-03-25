@@ -54,6 +54,8 @@ local prefabs_name_list = {
     "12_03_character_buff_carl_shadowheart_damage",               -- 角色卡尔专属buff  暗影心房用的
 
     "13_fracture",                   -- 骨折
+    "14_attack_miss",                   -- 打击miss
+    "15_mouse_and_camera_crazy",                   -- 鼠标和镜头癫狂
     
 }
 

@@ -47,6 +47,9 @@ local function fx()
         if _table.pt and _table.pt.x then
             inst.Transform:SetPosition(_table.pt.x,_table.pt.y,_table.pt.z)
         end
+        if _table.target and _table.target.Transform then
+            inst.Transform:SetPosition(_table.target.Transform:GetWorldPosition())
+        end
         ------------------------------------------------------------------------------------------------------------------------------------
         _table.color = _table.color or _table.colour
         if _table.color and _table.color.x then
@@ -64,6 +67,10 @@ local function fx()
 
         if _table.scale then
             inst.AnimState:SetScale(_table.scale,_table.scale,_table.scale)
+        end
+
+        if _table.speed then
+            inst.AnimState:SetDeltaTimeMultiplier(_table.speed)
         end
 
         inst.AnimState:SetDeltaTimeMultiplier(_table.speed or 1)

@@ -528,10 +528,28 @@ local flg,error_code = pcall(function()
                 --         pigman.components.werebeast:SetWere(300)
                 --     end
                 -- end
-                local sound = "dontstarve/creatures/werepig/howl"
-                -- local sound = "dontstarve/creatures/werepig/grunt"
-                -- local sound = "dontstarve/creatures/werepig/transformToWere"
-                ThePlayer.SoundEmitter:PlaySound(sound)
+                -- local sound = "dontstarve/creatures/werepig/howl"
+                -- -- local sound = "dontstarve/creatures/werepig/grunt"
+                -- -- local sound = "dontstarve/creatures/werepig/transformToWere"
+                -- ThePlayer.SoundEmitter:PlaySound(sound)
+    ----------------------------------------------------------------------------------------------------------------
+    ---- miss 测试
+                    
+                    -- ThePlayer.components.combat:Fwd_In_Pdt_Add_Miss_Check(ThePlayer,function(targ,...)
+                    --     print("Miss target",targ)
+                    --     SpawnPrefab("fwd_in_pdt_fx_miss"):PushEvent("Set",{
+                    --         target = targ,
+                    --         speed = 2,
+                    --     })
+                    --     return true
+                    -- end)
+                    -- ThePlayer.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_attack_miss")
+
+                    -- ThePlayer.components.fwd_in_pdt_wellness:Remove_Debuff("fwd_in_pdt_welness_attack_miss")
+    ----------------------------------------------------------------------------------------------------------------
+    -------
+        ThePlayer.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_mouse_and_camera_crazy")
+        -- ThePlayer.components.fwd_in_pdt_wellness:Remove_Debuff("fwd_in_pdt_welness_mouse_and_camera_crazy")
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)

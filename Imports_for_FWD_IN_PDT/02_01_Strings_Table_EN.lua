@@ -1000,6 +1000,16 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["treatment"] = { "Use of orthopedic water ( hospital purchased )"},
                 ["debuff_attach_whisper"] = "You fractured yourself by accident.",
             },
+            ["fwd_in_pdt_welness_attack_miss"] = {
+                ["name"] = "失明",
+                ["treatment"] = { "等待修正+++"},
+                ["debuff_attach_whisper"] = "你一个不小心把自己弄骨折了",
+            },
+            ["fwd_in_pdt_welness_mouse_and_camera_crazy"] = {
+                ["name"] = "癫痫",
+                ["treatment"] = { "等待修正+++"},
+                ["debuff_attach_whisper"] = "你的癫痫又病发了",
+            },
         --------------------------------------------------------------------
             ---- 24_fwd_in_pdt_task_scrolls
             ["fwd_in_pdt_task_scroll__test"] = {
