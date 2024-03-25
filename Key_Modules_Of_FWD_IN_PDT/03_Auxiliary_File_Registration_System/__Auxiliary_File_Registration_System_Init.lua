@@ -10,3 +10,6 @@ modimport("Key_Modules_Of_FWD_IN_PDT/03_Auxiliary_File_Registration_System/00_re
 
 modimport("Key_Modules_Of_FWD_IN_PDT/03_Auxiliary_File_Registration_System/01_RPC_register.lua")    
 --- 注册RPC系统 
+
+modimport("Key_Modules_Of_FWD_IN_PDT/03_Auxiliary_File_Registration_System/02_tag_sys_rpc_register.lua")    
+--- 注册自制tag系统的RPC 
