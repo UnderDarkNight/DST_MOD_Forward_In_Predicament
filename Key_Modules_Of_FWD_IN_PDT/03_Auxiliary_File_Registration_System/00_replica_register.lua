@@ -22,3 +22,7 @@ AddReplicableComponent("fwd_in_pdt_com_play_flute")  --- 笛子播放
 AddReplicableComponent("fwd_in_pdt_com_point_and_target_spell_caster")  --- 通用武器交互组件
 
 AddReplicableComponent("fwd_in_pdt_com_tag_sys")  --- 自制tag系统
+
+AddReplicableComponent("fwd_in_pdt_com_acceptable")  --- 通用物品接受
+AddReplicableComponent("fwd_in_pdt_com_item_use_to")  --- 通用物品给予
+AddReplicableComponent("fwd_in_pdt_com_workable")  --- 通用物品交互

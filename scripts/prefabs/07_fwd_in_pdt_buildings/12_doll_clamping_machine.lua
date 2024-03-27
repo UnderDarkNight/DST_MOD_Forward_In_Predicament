@@ -48,55 +48,37 @@ local function fn()
     
     inst.entity:SetPristine()
     -------------------------------------------------------------------------------------
-    ---- 添加交互
-        -- inst:AddComponent("fwd_in_pdt_com_workable")
-        -- inst.components.fwd_in_pdt_com_workable:SetTestFn(function(inst,doer,righ_click)
-        --     -- return not TheWorld.state.isnight
-        --     return true
-        -- end)
-        -- inst.components.fwd_in_pdt_com_workable:SetSGAction("give")
-        -- inst.components.fwd_in_pdt_com_workable:SetActionDisplayStr("fwd_in_pdt_building_doll_clamping_machine",GetStringsTable()["action_str"])
-        -- inst.components.fwd_in_pdt_com_workable:SetCanWorlk(true)
-        -- inst.components.fwd_in_pdt_com_workable:SetOnWorkFn(function(inst,doer)
-        --     if not TheWorld.ismastersim then
-        --         return
-        --     end
-        --     inst:PushEvent("DOOR_OPEN")
-        --     inst.SoundEmitter:PlaySound("dontstarve/common/pighouse_door")
-            
-        --     inst.components.fwd_in_pdt_com_shop:PlayerEnter(doer)
-
-        --     return true
-        -- end)
-        
+    ---- 添加交互        
     -------------------------------------------------------------------------------------
         inst.__cost_num = 10
     -------------------------------------------------------------------------------------
-        inst:AddComponent("fwd_in_pdt_com_acceptable")
-        -- inst.components.fwd_in_pdt_com_acceptable:SetSGAction("fwd_in_pdt_special_pick")
-        inst.components.fwd_in_pdt_com_acceptable:SetActionDisplayStr("fwd_in_pdt_building_doll_clamping_machine",GetStringsTable()["action_str"])
-        inst.components.fwd_in_pdt_com_acceptable:SetTestFn(function(inst,item,doer,right_click)
-            if item and item.prefab == "fwd_in_pdt_item_jade_coin_green" then
-                if item.replica.stackable:StackSize() >= inst.__cost_num then
-                    return true
+    ----- 物品接受组件
+        inst:ListenForEvent("fwd_in_pdt_event.OnEntityReplicated.fwd_in_pdt_com_acceptable",function(inst,replica_com)
+            replica_com:SetTestFn(function(inst,item,doer,right_click)
+                if item and item.prefab == "fwd_in_pdt_item_jade_coin_green" then
+                    if item.replica.stackable:StackSize() >= inst.__cost_num then
+                        return true
+                    end
                 end
-            end
-            return false
-        end)
-        inst.components.fwd_in_pdt_com_acceptable:SetOnAcceptFn(function(inst,item,doer)
-            if not TheWorld.ismastersim then
-                return
-            end
-            if item.replica.stackable:StackSize() < inst.__cost_num then
                 return false
-            end
-            doer.components.fwd_in_pdt_func:RPC_PushEvent2("doll_clamping_machine_start")
-            item.components.stackable:Get(inst.__cost_num):Remove()
-            if item:IsValid() then
-                doer.components.inventory:ReturnActiveActionItem(item)
-            end
-            return true
+            end)
+            replica_com:SetSGAction("give")     --- sg 动作
+            replica_com:SetText("fwd_in_pdt_building_doll_clamping_machine",GetStringsTable()["action_str"])   --- 交互显示的文本
         end)
+        if TheWorld.ismastersim then
+            inst:AddComponent("fwd_in_pdt_com_acceptable")
+            inst.components.fwd_in_pdt_com_acceptable:SetOnAcceptFn(function(inst,item,doer)
+                if item.replica.stackable:StackSize() < inst.__cost_num then
+                    return false
+                end
+                doer.components.fwd_in_pdt_func:RPC_PushEvent2("doll_clamping_machine_start")
+                item.components.stackable:Get(inst.__cost_num):Remove()
+                if item:IsValid() then
+                    doer.components.inventory:ReturnActiveActionItem(item)
+                end
+                return true
+            end)
+        end
     -------------------------------------------------------------------------------------
 
     if not TheWorld.ismastersim then

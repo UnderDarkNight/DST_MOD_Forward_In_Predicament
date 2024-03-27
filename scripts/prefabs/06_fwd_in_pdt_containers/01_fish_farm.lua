@@ -195,22 +195,23 @@ local function fn()
         add_net_event(inst)
     -------------------------------------------------------------------------------------
     ---- 批量采摘的动作
-        inst:AddComponent("fwd_in_pdt_com_workable")
-        inst.components.fwd_in_pdt_com_workable:SetTestFn(function(inst,doer,right_click)
-            return right_click
-        end)
-        inst.components.fwd_in_pdt_com_workable:SetOnWorkFn(function(inst,doer)
-            if not TheWorld.ismastersim then
-                return
-            end
-            inst.components.container:Close()
-            inst.components.container:ForEachItem(function(item)
-                doer.components.inventory:GiveItem(item)
+        inst:ListenForEvent("fwd_in_pdt_event.OnEntityReplicated.fwd_in_pdt_com_workable",function(inst,replica_com)
+            replica_com:SetTestFn(function(inst,doer,right_click)
+                return right_click                
             end)
-            return true
+            -- replica_com:SetSGAction("give")
+            replica_com:SetText("fwd_in_pdt_fish_farm",STRINGS.ACTIONS.HARVEST)
         end)
-        -- inst.components.fwd_in_pdt_com_workable:SetSGAction("give")
-        inst.components.fwd_in_pdt_com_workable:SetActionDisplayStr("fwd_in_pdt_fish_farm",STRINGS.ACTIONS.HARVEST)
+        if TheWorld.ismastersim then
+            inst:AddComponent("fwd_in_pdt_com_workable")
+            inst.components.fwd_in_pdt_com_workable:SetActiveFn(function(inst,doer)
+                inst.components.container:Close()
+                inst.components.container:ForEachItem(function(item)
+                    doer.components.inventory:GiveItem(item)
+                end)
+                return true
+            end)
+        end
     -------------------------------------------------------------------------------------
 
     if not TheWorld.ismastersim then

@@ -42,45 +42,39 @@ local function fn()
     -------------------------------------------------------------------------------------
     -- 使用传送门
 
-
-        inst:AddComponent("fwd_in_pdt_com_workable")
-        inst.components.fwd_in_pdt_com_workable:SetTestFn(function(inst,doer,right_click)  
-            -- if TheWorld:HasTag("cave") or doer:HasTag("fwd_in_pdt_tag.vip") or TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
-            --     return true
-            -- else
-            --     return false
-            -- end
-            return true
-        end)
-        inst.components.fwd_in_pdt_com_workable:SetOnWorkFn(function(inst,doer)
-            if not TheWorld.ismastersim then
-                return
-            end
-            if doer then
-                local portal_door = TheSim:FindFirstEntityWithTag("multiplayer_portal")
-                if portal_door then
-                    local x,y,z = portal_door.Transform:GetWorldPosition()
-                    doer.components.fwd_in_pdt_func:Transform2PT2(x,0,z)
-                    -----------------------------------------------------------------
-                    --- 让玩家面向摄像机，以及触发门的特效
-                        local camera_down_pt = doer.components.fwd_in_pdt_func:TheCamera_GetDownVec() or Vector3(0,0,0)
-                        portal_door:PushEvent("rez_player", doer)
-                        doer:ForceFacePoint( x+camera_down_pt.x  ,0, z+camera_down_pt.z )
-
-                    -- Spawn a light if it's dark
-                        if ( TheWorld:HasTag("cave") or not TheWorld.state.isday ) and #TheSim:FindEntities(x, y, z, 4, { "spawnlight" }) <= 0 then
-                            SpawnPrefab("spawnlight_multiplayer").Transform:SetPosition(x, y, z)
+            inst:ListenForEvent("fwd_in_pdt_event.OnEntityReplicated.fwd_in_pdt_com_workable",function(inst,replica_com)
+                replica_com:SetTestFn(function(inst,doer,right_click)
+                    return true                    
+                end)
+                replica_com:SetSGAction("give")
+                replica_com:SetText("fwd_in_pdt__rooms_mini_portal_door",GetStringsTable()["action_str"])
+            end)
+            if TheWorld.ismastersim then
+                inst:AddComponent("fwd_in_pdt_com_workable")
+                inst.components.fwd_in_pdt_com_workable:SetActiveFn(function(inst,doer)
+                    if doer then
+                        local portal_door = TheSim:FindFirstEntityWithTag("multiplayer_portal")
+                        if portal_door then
+                            local x,y,z = portal_door.Transform:GetWorldPosition()
+                            doer.components.fwd_in_pdt_func:Transform2PT2(x,0,z)
+                            -----------------------------------------------------------------
+                            --- 让玩家面向摄像机，以及触发门的特效
+                                local camera_down_pt = doer.components.fwd_in_pdt_func:TheCamera_GetDownVec() or Vector3(0,0,0)
+                                portal_door:PushEvent("rez_player", doer)
+                                doer:ForceFacePoint( x+camera_down_pt.x  ,0, z+camera_down_pt.z )
+        
+                            -- Spawn a light if it's dark
+                                if ( TheWorld:HasTag("cave") or not TheWorld.state.isday ) and #TheSim:FindEntities(x, y, z, 4, { "spawnlight" }) <= 0 then
+                                    SpawnPrefab("spawnlight_multiplayer").Transform:SetPosition(x, y, z)
+                                end
+                            -----------------------------------------------------------------
+                        else
+                            return false
                         end
-                    -----------------------------------------------------------------
-                else
-                    return false
-                end
+                    end
+                    return true
+                end)
             end
-            return true
-        end)
-        inst.components.fwd_in_pdt_com_workable:SetActionDisplayStr("fwd_in_pdt__rooms_mini_portal_door",GetStringsTable()["action_str"])
-        inst.components.fwd_in_pdt_com_workable:SetSGAction("give")
-
 
     -------------------------------------------------------------------------------------
 

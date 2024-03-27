@@ -42,45 +42,46 @@ local function make_fn(num)
     inst.entity:SetPristine()
     -----------------------------------------------------------------------------------
     ---- 组合拼图
-        inst:AddComponent("fwd_in_pdt_com_workable")
-        inst.components.fwd_in_pdt_com_workable:SetTestFn(function(inst,doer,right_click)
-            return inst.replica.inventoryitem:IsGrandOwner(doer)    --- 在背包里才能使用            
-        end)
-        inst.components.fwd_in_pdt_com_workable:SetOnWorkFn(function(inst,doer)
-            if not TheWorld.ismastersim then
-                return
-            end
-            local item_prefabs = {
-                ["fwd_in_pdt_material_chaotic_cookpot_puzzle_1"] = true,
-                ["fwd_in_pdt_material_chaotic_cookpot_puzzle_2"] = true,
-                ["fwd_in_pdt_material_chaotic_cookpot_puzzle_3"] = true,
-                ["fwd_in_pdt_material_chaotic_cookpot_puzzle_4"] = true,
-            }
-            local item_insts = {}
-            doer.components.inventory:ForEachItem(function(item)
-                if item and item.prefab and item_prefabs[item.prefab] then
-                    item_insts[item.prefab] = item
-                end
+        inst:ListenForEvent("fwd_in_pdt_event.OnEntityReplicated.fwd_in_pdt_com_workable",function(inst,replica_com)
+            replica_com:SetTestFn(function(inst,doer,right_click)
+                return inst.replica.inventoryitem:IsGrandOwner(doer)    --- 在背包里才能使用                
             end)
-            for prefab_name, v in pairs(item_prefabs) do    ---- 不够4种
-                if item_insts[prefab_name] == nil then
-                    return false
-                end
-            end
-            for k, v in pairs(item_insts) do
-                v:Remove()
-            end
-
-            local blueprint_prefab = "fwd_in_pdt_building_special_cookpot_blueprint"
-            if not PrefabExists(blueprint_prefab) then  ---- 不知道为什么，有时候蓝图prefab会丢失。
-                doer:PushEvent("learnrecipe", { teacher = doer, recipe = "fwd_in_pdt_building_special_cookpot" })
-                return true
-            end
-            doer.components.inventory:GiveItem(SpawnPrefab(blueprint_prefab))
-            return true
+            replica_com:SetSGAction("dolongaction")
+            replica_com:SetText("fwd_in_pdt_material_chaotic_cookpot_puzzles",STRINGS.ACTIONS.BOAT_MAGNET_ACTIVATE)
         end)
-        inst.components.fwd_in_pdt_com_workable:SetSGAction("dolongaction")
-        inst.components.fwd_in_pdt_com_workable:SetActionDisplayStr("fwd_in_pdt_material_chaotic_cookpot_puzzles",STRINGS.ACTIONS.BOAT_MAGNET_ACTIVATE)
+        if TheWorld.ismastersim then
+            inst:AddComponent("fwd_in_pdt_com_workable")
+            inst.components.fwd_in_pdt_com_workable:SetActiveFn(function(inst,doer)
+                local item_prefabs = {
+                    ["fwd_in_pdt_material_chaotic_cookpot_puzzle_1"] = true,
+                    ["fwd_in_pdt_material_chaotic_cookpot_puzzle_2"] = true,
+                    ["fwd_in_pdt_material_chaotic_cookpot_puzzle_3"] = true,
+                    ["fwd_in_pdt_material_chaotic_cookpot_puzzle_4"] = true,
+                }
+                local item_insts = {}
+                doer.components.inventory:ForEachItem(function(item)
+                    if item and item.prefab and item_prefabs[item.prefab] then
+                        item_insts[item.prefab] = item
+                    end
+                end)
+                for prefab_name, v in pairs(item_prefabs) do    ---- 不够4种
+                    if item_insts[prefab_name] == nil then
+                        return false
+                    end
+                end
+                for k, v in pairs(item_insts) do
+                    v:Remove()
+                end
+    
+                local blueprint_prefab = "fwd_in_pdt_building_special_cookpot_blueprint"
+                if not PrefabExists(blueprint_prefab) then  ---- 不知道为什么，有时候蓝图prefab会丢失。
+                    doer:PushEvent("learnrecipe", { teacher = doer, recipe = "fwd_in_pdt_building_special_cookpot" })
+                    return true
+                end
+                doer.components.inventory:GiveItem(SpawnPrefab(blueprint_prefab))
+                return true
+            end)
+        end
     -----------------------------------------------------------------------------------
     if not TheWorld.ismastersim then
         return inst

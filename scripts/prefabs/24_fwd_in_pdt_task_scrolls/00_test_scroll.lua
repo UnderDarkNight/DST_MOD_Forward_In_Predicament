@@ -45,19 +45,21 @@ local function fn()
     
     -----------------------------------------------------------------------------------
     ---- 法术施放
-        inst:AddComponent("fwd_in_pdt_com_workable")
-        inst.components.fwd_in_pdt_com_workable:SetTestFn(function(inst,doer,right_click)
-            return inst.replica.inventoryitem:IsGrandOwner(doer)    --- 在背包里才能使用            
-        end)
-        inst.components.fwd_in_pdt_com_workable:SetOnWorkFn(function(inst,doer)
-            if not TheWorld.ismastersim then
-                return
+            inst:ListenForEvent("fwd_in_pdt_event.OnEntityReplicated.fwd_in_pdt_com_workable",function(inst,replica_com)
+                replica_com:SetTestFn(function(inst,doer,right_click)
+                    return inst.replica.inventoryitem:IsGrandOwner(doer)    --- 在背包里才能使用
+                end)
+                replica_com:SetSGAction("dolongaction")
+                replica_com:SetText("fwd_in_pdt_task_scrolls",STRINGS.ACTIONS.READ)
+
+            end)
+            if TheWorld.ismastersim then
+                inst:AddComponent("fwd_in_pdt_com_workable")
+                inst.components.fwd_in_pdt_com_workable:SetActiveFn(function(inst,doer)
+                    inst.components.fwd_in_pdt_com_task_scroll:Open(doer)
+                    return true
+                end)
             end
-            inst.components.fwd_in_pdt_com_task_scroll:Open(doer)
-            return true
-        end)
-        inst.components.fwd_in_pdt_com_workable:SetSGAction("dolongaction")
-        inst.components.fwd_in_pdt_com_workable:SetActionDisplayStr("fwd_in_pdt_task_scrolls",STRINGS.ACTIONS.READ)
     -----------------------------------------------------------------------------------
     ---- 任务信息交互组件
         if TheWorld.ismastersim then

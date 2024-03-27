@@ -59,25 +59,27 @@ local function fn()
         end)
     -------------------------------------------------------------------------------------
     ---- 添加交互
-        inst:AddComponent("fwd_in_pdt_com_workable")
-        inst.components.fwd_in_pdt_com_workable:SetTestFn(function(inst,doer,righ_click)
-            -- return not TheWorld.state.isnight
-            return true
-        end)
-        inst.components.fwd_in_pdt_com_workable:SetSGAction("give")
-        inst.components.fwd_in_pdt_com_workable:SetActionDisplayStr("fwd_in_pdt_building_atm",STRINGS.ACTIONS.OPEN_CRAFTING.USE)
-        inst.components.fwd_in_pdt_com_workable:SetCanWorlk(true)
-        inst.components.fwd_in_pdt_com_workable:SetOnWorkFn(function(inst,doer)
-            if not TheWorld.ismastersim then
-                return
-            end
-            inst.__net_entity_player:set(doer)
-            inst:DoTaskInTime(0.5,function()
-                inst.__net_entity_player:set(inst)
+        inst:ListenForEvent("fwd_in_pdt_event.OnEntityReplicated.fwd_in_pdt_com_workable",function(inst,replica_com)
+            replica_com:SetTestFn(function(inst,doer,right_click)
+                return true                
             end)
-            return true
+            replica_com:SetSGAction("give")
+            replica_com:SetText("fwd_in_pdt_building_atm",STRINGS.ACTIONS.OPEN_CRAFTING.USE)
+            replica_com:SetPreActionFn(function(inst,doer)
+                
+            end)
         end)
-        
+        if TheWorld.ismastersim then
+            inst:AddComponent("fwd_in_pdt_com_workable")
+            inst.components.fwd_in_pdt_com_workable:SetActiveFn(function(inst,doer)
+                inst.__net_entity_player:set(doer)
+                inst:DoTaskInTime(0.5,function()
+                    inst.__net_entity_player:set(inst)
+                end)
+                return true
+            end)
+            inst.components.fwd_in_pdt_com_workable:SetCanWorlk(true)
+        end        
     -------------------------------------------------------------------------------------
 
     if not TheWorld.ismastersim then

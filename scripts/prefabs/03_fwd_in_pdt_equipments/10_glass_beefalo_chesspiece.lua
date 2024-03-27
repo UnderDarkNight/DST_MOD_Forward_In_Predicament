@@ -66,42 +66,45 @@ local function fn()
         end
     ---------------------------------------------------------------------------------------------
     -- 物品贸易
-        inst:AddComponent("fwd_in_pdt_com_acceptable")
-        inst.components.fwd_in_pdt_com_acceptable:SetTestFn(function(inst,item,doer,right_click)
-            if item and item.prefab == "beefalofeed" and item.replica.stackable and item.replica.stackable:StackSize() >= inst.__cost_num then
+    
+        inst:ListenForEvent("fwd_in_pdt_event.OnEntityReplicated.fwd_in_pdt_com_acceptable",function(inst,replica_com)
+            replica_com:SetTestFn(function(inst,item,doer,right_click)
+                if item and item.prefab == "beefalofeed" and item.replica.stackable and item.replica.stackable:StackSize() >= inst.__cost_num then
+                    return true
+                end
+                return false
+            end)
+            replica_com:SetSGAction("give")     --- sg 动作
+            replica_com:SetText("fwd_in_pdt_equipment_glass_pig",STRINGS.ACTIONS.APPLYCONSTRUCTION.OFFER)   --- 交互显示的文本
+        end)
+        if TheWorld.ismastersim then
+            inst:AddComponent("fwd_in_pdt_com_acceptable")
+            inst.components.fwd_in_pdt_com_acceptable:SetOnAcceptFn(function(inst,item,doer)
+                if not (inst and item and doer) then
+                    return false
+                end
+    
+                if item.replica.stackable:StackSize() < inst.__cost_num then
+                    return false
+                end
+    
+                -- if doer and item and item.components.stackable then
+                --     local num = item.components.stackable.stacksize
+                --     item:Remove()
+                --     doer.SoundEmitter:PlaySound("dontstarve/pig/PigKingThrowGold")
+                --     doer.SoundEmitter:PlaySound("dontstarve/pig/oink")
+                --     TheWorld.components.fwd_in_pdt_func:Throw_Out_Items({
+                --             target = doer,
+                --             name = "fwd_in_pdt_item_jade_coin_green",
+                --             num = num,
+                --     })
+                -- end
+                doer.SoundEmitter:PlaySound("dontstarve/beefalo/puke_out")
+                item.components.stackable:Get(5):Remove()
+                inst:PushEvent("item_accepted",doer)
                 return true
-            end
-            return false
-        end)
-        inst.components.fwd_in_pdt_com_acceptable:SetOnAcceptFn(function(inst,item,doer)
-            if not TheWorld.ismastersim then
-                return
-            end
-            if not (inst and item and doer) then
-                return false
-            end
-
-            if item.replica.stackable:StackSize() < inst.__cost_num then
-                return false
-            end
-
-            -- if doer and item and item.components.stackable then
-            --     local num = item.components.stackable.stacksize
-            --     item:Remove()
-            --     doer.SoundEmitter:PlaySound("dontstarve/pig/PigKingThrowGold")
-            --     doer.SoundEmitter:PlaySound("dontstarve/pig/oink")
-            --     TheWorld.components.fwd_in_pdt_func:Throw_Out_Items({
-            --             target = doer,
-            --             name = "fwd_in_pdt_item_jade_coin_green",
-            --             num = num,
-            --     })
-            -- end
-            doer.SoundEmitter:PlaySound("dontstarve/beefalo/puke_out")
-            item.components.stackable:Get(5):Remove()
-            inst:PushEvent("item_accepted",doer)
-            return true
-        end)
-        inst.components.fwd_in_pdt_com_acceptable:SetActionDisplayStr("fwd_in_pdt_equipment_glass_pig",STRINGS.ACTIONS.APPLYCONSTRUCTION.OFFER)
+            end)
+        end        
     ---------------------------------------------------------------------------------------------
     if not TheWorld.ismastersim then
         return inst

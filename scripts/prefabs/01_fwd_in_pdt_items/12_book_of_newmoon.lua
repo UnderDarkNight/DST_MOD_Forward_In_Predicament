@@ -78,40 +78,41 @@ local function fn()
         -- inst:AddComponent("fwd_in_pdt_com_action_fail_reason")
     --------------------------------------------------------------------------
     -- 交互动作
-        inst:AddComponent("fwd_in_pdt_com_workable")
-        inst.components.fwd_in_pdt_com_workable:SetTestFn(function(inst,doer,right_click)
-            if inst:GetIsWet() then
-                return false
-            end
-            if not inst.replica.inventoryitem:IsGrandOwner(doer) then
-                return false
-            end
-            local sanity = doer.replica.sanity or doer.replica._.sanity
-            if sanity and sanity:GetCurrent() <= 50 then
-                return false
-            end
-            return true
-        end)
-        inst.components.fwd_in_pdt_com_workable:SetOnWorkFn(function(inst,doer)
-            if not TheWorld.ismastersim then
-                return
-            end
-            if doer then
-                if BookFn(inst, doer) then
-                    if doer.components.sanity then
-                        doer.components.sanity:DoDelta(-50)
-                    end
-                    inst.components.finiteuses:Use()
-                    return true
+        inst:ListenForEvent("fwd_in_pdt_event.OnEntityReplicated.fwd_in_pdt_com_workable",function(inst,replica_com)
+            replica_com:SetTestFn(function(inst,doer,right_click)
+                if inst:GetIsWet() then
+                    return false
                 end
-            end
-            if doer.components.fwd_in_pdt_com_action_fail_reason then
-                doer.components.fwd_in_pdt_com_action_fail_reason:Inser_Fail_Talk_Str(GetStringsTable()["action_fail"])
-            end
-            return false
+                if not inst.replica.inventoryitem:IsGrandOwner(doer) then
+                    return false
+                end
+                local sanity = doer.replica.sanity or doer.replica._.sanity
+                if sanity and sanity:GetCurrent() <= 50 then
+                    return false
+                end
+                return true
+            end)
+            replica_com:SetSGAction("fwd_in_pdt_read_book_type_cookbook")
+            replica_com:SetText("fwd_in_pdt_item_book_of_newmoon",STRINGS.ACTIONS.READ)
         end)
-        inst.components.fwd_in_pdt_com_workable:SetSGAction("fwd_in_pdt_read_book_type_cookbook")
-        inst.components.fwd_in_pdt_com_workable:SetActionDisplayStr("fwd_in_pdt_item_book_of_newmoon",STRINGS.ACTIONS.READ)
+        if TheWorld.ismastersim then
+            inst:AddComponent("fwd_in_pdt_com_workable")
+            inst.components.fwd_in_pdt_com_workable:SetActiveFn(function(inst,doer)
+                if doer then
+                    if BookFn(inst, doer) then
+                        if doer.components.sanity then
+                            doer.components.sanity:DoDelta(-50)
+                        end
+                        inst.components.finiteuses:Use()
+                        return true
+                    end
+                end
+                if doer.components.fwd_in_pdt_com_action_fail_reason then
+                    doer.components.fwd_in_pdt_com_action_fail_reason:Inser_Fail_Talk_Str(GetStringsTable()["action_fail"])
+                end
+                return false
+            end)
+        end
     --------------------------------------------------------------------------
     
     if not TheWorld.ismastersim then

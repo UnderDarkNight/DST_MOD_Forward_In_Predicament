@@ -231,33 +231,36 @@ local assets =
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ---- 工作组件
     local function Add_Workable(inst)
-        inst:AddComponent("fwd_in_pdt_com_workable")
-        inst.components.fwd_in_pdt_com_workable:SetPreActionFn(function(inst,doer)
-            inst.replica.container:Close()
-            if doer then
-                local y = 2.7
-                if doer.replica.rider and doer.replica.rider:IsRiding() then
-                    y = y + 2.5
+
+        inst:ListenForEvent("fwd_in_pdt_event.OnEntityReplicated.fwd_in_pdt_com_workable",function(inst,replica_com)
+            replica_com:SetTestFn(function(inst,doer,right_click)
+                return right_click                
+            end)
+            -- replica_com:SetSGAction("give")
+            replica_com:SetText("fwd_in_pdt_building_special_production_table",STRINGS.ACTIONS.COMBINESTACK)
+            replica_com:SetPreActionFn(function(inst,doer)
+                inst.replica.container:Close()
+                if doer then
+                    local y = 2.7
+                    if doer.replica.rider and doer.replica.rider:IsRiding() then
+                        y = y + 2.5
+                    end
+                    doer:SpawnChild("fwd_in_pdt_fx_recipe_function"):PushEvent("Set",{
+                        pt = Vector3(0,y,0),
+                        speed = 0.8
+                    })
                 end
-                doer:SpawnChild("fwd_in_pdt_fx_recipe_function"):PushEvent("Set",{
-                    pt = Vector3(0,y,0),
-                    speed = 0.8
-                })
-            end
+            end)
         end)
-        inst.components.fwd_in_pdt_com_workable:SetTestFn(function(inst,doer,right_click)
-            return right_click
-        end)
-        inst.components.fwd_in_pdt_com_workable:SetOnWorkFn(function(inst,doer)
-            if not TheWorld.ismastersim then
-                return
-            end
-            inst:PushEvent("recipe_work",doer)
-            return true
-        end)
-        inst.components.fwd_in_pdt_com_workable:SetCanWorlk(false)
-        -- inst.components.fwd_in_pdt_com_workable:SetSGAction("give")
-        inst.components.fwd_in_pdt_com_workable:SetActionDisplayStr("fwd_in_pdt_building_special_production_table",STRINGS.ACTIONS.COMBINESTACK)
+        if TheWorld.ismastersim then
+            inst:AddComponent("fwd_in_pdt_com_workable")
+            inst.components.fwd_in_pdt_com_workable:SetActiveFn(function(inst,doer)
+                inst:PushEvent("recipe_work",doer)
+                return true
+            end)
+            inst.components.fwd_in_pdt_com_workable:SetCanWorlk(false)
+
+        end
     end
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 

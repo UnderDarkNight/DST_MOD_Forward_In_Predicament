@@ -40,7 +40,7 @@ local prefabs_name_list = {
     -- -- "12_container_replica_test_box",    --- 【功能测试】测试replica event
     -- "13_stack_item_anim_icon_test",     --- 【功能测试】叠堆物品的动态图标
     -- "14_test_skeleton",                 --- 【物品测试】角色独有骷髅
-    "15_test_shell",
+    -- "15_test_shell",
 }
 
 

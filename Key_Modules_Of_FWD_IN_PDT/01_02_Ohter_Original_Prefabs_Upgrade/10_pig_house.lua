@@ -9,40 +9,41 @@ AddPrefabPostInit(
     function(inst)
         ---------------------------------------------------------------------------------------------------
         ---- 物品接受
-            inst:AddComponent("fwd_in_pdt_com_acceptable")
-            inst.components.fwd_in_pdt_com_acceptable:SetTestFn(function(inst,item,doer,right_click)
-                if inst:HasTag("fwd_in_pdt_tag.has_pig") and item 
-                and ( item.prefab == "fwd_in_pdt_item_cursed_pig_skin" or item.prefab == "fwd_in_pdt_item_glass_pig_skin" ) then
+            inst:ListenForEvent("fwd_in_pdt_event.OnEntityReplicated.fwd_in_pdt_com_acceptable",function(inst,replica_com)
+                replica_com:SetTestFn(function(inst,item,doer,right_click)
+                    if inst:HasTag("fwd_in_pdt_tag.has_pig") and item 
+                    and ( item.prefab == "fwd_in_pdt_item_cursed_pig_skin" or item.prefab == "fwd_in_pdt_item_glass_pig_skin" ) then
+                        return true
+                    else
+                        return false
+                    end
+                end)
+                replica_com:SetSGAction("give")     --- sg 动作
+                replica_com:SetText("pighouse",STRINGS.SKILLTREE.PANELS.CURSE)   --- 交互显示的文本
+            end)
+            if TheWorld.ismastersim then
+                inst:AddComponent("fwd_in_pdt_com_acceptable")
+                inst.components.fwd_in_pdt_com_acceptable:SetOnAcceptFn(function(inst,item,doer)
+                    if item then
+                        local ret_prefab = nil
+                        if item.prefab == "fwd_in_pdt_item_cursed_pig_skin" then
+                            ret_prefab = "fwd_in_pdt_equipment_cursed_pig"
+                        elseif item.prefab == "fwd_in_pdt_item_glass_pig_skin" then
+                            ret_prefab = "fwd_in_pdt_equipment_glass_pig"
+                        end
+                        if ret_prefab then
+                            local x,y,z = inst.Transform:GetWorldPosition()
+                            SpawnPrefab(ret_prefab).Transform:SetPosition(x,y,z)
+                            SpawnPrefab("fwd_in_pdt_fx_collapse"):PushEvent("Set",{
+                                pt = Vector3(x,y,z)
+                            })
+                            item:Remove()
+                            inst:Remove()
+                        end
+                    end
                     return true
-                else
-                    return false
-                end
-            end)
-
-            inst.components.fwd_in_pdt_com_acceptable:SetOnAcceptFn(function(inst,item,doer)
-                if not TheWorld.ismastersim then
-                    return
-                end
-                if item then
-                    local ret_prefab = nil
-                    if item.prefab == "fwd_in_pdt_item_cursed_pig_skin" then
-                        ret_prefab = "fwd_in_pdt_equipment_cursed_pig"
-                    elseif item.prefab == "fwd_in_pdt_item_glass_pig_skin" then
-                        ret_prefab = "fwd_in_pdt_equipment_glass_pig"
-                    end
-                    if ret_prefab then
-                        local x,y,z = inst.Transform:GetWorldPosition()
-                        SpawnPrefab(ret_prefab).Transform:SetPosition(x,y,z)
-                        SpawnPrefab("fwd_in_pdt_fx_collapse"):PushEvent("Set",{
-                            pt = Vector3(x,y,z)
-                        })
-                        item:Remove()
-                        inst:Remove()
-                    end
-                end
-                return true
-            end)
-            inst.components.fwd_in_pdt_com_acceptable:SetActionDisplayStr("pighouse",STRINGS.SKILLTREE.PANELS.CURSE)
+                end)
+            end
         ---------------------------------------------------------------------------------------------------
 
 

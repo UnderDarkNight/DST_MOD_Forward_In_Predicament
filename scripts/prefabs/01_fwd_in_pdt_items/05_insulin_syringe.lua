@@ -27,28 +27,29 @@ local function fn()
     inst.entity:SetPristine()
     --------------------------------------------------------------------------
     -- 交互动作
-        inst:AddComponent("fwd_in_pdt_com_workable")
-        inst.components.fwd_in_pdt_com_workable:SetTestFn(function(inst,doer,right_click)
-            return inst.replica.inventoryitem:IsGrandOwner(doer)    --- 在背包里才能使用            
+        inst:ListenForEvent("fwd_in_pdt_event.OnEntityReplicated.fwd_in_pdt_com_workable",function(inst,replica_com)
+            replica_com:SetTestFn(function(inst,doer,right_click)
+                return inst.replica.inventoryitem:IsGrandOwner(doer)    --- 在背包里才能使用                    
+            end)
+            replica_com:SetSGAction("dolongaction")
+            replica_com:SetText("fwd_in_pdt_item_insulin__syringe",STRINGS.ACTIONS.USEITEM)
         end)
-        inst.components.fwd_in_pdt_com_workable:SetOnWorkFn(function(inst,doer)
-            if not TheWorld.ismastersim then
-                return
-            end
-            if doer and doer.components.fwd_in_pdt_wellness then
-                doer.components.fwd_in_pdt_wellness:DoDelta_Glucose(-30)
-                doer.components.fwd_in_pdt_wellness:ForceRefresh()
-                if inst.components.stackable then
-                    inst.components.stackable:Get():Remove()
-                else
-                    inst:Remove()
+        if TheWorld.ismastersim then
+            inst:AddComponent("fwd_in_pdt_com_workable")
+            inst.components.fwd_in_pdt_com_workable:SetActiveFn(function(inst,doer)
+                if doer and doer.components.fwd_in_pdt_wellness then
+                    doer.components.fwd_in_pdt_wellness:DoDelta_Glucose(-30)
+                    doer.components.fwd_in_pdt_wellness:ForceRefresh()
+                    if inst.components.stackable then
+                        inst.components.stackable:Get():Remove()
+                    else
+                        inst:Remove()
+                    end
+                    return true
                 end
-                return true
-            end
-            return false
-        end)
-        inst.components.fwd_in_pdt_com_workable:SetSGAction("dolongaction")
-        inst.components.fwd_in_pdt_com_workable:SetActionDisplayStr("fwd_in_pdt_item_insulin__syringe",STRINGS.ACTIONS.USEITEM)
+                return false
+            end)
+        end
     --------------------------------------------------------------------------
     
     if not TheWorld.ismastersim then

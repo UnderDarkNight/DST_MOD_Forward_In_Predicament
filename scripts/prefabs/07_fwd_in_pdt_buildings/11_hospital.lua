@@ -48,25 +48,29 @@ local function fn()
     inst.entity:SetPristine()
     -------------------------------------------------------------------------------------
     ---- 添加交互
-        inst:AddComponent("fwd_in_pdt_com_workable")
-        inst.components.fwd_in_pdt_com_workable:SetTestFn(function(inst,doer,righ_click)
-            -- return not TheWorld.state.isnight
-            return true
-        end)
-        inst.components.fwd_in_pdt_com_workable:SetSGAction("give")
-        inst.components.fwd_in_pdt_com_workable:SetActionDisplayStr("fwd_in_pdt_building_hospital",GetStringsTable()["action_str"])
-        inst.components.fwd_in_pdt_com_workable:SetCanWorlk(true)
-        inst.components.fwd_in_pdt_com_workable:SetOnWorkFn(function(inst,doer)
-            if not TheWorld.ismastersim then
-                return
-            end
-            inst:PushEvent("DOOR_OPEN")
-            inst.SoundEmitter:PlaySound("dontstarve/common/pighouse_door")
-            
-            inst.components.fwd_in_pdt_com_shop:PlayerEnter(doer)
 
-            return true
-        end)
+            inst:ListenForEvent("fwd_in_pdt_event.OnEntityReplicated.fwd_in_pdt_com_workable",function(inst,replica_com)
+                replica_com:SetTestFn(function(inst,doer,right_click)
+                    return true                    
+                end)
+                replica_com:SetSGAction("give")
+                replica_com:SetText("fwd_in_pdt_building_hospital",GetStringsTable()["action_str"])
+                replica_com:SetPreActionFn(function(inst,doer)
+                    
+                end)
+            end)
+            if TheWorld.ismastersim then
+                inst:AddComponent("fwd_in_pdt_com_workable")
+                inst.components.fwd_in_pdt_com_workable:SetActiveFn(function(inst,doer)
+                    inst:PushEvent("DOOR_OPEN")
+                    inst.SoundEmitter:PlaySound("dontstarve/common/pighouse_door")
+                    
+                    inst.components.fwd_in_pdt_com_shop:PlayerEnter(doer)
+        
+                    return true
+                end)
+                inst.components.fwd_in_pdt_com_workable:SetCanWorlk(true)
+            end
         
     -------------------------------------------------------------------------------------
 

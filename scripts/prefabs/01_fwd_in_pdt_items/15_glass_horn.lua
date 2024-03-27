@@ -36,41 +36,42 @@ local function fn()
     inst.entity:SetPristine()
     --------------------------------------------------------------------------
     --- 动作
-        inst:AddComponent("fwd_in_pdt_com_workable")
-        inst.components.fwd_in_pdt_com_workable:SetTestFn(function(inst,doer,right_click)
-            return inst.replica.inventoryitem:IsGrandOwner(doer)
-        end)
-        inst.components.fwd_in_pdt_com_workable:SetOnWorkFn(function(inst,doer)
-            if not TheWorld.ismastersim then
-                return
-            end
-            doer:DoTaskInTime(1,function()                
-                local x,y,z = doer.Transform:GetWorldPosition()
-                local beefalos = TheSim:FindEntities(x, y, z, 15, {"beefalo","largecreature"}, nil, nil)
-                local target = nil
-                for k, temp in pairs(beefalos) do
-                    if temp and temp.components.follower then
-                        local leader = temp.components.follower:GetLeader()
-                        if leader == nil or not leader.components.inventoryitem then
-                            target = temp
-                            break
-                        end
-
-                    end
-                end
-                if target then
-                    inst:Remove()
-                    SpawnPrefab("fwd_in_pdt_fx_collapse"):PushEvent("Set",{
-                        target = target
-                    })
-                    SpawnPrefab("fwd_in_pdt_equipment_glass_beefalo").Transform:SetPosition(target.Transform:GetWorldPosition())
-                    target:Remove()
-                end
+        inst:ListenForEvent("fwd_in_pdt_event.OnEntityReplicated.fwd_in_pdt_com_workable",function(inst,replica_com)
+            replica_com:SetTestFn(function(inst,doer,right_click)
+                return inst.replica.inventoryitem:IsGrandOwner(doer)                
             end)
-            return true
+            replica_com:SetSGAction("fwd_in_pdt_play_horn")
+            replica_com:SetText("fwd_in_pdt_play_horn",STRINGS.ACTIONS.CASTSPELL.MUSIC)
         end)
-        inst.components.fwd_in_pdt_com_workable:SetSGAction("fwd_in_pdt_play_horn")
-        inst.components.fwd_in_pdt_com_workable:SetActionDisplayStr("fwd_in_pdt_play_horn",STRINGS.ACTIONS.CASTSPELL.MUSIC)
+        if TheWorld.ismastersim then
+            inst:AddComponent("fwd_in_pdt_com_workable")
+            inst.components.fwd_in_pdt_com_workable:SetActiveFn(function(inst,doer)
+                doer:DoTaskInTime(1,function()                
+                    local x,y,z = doer.Transform:GetWorldPosition()
+                    local beefalos = TheSim:FindEntities(x, y, z, 15, {"beefalo","largecreature"}, nil, nil)
+                    local target = nil
+                    for k, temp in pairs(beefalos) do
+                        if temp and temp.components.follower then
+                            local leader = temp.components.follower:GetLeader()
+                            if leader == nil or not leader.components.inventoryitem then
+                                target = temp
+                                break
+                            end
+    
+                        end
+                    end
+                    if target then
+                        inst:Remove()
+                        SpawnPrefab("fwd_in_pdt_fx_collapse"):PushEvent("Set",{
+                            target = target
+                        })
+                        SpawnPrefab("fwd_in_pdt_equipment_glass_beefalo").Transform:SetPosition(target.Transform:GetWorldPosition())
+                        target:Remove()
+                    end
+                end)
+                return true
+            end)
+        end
     --------------------------------------------------------------------------
 
     if not TheWorld.ismastersim then

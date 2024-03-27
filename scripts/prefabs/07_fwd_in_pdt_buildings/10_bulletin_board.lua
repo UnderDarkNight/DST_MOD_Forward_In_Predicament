@@ -127,21 +127,25 @@ local function fn()
     inst.entity:SetPristine()
     -------------------------------------------------------------------------------------
     ---- 添加交互
-        inst:AddComponent("fwd_in_pdt_com_workable")
-        inst.components.fwd_in_pdt_com_workable:SetTestFn(function(inst,doer,righ_click)
-            -- return not TheWorld.state.isnight
-            return true
-        end)
-        inst.components.fwd_in_pdt_com_workable:SetSGAction("fwd_in_pdt_special_pick")
-        inst.components.fwd_in_pdt_com_workable:SetActionDisplayStr("fwd_in_pdt_building_bulletin_board",STRINGS.ACTIONS.ACTIVATE.INVESTIGATE)
-        inst.components.fwd_in_pdt_com_workable:SetCanWorlk(true)
-        inst.components.fwd_in_pdt_com_workable:SetOnWorkFn(function(inst,doer)
-            if not TheWorld.ismastersim then
-                return
+    
+            inst:ListenForEvent("fwd_in_pdt_event.OnEntityReplicated.fwd_in_pdt_com_workable",function(inst,replica_com)
+                replica_com:SetTestFn(function(inst,doer,right_click)
+                    return true                    
+                end)
+                replica_com:SetSGAction("fwd_in_pdt_special_pick")
+                replica_com:SetText("fwd_in_pdt_building_bulletin_board",STRINGS.ACTIONS.ACTIVATE.INVESTIGATE)
+                replica_com:SetPreActionFn(function(inst,doer)
+                    
+                end)
+            end)
+            if TheWorld.ismastersim then
+                inst:AddComponent("fwd_in_pdt_com_workable")
+                inst.components.fwd_in_pdt_com_workable:SetActiveFn(function(inst,doer)
+                    player_active(inst,doer)
+                    return true
+                end)
+                inst.components.fwd_in_pdt_com_workable:SetCanWorlk(true)
             end
-            player_active(inst,doer)
-            return true
-        end)
         
     -------------------------------------------------------------------------------------
 

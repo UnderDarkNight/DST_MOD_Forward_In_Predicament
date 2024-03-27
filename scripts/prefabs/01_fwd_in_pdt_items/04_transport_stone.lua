@@ -85,24 +85,25 @@ local function fn()
     inst.entity:SetPristine()
     -----------------------------------------------------------------------------------
     ---- 法术施放
-        inst:AddComponent("fwd_in_pdt_com_workable")
-        inst.components.fwd_in_pdt_com_workable:SetTestFn(function(inst,doer,right_click)
-            return inst.replica.inventoryitem:IsGrandOwner(doer)    --- 在背包里才能使用            
+        inst:ListenForEvent("fwd_in_pdt_event.OnEntityReplicated.fwd_in_pdt_com_workable",function(inst,replica_com)
+            replica_com:SetTestFn(function(inst,doer,right_click)
+                return inst.replica.inventoryitem:IsGrandOwner(doer)    --- 在背包里才能使用                
+            end)
+            replica_com:SetSGAction("fwd_in_pdt_castspell")
+            replica_com:SetText("fwd_in_pdt_item_transport_stone",STRINGS.ACTIONS.USEITEM)
         end)
-        inst.components.fwd_in_pdt_com_workable:SetOnWorkFn(function(inst,doer)
-            if not TheWorld.ismastersim then
-                return
-            end
-            local mini_portal_door = TheSim:FindFirstEntityWithTag("fwd_in_pdt__rooms_mini_portal_door")
-            if mini_portal_door then
-                mini_portal_door:PushEvent("active",doer)
-                inst.components.stackable:Get():Remove()
-                return true
-            end
-            return false
-        end)
-        inst.components.fwd_in_pdt_com_workable:SetSGAction("fwd_in_pdt_castspell")
-        inst.components.fwd_in_pdt_com_workable:SetActionDisplayStr("fwd_in_pdt_item_transport_stone",STRINGS.ACTIONS.USEITEM)
+        if TheWorld.ismastersim then
+            inst:AddComponent("fwd_in_pdt_com_workable")
+            inst.components.fwd_in_pdt_com_workable:SetActiveFn(function(inst,doer)
+                local mini_portal_door = TheSim:FindFirstEntityWithTag("fwd_in_pdt__rooms_mini_portal_door")
+                if mini_portal_door then
+                    mini_portal_door:PushEvent("active",doer)
+                    inst.components.stackable:Get():Remove()
+                    return true
+                end
+                return false
+            end)
+        end
     -----------------------------------------------------------------------------------
     --- sg fwd_in_pdt_castspell 里的特效和声音
         -- inst.fx_prefab = "fwd_in_pdt_item_transport_stone_fx"
