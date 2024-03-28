@@ -1,4 +1,4 @@
-
+--- 咖啡丛
 local assets =
 {
     Asset("ANIM", "anim/berrybush.zip"),

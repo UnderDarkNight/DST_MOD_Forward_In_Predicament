@@ -1,6 +1,6 @@
 --------------------------------------------------------------------------
 -- 道具
--- 正骨水
+-- 维生素口服液
 --------------------------------------------------------------------------
 
 -- local function GetStringsTable(name)
@@ -10,9 +10,9 @@
 -- end
 
 local assets = {
-    Asset("ANIM", "anim/fwd_in_pdt_item_orthopedic_water.zip"), 
-    Asset( "IMAGE", "images/inventoryimages/fwd_in_pdt_item_orthopedic_water.tex" ),  -- 背包贴图
-    Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_item_orthopedic_water.xml" ),
+    Asset("ANIM", "anim/fwd_in_pdt_item_vitamin_a_oral_solution.zip"), 
+    Asset( "IMAGE", "images/inventoryimages/fwd_in_pdt_item_vitamin_a_oral_solution.tex" ),  -- 背包贴图
+    Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_item_vitamin_a_oral_solution.xml" ),
 }
 
 
@@ -26,41 +26,41 @@ local function fn()
     MakeInventoryPhysics(inst)
     MakeInventoryFloatable(inst, "med", nil, 0.75)
 
-    inst.AnimState:SetBank("fwd_in_pdt_item_orthopedic_water") -- 地上动画
-    inst.AnimState:SetBuild("fwd_in_pdt_item_orthopedic_water") -- 材质包，就是anim里的zip包
+    inst.AnimState:SetBank("fwd_in_pdt_item_vitamin_a_oral_solution") -- 地上动画
+    inst.AnimState:SetBuild("fwd_in_pdt_item_vitamin_a_oral_solution") -- 材质包，就是anim里的zip包
     inst.AnimState:PlayAnimation("idle",true) -- 默认播放哪个动画
     -- local scale = 1.5
     -- inst.Transform:SetScale(scale,scale,scale)
 
-    inst:AddTag("fwd_in_pdt_item_orthopedic_water")
+    inst:AddTag("fwd_in_pdt_item_vitamin_a_oral_solution")
 
     inst.entity:SetPristine()
     ------------------------------------------------------------------------
     --- 动作
-
-        inst:ListenForEvent("fwd_in_pdt_event.OnEntityReplicated.fwd_in_pdt_com_workable",function(inst,replica_com)
-            replica_com:SetTestFn(function(inst,doer,right_click)
-                return doer and doer:HasTag("fwd_in_pdt_wellness.fracture") and inst.replica.inventoryitem:IsGrandOwner(doer)                
-            end)
-            replica_com:SetSGAction("dolongaction")
-            replica_com:SetText("fwd_in_pdt_item_orthopedic_water",STRINGS.ACTIONS.USEITEM)
+        inst:AddComponent("fwd_in_pdt_com_workable")
+        inst.components.fwd_in_pdt_com_workable:SetTestFn(function(inst,doer,right_click)
+            return doer.replica.fwd_in_pdt_wellness:Has_Debuff("fwd_in_pdt_welness_attack_miss") and inst.replica.inventoryitem:IsGrandOwner(doer)
         end)
-        if TheWorld.ismastersim then
-            inst:AddComponent("fwd_in_pdt_com_workable")
-            inst.components.fwd_in_pdt_com_workable:SetActiveFn(function(inst,doer)
-                if inst.components.stackable then
-                    inst.components.stackable:Get():Remove()
-                else
-                    inst:Remove()
-                end
-    
-                doer.components.fwd_in_pdt_wellness:Remove_Debuff("fwd_in_pdt_welness_fracture")
-    
-    
-                return true
-            end)
-        end
+        inst.components.fwd_in_pdt_com_workable:SetOnWorkFn(function(inst,doer)
+            if not TheWorld.ismastersim then
+                return
+            end
+            if inst.components.stackable then
+                inst.components.stackable:Get():Remove()
+            else
+                inst:Remove()
+            end
+
+            doer.components.fwd_in_pdt_wellness:Remove_Debuff("fwd_in_pdt_welness_attack_miss")
+
+
+            return true
+        end)
+        inst.components.fwd_in_pdt_com_workable:SetSGAction("dolongaction")
+        inst.components.fwd_in_pdt_com_workable:SetActionDisplayStr("fwd_in_pdt_item_vitamin_a_oral_solution",STRINGS.ACTIONS.USEITEM)
     ------------------------------------------------------------------------
+
+
     if not TheWorld.ismastersim then
         return inst
     end
@@ -71,8 +71,8 @@ local function fn()
 
     inst:AddComponent("inventoryitem")
     -- inst.components.inventoryitem:ChangeImageName("leafymeatburger")
-    inst.components.inventoryitem.imagename = "fwd_in_pdt_item_orthopedic_water"
-    inst.components.inventoryitem.atlasname = "images/inventoryimages/fwd_in_pdt_item_orthopedic_water.xml"
+    inst.components.inventoryitem.imagename = "fwd_in_pdt_item_vitamin_a_oral_solution"
+    inst.components.inventoryitem.atlasname = "images/inventoryimages/fwd_in_pdt_item_vitamin_a_oral_solution.xml"
     inst:AddComponent("stackable") -- 可堆叠
     inst.components.stackable.maxsize = TUNING.STACK_SIZE_MEDITEM    
     MakeHauntableLaunch(inst)
@@ -92,4 +92,4 @@ local function fn()
     return inst
 end
 
-return Prefab("fwd_in_pdt_item_orthopedic_water", fn, assets)
+return Prefab("fwd_in_pdt_item_vitamin_a_oral_solution", fn, assets)

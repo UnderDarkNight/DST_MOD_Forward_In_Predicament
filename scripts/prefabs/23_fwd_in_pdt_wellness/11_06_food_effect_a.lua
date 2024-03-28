@@ -271,7 +271,7 @@ local function BuffSet_healthstorage(buff, target)
         buff.task_l_heal = buff:DoPeriodicTask(2, OnTick_healthstorage, nil, target)
     end
 end
-
+-- 名字在这
 MakeBuff({
     name = "fwd_in_pdt_buff_healthstorage",
     assets = nil,
@@ -296,4 +296,51 @@ MakeBuff({
 })
 ------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------
+--- 减伤
+--- 减伤50%
+MakeBuff({
+    name = "fwd_in_pdt_buff_reduceinjury",
+    assets = nil,
+    prefabs = nil,
+    time_key = "time_l_reduceinjury",
+    time_default = TUNING.SEG_TIME*6, --3分钟
+    notimer = nil,
+    fn_start = function(buff, target)
+        if buff.task == nil then
+            buff.task = buff:DoPeriodicTask(0.7, function()
+                buff:DoTaskInTime(math.random()*0.6, function()
+                    if
+                        not (
+                            target.components.health == nil or target.components.health:IsDead() or
+                            target.sg:HasStateTag("nomorph") or
+                            target.sg:HasStateTag("silentmorph") or
+                            target.sg:HasStateTag("ghostbuild")
+                        ) and target.entity:IsVisible()
+                        then
+                    end
+                end)
+            end)
+            if target.components.health ~= nil then
+                target.components.health.externalabsorbmodifiers:SetModifier(buff, 0.5)
+            end
+        end
+    end,
+    fn_again = nil,
+    fn_end = function(buff, target)
+        if target.components.health ~= nil then
+            target.components.health.externalabsorbmodifiers:RemoveModifier(buff)
+        end
+        if buff.task ~= nil then
+            buff.task:Cancel()
+            buff.task = nil
+        end
+    end,
+    fn_server = nil,
+    -- eater.time_l_reduceinjury = { add = TUNING.SEG_TIME*24, max = TUNING.SEG_TIME*30 }
+    --         eater:AddDebuff("fwd_in_pdt_buff_reduceinjury", "fwd_in_pdt_buff_reduceinjury")
+})
+------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------
+
+
 return unpack(prefs)

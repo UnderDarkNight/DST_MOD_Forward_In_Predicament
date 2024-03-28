@@ -81,7 +81,11 @@ local function BookFn(inst,reader)      -- 采摘
         ---这里是和海传的兼容
         ["lg_lemon_tree"] = true,                               --- 柠檬树
         ["lg_shumei_tree"] = true,                              --- 树莓树
-        
+        ["lg_litchi_tree"] = true,                              --- 荔枝树
+        ["farm_plant_lg_putao"] = true,                         --- 葡萄植株
+        ["farm_plant_lg_mangguo"] = true,                       --- 芒果植株
+        ["lg_sunny"] = true,                                    --- 向日葵
+        ["lg_xiaomai_plant"] = true,                            --- 小麦
     }
     local pick_num = 0
 
