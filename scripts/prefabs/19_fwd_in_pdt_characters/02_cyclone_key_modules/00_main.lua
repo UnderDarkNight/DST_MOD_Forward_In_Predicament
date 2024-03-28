@@ -19,7 +19,7 @@ return function(inst)
         "prefabs/19_fwd_in_pdt_characters/02_cyclone_key_modules/11_cave_and_light",                        ---- 在洞里会自动有视野 
         "prefabs/19_fwd_in_pdt_characters/02_cyclone_key_modules/12_beard_spell_item_setup",                ---- 技能物品安装 
         "prefabs/19_fwd_in_pdt_characters/02_cyclone_key_modules/13_key_listener",                          ---- 键盘监听事件
-        "prefabs/19_fwd_in_pdt_characters/02_cyclone_key_modules/14_test",                                  ---- 键盘监听事件
+        "prefabs/19_fwd_in_pdt_characters/02_cyclone_key_modules/14_spell_a",                               ---- 技能A
 
     }
     for k, lua_addr in pairs(modules) do

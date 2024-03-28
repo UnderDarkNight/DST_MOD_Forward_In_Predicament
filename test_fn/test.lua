@@ -29,6 +29,12 @@ local flg,error_code = pcall(function()
     ----
         -- ThePlayer.components.freezable:Freeze(10)
         -- ThePlayer.___light___fx:Remove()
+
+        SpawnPrefab("fwd_in_pdt_spell_time_stopper"):PushEvent("Set",{
+            target = ThePlayer,
+            range = 30,
+            time = 30,
+        })
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)

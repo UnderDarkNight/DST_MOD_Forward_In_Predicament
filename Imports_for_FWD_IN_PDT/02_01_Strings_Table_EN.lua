@@ -920,6 +920,10 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
         ---- 15_fwd_in_pdt_debuffs
         --------------------------------------------------------------------
         ---- 16_fwd_in_pdt_spells
+            ["fwd_in_pdt_spell_time_stopper"] = {
+                ["name"] = "time-stop zone",
+                ["inspect_str"] = "Time is suspended all around us.",
+            },
         --------------------------------------------------------------------
         ---- 17_fwd_in_pdt_FX
         --------------------------------------------------------------------
@@ -932,7 +936,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
 
             },
             ["fwd_in_pdt_cyclone"] = {
-                ["rideable_block"] = "It's best not to ride this."
+                ["rideable_block"] = "It's best not to ride this.",
+                ["health"] = "Depth Value",
+                ["hunger"] = "Pneumatic Value",
+                ["spell_a_fail"] = "Insufficient Depth Value"
+
             },
         --------------------------------------------------------------------
         ---- 20_fwd_in_pdt_events

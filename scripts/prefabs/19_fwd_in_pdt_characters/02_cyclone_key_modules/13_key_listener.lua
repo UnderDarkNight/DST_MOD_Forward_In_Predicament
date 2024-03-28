@@ -73,12 +73,15 @@
         ------------------------------------------------------------------------------------------------
             if key == keys_by_index[TUNING["Forward_In_Predicament.Config"].SPELL_KEY_A] then
                 -- print("技能A")
-                ThePlayer:PushEvent("fwd_in_pdt_spell_key_a_press")
+                -- ThePlayer:PushEvent("fwd_in_pdt_spell_key_a_press")
+                ThePlayer.replica.fwd_in_pdt_func:RPC_PushEvent("fwd_in_pdt_spell_key_a_press")
             end
         ------------------------------------------------------------------------------------------------
             if key == keys_by_index[TUNING["Forward_In_Predicament.Config"].SPELL_KEY_B] then
                 -- print("技能B")
-                ThePlayer:PushEvent("fwd_in_pdt_spell_key_b_press")
+                -- ThePlayer:PushEvent("fwd_in_pdt_spell_key_b_press")
+                ThePlayer.replica.fwd_in_pdt_func:RPC_PushEvent("fwd_in_pdt_spell_key_b_press")
+
             end
         ------------------------------------------------------------------------------------------------
 
