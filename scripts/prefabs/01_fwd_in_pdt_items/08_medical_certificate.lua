@@ -80,24 +80,24 @@ local function fn()
         end)
     -----------------------------------------------------------------------------------
     ---- 法术施放
-        inst:AddComponent("fwd_in_pdt_com_workable")
-        inst.components.fwd_in_pdt_com_workable:SetTestFn(function(inst,doer,right_click)
-            return inst.replica.inventoryitem:IsGrandOwner(doer)    --- 在背包里才能使用            
-        end)
-        inst.components.fwd_in_pdt_com_workable:SetOnWorkFn(function(inst,doer)
-            if not TheWorld.ismastersim then
-                return
-            end
-
-            inst.___net_entity:set(doer)
-            inst:DoTaskInTime(1,function()
-                inst.___net_entity:set(inst)
+        inst:ListenForEvent("fwd_in_pdt_event.OnEntityReplicated.fwd_in_pdt_com_workable",function(inst,replica_com)
+            replica_com:SetTestFn(function(inst,doer,right_click)
+                return inst.replica.inventoryitem:IsGrandOwner(doer)    --- 在背包里才能使用                
             end)
-
-            return true
+            replica_com:SetSGAction("give")
+            replica_com:SetText("fwd_in_pdt_item_medical_certificate",STRINGS.ACTIONS.READ)
         end)
-        inst.components.fwd_in_pdt_com_workable:SetSGAction("give")
-        inst.components.fwd_in_pdt_com_workable:SetActionDisplayStr("fwd_in_pdt_item_medical_certificate",STRINGS.ACTIONS.READ)
+        if TheWorld.ismastersim then
+            inst:AddComponent("fwd_in_pdt_com_workable")
+            inst.components.fwd_in_pdt_com_workable:SetActiveFn(function(inst,doer)
+                inst.___net_entity:set(doer)
+                inst:DoTaskInTime(1,function()
+                    inst.___net_entity:set(inst)
+                end)
+    
+                return true
+            end)
+        end
     -----------------------------------------------------------------------------------
 
     -----------------------------------------------------------------------------------

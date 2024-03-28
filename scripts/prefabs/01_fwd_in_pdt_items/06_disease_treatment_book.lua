@@ -45,31 +45,32 @@ local function fn()
         inst.read_book_stopable = true  --- 可移动打断
     --------------------------------------------------------------------------
     -- 交互动作
-        inst:AddComponent("fwd_in_pdt_com_workable")
-        inst.components.fwd_in_pdt_com_workable:SetTestFn(function(inst,doer,right_click)
-            return inst.replica.inventoryitem:IsGrandOwner(doer) and not inst:GetIsWet()    --- 在背包里才能使用            
+        inst:ListenForEvent("fwd_in_pdt_event.OnEntityReplicated.fwd_in_pdt_com_workable",function(inst,replica_com)
+            replica_com:SetTestFn(function(inst,doer,right_click)
+                
+            end)
+            replica_com:SetSGAction("fwd_in_pdt_read_book_type_cookbook")
+            replica_com:SetText("fwd_in_pdt_item_disease_treatment_book",STRINGS.ACTIONS.READ)
         end)
-        inst.components.fwd_in_pdt_com_workable:SetOnWorkFn(function(inst,doer)
-            if not TheWorld.ismastersim then
-                return
-            end
-            if doer and doer.components.fwd_in_pdt_wellness then
-                if doer.components.fwd_in_pdt_wellness:Get_Debuff("fwd_in_pdt_welness_cough") or doer.components.fwd_in_pdt_wellness:Get_Debuff("fwd_in_pdt_welness_fever") then
-                    inst.components.finiteuses:Use()
-                    doer.components.fwd_in_pdt_wellness:Remove_Debuff("fwd_in_pdt_welness_cough")
-                    doer.components.fwd_in_pdt_wellness:Remove_Debuff("fwd_in_pdt_welness_fever")
-                    return true
-                else
-                    if doer.components.fwd_in_pdt_com_action_fail_reason then
-                        doer.components.fwd_in_pdt_com_action_fail_reason:Inser_Fail_Talk_Str(GetStringsTable()["action_fail"])
+        if TheWorld.ismastersim then
+            inst:AddComponent("fwd_in_pdt_com_workable")
+            inst.components.fwd_in_pdt_com_workable:SetActiveFn(function(inst,doer)
+                if doer and doer.components.fwd_in_pdt_wellness then
+                    if doer.components.fwd_in_pdt_wellness:Get_Debuff("fwd_in_pdt_welness_cough") or doer.components.fwd_in_pdt_wellness:Get_Debuff("fwd_in_pdt_welness_fever") then
+                        inst.components.finiteuses:Use()
+                        doer.components.fwd_in_pdt_wellness:Remove_Debuff("fwd_in_pdt_welness_cough")
+                        doer.components.fwd_in_pdt_wellness:Remove_Debuff("fwd_in_pdt_welness_fever")
+                        return true
+                    else
+                        if doer.components.fwd_in_pdt_com_action_fail_reason then
+                            doer.components.fwd_in_pdt_com_action_fail_reason:Inser_Fail_Talk_Str(GetStringsTable()["action_fail"])
+                        end
+                        return false
                     end
-                    return false
                 end
-            end
-            return false
-        end)
-        inst.components.fwd_in_pdt_com_workable:SetSGAction("fwd_in_pdt_read_book_type_cookbook")
-        inst.components.fwd_in_pdt_com_workable:SetActionDisplayStr("fwd_in_pdt_item_disease_treatment_book",STRINGS.ACTIONS.READ)
+                return false
+            end)
+        end
     --------------------------------------------------------------------------
     
     if not TheWorld.ismastersim then

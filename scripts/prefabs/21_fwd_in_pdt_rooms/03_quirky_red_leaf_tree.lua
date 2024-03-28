@@ -137,23 +137,26 @@ local function normal_tree()
 
     ---------------------------------------------------------------------------------------------
     --- 伪装交互
-        inst:AddComponent("fwd_in_pdt_com_workable")
-        inst.components.fwd_in_pdt_com_workable:SetTestFn(function()
-            return true
-        end)
-        inst.components.fwd_in_pdt_com_workable:SetOnWorkFn(function(inst,doer)
-            if not TheWorld.ismastersim then
-                return
-            end
-            if doer and doer.sg and doer.sg.GoToState then
-                doer.sg:GoToState("electrocute")
-            end
-            return true
-        end)
-        inst.components.fwd_in_pdt_com_workable:SetSGAction("give")
-        inst.components.fwd_in_pdt_com_workable:SetActionDisplayStr("fwd_in_pdt__rooms_quirky_red_tree",STRINGS.ACTIONS.CHECKTRAP)
+
         -- STRINGS.ACTIONS.MIGRATE  --游历
         -- STRINGS.TAGS.LOCATION.CAVE  -- 洞穴
+
+            inst:ListenForEvent("fwd_in_pdt_event.OnEntityReplicated.fwd_in_pdt_com_workable",function(inst,replica_com)
+                replica_com:SetTestFn(function(inst,doer,right_click)
+                    return true                    
+                end)
+                replica_com:SetSGAction("give")
+                replica_com:SetText("fwd_in_pdt__rooms_quirky_red_tree",STRINGS.ACTIONS.CHECKTRAP)
+            end)
+            if TheWorld.ismastersim then
+                inst:AddComponent("fwd_in_pdt_com_workable")
+                inst.components.fwd_in_pdt_com_workable:SetActiveFn(function(inst,doer)
+                    if doer and doer.sg and doer.sg.GoToState then
+                        doer.sg:GoToState("electrocute")
+                    end
+                    return true
+                end)
+            end
     ---------------------------------------------------------------------------------------------
 
 

@@ -316,36 +316,38 @@ local recipes = require("prefabs/06_fwd_in_pdt_containers/07_drying_rack_recipes
         
     end
     local function fermenter_workable_com_setup(inst)
-        inst:AddComponent("fwd_in_pdt_com_workable")
-        inst.components.fwd_in_pdt_com_workable:SetCanWorlk(true)
-        inst.components.fwd_in_pdt_com_workable:SetTestFn(function(inst,doer,right_click)
-            return right_click
-        end)
-        inst.components.fwd_in_pdt_com_workable:SetOnWorkFn(function(inst,doer)
-            if not TheWorld.ismastersim then
-                return
-            end
-            if not inst.components.fwd_in_pdt_data:Get("start") 
-                and not inst.components.fwd_in_pdt_data:Get("end") 
-                    and not inst.components.container:IsEmpty() then
-                -----------------------------
-                inst.components.container:Close()
-                inst:PushEvent("fermenter_sys_start")
-                -----------------------------
-                return true
-            end
-
-            if inst.components.fwd_in_pdt_data:Get("end") then
-                inst:PushEvent("player_pick",doer)
-            end
-
-            return false
-        end)
-        inst.components.fwd_in_pdt_com_workable:SetActionDisplayStr("fwd_in_pdt_building_drying_rack",GetStringsTable()["action_str"])
         
-        inst.components.fwd_in_pdt_com_workable:SetPreActionFn(function(inst,doer)
-            inst.replica.container:Close()
-        end)    
+            inst:ListenForEvent("fwd_in_pdt_event.OnEntityReplicated.fwd_in_pdt_com_workable",function(inst,replica_com)
+                replica_com:SetTestFn(function(inst,doer,right_click)
+                    return right_click                    
+                end)
+                -- replica_com:SetSGAction("give")
+                replica_com:SetText("fwd_in_pdt_building_drying_rack",GetStringsTable()["action_str"])
+                replica_com:SetPreActionFn(function(inst,doer)
+                    inst.replica.container:Close()                    
+                end)
+            end)
+            if TheWorld.ismastersim then
+                inst:AddComponent("fwd_in_pdt_com_workable")
+                inst.components.fwd_in_pdt_com_workable:SetActiveFn(function(inst,doer)
+                    if not inst.components.fwd_in_pdt_data:Get("start") 
+                        and not inst.components.fwd_in_pdt_data:Get("end") 
+                            and not inst.components.container:IsEmpty() then
+                        -----------------------------
+                        inst.components.container:Close()
+                        inst:PushEvent("fermenter_sys_start")
+                        -----------------------------
+                        return true
+                    end
+
+                    if inst.components.fwd_in_pdt_data:Get("end") then
+                        inst:PushEvent("player_pick",doer)
+                    end
+
+                    return false
+                end)
+                inst.components.fwd_in_pdt_com_workable:SetCanWorlk(true)
+            end
     end
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 

@@ -11,47 +11,51 @@ end
 local function ChangeTheBOSS(inst)
     
     -------------------------------------------------------------------------------------------------------
-    ----- 添加喂食机制        
-        inst:AddComponent("fwd_in_pdt_com_acceptable")
-        inst.components.fwd_in_pdt_com_acceptable:SetTestFn(function(inst,item,doer,right_click)
-            if item and item.prefab then
-                local accept_list = {
-                    ["fwd_in_pdt_food_red_mushroom_soup"] = true,
-                    ["fwd_in_pdt_food_green_mushroom_soup"] = true,
-                }
-                if accept_list[item.prefab] then
-                    return true
-                end
-            end
-            return false
-        end)
-        inst.components.fwd_in_pdt_com_acceptable:SetOnAcceptFn(function(inst,item,doer)
-            if not TheWorld.ismastersim then
-                return
-            end
-            if item then
-                if item.prefab == "fwd_in_pdt_food_green_mushroom_soup" then
-                    if item.components.stackable then
-                        item.components.stackable:Get():Remove()
-                    else
-                        item:Remove()
+    ----- 添加喂食机制
+        inst:ListenForEvent("fwd_in_pdt_event.OnEntityReplicated.fwd_in_pdt_com_acceptable",function(inst,replica_com)
+            replica_com:SetTestFn(function(inst,item,doer,right_click)
+                if item and item.prefab then
+                    local accept_list = {
+                        ["fwd_in_pdt_food_red_mushroom_soup"] = true,
+                        ["fwd_in_pdt_food_green_mushroom_soup"] = true,
+                    }
+                    if accept_list[item.prefab] then
+                        return true
                     end
-                    inst:AddTag("fwd_in_pdt_food_green_mushroom_soup_mark")
-                    return true
-                elseif item.prefab == "fwd_in_pdt_food_red_mushroom_soup" then
-                    if item.components.stackable then
-                        item.components.stackable:Get():Remove()
-                    else
-                        item:Remove()
-                    end
-                    inst:AddTag("fwd_in_pdt_food_red_mushroom_soup_mark")
-                    return true
                 end
-            end
-            return false
+                return false
+            end)
+            replica_com:SetSGAction("give")     --- sg 动作
+            replica_com:SetText("fwd_in_pdt_food_red_mushroom_soup",GetStringsTable()["special_action_str"])   --- 交互显示的文本
         end)
 
-        inst.components.fwd_in_pdt_com_acceptable:SetActionDisplayStr("fwd_in_pdt_food_red_mushroom_soup",GetStringsTable()["special_action_str"])
+        if TheWorld.ismastersim then
+            inst:AddComponent("fwd_in_pdt_com_acceptable")
+            inst.components.fwd_in_pdt_com_acceptable:SetOnAcceptFn(function(inst,item,doer)
+                if item then
+                    if item.prefab == "fwd_in_pdt_food_green_mushroom_soup" then
+                        if item.components.stackable then
+                            item.components.stackable:Get():Remove()
+                        else
+                            item:Remove()
+                        end
+                        inst:AddTag("fwd_in_pdt_food_green_mushroom_soup_mark")
+                        return true
+                    elseif item.prefab == "fwd_in_pdt_food_red_mushroom_soup" then
+                        if item.components.stackable then
+                            item.components.stackable:Get():Remove()
+                        else
+                            item:Remove()
+                        end
+                        inst:AddTag("fwd_in_pdt_food_red_mushroom_soup_mark")
+                        return true
+                    end
+                end
+                return false
+            end)
+        end
+
+
     -------------------------------------------------------------------------------------------------------
     if not TheWorld.ismastersim then
         return

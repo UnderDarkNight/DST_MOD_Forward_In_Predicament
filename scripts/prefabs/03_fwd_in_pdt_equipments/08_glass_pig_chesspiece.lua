@@ -60,44 +60,48 @@ local function fn()
     inst.entity:SetPristine()
     ---------------------------------------------------------------------------------------------
     -- 物品贸易
-        inst:AddComponent("fwd_in_pdt_com_acceptable")
-        inst.components.fwd_in_pdt_com_acceptable:SetTestFn(function(inst,item,doer,right_click)
-            if TheWorld.state.isfullmoon and item and item.prefab == "bonestew" then
+
+        inst:ListenForEvent("fwd_in_pdt_event.OnEntityReplicated.fwd_in_pdt_com_acceptable",function(inst,replica_com)
+            replica_com:SetTestFn(function(inst,item,doer,right_click)
+                if TheWorld.state.isfullmoon and item and item.prefab == "bonestew" then
+                    return true
+                end
+                return false
+            end)
+            replica_com:SetSGAction("give")     --- sg 动作
+            replica_com:SetText("fwd_in_pdt_equipment_glass_pig",STRINGS.ACTIONS.APPLYCONSTRUCTION.OFFER)   --- 交互显示的文本
+        end)
+        if TheWorld.ismastersim then
+            inst:AddComponent("fwd_in_pdt_com_acceptable")
+            inst.components.fwd_in_pdt_com_acceptable:SetOnAcceptFn(function(inst,item,doer)
+                if doer and item and item.components.stackable then
+                    local num = item.components.stackable.stacksize
+                    item:Remove()
+                    ---- 3：1 兑换
+                            -- local ret_num = inst.components.fwd_in_pdt_data:Add("food_num",num)
+                            -- local coins_num = math.floor(ret_num/3)
+                            -- doer.SoundEmitter:PlaySound("dontstarve/pig/oink")
+                            -- if coins_num >= 1 then
+                            --     doer.SoundEmitter:PlaySound("dontstarve/pig/PigKingThrowGold")
+                            --     TheWorld.components.fwd_in_pdt_func:Throw_Out_Items({
+                            --             target = doer,
+                            --             name = "fwd_in_pdt_item_jade_coin_green",
+                            --             num = coins_num,
+                            --     })
+                            --     inst.components.fwd_in_pdt_data:Add("food_num",coins_num*-3)
+                            -- end
+                    --- 1:1 兑换
+                            doer.SoundEmitter:PlaySound("dontstarve/pig/PigKingThrowGold")
+                            TheWorld.components.fwd_in_pdt_func:Throw_Out_Items({
+                                    target = doer,
+                                    name = "fwd_in_pdt_item_jade_coin_green",
+                                    num = num,
+                            })    
+                end
                 return true
-            end
-            return false
-        end)
-        inst.components.fwd_in_pdt_com_acceptable:SetOnAcceptFn(function(inst,item,doer)
-            if not TheWorld.ismastersim then
-                return
-            end
-            if doer and item and item.components.stackable then
-                local num = item.components.stackable.stacksize
-                item:Remove()
-                ---- 3：1 兑换
-                        -- local ret_num = inst.components.fwd_in_pdt_data:Add("food_num",num)
-                        -- local coins_num = math.floor(ret_num/3)
-                        -- doer.SoundEmitter:PlaySound("dontstarve/pig/oink")
-                        -- if coins_num >= 1 then
-                        --     doer.SoundEmitter:PlaySound("dontstarve/pig/PigKingThrowGold")
-                        --     TheWorld.components.fwd_in_pdt_func:Throw_Out_Items({
-                        --             target = doer,
-                        --             name = "fwd_in_pdt_item_jade_coin_green",
-                        --             num = coins_num,
-                        --     })
-                        --     inst.components.fwd_in_pdt_data:Add("food_num",coins_num*-3)
-                        -- end
-                --- 1:1 兑换
-                        doer.SoundEmitter:PlaySound("dontstarve/pig/PigKingThrowGold")
-                        TheWorld.components.fwd_in_pdt_func:Throw_Out_Items({
-                                target = doer,
-                                name = "fwd_in_pdt_item_jade_coin_green",
-                                num = num,
-                        })    
-            end
-            return true
-        end)
-        inst.components.fwd_in_pdt_com_acceptable:SetActionDisplayStr("fwd_in_pdt_equipment_glass_pig",STRINGS.ACTIONS.APPLYCONSTRUCTION.OFFER)
+            end)
+        end
+       
     ---------------------------------------------------------------------------------------------
     if not TheWorld.ismastersim then
         return inst

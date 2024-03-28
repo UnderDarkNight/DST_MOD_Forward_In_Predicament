@@ -27,34 +27,36 @@ local assets =
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     --  采收动作
         local function add_workable_action(inst)
-            inst:AddComponent("fwd_in_pdt_com_workable")
-            inst.components.fwd_in_pdt_com_workable:SetCanWorlk(false)
-            inst.components.fwd_in_pdt_com_workable:SetTestFn(function(inst,doer,right_click)
-                return true
+
+            inst:ListenForEvent("fwd_in_pdt_event.OnEntityReplicated.fwd_in_pdt_com_workable",function(inst,replica_com)
+                replica_com:SetTestFn(function(inst,doer,right_click)
+                    return true                    
+                end)
+                replica_com:SetSGAction("fwd_in_pdt_special_pick")
+                replica_com:SetText("fwd_in_pdt_plant_mango_tree",STRINGS.ACTIONS.PICK.HARVEST)
+                replica_com:SetPreActionFn(function(inst,doer)
+                    inst.SoundEmitter:PlaySound("dontstarve/wilson/pickup_reeds")                    
+                end)
             end)
-            inst.components.fwd_in_pdt_com_workable:SetOnWorkFn(function(inst,doer)
-                if not TheWorld.ismastersim then
-                    return
-                end
-                -- doer.components.fwd_in_pdt_func:GiveItemByPrefab("fwd_in_pdt_plant_paddy_rice_seed",rice_num)
-                -- inst:Remove()
-                return true
-            end)
-            inst.components.fwd_in_pdt_com_workable:SetPreActionFn(function(inst,doer)
-                inst.SoundEmitter:PlaySound("dontstarve/wilson/pickup_reeds")
-            end)
-            inst.components.fwd_in_pdt_com_workable:SetSGAction("fwd_in_pdt_special_pick")
-            inst.components.fwd_in_pdt_com_workable:SetActionDisplayStr("fwd_in_pdt_plant_mango_tree",STRINGS.ACTIONS.PICK.HARVEST)
+            if TheWorld.ismastersim then
+                inst:AddComponent("fwd_in_pdt_com_workable")
+                inst.components.fwd_in_pdt_com_workable:SetActiveFn(function(inst,doer)
+                    -- doer.components.fwd_in_pdt_func:GiveItemByPrefab("fwd_in_pdt_plant_paddy_rice_seed",rice_num)
+                    -- inst:Remove()
+                    return true
+                end)
+                inst.components.fwd_in_pdt_com_workable:SetCanWorlk(false)
+            end
 
         end
-        local actionqueuer_status,actionqueuer_data = pcall(require,"components/actionqueuer")
-        if actionqueuer_status then
-            if AddActionQueuerAction then
-                AddActionQueuerAction("leftclick", "FWD_IN_PDT_COM_WORKABLE_ACTION", function(target)
-                    return target.prefab == "fwd_in_pdt_plant_mango_tree"
-                end)
-            end
-        end
+        -- local actionqueuer_status,actionqueuer_data = pcall(require,"components/actionqueuer")
+        -- if actionqueuer_status then
+        --     if AddActionQueuerAction then
+        --         AddActionQueuerAction("leftclick", "FWD_IN_PDT_COM_WORKABLE_ACTION", function(target)
+        --             return target.prefab == "fwd_in_pdt_plant_mango_tree"
+        --         end)
+        --     end
+        -- end
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ---- 根据阶段切状态
     local function chop_tree(inst, chopper, chopsleft, numchops)

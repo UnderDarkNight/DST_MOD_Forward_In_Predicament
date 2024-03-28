@@ -5,7 +5,7 @@
      
 ]]--
 ----------------------------------------------------------------------------------------------------------------------------------
-local fwd_in_pdt_com_acceptable = Class(function(self, inst)
+local fwd_in_pdt_com_item_use_to = Class(function(self, inst)
     self.inst = inst
 
     self.DataTable = {}
@@ -17,20 +17,20 @@ nil,
 
 
 
-function fwd_in_pdt_com_acceptable:SetOnAcceptFn(fn)
+function fwd_in_pdt_com_item_use_to:SetActiveFn(fn)
     if type(fn) == "function" then
-        self.on_accept_fn = fn
+        self.acive_fn = fn
     end
 end
 
-function fwd_in_pdt_com_acceptable:OnAccept(item,doer)
-    if self.on_accept_fn then
-        return self.on_accept_fn(self.inst,item,doer)
+function fwd_in_pdt_com_item_use_to:Active(target,doer)
+    if self.acive_fn then
+        return self.acive_fn(self.inst,target,doer)
     end
+    return false
 end
 
-
-return fwd_in_pdt_com_acceptable
+return fwd_in_pdt_com_item_use_to
 
 
 
