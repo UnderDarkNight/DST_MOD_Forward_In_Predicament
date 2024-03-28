@@ -162,13 +162,30 @@ local function main_com(fwd_in_pdt_func)
             else
                 return
             end
+
+            if self.inst.components.playercontroller ~= nil then
+                self.inst.components.playercontroller:RemotePausePrediction(10)   --- 暂停远程预测。  --- 暂停10帧预测
+                self.inst.components.playercontroller:Enable(false)
+            end
+
             self.inst.Transform:SetPosition(x,y,z)
+            if self.inst.Physics then
+                self.inst.Physics:Teleport(x,y,z)
+            end
             self.TempData.________Transform2PT__task = self.inst:DoPeriodicTask(0.2,function()
                 if self.inst:GetDistanceSqToPoint(x,y,z) < 1 then
                     self.TempData.________Transform2PT__task:Cancel()
                     self.TempData.________Transform2PT__task = nil
+
+                    if self.inst.components.playercontroller ~= nil then
+                        self.inst.components.playercontroller:Enable(true)
+                    end
+
                 else
                     self.inst.Transform:SetPosition(x,y,z)
+                    if self.inst.Physics then
+                        self.inst.Physics:Teleport(x,y,z)
+                    end
                 end
             end)
         end

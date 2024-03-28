@@ -46,6 +46,13 @@ modimport("Key_Modules_Of_FWD_IN_PDT/05_Actions/23_play_flute.lua")             
 
 modimport("Key_Modules_Of_FWD_IN_PDT/05_Actions/24_com_point_and_spell_caster.lua")             --- 特殊通用武器交互
 
+modimport("Key_Modules_Of_FWD_IN_PDT/05_Actions/25_sg_refuse_action.lua")             --- 拒绝sg动作
+
+modimport("Key_Modules_Of_FWD_IN_PDT/05_Actions/26_com_rideable_blocker.lua")             --- 骑牛拒绝组件
+
+modimport("Key_Modules_Of_FWD_IN_PDT/05_Actions/27_action_blink_map.lua")             --- 地图跳跃
+
+
 
 
 

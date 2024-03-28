@@ -86,6 +86,9 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             ["fwd_in_pdt_com_telescope"] = { 
                 ["DEFAULT"] = "观察",
             },
+            ["FWD_IN_PDT_BLINK_MAP"] = { 
+                ["DEFAULT"] = "传送",
+            },
         --------------------------------------------------------------------
         ---- 00_fwd_in_pdt_others
         --------------------------------------------------------------------
@@ -921,6 +924,10 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
         ---- 15_fwd_in_pdt_debuffs
         --------------------------------------------------------------------
         ---- 16_fwd_in_pdt_spells
+            ["fwd_in_pdt_spell_time_stopper"] = {
+                ["name"] = "时停区域",
+                ["inspect_str"] = "周围都被暂停了",
+            },
         --------------------------------------------------------------------
         ---- 17_fwd_in_pdt_FX
         --------------------------------------------------------------------
@@ -930,6 +937,12 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             ["fwd_in_pdt_carl"] = {
                 ["death_thirst_for_blood"] = "【{XXXX}】死于对鲜血的渴望，太惨了，还得更加努力获得鲜血才行",
                 ["spell_cost_not_enough"] = "血瓶数量不足，需要数量："
+            },
+            ["fwd_in_pdt_cyclone"] = {
+                ["rideable_block"] = "最好不要去骑这个",
+                ["health"] = "深渊值",
+                ["hunger"] = "气压值",
+                ["spell_a_fail"] = "深渊值不足"
             },
         --------------------------------------------------------------------
         ---- 20_fwd_in_pdt_events

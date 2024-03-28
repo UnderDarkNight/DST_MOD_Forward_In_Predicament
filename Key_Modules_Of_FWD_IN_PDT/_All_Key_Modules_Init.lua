@@ -42,13 +42,14 @@ modimport("Key_Modules_Of_FWD_IN_PDT/09_Recipes/_All_Recpies_and_Tech_Init.lua")
 modimport("Key_Modules_Of_FWD_IN_PDT/10_Cook/_All_Cooking_Related_Init.lua")
 --- 烹饪相关的
 
-modimport("Key_Modules_Of_FWD_IN_PDT/12_turfs/_All_Turfs_Related_Init.lua")
---- 地皮相关的注册
-
 modimport("Key_Modules_Of_FWD_IN_PDT/11_characters/_all_characters_related_init.lua")
 --- 角色相关的注册
 
+modimport("Key_Modules_Of_FWD_IN_PDT/12_turfs/_All_Turfs_Related_Init.lua")
+--- 地皮相关的注册
 
+modimport("Key_Modules_Of_FWD_IN_PDT/13_time_pause_sys/__all_time_pause_init.lua")
+--- 时间暂停使用
 
 -------------- 不同版本开发专用的调试区域
 if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE == true then

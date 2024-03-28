@@ -38,6 +38,10 @@ if TUNING["Forward_In_Predicament.Config"].ALLOW_CHARACTERS then
     local temp_file_list = {
         "01_01_carl_none",          ---- 皮肤prefab
         "01_02_carl",               ---- 角色prefab
+
+        "02_01_cyclone_nonoe",          ---- 皮肤prefab
+        "02_02_cyclone",               ---- 角色prefab
+        "02_03_beard_spell_item",               ---- 胡子技能物品
     }
     for k, v in pairs(temp_file_list) do
         table.insert(prefabs_name_list,v)

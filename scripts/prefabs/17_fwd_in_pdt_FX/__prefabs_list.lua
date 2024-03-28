@@ -48,6 +48,8 @@ local prefabs_name_list = {
     "19_fence_flower",              --- 围栏特效
     "20_miss",                      --- miss
     "22_tile_outline",              --- tile_outline 边线框框
+    "23_red_tornado",               --- 龙卷风
+    "24_clock_fx",                  --- 旺达的时间标记
 
     
 }
