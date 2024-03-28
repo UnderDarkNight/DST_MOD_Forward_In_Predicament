@@ -86,7 +86,6 @@ local function BookFn(inst,reader)      -- 采摘
         ["farm_plant_lg_mangguo"] = true,                       --- 芒果植株
         ["lg_sunny"] = true,                                    --- 向日葵
         ["lg_xiaomai_plant"] = true,                            --- 小麦
-        
     }
     local pick_num = 0
 
