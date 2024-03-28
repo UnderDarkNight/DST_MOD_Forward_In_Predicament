@@ -46,7 +46,7 @@ local function fn()
 
 
     inst:AddComponent("edible") -- 可食物组件
-    inst.components.edible.foodtype = FOODTYPE.MEAT
+    inst.components.edible.foodtype = FOODTYPE.GOODIES
     inst.components.edible:SetOnEatenFn(function(inst,eater)
         if eater and eater:HasTag("player") then
                 --- 体温低的设置为50
@@ -92,3 +92,9 @@ local function fn()
 end
 
 return Prefab("fwd_in_pdt_food_mixed_potato_soup", fn, assets)
+
+-- local fwd_in_pdt_food_mixed_potato_soup = {}
+--     for k, v in pairs (require("01_cooked_foods_recipes")) do
+--         table.insert(fwd_in_pdt_food_mixed_potato_soup, fwd_in_pdt_food_mixed_potato_soup(v))
+--     end
+-- return unpack(fwd_in_pdt_food_mixed_potato_soup)
