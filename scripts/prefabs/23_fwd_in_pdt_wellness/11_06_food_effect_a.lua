@@ -271,7 +271,7 @@ local function BuffSet_healthstorage(buff, target)
         buff.task_l_heal = buff:DoPeriodicTask(2, OnTick_healthstorage, nil, target)
     end
 end
-
+-- 名字在这
 MakeBuff({
     name = "fwd_in_pdt_buff_healthstorage",
     assets = nil,

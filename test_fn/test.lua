@@ -543,7 +543,7 @@ local flg,error_code = pcall(function()
                     --     })
                     --     return true
                     -- end)
-                    -- ThePlayer.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_attack_miss")
+                     ThePlayer.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_attack_miss")
 
                     -- ThePlayer.components.fwd_in_pdt_wellness:Remove_Debuff("fwd_in_pdt_welness_attack_miss")
     ----------------------------------------------------------------------------------------------------------------
