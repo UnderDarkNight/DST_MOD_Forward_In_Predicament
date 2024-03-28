@@ -40,6 +40,8 @@ return function(inst)
                 ["hop_pre"] = Vector3(BASE_SCALE.x,BASE_SCALE.y*2,BASE_SCALE.z),
                 ["hop_loop"] = Vector3(BASE_SCALE.x,BASE_SCALE.y*2,BASE_SCALE.z),
                 ["hop_pst"] = Vector3(BASE_SCALE.x,BASE_SCALE.y*2,BASE_SCALE.z),
+                ["mine_start"] = Vector3(BASE_SCALE.x,BASE_SCALE.y*2,BASE_SCALE.z),
+                ["mine"] = Vector3(BASE_SCALE.x,BASE_SCALE.y*2,BASE_SCALE.z),
             }
             local state_fns = {
                 ["temp_default"] = function()
@@ -55,7 +57,7 @@ return function(inst)
                 if not statename then
                     return
                 end
-                print("newstate",statename)
+                -- print("newstate",statename)
                 ------- 缩放
                     local current_scale = scale_with_state[statename] or BASE_SCALE
                     inst.body_fx.AnimState:SetScale(current_scale.x,current_scale.y,current_scale.z)

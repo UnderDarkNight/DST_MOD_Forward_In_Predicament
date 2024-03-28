@@ -10,6 +10,7 @@ return function(inst)
     
     inst:ListenForEvent("cyclone_master_postinit",function(inst)
 
+        local temp_sound = nil
         local state_fns = {
             ["run_start"] = function()
                 inst.SoundEmitter:PlaySound("dontstarve_DLC001/common/tornado","tornado_walk",0.2)
@@ -19,6 +20,7 @@ return function(inst)
             end,
             ["idle"] = function()
                 inst.SoundEmitter:KillSound("tornado_walk")
+                inst.SoundEmitter:KillSound("tornado_idle")
                 inst.SoundEmitter:PlaySound("dontstarve_DLC001/common/tornado","tornado_idle",0.1)
             end,
             ["heavy_walk"] = function()

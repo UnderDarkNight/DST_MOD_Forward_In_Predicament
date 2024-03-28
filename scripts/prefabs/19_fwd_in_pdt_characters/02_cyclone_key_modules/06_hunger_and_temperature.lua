@@ -57,12 +57,14 @@ return function(inst)
 
                     inst.components.fwd_in_pdt_func:RPC_PushEvent("cyclone_temperature_updata",inst.components.temperature.current)
                 -----------------------------------------------------------------------------------
-                ---- 血量
+                ---- 血量,洞里回血不消耗血量
                     current_hunger_value = inst.components.hunger.current
                     local current_health = inst.components.health:GetPercent()
-                    if current_hunger_value > 1 then
+                    if current_hunger_value > 1 and not TheWorld:HasTag("cave") then
                         inst.components.health:DoDelta(1,true)
                         inst.components.hunger:DoDelta(-1,true)
+                    elseif TheWorld:HasTag("cave") then
+                        inst.components.health:DoDelta(1,true)
                     end
                 -----------------------------------------------------------------------------------
             end)

@@ -30,3 +30,4 @@ AddReplicableComponent("fwd_in_pdt_com_workable")  --- 通用物品交互
 AddReplicableComponent("fwd_in_pdt_rideable_blocker")  --- 骑行拒绝器
 
 AddReplicableComponent("fwd_in_pdt_com_map_jumper")  --- 地图跳跃器
+

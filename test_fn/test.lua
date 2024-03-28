@@ -27,7 +27,8 @@ local flg,error_code = pcall(function()
         -- inst.body_fx.AnimState:SetScale(0.5,0.5,0.5)
     ----------------------------------------------------------------------------------------------------------------
     ----
-        ThePlayer.components.freezable:Freeze(10)
+        -- ThePlayer.components.freezable:Freeze(10)
+        -- ThePlayer.___light___fx:Remove()
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)

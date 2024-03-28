@@ -30,6 +30,7 @@ return function(inst)
     inst:ListenForEvent("unequip",function(inst)
         inst:DoTaskInTime(0,make_fly)        
     end)
+    inst:ListenForEvent("cyclone_master_postinit",make_fly)
 
 
 end
