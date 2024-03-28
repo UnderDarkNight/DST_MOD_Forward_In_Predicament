@@ -26,3 +26,7 @@ AddReplicableComponent("fwd_in_pdt_com_tag_sys")  --- 自制tag系统
 AddReplicableComponent("fwd_in_pdt_com_acceptable")  --- 通用物品接受
 AddReplicableComponent("fwd_in_pdt_com_item_use_to")  --- 通用物品给予
 AddReplicableComponent("fwd_in_pdt_com_workable")  --- 通用物品交互
+
+AddReplicableComponent("fwd_in_pdt_rideable_blocker")  --- 骑行拒绝器
+
+AddReplicableComponent("fwd_in_pdt_com_map_jumper")  --- 地图跳跃器

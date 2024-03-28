@@ -77,6 +77,9 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             ["fwd_in_pdt_com_telescope"] = { 
                 ["DEFAULT"] = "Observe",
             },
+            ["FWD_IN_PDT_BLINK_MAP"] = { 
+                ["DEFAULT"] = STRINGS.ACTIONS.BLINK.GENERIC,
+            },
         --------------------------------------------------------------------
         ---- 00_fwd_in_pdt_others
         --------------------------------------------------------------------
@@ -927,6 +930,9 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["death_thirst_for_blood"] = "[ {XXXX} ] died of thirst for blood. Too bad. Gotta work harder to get it .",
                 ["spell_cost_not_enough"] = "Insufficient bloody flask, need quantity:"
 
+            },
+            ["fwd_in_pdt_cyclone"] = {
+                ["rideable_block"] = "It's best not to ride this."
             },
         --------------------------------------------------------------------
         ---- 20_fwd_in_pdt_events

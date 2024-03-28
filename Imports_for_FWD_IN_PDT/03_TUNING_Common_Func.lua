@@ -44,6 +44,10 @@ TUNING["Forward_In_Predicament.Player_Com_Func"] = {"player","rpc","skin_player"
 
 
 --------------------------------------------------------------------------------------------
+local function GetStringsTable(prefab_name)
+    return TUNING["Forward_In_Predicament.fn"].GetStringsTable(prefab_name)
+end
+--------------------------------------------------------------------------------------------
 --- 自制一个多返回值的pcall ，应对hook 官方 api的可能问题。
 --- 返回一个 table ，需要 unpack(list, i, j) 函数
 rawset(_G,"fwd_in_pdt_pcall",function(fn,...)
