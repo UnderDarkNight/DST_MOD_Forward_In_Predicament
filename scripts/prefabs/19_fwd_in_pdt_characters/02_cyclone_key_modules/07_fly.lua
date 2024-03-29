@@ -23,7 +23,7 @@ return function(inst)
         inst.Physics:CollidesWith(COLLISION.GIANTS)
     end
 
-    inst:ListenForEvent("change_2_flay",make_fly)
+    inst:ListenForEvent("cyclone_change_2_fly",make_fly)
     inst:ListenForEvent("equip",function(inst)
         inst:DoTaskInTime(0,make_fly)
     end)

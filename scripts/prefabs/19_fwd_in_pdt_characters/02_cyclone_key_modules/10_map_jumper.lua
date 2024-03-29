@@ -34,7 +34,7 @@ return function(inst)
 
 
             inst.components.fwd_in_pdt_func:Transform2PT(pt)
-            inst:PushEvent("change_2_flay")
+            inst:PushEvent("cyclone_change_2_fly")
 
 
         end)
