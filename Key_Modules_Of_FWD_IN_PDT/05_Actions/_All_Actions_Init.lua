@@ -52,6 +52,8 @@ modimport("Key_Modules_Of_FWD_IN_PDT/05_Actions/26_com_rideable_blocker.lua")   
 
 modimport("Key_Modules_Of_FWD_IN_PDT/05_Actions/27_action_blink_map.lua")             --- 地图跳跃
 
+modimport("Key_Modules_Of_FWD_IN_PDT/05_Actions/28_com_anything_eater.lua")             --- 任意物品使用组件
+
 
 
 

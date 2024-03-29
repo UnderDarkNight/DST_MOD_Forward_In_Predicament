@@ -32,5 +32,8 @@ return function(inst)
     end)
     inst:ListenForEvent("cyclone_master_postinit",make_fly)
 
+    inst:ListenForEvent("ms_becameghost",function(inst)
+        inst:DoTaskInTime(3,make_fly)
+    end)
 
 end

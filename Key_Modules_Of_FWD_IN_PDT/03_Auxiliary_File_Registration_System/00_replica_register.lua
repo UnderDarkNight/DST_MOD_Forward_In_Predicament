@@ -31,3 +31,7 @@ AddReplicableComponent("fwd_in_pdt_rideable_blocker")  --- 骑行拒绝器
 
 AddReplicableComponent("fwd_in_pdt_com_map_jumper")  --- 地图跳跃器
 
+AddReplicableComponent("fwd_in_pdt_com_rpc_event")  --- 通用RPC管道
+
+AddReplicableComponent("fwd_in_pdt_com_player_anything_eater")  --- 吃任意东西
+

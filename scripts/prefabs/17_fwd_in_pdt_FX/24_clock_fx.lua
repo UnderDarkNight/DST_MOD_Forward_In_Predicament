@@ -51,8 +51,10 @@ local function fx()
             end
         end
 
-        if _table.scale and _table.scale.x then
+        if type(_table.scale) == type(Vector3(0,0,0)) and _table.scale.x then
             inst.AnimState:SetScale(_table.scale.x,_table.scale.y,_table.scale.z)
+        elseif type(_table.scale) == "number" then
+            inst.AnimState:SetScale(_table.scale,_table.scale,_table.scale)
         end
 
         inst.Ready = true

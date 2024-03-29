@@ -25,9 +25,9 @@ local function fn()
 
     -- MakeObstaclePhysics(inst, 0.1)
 
-    inst.AnimState:SetBank("cane")
-    inst.AnimState:SetBuild("swap_cane")
-    inst.AnimState:PlayAnimation("idle")
+    -- inst.AnimState:SetBank("cane")
+    -- inst.AnimState:SetBuild("swap_cane")
+    -- inst.AnimState:PlayAnimation("idle")
 
 
 
@@ -138,6 +138,18 @@ local function fn()
                         MultColour_Flag = true,
                     })
                 end
+
+                local mid_fx = inst:SpawnChild("fwd_in_pdt_fx_clock")
+                fx_insts[mid_fx] = true
+                mid_fx:PushEvent("Set",{
+                    pt = Vector3(0,3,0),
+                    color = Vector3(255,0,0),
+                    a = 0.7,
+                    MultColour_Flag = true,
+                    scale = 3,
+                })
+                mid_fx.AnimState:SetOrientation(0)
+                mid_fx.AnimState:SetLayer(LAYER_WORLD)
 
                 -- inst:DoTaskInTime(time+0.5,function()
                 --     for temp_inst, flag in pairs(fx_insts) do

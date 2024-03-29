@@ -172,22 +172,28 @@ local function main_com(fwd_in_pdt_func)
             if self.inst.Physics then
                 self.inst.Physics:Teleport(x,y,z)
             end
-            self.TempData.________Transform2PT__task = self.inst:DoPeriodicTask(0.2,function()
-                if self.inst:GetDistanceSqToPoint(x,y,z) < 1 then
-                    self.TempData.________Transform2PT__task:Cancel()
-                    self.TempData.________Transform2PT__task = nil
-
-                    if self.inst.components.playercontroller ~= nil then
-                        self.inst.components.playercontroller:Enable(true)
-                    end
-
-                else
-                    self.inst.Transform:SetPosition(x,y,z)
-                    if self.inst.Physics then
-                        self.inst.Physics:Teleport(x,y,z)
-                    end
+            self.inst:DoTaskInTime(0.1,function()
+                if self.inst.components.playercontroller ~= nil then
+                    self.inst.components.playercontroller:Enable(true)
                 end
             end)
+
+            -- self.TempData.________Transform2PT__task = self.inst:DoPeriodicTask(0.2,function()
+            --     if self.inst:GetDistanceSqToPoint(x,y,z) < 1 then
+            --         self.TempData.________Transform2PT__task:Cancel()
+            --         self.TempData.________Transform2PT__task = nil
+
+            --         if self.inst.components.playercontroller ~= nil then
+            --             self.inst.components.playercontroller:Enable(true)
+            --         end
+
+            --     else
+            --         self.inst.Transform:SetPosition(x,y,z)
+            --         if self.inst.Physics then
+            --             self.inst.Physics:Teleport(x,y,z)
+            --         end
+            --     end
+            -- end)
         end
     --------------------------------------------------------------------------------------------------------------------------------------------
     ---- 传送去指定位置并检查,避免洞穴存档的时候传送出错.支持缺省为 Vector3(...)
@@ -213,21 +219,35 @@ local function main_com(fwd_in_pdt_func)
                     inst.Transform:SetPosition(pt.x,pt.y,pt.z)
                 end
             end
+
+            if self.inst.components.playercontroller ~= nil then
+                self.inst.components.playercontroller:RemotePausePrediction(10)   --- 暂停远程预测。  --- 暂停10帧预测
+                self.inst.components.playercontroller:Enable(false)
+            end
+
             trans2pt(self.inst,Vector3(x,1,z))
             self.inst:ScreenFade(true, 2)
-
-            self.TempData.________Transform2PT__task = self.inst:DoPeriodicTask(0.2,function()
-                if self.inst:GetDistanceSqToPoint(x,y,z) < 1 then
-                    self.TempData.________Transform2PT__task:Cancel()
-                    self.TempData.________Transform2PT__task = nil
-                    if self.inst.sg then
-                        self.inst.sg:GoToState("idle")
-                    end
-                    trans2pt(self.inst,Vector3(x,0,z))
-                else
-                    trans2pt(self.inst,Vector3(x,1,z))
+            self.inst:DoTaskInTime(1,function()
+                if self.inst.components.playercontroller ~= nil then
+                    self.inst.components.playercontroller:Enable(true)
+                end
+                if self.inst.sg then
+                    self.inst.sg:GoToState("idle")
                 end
             end)
+
+            -- self.TempData.________Transform2PT__task = self.inst:DoPeriodicTask(0.2,function()
+            --     if self.inst:GetDistanceSqToPoint(x,y,z) < 1 then
+            --         self.TempData.________Transform2PT__task:Cancel()
+            --         self.TempData.________Transform2PT__task = nil
+            --         if self.inst.sg then
+            --             self.inst.sg:GoToState("idle")
+            --         end
+            --         trans2pt(self.inst,Vector3(x,0,z))
+            --     else
+            --         trans2pt(self.inst,Vector3(x,1,z))
+            --     end
+            -- end)
         end
     --------------------------------------------------------------------------------------------------------------------------------------------
     ---- 给指定数量的物品（用来减少卡顿）

@@ -13,3 +13,6 @@ modimport("Key_Modules_Of_FWD_IN_PDT/03_Auxiliary_File_Registration_System/01_RP
 
 modimport("Key_Modules_Of_FWD_IN_PDT/03_Auxiliary_File_Registration_System/02_tag_sys_rpc_register.lua")    
 --- 注册自制tag系统的RPC 
+
+modimport("Key_Modules_Of_FWD_IN_PDT/03_Auxiliary_File_Registration_System/04_rpc_event_register.lua")    
+--- 独立RPC事件管道 

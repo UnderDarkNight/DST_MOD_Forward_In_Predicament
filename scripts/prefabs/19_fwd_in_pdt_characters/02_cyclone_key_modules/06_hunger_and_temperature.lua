@@ -80,6 +80,12 @@ return function(inst)
                 inst.components.hunger.hungerrate = BASE_HUNGER_RATE
             end)
         --------------------------------------------------------------------------
+        ---- 复活的时候100饥饿值
+            inst:ListenForEvent("ms_respawnedfromghost",function(inst)
+                inst.components.hunger.current = 100
+            end)
+            
+        --------------------------------------------------------------------------
 
 
     end)

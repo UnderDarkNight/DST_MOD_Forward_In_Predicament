@@ -20,6 +20,9 @@ return function(inst)
         "prefabs/19_fwd_in_pdt_characters/02_cyclone_key_modules/12_beard_spell_item_setup",                ---- 技能物品安装 
         "prefabs/19_fwd_in_pdt_characters/02_cyclone_key_modules/13_key_listener",                          ---- 键盘监听事件
         "prefabs/19_fwd_in_pdt_characters/02_cyclone_key_modules/14_spell_a",                               ---- 技能A
+        "prefabs/19_fwd_in_pdt_characters/02_cyclone_key_modules/15_spell_b",                               ---- 技能B
+        "prefabs/19_fwd_in_pdt_characters/02_cyclone_key_modules/16_anything_eater",                        ---- 特殊的吃东西交互组件
+        "prefabs/19_fwd_in_pdt_characters/02_cyclone_key_modules/17_damage_mult",                           ---- 伤害倍增器
 
     }
     for k, lua_addr in pairs(modules) do
@@ -36,11 +39,17 @@ return function(inst)
     -- inst.talksoundoverride = "moonlightcoda_sound/moonlightcoda_sound/talk"
     -- inst.customidleanim = "idle_wendy"  -- 闲置站立动画
 
-    inst.soundsname = "maxwell"           -- 角色声音
 
 
-    -- inst.AnimState:OverrideSymbol("wendy_idle_flower","moonlightcoda_idle_flower","wendy_idle_flower")
-    -- inst.AnimState:OverrideSymbol("wood_splinter","moonlightcoda_hand_glass","wood_splinter")
+    inst:ListenForEvent("cyclone_master_postinit",function(inst)
+        
+        inst.soundsname = "maxwell"           -- 角色声音
+
+
+        inst.skeleton_prefab = "fwd_in_pdt_cyclone_skeleton"    --- 客制化骷髅
+
+
+    end)
 
     if not TheWorld.ismastersim then
         return

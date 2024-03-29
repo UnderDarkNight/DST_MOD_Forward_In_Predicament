@@ -30,11 +30,33 @@ local flg,error_code = pcall(function()
         -- ThePlayer.components.freezable:Freeze(10)
         -- ThePlayer.___light___fx:Remove()
 
-        SpawnPrefab("fwd_in_pdt_spell_time_stopper"):PushEvent("Set",{
-            target = ThePlayer,
-            range = 30,
-            time = 30,
-        })
+        -- SpawnPrefab("fwd_in_pdt_spell_time_stopper"):PushEvent("Set",{
+        --     target = ThePlayer,
+        --     range = 30,
+        --     time = 30,
+        -- })
+    ----------------------------------------------------------------------------------------------------------------
+    ---- 技能立绘
+            -- ThePlayer:PushEvent("fwd_in_pdt.drawing.display",{
+            --     bank = "fwd_in_pdt_drawing_cyclone_spell_a",
+            --     build = "fwd_in_pdt_drawing_cyclone_spell_a",
+            --     anim = "idle",
+            --     location = 9,
+            --     pt = Vector3(0,0),
+            --     scale = 0.7,
+            -- })
+    ----------------------------------------------------------------------------------------------------------------
+                local fx = SpawnPrefab("fwd_in_pdt_fx_clock")
+                fx:PushEvent("Set",{
+                    pt = Vector3(x,3,z),
+                    color = Vector3(255,0,0),
+                    a = 0.7,
+                    MultColour_Flag = true,
+                    scale = 2,
+                })
+                fx.AnimState:SetOrientation(0)
+                fx.AnimState:SetLayer(LAYER_WORLD)
+                fx:DoTaskInTime(10,fx.Remove)
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)
