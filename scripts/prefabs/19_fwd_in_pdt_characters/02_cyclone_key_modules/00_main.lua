@@ -23,6 +23,7 @@ return function(inst)
         "prefabs/19_fwd_in_pdt_characters/02_cyclone_key_modules/15_spell_b",                               ---- 技能B
         "prefabs/19_fwd_in_pdt_characters/02_cyclone_key_modules/16_anything_eater",                        ---- 特殊的吃东西交互组件
         "prefabs/19_fwd_in_pdt_characters/02_cyclone_key_modules/17_damage_mult",                           ---- 伤害倍增器
+        "prefabs/19_fwd_in_pdt_characters/02_cyclone_key_modules/18_spell_introduction_page",               ---- 法术介绍页
 
     }
     for k, lua_addr in pairs(modules) do

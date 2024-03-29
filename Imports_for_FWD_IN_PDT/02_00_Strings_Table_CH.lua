@@ -233,6 +233,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "让猪人受不了而发疯",
                 ["recipe_desc"] = "让猪人受不了而发疯",
             },
+            ["fwd_in_pdt_item_compressed_cyclone"] = {
+                ["name"] = "压缩气旋",
+                ["inspect_str"] = "里面压力很高",
+                ["recipe_desc"] = "里面压力很高",
+            },
         --------------------------------------------------------------------
         ---- 02_fwd_in_pdt_materials
             ["fwd_in_pdt_material_tree_resin"] = {
@@ -942,7 +947,8 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["rideable_block"] = "最好不要去骑这个",
                 ["health"] = "深渊值",
                 ["hunger"] = "气压值",
-                ["spell_a_fail"] = "深渊值不足"
+                ["spell_a_fail"] = "深渊值不足",
+                ["spell_b_fail"] = "气压值不足",
             },
         --------------------------------------------------------------------
         ---- 20_fwd_in_pdt_events

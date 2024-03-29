@@ -229,6 +229,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "It's too much for the pig man to handle and he goes crazy.",
                 ["recipe_desc"] = "It's too much for the pig man to handle and he goes crazy.",
             },
+            ["fwd_in_pdt_item_compressed_cyclone"] = {
+                ["name"] = "Compressed Cyclone",
+                ["inspect_str"] = "There's a lot of pressure in there.",
+                ["recipe_desc"] = "There's a lot of pressure in there.",
+            },
         --------------------------------------------------------------------
         ---- 02_fwd_in_pdt_materials
             ["fwd_in_pdt_material_tree_resin"] = {
@@ -939,8 +944,8 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["rideable_block"] = "It's best not to ride this.",
                 ["health"] = "Depth Value",
                 ["hunger"] = "Pneumatic Value",
-                ["spell_a_fail"] = "Insufficient Depth Value"
-
+                ["spell_a_fail"] = "Insufficient Depth Value",
+                ["spell_b_fail"] = "Insufficient Pneumatic Value",
             },
         --------------------------------------------------------------------
         ---- 20_fwd_in_pdt_events

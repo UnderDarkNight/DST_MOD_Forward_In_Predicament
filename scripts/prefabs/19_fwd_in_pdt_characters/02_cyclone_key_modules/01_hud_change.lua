@@ -118,6 +118,8 @@
             end
             HungerBadge.PulseRed = function()
             end
+            HungerBadge.StartWarning = function()
+            end
         ------------------------------------------------------------------------
 
     end

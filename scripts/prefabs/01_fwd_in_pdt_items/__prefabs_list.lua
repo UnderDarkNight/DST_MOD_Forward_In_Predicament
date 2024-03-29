@@ -54,6 +54,8 @@ local prefabs_name_list = {
 
     "25_pig_flute",                   -- 猪猪笛子
     "26_werepig_flute",               -- 疯猪笛子
+
+    "27_compressed_cyclone",               -- 压缩气旋
 }
 
 

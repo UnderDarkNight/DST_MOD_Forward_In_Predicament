@@ -109,28 +109,86 @@ local flg,error_code = pcall(function()
         -- end
         -- hook_hunger_bage(inst,inst.HUD.controls.status.stomach)
     ----------------------------------------------------------------------------------------------------------------
-        local inst = ThePlayer
-        local function hook_health_bage(inst,HealthBadge)
-            HealthBadge.anim:GetAnimState():SetMultColour(unpack({153/255,76/255,0/255,1}))
+    ----
+        -- local inst = ThePlayer
+        -- local function hook_health_bage(inst,HealthBadge)
+        --     HealthBadge.anim:GetAnimState():SetMultColour(unpack({153/255,76/255,0/255,1}))
 
-            HealthBadge.circleframe:GetAnimState():ClearOverrideSymbol("icon")
-            HealthBadge.iconbuild = nil
+        --     HealthBadge.circleframe:GetAnimState():ClearOverrideSymbol("icon")
+        --     HealthBadge.iconbuild = nil
 
-            if HealthBadge.__temp_fx then
-                HealthBadge.__temp_fx:Kill()
+        --     if HealthBadge.__temp_fx then
+        --         HealthBadge.__temp_fx:Kill()
+        --     end
+        --     HealthBadge.__temp_fx = HealthBadge.anim:AddChild(UIAnim())
+        --     HealthBadge.__temp_fx:GetAnimState():SetBank("fwd_in_pdt_hud_cyclone_health")
+        --     HealthBadge.__temp_fx:GetAnimState():SetBuild("fwd_in_pdt_hud_cyclone_health")
+        --     HealthBadge.__temp_fx:GetAnimState():PlayAnimation("idle",true)
+        --     -- HealthBadge.__temp_fx:GetAnimState():GetAnimState():AnimateWhilePaused(true)
+        --     local scale = 0.2
+        --     HealthBadge.__temp_fx:SetScale(scale,scale,scale)
+        --     HealthBadge.backing:GetAnimState():SetBank ("status_clear_bg")
+        --     HealthBadge.backing:GetAnimState():SetBuild("status_clear_bg")
+        --     HealthBadge.backing:GetAnimState():PlayAnimation("backing")
+        -- end
+        -- hook_health_bage(inst,inst.HUD.controls.status.heart)
+    ----------------------------------------------------------------------------------------------------------------
+    ---- 虚线圈圈调试        
+        -- fwd_in_pdt_fx_dotted_circle
+        -- x,y,z = TheWorld.Map:GetTileCenterPoint(x,y,z)
+        -- local fx = SpawnPrefab("fwd_in_pdt_fx_dotted_circle")
+        -- fx:PushEvent("Set",{
+        --     pt = Vector3(x,y,z),
+        --     range = 2,
+        -- })
+
+        -- local pix_radious = 950
+        -- local discanse_1_for_1_pix = 150
+
+        -- local range = 4
+        -- local scale = range * discanse_1_for_1_pix/pix_radious
+        -- fx.AnimState:SetScale(scale,scale,scale)
+
+        -- fx:DoTaskInTime(5,fx.Remove)
+    ----------------------------------------------------------------------------------------------------------------
+            if ThePlayer.__test_root then
+                ThePlayer.__test_root:Kill()
+                ThePlayer.__test_root = nil
             end
-            HealthBadge.__temp_fx = HealthBadge.anim:AddChild(UIAnim())
-            HealthBadge.__temp_fx:GetAnimState():SetBank("fwd_in_pdt_hud_cyclone_health")
-            HealthBadge.__temp_fx:GetAnimState():SetBuild("fwd_in_pdt_hud_cyclone_health")
-            HealthBadge.__temp_fx:GetAnimState():PlayAnimation("idle",true)
-            -- HealthBadge.__temp_fx:GetAnimState():GetAnimState():AnimateWhilePaused(true)
-            local scale = 0.2
-            HealthBadge.__temp_fx:SetScale(scale,scale,scale)
-            HealthBadge.backing:GetAnimState():SetBank ("status_clear_bg")
-            HealthBadge.backing:GetAnimState():SetBuild("status_clear_bg")
-            HealthBadge.backing:GetAnimState():PlayAnimation("backing")
-        end
-        hook_health_bage(inst,inst.HUD.controls.status.heart)
+
+
+            local root = ThePlayer.HUD.controls:AddChild(Screen())
+            local main_scale = 0.6
+            root:SetHAnchor(0) -- 设置原点x坐标位置，0、1、2分别对应屏幕中、左、右
+            root:SetVAnchor(0) -- 设置原点y坐标位置，0、1、2分别对应屏幕中、上、下
+            root:SetPosition(0,0)
+            root:MoveToBack()
+            root:SetScaleMode(SCALEMODE_FIXEDSCREEN_NONDYNAMIC)   --- 缩放模式
+
+            local bg = root:AddChild(Image("images/ui_images/fwd_in_pdt_cyclone_spell_page.xml","page.tex"))
+            bg:SetScale(main_scale,main_scale,main_scale)
+            bg:SetPosition(0,0)
+
+            local temp_botton = root:AddChild(ImageButton(
+                "images/ui_images/fwd_in_pdt_cyclone_spell_page.xml",
+                "close.tex",
+                "close.tex",
+                "close.tex",
+                "close.tex",
+                "close.tex"
+            ))
+            temp_botton:SetScale(main_scale,main_scale,main_scale)
+            temp_botton:SetPosition(400,230)
+            temp_botton:SetOnDown(function()
+                root:Kill()
+                ThePlayer.__test_root = nil
+            end)
+            ThePlayer.__test_root = root
+            -- ThePlayer:DoTaskInTime(5,function()
+            --     root:Kill()
+            --     ThePlayer.__test_root = nil
+            -- end)
+
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)
