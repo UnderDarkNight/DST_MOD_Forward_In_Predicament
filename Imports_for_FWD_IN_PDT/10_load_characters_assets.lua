@@ -76,6 +76,11 @@ local temp_assets = {
 
         Asset("ANIM", "anim/fwd_in_pdt_drawing_cyclone_spell_a.zip"),  --- 技能立绘
 
+        Asset("ANIM", "anim/fwd_in_pdt_hud_cyclone_status_meter_circle.zip"),  --- 三维图标
+        Asset("ANIM", "anim/fwd_in_pdt_hud_cyclone_health.zip"),               --- 三维图标
+        Asset("IMAGE", "images/widget/fwd_in_pdt_widget_cyclone_hud.tex"),     --- 选角色的时候三维显示的图片
+        Asset("ATLAS", "images/widget/fwd_in_pdt_widget_cyclone_hud.xml"),     --- 选角色的时候三维显示的图片
+
 	---------------------------------------------------------------------------
 
 

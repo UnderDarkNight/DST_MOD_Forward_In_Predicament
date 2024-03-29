@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Atlas>
+	<Texture filename="fwd_in_pdt_widget_cyclone_hud.tex" />
+	<Elements>
+		<Element name="fwd_in_pdt_widget_hud_cyclone_health.tex" u1="0.001" u2="0.47165625" v2="0.999" v1="0.016625" variant="" />
+		<Element name="fwd_in_pdt_widget_hud_cyclone_hunger.tex" u1="0.47365625" u2="0.9443125" v2="0.999" v1="0.016625" variant="" />
+	</Elements>
+</Atlas>

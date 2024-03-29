@@ -33,7 +33,7 @@ end
         STRINGS.SKIN_NAMES["fwd_in_pdt_cyclone_none"] = "深渊旋涡"  --检查界面显示的名字
 
         --生存几率
-        STRINGS.CHARACTER_SURVIVABILITY["fwd_in_pdt_cyclone"] = "特别容易"
+        STRINGS.CHARACTER_SURVIVABILITY["fwd_in_pdt_cyclone"] = "在洞里特别容易"
     else
         -- The character select screen lines  --人物选人界面的描述
         STRINGS.CHARACTER_TITLES["fwd_in_pdt_cyclone"] = "Cyclone of the Abyss"
@@ -49,7 +49,7 @@ end
         STRINGS.SKIN_NAMES["fwd_in_pdt_cyclone_none"] = "Cyclone"  --检查界面显示的名字
 
         --生存几率
-        STRINGS.CHARACTER_SURVIVABILITY["fwd_in_pdt_cyclone"] = "easy"
+        STRINGS.CHARACTER_SURVIVABILITY["fwd_in_pdt_cyclone"] = "easy in cave"
 
     end
 
