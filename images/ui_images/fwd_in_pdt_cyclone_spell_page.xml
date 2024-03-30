@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Atlas>
+	<Texture filename="fwd_in_pdt_cyclone_spell_page.tex" />
+	<Elements>
+		<Element name="close.tex" u1="0.001" u2="0.04245703125" v2="0.157203125" v1="0.079125" variant="" />
+		<Element name="page.tex" u1="0.001" u2="0.7167734375" v2="0.999" v1="0.159203125" variant="" />
+	</Elements>
+</Atlas>

@@ -74,6 +74,15 @@ local temp_assets = {
         Asset("ANIM", "anim/fwd_in_pdt_cyclone.zip"),              --- 人物动画文件
         Asset("ANIM", "anim/ghost_fwd_in_pdt_cyclone_build.zip"),  --- 灵魂状态动画文件
 
+        Asset("ANIM", "anim/fwd_in_pdt_drawing_cyclone_spell_a.zip"),  --- 技能立绘
+
+        Asset("ANIM", "anim/fwd_in_pdt_hud_cyclone_status_meter_circle.zip"),  --- 三维图标
+        Asset("ANIM", "anim/fwd_in_pdt_hud_cyclone_health.zip"),               --- 三维图标
+        Asset("IMAGE", "images/widget/fwd_in_pdt_widget_cyclone_hud.tex"),     --- 选角色的时候三维显示的图片
+        Asset("ATLAS", "images/widget/fwd_in_pdt_widget_cyclone_hud.xml"),     --- 选角色的时候三维显示的图片
+        Asset("IMAGE", "images/ui_images/fwd_in_pdt_cyclone_spell_page.tex"),     --- 技能介绍页
+        Asset("ATLAS", "images/ui_images/fwd_in_pdt_cyclone_spell_page.xml"),     --- 技能介绍页
+
 	---------------------------------------------------------------------------
 
 

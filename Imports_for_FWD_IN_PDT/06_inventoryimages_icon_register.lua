@@ -37,6 +37,7 @@ local files_name = {
 		"fwd_in_pdt_item_talisman_that_repels_snakes",			--- 避开蛇护符
 		"fwd_in_pdt_item_pig_flute",							--- 猪猪笛子
 		"fwd_in_pdt_item_werepig_flute",						--- 疯猪笛子
+		"fwd_in_pdt_item_compressed_cyclone",					--- 压缩气旋
 	---------------------------------------------------------------------------------------
 	-- 02_fwd_in_pdt_materials
 		"fwd_in_pdt_material_tree_resin",							--- 树脂
@@ -165,6 +166,9 @@ local files_name = {
 		"fwd_in_pdt_plant_orange_seed",							    	--- 橙子种子
 		"fwd_in_pdt_coffeebush",										--- 咖啡
 		"fwd_in_pdt_dug_coffeebush",									--- 咖啡丛
+	---------------------------------------------------------------------------------------
+	--- 19_fwd_in_pdt_characters 
+		"fwd_in_pdt_widget_cyclone_recipe_health",								--- 物品栏的图标
 	---------------------------------------------------------------------------------------
 	--- 24_fwd_in_pdt_task_scrolls 
 		"fwd_in_pdt_task_scroll",										--- 任务卷轴

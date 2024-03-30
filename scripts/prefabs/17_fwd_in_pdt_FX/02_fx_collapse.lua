@@ -60,6 +60,15 @@ local function fx()
             inst.AnimState:SetScale(_table.scale.x, _table.scale.y, _table.scale.z)
         end
 
+        if _table.color and _table.color.x then
+            if _table.MultColour_Flag ~= true then
+                inst:AddComponent("colouradder")
+                inst.components.colouradder:OnSetColour(_table.color.x/255 , _table.color.y/255 , _table.color.z/255 , _table.a or 1)
+            else
+                inst.AnimState:SetMultColour(_table.color.x,_table.color.y, _table.color.z, _table.a or 1)
+            end
+        end
+
         if _table.sound_off ~= true then
             inst.SoundEmitter:PlaySound("dontstarve/common/destroy_smoke")
         end

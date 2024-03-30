@@ -36,7 +36,7 @@ nil,
 ---- 参考官方的相关API
     local function Self_RemoveFromScene(inst)
         local self = inst
-
+        -- self:AddTag("INLIMBO")
         self:StopBrain()
         if self.sg then
             self.sg:Stop()
@@ -59,9 +59,17 @@ nil,
             self.AnimState:Pause()
         end
 
+        if self.components.inventoryitem then   --- 不允许拾取物品
+            self:AddTag("INLIMBO")
+            self.entity:SetInLimbo(not self.forcedoutoflimbo)
+            self.inlimbo = true
+        end
+        inst:PushEvent("fwd_in_pdt_com_time_stopper_start")
+
     end
     local function Self_ReturnToScene(inst)
         local self = inst
+        -- self:RemoveTag("INLIMBO")
         if not self:IsValid() then
             print("[ERROR] Calling ReturnToScene on an invalid entity!", self.prefab) -- Keep this for debug logs to come.
         end
@@ -80,6 +88,14 @@ nil,
         if self.sg then
             self.sg:Start()
         end
+
+        if self.components.inventoryitem then --- 重新允许拾取物品
+            self.entity:RemoveTag("INLIMBO")
+            self.entity:SetInLimbo(false)
+            self.inlimbo = false
+        end
+
+        inst:PushEvent("fwd_in_pdt_com_time_stopper_end")
     end
 ------------------------------------------------------------------------------------------------------------------------------
 ----

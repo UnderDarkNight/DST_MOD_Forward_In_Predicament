@@ -20,45 +20,72 @@
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ----- 血量修改
     local function hook_health_bage(inst,HealthBadge)
-        local over_index = { "topperanim","circleframe2","backing","anim","circleframe"}
         
-        for k, index in pairs(over_index) do
-            HealthBadge[index]:GetAnimState():OverrideSymbol("bg","moonlightcoda_hud_status_meter","bg")
-            HealthBadge[index]:GetAnimState():OverrideSymbol("frame_circle","moonlightcoda_hud_status_meter","frame_circle")
-            HealthBadge[index]:GetAnimState():OverrideSymbol("level","moonlightcoda_hud_status_meter","level")
-        end
+        HealthBadge.anim:GetAnimState():SetMultColour(unpack({153/255,76/255,0/255,1}))
 
-        HealthBadge.effigyanim:GetAnimState():OverrideSymbol("icon","moonlightcoda_hud_status_health","icon")
-        HealthBadge.circleframe:GetAnimState():OverrideSymbol("icon","moonlightcoda_hud_status_health","icon")
+        HealthBadge.circleframe:GetAnimState():ClearOverrideSymbol("icon")
+        HealthBadge.iconbuild = nil
 
-        HealthBadge.anim:GetAnimState():SetMultColour(1,1,1,1)
-
-        --------- 修改成可动动画
-            HealthBadge.circleframe:Hide()
-            HealthBadge.special_icon = HealthBadge:AddChild(UIAnim())
-            HealthBadge.special_icon:GetAnimState():SetBank("moonlightcoda_hud_health")
-            HealthBadge.special_icon:GetAnimState():SetBuild("moonlightcoda_hud_health")
-            HealthBadge.special_icon:GetAnimState():PlayAnimation("icon_fx",true)
-            local icon_scale = 1
-            HealthBadge.special_icon:SetScale(icon_scale,icon_scale,icon_scale)
-
-            HealthBadge.special_icon:MoveToFront()
-            HealthBadge.sanityarrow:MoveToFront()
-
-        --------- 添加后台特效
-
-            HealthBadge.special_back_fx = HealthBadge:AddChild(UIAnim())
-            HealthBadge.special_back_fx:GetAnimState():SetBank("moonlightcoda_hud_health")
-            HealthBadge.special_back_fx:GetAnimState():SetBuild("moonlightcoda_hud_health")
-            HealthBadge.special_back_fx:GetAnimState():PlayAnimation("fx",true)
-            HealthBadge.special_back_fx:SetScale(0.5,0.5,0.5)
-            HealthBadge.special_back_fx:GetAnimState():SetDeltaTimeMultiplier(0.7)
-            HealthBadge.special_back_fx:MoveToBack()
-
+        HealthBadge.__temp_fx = HealthBadge.anim:AddChild(UIAnim())
+        HealthBadge.__temp_fx:GetAnimState():SetBank("fwd_in_pdt_hud_cyclone_health")
+        HealthBadge.__temp_fx:GetAnimState():SetBuild("fwd_in_pdt_hud_cyclone_health")
+        HealthBadge.__temp_fx:GetAnimState():PlayAnimation("idle",true)
+        -- HealthBadge.__temp_fx:GetAnimState():GetAnimState():AnimateWhilePaused(true)
+        local scale = 0.2
+        HealthBadge.__temp_fx:SetScale(scale,scale,scale)
+        HealthBadge.backing:GetAnimState():SetBank ("status_clear_bg")
+        HealthBadge.backing:GetAnimState():SetBuild("status_clear_bg")
+        HealthBadge.backing:GetAnimState():PlayAnimation("backing")
+        
     end
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ----- hunger 修改
     local function hook_hunger_bage(inst,HungerBadge)
+
+        HungerBadge.anim:Hide()
+
+        HungerBadge.circular_meter2 = HungerBadge:AddChild(UIAnim())
+        HungerBadge.circular_meter2:GetAnimState():SetBank( "status_meter_circle")
+        HungerBadge.circular_meter2:GetAnimState():SetBuild("status_meter_circle")
+        HungerBadge.circular_meter2:GetAnimState():PlayAnimation("meter")
+        HungerBadge.circular_meter2:GetAnimState():AnimateWhilePaused(false)
+
+        HungerBadge.circular_meter2:GetAnimState():SetMultColour(unpack{0/255,255/255,255/255,1})
+        HungerBadge.circular_meter2:GetAnimState():Pause()
+
+
+        HungerBadge.backing:GetAnimState():SetBank ("status_clear_bg")
+        HungerBadge.backing:GetAnimState():SetBuild("status_clear_bg")
+        HungerBadge.backing:GetAnimState():PlayAnimation("backing")
+
+        HungerBadge.circleframe:GetAnimState():ClearOverrideSymbol("icon")
+        HungerBadge.iconbuild = nil
+
+
+        HungerBadge.temp_number_arrow = HungerBadge:AddChild(UIAnim())
+        HungerBadge.temp_number_arrow:GetAnimState():SetBank("fwd_in_pdt_hud_cyclone_status_meter_circle")
+        HungerBadge.temp_number_arrow:GetAnimState():SetBuild("fwd_in_pdt_hud_cyclone_status_meter_circle")
+        HungerBadge.temp_number_arrow:GetAnimState():PlayAnimation("idle")
+        HungerBadge.temp_number_arrow:GetAnimState():AnimateWhilePaused(false)
+        HungerBadge.temp_number_arrow:GetAnimState():Pause()
+        local scale = 0.55
+        HungerBadge.temp_number_arrow:SetScale(scale,scale,scale)
+        -----------------------------------------------------------------------------
+        ---- 事件监听
+            HungerBadge.temp_number_arrow.inst:ListenForEvent("hungerdelta",function()
+                local percent = inst.replica.hunger:GetPercent()
+                HungerBadge.temp_number_arrow:GetAnimState():SetPercent("idle",1-percent)
+                HungerBadge.circular_meter2:GetAnimState():SetPercent("meter",percent)
+            end,inst)
+            HungerBadge.circular_meter2:GetAnimState():SetPercent("meter",1)
+
+        -----------------------------------------------------------------------------
+
+        HungerBadge.temp_number_arrow:MoveToBack()
+        HungerBadge.circular_meter2:MoveToBack()
+        HungerBadge.backing:MoveToBack()
+
+        
         local temperature_widget = HungerBadge:AddChild(UIAnim())
         temperature_widget:SetPosition(-50,0)
         temperature_widget:GetAnimState():SetBank("status_meter")
@@ -86,6 +113,14 @@
                 temperature_str:SetString(tostring(math.floor(num)).."℃")
             end)
         ------------------------------------------------------------------------
+        ---- 拦截一些API
+            HungerBadge.PulseGreen = function()                
+            end
+            HungerBadge.PulseRed = function()
+            end
+            HungerBadge.StartWarning = function()
+            end
+        ------------------------------------------------------------------------
 
     end
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -93,7 +128,7 @@
 return function(inst)
     inst:DoTaskInTime(0.5,function()        
         if inst == ThePlayer and inst.HUD then
-            -- hook_health_bage(inst,inst.HUD.controls.status.heart)
+            hook_health_bage(inst,inst.HUD.controls.status.heart)
             hook_hunger_bage(inst,inst.HUD.controls.status.stomach)
         end
     end)

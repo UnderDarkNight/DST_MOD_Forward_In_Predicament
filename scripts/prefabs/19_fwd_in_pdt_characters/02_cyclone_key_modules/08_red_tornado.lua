@@ -5,7 +5,7 @@
 
     被打的时候也出旋风
 
-
+    洞里 消耗10点，洞外 100点
 
 ]]--
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -14,6 +14,12 @@ return function(inst)
     if not TheWorld.ismastersim then
         return
     end
+    ------------------------------------------------------------------------------------------------------------------------------
+    ------
+        local HUNGER_COST_NUM = 100
+        if TheWorld:HasTag("cave") then
+            HUNGER_COST_NUM = 10
+        end
     ------------------------------------------------------------------------------------------------------------------------------
         inst:ListenForEvent("create_red_tornado_for_target",function(inst,target)
             if target and target.prefab then
@@ -39,7 +45,7 @@ return function(inst)
             if _table and _table.target then
                 local target = _table.target
 
-                if temp_target ~= target and inst.components.hunger.current > 100 then
+                if temp_target ~= target and inst.components.hunger.current > HUNGER_COST_NUM then
                     ---------------------------------------------
                     ---- 一个目标只搞一次
                         temp_target = target
@@ -48,7 +54,7 @@ return function(inst)
                             temp_target_cd_task = nil
                         end)
                     ---------------------------------------------
-                        inst.components.hunger:DoDelta(-100)
+                        inst.components.hunger:DoDelta(-HUNGER_COST_NUM)
                         inst:PushEvent("create_red_tornado_for_target",target)
                     ---------------------------------------------
                 else
@@ -66,8 +72,8 @@ return function(inst)
     ---- 被打的时候出旋风
         inst:ListenForEvent("attacked",function(inst,_table)
             if _table and _table.attacker then
-                if inst.components.hunger.current > 100 then
-                    inst.components.hunger:DoDelta(-100,true)
+                if inst.components.hunger.current > HUNGER_COST_NUM then
+                    inst.components.hunger:DoDelta(-HUNGER_COST_NUM,true)
                     inst:PushEvent("create_red_tornado_for_target",_table.attacker)
                 end
             end            

@@ -78,7 +78,8 @@ local function fn()
     inst.components.inventoryitem.imagename = "fwd_in_pdt_item_bloody_flask"
     inst.components.inventoryitem.atlasname = "images/inventoryimages/fwd_in_pdt_item_bloody_flask.xml"
     inst:AddComponent("stackable") -- 可堆叠
-    inst.components.stackable.maxsize = TUNING.STACK_SIZE_SMALLITEM
+    -- inst.components.stackable.maxsize = TUNING.STACK_SIZE_SMALLITEM
+    inst.components.stackable:SetIgnoreMaxSize(true)
     
     MakeHauntableLaunch(inst)
 

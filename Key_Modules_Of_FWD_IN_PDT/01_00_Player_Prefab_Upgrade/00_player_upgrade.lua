@@ -14,25 +14,30 @@ AddPlayerPostInit(function(inst)
     end
     ----------------------------------------------------------------------------------------------------------
     ---- 通用数据存储器
-    if inst.components.fwd_in_pdt_data == nil then
-        inst:AddComponent("fwd_in_pdt_data")
-    end
+        if inst.components.fwd_in_pdt_data == nil then
+            inst:AddComponent("fwd_in_pdt_data")
+        end
     ----------------------------------------------------------------------------------------------------------
     ---- 自制tag组件
-    if inst.components.fwd_in_pdt_com_tag_sys == nil then
-        inst:AddComponent("fwd_in_pdt_com_tag_sys")
-    end
+        if inst.components.fwd_in_pdt_com_tag_sys == nil then
+            inst:AddComponent("fwd_in_pdt_com_tag_sys")
+        end
+    ----------------------------------------------------------------------------------------------------------
+    ---- 独立RPC管道
+        if inst.components.fwd_in_pdt_com_rpc_event == nil then
+            inst:AddComponent("fwd_in_pdt_com_rpc_event")
+        end
     ----------------------------------------------------------------------------------------------------------
 
     ----------------------------------------------------------------------------------------------------------
     ---- 初始化组件
-    if inst.components.fwd_in_pdt_func == nil then
-        inst:AddComponent("fwd_in_pdt_func")
-    end
-    inst.components.fwd_in_pdt_func:Init(TUNING["Forward_In_Predicament.Player_Com_Func"])
+        if inst.components.fwd_in_pdt_func == nil then
+            inst:AddComponent("fwd_in_pdt_func")
+        end
+        inst.components.fwd_in_pdt_func:Init(TUNING["Forward_In_Predicament.Player_Com_Func"])
     ----------------------------------------------------------------------------------------------------------
     ---------- 动作失败的话语组件
-    inst:AddComponent("fwd_in_pdt_com_action_fail_reason")
+        inst:AddComponent("fwd_in_pdt_com_action_fail_reason")
     ----------------------------------------------------------------------------------------------------------
     
     ----------------------------------------------------------------------------------------------------------
