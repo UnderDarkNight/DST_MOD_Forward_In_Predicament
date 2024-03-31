@@ -242,6 +242,7 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "唤月魔杖",
                 ["inspect_str"] = "在和月台制作的一样",
                 ["recipe_desc"] = "一轮新月正在冉冉升起",
+            },
         --------------------------------------------------------------------
         ---- 02_fwd_in_pdt_materials
             ["fwd_in_pdt_material_tree_resin"] = {
