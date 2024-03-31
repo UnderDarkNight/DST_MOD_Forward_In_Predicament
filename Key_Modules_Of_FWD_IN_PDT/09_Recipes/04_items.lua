@@ -80,7 +80,7 @@
 --------------------------------------------------------------------------------------------------------------------------------------------
 ---- 魔法锅铲
 --------------------------------------------------------------------------------------------------------------------------------------------
-    AddRecipeToFilter("fwd_in_pdt_equipment_magic_spatula","MAGIC")     ---- 添加物品到目标标签
+    AddRecipeToFilter("fwd_in_pdt_equipment_magic_spatula","CRAFTING_STATION")     ---- 添加物品到目标标签
     AddRecipe2(
         "fwd_in_pdt_equipment_magic_spatula",            --  --  inst.prefab  实体名字
         { Ingredient("minotaurhorn", 1) ,Ingredient("nightmarefuel", 10 ) }, 
@@ -97,7 +97,7 @@
 --------------------------------------------------------------------------------------------------------------------------------------------
 ---- 光之护盾
 --------------------------------------------------------------------------------------------------------------------------------------------
-    AddRecipeToFilter("fwd_in_pdt_equipment_shield_of_light","MAGIC")     ---- 添加物品到目标标签
+    AddRecipeToFilter("fwd_in_pdt_equipment_shield_of_light","CRAFTING_STATION")     ---- 添加物品到目标标签
     AddRecipe2(
         "fwd_in_pdt_equipment_shield_of_light",            --  --  inst.prefab  实体名字
         { Ingredient("yellowamulet", 1) ,Ingredient("ruinshat", 3 ),Ingredient("armorruins", 3 )  }, 
@@ -270,7 +270,7 @@
 --------------------------------------------------------------------------------------------------------------------------------------------
 ---- 唤月者魔杖
 --------------------------------------------------------------------------------------------------------------------------------------------
-AddRecipeToFilter("fwd_in_pdt_opalstaff_maker","LIGHT")     ---- 添加物品到目标标签
+AddRecipeToFilter("fwd_in_pdt_opalstaff_maker","CRAFTING_STATION")     ---- 添加物品到目标标签
 AddRecipe2(
     "fwd_in_pdt_opalstaff_maker",            --  --  inst.prefab  实体名字
     { Ingredient("opalpreciousgem", 1),Ingredient("livinglog", 4),Ingredient("nightmarefuel", 10) }, 
