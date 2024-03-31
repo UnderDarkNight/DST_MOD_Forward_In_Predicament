@@ -238,6 +238,10 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "里面压力很高",
                 ["recipe_desc"] = "里面压力很高",
             },
+            ["fwd_in_pdt_opalstaff_maker"] = {
+                ["name"] = "唤月魔杖",
+                ["inspect_str"] = "在和月台制作的一样",
+                ["recipe_desc"] = "一轮新月正在冉冉升起",
         --------------------------------------------------------------------
         ---- 02_fwd_in_pdt_materials
             ["fwd_in_pdt_material_tree_resin"] = {
@@ -1039,4 +1043,3 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             },
         --------------------------------------------------------------------
 }
-

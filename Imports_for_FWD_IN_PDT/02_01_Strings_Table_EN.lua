@@ -234,6 +234,10 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "There's a lot of pressure in there.",
                 ["recipe_desc"] = "There's a lot of pressure in there.",
             },
+            ["fwd_in_pdt_opalstaff_maker"] = {
+                ["name"] = "opalstaff",
+                ["inspect_str"] = "Just like what was made on the platform",
+                ["recipe_desc"] = "A new moon is slowly rising",
         --------------------------------------------------------------------
         ---- 02_fwd_in_pdt_materials
             ["fwd_in_pdt_material_tree_resin"] = {
