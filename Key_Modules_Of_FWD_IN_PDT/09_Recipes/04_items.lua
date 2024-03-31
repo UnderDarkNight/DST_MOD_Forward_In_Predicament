@@ -3,9 +3,33 @@
 
 ]]--
 --------------------------------------------------------------------------------------------------------------------------------------------
-
-
-
+-- 列表留在这里了 想调用随时用
+-- CHARACTER               冒险家物品
+-- TOOLS                   工具
+-- LIGHT                   光源
+-- PROTOTYPERS             原型工具和制作站
+-- REFINE                  精炼材料
+-- WEAPONS                 武器
+-- ARMOUR                  盔甲
+-- CLOTHING                服装
+-- RESTORATION             治疗
+-- MAGIC                   暗影魔法
+-- DECOR                   装饰
+-- STRUCTURES              建筑
+-- CONTAINERS              储物方案
+-- COOKING                 烹饪
+-- GARDENING               食物和耕种
+-- FISHING                 钓鱼
+-- SEAFARING               航行
+-- RIDING                  骑乘皮弗娄牛
+-- WINTER                  冬季物品
+-- SUMMER                  夏季物品
+-- RAIN                    雨具
+-- EVERYTHING              所有物品
+-- FAVORITES               收藏夹
+-- CRAFTING STATION        制作站
+-- SPECIAL EVENT           特殊活动
+-- MODS                    模组物品
 --------------------------------------------------------------------------------------------------------------------------------------------
 ---- 避蛇护符
 --------------------------------------------------------------------------------------------------------------------------------------------
@@ -274,7 +298,7 @@ AddRecipeToFilter("fwd_in_pdt_opalstaff_maker","CRAFTING_STATION")     ---- 添�
 AddRecipe2(
     "fwd_in_pdt_opalstaff_maker",            --  --  inst.prefab  实体名字
     { Ingredient("opalpreciousgem", 1),Ingredient("livinglog", 4),Ingredient("nightmarefuel", 10) }, 
-    TECH.ANCIENT_FOUR, 
+    TECH.ANCIENT_FOUR,--- 完整的远古塔
     {
         no_deconstruction=false,
         -- numtogive = 3,
