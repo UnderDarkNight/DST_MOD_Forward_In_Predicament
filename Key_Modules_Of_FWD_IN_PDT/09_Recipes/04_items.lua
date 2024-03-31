@@ -268,3 +268,23 @@
     RemoveRecipeFromFilter("fwd_in_pdt_equipment_ocean_fork","MODS")                       -- -- 在【模组物品】标签里移除这个。
 
 --------------------------------------------------------------------------------------------------------------------------------------------
+---- 唤月者魔杖
+--------------------------------------------------------------------------------------------------------------------------------------------
+AddRecipeToFilter("fwd_in_pdt_opalstaff_maker","LIGHT")     ---- 添加物品到目标标签
+AddRecipe2(
+    "fwd_in_pdt_opalstaff_maker",            --  --  inst.prefab  实体名字
+    { Ingredient("opalpreciousgem", 1),Ingredient("livinglog", 4),Ingredient("nightmarefuel", 10) }, 
+    TECH.ANCIENT_FOUR, 
+    {
+        no_deconstruction=false,
+        -- numtogive = 3,
+        -- sg_state="moonlightcoda_sg_form_log",
+        -- builder_tag = "moonlightcoda",
+        -- atlas = "images/inventoryimages/moonlightcoda_item_moon_island_detector.xml",
+        atlas = GetInventoryItemAtlas("opalstaff.tex"),
+        image = "opalstaff.tex",
+    },
+    {"WEAPONS","MAGIC","FWD_IN_PDT"}
+)
+RemoveRecipeFromFilter("fwd_in_pdt_opalstaff_maker","MODS")                       -- -- 在【模组物品】标签里移除这个。
+--------------------------------------------------------------------------------------------------------------------------------------------
