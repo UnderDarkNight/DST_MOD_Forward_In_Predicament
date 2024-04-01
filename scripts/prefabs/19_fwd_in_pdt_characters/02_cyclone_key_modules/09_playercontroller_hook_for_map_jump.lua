@@ -11,7 +11,9 @@ return function(inst)
         
 
 
-
+        if inst.components.playercontroller == nil then
+            return
+        end
 
 
 
