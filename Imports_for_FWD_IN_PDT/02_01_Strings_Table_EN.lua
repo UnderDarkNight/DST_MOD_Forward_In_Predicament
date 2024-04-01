@@ -946,6 +946,8 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["hunger"] = "Pneumatic Value",
                 ["spell_a_fail"] = "Insufficient Depth Value",
                 ["spell_b_fail"] = "Insufficient Pneumatic Value",
+                ["spell_only_right_click"] = "Cast a tornado",
+
             },
         --------------------------------------------------------------------
         ---- 20_fwd_in_pdt_events

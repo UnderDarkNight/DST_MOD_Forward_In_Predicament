@@ -949,6 +949,7 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["hunger"] = "气压值",
                 ["spell_a_fail"] = "深渊值不足",
                 ["spell_b_fail"] = "气压值不足",
+                ["spell_only_right_click"] = "施放龙卷风",
             },
         --------------------------------------------------------------------
         ---- 20_fwd_in_pdt_events

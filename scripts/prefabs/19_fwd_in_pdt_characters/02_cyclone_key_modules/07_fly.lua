@@ -15,6 +15,9 @@ return function(inst)
         if inst.components.drownable and inst.components.drownable.enabled ~= false then
             inst.components.drownable.enabled = false
         end
+
+        MakeFlyingCharacterPhysics(inst, 1, .5)
+        
         inst.Physics:ClearCollisionMask()
         inst.Physics:CollidesWith(COLLISION.GROUND)
         inst.Physics:CollidesWith(COLLISION.OBSTACLES)

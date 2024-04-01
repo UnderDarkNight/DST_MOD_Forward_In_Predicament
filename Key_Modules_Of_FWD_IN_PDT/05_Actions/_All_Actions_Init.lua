@@ -54,6 +54,8 @@ modimport("Key_Modules_Of_FWD_IN_PDT/05_Actions/27_action_blink_map.lua")       
 
 modimport("Key_Modules_Of_FWD_IN_PDT/05_Actions/28_com_anything_eater.lua")             --- 任意物品使用组件
 
+modimport("Key_Modules_Of_FWD_IN_PDT/05_Actions/29_com_inspectable_spell_action.lua")             --- 单纯交互施法组件
+
 
 
 

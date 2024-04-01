@@ -26,6 +26,15 @@ local fwd_in_pdt_com_time_stopper = Class(function(self, inst)
         self:Remove(temp_inst)
     end
 
+    self.__target_minhealth_event_fn = function(temp_inst)    --- 给目标内部检查使用,锁死1血
+        if temp_inst.components.health then
+            temp_inst.components.health.currenthealth = 1
+            if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
+                print("target health locked by time stopper",temp_inst)
+            end
+        end
+    end
+
 end,
 nil,
 {
@@ -59,7 +68,7 @@ nil,
             self.AnimState:Pause()
         end
 
-        if self.components.inventoryitem then   --- 不允许拾取物品
+        if self.components.inventoryitem ~= nil and self.components.health == nil then   --- 不允许拾取物品
             self:AddTag("INLIMBO")
             self.entity:SetInLimbo(not self.forcedoutoflimbo)
             self.inlimbo = true
@@ -89,7 +98,7 @@ nil,
             self.sg:Start()
         end
 
-        if self.components.inventoryitem then --- 重新允许拾取物品
+        if self.components.inventoryitem ~= nil and self.components.health == nil then --- 重新允许拾取物品
             self.entity:RemoveTag("INLIMBO")
             self.entity:SetInLimbo(false)
             self.inlimbo = false
@@ -221,6 +230,14 @@ nil,
                     ---- 插入 entitysleep event,超出加载范围就移出定时器   
                             temp_inst:ListenForEvent("entitysleep",self.__target_entitysleep_event_fn)
                     --------------------------------------------------
+                    ---- 目标带血槽,则进行锁血
+                            if temp_inst.components.health then
+                                temp_inst:ListenForEvent("minhealth",self.__target_minhealth_event_fn)
+                                temp_inst:ListenForEvent("onremove",function()
+                                    temp_inst:RemoveEventCallback("minhealth",self.__target_minhealth_event_fn)
+                                end,self.inst)
+                            end
+                    --------------------------------------------------
                 end
 
         end
@@ -241,6 +258,9 @@ nil,
             --------------------------------------------------
             ---- 移除目标的 entitysleep event 监听
                 temp_inst:RemoveEventCallback("entitysleep",self.__target_entitysleep_event_fn)
+            --------------------------------------------------
+            ---- 移除血条锁血
+                temp_inst:RemoveEventCallback("minhealth",self.__target_minhealth_event_fn)
             --------------------------------------------------
         end
         if #self._entity_list == 0 then

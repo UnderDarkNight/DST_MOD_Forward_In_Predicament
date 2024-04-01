@@ -24,6 +24,7 @@ return function(inst)
         "prefabs/19_fwd_in_pdt_characters/02_cyclone_key_modules/16_anything_eater",                        ---- 特殊的吃东西交互组件
         "prefabs/19_fwd_in_pdt_characters/02_cyclone_key_modules/17_damage_mult",                           ---- 伤害倍增器
         "prefabs/19_fwd_in_pdt_characters/02_cyclone_key_modules/18_spell_introduction_page",               ---- 法术介绍页
+        "prefabs/19_fwd_in_pdt_characters/02_cyclone_key_modules/19_work_without_tools",                    ---- 不使用工具直接工作
 
     }
     for k, lua_addr in pairs(modules) do
