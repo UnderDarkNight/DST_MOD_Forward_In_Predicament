@@ -22,7 +22,7 @@
                 end,
                 ["oneat_fn"] = function(item,doer)
                     GetSingleItem(item):Remove()
-                    doer.components.hunger:DoDelta(10)
+                    doer.components.hunger:DoDelta(100)
                     return true
                 end,
                 ["fast_eat"] = true
@@ -35,7 +35,7 @@
                 end,
                 ["oneat_fn"] = function(item,doer)
                     GetSingleItem(item):Remove()
-                    doer.components.hunger:DoDelta(10)
+                    doer.components.hunger:DoDelta(100)
                     return true
                 end,
                 ["fast_eat"] = true
@@ -48,7 +48,7 @@
                 end,
                 ["oneat_fn"] = function(item,doer)
                     GetSingleItem(item):Remove()
-                    doer.components.hunger:DoDelta(10)
+                    doer.components.hunger:DoDelta(100)
                     return true
                 end,
                 ["fast_eat"] = true
@@ -61,7 +61,7 @@
                 end,
                 ["oneat_fn"] = function(item,doer)
                     GetSingleItem(item):Remove()
-                    doer.components.hunger:DoDelta(100)
+                    doer.components.hunger:DoDelta(300)
                     return true
                 end,
                 ["fast_eat"] = false
@@ -74,7 +74,7 @@
                 end,
                 ["oneat_fn"] = function(item,doer)
                     GetSingleItem(item):Remove()
-                    doer.components.hunger:DoDelta(100)
+                    doer.components.hunger:DoDelta(200)
                     return true
                 end,
                 ["fast_eat"] = false
@@ -87,7 +87,7 @@
                 end,
                 ["oneat_fn"] = function(item,doer)
                     GetSingleItem(item):Remove()
-                    doer.components.hunger:DoDelta(5)
+                    doer.components.hunger:DoDelta(50)
                     return true
                 end,
                 ["fast_eat"] = false
@@ -100,7 +100,7 @@
                 end,
                 ["oneat_fn"] = function(item,doer)
                     GetSingleItem(item):Remove()
-                    doer.components.hunger:DoDelta(100)
+                    doer.components.hunger:DoDelta(200)
                     return true
                 end,
                 ["fast_eat"] = false
