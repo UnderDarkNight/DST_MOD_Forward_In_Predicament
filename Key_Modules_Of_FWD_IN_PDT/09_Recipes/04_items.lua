@@ -303,12 +303,12 @@ AddRecipe2(
         no_deconstruction=false,
         -- numtogive = 3,
         -- sg_state="moonlightcoda_sg_form_log",
-        -- builder_tag = "moonlightcoda",
+        -- builder_tag = "moonlightcoda",       --应该是对应特殊人物用这个的
         -- atlas = "images/inventoryimages/moonlightcoda_item_moon_island_detector.xml",
         atlas = GetInventoryItemAtlas("opalstaff.tex"),
         image = "opalstaff.tex",
     },
-    {"WEAPONS","MAGIC","FWD_IN_PDT"}
+    {"FWD_IN_PDT"}
 )
 RemoveRecipeFromFilter("fwd_in_pdt_opalstaff_maker","MODS")                       -- -- 在【模组物品】标签里移除这个。
 --------------------------------------------------------------------------------------------------------------------------------------------
