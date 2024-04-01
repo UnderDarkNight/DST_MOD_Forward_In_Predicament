@@ -50,11 +50,29 @@ local flg,error_code = pcall(function()
         -- ThePlayer.components.freezable:Freeze(10)
         -- ThePlayer.___light___fx:Remove()
 
-        SpawnPrefab("fwd_in_pdt_spell_time_stopper"):PushEvent("Set",{
-            target = ThePlayer,
-            range = 30,
-            time = 30,
-        })
+        -- SpawnPrefab("fwd_in_pdt_spell_time_stopper"):PushEvent("Set",{
+        --     target = ThePlayer,
+        --     range = 30,
+        --     time = 30,
+        -- })
+    ----------------------------------------------------------------------------------------------------------------
+    ----
+        ThePlayer:RemoveEventCallback("changearea",ThePlayer.___area_event_fn or function()        end)
+
+        ThePlayer.___area_event_fn = function(inst,_table)
+            -- print(_table,type(_table))
+            if type(_table) ~= "table" then
+                return
+            end
+            print("+++++++++++++++++++++++++++++")
+                print(_table.type)
+                for k, v in pairs(_table.tags) do
+                    print(k,v)
+                end
+            print("+++++++++++++++++++++++++++++")
+
+        end
+        ThePlayer:ListenForEvent("changearea",ThePlayer.___area_event_fn)
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)
