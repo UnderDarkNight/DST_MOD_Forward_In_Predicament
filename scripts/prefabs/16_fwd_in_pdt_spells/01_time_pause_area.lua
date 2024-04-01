@@ -173,14 +173,16 @@ local function fn()
                 local musthavetags = nil
                 local canthavetags = {"INLIMBO","player"}
                 local musthaveoneoftags = nil
-                inst:DoPeriodicTask(0.5,function()
+                local function time_stopper_task()
                     local ents = TheSim:FindEntities(x,y,z,range,musthavetags, canthavetags, musthaveoneoftags)
                     for k, temp_target in pairs(ents) do
                         if not inst.components.fwd_in_pdt_com_time_stopper:Has(temp_target) then
                             inst.components.fwd_in_pdt_com_time_stopper:Add(temp_target)
                         end
                     end
-                end)
+                end
+                inst:DoPeriodicTask(0.5,time_stopper_task)
+                time_stopper_task()
             ------------------------------------------------------------
             ---- 初始化标记 
                 inst.Ready = true
