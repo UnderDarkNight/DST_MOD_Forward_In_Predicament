@@ -32,9 +32,9 @@ local flg,error_code = pcall(function()
                     --     })
                     --     return true
                     -- end)
-                     ThePlayer.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_attack_miss")
+                    --  ThePlayer.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_attack_miss")
 
-                    -- ThePlayer.components.fwd_in_pdt_wellness:Remove_Debuff("fwd_in_pdt_welness_attack_miss")
+                    ThePlayer.components.fwd_in_pdt_wellness:Remove_Debuff("fwd_in_pdt_welness_attack_miss")
     ----------------------------------------------------------------------------------------------------------------
     -------
     -- 癫痫测试
@@ -57,22 +57,27 @@ local flg,error_code = pcall(function()
         -- })
     ----------------------------------------------------------------------------------------------------------------
     ----
-        ThePlayer:RemoveEventCallback("changearea",ThePlayer.___area_event_fn or function()        end)
+        -- ThePlayer:RemoveEventCallback("changearea",ThePlayer.___area_event_fn or function()        end)
 
-        ThePlayer.___area_event_fn = function(inst,_table)
-            -- print(_table,type(_table))
-            if type(_table) ~= "table" then
-                return
+        -- ThePlayer.___area_event_fn = function(inst,_table)
+        --     -- print(_table,type(_table))
+        --     if type(_table) ~= "table" then
+        --         return
+        --     end
+        --     print("+++++++++++++++++++++++++++++")
+        --         print(_table.type)
+        --         for k, v in pairs(_table.tags) do
+        --             print(k,v)
+        --         end
+        --     print("+++++++++++++++++++++++++++++")
+
+        -- end
+        -- ThePlayer:ListenForEvent("changearea",ThePlayer.___area_event_fn)
+    ----------------------------------------------------------------------------------------------------------------
+    --- 
+            for k, v in pairs(ThePlayer.replica._.fwd_in_pdt_com_inspectable_spell_caster) do
+                print(k,v)
             end
-            print("+++++++++++++++++++++++++++++")
-                print(_table.type)
-                for k, v in pairs(_table.tags) do
-                    print(k,v)
-                end
-            print("+++++++++++++++++++++++++++++")
-
-        end
-        ThePlayer:ListenForEvent("changearea",ThePlayer.___area_event_fn)
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)

@@ -35,3 +35,5 @@ AddReplicableComponent("fwd_in_pdt_com_rpc_event")  --- 通用RPC管道
 
 AddReplicableComponent("fwd_in_pdt_com_player_anything_eater")  --- 吃任意东西
 
+AddReplicableComponent("fwd_in_pdt_com_inspectable_spell_caster")  --- 任意目标施法组件
+
