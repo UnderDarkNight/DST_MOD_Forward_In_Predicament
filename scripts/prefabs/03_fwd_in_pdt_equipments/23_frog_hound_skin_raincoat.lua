@@ -1,13 +1,14 @@
---哈皮雨衣
+--蛤皮雨衣
 local assets =
 {
     Asset( "ANIM", "anim/fwd_in_pdt_frog_hound_skin_raincoat.zip" ),
+    Asset( "ANIM", "anim/fwd_in_pdt_frog_hound_skin_raincoat_swap.zip" ),
     Asset( "IMAGE", "images/inventoryimages/fwd_in_pdt_frog_hound_skin_raincoat.tex" ),  -- 背包贴图
     Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_frog_hound_skin_raincoat.xml" ),
 }
 
 local function onequip(inst, owner)
-    owner.AnimState:OverrideSymbol("swap_body", "fwd_in_pdt_frog_hound_skin_raincoat", "swap_body")
+    owner.AnimState:OverrideSymbol("swap_body", "fwd_in_pdt_frog_hound_skin_raincoat_swap", "swap_body")
     inst.components.fueled:StartConsuming()
 end
 
