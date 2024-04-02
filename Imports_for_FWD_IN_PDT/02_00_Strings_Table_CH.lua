@@ -243,6 +243,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "在和月台制作的一样",
                 ["recipe_desc"] = "一轮新月正在冉冉升起",
             },
+            ["fwd_in_pdt_item_vitamin_a_oral_solution"] = {
+                ["name"] = "维生素A口服液",
+                ["inspect_str"] = "我重获了光明",
+                ["recipe_desc"] = "用猪肝制作的口服液",
+            },
         --------------------------------------------------------------------
         ---- 02_fwd_in_pdt_materials
             ["fwd_in_pdt_material_tree_resin"] = {

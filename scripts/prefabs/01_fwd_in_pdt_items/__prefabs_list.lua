@@ -55,7 +55,7 @@ local prefabs_name_list = {
     "25_pig_flute",                      -- 猪猪笛子
     "26_werepig_flute",                  -- 疯猪笛子
     "27_compressed_cyclone",             -- 压缩气旋
-    --"27_vitamin_a_oral_solution",      -- 维生素A口服液
+    "28_vitamin_a_oral_solution",      -- 维生素A口服液
     "29_opalstaff_maker",                -- 唤月法杖
 }
 

@@ -38,6 +38,7 @@ local files_name = {
 		"fwd_in_pdt_item_pig_flute",							--- 猪猪笛子
 		"fwd_in_pdt_item_werepig_flute",						--- 疯猪笛子
 		"fwd_in_pdt_item_compressed_cyclone",					--- 压缩气旋
+		"fwd_in_pdt_item_vitamin_a_oral_solution",				--- 维生素A口服液
 	---------------------------------------------------------------------------------------
 	-- 02_fwd_in_pdt_materials
 		"fwd_in_pdt_material_tree_resin",							--- 树脂
