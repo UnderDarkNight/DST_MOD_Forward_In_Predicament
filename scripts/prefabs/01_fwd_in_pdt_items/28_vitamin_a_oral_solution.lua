@@ -36,7 +36,7 @@ local function fn()
 
     inst.entity:SetPristine()
     ------------------------------------------------------------------------
-    --- 动作(这里是有问题的  但是没空研究新组件怎么用)
+    -- 动作
     -- inst:AddComponent("fwd_in_pdt_com_workable")
     -- inst.components.fwd_in_pdt_com_workable:SetTestFn(function(inst,doer,right_click)
     --     return doer.replica.fwd_in_pdt_wellness:Has_Debuff("fwd_in_pdt_welness_attack_miss") and inst.replica.inventoryitem:IsGrandOwner(doer)
@@ -58,6 +58,31 @@ local function fn()
     -- end)
     -- inst.components.fwd_in_pdt_com_workable:SetSGAction("dolongaction")
     -- inst.components.fwd_in_pdt_com_workable:SetActionDisplayStr("fwd_in_pdt_item_vitamin_a_oral_solution",STRINGS.ACTIONS.USEITEM)
+
+
+
+    inst:ListenForEvent("fwd_in_pdt_event.OnEntityReplicated.fwd_in_pdt_com_workable",function(inst,replica_com)
+        replica_com:SetTestFn(function(inst,doer,right_click)
+            return doer.replica.fwd_in_pdt_wellness:Has_Debuff("fwd_in_pdt_welness_attack_miss") and inst.replica.inventoryitem:IsGrandOwner(doer)
+        end)
+        replica_com:SetSGAction("dolongaction")
+        replica_com:SetText("fwd_in_pdt_item_vitamin_a_oral_solution",STRINGS.ACTIONS.USEITEM)
+    end)
+    if TheWorld.ismastersim then
+        inst:AddComponent("fwd_in_pdt_com_workable")
+        inst.components.fwd_in_pdt_com_workable:SetActiveFn(function(inst,doer)
+            if inst.components.stackable then
+                inst.components.stackable:Get():Remove()
+            else
+                inst:Remove()
+            end
+
+            doer.components.fwd_in_pdt_wellness:Remove_Debuff("fwd_in_pdt_welness_attack_miss")
+
+
+            return true
+        end)
+    end
     ------------------------------------------------------------------------
 
 
