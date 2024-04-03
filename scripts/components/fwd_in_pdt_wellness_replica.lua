@@ -118,6 +118,9 @@ end
         end
         return false
     end
+    function fwd_in_pdt_wellness:HasDebuff(debuff_prefab)
+        return self:Has_Debuff(debuff_prefab)
+    end
 -----------------------------------------------------------------------------------------------------
     function fwd_in_pdt_wellness:Get(str)
         if type(str) == "string" then
