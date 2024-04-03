@@ -449,6 +449,9 @@ nil,
                 end
         end
     end
+    function fwd_in_pdt_wellness:AddDebuff(str)
+        self:Add_Debuff(str)
+    end
 
     function fwd_in_pdt_wellness:Remove_Debuff(str)     --- 移除debuff
         if str and self.debuffs[str] then
@@ -463,6 +466,15 @@ nil,
             added_debuffs[str] = false
             self:Set("attached_debuffs",added_debuffs)
         end
+    end
+    function fwd_in_pdt_wellness:RemoveDebuff(str)
+        self:Remove_Debuff(str)
+    end
+    function fwd_in_pdt_wellness:Has_Debuff(str)
+        return self.debuffs[str] ~= nil
+    end
+    function fwd_in_pdt_wellness:HasDebuff(str)
+        return self:Has_Debuff(str)
     end
 
     function fwd_in_pdt_wellness:GetInfos(str)  --- 获取文本信息
@@ -539,6 +551,9 @@ nil,
             return self.debuffs[str]
         end
         return nil
+    end
+    function fwd_in_pdt_wellness:GetDebuff(str)
+        return self:Get_Debuff(str)
     end
 ------------------------------------------------------------------------------------------------------------------------------
 -- 数据同步用的 func
