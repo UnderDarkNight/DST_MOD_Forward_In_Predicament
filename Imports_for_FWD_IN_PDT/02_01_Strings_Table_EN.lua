@@ -234,6 +234,16 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "There's a lot of pressure in there.",
                 ["recipe_desc"] = "There's a lot of pressure in there.",
             },
+            ["fwd_in_pdt_opalstaff_maker"] = {
+                ["name"] = "opalstaff",
+                ["inspect_str"] = "Just like what was made on the platform",
+                ["recipe_desc"] = "A new moon is slowly rising",
+            },
+            ["fwd_in_pdt_item_vitamin_a_oral_solution"] = {
+                ["name"] = "Vitamin A Oral Solution",
+                ["inspect_str"] = "My eyes have regained their brightness",
+                ["recipe_desc"] = "Oral liquid made from pig liver",
+            },
         --------------------------------------------------------------------
         ---- 02_fwd_in_pdt_materials
             ["fwd_in_pdt_material_tree_resin"] = {
@@ -1023,8 +1033,8 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             },
             ["fwd_in_pdt_welness_attack_miss"] = {
                 ["name"] = "失明",
-                ["treatment"] = { "等待修正+++"},
-                ["debuff_attach_whisper"] = "你一个不小心把自己弄骨折了",
+                ["treatment"] = { ""},
+                ["debuff_attach_whisper"] = "My eyes can't see anymore",
             },
             ["fwd_in_pdt_welness_mouse_and_camera_crazy"] = {
                 ["name"] = "癫痫",
@@ -1039,4 +1049,4 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             },
         --------------------------------------------------------------------
 
-}
+        }

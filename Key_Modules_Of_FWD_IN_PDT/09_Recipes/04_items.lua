@@ -3,9 +3,33 @@
 
 ]]--
 --------------------------------------------------------------------------------------------------------------------------------------------
-
-
-
+-- 列表留在这里了 想调用随时用
+-- CHARACTER               冒险家物品
+-- TOOLS                   工具
+-- LIGHT                   光源
+-- PROTOTYPERS             原型工具和制作站
+-- REFINE                  精炼材料
+-- WEAPONS                 武器
+-- ARMOUR                  盔甲
+-- CLOTHING                服装
+-- RESTORATION             治疗
+-- MAGIC                   暗影魔法
+-- DECOR                   装饰
+-- STRUCTURES              建筑
+-- CONTAINERS              储物方案
+-- COOKING                 烹饪
+-- GARDENING               食物和耕种
+-- FISHING                 钓鱼
+-- SEAFARING               航行
+-- RIDING                  骑乘皮弗娄牛
+-- WINTER                  冬季物品
+-- SUMMER                  夏季物品
+-- RAIN                    雨具
+-- EVERYTHING              所有物品
+-- FAVORITES               收藏夹
+-- CRAFTING_STATION        制作站
+-- SPECIAL EVENT           特殊活动
+-- MODS                    模组物品
 --------------------------------------------------------------------------------------------------------------------------------------------
 ---- 避蛇护符
 --------------------------------------------------------------------------------------------------------------------------------------------
@@ -80,7 +104,7 @@
 --------------------------------------------------------------------------------------------------------------------------------------------
 ---- 魔法锅铲
 --------------------------------------------------------------------------------------------------------------------------------------------
-    AddRecipeToFilter("fwd_in_pdt_equipment_magic_spatula","MAGIC")     ---- 添加物品到目标标签
+    AddRecipeToFilter("fwd_in_pdt_equipment_magic_spatula","CRAFTING_STATION")     ---- 添加物品到目标标签
     AddRecipe2(
         "fwd_in_pdt_equipment_magic_spatula",            --  --  inst.prefab  实体名字
         { Ingredient("minotaurhorn", 1) ,Ingredient("nightmarefuel", 10 ) }, 
@@ -97,7 +121,7 @@
 --------------------------------------------------------------------------------------------------------------------------------------------
 ---- 光之护盾
 --------------------------------------------------------------------------------------------------------------------------------------------
-    AddRecipeToFilter("fwd_in_pdt_equipment_shield_of_light","MAGIC")     ---- 添加物品到目标标签
+    AddRecipeToFilter("fwd_in_pdt_equipment_shield_of_light","CRAFTING_STATION")     ---- 添加物品到目标标签
     AddRecipe2(
         "fwd_in_pdt_equipment_shield_of_light",            --  --  inst.prefab  实体名字
         { Ingredient("yellowamulet", 1) ,Ingredient("ruinshat", 3 ),Ingredient("armorruins", 3 )  }, 
@@ -235,7 +259,7 @@
     )
     RemoveRecipeFromFilter("turf_fwd_in_pdt_turf_grasslawn","MODS")                       -- -- 在【模组物品】标签里移除这个。
 --------------------------------------------------------------------------------------------------------------------------------------------
----- 哈皮雨衣
+---- 蛤皮雨衣
 --------------------------------------------------------------------------------------------------------------------------------------------
     AddRecipeToFilter("fwd_in_pdt_frog_hound_skin_raincoat","RAIN")     ---- 添加物品到目标标签
     AddRecipe2(
@@ -267,4 +291,62 @@
     )
     RemoveRecipeFromFilter("fwd_in_pdt_equipment_ocean_fork","MODS")                       -- -- 在【模组物品】标签里移除这个。
 
+--------------------------------------------------------------------------------------------------------------------------------------------
+---- 唤月者魔杖
+--------------------------------------------------------------------------------------------------------------------------------------------
+AddRecipeToFilter("fwd_in_pdt_opalstaff_maker","CRAFTING_STATION")     ---- 添加物品到目标标签
+AddRecipe2(
+    "fwd_in_pdt_opalstaff_maker",            --  --  inst.prefab  实体名字
+    { Ingredient("opalpreciousgem", 1),Ingredient("livinglog", 4),Ingredient("nightmarefuel", 10) }, 
+    TECH.ANCIENT_FOUR,--- 完整的远古塔
+    {
+        no_deconstruction=false,
+        -- numtogive = 3,
+        -- sg_state="moonlightcoda_sg_form_log",
+        -- builder_tag = "moonlightcoda",       --应该是对应特殊人物用这个的
+        -- atlas = "images/inventoryimages/moonlightcoda_item_moon_island_detector.xml",
+        atlas = GetInventoryItemAtlas("opalstaff.tex"),
+        image = "opalstaff.tex",
+    },
+    {"FWD_IN_PDT"}
+)
+RemoveRecipeFromFilter("fwd_in_pdt_opalstaff_maker","MODS")                       -- -- 在【模组物品】标签里移除这个。
+--------------------------------------------------------------------------------------------------------------------------------------------
+---- 正骨水
+--------------------------------------------------------------------------------------------------------------------------------------------
+AddRecipeToFilter("fwd_in_pdt_item_orthopedic_water","RESTORATION")     ---- 添加物品到目标标签
+    AddRecipe2(
+        "fwd_in_pdt_item_orthopedic_water",            --  --  inst.prefab  实体名字
+        { Ingredient("boneshard", 10),Ingredient("ice", 5) }, 
+        TECH.SCIENCE_TWO, --- 科学二本
+        {
+            -- nounlock=true,
+            no_deconstruction=false,
+            -- builder_tag = "npng_tag.has_green_amulet",    --------- -- 【builder_tag】只给指定tag的角色能制造这件物品，角色添加/移除 tag 都能立马解锁/隐藏该物品
+            -- placer = "fwd_in_pdt_item_talisman_that_repels_snakes",                       -------- 建筑放置器        
+            atlas = "images/inventoryimages/fwd_in_pdt_item_orthopedic_water.xml",
+            image = "fwd_in_pdt_item_orthopedic_water.tex",
+        },
+        {"RESTORATION","FWD_IN_PDT"}
+    )
+    RemoveRecipeFromFilter("fwd_in_pdt_item_orthopedic_water","MODS")                       -- -- 在【模组物品】标签里移除这个。
+--------------------------------------------------------------------------------------------------------------------------------------------
+---- 维生素A口服液
+--------------------------------------------------------------------------------------------------------------------------------------------
+AddRecipeToFilter("fwd_in_pdt_item_vitamin_a_oral_solution","RESTORATION")     ---- 添加物品到目标标签
+    AddRecipe2(
+        "fwd_in_pdt_item_vitamin_a_oral_solution",            --  --  inst.prefab  实体名字
+        { Ingredient("fwd_in_pdt_food_pig_liver", 5),Ingredient("ice", 5) }, 
+        TECH.SCIENCE_TWO, --- 科学二本
+        {
+            -- nounlock=true,
+            no_deconstruction=false,
+            -- builder_tag = "npng_tag.has_green_amulet",    --------- -- 【builder_tag】只给指定tag的角色能制造这件物品，角色添加/移除 tag 都能立马解锁/隐藏该物品
+            -- placer = "fwd_in_pdt_item_talisman_that_repels_snakes",                       -------- 建筑放置器        
+            atlas = "images/inventoryimages/fwd_in_pdt_item_vitamin_a_oral_solution.xml",
+            image = "fwd_in_pdt_item_vitamin_a_oral_solution.tex",
+        },
+        {"RESTORATION","FWD_IN_PDT"}
+    )
+    RemoveRecipeFromFilter("fwd_in_pdt_item_vitamin_a_oral_solution","MODS")                       -- -- 在【模组物品】标签里移除这个。
 --------------------------------------------------------------------------------------------------------------------------------------------

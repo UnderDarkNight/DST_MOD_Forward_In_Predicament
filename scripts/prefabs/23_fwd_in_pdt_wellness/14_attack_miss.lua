@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------------------------------------------------------------------
---- 样板示例
+--- 【失明】
 --- 只有执行函数，不做任何数据存储
 
 --[[
@@ -70,23 +70,24 @@ local function fn()
                print(" ------------ 得到失明 debuff") 
             end
         --------------------------------------------------------     
-
+            --------------------------------------------------------       
             --- 添加Miss 判定 函数
-                local player = self.player
-                local temp_index_inst = self
-                if player.components.combat then
-                    player.components.combat:Fwd_In_Pdt_Add_Miss_Check(temp_index_inst,function(target,...)
-                        if math.random(1000)/1000 <= 0.8 then   --- 80%概率失败
-                            SpawnPrefab("fwd_in_pdt_fx_miss"):PushEvent("Set",{
-                                target = target,
-                                speed = 2,
-                            })
-                            return true
-                        end
-                        return false
-                    end)
-                end
-            --------------------------------------------------------            
+                    local player = self.player
+                    local temp_index_inst = self
+                    if player.components.combat then
+                        player.components.combat:Fwd_In_Pdt_Add_Miss_Check(temp_index_inst,function(target,...)
+                            if math.random(1000)/1000 <= 0.8 then   --- 80%概率失败
+                                SpawnPrefab("fwd_in_pdt_fx_miss"):PushEvent("Set",{
+                                    target = target,
+                                    speed = 2,
+                                })
+                                return true
+                            end
+                            return false
+                        end)
+                    end
+            --------------------------------------------------------       
+     
         end
     ------------------------------------------------------------------------------
     -- External_DoDelta 外部执行 DoDelta 用做限位的。
