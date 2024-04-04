@@ -202,3 +202,24 @@ end
         atlas = "images/inventoryimages/fwd_in_pdt_item_medical_certificate.xml",
         image = "fwd_in_pdt_item_medical_certificate.tex",
     })
+--------------------------------------------------------------------------------------------------------------------------------------------
+--- 正骨水 
+--------------------------------------------------------------------------------------------------------------------------------------------
+Add_Recipe_2_Machine({
+    prefab = "fwd_in_pdt_item_orthopedic_water",
+    Ingredients = { Ingredient("boneshard", 10),Ingredient("ice", 5) },
+    -- atlas = GetInventoryItemAtlas("scandata.tex"),
+    atlas = "images/inventoryimages/fwd_in_pdt_item_orthopedic_water.xml",
+    image = "fwd_in_pdt_item_orthopedic_water.tex",
+})
+--------------------------------------------------------------------------------------------------------------------------------------------
+--- 维生素A口服液 
+--------------------------------------------------------------------------------------------------------------------------------------------
+Add_Recipe_2_Machine({
+    prefab = "fwd_in_pdt_item_vitamin_a_oral_solution",
+    Ingredients = { Ingredient("fwd_in_pdt_food_pig_liver", 5),Ingredient("ice", 5) },
+    -- atlas = GetInventoryItemAtlas("scandata.tex"),
+    atlas = "images/inventoryimages/fwd_in_pdt_item_vitamin_a_oral_solution.xml",
+    image = "fwd_in_pdt_item_vitamin_a_oral_solution.tex",
+})
+--------------------------------------------------------------------------------------------------------------------------------------------

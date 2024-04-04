@@ -69,10 +69,10 @@ AddPlayerPostInit(function(inst)
 
             inst:DoTaskInTime(1,function()
                 local list = {
-                    ---- 天体珠宝灯（月亮）
-                        ["fwd_in_pdt_moom_jewelry_lamp"] = {
-                            "fwd_in_pdt_moom_jewelry_lamp_moon",
-                        },
+                    -- ---- 天体珠宝灯（月亮）
+                    --     ["fwd_in_pdt_moom_jewelry_lamp"] = {
+                    --         "fwd_in_pdt_moom_jewelry_lamp_moon",
+                    --     },
                     ---- 炽热暗影剑
                         ["fwd_in_pdt_equipment_blazing_nightmaresword"] = {
                             "fwd_in_pdt_equipment_blazing_nightmaresword_sharp",
@@ -148,10 +148,10 @@ AddPlayerPostInit(function(inst)
                             "fwd_in_pdt_building_flower_fence_item_vines",
                             "fwd_in_pdt_building_flower_fence_item_mushroom",
                         },
-                     ---- 盆栽
-                        ["fwd_in_pdt_building_potting_a"] = {
-                        "fwd_in_pdt_building_potting_cotton",   ---棉花皮肤
-                        },
+                    --  ---- 盆栽
+                    --     ["fwd_in_pdt_building_potting_a"] = {
+                    --     "fwd_in_pdt_building_potting_cotton",   ---棉花皮肤 ---单独发送
+                    --     },
                     ---- 鼹鼠背包
                         ["fwd_in_pdt_equipment_mole_backpack"] = {
                             -- "fwd_in_pdt_equipment_mole_backpack_panda",  --- 免费送

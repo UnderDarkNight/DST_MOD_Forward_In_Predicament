@@ -24,7 +24,7 @@ end
         ["fwd_in_pdt_moom_jewelry_lamp_moon"] = {             --- 皮肤名字，全局唯一。
             bank = "fwd_in_pdt_moom_jewelry_lamp_moon",                   --- 制作完成后切换的 bank
             build = "fwd_in_pdt_moom_jewelry_lamp_moon",                  --- 制作完成后切换的 build
-            name = "moon",                    --- 【制作栏】皮肤的名字
+            name = "走向月亮",                    --- 【制作栏】皮肤的名字
             name_color = {255/255,185/255,15/255,255/255},
             minimap = "fwd_in_pdt_moom_jewelry_lamp_moon.tex",                --- 小地图图标
             atlas = "images/map_icons/fwd_in_pdt_moom_jewelry_lamp_moon.xml",                                        --- 【制作栏】皮肤显示的贴图，

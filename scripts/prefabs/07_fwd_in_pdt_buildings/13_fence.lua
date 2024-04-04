@@ -100,7 +100,7 @@
             build = "fwd_in_pdt_building_flower_fence_mushroom",                  --- 制作完成后切换的 build
             atlas = "images/inventoryimages/fwd_in_pdt_building_flower_fence_mushroom.xml",   --- 【制作栏】皮肤显示的贴图，
             image = "fwd_in_pdt_building_flower_fence_mushroom",      --- 【制作栏】皮肤显示的贴图， 不需要 .tex
-            name = GetStringsTable()["Vines"],                    --- 【制作栏】皮肤的名字
+            name = GetStringsTable()["Mushroom"],                    --- 【制作栏】皮肤的名字
             name_color = {127/255,255/255,0/255,255/255},
             placed_skin_name = "fwd_in_pdt_building_flower_fence_mushroom",   --  给 inst.components.deployable.ondeploy  里生成切换用的
             skin_link = "fwd_in_pdt_building_flower_fence_mushroom",               --- 链接对象，解锁其中一个，顺便解锁另一个。为的是同步解锁。

@@ -75,6 +75,11 @@ return {
             product = "smallmeat_dried",
             num = 2 ,
         },
+    --- 海带叶
+        ["kelp"] = {
+            product = "kelp_dried",
+            num = 1 ,
+        },
 
     ---以下是和棱镜兼容
     --- 松萝
