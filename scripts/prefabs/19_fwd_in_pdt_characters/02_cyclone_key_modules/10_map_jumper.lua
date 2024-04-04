@@ -27,7 +27,8 @@ return function(inst)
             inst.components.fwd_in_pdt_func:RPC_PushEvent("fwd_in_pdt_event.ToggleMap") ---- 下发关闭地图的命令
             
             inst.components.hunger:DoDelta(-HUNGER_COST_NUM)
-
+            inst:PushEvent("cyclone_change_2_fly")
+            
         end)
 
         inst.components.fwd_in_pdt_com_map_jumper:SetSpellFn(function(inst,pt)

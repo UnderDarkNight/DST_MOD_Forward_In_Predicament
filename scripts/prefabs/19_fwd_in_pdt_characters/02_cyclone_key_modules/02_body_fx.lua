@@ -54,6 +54,9 @@ return function(inst)
                 ["stop_sitting_pst"] = function()
                     inst:PushEvent("cyclone_change_2_fly")
                 end,
+                ["idle"] = function()
+                    inst:PushEvent("cyclone_change_2_fly")
+                end,
             }
             inst:ListenForEvent("newstate",function(_,_table)
                 local statename = _table and _table.statename
