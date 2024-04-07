@@ -71,8 +71,8 @@ local function fn()
 end
 
 --- 设置可以放烹饪锅里
-AddIngredientValues({"fwd_in_pdt_food_dried_fruits_mango"}, { 
+AddIngredientValues({"fwd_in_pdt_food_pericarpium_citri_reticulatae"}, { 
     fruit = 0.5,
 })
 
-return Prefab("fwd_in_pdt_food_dried_fruits_mango", fn, assets)
+return Prefab("fwd_in_pdt_food_pericarpium_citri_reticulatae", fn, assets)
