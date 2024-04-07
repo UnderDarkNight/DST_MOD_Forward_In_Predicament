@@ -138,10 +138,10 @@ AddPlayerPostInit(function(inst)
                         ["fwd_in_pdt_building_paddy_windmill"] = {
                             "fwd_in_pdt_building_paddy_windmill_pink",
                         },
-                    ---- 灯笼（月亮皮肤）
-                        ["fwd_in_pdt_building_lantern"] = {
-                            "fwd_in_pdt_building_lantern_moon",
-                        },
+                    -- ---- 灯笼（月亮皮肤）
+                    --     ["fwd_in_pdt_building_lantern"] = {
+                    --         "fwd_in_pdt_building_lantern_moon",
+                    --     },
                      ---- 花围栏
                         ["fwd_in_pdt_building_flower_fence_item"] = {
                             "fwd_in_pdt_building_flower_fence_item_purple",
