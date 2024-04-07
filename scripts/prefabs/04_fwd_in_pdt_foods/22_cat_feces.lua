@@ -120,10 +120,6 @@ local function fn()
     MakeDeployableFertilizer(inst)
     MakeHauntableLaunchAndIgnite(inst)
 
-    AddIngredientValues({"fwd_in_pdt_food_cat_feces"}, {
-        inediable = 1
-    })
-
     return inst
 end
 --- 设置可以放烹饪锅里

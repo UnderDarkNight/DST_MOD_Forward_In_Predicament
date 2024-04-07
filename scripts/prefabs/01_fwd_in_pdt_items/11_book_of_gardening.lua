@@ -92,6 +92,9 @@ local function fn()
     inst.AnimState:SetBuild("fwd_in_pdt_item_book_of_gardening") -- 材质包，就是anim里的zip包
     inst.AnimState:PlayAnimation("idle",true) -- 默认播放哪个动画
     inst.Transform:SetScale(1.2, 1.2, 1.2)
+
+    inst:AddTag("NORATCHECK") --mod兼容：永不妥协。该道具不算鼠潮分
+
     inst:AddTag("bookcabinet_item") -- 能够放书架里
 
     inst.entity:SetPristine()

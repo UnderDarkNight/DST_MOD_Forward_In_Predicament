@@ -35,6 +35,8 @@ local function fn()
     inst.AnimState:PlayAnimation("idle",true) -- 默认播放哪个动画
     -- inst.Transform:SetScale(1.2, 1.2, 1.2)
     -- inst:AddTag("bookcabinet_item") -- 能够放书架里
+    
+    inst:AddTag("NORATCHECK") --mod兼容：永不妥协。该道具不算鼠潮分
 
     inst.entity:SetPristine()
     --------------------------------------------------------------------------

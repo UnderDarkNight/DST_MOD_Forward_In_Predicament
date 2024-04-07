@@ -1,14 +1,14 @@
 --------------------------------------------------------------------------
 --- 食物
---- 香蕉干
+--- 陈皮
 --------------------------------------------------------------------------
 
 
 
 local assets = {
-    Asset("ANIM", "anim/fwd_in_pdt_food_dried_fruits_cave_bananas.zip"), 
-    Asset( "IMAGE", "images/inventoryimages/fwd_in_pdt_food_dried_fruits_cave_bananas.tex" ),  -- 背包贴图
-    Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_food_dried_fruits_cave_bananas.xml" ),
+    Asset("ANIM", "anim/fwd_in_pdt_food_pericarpium_citri_reticulatae.zip"), 
+    Asset( "IMAGE", "images/inventoryimages/fwd_in_pdt_food_pericarpium_citri_reticulatae.tex" ),  -- 背包贴图
+    Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_food_pericarpium_citri_reticulatae.xml" ),
 
 }
 
@@ -21,8 +21,8 @@ local function fn()
 
     MakeInventoryPhysics(inst)
 
-    inst.AnimState:SetBank("fwd_in_pdt_food_dried_fruits_cave_bananas") -- 地上动画
-    inst.AnimState:SetBuild("fwd_in_pdt_food_dried_fruits_cave_bananas") -- 材质包，就是anim里的zip包
+    inst.AnimState:SetBank("fwd_in_pdt_food_pericarpium_citri_reticulatae") -- 地上动画
+    inst.AnimState:SetBuild("fwd_in_pdt_food_pericarpium_citri_reticulatae") -- 材质包，就是anim里的zip包
     inst.AnimState:PlayAnimation("idle") -- 默认播放哪个动画
     -- inst.AnimState:SetScale(1.5,1.5,1.5)
     MakeInventoryFloatable(inst)
@@ -38,8 +38,8 @@ local function fn()
 
     inst:AddComponent("inventoryitem")
     -- -- inst.components.inventoryitem:ChangeImageName("leafymeatburger")
-    inst.components.inventoryitem.imagename = "fwd_in_pdt_food_dried_fruits_cave_bananas"
-    inst.components.inventoryitem.atlasname = "images/inventoryimages/fwd_in_pdt_food_dried_fruits_cave_bananas.xml"
+    inst.components.inventoryitem.imagename = "fwd_in_pdt_food_pericarpium_citri_reticulatae"
+    inst.components.inventoryitem.atlasname = "images/inventoryimages/fwd_in_pdt_food_pericarpium_citri_reticulatae.xml"
     inst.components.inventoryitem:SetSinks(true)    -- 掉水里消失
     --------------------------------------------------------------------------
     -- inst:AddComponent("perishable") -- 可腐烂的组件
@@ -55,8 +55,8 @@ local function fn()
         if eater and eater:HasTag("player") then
         end
     end)
-    inst.components.edible.hungervalue = 10
-    inst.components.edible.sanityvalue = 10
+    inst.components.edible.hungervalue = 1
+    inst.components.edible.sanityvalue = 1
     inst.components.edible.healthvalue = 10
 
     inst:AddComponent("stackable") -- 可堆叠
@@ -71,8 +71,8 @@ local function fn()
 end
 
 --- 设置可以放烹饪锅里
-AddIngredientValues({"fwd_in_pdt_food_dried_fruits_cave_bananas"}, { 
-    fruit = 2,
+AddIngredientValues({"fwd_in_pdt_food_dried_fruits_mango"}, { 
+    fruit = 0.5,
 })
 
-return Prefab("fwd_in_pdt_food_dried_fruits_cave_bananas", fn, assets)
+return Prefab("fwd_in_pdt_food_dried_fruits_mango", fn, assets)

@@ -30,6 +30,8 @@ local function make_fn(num)
     inst.entity:AddDynamicShadow()
     inst.DynamicShadow:SetSize(1,0.6)
     -- inst.AnimState:SetScale(2,2,2)
+    
+    inst:AddTag("NORATCHECK") --mod兼容：永不妥协。该道具不算鼠潮分
 
     MakeInventoryPhysics(inst)
 

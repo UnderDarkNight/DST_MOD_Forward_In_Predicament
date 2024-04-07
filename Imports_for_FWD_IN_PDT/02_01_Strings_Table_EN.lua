@@ -484,6 +484,10 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "Dried Fruits Fish",
                 ["inspect_str"] = "Dried Fruits Fish",
             },
+            ["fwd_in_pdt_food_pericarpium_citri_reticulatae"] = {
+                ["name"] = "Pericarpium Citri Reticulatae",
+                ["inspect_str"] = "The oranges dried in the sun, that's it",
+            },
             ["fwd_in_pdt_food_large_intestine"] = {
                 ["name"] = "Large Intestine",
                 ["inspect_str"] = "Dirty",

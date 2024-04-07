@@ -32,6 +32,8 @@ local function fn()
     inst.AnimState:SetBank("fwd_in_pdt_item_medical_certificate")
     inst.AnimState:SetBuild("fwd_in_pdt_item_medical_certificate")
     inst.AnimState:PlayAnimation("idle")
+    
+    inst:AddTag("NORATCHECK") --mod兼容：永不妥协。该道具不算鼠潮分
 
 
 

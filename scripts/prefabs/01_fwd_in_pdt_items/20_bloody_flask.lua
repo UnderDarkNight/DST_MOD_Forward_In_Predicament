@@ -31,6 +31,8 @@ local function fn()
     inst.AnimState:PlayAnimation("idle",true) -- 默认播放哪个动画
     local scale = 1.5
     inst.Transform:SetScale(scale,scale,scale)
+    
+    inst:AddTag("NORATCHECK") --mod兼容：永不妥协。该道具不算鼠潮分
 
     inst:AddTag("fwd_in_pdt_item_bloody_flask")
 

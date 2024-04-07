@@ -219,7 +219,7 @@ AddRecipeToFilter("fwd_in_pdt_building_flower_fence_item","STRUCTURES")     ----
 AddRecipe2(
     "fwd_in_pdt_building_flower_fence_item",            --  --  inst.prefab  实体名字
     { Ingredient("twigs", 3), Ingredient("rope", 1) }, 
-    TECH.SCIENCE_LOST, --- TECH.蓝图
+    TECH.LOST, --- TECH.蓝图
     {
         -- nounlock=true,
         numtogive = 6,

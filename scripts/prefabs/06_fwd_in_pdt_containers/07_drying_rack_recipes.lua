@@ -89,12 +89,12 @@ return {
         },
 
 
-    ---以下是和负重兼容
-    --- 橙子
-        -- ["pineananas"] = {
-        --     product = "fwd_in_pdt_food_dried_fruits_pineananas",
-        --     num = 2 ,
-        -- },
+    --以下是和负重兼容
+    -- 橙子
+        ["fwd_in_pdt_plant_orange"] = {
+            product = "fwd_in_pdt_food_pericarpium_citri_reticulatae",
+            num = 2 ,
+        },
     --- 青芒果
         ["fwd_in_pdt_food_mango_green"] = {
         product = "fwd_in_pdt_food_dried_fruits_mango",

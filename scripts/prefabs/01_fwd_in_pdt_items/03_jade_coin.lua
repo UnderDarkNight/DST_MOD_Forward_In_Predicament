@@ -31,7 +31,9 @@ local function fn_green()
     -- inst.AnimState:SetScale(1.5, 1.5, 1.5)
     inst.DynamicShadow:SetSize(1.5,0.7)
     -- inst.AnimState:SetBloomEffectHandle("shaders/anim.ksh")
-
+    
+    inst:AddTag("molebait") --吸引鼹鼠
+    inst:AddTag("NORATCHECK") --mod兼容：永不妥协。该道具不算鼠潮分
 
 	inst:AddTag("fwd_in_pdt_item_jade_coin_green")
 
