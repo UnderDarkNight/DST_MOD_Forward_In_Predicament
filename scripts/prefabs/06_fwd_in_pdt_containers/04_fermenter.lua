@@ -103,7 +103,7 @@ local recipes = require("prefabs/06_fwd_in_pdt_containers/04_fermenter_recipes")
                     end
                 end
                 params[container_widget_name].widget.buttoninfo.validfn = function(inst)
-                    return inst.components.fwd_in_pdt_com_workable and inst.components.fwd_in_pdt_com_workable:GetCanWorlk()
+                    return inst.replica.fwd_in_pdt_com_workable and inst.replica.fwd_in_pdt_com_workable:GetCanWorlk()
                     -- return true
                 end
             ------------------------------------------------------------------------------------------
