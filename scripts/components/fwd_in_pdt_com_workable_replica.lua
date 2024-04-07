@@ -75,6 +75,10 @@ nil,
         return self.str_index
     end
 --------------------------------------------------------------------------------------------------------------
+    function fwd_in_pdt_com_workable:GetCanWorlk()
+        return not self.inst:HasTag("fwd_in_pdt_com_workable_can_not_work")
+    end
+--------------------------------------------------------------------------------------------------------------
 
 return fwd_in_pdt_com_workable
 
