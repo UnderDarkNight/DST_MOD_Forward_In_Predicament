@@ -25,7 +25,7 @@ function fwd_in_pdt_com_workable:SetCanWorlk(flag)
     end
 end
 function fwd_in_pdt_com_workable:GetCanWorlk()
-    return not self.inst:AddTag("fwd_in_pdt_com_workable_can_not_work")
+    return not self.inst:HasTag("fwd_in_pdt_com_workable_can_not_work")
 end
 
 function fwd_in_pdt_com_workable:SetActiveFn(fn)
