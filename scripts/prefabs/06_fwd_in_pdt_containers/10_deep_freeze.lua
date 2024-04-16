@@ -103,7 +103,7 @@ local function add_container_before_not_ismastersim_return(inst)
     ------ 添加背包container组件    --- 必须在 SetPristine 之后，
         if TheWorld.ismastersim then
             inst:AddComponent("container")
-            inst.components.container.openlimit = 1  ---- 限制1个人打开
+            -- inst.components.container.openlimit = 1  ---- 限制1个人打开
             container_Widget_change(inst.components.container)
         else
             ------- 在客户端必须执行容器界面注册。不能像科雷那样只在服务端注册。

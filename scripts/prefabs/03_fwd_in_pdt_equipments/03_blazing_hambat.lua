@@ -2,7 +2,9 @@
 --- 装备 ，武器
 --- 炽热火腿棒
 --------------------------------------------------------------------------
-
+if not TUNING["Forward_In_Predicament.Config"].POWERFUL_WEAPON_MOD then
+    return
+end
 
 
 

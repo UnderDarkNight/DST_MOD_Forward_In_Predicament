@@ -44,3 +44,5 @@ modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/22_cra
 
 modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/23_cursed_monkey_token.lua")    --- 修改 猴子诅咒饰品
 
+-- modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/24_lightning_rod.lua")    --- 升级避雷针 防止亮茄
+

@@ -213,7 +213,7 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "这东西有一定概率避免遭遇到蛇",
                 ["recipe_desc"] = "这东西有一定概率避免遭遇到蛇",
             },
-            ["fwd_in_pdt_item_special_wrap"] = {
+            ["fwd_in_pdt_item_special_packer"] = {
                 ["name"] = "特制打包纸",
                 ["inspect_str"] = "这个可以用来打包很多特殊的东西",
                 ["recipe_desc"] = "这个可以用来打包很多特殊的东西",

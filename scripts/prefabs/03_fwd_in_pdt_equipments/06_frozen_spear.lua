@@ -3,6 +3,9 @@
 --- 极寒长矛
 --- 绿法杖分解代码在【Key_Modules_Of_FWD_IN_PDT\09_Recipes\03_element_core_weapon_recipes_for_green_staff.lua】
 --------------------------------------------------------------------------
+if not TUNING["Forward_In_Predicament.Config"].POWERFUL_WEAPON_MOD then
+    return
+end
 
 local assets =
 {

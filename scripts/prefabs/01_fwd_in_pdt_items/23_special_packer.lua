@@ -3,9 +3,13 @@
 
 local assets =
 {
-    Asset("ANIM", "anim/fwd_in_pdt_element_cores.zip"),
-    Asset( "IMAGE", "images/inventoryimages/fwd_in_pdt_item_ice_core.tex" ),
-    Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_item_ice_core.xml" ),
+    Asset("ANIM", "anim/fwd_in_pdt_item_special_packer.zip"),
+    Asset( "IMAGE", "images/inventoryimages/fwd_in_pdt_item_special_packer.tex" ),
+    Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_item_special_packer.xml" ),
+    --- 纸盒子
+    Asset("ANIM", "anim/fwd_in_pdt_item_special_wraped_box.zip"),
+    Asset( "IMAGE", "images/inventoryimages/fwd_in_pdt_item_special_wraped_box.tex" ),
+    Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_item_special_wraped_box.xml" ),
 }
 local function wrap_fn()
     local inst = CreateEntity()
@@ -14,8 +18,8 @@ local function wrap_fn()
 	inst.entity:AddNetwork()
 
     inst.entity:AddAnimState()
-    inst.AnimState:SetBank("bundle")
-    inst.AnimState:SetBuild("bundle")
+    inst.AnimState:SetBank("fwd_in_pdt_item_special_packer")
+    inst.AnimState:SetBuild("fwd_in_pdt_item_special_packer")
     inst.AnimState:PlayAnimation("idle")
 
 
@@ -23,6 +27,7 @@ local function wrap_fn()
 	MakeInventoryPhysics(inst)
     MakeInventoryFloatable(inst, "med", nil, 0.77)
     inst.entity:SetPristine()
+
 
     if not TheWorld.ismastersim then
         return inst
@@ -34,7 +39,7 @@ local function wrap_fn()
     
 
     inst:AddComponent("inventoryitem")
-    inst.components.inventoryitem:ChangeImageName("giftwrap")
+    -- inst.components.inventoryitem:ChangeImageName("giftwrap")
     -- inst.components.inventoryitem.imagename = "fwd_in_pdt_item_ice_core"
     -- inst.components.inventoryitem.atlasname = "images/inventoryimages/fwd_in_pdt_item_ice_core.xml"
     inst:AddComponent("fwd_in_pdt_special_packer")
@@ -121,7 +126,15 @@ local function wrap_fn()
 
     return inst
 end
+-- return Prefab("fwd_in_pdt_item_special_packer", wrap_fn, assets)
 
+--- 纸盒子（不能local assets 两次  不然会顶掉前面的）
+-- local assets =
+-- {
+--     Asset("ANIM", "anim/fwd_in_pdt_item_special_wraped_box.zip"),
+--     Asset( "IMAGE", "images/inventoryimages/fwd_in_pdt_item_special_wraped_box.tex" ),
+--     Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_item_special_wraped_box.xml" ),
+-- }
 local function box_fn()
     local inst = CreateEntity()
 
@@ -129,9 +142,9 @@ local function box_fn()
 	inst.entity:AddNetwork()
 
     inst.entity:AddAnimState()
-    inst.AnimState:SetBank("gift")
-    inst.AnimState:SetBuild("gift")
-    inst.AnimState:PlayAnimation("idle_large2")
+    inst.AnimState:SetBank("fwd_in_pdt_item_special_wraped_box")
+    inst.AnimState:SetBuild("fwd_in_pdt_item_special_wraped_box")
+    inst.AnimState:PlayAnimation("idle")
 
 
 
@@ -159,7 +172,7 @@ local function box_fn()
     inst:AddComponent("inspectable")
     inst:AddComponent("named")
     inst:AddComponent("inventoryitem")
-    inst.components.inventoryitem:ChangeImageName("gift_large2")
+    -- inst.components.inventoryitem:ChangeImageName("gift_large2")
     -- inst.components.inventoryitem.imagename = "fwd_in_pdt_item_ice_core"
     -- inst.components.inventoryitem.atlasname = "images/inventoryimages/fwd_in_pdt_item_ice_core.xml"
 
@@ -244,6 +257,6 @@ end
             end
     end
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-return Prefab("fwd_in_pdt_item_special_wrap", wrap_fn, assets),
+return Prefab("fwd_in_pdt_item_special_packer", wrap_fn, assets),
         Prefab("fwd_in_pdt_item_special_wraped_box", box_fn, assets),
-        MakePlacer("fwd_in_pdt_item_special_wraped_box_placer", "fwd_in_pdt_container_tv_box", "fwd_in_pdt_container_tv_box", "idle", nil, nil, nil, nil, nil, nil, placer_postinit_fn, nil, nil)
+        MakePlacer("fwd_in_pdt_item_special_wraped_box_placer", "fwd_in_pdt_item_special_wraped_box", "fwd_in_pdt_item_special_wraped_box", "idle", nil, nil, nil, nil, nil, nil, placer_postinit_fn, nil, nil)

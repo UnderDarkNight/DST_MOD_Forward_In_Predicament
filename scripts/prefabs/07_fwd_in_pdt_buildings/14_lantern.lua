@@ -54,7 +54,7 @@ local function fn()
     inst.entity:AddLight()
 
     inst.Light:SetIntensity(0.5)		-- 强度
-    inst.Light:SetRadius(20)			-- 半径 ，矩形的？？ --- SetIntensity 为1 的时候 成矩形
+    inst.Light:SetRadius(5)			-- 半径 ，矩形的？？ --- SetIntensity 为1 的时候 成矩形
     inst.Light:SetFalloff(1)		-- 下降梯度
     inst.Light:SetColour(255 / 255, 255 / 255, 255 / 255)
     inst.Light:Enable(false)

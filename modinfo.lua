@@ -16,7 +16,7 @@ end
 ---                   第二位为大版本号，进行主题更新、大DLC发布的时候进行增量。
 ---                   第一位暂时预留。 
 ----------------------------------------------------------------------------
-local the_version = "0.02.00.00002"
+local the_version = "0.02.00.00004"
 
 
 
@@ -163,6 +163,17 @@ configuration_options =
         },
         default = false,
     },
+    {
+      name = "POWERFUL_WEAPON_MOD",
+      label = IsChinese() and "更强大的武器" or "POWERFUL WEAPON MOD",
+      hover = IsChinese() and "更强大的武器" or "POWERFUL WEAPON MOD",
+      options =
+      {
+        {description = IsChinese() and "关" or "OFF", data = false},
+        {description = IsChinese() and "开" or "ON", data = true},
+      },
+      default = false,
+  },
     -- {
     --     name = "compatibility_mode",
     --     label = IsChinese() and "尝试兼容其他MOD" or "Compatibility mode with try",

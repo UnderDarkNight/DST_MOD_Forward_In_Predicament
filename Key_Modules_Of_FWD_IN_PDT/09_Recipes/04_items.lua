@@ -312,24 +312,24 @@ AddRecipe2(
 )
 RemoveRecipeFromFilter("fwd_in_pdt_opalstaff_maker","MODS")                       -- -- 在【模组物品】标签里移除这个。
 --------------------------------------------------------------------------------------------------------------------------------------------
--- ---- 正骨水
+---- 打包纸
 -- --------------------------------------------------------------------------------------------------------------------------------------------
--- AddRecipeToFilter("fwd_in_pdt_item_orthopedic_water","RESTORATION")     ---- 添加物品到目标标签
---     AddRecipe2(
---         "fwd_in_pdt_item_orthopedic_water",            --  --  inst.prefab  实体名字
---         { Ingredient("boneshard", 10),Ingredient("ice", 5) }, 
---         TECH.SCIENCE_TWO, --- 科学二本
---         {
---             -- nounlock=true,
---             no_deconstruction=false,
---             -- builder_tag = "npng_tag.has_green_amulet",    --------- -- 【builder_tag】只给指定tag的角色能制造这件物品，角色添加/移除 tag 都能立马解锁/隐藏该物品
---             -- placer = "fwd_in_pdt_item_talisman_that_repels_snakes",                       -------- 建筑放置器        
---             atlas = "images/inventoryimages/fwd_in_pdt_item_orthopedic_water.xml",
---             image = "fwd_in_pdt_item_orthopedic_water.tex",
---         },
---         {"RESTORATION","FWD_IN_PDT"}
---     )
---     RemoveRecipeFromFilter("fwd_in_pdt_item_orthopedic_water","MODS")                       -- -- 在【模组物品】标签里移除这个。
+AddRecipeToFilter("fwd_in_pdt_item_special_packer","REFINE")     ---- 添加物品到目标标签
+    AddRecipe2(
+        "fwd_in_pdt_item_special_packer",            --  --  inst.prefab  实体名字
+        { Ingredient("purplegem", 1),Ingredient("papyrus", 2) }, 
+        TECH.MAGIC_FOUR, --- 魔法四本
+        {
+            -- nounlock=true,
+            no_deconstruction=false,
+            -- builder_tag = "npng_tag.has_green_amulet",    --------- -- 【builder_tag】只给指定tag的角色能制造这件物品，角色添加/移除 tag 都能立马解锁/隐藏该物品
+            -- placer = "fwd_in_pdt_item_talisman_that_repels_snakes",                       -------- 建筑放置器        
+            atlas = "images/inventoryimages/fwd_in_pdt_item_special_packer.xml",
+            image = "fwd_in_pdt_item_special_packer.tex",
+        },
+        {"REFINE","FWD_IN_PDT"}
+    )
+    RemoveRecipeFromFilter("fwd_in_pdt_item_special_packer","MODS")                       -- -- 在【模组物品】标签里移除这个。
 -- --------------------------------------------------------------------------------------------------------------------------------------------
 -- ---- 维生素A口服液
 -- --------------------------------------------------------------------------------------------------------------------------------------------
