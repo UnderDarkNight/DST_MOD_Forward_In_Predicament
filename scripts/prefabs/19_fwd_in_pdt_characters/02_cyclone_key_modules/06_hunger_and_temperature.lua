@@ -30,6 +30,9 @@ return function(inst)
                 -- inst.components.hunger.hungerrate = 5 * TUNING.WILSON_HUNGER_RATE
                 BASE_HUNGER_RATE = 5 * TUNING.WILSON_HUNGER_RATE
             end
+            if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then  ---- 测试模式消耗减少
+                BASE_HUNGER_RATE = 0.1 * TUNING.WILSON_HUNGER_RATE
+            end
             inst.components.hunger.hungerrate = BASE_HUNGER_RATE
         --------------------------------------------------------------------------
         ---- 温度 任务。消耗饥饿， 保持玩家 30 - 40度。 自动从饥饿补充血量。
