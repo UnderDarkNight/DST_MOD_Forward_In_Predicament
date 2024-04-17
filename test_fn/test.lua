@@ -87,19 +87,19 @@ local flg,error_code = pcall(function()
         -- print(tx,ty)
     ----------------------------------------------------------------------------------------------------------------
     ---- 
-        ThePlayer:RemoveEventCallback("fwd_in_pdt_event.enter_new_tile",ThePlayer.___test_area_event_fn or function()        end)
+        -- ThePlayer:RemoveEventCallback("fwd_in_pdt_event.enter_new_tile",ThePlayer.___test_area_event_fn or function()        end)
 
-        ThePlayer.___test_area_event_fn = function(inst,_table)
-            print("++++++++++++++++++++++++++++")
-            print("tile : ",_table.tile)
-            print("TileXY",_table.tx,_table.ty)
-            local temp_data = TheWorld.components.fwd_in_pdt_com_world_map_tile_sys:Get_Data_By_Tile_XY(_table.tx,_table.ty)
-            for k, v in pairs(temp_data.tags or {}) do
-                print("+tag:",v)
-            end
-            print("++++++++++++++++++++++++++++")
-        end
-        ThePlayer:ListenForEvent("fwd_in_pdt_event.enter_new_tile",ThePlayer.___test_area_event_fn)
+        -- ThePlayer.___test_area_event_fn = function(inst,_table)
+        --     print("++++++++++++++++++++++++++++")
+        --     print("tile : ",_table.tile)
+        --     print("TileXY",_table.tx,_table.ty)
+        --     local temp_data = TheWorld.components.fwd_in_pdt_com_world_map_tile_sys:Get_Data_By_Tile_XY(_table.tx,_table.ty)
+        --     for k, v in pairs(temp_data.tags or {}) do
+        --         print("+tag:",v)
+        --     end
+        --     print("++++++++++++++++++++++++++++")
+        -- end
+        -- ThePlayer:ListenForEvent("fwd_in_pdt_event.enter_new_tile",ThePlayer.___test_area_event_fn)
 
     ----------------------------------------------------------------------------------------------------------------
     ----
@@ -110,6 +110,8 @@ local flg,error_code = pcall(function()
         -- local ent = TheSim:FindFirstEntityWithTag("fwd_in_pdt__red_tree_island_mid_point")
         -- print("ent",ent)
         -- ThePlayer.Transform:SetPosition(ent.Transform:GetWorldPosition())
+    ----------------------------------------------------------------------------------------------------------------
+        ThePlayer.SoundEmitter:PlaySound("dontstarve/music/gramaphone_ragtime")
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)

@@ -13,6 +13,7 @@ modimport("Key_Modules_Of_FWD_IN_PDT/07_island_house_creater/04_red_tree_island.
 modimport("Key_Modules_Of_FWD_IN_PDT/07_island_house_creater/05_cave_island.lua")    --- 创建创建洞里的岛屿
 
 modimport("Key_Modules_Of_FWD_IN_PDT/07_island_house_creater/06_red_tree_island_tag_and_events.lua")    --- 给小岛地块添加tag 和 event
+modimport("Key_Modules_Of_FWD_IN_PDT/07_island_house_creater/07_red_tree_island_bgm_player.lua")    --- 给小岛添加bgm
 
 
 
