@@ -19,7 +19,8 @@ local assets =
     Asset( "IMAGE", "images/map_icons/fwd_in_pdt_building_lantern.tex" ),  -- 背包贴图
     Asset( "ATLAS", "images/map_icons/fwd_in_pdt_building_lantern.xml" ),
     --皮肤
-    Asset("ANIM", "anim/fwd_in_pdt_building_lantern_moon.zip"),
+    Asset("ANIM", "anim/fwd_in_pdt_building_lantern_moon.zip"), --- 月亮
+    Asset("ANIM", "anim/fwd_in_pdt_building_lantern_gothic.zip"), --- 哥特
 }
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ---- 皮肤API 套件
@@ -33,6 +34,15 @@ local assets =
             minimap = "fwd_in_pdt_building_lantern_moon.tex",                --- 小地图图标
             atlas = "images/map_icons/fwd_in_pdt_building_lantern_moon.xml",                                        --- 【制作栏】皮肤显示的贴图，
             image = "fwd_in_pdt_building_lantern_moon",                              --- 【制作栏】皮肤显示的贴图， 不需要 .tex
+        },
+        ["fwd_in_pdt_building_lantern_gothic"] = {             --- 皮肤名字，全局唯一。
+            bank = "fwd_in_pdt_building_lantern_gothic",                   --- 制作完成后切换的 bank
+            build = "fwd_in_pdt_building_lantern_gothic",                  --- 制作完成后切换的 build
+            name = "哥特灯笼",                    --- 【制作栏】皮肤的名字
+            name_color = {255/255,185/255,15/255,255/255},
+            minimap = "fwd_in_pdt_building_lantern_gothic.tex",                --- 小地图图标
+            atlas = "images/map_icons/fwd_in_pdt_building_lantern_gothic.xml",                                        --- 【制作栏】皮肤显示的贴图，
+            image = "fwd_in_pdt_building_lantern_gothic",                              --- 【制作栏】皮肤显示的贴图， 不需要 .tex
         },
 
     }
