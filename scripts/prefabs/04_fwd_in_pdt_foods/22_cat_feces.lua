@@ -1,5 +1,5 @@
 --------------------------------------------------------------------------
---- 食物
+--- 食物，肥料
 --- 猫屎
 --------------------------------------------------------------------------
 
@@ -123,7 +123,7 @@ local function fn()
     return inst
 end
 --- 设置可以放烹饪锅里
-AddIngredientValues({"fwd_in_pdt_food_pig_liver"}, { 
+AddIngredientValues({"fwd_in_pdt_food_cat_feces"}, { 
     inediable = 1
 })
 
