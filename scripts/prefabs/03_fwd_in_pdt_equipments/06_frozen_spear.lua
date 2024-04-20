@@ -189,16 +189,18 @@ local function fn()
             end)
     end)
     ---------------------------------------------------------------------------------------------
-    --- 下雨天 1.25倍伤害 
+    --- 下雨天 1.25 倍伤害 
         --- hook weapon 的 GetDamage 函数
         inst.components.weapon.GetDamage__fwd_in_pdt_old = inst.components.weapon.GetDamage
         inst.components.weapon.GetDamage = function(self,...)
+            local damage,spdamage = self.GetDamage__fwd_in_pdt_old(self,...)
             if TheWorld.state.israining then
-                return 59.5*1.25
+                damage = 59.5*1.25
             else
-                return 59.5
+                damage = 59.5
             end
-        end
+                return damage,spdamage
+            end
     ---------------------------------------------------------------------------------------------
     return inst
 end

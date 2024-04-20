@@ -43,6 +43,7 @@ local prefabs_name_list = {
     "13_fence",                      -- 围栏
     "14_lantern",                    -- 灯笼
     "16_potting_a",                  -- 盆栽
+    -- "17_lightning_rod"               -- 避茄针
 }
 
 

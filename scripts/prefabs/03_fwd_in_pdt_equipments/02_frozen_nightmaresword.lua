@@ -225,12 +225,14 @@ local function fn()
         --- hook weapon 的 GetDamage 函数
         inst.components.weapon.GetDamage__fwd_in_pdt_old = inst.components.weapon.GetDamage
         inst.components.weapon.GetDamage = function(self,...)
+            local damage,spdamage = self.GetDamage__fwd_in_pdt_old(self,...)
             if TheWorld.state.israining then
-                return 118*1.25
+                damage = 118*1.25
             else
-                return 118
+                damage = 118
             end
-        end
+                return damage,spdamage
+            end
     ---------------------------------------------------------------------------------------------
     return inst
 end

@@ -124,7 +124,7 @@ local function fn()
 end
 --- 设置可以放烹饪锅里
 AddIngredientValues({"fwd_in_pdt_food_cat_feces"}, { 
-    inediable = 1
+    inedible = 1
 })
 
 return Prefab("fwd_in_pdt_food_cat_feces", fn, assets)

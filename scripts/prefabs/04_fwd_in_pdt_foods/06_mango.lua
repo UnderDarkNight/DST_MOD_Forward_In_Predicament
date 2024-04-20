@@ -55,7 +55,7 @@ local function common_fn()
     inst.components.edible.healthvalue = 0
 
     inst:AddComponent("stackable") -- 可堆叠
-    inst.components.stackable.maxsize = TUNING.STACK_SIZE_LARGEITEM
+    inst.components.stackable.maxsize = TUNING.STACK_SIZE_SMALLITEM
     inst:AddComponent("tradable")
 
     MakeHauntableLaunch(inst)

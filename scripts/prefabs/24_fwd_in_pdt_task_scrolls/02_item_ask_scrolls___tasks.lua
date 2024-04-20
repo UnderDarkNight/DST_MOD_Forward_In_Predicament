@@ -92,7 +92,7 @@ return
             item_num = 40,                                                   --- 物品需求数量
             item_prefab = "petals",                                       --- 物品需求的prefab
             gift_box_items = {                                              --- 奖励包裹里的内容
-                {"fwd_in_pdt_building_flower_fence_blueprint",1},
+                {"fwd_in_pdt_building_flower_fence_item_blueprint",1},
             }
         },
 

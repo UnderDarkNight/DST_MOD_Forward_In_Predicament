@@ -53,7 +53,7 @@ local function fn()
 
 
     inst:AddComponent("stackable") -- 可堆叠
-    inst.components.stackable.maxsize = TUNING.STACK_SIZE_LARGEITEM
+    inst.components.stackable.maxsize = TUNING.STACK_SIZE_SMALLITEM
     inst:AddComponent("tradable")
 
     MakeHauntableLaunch(inst)
@@ -83,6 +83,6 @@ end
 
 --- 设置可以放烹饪锅里
 AddIngredientValues({"fwd_in_pdt_food_wheat_flour"}, { 
-    inediable = 1,
+    inedible = 1,
 })
 return Prefab("fwd_in_pdt_food_wheat_flour", fn, assets)

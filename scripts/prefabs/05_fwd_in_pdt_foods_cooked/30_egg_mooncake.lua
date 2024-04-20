@@ -49,13 +49,14 @@ local function fn()
     inst.components.edible:SetOnEatenFn(function(inst,eater)
 
         if eater.components.health ~= nil then
-            --因为buff相关组件不支持相同buff叠加时的数据传输，所以这里自己定义了一个传输方式
+            -- 因为buff相关组件不支持相同buff叠加时的数据传输，所以这里自己定义了一个传输方式
+            -- 血库buff
             eater.buff_healthstorage_times = 50
             eater:AddDebuff("fwd_in_pdt_buff_healthstorage", "fwd_in_pdt_buff_healthstorage")
         end
     end)
 
-
+    -- 我这里删除了腐烂组件，不知道会不会有问题
     -- inst:AddComponent("perishable") -- 可腐烂的组件
     -- inst.components.perishable:SetPerishTime(TUNING.PERISH_TWO_DAY*10000)
     -- inst.components.perishable:StartPerishing()

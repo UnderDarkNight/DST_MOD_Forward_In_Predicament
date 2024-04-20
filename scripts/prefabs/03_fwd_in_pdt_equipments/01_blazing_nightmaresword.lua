@@ -84,6 +84,17 @@ local function Attack_Fx(target)
     })
 end
 ---------------------------------------------------------------------------------------------
+--- 用某件物品恢复耐久（官方的笨蛋写法）
+-- local function OnGetItemFromPlayer(inst, giver, item, player)   -- 玩家给物品的，官方使用这个一般是给XXX吃东西，给老头修理的工具
+
+--     local currentprec = inst.components.finteuses:GetPercent()  -- 获取耐久
+--     if item  then
+--         if item.prefab == "abcd" then
+--             currentprec = currentprec +0.1
+--         end
+--     end
+-- end
+---------------------------------------------------------------------------------------------
 local function fn()
     local inst = CreateEntity()
 
