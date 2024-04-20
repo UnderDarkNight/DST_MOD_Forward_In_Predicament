@@ -29,6 +29,10 @@ local function fn()
 
     -- inst.SoundEmitter:PlaySound("dontstarve_DLC001/common/tornado", "spinLoop")
 
+    inst:AddTag("FX")
+    inst:AddTag("CLASSIFIED")
+    inst:AddTag("NOCLICK")
+    inst:AddTag("NOBLOCK")
 
     inst.entity:SetPristine()
 

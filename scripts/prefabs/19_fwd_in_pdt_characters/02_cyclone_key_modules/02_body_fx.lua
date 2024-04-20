@@ -19,6 +19,11 @@ return function(inst)
         ---- 创建特效跟随玩家
             local BASE_SCALE = Vector3(0.5,0.5,0.5)
             local body_fx = inst:SpawnChild("fwd_in_pdt_fx_red_tornado")
+            body_fx:AddTag("FX")
+            body_fx:AddTag("CLASSIFIED")
+            body_fx:AddTag("NOCLICK")
+            body_fx:AddTag("NOBLOCK")
+            
             body_fx:PushEvent("Set",{
                 pt = Vector3(-0.2,-0.2,0),
                 scale = BASE_SCALE,
