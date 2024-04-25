@@ -155,6 +155,8 @@ local function fn()
     inst:AddTag("silviculture") -- for silviculture book
     inst:AddTag("lunarplant_target")
 
+    inst:AddTag("fwd_in_pdt_plant_paddy_rice") --- 便于兼容排队论
+
 
     inst.entity:SetPristine()
     ------------------------------------------------------------------------------------

@@ -1038,7 +1038,7 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             },
             ["fwd_in_pdt_welness_attack_miss"] = {
                 ["name"] = "失明",
-                ["treatment"] = { "我看不清"},
+                ["treatment"] = { "使用维生素A口服液"},
                 ["debuff_attach_whisper"] = "我看不清了",
             },
             ["fwd_in_pdt_welness_mouse_and_camera_crazy"] = {

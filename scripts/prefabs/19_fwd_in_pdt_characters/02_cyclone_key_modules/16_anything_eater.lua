@@ -54,6 +54,19 @@
                 ["fast_eat"] = true
             },
         -----------------------------------------------------------------------------------------------
+        --- 木板
+        ["board"] = {
+            ["test_fn"] = function(item,doer)
+                return true
+            end,
+            ["oneat_fn"] = function(item,doer)
+                GetSingleItem(item):Remove()
+                doer.components.hunger:DoDelta(400)
+                return true
+            end,
+            ["fast_eat"] = true
+        },
+        -----------------------------------------------------------------------------------------------
         --- 活木
             ["driftwood_log"] = {
                 ["test_fn"] = function(item,doer)

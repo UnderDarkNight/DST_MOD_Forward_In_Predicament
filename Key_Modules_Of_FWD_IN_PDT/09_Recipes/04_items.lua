@@ -322,6 +322,7 @@ AddRecipeToFilter("fwd_in_pdt_item_special_packer","REFINE")     ---- 添加物�
         {
             -- nounlock=true,
             no_deconstruction=false,
+            numtogive = 4,
             -- builder_tag = "npng_tag.has_green_amulet",    --------- -- 【builder_tag】只给指定tag的角色能制造这件物品，角色添加/移除 tag 都能立马解锁/隐藏该物品
             -- placer = "fwd_in_pdt_item_talisman_that_repels_snakes",                       -------- 建筑放置器        
             atlas = "images/inventoryimages/fwd_in_pdt_item_special_packer.xml",

@@ -37,38 +37,49 @@ local function fn()
     inst:AddTag("fwd_in_pdt_item_bloody_flask")
 
     inst.entity:SetPristine()
-    ------------------------------------------------------------------------
-    --- 动作
-        inst:ListenForEvent("fwd_in_pdt_event.OnEntityReplicated.fwd_in_pdt_com_workable",function(inst,replica_com)
-            replica_com:SetTestFn(function(inst,doer,right_click)
-                return doer and doer.prefab == "fwd_in_pdt_carl" and inst.replica.inventoryitem:IsGrandOwner(doer)                
-            end)
-            -- replica_com:SetSGAction("fwd_in_pdt_special_eat")
-            replica_com:SetSGAction("fwd_in_pdt_special_quick_eat")
-            replica_com:SetText("fwd_in_pdt_item_bloody_flask",STRINGS.ACTIONS.EAT)
-        end)
-        if TheWorld.ismastersim then
-            inst:AddComponent("fwd_in_pdt_com_workable")
-            inst.components.fwd_in_pdt_com_workable:SetActiveFn(function(inst,doer)
-                if inst.components.stackable then
-                    inst.components.stackable:Get():Remove()
-                else
-                    inst:Remove()
-                end
+    -- ------------------------------------------------------------------------
+    -- --- 动作
+    --     inst:ListenForEvent("fwd_in_pdt_event.OnEntityReplicated.fwd_in_pdt_com_workable",function(inst,replica_com)
+    --         replica_com:SetTestFn(function(inst,doer,right_click)
+    --             return doer and doer.prefab == "fwd_in_pdt_carl" and inst.replica.inventoryitem:IsGrandOwner(doer)                
+    --         end)
+    --         -- replica_com:SetSGAction("fwd_in_pdt_special_eat")
+    --         replica_com:SetSGAction("fwd_in_pdt_special_quick_eat")
+    --         replica_com:SetText("fwd_in_pdt_item_bloody_flask",STRINGS.ACTIONS.EAT)
+    --     end)
+    --     if TheWorld.ismastersim then
+    --         inst:AddComponent("fwd_in_pdt_com_workable")
+    --         inst.components.fwd_in_pdt_com_workable:SetActiveFn(function(inst,doer)
+    --             if inst.components.stackable then
+    --                 inst.components.stackable:Get():Remove()
+    --             else
+    --                 inst:Remove()
+    --             end
     
-                if doer.components.health then
-                    doer.components.health:DoDelta(50,nil,inst.prefab)
-                end
+    --             if doer.components.health then
+    --                 doer.components.health:DoDelta(50,nil,inst.prefab)
+    --             end
     
-                return true
-            end)
-        end
+    --             return true
+    --         end)
+    --     end
     ------------------------------------------------------------------------
-
-
     if not TheWorld.ismastersim then
         return inst
     end
+
+    inst:AddComponent("edible") -- 可食物组件
+    inst.components.edible.foodtype = FOODTYPE.GOODIES
+    inst.components.edible:SetOnEatenFn(function(inst,eater)
+        if eater and eater:HasTag("fwd_in_pdt_carl") then
+            if eater.components.health then
+                eater.components.health:DoDelta(50,nil,inst.prefab)
+            end
+        end
+    end)
+    inst.components.edible.hungervalue = 0
+    inst.components.edible.sanityvalue = 0
+    inst.components.edible.healthvalue = 0
     --------------------------------------------------------------------------
     inst:AddComponent("fwd_in_pdt_data")
     --------------------------------------------------------------------------

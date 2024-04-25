@@ -49,12 +49,17 @@ AddPlayerPostInit(function(inst)
                             inst.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_bee_poison")                        
                         end
                     end,
+                    ["beequeen"] = function()        --- 蜂后攻击 30% 概率中蜜蜂毒
+                        if math.random(1000) <= 300 then
+                            inst.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_bee_poison")                        
+                        end
+                    end,
                     ["frog"] = function()
                         if attacker and attacker:HasTag("fwd_in_pdt_tag.mutant_frog") then
                             inst.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_frog_poison")                        
                         end
                     end,
-                    ["fwd_in_pdt_animal_frog_hound"] = function()   ---- 二哈有50%概率上毒
+                    ["fwd_in_pdt_animal_frog_hound"] = function()   ---- 二蛤有50%概率上毒
                         if math.random(100) < 50 then
                             inst.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_frog_poison")                        
                         end
@@ -69,6 +74,17 @@ AddPlayerPostInit(function(inst)
                         if math.random(1000) <= 500 then
                             -- print(" +++ 添加蛇毒 +++ ")
                             inst.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_snake_poison")                        
+                        end
+                    end,
+                    ["daywalker"] = function()            --- 梦魇疯猪 100% 癫痫
+                            inst.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_mouse_and_camera_crazy")                        
+                    end,
+                    ["daywalker2"] = function()            --- 拾荒疯猪 100% 癫痫
+                        inst.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_mouse_and_camera_crazy")                        
+                    end,
+                    ["moonpig"] = function()            --- 月台疯猪 80% 癫痫
+                        if math.random(1000) <= 800 then
+                        inst.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_mouse_and_camera_crazy")                        
                         end
                     end,
 

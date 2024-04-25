@@ -12,6 +12,7 @@ return function(inst)
         "prefabs/19_fwd_in_pdt_characters/01_carl_modules/07_key_listener",             ---- 键盘按键监听
         "prefabs/19_fwd_in_pdt_characters/01_carl_modules/08_spell_a",                  ---- 技能A
         "prefabs/19_fwd_in_pdt_characters/01_carl_modules/09_spell_b",                  ---- 技能B
+        -- "prefabs/19_fwd_in_pdt_characters/01_carl_modules/10_health",                   ---- 自定义复活后生命值
     }
     for k, lua_addr in pairs(modules) do
         local temp_fn = require(lua_addr)
