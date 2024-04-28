@@ -42,8 +42,6 @@ local function fn()
     inst.components.inventoryitem:SetSinks(true)    -- 掉水里消失
 
     --------------------------------------------------------------------------
-
-
     -- inst:AddComponent("edible") -- 可食物组件
     -- inst.components.edible.foodtype = FOODTYPE.GOODIES
     -- inst.components.edible:SetOnEatenFn(function(inst,eater)
@@ -62,9 +60,9 @@ local function fn()
     -- inst.components.perishable.onperishreplacement = "spoiled_food" -- 腐烂后变成腐烂食物
 
     -- inst.components.edible.hungervalue = 12.5
-    -- inst.components.edible.sanityvalue = 30
+    -- inst.components.edible.sanityvalue = 30 
     -- inst.components.edible.healthvalue = 20
-
+    --------------------------------------------------------------------------
     inst:AddComponent("stackable") -- 可堆叠
     inst.components.stackable.maxsize = TUNING.STACK_SIZE_SMALLITEM
     inst:AddComponent("tradable")

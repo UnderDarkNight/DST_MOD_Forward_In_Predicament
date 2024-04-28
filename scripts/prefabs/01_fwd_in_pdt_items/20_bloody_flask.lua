@@ -38,7 +38,7 @@ local function fn()
 
     inst.entity:SetPristine()
     -- ------------------------------------------------------------------------
-    -- --- 动作
+    -- --- 动作（这个会导致排队论失效，没办法所以 我用eater）
     --     inst:ListenForEvent("fwd_in_pdt_event.OnEntityReplicated.fwd_in_pdt_com_workable",function(inst,replica_com)
     --         replica_com:SetTestFn(function(inst,doer,right_click)
     --             return doer and doer.prefab == "fwd_in_pdt_carl" and inst.replica.inventoryitem:IsGrandOwner(doer)                
@@ -69,7 +69,7 @@ local function fn()
     end
 
     inst:AddComponent("edible") -- 可食物组件
-    inst.components.edible.foodtype = FOODTYPE.GOODIES
+    -- inst.components.edible.foodtype = FOODTYPE.ROUGHAGE  -- 牛食物
     inst.components.edible:SetOnEatenFn(function(inst,eater)
         if eater and eater:HasTag("fwd_in_pdt_carl") then
             if eater.components.health then
@@ -77,9 +77,9 @@ local function fn()
             end
         end
     end)
-    inst.components.edible.hungervalue = 0
-    inst.components.edible.sanityvalue = 0
-    inst.components.edible.healthvalue = 0
+    -- inst.components.edible.hungervalue = 0
+    -- inst.components.edible.sanityvalue = 0
+    -- inst.components.edible.healthvalue = 0
     --------------------------------------------------------------------------
     inst:AddComponent("fwd_in_pdt_data")
     --------------------------------------------------------------------------
@@ -175,4 +175,8 @@ local function fn()
     return inst
 end
 
+--- 设置可以放烹饪锅里，1单位不可食用度
+AddIngredientValues({"fwd_in_pdt_item_bloody_flask"}, { 
+    inedible = 1,
+})
 return Prefab("fwd_in_pdt_item_bloody_flask", fn, assets)

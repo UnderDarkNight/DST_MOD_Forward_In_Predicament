@@ -314,7 +314,7 @@ RemoveRecipeFromFilter("fwd_in_pdt_opalstaff_maker","MODS")                     
 --------------------------------------------------------------------------------------------------------------------------------------------
 ---- 打包纸
 -- --------------------------------------------------------------------------------------------------------------------------------------------
-AddRecipeToFilter("fwd_in_pdt_item_special_packer","REFINE")     ---- 添加物品到目标标签
+AddRecipeToFilter("fwd_in_pdt_item_special_packer","CONTAINERS")     ---- 添加物品到目标标签
     AddRecipe2(
         "fwd_in_pdt_item_special_packer",            --  --  inst.prefab  实体名字
         { Ingredient("purplegem", 1),Ingredient("papyrus", 2) }, 
@@ -328,7 +328,7 @@ AddRecipeToFilter("fwd_in_pdt_item_special_packer","REFINE")     ---- 添加物�
             atlas = "images/inventoryimages/fwd_in_pdt_item_special_packer.xml",
             image = "fwd_in_pdt_item_special_packer.tex",
         },
-        {"REFINE","FWD_IN_PDT"}
+        {"CONTAINERS","FWD_IN_PDT"}
     )
     RemoveRecipeFromFilter("fwd_in_pdt_item_special_packer","MODS")                       -- -- 在【模组物品】标签里移除这个。
 -- --------------------------------------------------------------------------------------------------------------------------------------------
