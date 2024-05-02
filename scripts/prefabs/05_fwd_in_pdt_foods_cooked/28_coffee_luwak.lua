@@ -48,10 +48,9 @@ local function fn()
     inst:AddComponent("edible") -- 可食物组件
     inst.components.edible.foodtype = FOODTYPE.GOODIES                          --零食
     inst.components.edible:SetOnEatenFn(function(inst,eater)
-        if eater and eater:HasTag("player") then
-            -- 添加咖啡buff
-            if eater.components.fwd_in_pdt_wellness then
-                eater.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_coffee_buff")
+            -- 添加咖啡buff（建家党也能用了）
+            if eater:HasTag("player") and eater.components.debuffable then
+                eater.components.debuffable:AddDebuff("fwd_in_pdt_buff_coffee", "fwd_in_pdt_buff_coffee")
             end
             -- 蘑菇蛋糕buff防催眠，吃的瞬间生效，也能解除月灵攻击造成的虚弱
             -- 人物还是有打哈欠的动作  但不会被熊催眠了  会减速
@@ -61,7 +60,6 @@ local function fn()
                 eater.components.grogginess:ResetGrogginess()
             end
                 eater:AddDebuff("shroomsleepresist", "buff_sleepresistance") --- 官方就有  不需要在食物里面定义了
-            end
         end)
 
     inst:AddComponent("perishable") -- 可腐烂的组件

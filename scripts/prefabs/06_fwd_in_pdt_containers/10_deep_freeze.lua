@@ -191,11 +191,20 @@ end
 inst:AddComponent("inspectable")
 -------------------------------------------------------------------------------------
 ---- 打开、关闭 容器的时候触发的事件。可以用来播放动画
+-- local function onopen(inst)
+--     refreshFoods(inst)---这里反鲜
+--     inst.AnimState:PlayAnimation("open")
+--     inst.SoundEmitter:PlaySound("dontstarve/common/icebox_open")
+-- end
     inst:ListenForEvent("onopen",function()
         refreshFoods(inst)---这里反鲜
         inst.AnimState:PlayAnimation("open")
         inst.SoundEmitter:PlaySound("dontstarve/common/icebox_open")
     end)
+-- local function onclose(inst)
+--     inst.AnimState:PlayAnimation("idle")
+--     inst.SoundEmitter:PlaySound("dontstarve/common/icebox_close")
+-- end
     inst:ListenForEvent("onclose",function()
         inst.AnimState:PlayAnimation("idle")
         inst.SoundEmitter:PlaySound("dontstarve/common/icebox_close")

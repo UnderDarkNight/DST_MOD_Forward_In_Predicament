@@ -47,13 +47,17 @@ local function fn()
     inst:AddComponent("edible") -- 可食物组件
     inst.components.edible.foodtype = FOODTYPE.VEGGIE
     inst.components.edible:SetOnEatenFn(function(inst,eater)
-        if eater and eater:HasTag("player") then
-            -- 添加咖啡buff
-            if eater.components.fwd_in_pdt_wellness then
-                eater.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_coffee_buff")
+        -- if eater and eater:HasTag("player") then
+            if eater:HasTag("player") and eater.components.debuffable then
+                eater.components.debuffable:AddDebuff("fwd_in_pdt_buff_coffee", "fwd_in_pdt_buff_coffee")
             end
-        end
-    end)
+        end)
+    --         -- 添加咖啡buff
+    --         if eater.components.fwd_in_pdt_wellness then
+    --             eater.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_coffee_buff")
+    --         end
+    --     end
+    -- end)
 
     inst:AddComponent("perishable") -- 可腐烂的组件
     inst.components.perishable:SetPerishTime(TUNING.PERISH_TWO_DAY*5)

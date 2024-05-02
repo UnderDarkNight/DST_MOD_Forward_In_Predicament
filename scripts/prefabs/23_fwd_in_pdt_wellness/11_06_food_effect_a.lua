@@ -348,5 +348,26 @@ MakeBuff({
 -- end
 ------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------
+-- 自制咖啡buff，幕夜那个用wellness组件 会被建家党屏蔽掉
+MakeBuff({
+    name = "fwd_in_pdt_buff_coffee",
+    assets = nil,
+    prefabs = nil,
+    time_key = nil,
+    time_default = TUNING.SEG_TIME*16,  --- 一天
+    notimer = true,
+    fn_start = function(buff, target)
+        if target.components.locomotor ~= nil then
+            target.components.locomotor:SetExternalSpeedMultiplier(target, "fwd_in_pdt_buff_coffee", 1.25)
+        end
+    end,
+    fn_again = nil,
+    fn_end = function(buff, target)
+        if target.components.locomotor ~= nil then
+            target.components.locomotor:RemoveExternalSpeedMultiplier(target, "fwd_in_pdt_buff_coffee")
+        end
+    end
+
+})
 
 return unpack(prefs)

@@ -46,9 +46,9 @@ local function fn()
     inst.components.perishable:SetPerishTime(TUNING.PERISH_ONE_DAY*10)
     inst.components.perishable:StartPerishing()
     inst.components.perishable.onperishreplacement = "spoiled_food" -- 腐烂后变成腐烂食物
+    -- inst:AddTag("spoiled")
     --------------------------------------------------------------------------
-
-
+    
     inst:AddComponent("edible") -- 可食物组件
     inst.components.edible.foodtype = FOODTYPE.VEGGIE
     inst.components.edible:SetOnEatenFn(function(inst,eater)

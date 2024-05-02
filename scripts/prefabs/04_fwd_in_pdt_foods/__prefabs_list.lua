@@ -11,7 +11,21 @@
 -- for k,v in pairs(info) do
 --         print(k,':', info[k])
 -- end
-
+-- 【笔记】
+-- fruit- 水果度
+-- monster- 怪物度
+-- sweetener- 甜度
+-- veggie- 菜度
+-- meat- 肉度
+-- frozen- 冰度
+-- fish- 鱼度
+-- egg- 蛋度
+-- decoration- 装饰度
+-- fat- 油脂度
+-- dairy- 奶度
+-- inedible- 不可食用度
+-- seed- 种子
+-- magic- 魔法度
 --------------------------------------------------------------------------
 local addr_test = debug.getinfo(1).source           ---- 找到绝对路径
 
