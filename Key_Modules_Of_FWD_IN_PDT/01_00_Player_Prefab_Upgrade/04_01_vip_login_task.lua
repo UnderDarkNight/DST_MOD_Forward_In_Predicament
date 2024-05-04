@@ -76,10 +76,12 @@ AddPlayerPostInit(function(inst)
                     ---- 炽热暗影剑
                         ["fwd_in_pdt_equipment_blazing_nightmaresword"] = {
                             "fwd_in_pdt_equipment_blazing_nightmaresword_sharp",
+                            "fwd_in_pdt_equipment_blazing_nightmaresword_fengyan",
                         },
                     ---- 极寒暗影剑
                         ["fwd_in_pdt_equipment_frozen_nightmaresword"] = {
                             "fwd_in_pdt_equipment_frozen_nightmaresword_sharp",
+                            "fwd_in_pdt_equipment_frozen_nightmaresword_zelu",
                         },
                     ---- 炽热火腿
                         ["fwd_in_pdt_equipment_blazing_hambat"] = {
