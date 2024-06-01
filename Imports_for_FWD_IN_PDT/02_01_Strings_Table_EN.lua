@@ -244,6 +244,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "My eyes have regained their brightness",
                 ["recipe_desc"] = "Oral liquid made from pig liver",
             },
+            ["fwd_in_pdt_item_avoidable_lunarthrall_plant"] = {
+                ["name"] = "Protective Layer",
+                ["inspect_str"] = "Coating applied to lightning rods",
+                ["recipe_desc"] = "Coating applied to lightning rods",
+            },
         --------------------------------------------------------------------
         ---- 02_fwd_in_pdt_materials
             ["fwd_in_pdt_material_tree_resin"] = {
@@ -812,7 +817,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "Lantern",
                 ["recipe_desc"] = "Lantern",
             },
-            
+            ["fwd_in_pdt_building_avoidable_lunarthrall_plant_lightning_rod"] = {
+                ["name"] = "Avoidable Lunarthrall Plant Lightning Rod",
+                ["inspect_str"] = "Surprisingly, it can combat something",
+                ["recipe_desc"] = "Something's afraid of it",
+            },
         --------------------------------------------------------------------
         ---- 08_fwd_in_pdt_resources
             ["fwd_in_pdt_resource_glacier_huge"] = {

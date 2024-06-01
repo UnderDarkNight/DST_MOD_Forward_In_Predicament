@@ -1,3 +1,4 @@
+-- 唤月魔杖
 local assets =
 {
     -- Asset("ANIM", "anim/fireflies.zip"),

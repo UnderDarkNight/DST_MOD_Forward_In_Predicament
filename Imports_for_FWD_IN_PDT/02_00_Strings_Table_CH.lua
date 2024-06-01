@@ -248,6 +248,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "我重获了光明",
                 ["recipe_desc"] = "用猪肝制作的口服液",
             },
+            ["fwd_in_pdt_item_avoidable_lunarthrall_plant"] = {
+                ["name"] = "亮茄涂层",
+                ["inspect_str"] = "涂在避雷针上的涂层",
+                ["recipe_desc"] = "在亮茄身上提取的粉末",
+            },
         --------------------------------------------------------------------
         ---- 02_fwd_in_pdt_materials
             ["fwd_in_pdt_material_tree_resin"] = {
@@ -816,6 +821,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "盆栽",
                 ["inspect_str"] = "这里面的兔子栩栩如生",
                 ["recipe_desc"] = "用它来装饰基地肯定没错",
+            },
+            ["fwd_in_pdt_building_avoidable_lunarthrall_plant_lightning_rod"] = {
+                ["name"] = "避茄针",
+                ["inspect_str"] = "竟然能防治亮茄",
+                ["recipe_desc"] = "亮茄的真正克星",
             },
         --------------------------------------------------------------------
         ---- 08_fwd_in_pdt_resources
