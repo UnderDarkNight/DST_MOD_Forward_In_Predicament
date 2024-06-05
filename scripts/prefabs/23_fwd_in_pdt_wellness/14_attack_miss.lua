@@ -115,9 +115,13 @@ local function fn()
         end
     ------------------------------------------------------------------------------
     -- 玩家惩罚
-        function inst:Penalize_Player_By_Value(num)
-                
-        end
+            function inst:OnUpdate()
+                --[[
+                     每天贡献 -50
+                     每个周期贡献 -0.5
+                ]]--
+                self.com:DoDelta_Wellness(-0.5)
+             end
     ------------------------------------------------------------------------------
     -- 强制刷新，给道具使用的时候执行的
         function inst:ForceRefresh()
