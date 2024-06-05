@@ -194,9 +194,9 @@ AddPlayerPostInit(function(inst)
                     ["pomegranate_cooked"] = 10,                    --- 烤石榴
                     ["carrot"]  = 5,                                --- 胡萝卜
                     ["carrot_cooked"] = 5,                          --- 烤胡萝卜
-                    ["berries"] = 10,                               --- 浆果
-                    ["berries_cooked"] = 10,                        --- 烤浆果
-                    ["berries_juicy"] = 10,                         --- 多汁浆果
+                    -- ["berries"] = 10,                               --- 浆果
+                    -- ["berries_cooked"] = 10,                        --- 烤浆果
+                    -- ["berries_juicy"] = 10,                         --- 多汁浆果
                     ["dragonfruit"] = 10,                           --- 火龙果
                     ["dragonfruit_cooked"] = 10,                    --- 烤熟火龙果
                     ["fwd_in_pdt_food_mango_green"] = 20,           --- 青芒果

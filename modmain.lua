@@ -90,10 +90,10 @@ modimport("Key_Modules_Of_FWD_IN_PDT/_All_Key_Modules_Init.lua")	---- 载入关�
 
 PrefabFiles = {  "forward_in_predicament__all_prefabs"  }		---- 通过总入口 加载所有prefab。
 
--- GenerateSpicedFoods(require("10_Cook/01_cooked_foods_recipes.lua"))
+-- GenerateSpicedFoods(require("script/prefabs/04_fwd_in_pdt_foods.lua"))
 -- local spicedfoods = require("spicedfoods")
 -- for k, recipe in pairs(spicedfoods) do
---     if recipe.mod and recipe.mod == "ap" then
+--     if recipe.mod and recipe.mod == "fwd_in_pdt" then
 --         recipe.official = false
 --         AddCookerRecipe("portablespicer", recipe)
 --     end

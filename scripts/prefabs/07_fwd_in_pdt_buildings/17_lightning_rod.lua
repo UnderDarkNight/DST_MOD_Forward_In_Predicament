@@ -189,7 +189,7 @@ local function fn()
     inst:AddTag("structure")
     inst:AddTag("fwd_in_pdt_building_avoidable_lunarthrall_plant_lightning_rod")
     inst:AddTag("lightningrod")
-    inst:AddTag("lunarthrall_plant") --- 月奴植物
+    -- inst:AddTag("lunarthrall_plant") --- 月奴植物
 
 
     inst.AnimState:SetBank("fwd_in_pdt_building_avoidable_lunarthrall_plant_lightning_rod")
