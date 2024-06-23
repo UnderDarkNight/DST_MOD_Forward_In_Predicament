@@ -82,8 +82,8 @@ AddPlayerPostInit(function(inst)
                     ["daywalker2"] = function()            --- 拾荒疯猪 100% 癫痫
                         inst.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_mouse_and_camera_crazy")                        
                     end,
-                    ["moonpig"] = function()            --- 月台疯猪 80% 癫痫
-                        if math.random(1000) <= 800 then
+                    ["moonpig"] = function()            --- 月台疯猪 60% 癫痫
+                        if math.random(1000) <= 600 then
                         inst.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_mouse_and_camera_crazy")                        
                         end
                     end,
@@ -337,8 +337,8 @@ AddPlayerPostInit(function(inst)
                             inst.components.fwd_in_pdt_wellness:Set("fever_block",false)
                             inst.components.fwd_in_pdt_wellness:Set("cough_block",false)
                         end
-                    end
 
+                    end
                 end)
             end)
     ----------------------------------------------------------------------------------------------------------

@@ -108,40 +108,40 @@ end
     end
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --- 显示图标 event
-    local function pic_display_event(inst)
-        inst:ListenForEvent("pic_display",function()
-            ---- 暂时没法 给MOD 物品用
-            local tar_atlas = nil
-            local tar_image = nil
-            for num, temp_item in pairs(inst.components.container.slots) do
-                if temp_item and temp_item:IsValid() then
-                        local imagename = temp_item.nameoverride or temp_item.components.inventoryitem.imagename or temp_item.prefab
-                        imagename  = string.gsub(imagename,".tex", "") .. ".tex"
-                        local atlasname = temp_item.components.inventoryitem.atlasname or GetInventoryItemAtlas(imagename)
-                        if TheSim:AtlasContains(atlasname, imagename) then
-                            tar_atlas = atlasname
-                            tar_image = imagename
-                            break
-                        end
-                end
+local function pic_display_event(inst)
+    inst:ListenForEvent("pic_display",function()
+        ---- 暂时没法 给MOD 物品用
+        local tar_atlas = nil
+        local tar_image = nil
+        for num, temp_item in pairs(inst.components.container.slots) do
+            if temp_item and temp_item:IsValid() then
+                    local imagename = temp_item.nameoverride or temp_item.components.inventoryitem.imagename or temp_item.prefab
+                    imagename  = string.gsub(imagename,".tex", "") .. ".tex"
+                    local atlasname = temp_item.components.inventoryitem.atlasname or GetInventoryItemAtlas(imagename)
+                    if TheSim:AtlasContains(atlasname, imagename) then
+                        tar_atlas = atlasname
+                        tar_image = imagename
+                        break
+                    end
             end
+        end
 
-                -- if not TheSim:AtlasContains(atlasname, imagename) then
-                --     atlasname = resolvefilepath_soft(atlasname)                    
-                -- end
+            -- if not TheSim:AtlasContains(atlasname, imagename) then
+            --     atlasname = resolvefilepath_soft(atlasname)                    
+            -- end
 
-            if tar_image and tar_atlas then
-                inst.AnimState:OverrideSymbol("SWAP_SIGN",tar_atlas,tar_image)
-            else
-                inst.AnimState:ClearOverrideSymbol("SWAP_SIGN")
-            end
+        if tar_image and tar_atlas then
+            inst.AnimState:OverrideSymbol("SWAP_SIGN",tar_atlas,tar_image)
+        else
+            inst.AnimState:ClearOverrideSymbol("SWAP_SIGN")
+        end
 
-        end)
+    end)
 
-        inst:DoTaskInTime(0,function()
-            inst:PushEvent("pic_display")
-        end)
-    end
+    inst:DoTaskInTime(0,function()
+        inst:PushEvent("pic_display")
+    end)
+end
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -156,7 +156,7 @@ local function fn()
 
     inst.entity:AddMiniMapEntity()
     inst.MiniMapEntity:SetIcon("fwd_in_pdt_container_tv_box.tex")
-
+    -- inst:AddTag("chest_upgradeable") --能被 弹性空间制造器 升级
     inst.AnimState:SetBank("fwd_in_pdt_container_tv_box")
     inst.AnimState:SetBuild("fwd_in_pdt_container_tv_box")
     inst.AnimState:PlayAnimation("idle",true)
@@ -200,6 +200,7 @@ local function fn()
             inst.SoundEmitter:PlaySound("dontstarve/wilson/chest_close")
             inst:PushEvent("pic_display")
         end)
+
     -----------------------------------------------------------------------------------
     ---- 积雪检查
         local function snow_init(inst)

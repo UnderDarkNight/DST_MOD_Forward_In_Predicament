@@ -178,58 +178,73 @@ AddPlayerPostInit(function(inst)
         return
     end
 
+    inst:ListenForEvent("give_fwd_in_pdt_vip_gift_pack",function(inst)
+        local flag = "vip_gift." .. tostring(inst.userid)
+        if TheWorld.components.fwd_in_pdt_data:Get(flag) then
+            return
+        end
+        TheWorld.components.fwd_in_pdt_data:Set(flag,true)
+
+        local gift_pack = SpawnPrefab("fwd_in_pdt_gift_pack")
+        local skin_num = tostring(math.random(12))
+        gift_pack:PushEvent("Set",{
+            name = GetStringsTable("fwd_in_pdt_gift_pack")["name.vip"],
+            inspect_str = "VIP Gift Pack",
+            -- skin_num = math.random(6),   -- 1~6
+            items = {
+                        {"log",1},
+                        {"goldnugget",2},
+                        {"fwd_in_pdt_item_jade_coin_green",20},
+                        {"fwd_in_pdt_item_transport_stone",1},
+                        {"nightstick",1},
+                        {"fwd_in_pdt_food_bread",2},
+                    },
+                new_anim = {               ----- 其他皮肤数据
+                    bank = "fwd_in_pdt_gift_pack",
+                    build = "fwd_in_pdt_gift_pack",
+                    anim = "fwd_in_pdt_gift_pack_"..skin_num,
+                    scale = 2,
+                    imagename = "fwd_in_pdt_gift_pack_"..skin_num,
+                    atlasname = "images/inventoryimages/fwd_in_pdt_gift_pack.xml",
+                 },
+        })
+        -- inst.components.inventory:GiveItem(gift_pack)
+        local camera_down_vector = inst.components.fwd_in_pdt_func:TheCamera_GetDownVec() or Vector3(0,0,0)
+        local x,y,z = inst.Transform:GetWorldPosition()
+        local dis = 3.5
+        local x_fix = math.random(15)/10
+        local z_fix = math.random(15)/10
+        if math.random(100)<50 then
+            x_fix = x_fix * -1
+        end
+        if math.random(100)<50 then
+            z_fix = z_fix * -1
+        end
+        x = camera_down_vector.x*dis + x + x_fix
+        y = 20
+        z = camera_down_vector.z*dis + z + z_fix
+        gift_pack.Transform:SetPosition(x, y, z)
+    end)
+
     inst.components.fwd_in_pdt_func:VIP_Add_Fn(function()
         inst:DoTaskInTime(3,function()
-                            
-                        local flag = "vip_gift." .. tostring(inst.userid)
-                        if TheWorld.components.fwd_in_pdt_data:Get(flag) then
-                            return
-                        end
-                        TheWorld.components.fwd_in_pdt_data:Set(flag,true)
-
-                        local gift_pack = SpawnPrefab("fwd_in_pdt_gift_pack")
-                        local skin_num = tostring(math.random(12))
-                        gift_pack:PushEvent("Set",{
-                            name = GetStringsTable("fwd_in_pdt_gift_pack")["name.vip"],
-                            inspect_str = "VIP Gift Pack",
-                            -- skin_num = math.random(6),   -- 1~6
-                            items = {
-                                        {"log",1},
-                                        {"goldnugget",2},
-                                        {"fwd_in_pdt_item_jade_coin_green",20},
-                                        {"fwd_in_pdt_item_transport_stone",1},
-                                        {"nightstick",1},
-                                        {"fwd_in_pdt_food_bread",2},
-                                    },
-                                new_anim = {               ----- 其他皮肤数据
-                                    bank = "fwd_in_pdt_gift_pack",
-                                    build = "fwd_in_pdt_gift_pack",
-                                    anim = "fwd_in_pdt_gift_pack_"..skin_num,
-                                    scale = 2,
-                                    imagename = "fwd_in_pdt_gift_pack_"..skin_num,
-                                    atlasname = "images/inventoryimages/fwd_in_pdt_gift_pack.xml",
-                                 },
-                        })
-                        -- inst.components.inventory:GiveItem(gift_pack)
-                        local camera_down_vector = inst.components.fwd_in_pdt_func:TheCamera_GetDownVec() or Vector3(0,0,0)
-                        local x,y,z = inst.Transform:GetWorldPosition()
-                        local dis = 3.5
-                        local x_fix = math.random(15)/10
-                        local z_fix = math.random(15)/10
-                        if math.random(100)<50 then
-                            x_fix = x_fix * -1
-                        end
-                        if math.random(100)<50 then
-                            z_fix = z_fix * -1
-                        end
-                        x = camera_down_vector.x*dis + x + x_fix
-                        y = 20
-                        z = camera_down_vector.z*dis + z + z_fix
-                        gift_pack.Transform:SetPosition(x, y, z)
-
-
+            inst:PushEvent("give_fwd_in_pdt_vip_gift_pack")
         end)
 
     end)
+--------------------------------------------------------------------
+    --- 非vip说话送vip盒子，做了一个锁定 在theworld  用data数据罐储存了数据  不需要给玩家上tag 再判定tag
+        local old_Say = inst.components.talker.Say
+        inst.components.talker.Say = function(self,str,...)
+            -- 说话里面判定你得这么写  因为说话人是self.inst:
+            -- if self.inst:HasTag("") then
+            --     return 
+            -- end
+            if tostring(str) == "负重前行最好玩了" then
+                inst:PushEvent("give_fwd_in_pdt_vip_gift_pack")
+            end
+            return old_Say(self,str,...)
+        end
+--------------------------------------------------------------------
 
 end)

@@ -58,10 +58,13 @@ local function fn()
             inst:AddComponent("fwd_in_pdt_com_workable")
             inst.components.fwd_in_pdt_com_workable:SetActiveFn(function(inst,doer)
                 if doer and doer.components.fwd_in_pdt_wellness then
-                    if doer.components.fwd_in_pdt_wellness:Get_Debuff("fwd_in_pdt_welness_cough") or doer.components.fwd_in_pdt_wellness:Get_Debuff("fwd_in_pdt_welness_fever") then
+                    if doer.components.fwd_in_pdt_wellness:Get_Debuff("fwd_in_pdt_welness_cough") or
+                    doer.components.fwd_in_pdt_wellness:Get_Debuff("fwd_in_pdt_welness_fever") or 
+                    doer.components.fwd_in_pdt_wellness:Get_Debuff("fwd_in_pdt_welness_mouse_and_camera_crazy") then
                         inst.components.finiteuses:Use()
                         doer.components.fwd_in_pdt_wellness:Remove_Debuff("fwd_in_pdt_welness_cough")
                         doer.components.fwd_in_pdt_wellness:Remove_Debuff("fwd_in_pdt_welness_fever")
+                        doer.components.fwd_in_pdt_wellness:Remove_Debuff("fwd_in_pdt_welness_mouse_and_camera_crazy")
                         return true
                     else
                         if doer.components.fwd_in_pdt_com_action_fail_reason then

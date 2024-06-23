@@ -62,6 +62,7 @@ local function fn()
                 return true
             end)
         end
+
     ------------------------------------------------------------------------
     if not TheWorld.ismastersim then
         return inst

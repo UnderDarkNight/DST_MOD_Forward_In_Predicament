@@ -218,6 +218,23 @@ local function fn()
         inst:AddComponent("planardamage")
         inst.components.planardamage:SetBaseDamage(20)
     -------------------------------------------------------------------------------------------
+    -- 学习笔记 多次攻击(weapon 没声明)
+    -- inst.components.weapon:SetOnAttack(function(inst,attacker,target)
+    --     if inst:HasTag("combo_attacking") then
+    --         return
+    --     end
+    --     inst:AddTag("combo_attacking")
+    --     local function doattack()
+    --         attacker.components.combat:DoAttack(target,weapon)
+    --     end
+    --     inst:DoTaskInTime(0.2,doattack) -- 0.2s 执行一次
+    --     inst:DoTaskInTime(0.4,doattack)
+    --     inst:DoTaskInTime(0.6,function ()
+    --         doattack()
+    --         inst:RemoveTag("combo_attacking")
+    --     end)
+
+    -- end)
     ----- 攻击的时候执行的代码
     inst.components.weapon:SetOnAttack(function(inst,attacker,target)
         if not ( target and attacker ) then

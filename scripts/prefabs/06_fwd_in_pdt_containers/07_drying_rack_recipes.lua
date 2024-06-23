@@ -82,20 +82,20 @@ return {
             num = 1 ,
         },
     --- 蛙腿
-    ["froglegs"] = {
-        product = "smallmeat_dried",
-        num = 1 ,
-    },
+        ["froglegs"] = {
+            product = "smallmeat_dried",
+            num = 1 ,
+        },
     --- 蝙蝠翅膀
-    ["batwing"] = {
-        product = "smallmeat_dried",
-        num = 1 ,
-    },
+        ["batwing"] = {
+            product = "smallmeat_dried",
+            num = 1 ,
+        },
     --- 裸漏鼻孔
-    ["batnose"] = {
-        product = "smallmeat_dried",
-        num = 1 ,
-    },
+        ["batnose"] = {
+            product = "smallmeat_dried",
+            num = 1 ,
+        },
 -------------------------------------------------------------------------------------------------------------------------
     ---以下是和棱镜兼容
 -------------------------------------------------------------------------------------------------------------------------

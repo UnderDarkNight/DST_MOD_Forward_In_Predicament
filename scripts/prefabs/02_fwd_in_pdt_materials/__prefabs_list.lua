@@ -35,7 +35,7 @@ local prefabs_name_list = {
     "06_aster_tataricus_l_f",               -- 紫苑
     "07_chaotic_eyeball",                   -- 混沌眼球
     "08_frog_hound_skin",                   -- 二蛤皮
-    -- "09_avoidable_lunarthrall_plant"        -- 防亮茄涂层
+
     
 }
 

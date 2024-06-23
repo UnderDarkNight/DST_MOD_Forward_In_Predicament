@@ -6,6 +6,7 @@ local assets =
     Asset("ANIM", "anim/fwd_in_pdt_element_cores.zip"),
     Asset( "IMAGE", "images/inventoryimages/fwd_in_pdt_item_flame_core.tex" ),
     Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_item_flame_core.xml" ),
+    Asset( "ATLAS_BUILD", "images/inventoryimages/fwd_in_pdt_item_flame_core.xml",256 ),
 }
 
 local function fn()

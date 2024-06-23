@@ -296,8 +296,8 @@ MakeBuff({
 })
 ------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------
---- 减伤
---- 减伤50%
+--- 减伤（蛇油）
+--- 减伤90%
 MakeBuff({
     name = "fwd_in_pdt_buff_reduceinjury",
     assets = nil,
@@ -321,7 +321,7 @@ MakeBuff({
                 end)
             end)
             if target.components.health ~= nil then
-                target.components.health.externalabsorbmodifiers:SetModifier(buff, 0.5)
+                target.components.health.externalabsorbmodifiers:SetModifier(buff, 0.9)
             end
         end
     end,
