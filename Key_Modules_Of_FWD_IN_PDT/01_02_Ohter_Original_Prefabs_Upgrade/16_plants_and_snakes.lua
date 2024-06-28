@@ -110,6 +110,7 @@
         ["reeds"] = 0.1,                            --- 芦苇
         ["bananabush"] = 0.05,                       --- 香蕉丛
         ["monkeytail"] = 0.05,                       --- 猴尾草
+        ["moon_tree_blossom_worldgen"] = 0.05,      --- 月树花
     }
     for the_prefab, temp_num  in pairs(pickable_prefabs) do   
         AddPrefabPostInit(

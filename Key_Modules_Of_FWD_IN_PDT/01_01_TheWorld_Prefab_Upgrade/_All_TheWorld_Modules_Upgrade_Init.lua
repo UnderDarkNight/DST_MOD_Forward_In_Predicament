@@ -16,8 +16,10 @@ modimport("Key_Modules_Of_FWD_IN_PDT/01_01_TheWorld_Prefab_Upgrade/03_thief_even
 modimport("Key_Modules_Of_FWD_IN_PDT/01_01_TheWorld_Prefab_Upgrade/04_void_fising_events.lua")    
 --- 虚空钓鱼的物品刷新器
 
-modimport("Key_Modules_Of_FWD_IN_PDT/01_01_TheWorld_Prefab_Upgrade/05_tile_tag_sys_setup.lua")    
+modimport("Key_Modules_Of_FWD_IN_PDT/01_01_TheWorld_Prefab_Upgrade/05_tile_tag_sys_setup.lua") 
 --- 地图地块tag系统
 
+modimport("Key_Modules_Of_FWD_IN_PDT/01_01_TheWorld_Prefab_Upgrade/06_summer_heat.lua")    
+--- 锁定世界温度系统
 
 
