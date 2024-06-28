@@ -13,35 +13,49 @@ local function IsClientSide()
 end
 
 --------------------------------------------------------------------------------------------------------------------
-            --- 基础的文件读写函数
-local function Get_Data_File_Name()
-    return "Forward_In_Predicament_DATA.TEXT"
-end
-local function Read_All_Json_Data()
+--- 基础的文件读写函数
+local fileName = "Forward_In_Predicament_DATA.TEXT" -- 文件名缓存
 
-    local function Read_data_p()
-        local file = io.open(Get_Data_File_Name(), "r")
-        local text = file:read('*line')
-        file:close()
-        return text
+-- 文件句柄缓存
+local fileHandle = nil
+
+local function OpenFile(mode)
+    if fileHandle == nil then
+        fileHandle = io.open(fileName, mode)
     end
+    return fileHandle
+end
 
-    local flag,ret = pcall(Read_data_p)
+local function CloseFile()
+    if fileHandle ~= nil then
+        fileHandle:close()
+        fileHandle = nil
+    end
+end
 
-    if flag == true then
-        local retTable = json.decode(ret)
-        return retTable
+local function Read_All_Json_Data()
+    local file = OpenFile("r")
+    if file then
+        local text = file:read('*a') -- 读取全部内容而不是单行
+        CloseFile()
+        return text and json.decode(text) or {}
     else
-        print("FWD_IN_PDT ERROR :read cross archived data error : Read_All_Json_Data got nil")
+        print("Failed to open file for reading.")
         return {}
     end
 end
 
 local function Write_All_Json_Data(json_data)
-    local w_data = json.encode(json_data)
-    local file = io.open(Get_Data_File_Name(), "w")
-    file:write(w_data)
-    file:close()
+    if IsClientSide() then
+        local file = OpenFile("w")
+        if file then
+            local w_data = json.encode(json_data)
+            file:write(w_data)
+            CloseFile()
+        else
+            print("Failed to open file for writing.")
+        end
+    end
 end
 
 local function Get_Cross_Archived_Data_By_userid(userid)

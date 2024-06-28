@@ -118,6 +118,7 @@ inst = {
         ["inventoryitem"] = {
             owner = inst,
             ["GetGrandOwner"] = function() return inst end,
+            ["ChangeImageName"] = function(self,name) end,
         },
         ["tradable"] = {},
         ["lootdropper"] = {
@@ -455,16 +456,64 @@ PrintTable = function(t)end
 
 GetClosestInstWithTag = function(tag,inst,radius) return inst end
 ------------------------------------------------------------------------------------------------------------------------------------------------
--- MOD API
-inst.components.fwd_in_pdt_data = {
-    ["Set"] = function() end,
-    ["Get"] = function() end,
-}
-inst.components.fwd_in_pdt_func = {
-    ["RPC_PushEvent"] = function() end,
-    ["Wisper"] = function(cmd_table)    end,
-    ["Add_Death_Announce"] = function(_cmd_table,timeout)    end,
-}
-inst.replica.fwd_in_pdt_func = {
-    ["RPC_PushEvent"] = function() end,
-}
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+StartDedicatedServer = function() --- 创建生成默认世界    
+end
+------------------------------------------------------------------------------------------------------------------------------------------------
+---
+    local emoji_table = {
+        ["beefalo"] = "󰀁",          --- 牛
+        ["meat"] = "󰀦",             --- 肉
+        ["wormhole"] = "󰀯",         --- 虫洞
+        ["eyeball"] = "󰀅",          --- 眼球
+        ["heart"] = "󰀍",            --- 心
+        ["carrot"] = "󰀡",           --- 胡萝卜
+        ["skull"] = "󰀕",            --- 白骷髅
+        ["battle"] = "󰀘",           --- 双剑交叉
+        ["grave"] = "󰀊",            --- 墓碑
+        ["ghost"] = "󰀉",            --- 幽灵
+        ["shadow"] = "󰀩",           --- 魔法引擎
+        ["portal"] = "󰀰",           --- 绚丽之门
+        ["trap"] = "󰀬",             --- 陷阱
+        ["abigail"] = "󰀜",          --- Abigail
+        ["hammer"] = "󰀌",           --- 锤子
+        ["web"] = "󰀗",              --- 蜘蛛网
+        ["farm"] = "󰀇",             --- 农场
+        ["redgem"] = "󰀒",           --- 红宝石
+        ["gold"] = "󰀚",             --- 金子
+        ["wave"] = "󰀮",             --- 手（展开）
+        ["lightbulb"] = "󰀏",        --- 灯泡
+        ["firepit"] = "󰀤",          --- 火堆
+        ["trophy"] = "󰀭",           --- 奖杯
+        ["faketeeth"] = "󰀆",        --- 假牙
+        ["backpack"] = "󰀞",         --- 背包
+        ["berry"] = "󰀠",            --- 浆果
+        ["horn"] = "󰀥",             --- 牛角
+        ["tophat"] = "󰀖",           --- 礼帽
+        ["sciencemachine"] = "󰀔",   --- 炼金引擎
+        ["chest"] = "󰀂",            --- 箱子
+        ["torch"] = "󰀛",            --- 火把
+        ["shovel"] = "󰀪",           --- 铲子
+        ["alchemy"] = "󰀝",          --- 炼金引擎
+        ["sanity"] = "󰀓",           --- 脑子
+        ["salt"] = "󰀨",             --- 盐
+        ["resurrection"] = "󰀱",     --- 炼金石
+        ["hunger"] = "󰀎",           --- 饥饿
+        ["poop"] = "󰀑",             --- 便便
+        ["pig"] = "󰀐",              --- 猪头
+        ["refine"] = "󰀧",           --- 白宝石
+        ["hambat"] = "󰀋",           --- 火腿棒
+        ["flex"] = "󰀙",             --- 强壮手臂
+        ["crockpot"] = "󰀄",         --- 烹饪锅
+        ["chester"] = "󰀃",          --- 切斯特
+        ["beehive"] = "󰀟",          --- 蜂箱
+        ["eyeplant"] = "󰀣",         --- 眼球草
+        ["egg"] = "󰀢",              --- 鸡蛋
+        ["thumbsup"] = "󰀫",         --- 点赞
+        ["arcane"] = "󰀀",           --- 红骷髅
+        ["fire"] = "󰀈"              --- 火
+    }
+
+------------------------------------------------------------------------------------------------------------------------------------------------
