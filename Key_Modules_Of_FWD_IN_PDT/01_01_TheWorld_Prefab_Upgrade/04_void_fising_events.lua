@@ -16,7 +16,7 @@ end
         "dreadstone",    "purebrilliance",    "voidcloth",    "walrus_tusk",    "malbatross_beak",    "boneshard",    "fossil_piece",    "horn",    "lightninggoathorn",
         "gnarwail_horn",    "minotaurhorn",    "deerclops_eyeball",    "pigskin",    "tentaclespots",    "slurper_pelt",    "dragon_scales",    "shroom_skin",    "manrabbit_tail",
         "beefalowool",    "steelwool",    "beardhair",    "honeycomb",    "silk",    "spidergland",    "mosquitosack",    "phlegm",    "slurtleslime",    "coontail",    "poop",
-        "guano",    "glommerfuel",    "treegrowthsolution",    "krampus_sack",    "icepack",    "piggyback",    "backpack",    "armorskeleton",    "armordragonfly",    "armorsnurtleshell",
+        "guano",    "glommerfuel",    "treegrowthsolution",        "icepack",    "piggyback",    "backpack",    "armorskeleton",    "armordragonfly",    "armorsnurtleshell",
         "armormarble",    "armor_sanity",    "armorruins",    "armorwood",    "armor_bramble",    "armorgrass",    "armorwagpunk",    "armor_voidcloth",    "armordreadstone",    "armor_lunarplant",
         "eyemaskhat",    "balloonhat",    "skeletonhat",    "hivehat",    "slurtlehat",    "ruinshat",    "beehat",    "wathgrithrhat",    "footballhat",    "alterguardianhat",    "cookiecutterhat",
         "redgem",    "orangegem",    "yellowgem",    "greengem",    "bluegem",    "purplegem",    "opalpreciousgem",    "panflute",    "firestaff",    "orangestaff",    "yellowstaff",    "greenstaff",
