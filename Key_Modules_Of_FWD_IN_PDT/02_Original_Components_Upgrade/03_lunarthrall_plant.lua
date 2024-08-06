@@ -27,10 +27,12 @@
 --     end
 
 -- end)
+
+
 -- 自己hook
 AddComponentPostInit("lunarthrall_plantspawner", function(self)
     local old_FindPlant = self.FindPlant
-    self.FindPlant = function(self,...)
+    self.FindPlant = function(self,...)  --顶掉这个寻找功能就行了
         local origin_ret = old_FindPlant(self,...)
         if type(origin_ret) == "table" and origin_ret.Transform then
             local x,y,z = origin_ret.Transform:GetWorldPosition()
