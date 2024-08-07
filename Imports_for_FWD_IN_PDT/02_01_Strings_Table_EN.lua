@@ -236,18 +236,23 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             },
             ["fwd_in_pdt_opalstaff_maker"] = {
                 ["name"] = "opalstaff",
-                ["inspect_str"] = "Just like what was made on the platform",
-                ["recipe_desc"] = "A new moon is slowly rising",
+                ["inspect_str"] = "Just like what was made on the platform.",
+                ["recipe_desc"] = "A new moon is slowly rising.",
             },
             ["fwd_in_pdt_item_vitamin_a_oral_solution"] = {
                 ["name"] = "Vitamin A Oral Solution",
-                ["inspect_str"] = "My eyes have regained their brightness",
-                ["recipe_desc"] = "Oral liquid made from pig liver",
+                ["inspect_str"] = "My eyes have regained their brightness.",
+                ["recipe_desc"] = "Oral liquid made from pig liver.",
             },
             ["fwd_in_pdt_item_avoidable_lunarthrall_plant"] = {
                 ["name"] = "Protective Layer",
                 ["inspect_str"] = "Coating applied to lightning rods",
-                ["recipe_desc"] = "Coating applied to lightning rods",
+                ["recipe_desc"] = "Coating applied to lightning rods.",
+            },
+            ["fwd_in_pdt_item_mouse_and_camera_crazy_powder"] = {
+                ["name"] = "Powder",
+                ["inspect_str"] = "Drugs for epilepsy.",
+                ["recipe_desc"] = "Able to deal with some difficult cases.",
             },
         --------------------------------------------------------------------
         ---- 02_fwd_in_pdt_materials

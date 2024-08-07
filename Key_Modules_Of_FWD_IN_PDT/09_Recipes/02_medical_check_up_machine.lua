@@ -217,9 +217,19 @@ Add_Recipe_2_Machine({
 --------------------------------------------------------------------------------------------------------------------------------------------
 Add_Recipe_2_Machine({
     prefab = "fwd_in_pdt_item_vitamin_a_oral_solution",
-    Ingredients = { Ingredient("fwd_in_pdt_food_pig_liver", 5),Ingredient("ice", 5) },
+    Ingredients = { Ingredient("fwd_in_pdt_food_pig_liver", 2),Ingredient("ice", 5) },
     -- atlas = GetInventoryItemAtlas("scandata.tex"),
     atlas = "images/inventoryimages/fwd_in_pdt_item_vitamin_a_oral_solution.xml",
     image = "fwd_in_pdt_item_vitamin_a_oral_solution.tex",
+})
+--------------------------------------------------------------------------------------------------------------------------------------------
+--- 癫痫散 
+--------------------------------------------------------------------------------------------------------------------------------------------
+Add_Recipe_2_Machine({
+    prefab = "fwd_in_pdt_item_mouse_and_camera_crazy_powder",
+    Ingredients = { Ingredient("fwd_in_pdt_food_pig_liver", 1),Ingredient("fwd_in_pdt_food_large_intestine", 1),Ingredient("boneshard", 2) },
+    -- atlas = GetInventoryItemAtlas("scandata.tex"),
+    atlas = "images/inventoryimages/fwd_in_pdt_item_mouse_and_camera_crazy_powder.xml",
+    image = "fwd_in_pdt_item_mouse_and_camera_crazy_powder.tex",
 })
 --------------------------------------------------------------------------------------------------------------------------------------------

@@ -42,7 +42,7 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["check_server_fail"] = "连接CD-KEY服务器失败",
             },
             ["fwd_in_pdt_other_poison_frog"] = {
-                ["name"] = "箭毒娃",                
+                ["name"] = "箭毒蛙",                
             },
             ["fwd_in_pdt_event_hit_other_bleed"] = {
                 ["Death_Announce"] = "【{XXXX}】死于伤害过高造成的流血，下次别打那么高的伤害了",                
@@ -252,6 +252,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "亮茄涂层",
                 ["inspect_str"] = "涂在避雷针上的涂层",
                 ["recipe_desc"] = "在亮茄身上提取的粉末",
+            },
+            ["fwd_in_pdt_item_mouse_and_camera_crazy_powder"] = {
+                ["name"] = "癫痫散",
+                ["inspect_str"] = "治疗癫痫的药物",
+                ["recipe_desc"] = "能针对一些疑难杂症",
             },
         --------------------------------------------------------------------
         ---- 02_fwd_in_pdt_materials

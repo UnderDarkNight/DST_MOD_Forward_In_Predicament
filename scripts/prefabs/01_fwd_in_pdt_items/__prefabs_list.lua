@@ -57,7 +57,7 @@ local prefabs_name_list = {
     "28_vitamin_a_oral_solution",        -- 维生素A口服液
     "29_opalstaff_maker",                -- 唤月法杖
     "30_avoidable_lunarthrall",          -- 亮茄涂层
-    -- "31_mouse_and_camera_crazy_powder",  -- 癫痫散
+    "31_mouse_and_camera_crazy_powder",  -- 癫痫散
 }
 
 

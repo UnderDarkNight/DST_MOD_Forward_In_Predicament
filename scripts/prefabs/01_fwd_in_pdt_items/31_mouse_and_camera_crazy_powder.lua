@@ -73,8 +73,8 @@ local function fn()
 
     inst:AddComponent("inventoryitem")
     -- inst.components.inventoryitem:ChangeImageName("leafymeatburger")
-    inst.components.inventoryitem.imagename = "fwd_in_pdt_welness_mouse_and_camera_crazy"
-    inst.components.inventoryitem.atlasname = "images/inventoryimages/fwd_in_pdt_welness_mouse_and_camera_crazy.xml"
+    inst.components.inventoryitem.imagename = "fwd_in_pdt_item_mouse_and_camera_crazy_powder"
+    inst.components.inventoryitem.atlasname = "images/inventoryimages/fwd_in_pdt_item_mouse_and_camera_crazy_powder.xml"
     inst:AddComponent("stackable") -- 可堆叠
     inst.components.stackable.maxsize = TUNING.STACK_SIZE_MEDITEM    
     MakeHauntableLaunch(inst)
@@ -94,4 +94,4 @@ local function fn()
     return inst
 end
 
-return Prefab("fwd_in_pdt_welness_mouse_and_camera_crazy", fn, assets)
+return Prefab("fwd_in_pdt_item_mouse_and_camera_crazy_powder", fn, assets)

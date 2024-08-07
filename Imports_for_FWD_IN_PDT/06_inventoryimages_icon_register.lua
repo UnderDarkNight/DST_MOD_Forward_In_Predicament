@@ -41,6 +41,7 @@ local files_name = {
 		"fwd_in_pdt_item_vitamin_a_oral_solution",				--- 维生素A口服液
 		"fwd_in_pdt_item_special_packer",						--- 特殊打包纸
 		"fwd_in_pdt_item_special_wraped_box",					--- 打包盒子
+		"fwd_in_pdt_item_mouse_and_camera_crazy_powder",		--- 癫痫散
 	---------------------------------------------------------------------------------------
 	-- 02_fwd_in_pdt_materials
 		"fwd_in_pdt_material_tree_resin",							--- 树脂
