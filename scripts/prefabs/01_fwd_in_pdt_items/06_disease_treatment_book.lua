@@ -50,8 +50,11 @@ local function fn()
         inst:ListenForEvent("fwd_in_pdt_event.OnEntityReplicated.fwd_in_pdt_com_workable",function(inst,replica_com)
             replica_com:SetTestFn(function(inst,doer,right_click)
                 
-            end)
+                return true     --- TEST函数必须返回true才能继续
+
+            end)    
             replica_com:SetSGAction("fwd_in_pdt_read_book_type_cookbook")
+            
             replica_com:SetText("fwd_in_pdt_item_disease_treatment_book",STRINGS.ACTIONS.READ)
         end)
         if TheWorld.ismastersim then
@@ -65,8 +68,11 @@ local function fn()
                     doer.components.fwd_in_pdt_wellness:Get_Debuff("fwd_in_pdt_welness_mouse_and_camera_crazy") then
 
                         inst.components.finiteuses:Use()
+
                         doer.components.fwd_in_pdt_wellness:Remove_Debuff("fwd_in_pdt_welness_cough")
+
                         doer.components.fwd_in_pdt_wellness:Remove_Debuff("fwd_in_pdt_welness_fever")
+
                         doer.components.fwd_in_pdt_wellness:Remove_Debuff("fwd_in_pdt_welness_mouse_and_camera_crazy")
                         return true
                     else
@@ -79,6 +85,7 @@ local function fn()
                 return false
             end)
         end
+    
     --------------------------------------------------------------------------
     
     if not TheWorld.ismastersim then

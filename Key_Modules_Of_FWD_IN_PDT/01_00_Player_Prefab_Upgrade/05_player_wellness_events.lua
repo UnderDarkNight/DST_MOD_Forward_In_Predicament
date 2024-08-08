@@ -51,7 +51,7 @@ AddPlayerPostInit(function(inst)
                     end,
                     ["beequeen"] = function()        --- 蜂后攻击 30% 概率中蜜蜂毒
                         if math.random(1000) <= 300 then
-                            inst.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_bee_poison")                        
+                            inst.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_bee_poison")                       
                         end
                     end,
                     ["frog"] = function()
