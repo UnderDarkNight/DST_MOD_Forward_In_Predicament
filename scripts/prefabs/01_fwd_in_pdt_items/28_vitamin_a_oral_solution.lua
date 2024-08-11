@@ -80,8 +80,7 @@ local function fn()
             end
 
             doer.components.fwd_in_pdt_wellness:Remove_Debuff("fwd_in_pdt_welness_attack_miss")
-
-
+            doer.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_attack_miss_blocker")
             return true
         end)
     end

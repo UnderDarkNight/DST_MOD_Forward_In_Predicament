@@ -20,8 +20,14 @@ AddPlayerPostInit(function(inst)
 
     -- worker:PushEvent("finishedwork", { target = self.inst, action = self.action })
     inst:ListenForEvent("fwd_in_pdt_event.enter_desert",function(_,_table)
-    
+        
+        if inst.components.fwd_in_pdt_wellness:Get_Debuff("fwd_in_pdt_welness_attack_miss_blocker") then -- 失明屏蔽器
+            return false
+        end
                                 inst.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_attack_miss")
+                                
+                                inst.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_attack_miss_blocker")
+
                                 inst.components.fwd_in_pdt_func:Wisper({
                                     m_colour = {200,200,200} ,    -- 内容颜色
                                     message = GetStringsTable("fwd_in_pdt_welness_attack_miss")["debuff_attach_whisper"] or "", ---- 文字内容

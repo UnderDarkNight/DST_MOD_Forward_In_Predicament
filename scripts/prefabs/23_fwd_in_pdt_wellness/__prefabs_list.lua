@@ -56,6 +56,7 @@ local prefabs_name_list = {
     "13_fracture",                   -- 骨折
     "14_attack_miss",                   -- 打击miss
     "15_mouse_and_camera_crazy",                   -- 鼠标和镜头癫狂
+    "16_attack_miss_blocker",               -- 失明屏蔽器
     
 }
 
