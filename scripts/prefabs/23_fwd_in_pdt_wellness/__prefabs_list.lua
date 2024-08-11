@@ -27,20 +27,20 @@ local Prefabs_addr_base = string.sub(temp_addr,1,temp_str_index2) .. "/"    --- 
 -- local Prefabs_addr_base = "scripts/prefabs/01_fwd_in_pdt_items/"               --- 文件夹路径
 local prefabs_name_list = {
 
-    "01_base_wellness",     -- 体质值
-    "02_vitamin_c",         -- VC值
-    "03_glucose",           -- 血糖值
-    "03_glucose",           -- 血糖值
-    "04_01_poison",            -- 中毒值
-    "04_02_poison_blocker",            -- 中毒屏蔽计数器
+    "01_base_wellness",                                 -- 体质值
+    "02_vitamin_c",                                     -- VC值
+    "03_glucose",                                       -- 血糖值
+    "04_01_poison",                                     -- 中毒值
+    
+    "04_02_poison_blocker",                             -- 中毒屏蔽计数器
 
-    "05_snake_poison",            -- 蛇毒
-    "06_frog_poison",             -- 青蛙毒
-    "07_spider_poison",           -- 蜘蛛毒
-    "08_bee_poison",              -- 蜜蜂毒
+    "05_snake_poison",                                  -- 蛇毒
+    "06_frog_poison",                                   -- 青蛙毒
+    "07_spider_poison",                                 -- 蜘蛛毒
+    "08_bee_poison",                                    -- 蜜蜂毒
 
-    "09_cough",                   -- 咳嗽
-    "10_fever",                   -- 发烧
+    "09_cough",                                         -- 咳嗽
+    "10_fever",                                         -- 发烧
 
     "11_01_food_effect_green_mushroom_soup",            -- 绿蘑菇汤 的debuff
     "11_02_food_effect_coffee",                         -- 咖啡 的buff
@@ -53,10 +53,13 @@ local prefabs_name_list = {
     "12_02_character_buff_carl_thirst_for_blood__shadowheart",    -- 角色卡尔专属buff  暗影心房用的
     "12_03_character_buff_carl_shadowheart_damage",               -- 角色卡尔专属buff  暗影心房用的
 
-    "13_fracture",                   -- 骨折
-    "14_attack_miss",                   -- 打击miss
-    "15_mouse_and_camera_crazy",                   -- 鼠标和镜头癫狂
-    "16_attack_miss_blocker",               -- 失明屏蔽器
+    "13_fracture",                                      -- 骨折
+
+    "14_attack_miss",                                   -- 打击miss
+
+    "15_mouse_and_camera_crazy",                        -- 鼠标和镜头癫狂
+
+    "16_attack_miss_blocker",                           -- 失明屏蔽器
     
 }
 
