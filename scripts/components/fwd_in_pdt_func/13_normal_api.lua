@@ -206,7 +206,9 @@ local function main_com(self)
                 local pt = cmd_table.pt or  Vector3(self.inst.Transform:GetWorldPosition())
                 local player = cmd_table.player
                 local item_fn = cmd_table.item_fn
-                ontradeforgold(pt, player, prefab, num,item_fn)
+                if PrefabExists(prefab) then
+                    ontradeforgold(pt, player, prefab, num,item_fn)
+                end
             end
 
         end
