@@ -76,7 +76,8 @@ AddRecipe2(
     { Ingredient("livinglog", 10),Ingredient("purplegem", 1),Ingredient("yellowgem", 1),Ingredient("moonrockcrater", 1) }, 
     TECH.CELESTIAL_ONE, --- TECH.天体宝球
     {
-        -- nounlock=true,（这个东西  会让灯没法放置）
+        -- nounlock=true,（这个东西  会让灯没法放置）true的时候：没有【解锁】 机制，每次制作都得靠近科技 是否做过一次后，就永久解锁，不靠近科技也能做
+        -- 你要是不确定是false还是true 你就  not nil == true not false == true   not true == false(nil 和 false 在某些机制上是一样的)
         no_deconstruction=false,
         station_tag = "fwd_in_pdt_tag.moonrockseed",   --- 科技物品必须带这个 tag （ 几乎等于天体宝珠 ）
         -- builder_tag = "npng_tag.has_green_amulet",    --------- -- 【builder_tag】只给指定tag的角色能制造这件物品，角色添加/移除 tag 都能立马解锁/隐藏该物品

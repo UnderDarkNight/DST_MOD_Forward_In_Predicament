@@ -172,7 +172,7 @@ configuration_options =
         {description = IsChinese() and "关" or "OFF", data = false},
         {description = IsChinese() and "开" or "ON", data = true},
       },
-      default = false,
+      default = true,
   },
     -- {
     --     name = "compatibility_mode",
