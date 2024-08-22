@@ -182,6 +182,7 @@ AddPlayerPostInit(function(inst)
                 end
                 return num
             end
+                
         --------------- VC 值
             local function GetVcByFood(food)
                 local num = 0
@@ -227,6 +228,7 @@ AddPlayerPostInit(function(inst)
                 if prefab_list_with_vc_value[food_base_prefab] then
                     num = prefab_list_with_vc_value[food_base_prefab]
                 end
+
                 return num
             end
 
@@ -261,6 +263,10 @@ AddPlayerPostInit(function(inst)
                 }
                 if food_events_by_prefab[food_base_prefab] then
                     food_events_by_prefab[food_base_prefab](inst)
+                end
+                -- 吃含有怪物度的东西 增加中毒值
+                if food:HasTag("monster") then
+                    inst.components.fwd_in_pdt_wellness:DoDelta_Poison(5)
                 end
             end
         ---------------- 监听玩家吃食物的事件

@@ -1,4 +1,7 @@
 --蛤皮雨衣
+
+
+
 local assets =
 {
     Asset( "ANIM", "anim/fwd_in_pdt_frog_hound_skin_raincoat.zip" ),
@@ -69,8 +72,8 @@ local function fn()
 
   --本来是保暖的写法
     inst:AddComponent("insulator")
-    inst.components.insulator:SetInsulation(TUNING.INSULATION_MED*4)
-    inst.components.insulator:SetSummer()---有这一行 就变为隔热120了
+    inst.components.insulator:SetInsulation(TUNING.INSULATION_MED*4)   -- 480
+    inst.components.insulator:SetSummer()---有这一行 就变为隔热480了
 
 
     return inst

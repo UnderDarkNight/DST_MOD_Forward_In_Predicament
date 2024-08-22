@@ -42,7 +42,7 @@ local Prefabs_addr_base = string.sub(temp_addr,1,temp_str_index2) .. "/"    --- 
 local prefabs_name_list = {
 
 
-    -- "01_raw_milk",                           --- 生牛奶（在开发）
+    "01_raw_milk",                           --- 生牛奶
     "02_andrographis_paniculata_botany",     --- 雄黄饮剂
     "03_universal_antidote",                 --- 万能解毒剂
     "04_rise",                               --- 脱壳的稻米
