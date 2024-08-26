@@ -11,7 +11,9 @@ modimport("Key_Modules_Of_FWD_IN_PDT/12_turfs/02_cobbleroad.lua")               
 
 modimport("Key_Modules_Of_FWD_IN_PDT/12_turfs/03_grasslawn.lua")                --- 草格地皮
 
-modimport("Key_Modules_Of_FWD_IN_PDT/12_turfs/04_alloy_circuit_board.lua")                --- 自制地皮
+modimport("Key_Modules_Of_FWD_IN_PDT/12_turfs/04_alloy_circuit_board.lua")                --- 电路板地皮
+
+modimport("Key_Modules_Of_FWD_IN_PDT/12_turfs/05_alloy_circuit_board_other.lua")                --- 电路板地皮
 
 
 

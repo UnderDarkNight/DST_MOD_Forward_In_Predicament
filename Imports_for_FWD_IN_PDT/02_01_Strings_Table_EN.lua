@@ -949,6 +949,10 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["name"] = "Grass Lawn",
                 ["inspect_str"] = "Trimmed out of grass, one grid at a time",
             },
+            ["fwd_in_pdt_turf_alloy_circuit_board_other"] = {
+                ["name"] = "Alloy Circuit Board",
+                ["inspect_str"] = "Alloy Circuit Board from TECH.two",
+            },
         --------------------------------------------------------------------
         ---- 15_fwd_in_pdt_debuffs
         --------------------------------------------------------------------

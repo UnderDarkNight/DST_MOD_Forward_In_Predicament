@@ -217,6 +217,7 @@
         TECH.SCIENCE_TWO, --- THCH.二本科技
         {
             no_deconstruction=false,
+            numtogive = 4,
             atlas = "images/inventoryimages/fwd_in_pdt_turf_snakeskin.xml",
             -- atlas = GetInventoryItemAtlas("fishingrod.tex"),
             image = "fwd_in_pdt_turf_snakeskin.tex",
@@ -234,6 +235,7 @@
         TECH.SCIENCE_TWO, --- THCH.二本科技
         {
             no_deconstruction=false,
+            numtogive = 4,
             atlas = "images/inventoryimages/fwd_in_pdt_turf_cobbleroad.xml",
             -- atlas = GetInventoryItemAtlas("fishingrod.tex"),
             image = "fwd_in_pdt_turf_cobbleroad.tex",
@@ -251,6 +253,7 @@
         TECH.SCIENCE_TWO, --- THCH.二本科技
         {
             no_deconstruction=false,
+            numtogive = 4,
             atlas = "images/inventoryimages/fwd_in_pdt_turf_grasslawn.xml",
             -- atlas = GetInventoryItemAtlas("fishingrod.tex"),
             image = "fwd_in_pdt_turf_grasslawn.tex",
@@ -332,22 +335,43 @@ AddRecipeToFilter("fwd_in_pdt_item_special_packer","CONTAINERS")     ---- 添加
     )
     RemoveRecipeFromFilter("fwd_in_pdt_item_special_packer","MODS")                       -- -- 在【模组物品】标签里移除这个。
 -- --------------------------------------------------------------------------------------------------------------------------------------------
--- ---- 维生素A口服液
+-- 棕色电路板地皮
 -- --------------------------------------------------------------------------------------------------------------------------------------------
--- AddRecipeToFilter("fwd_in_pdt_item_vitamin_a_oral_solution","RESTORATION")     ---- 添加物品到目标标签
---     AddRecipe2(
---         "fwd_in_pdt_item_vitamin_a_oral_solution",            --  --  inst.prefab  实体名字
---         { Ingredient("fwd_in_pdt_food_pig_liver", 5),Ingredient("ice", 5) }, 
---         TECH.SCIENCE_TWO, --- 科学二本
---         {
---             -- nounlock=true,
---             no_deconstruction=false,
---             -- builder_tag = "npng_tag.has_green_amulet",    --------- -- 【builder_tag】只给指定tag的角色能制造这件物品，角色添加/移除 tag 都能立马解锁/隐藏该物品
---             -- placer = "fwd_in_pdt_item_talisman_that_repels_snakes",                       -------- 建筑放置器        
---             atlas = "images/inventoryimages/fwd_in_pdt_item_vitamin_a_oral_solution.xml",
---             image = "fwd_in_pdt_item_vitamin_a_oral_solution.tex",
---         },
---         {"RESTORATION","FWD_IN_PDT"}
---     )
---     RemoveRecipeFromFilter("fwd_in_pdt_item_vitamin_a_oral_solution","MODS")                       -- -- 在【模组物品】标签里移除这个。
+AddRecipeToFilter("turf_fwd_in_pdt_turf_alloy_circuit_board_other","DECOR")     ---- 添加物品到目标标签
+    AddRecipe2(
+        "turf_fwd_in_pdt_turf_alloy_circuit_board_other",            --  --  inst.prefab  实体名字
+        { Ingredient("transistor", 1), }, 
+        TECH.SCIENCE_TWO, --- 科学二本
+        {
+            -- nounlock=true,
+            no_deconstruction=false,
+            numtogive = 8,
+            -- builder_tag = "npng_tag.has_green_amulet",    --------- -- 【builder_tag】只给指定tag的角色能制造这件物品，角色添加/移除 tag 都能立马解锁/隐藏该物品
+            -- placer = "fwd_in_pdt_item_talisman_that_repels_snakes",                       -------- 建筑放置器        
+            atlas = "images/inventoryimages/fwd_in_pdt_turf_alloy_circuit_board_other.xml",
+            image = "fwd_in_pdt_turf_alloy_circuit_board_other.tex",
+        },
+        {"FWD_IN_PDT"}
+    )
+    RemoveRecipeFromFilter("turf_fwd_in_pdt_turf_alloy_circuit_board_other","MODS")                       -- -- 在【模组物品】标签里移除这个。
+-- --------------------------------------------------------------------------------------------------------------------------------------------
+-- 电路板地皮
+-- --------------------------------------------------------------------------------------------------------------------------------------------
+AddRecipeToFilter("turf_fwd_in_pdt_turf_alloy_circuit_board","DECOR")     ---- 添加物品到目标标签
+    AddRecipe2(
+        "turf_fwd_in_pdt_turf_alloy_circuit_board",            --  --  inst.prefab  实体名字
+        { Ingredient("transistor", 1), }, 
+        TECH.SCIENCE_TWO, --- 科学二本
+        {
+            -- nounlock=true,
+            no_deconstruction=false,
+            numtogive = 8,
+            -- builder_tag = "npng_tag.has_green_amulet",    --------- -- 【builder_tag】只给指定tag的角色能制造这件物品，角色添加/移除 tag 都能立马解锁/隐藏该物品
+            -- placer = "fwd_in_pdt_item_talisman_that_repels_snakes",                       -------- 建筑放置器        
+            atlas = "images/inventoryimages/fwd_in_pdt_turf_alloy_circuit_board.xml",
+            image = "fwd_in_pdt_turf_alloy_circuit_board.tex",
+        },
+        {"FWD_IN_PDT"}
+    )
+    RemoveRecipeFromFilter("turf_fwd_in_pdt_turf_alloy_circuit_board","MODS")                       -- -- 在【模组物品】标签里移除这个。
 -- --------------------------------------------------------------------------------------------------------------------------------------------

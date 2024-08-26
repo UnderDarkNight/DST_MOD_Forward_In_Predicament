@@ -6,13 +6,13 @@ if Assets == nil then
 end
 local temp_assets = {
     -- 被挖起来的地皮物品动画
-        Asset("ANIM", "anim/fwd_in_pdt_turf_alloy_circuit_board.zip"), 
+        Asset("ANIM", "anim/fwd_in_pdt_turf_alloy_circuit_board_other.zip"), 
     -- 物品栏贴图
-        Asset( "IMAGE", "images/inventoryimages/fwd_in_pdt_turf_alloy_circuit_board.tex" ),  -- 背包贴图
-        Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_turf_alloy_circuit_board.xml" ),
+        Asset( "IMAGE", "images/inventoryimages/fwd_in_pdt_turf_alloy_circuit_board_other.tex" ),  -- 背包贴图
+        Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_turf_alloy_circuit_board_other.xml" ),
     -- 地皮贴图
-        Asset( "IMAGE", "levels/textures/fwd_in_pdt_turf_alloy_circuit_board.tex" ),
-        Asset( "IMAGE", "levels/textures/fwd_in_pdt_turf_alloy_circuit_board_mini.tex" ),
+        Asset( "IMAGE", "levels/textures/fwd_in_pdt_turf_alloy_circuit_board_other.tex" ),
+        Asset( "IMAGE", "levels/textures/fwd_in_pdt_turf_alloy_circuit_board_other_mini.tex" ),
     -- 地皮边缘遮罩
         Asset( "IMAGE", "levels/tiles/fwd_in_pdt_stoneroad.tex" ),
         Asset( "IMAGE", "levels/tiles/fwd_in_pdt_stoneroad.tex" ),
@@ -33,7 +33,7 @@ local TileRanges =
     IMPASSABLE = "IMPASSABLE",
 }
 
-local turf_name = "fwd_in_pdt_turf_alloy_circuit_board"
+local turf_name = "fwd_in_pdt_turf_alloy_circuit_board_other"
 
 AddTile(
     string.upper(turf_name),                                             --- tile_name       地皮名称【官方都是大写的】【注意】建议全局唯一

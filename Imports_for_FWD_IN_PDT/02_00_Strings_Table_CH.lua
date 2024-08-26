@@ -945,14 +945,27 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             ["turf_fwd_in_pdt_turf_snakeskin"] = {
                 ["name"] = "蛇皮地毯",
                 ["inspect_str"] = "用蛇皮做成的地毯",
+                ["recipe_desc"] = "用蛇皮做成的地毯"
             },
             ["turf_fwd_in_pdt_turf_cobbleroad"] = {
                 ["name"] = "石砖地皮",
                 ["inspect_str"] = "用石砖堆砌成的地皮",
+                ["recipe_desc"] = "用石砖堆砌成的地皮"
             },
             ["turf_fwd_in_pdt_turf_grasslawn"] = {
                 ["name"] = "草格地皮",
                 ["inspect_str"] = "用草一个一个格子修整出的",
+                ["recipe_desc"] = "用草绳就能制作了"
+            },
+            ["turf_fwd_in_pdt_turf_alloy_circuit_board"] = {
+                ["name"] = "电路板地皮",
+                ["inspect_str"] = "电子元件的一种存在形式",
+                ["recipe_desc"] = "电子元件的一种存在形式"
+            },
+            ["turf_fwd_in_pdt_turf_alloy_circuit_board_other"] = {
+                ["name"] = "棕色电路板地皮",
+                ["inspect_str"] = "电子元件的另一种存在形式",
+                ["recipe_desc"] = "电子元件的一种存在形式"
             },
         --------------------------------------------------------------------
         ---- 15_fwd_in_pdt_debuffs
