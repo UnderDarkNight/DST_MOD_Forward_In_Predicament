@@ -42,6 +42,7 @@ local prefabs_name_list = {
     "12_doll_clamping_machine",      -- 娃娃机
     "13_fence",                      -- 围栏
     "14_lantern",                    -- 灯笼
+    -- "15_panda",
     "16_potting_a",                  -- 盆栽
     "17_lightning_rod"               -- 避茄针
 }
