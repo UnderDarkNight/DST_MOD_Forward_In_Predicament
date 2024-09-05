@@ -11,9 +11,6 @@ local assets =
     Asset("ANIM", "anim/fwd_in_pdt_building_avoidable_lunarthrall_plant_lightning_rod.zip"),
     Asset("ANIM", "anim/lightning_rod_fx.zip"),
     Asset("ANIM", "anim/firefighter_placement.zip"),
-
-    -- Asset("IMAGE","images/map_icons/fwd_in_pdt_building_avoidable_lunarthrall_plant_lightning_rod.tex"),
-    -- Asset("ATLAS","images/map_icons/fwd_in_pdt_building_avoidable_lunarthrall_plant_lightning_rod.xml"),
 }
 
 

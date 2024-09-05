@@ -9,7 +9,7 @@ modimport("Key_Modules_Of_FWD_IN_PDT/01_00_Player_Prefab_Upgrade/01_player_new_s
  --- 出生地点的修改
 
  
-modimport("Key_Modules_Of_FWD_IN_PDT/01_00_Player_Prefab_Upgrade/02_recipes_making_with_fx.lua")   
+-- modimport("Key_Modules_Of_FWD_IN_PDT/01_00_Player_Prefab_Upgrade/02_recipes_making_with_fx.lua")   
  --- 制作物品的时候播放特效动画inst
 
 
