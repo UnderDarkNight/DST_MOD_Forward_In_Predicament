@@ -7,6 +7,30 @@
 if not TUNING["Forward_In_Predicament.Config"].POWERFUL_WEAPON_MOD then
     return
 end
+-- function AddfwdTag(owner,tag)
+-- 	owner.fwd_tag = owner.fwd_tag or {}
+	
+-- 	if owner:HasTag(tag) then
+-- 		owner.fwd_tag[tag] = (owner.fwd_tag[tag] or 1) + 1
+-- 	else
+-- 		owner.fwd_tag[tag] = 1
+-- 		owner:AddTag(tag)
+-- 	end
+-- end
+-- --移除临时标签
+-- function RemovefwdTag(owner,tag)
+-- 	if owner.fwd_tag and owner.fwd_tag[tag] then
+-- 		owner.fwd_tag[tag] = owner.fwd_tag[tag] > 1 and owner.fwd_tag[tag]-1 or nil
+-- 		if owner.fwd_tag[tag] == nil then
+-- 			owner:RemoveTag(tag)
+-- 		end
+-- 	else
+-- 		owner:RemoveTag(tag)
+-- 	end
+-- end
+-- GLOBAL.AddTag=AddfwdTag--添加临时标签,参数(目标对象,标签)
+-- GLOBAL.RemoveMedalTag=RemovefwdTag--移除临时标签,参数(目标对象,标签)
+
 
 local assets =
 {
@@ -60,6 +84,8 @@ local assets =
 local function onequip(inst, owner)
     local skinname = tostring(inst.skinname)
     local bank = skins_data_item[skinname] and skins_data_item[skinname].onequip_bank
+		-- owner.isbeeking=true
+		
 
     owner.AnimState:OverrideSymbol("swap_object", bank or "fwd_in_pdt_equipment_repair_staff_swap", "swap_object")    
     owner.AnimState:Show("ARM_carry")
@@ -70,6 +96,8 @@ local function onunequip(inst, owner)
     owner.AnimState:Hide("ARM_carry")
     owner.AnimState:Show("ARM_normal")
     owner.AnimState:ClearOverrideSymbol("swap_object")
+        -- owner.isbeeking=nil
+        
 end
 
 local function fn()

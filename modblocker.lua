@@ -14,6 +14,30 @@ require("maputil")
 require("vecutil")
 require("datagrid")
 require("worldsettingsutil")
+function AddfwdTag(owner,tag)
+	owner.fwd_tag = owner.fwd_tag or {}
+	
+	if owner:HasTag(tag) then
+		owner.fwd_tag[tag] = (owner.fwd_tag[tag] or 1) + 1
+	else
+		owner.fwd_tag[tag] = 1
+		owner:AddTag(tag)
+	end
+end
+--移除临时标签
+function RemovefwdTag(owner,tag)
+	if owner.fwd_tag and owner.fwd_tag[tag] then
+		owner.fwd_tag[tag] = owner.fwd_tag[tag] > 1 and owner.fwd_tag[tag]-1 or nil
+		if owner.fwd_tag[tag] == nil then
+			owner:RemoveTag(tag)
+		end
+	else
+		owner:RemoveTag(tag)
+	end
+end
+GLOBAL.AddTag=AddfwdTag--添加临时标签,参数(目标对象,标签)
+GLOBAL.RemoveMedalTag=RemovefwdTag--移除临时标签,参数(目标对象,标签)
+
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --- 为保证本MOD 的良好顺畅体验，屏蔽掉一些容易造成崩溃的MOD，或者检测到不利于本MOD运行的情况
         local temp_this_mod_name = modname

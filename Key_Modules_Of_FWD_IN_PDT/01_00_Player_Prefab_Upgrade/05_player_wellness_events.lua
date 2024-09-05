@@ -59,10 +59,8 @@ AddPlayerPostInit(function(inst)
                             inst.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_frog_poison")                        
                         end
                     end,
-                    ["fwd_in_pdt_animal_frog_hound"] = function()   ---- 二蛤有50%概率上毒
-                        if math.random(100) < 50 then
+                    ["fwd_in_pdt_animal_frog_hound"] = function()   ---- 二蛤有100%概率上毒
                             inst.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_frog_poison")                        
-                        end
                     end,
                     ["fwd_in_pdt_animal_snake"] = function()            --- 蛇 20% 造成中毒
                         if math.random(1000) <= 200 then
@@ -70,11 +68,8 @@ AddPlayerPostInit(function(inst)
                             inst.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_snake_poison")                        
                         end
                     end,
-                    ["fwd_in_pdt_animal_snake_hound"] = function()            --- 蛇狗 50% 造成中毒
-                        if math.random(1000) <= 500 then
-                            -- print(" +++ 添加蛇毒 +++ ")
+                    ["fwd_in_pdt_animal_snake_hound"] = function()            --- 蛇狗 100% 造成中毒
                             inst.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_snake_poison")                        
-                        end
                     end,
                     ["daywalker"] = function()            --- 梦魇疯猪 100% 癫痫
                             inst.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_mouse_and_camera_crazy")                        

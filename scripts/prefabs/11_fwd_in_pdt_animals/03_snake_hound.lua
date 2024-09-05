@@ -310,7 +310,7 @@ local function fncommon()
     inst:AddComponent("entitytracker")
 
     inst:AddComponent("health")
-    inst.components.health:SetMaxHealth(1000)  -- TUNING.HOUND_HEALTH
+    inst.components.health:SetMaxHealth(2000)  -- TUNING.HOUND_HEALTH
 
     inst:AddComponent("sanityaura")
     inst.components.sanityaura.aura = -TUNING.SANITYAURA_MED
@@ -325,10 +325,8 @@ local function fncommon()
 
     inst:AddComponent("lootdropper")
     inst.components.lootdropper:AddChanceLoot("monstermeat", 1)
-    inst.components.lootdropper:AddChanceLoot("monstermeat", 0.5)
     inst.components.lootdropper:AddChanceLoot("fwd_in_pdt_material_snake_skin", 0.5)
-    inst.components.lootdropper:AddChanceLoot("fwd_in_pdt_material_snake_skin", 0.5)
-    inst.components.lootdropper:AddChanceLoot("fwd_in_pdt_material_snake_skin", 1)
+    
 
     inst:AddComponent("inspectable")
 

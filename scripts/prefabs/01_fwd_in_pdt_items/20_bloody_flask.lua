@@ -70,6 +70,7 @@ local function fn()
 
     inst:AddComponent("edible") -- 可食物组件
     -- inst.components.edible.foodtype = FOODTYPE.ROUGHAGE  -- 牛食物
+    inst.components.edible.foodtype = FOODTYPE.MEAT
     inst.components.edible:SetOnEatenFn(function(inst,eater)
         if eater and eater:HasTag("fwd_in_pdt_carl") then
             if eater.components.health then

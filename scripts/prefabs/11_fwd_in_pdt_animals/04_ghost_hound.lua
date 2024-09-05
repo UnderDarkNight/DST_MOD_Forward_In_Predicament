@@ -241,7 +241,7 @@ local function fncommon()
     inst:AddTag("scarytooceanprey")
     inst:AddTag("monster")
     inst:AddTag("hostile")
-    inst:AddTag("ghost")             --- 归类为蛇
+    inst:AddTag("ghost")             --- 归类为鬼魂
     inst:AddTag("canbestartled")
     inst:AddTag("fwd_in_pdt_animal_ghost_hound")
 
@@ -323,6 +323,7 @@ local function fncommon()
 	inst.components.combat.lastwasattackedtime = -math.huge --for brain
 
     inst:AddComponent("lootdropper")
+    
     inst.components.lootdropper:AddChanceLoot("fishmeat", 0.5)
     inst.components.lootdropper:AddChanceLoot("fishmeat", 0.5)
     inst.components.lootdropper:AddChanceLoot("fishmeat", 0.5)
