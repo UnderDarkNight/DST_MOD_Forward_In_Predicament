@@ -77,8 +77,6 @@ local assets =
           
 -------------------------------------------------------------------------------------------------------------------------------
 
-
-
 local function onequip(inst, owner)
     local skinname = tostring(inst.skinname)
     local bank = skins_data_item[skinname] and skins_data_item[skinname].onequip_bank
@@ -127,7 +125,6 @@ local function fn()
 
     inst.entity:SetPristine()
 
-    
     --------------------------------------------------------------------
     --- 容器安装
         if TheWorld.ismastersim then

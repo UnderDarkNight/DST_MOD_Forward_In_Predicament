@@ -196,6 +196,8 @@ local function fn()
             give_back_core.components.stackable:SetStackSize(2)
             owner.components.inventory:GiveItem(give_back_core)
         end
+        -- inst:RemoveComponent("equippable")
+        -- inst:RemoveComponent("weapon")
         inst:Remove()
     end)
 

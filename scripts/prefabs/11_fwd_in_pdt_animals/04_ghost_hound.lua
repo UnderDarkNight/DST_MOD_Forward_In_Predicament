@@ -211,7 +211,7 @@ local function unique_mechanics_setup(inst)
         --     damagetypemult = damagetypemult * self.inst.components.damagetyperesist:GetResist(attacker, weapon)
         -- end
         inst:AddComponent("damagetyperesist")
-        inst.components.damagetyperesist:AddResist("monster",inst,0.8,"monster_dmg_down")
+        inst.components.damagetyperesist:AddResist("player",inst,0.2,"monster_dmg_down")
 
     ---------------------------------------------------------------------------------------------
     -- 刷灯光

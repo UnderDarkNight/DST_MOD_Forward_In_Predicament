@@ -73,7 +73,7 @@ local function container_Widget_change(theContainer)
                 return false
             end
 
-            if item:HasTag("smallcreature") then
+            if item:HasTag("smallcreature") then   -- 小生物可以
                 return true
             end
 

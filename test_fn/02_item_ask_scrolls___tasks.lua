@@ -80,7 +80,7 @@ return {
     }
 },
 
---花*40任务 由于没有奖励的花墙蓝图暂时放置在这里
+--花*40任务 
 ["fwd_in_pdt_task_scroll__petals"] = {
    index = "fwd_in_pdt_task_scroll__petals",                         --- 任务index
     atlas = "images/ui_images/fwd_in_pdt_task_scrolls.xml",         --- 卷轴显示的图片

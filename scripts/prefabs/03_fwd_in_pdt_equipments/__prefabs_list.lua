@@ -48,7 +48,7 @@ local prefabs_name_list = {
     "18_bobble_loong",                  --- 泡泡龙气球
     "19_magic_spatula",                 --- 魔法锅铲
     "20_shield_of_light",               --- 光之护盾
-    "21_void_fishing_rod",              --- 虚空鱼竿
+    -- "21_void_fishing_rod",              --- 虚空鱼竿
     "22_telescope",                     --- 望远镜
     "23_frog_hound_skin_raincoat",      --- 哈皮雨衣
     "24_ocean_fork",                    --- 填海叉

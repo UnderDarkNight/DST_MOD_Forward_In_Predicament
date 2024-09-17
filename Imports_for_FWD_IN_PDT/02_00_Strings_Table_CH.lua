@@ -401,11 +401,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "以光为盾，格挡伤害",
                 ["recipe_desc"] = "以光为盾，格挡伤害",
             },
-            ["fwd_in_pdt_void_fishingrod"] = {
-                ["name"] = "虚空钓竿",
-                ["inspect_str"] = "能从虚空中钓出某些东西",
-                ["recipe_desc"] = "能从虚空中钓出某些东西",
-            },
+            -- ["fwd_in_pdt_void_fishingrod"] = {
+            --     ["name"] = "虚空钓竿",
+            --     ["inspect_str"] = "能从虚空中钓出某些东西",
+            --     ["recipe_desc"] = "能从虚空中钓出某些东西",
+            -- },
             ["fwd_in_pdt_equipment_telescope"] = {
                 ["name"] = "望远镜",
                 ["inspect_str"] = "能观察远处的地方",
