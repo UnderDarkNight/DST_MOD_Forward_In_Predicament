@@ -688,6 +688,8 @@
     local fwd_in_pdt_food_bread = {
         test = function(cooker, names, tags)
             return (names.fwd_in_pdt_food_wheat_flour or 0) >= 4
+
+            or (name.lg_mianfen or 0) >=4       --海传面粉也行
             -- local fwd_in_pdt_food_wheat_flour = names.fwd_in_pdt_food_wheat_flour or 0
             -- if fwd_in_pdt_food_wheat_flour >= 4 then
             --     return true
@@ -831,6 +833,8 @@ AddCookerRecipe("archive_cookpot", fwd_in_pdt_food_garlic_cucumber) --档案馆�
 local fwd_in_pdt_food_coffee_luwak = {
     test = function(cooker, names, tags)
         return (names.fwd_in_pdt_food_coffeebeans or 0) >=3 and (names.fwd_in_pdt_food_cat_feces or 0) >=1
+
+        or (names.lg_coffee or 0) >=3 and (names.fwd_in_pdt_food_cat_feces or 0) >=1 -- 海传咖啡做了兼容
         -- if fwd_in_pdt_food_soybeans >= 4  then
         --     return true
         -- end

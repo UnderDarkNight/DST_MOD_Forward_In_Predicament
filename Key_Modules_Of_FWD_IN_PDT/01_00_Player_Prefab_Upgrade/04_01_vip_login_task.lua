@@ -143,7 +143,7 @@ AddPlayerPostInit(function(inst)
                     ---- 灯笼（月亮皮肤）(哥特皮肤)
                         -- ["fwd_in_pdt_building_lantern"] = {
                         --     "fwd_in_pdt_building_lantern_gothic",
-                        --     -- "fwd_in_pdt_building_lantern_moon",
+                        --     -- "fwd_in_pdt_building_lantern_moon",  -- 单独发放
                         -- },
                      ---- 花围栏
                         ["fwd_in_pdt_building_flower_fence_item"] = {

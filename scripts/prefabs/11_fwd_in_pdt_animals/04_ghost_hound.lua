@@ -170,9 +170,9 @@ end
 local function unique_mechanics_setup(inst)
 
     ---------------------------------------------------------------------------------------------
-    ----- 被杀死的瞬间，有概率 裂变成4-8 只鬼魂
+    ----- 被杀死的瞬间，有35%概率 裂变成4-8 只鬼魂
             inst:ListenForEvent("minhealth",function()  --- 被杀死的瞬间  裂变
-                if not TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE and math.random(1000)/1000 > 0.25 then
+                if not TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE and math.random(1000)/1000 > 0.35 then
                     return
                 end
 
@@ -211,7 +211,7 @@ local function unique_mechanics_setup(inst)
         --     damagetypemult = damagetypemult * self.inst.components.damagetyperesist:GetResist(attacker, weapon)
         -- end
         inst:AddComponent("damagetyperesist")
-        inst.components.damagetyperesist:AddResist("monster",inst,0.5,"monster_dmg_down")
+        inst.components.damagetyperesist:AddResist("monster",inst,0.8,"monster_dmg_down")
 
     ---------------------------------------------------------------------------------------------
     -- 刷灯光
@@ -324,16 +324,11 @@ local function fncommon()
 
     inst:AddComponent("lootdropper")
     
-    inst.components.lootdropper:AddChanceLoot("fishmeat", 0.5)
-    inst.components.lootdropper:AddChanceLoot("fishmeat", 0.5)
-    inst.components.lootdropper:AddChanceLoot("fishmeat", 0.5)
-    inst.components.lootdropper:AddChanceLoot("fishmeat", 0.5)
-    inst.components.lootdropper:AddChanceLoot("fishmeat", 0.5)
-    inst.components.lootdropper:AddChanceLoot("barnacle", 0.5)
-    inst.components.lootdropper:AddChanceLoot("barnacle", 0.5)
-    inst.components.lootdropper:AddChanceLoot("barnacle", 0.5)
-    inst.components.lootdropper:AddChanceLoot("barnacle", 0.5)
-    inst.components.lootdropper:AddChanceLoot("barnacle", 0.5)
+    inst.components.lootdropper:AddChanceLoot("fishmeat", 1)
+    inst.components.lootdropper:AddChanceLoot("messagebottleempty", 1)
+    inst.components.lootdropper:AddChanceLoot("ancienttree_seed", 1)
+
+
 
 
     inst:AddComponent("inspectable")

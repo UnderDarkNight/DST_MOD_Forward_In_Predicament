@@ -170,9 +170,9 @@ end
 local function unique_mechanics_setup(inst)
 
     ---------------------------------------------------------------------------------------------
-    ----- 被杀死的瞬间，有概率 裂变成4 只
+    ----- 被杀死的瞬间，有5%概率 裂变成4 只
             inst:ListenForEvent("minhealth",function()  --- 被杀死的瞬间  裂变
-                if not TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE and math.random(1000)/1000 > 0.25 then
+                if not TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE and math.random(1000)/1000 > 0.05 then
                     return
                 end
 

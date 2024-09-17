@@ -59,6 +59,11 @@ AddPlayerPostInit(function(inst)
                             inst.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_frog_poison")                        
                         end
                     end,
+                    ["lunarfrog"] = function()   -- 明眼青蛙30%中毒
+                        if math.random(1000) <= 300 then
+                            inst.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_frog_poison")
+                        end
+                    end,
                     ["fwd_in_pdt_animal_frog_hound"] = function()   ---- 二蛤有100%概率上毒
                             inst.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_frog_poison")                        
                     end,
@@ -301,7 +306,7 @@ AddPlayerPostInit(function(inst)
                 inst:DoTaskInTime(math.random(100),function()
                     if TheWorld.state.isspring then
                         --- 春天的前两天
-                        if TheWorld.state.remainingdaysinseason <= 18 then
+                        if TheWorld.state.remainingdaysinseason >= 18 then
                                 if math.random(1000) < 200 then -- 20% 得发烧
                                         if not inst.components.fwd_in_pdt_wellness:Get("fever_block") then
                                                     inst.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_fever")
@@ -321,7 +326,7 @@ AddPlayerPostInit(function(inst)
 
                     elseif TheWorld.state.iswinter then
                         --- 冬天的前两天
-                        if TheWorld.state.remainingdaysinseason <= 13 then
+                        if TheWorld.state.remainingdaysinseason >= 13 then
                                 if math.random(1000) < 200 then -- 20% 得发烧
                                     if not inst.components.fwd_in_pdt_wellness:Get("fever_block") then                                    
                                                 inst.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_fever")

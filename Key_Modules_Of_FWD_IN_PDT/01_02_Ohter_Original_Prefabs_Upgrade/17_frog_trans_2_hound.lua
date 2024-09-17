@@ -21,13 +21,13 @@ AddPrefabPostInit(
                 return
             end
             ----------------------------------------------------------------------------------
-            ---- 玩家杀 一定的数量必出蛤蟆
+            ---- 玩家杀一定数量的青蛙  必出二蛤
                 local must_transfrom_flag = false
                 if _table and _table.afflicter and _table.afflicter:HasTag("player") then
                     -- print("+++++++++++",_table.cause,_table.afflicter)
                     local player = _table.afflicter
                     if player.components.fwd_in_pdt_data then
-                        if player.components.fwd_in_pdt_data:Add("fwd_in_pdt_animal_frog_hound.flag_num",1) >= 8 then   --- 8 只
+                        if player.components.fwd_in_pdt_data:Add("fwd_in_pdt_animal_frog_hound.flag_num",1) >= 20 then   --- 20 只
                             must_transfrom_flag = true
                             player.components.fwd_in_pdt_data:Set("fwd_in_pdt_animal_frog_hound.flag_num",0)
                         end

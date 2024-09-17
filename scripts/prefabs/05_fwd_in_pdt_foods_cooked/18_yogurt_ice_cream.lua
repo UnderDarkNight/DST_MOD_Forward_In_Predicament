@@ -51,18 +51,15 @@ local function fn()
     inst.components.edible.foodtype = FOODTYPE.GOODIES
     inst.components.edible:SetOnEatenFn(function(inst,eater)
         if eater:HasTag("player") and not eater:HasTag("playerghost") then
-        --     eater:AddDebuff("sweettea_buff", "sweettea_buff")
-        -- else
+
             if eater.components.freezable then
                 eater.components.freezable:AddColdness(5)  --- 增加5层冰冻层数，似乎刚好冻结
             end
         end
-        if eater and eater:HasTag("player") then
             --- 体温低 10 体温
             if eater.components.temperature then
                 eater.components.temperature:DoDelta(-10)
             end
-        end
     end)
 
     inst:AddComponent("perishable") -- 可腐烂的组件

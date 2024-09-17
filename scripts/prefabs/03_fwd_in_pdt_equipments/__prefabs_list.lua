@@ -61,7 +61,7 @@ local prefabs_name_list = {
 ---- 正在测试的物品
 if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE == true then
     local debugging_name_list = {
-
+        -- "25_insect_staff",
 
 
     }
