@@ -155,3 +155,4 @@ inst.components.fwd_in_pdt_data:Add(name,num) ,num必须给 number格式，是�
 
 21、日常任务/签到系统，真实的时间，每天只执行一次（利用了跨存档系统）
 【scripts\components\fwd_in_pdt_func\01_06_daily_task.lua】
+

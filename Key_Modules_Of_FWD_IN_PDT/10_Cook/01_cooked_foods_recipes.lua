@@ -64,7 +64,7 @@
 
     -- AddCookerRecipe("cookpot", fwd_in_pdt_food_mixed_potato_soup) -- 将食谱添加进普通锅
     AddCookerRecipe("portablecookpot", fwd_in_pdt_food_mixed_potato_soup) -- 将食谱添加进便携锅(大厨锅)
-    AddCookerRecipe("archive_cookpot", fwd_in_pdt_food_mixed_potato_soup) -- 档案馆远古窑，有好多mod作者忽略了这口锅
+    AddCookerRecipe("archive_cookpot", fwd_in_pdt_food_mixed_potato_soup) --档案馆远古窑，有好多mod作者忽略了这口锅
 ---------------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------
 ----- 蜂蜜蒸橙
@@ -106,7 +106,7 @@
 
     -- AddCookerRecipe("cookpot", fwd_in_pdt_food_steamed_orange_with_honey) -- 将食谱添加进普通锅
     AddCookerRecipe("portablecookpot", fwd_in_pdt_food_steamed_orange_with_honey) -- 将食谱添加进便携锅(大厨锅)
-    AddCookerRecipe("archive_cookpot", fwd_in_pdt_food_steamed_orange_with_honey) -- 档案馆远古窑，有好多mod作者忽略了这口锅
+    AddCookerRecipe("archive_cookpot", fwd_in_pdt_food_steamed_orange_with_honey) --档案馆远古窑，有好多mod作者忽略了这口锅
 ---------------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------
 ----- 番茄炒蛋
@@ -145,7 +145,7 @@
 
     AddCookerRecipe("cookpot", fwd_in_pdt_food_scrambled_eggs_with_tomatoes) -- 将食谱添加进普通锅
     AddCookerRecipe("portablecookpot", fwd_in_pdt_food_scrambled_eggs_with_tomatoes) -- 将食谱添加进便携锅(大厨锅)
-    AddCookerRecipe("archive_cookpot", fwd_in_pdt_food_scrambled_eggs_with_tomatoes) -- 档案馆远古窑，有好多mod作者忽略了这口锅
+    AddCookerRecipe("archive_cookpot", fwd_in_pdt_food_scrambled_eggs_with_tomatoes) --档案馆远古窑，有好多mod作者忽略了这口锅
 ---------------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------
 ----- 茄子盒
@@ -186,7 +186,7 @@
 
     AddCookerRecipe("cookpot", fwd_in_pdt_food_eggplant_casserole) -- 将食谱添加进普通锅
     AddCookerRecipe("portablecookpot", fwd_in_pdt_food_eggplant_casserole) -- 将食谱添加进便携锅(大厨锅)
-    AddCookerRecipe("archive_cookpot", fwd_in_pdt_food_eggplant_casserole) -- 档案馆远古窑，有好多mod作者忽略了这口锅
+    AddCookerRecipe("archive_cookpot", fwd_in_pdt_food_eggplant_casserole) --档案馆远古窑，有好多mod作者忽略了这口锅
 ---------------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------
 ----- 自然的馈赠
@@ -221,7 +221,7 @@
 
     AddCookerRecipe("cookpot", fwd_in_pdt_food_gifts_of_nature) -- 将食谱添加进普通锅
     AddCookerRecipe("portablecookpot", fwd_in_pdt_food_gifts_of_nature) -- 将食谱添加进便携锅(大厨锅)
-    AddCookerRecipe("archive_cookpot", fwd_in_pdt_food_gifts_of_nature) -- 档案馆远古窑，有好多mod作者忽略了这口锅
+    AddCookerRecipe("archive_cookpot", fwd_in_pdt_food_gifts_of_nature) --档案馆远古窑，有好多mod作者忽略了这口锅
 ---------------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------
 ----- 蛇皮冻
@@ -320,7 +320,7 @@
 
     AddCookerRecipe("cookpot", pinellia_ternata_pills) -- 将食谱添加进普通锅
     AddCookerRecipe("portablecookpot", pinellia_ternata_pills) -- 将食谱添加进便携锅(大厨锅)
-    AddCookerRecipe("archive_cookpot", pinellia_ternata_pills) -- 档案馆远古窑，有好多mod作者忽略了这口锅
+    AddCookerRecipe("archive_cookpot", pinellia_ternata_pills) --档案馆远古窑，有好多mod作者忽略了这口锅
 ---------------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------
 ----- 紫苑药丸
@@ -350,7 +350,7 @@
 
     AddCookerRecipe("cookpot", aster_tataricus_l_f_pills) -- 将食谱添加进普通锅
     AddCookerRecipe("portablecookpot", aster_tataricus_l_f_pills) -- 将食谱添加进便携锅(大厨锅)
-    AddCookerRecipe("archive_cookpot", aster_tataricus_l_f_pills) -- 档案馆远古窑，有好多mod作者忽略了这口锅
+    AddCookerRecipe("archive_cookpot", aster_tataricus_l_f_pills) --档案馆远古窑，有好多mod作者忽略了这口锅
 ---------------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------
 ----- 红伞伞蘑菇汤
@@ -386,7 +386,7 @@
 
     AddCookerRecipe("cookpot", fwd_in_pdt_food_red_mushroom_soup) -- 将食谱添加进普通锅
     AddCookerRecipe("portablecookpot", fwd_in_pdt_food_red_mushroom_soup) -- 将食谱添加进便携锅(大厨锅)
-    AddCookerRecipe("archive_cookpot", fwd_in_pdt_food_red_mushroom_soup) -- 档案馆远古窑，有好多mod作者忽略了这口锅
+    AddCookerRecipe("archive_cookpot", fwd_in_pdt_food_red_mushroom_soup) --档案馆远古窑，有好多mod作者忽略了这口锅
 ---------------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------
 ----- 绿伞伞蘑菇汤
@@ -422,7 +422,7 @@
 
     AddCookerRecipe("cookpot", fwd_in_pdt_food_green_mushroom_soup) -- 将食谱添加进普通锅
     AddCookerRecipe("portablecookpot", fwd_in_pdt_food_green_mushroom_soup) -- 将食谱添加进便携锅(大厨锅)
-    AddCookerRecipe("archive_cookpot", fwd_in_pdt_food_green_mushroom_soup) -- 档案馆远古窑，有好多mod作者忽略了这口锅
+    AddCookerRecipe("archive_cookpot", fwd_in_pdt_food_green_mushroom_soup) --档案馆远古窑，有好多mod作者忽略了这口锅
 ---------------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------
 ----- 豆腐
@@ -458,7 +458,7 @@
 
     -- AddCookerRecipe("cookpot", fwd_in_pdt_food_tofu) -- 将食谱添加进普通锅
     AddCookerRecipe("portablecookpot", fwd_in_pdt_food_tofu) -- 将食谱添加进便携锅(大厨锅)
-    AddCookerRecipe("archive_cookpot", fwd_in_pdt_food_tofu) -- 档案馆远古窑，有好多mod作者忽略了这口锅
+    AddCookerRecipe("archive_cookpot", fwd_in_pdt_food_tofu) --档案馆远古窑，有好多mod作者忽略了这口锅
 ---------------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------
 ----- 熟牛奶
@@ -494,7 +494,7 @@
 
     AddCookerRecipe("cookpot", fwd_in_pdt_food_cooked_milk) -- 将食谱添加进普通锅
     AddCookerRecipe("portablecookpot", fwd_in_pdt_food_cooked_milk) -- 将食谱添加进便携锅(大厨锅)
-    AddCookerRecipe("archive_cookpot", fwd_in_pdt_food_cooked_milk) -- 档案馆远古窑，有好多mod作者忽略了这口锅
+    AddCookerRecipe("archive_cookpot", fwd_in_pdt_food_cooked_milk) --档案馆远古窑，有好多mod作者忽略了这口锅
 ---------------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------
 ----- 咖啡
@@ -535,7 +535,7 @@
 
     AddCookerRecipe("cookpot", fwd_in_pdt_food_coffee) -- 将食谱添加进普通锅
     AddCookerRecipe("portablecookpot", fwd_in_pdt_food_coffee) -- 将食谱添加进便携锅(大厨锅)
-    AddCookerRecipe("archive_cookpot", fwd_in_pdt_food_coffee) -- 档案馆远古窑，有好多mod作者忽略了这口锅
+    AddCookerRecipe("archive_cookpot", fwd_in_pdt_food_coffee) --档案馆远古窑，有好多mod作者忽略了这口锅
 ---------------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------
 ----- 生理盐水
@@ -688,8 +688,6 @@
     local fwd_in_pdt_food_bread = {
         test = function(cooker, names, tags)
             return (names.fwd_in_pdt_food_wheat_flour or 0) >= 4
-
-            or (name.lg_mianfen or 0) >=4       --海传面粉也行
             -- local fwd_in_pdt_food_wheat_flour = names.fwd_in_pdt_food_wheat_flour or 0
             -- if fwd_in_pdt_food_wheat_flour >= 4 then
             --     return true
@@ -833,8 +831,6 @@ AddCookerRecipe("archive_cookpot", fwd_in_pdt_food_garlic_cucumber) --档案馆�
 local fwd_in_pdt_food_coffee_luwak = {
     test = function(cooker, names, tags)
         return (names.fwd_in_pdt_food_coffeebeans or 0) >=3 and (names.fwd_in_pdt_food_cat_feces or 0) >=1
-
-        or (names.lg_coffee or 0) >=3 and (names.fwd_in_pdt_food_cat_feces or 0) >=1 -- 海传咖啡做了兼容
         -- if fwd_in_pdt_food_soybeans >= 4  then
         --     return true
         -- end
