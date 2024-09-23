@@ -193,7 +193,7 @@ local function dig_up_common(inst, worker, numberries)
                     inst.components.lootdropper:SpawnLootPrefab(inst.components.pickable.product, pt)
                 end
             end
-            inst.components.lootdropper:SpawnLootPrefab("dug_"..inst.prefab)
+            inst.components.lootdropper:SpawnLootPrefab("fwd_in_pdt_dug_coffeebush")
         end
     end
     inst:Remove()

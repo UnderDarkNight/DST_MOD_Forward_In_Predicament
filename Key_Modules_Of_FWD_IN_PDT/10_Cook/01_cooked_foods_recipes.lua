@@ -502,7 +502,7 @@
         test = function(cooker, names, tags)
             return ( (names.fwd_in_pdt_food_coffeebeans or 0) >= 3 and (names.honey or 0) + (names.royal_jelly or 0) >=1 )
                     or ( (names.fwd_in_pdt_food_coffeebeans or 0) >= 4 )
-                    or ( (names.lg_coffee or 0) >= 3 and (names.honey or 0) + (names.royal_jelly or 0) >=1 )
+                    or ( (names.lg_coffee or 0) >= 3 and (names.honey or 0) + (names.royal_jelly or 0) >=1 ) -- 海传兼容
                     or  ( (names.lg_coffee or 0) >= 4 )
                     
             -- local fwd_in_pdt_food_coffeebeans = names.fwd_in_pdt_food_coffeebeans or 0

@@ -101,11 +101,23 @@ local function fn()
             -- SpawnPrefab("fwd_in_pdt_fx_collapse"):PushEvent("Set",{
             --     pt = Vector3(inst.Transform:GetWorldPosition())
             -- })
-            local loots = {"fwd_in_pdt_plant_orange_seed"}
-            local num = math.random(3,8)
-            for i = 1, num, 1 do
-                table.insert(loots,"fwd_in_pdt_food_orange")
-            end
+            local loots = {}
+            table.insert(loots,"fwd_in_pdt_food_orange")
+            table.insert(loots,"fwd_in_pdt_food_orange")
+            table.insert(loots,"fwd_in_pdt_food_orange")
+            table.insert(loots,"fwd_in_pdt_food_orange")
+            table.insert(loots,"fwd_in_pdt_food_orange")
+            table.insert(loots,"fwd_in_pdt_food_orange")
+            table.insert(loots,"fwd_in_pdt_food_orange")
+            table.insert(loots,"fwd_in_pdt_food_orange")
+            table.insert(loots,"fwd_in_pdt_food_orange")
+            table.insert(loots,"fwd_in_pdt_food_orange")
+
+            table.insert(loots,"fwd_in_pdt_plant_orange_seed")
+            table.insert(loots,"fwd_in_pdt_plant_orange_seed")
+            table.insert(loots,"fwd_in_pdt_plant_orange_seed")
+            table.insert(loots,"fwd_in_pdt_plant_orange_seed")
+            
             inst.components.lootdropper:SetLoot(loots)
             inst.components.lootdropper:DropLoot()
             inst:Remove()

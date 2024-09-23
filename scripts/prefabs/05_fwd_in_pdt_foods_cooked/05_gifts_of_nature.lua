@@ -48,7 +48,7 @@ local function fn()
     inst.components.edible.foodtype = FOODTYPE.GOODIES
     inst.components.edible:SetOnEatenFn(function(inst,eater)
         if eater and eater:HasTag("player") then
-            -- 血糖值增加20
+            -- 值增加20
             if eater.components.fwd_in_pdt_wellness then
                 eater.components.fwd_in_pdt_wellness:DoDelta_Glucose(20)
                 eater.components.fwd_in_pdt_wellness:ForceRefresh()
