@@ -77,6 +77,7 @@ AddPlayerPostInit(function(inst)
                         ["fwd_in_pdt_equipment_blazing_nightmaresword"] = {
                             "fwd_in_pdt_equipment_blazing_nightmaresword_sharp",
                             "fwd_in_pdt_equipment_blazing_nightmaresword_fengyan",
+                            -- "fwd_in_pdt_equipment_blazing_nightmaresword_king"  -- 王权剑皮肤
                         },
                     ---- 极寒暗影剑
                         ["fwd_in_pdt_equipment_frozen_nightmaresword"] = {
@@ -86,6 +87,7 @@ AddPlayerPostInit(function(inst)
                     ---- 炽热火腿
                         ["fwd_in_pdt_equipment_blazing_hambat"] = {
                             "fwd_in_pdt_equipment_blazing_hambat_drumstick",
+                            -- "fwd_in_pdt_equipment_blazing_hambat_fork"       -- 叉子火腿皮肤
                         },
                     ---- 极寒火腿
                         ["fwd_in_pdt_equipment_frozen_hambat"] = {
@@ -140,10 +142,10 @@ AddPlayerPostInit(function(inst)
                         ["fwd_in_pdt_building_paddy_windmill"] = {
                             "fwd_in_pdt_building_paddy_windmill_pink",
                         },
-                    ---- 灯笼（月亮皮肤）(哥特皮肤)
+                    ---- 灯笼
                         -- ["fwd_in_pdt_building_lantern"] = {
-                        --     "fwd_in_pdt_building_lantern_gothic",
-                        --     -- "fwd_in_pdt_building_lantern_moon",  -- 单独发放
+                        --     "fwd_in_pdt_building_lantern_gothic",    -- 哥特灯笼皮肤
+                        --     -- "fwd_in_pdt_building_lantern_moon",   -- 走向月亮灯笼皮肤
                         -- },
                      ---- 花围栏
                         ["fwd_in_pdt_building_flower_fence_item"] = {
@@ -153,13 +155,13 @@ AddPlayerPostInit(function(inst)
                         },
                     --  ---- 盆栽
                     --     ["fwd_in_pdt_building_potting_a"] = {
-                    --     "fwd_in_pdt_building_potting_cotton",   ---棉花皮肤 ---单独发送
+                    --     "fwd_in_pdt_building_potting_cotton",   ---棉花皮肤 
                     --     },
                     ---- 鼹鼠背包
                         ["fwd_in_pdt_equipment_mole_backpack"] = {
-                            -- "fwd_in_pdt_equipment_mole_backpack_panda",  --- 免费送
-                            -- "fwd_in_pdt_equipment_mole_backpack_cat",    --- 单独发送
-                            -- "fwd_in_pdt_equipment_mole_backpack_snowman",    --- 单独发送
+                            -- "fwd_in_pdt_equipment_mole_backpack_panda",  -- 免费送
+                            -- "fwd_in_pdt_equipment_mole_backpack_cat",    --- 猫线线背包
+                            -- "fwd_in_pdt_equipment_mole_backpack_snowman",    --- 雪人背包
                             "fwd_in_pdt_equipment_mole_backpack_rabbit",    --- VIP
                         },
 

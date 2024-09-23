@@ -266,7 +266,7 @@
 ----- 苍术药丸
     local atractylodes_macrocephala_pills = {
         test = function(cooker, names, tags)
-            return names.fwd_in_pdt_material_atractylodes_macrocephala and names.fwd_in_pdt_material_atractylodes_macrocephala >= 1 and tags.veggie and tags.veggie >= 4
+            return( names.fwd_in_pdt_material_atractylodes_macrocephala or 0) >= 1 and (tags.veggie or 0) >= 4
         end,
         name = "fwd_in_pdt_food_atractylodes_macrocephala_pills", -- 料理名
         weight = 10, -- 食谱权重
@@ -296,7 +296,7 @@
 ----- 半夏药丸
     local pinellia_ternata_pills = {
         test = function(cooker, names, tags)
-            return names.fwd_in_pdt_material_pinellia_ternata and names.fwd_in_pdt_material_pinellia_ternata >= 1 and tags.veggie and tags.veggie >= 4
+            return( names.fwd_in_pdt_material_pinellia_ternata or 0) >= 1 and (tags.veggie or 0) >= 4
         end,
         name = "fwd_in_pdt_food_pinellia_ternata_pills", -- 料理名
         weight = 10, -- 食谱权重
@@ -501,7 +501,10 @@
     local fwd_in_pdt_food_coffee = {
         test = function(cooker, names, tags)
             return ( (names.fwd_in_pdt_food_coffeebeans or 0) >= 3 and (names.honey or 0) + (names.royal_jelly or 0) >=1 )
-                    or (  names.fwd_in_pdt_food_coffeebeans or 0) >=4
+                    or ( (names.fwd_in_pdt_food_coffeebeans or 0) >= 4 )
+                    or ( (names.lg_coffee or 0) >= 3 and (names.honey or 0) + (names.royal_jelly or 0) >=1 )
+                    or  ( (names.lg_coffee or 0) >= 4 )
+                    
             -- local fwd_in_pdt_food_coffeebeans = names.fwd_in_pdt_food_coffeebeans or 0
             -- local honey = names.honey or 0
             -- local royal_jelly = names.royal_jelly or 0
@@ -687,7 +690,9 @@
 ----- 面包
     local fwd_in_pdt_food_bread = {
         test = function(cooker, names, tags)
-            return (names.fwd_in_pdt_food_wheat_flour or 0) >= 4
+            return (names.fwd_in_pdt_food_wheat_flour or 0) >= 4 
+            or
+            (names.lg_mianfen or 0) >= 4  -- 海传的兼容
             -- local fwd_in_pdt_food_wheat_flour = names.fwd_in_pdt_food_wheat_flour or 0
             -- if fwd_in_pdt_food_wheat_flour >= 4 then
             --     return true
@@ -796,7 +801,7 @@
 ----- 拍黄瓜
 local fwd_in_pdt_food_garlic_cucumber = {
     test = function(cooker, names, tags)
-        return (names.garlic or 0) >=1 and (names.ice or 0) >=2 and (names.plantmeat or 0) >=1
+        return ( (names.garlic or 0) >=1) and (names.ice or 0) >=2 and (names.plantmeat or 0) >=1
         -- local fwd_in_pdt_food_soybeans = names.fwd_in_pdt_food_soybeans or 0
         -- if fwd_in_pdt_food_soybeans >= 4  then
         --     return true
@@ -830,7 +835,8 @@ AddCookerRecipe("archive_cookpot", fwd_in_pdt_food_garlic_cucumber) --档案馆�
 ----- 猫屎咖啡
 local fwd_in_pdt_food_coffee_luwak = {
     test = function(cooker, names, tags)
-        return (names.fwd_in_pdt_food_coffeebeans or 0) >=3 and (names.fwd_in_pdt_food_cat_feces or 0) >=1
+        return (names.fwd_in_pdt_food_coffeebeans or 0) >= 3 and (names.fwd_in_pdt_food_cat_feces or 0) >= 1
+        or ( (names.lg_coffee or 0) >= 3) and ( (names.fwd_in_pdt_food_cat_feces or 0) >= 1)
         -- if fwd_in_pdt_food_soybeans >= 4  then
         --     return true
         -- end
