@@ -98,14 +98,25 @@ local function fn()
         inst.components.workable:SetWorkAction(ACTIONS.HAMMER)
         inst.components.workable:SetWorkLeft(3)
         inst.components.workable:SetOnFinishCallback(function()
-            -- SpawnPrefab("fwd_in_pdt_fx_collapse"):PushEvent("Set",{
-            --     pt = Vector3(inst.Transform:GetWorldPosition())
-            -- })
-            local loots = {"fwd_in_pdt_plant_bean_seed"}
-            local num = math.random(3,8)
-            for i = 1, num, 1 do
-                table.insert(loots,"fwd_in_pdt_food_soybeans")
-            end
+
+            local loots = {}
+            table.insert(loots,"fwd_in_pdt_food_soybeans")
+            table.insert(loots,"fwd_in_pdt_food_soybeans")
+            table.insert(loots,"fwd_in_pdt_food_soybeans")
+            table.insert(loots,"fwd_in_pdt_food_soybeans")
+            table.insert(loots,"fwd_in_pdt_food_soybeans")
+            table.insert(loots,"fwd_in_pdt_food_soybeans")
+            table.insert(loots,"fwd_in_pdt_food_soybeans")
+            table.insert(loots,"fwd_in_pdt_food_soybeans")
+            table.insert(loots,"fwd_in_pdt_food_soybeans")
+            table.insert(loots,"fwd_in_pdt_food_soybeans")
+
+            table.insert(loots,"fwd_in_pdt_plant_bean_seed")
+            table.insert(loots,"fwd_in_pdt_plant_bean_seed")
+            table.insert(loots,"fwd_in_pdt_plant_bean_seed")
+            table.insert(loots,"fwd_in_pdt_plant_bean_seed")
+
+            
             inst.components.lootdropper:SetLoot(loots)
             inst.components.lootdropper:DropLoot()
             inst:Remove()

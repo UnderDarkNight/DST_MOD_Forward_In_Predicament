@@ -144,6 +144,10 @@ local function fn()
     inst:AddTag("fwd_in_pdt_deep_freeze")
 
 
+    -- 新更新的反鲜写法
+    inst:AddComponent("preserver")
+    inst.components.preserver:SetPerishRateMultiplier(-500000)  -- 嗖的一下就反鲜了 ~
+
     -- inst:AddTag("antlion_sinkhole_blocker")
     -- inst:AddTag("birdblocker")
     -- inst:AddTag("fwd_in_pdt_fish_farm")
@@ -152,19 +156,18 @@ local function fn()
 -------------------------------------------------------------------------------------
     add_container_before_not_ismastersim_return(inst)   --- 安装容器界面
 -------------------------------------------------------------------------------------
--- 反鲜，在打开的时候反鲜（成功）
-    local function refreshFoods(inst)
-        for k,v in pairs(inst.components.container.slots) do
-            if v:IsValid() and v.components.perishable then
-            v.components.perishable:SetPercent(1.0)
-            end
-        end
-    end
--------------------------------------------------------------------------------------
-    local function onWatchWorldState(inst)
-        refreshFoods(inst)
-    end
--------------------------------------------------------------------------------------
+-- -- 反鲜，在打开的时候反鲜（成功）
+--     local function refreshFoods(inst)
+--         for k,v in pairs(inst.components.container.slots) do
+--             if v:IsValid() and v.components.perishable then
+--             v.components.perishable:SetPercent(1.0)
+--             end
+--         end
+--     end
+--     local function onWatchWorldState(inst)
+--         refreshFoods(inst)
+--     end
+-- -------------------------------------------------------------------------------------
 -- 被敲打拆除，掉出所有东西
     local function onhammered(inst, worker)
         inst.components.lootdropper:DropLoot()
@@ -178,7 +181,7 @@ local function fn()
 -- 被意外拆除
     local function onhit(inst, worker)
         inst.components.container:DropEverything()
-        inst.AnimState:PlayAnimation("idle")
+        -- inst.AnimState:PlayAnimation("idle")
         inst.components.container:Close()
     end
 -------------------------------------------------------------------------------------
@@ -192,24 +195,18 @@ end
 inst:AddComponent("inspectable")
 -------------------------------------------------------------------------------------
 ---- 打开、关闭 容器的时候触发的事件。可以用来播放动画
--- local function onopen(inst)
---     refreshFoods(inst)---这里反鲜
---     inst.AnimState:PlayAnimation("open")
---     inst.SoundEmitter:PlaySound("dontstarve/common/icebox_open")
--- end
-    inst:ListenForEvent("onopen",function()
-        refreshFoods(inst)---这里反鲜
+    local function onopen(inst)
         inst.AnimState:PlayAnimation("open")
         inst.SoundEmitter:PlaySound("dontstarve/common/icebox_open")
-    end)
--- local function onclose(inst)
---     inst.AnimState:PlayAnimation("idle")
---     inst.SoundEmitter:PlaySound("dontstarve/common/icebox_close")
--- end
-    inst:ListenForEvent("onclose",function()
+    end
+
+    local function onclose(inst)
         inst.AnimState:PlayAnimation("idle")
         inst.SoundEmitter:PlaySound("dontstarve/common/icebox_close")
-    end)
+    end
+-------------------------------------------------------------------------------------
+    inst.components.container.onopenfn = onopen
+    inst.components.container.onclosefn = onclose
 -------------------------------------------------------------------------------------
     inst:AddComponent("lootdropper")
 ---- 被敲打拆除设置次数
@@ -218,9 +215,6 @@ inst:AddComponent("inspectable")
     inst.components.workable:SetWorkLeft(4)
     inst.components.workable:SetOnFinishCallback(onhammered)
     inst.components.workable:SetOnWorkCallback(onhit)
-    
-    inst:WatchWorldState( "isday", onWatchWorldState)
-    inst:WatchWorldState( "iscaveday", onWatchWorldState)
 -------------------------------------------------------------------------------------
     inst:ListenForEvent("onbuilt",function()
         inst.SoundEmitter:PlaySound("dontstarve/common/icebox_craft")

@@ -289,7 +289,7 @@ AddRecipe2(
         atlas = "images/map_icons/fwd_in_pdt_deep_freeze.xml",
         image = "fwd_in_pdt_deep_freeze.tex",
     },
-    {"COOKING","FWD_IN_PDT"}
+    {"COOKING","STRUCTURES","FWD_IN_PDT"}
 )
 RemoveRecipeFromFilter("fwd_in_pdt_deep_freeze","MODS")                       -- -- 在【模组物品】标签里移除这个。
 --------------------------------------------------------------------------------------------------------------------------------------------
