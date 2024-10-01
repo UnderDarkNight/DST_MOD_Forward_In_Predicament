@@ -148,13 +148,18 @@
     AddCookerRecipe("archive_cookpot", fwd_in_pdt_food_scrambled_eggs_with_tomatoes) --档案馆远古窑，有好多mod作者忽略了这口锅
 ---------------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------
------ 茄子盒
+----- 茄子盒(兼容海传)
     local fwd_in_pdt_food_eggplant_casserole = {
         test = function(cooker, names, tags)
             return ( (names.eggplant or 0 ) + (names.eggplant_cooked or 0) >= 1 )
                 and (tags.meat and tags.meat >=1 )
                 and ( (tags.monster or 0) < 1)
-                and ((names.fwd_in_pdt_food_wheat_flour or 0) + (names.fwd_in_pdt_food_wheat_flour or 0) >=2 )
+                and ((names.fwd_in_pdt_food_wheat_flour or 0) >= 2 )
+                -- 海传兼容
+                or ( (names.eggplant or 0 ) + (names.eggplant_cooked or 0) >= 1 )
+                and (tags.meat and tags.meat >=1 )
+                and ( (tags.monster or 0) < 1)
+                and ((names.lg_mianfen or 0) >=2 )
             -- local eggplant = names.eggplant or 0
             -- local eggplant_cooked = names.eggplant_cooked or 0
             -- local meat = tags.meat or 0
@@ -497,13 +502,21 @@
     AddCookerRecipe("archive_cookpot", fwd_in_pdt_food_cooked_milk) --档案馆远古窑，有好多mod作者忽略了这口锅
 ---------------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------
------ 咖啡
+----- 咖啡(兼容海传)
     local fwd_in_pdt_food_coffee = {
         test = function(cooker, names, tags)
             return ( (names.fwd_in_pdt_food_coffeebeans or 0) >= 3 and (names.honey or 0) + (names.royal_jelly or 0) >=1 )
+
                     or ( (names.fwd_in_pdt_food_coffeebeans or 0) >= 4 )
-                    or ( (names.lg_coffee or 0) >= 3 and (names.honey or 0) + (names.royal_jelly or 0) >=1 ) -- 海传兼容
-                    or  ( (names.lg_coffee or 0) >= 4 )
+                    
+                    -- 海传兼容
+                    or ( (names.lg_coffee or 0) >= 3 and (names.honey or 0) + (names.royal_jelly or 0) >=1 ) 
+
+                    or ( (names.lg_coffee_cooked) or 0 >=3 and (names.honey or 0) + (names.royal_jelly or 0) >=1 )
+
+                    or ( (names.lg_coffee or 0) >= 4 ) 
+
+                    or ( (names.lg_coffee_cooked or 0) >=4 )
                     
             -- local fwd_in_pdt_food_coffeebeans = names.fwd_in_pdt_food_coffeebeans or 0
             -- local honey = names.honey or 0
@@ -615,10 +628,13 @@
     AddCookerRecipe("archive_cookpot", fwd_in_pdt_food_yogurt_ice_cream) --档案馆远古窑，有好多mod作者忽略了这口锅
 ---------------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------
------ 杨枝甘露
+----- 杨枝甘露(兼容海传)
     local fwd_in_pdt_food_mango_ice_drink = {
         test = function(cooker, names, tags)
-            return (names.ice or 0) >= 2 and (names.fwd_in_pdt_food_mango or 0) + (names.fwd_in_pdt_food_mango_green or 0) >=2
+
+            return ( (names.ice or 0) >= 2 and (names.fwd_in_pdt_food_mango or 0) + (names.fwd_in_pdt_food_mango_green or 0) >=2 )  
+            -- 【重点】：这里你想写别的mod兼容就必须这样写return( (names.xxxxxxx or 0) >=x ) 不然崩溃
+                    or ( (names.ice or 0) >= 2 and (names.lg_mangguo_cooked or 0) + (names.lg_mangguo or 0) >=2 ) -- 海传兼容
             -- local fwd_in_pdt_food_mango = names.fwd_in_pdt_food_mango or 0
             -- local fwd_in_pdt_food_mango_green = names.fwd_in_pdt_food_mango_green or 0
             -- local ice = names.ice or 0
@@ -687,7 +703,7 @@
     AddCookerRecipe("archive_cookpot", fwd_in_pdt_food_cooked_rice) --档案馆远古窑，有好多mod作者忽略了这口锅
 ---------------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------
------ 面包
+----- 面包(兼容海传)
     local fwd_in_pdt_food_bread = {
         test = function(cooker, names, tags)
             return (names.fwd_in_pdt_food_wheat_flour or 0) >= 4 
@@ -766,7 +782,7 @@
 ----- 蛋白粉
     local fwd_in_pdt_food_protein_powder = {
         test = function(cooker, names, tags)
-            return (names.fwd_in_pdt_food_soybeans or 0) >=4
+            return (names.fwd_in_pdt_food_soybeans or 0) >= 4
             -- local fwd_in_pdt_food_soybeans = names.fwd_in_pdt_food_soybeans or 0
             -- if fwd_in_pdt_food_soybeans >= 4  then
             --     return true
@@ -801,7 +817,7 @@
 ----- 拍黄瓜
 local fwd_in_pdt_food_garlic_cucumber = {
     test = function(cooker, names, tags)
-        return ( (names.garlic or 0) >=1) and (names.ice or 0) >=2 and (names.plantmeat or 0) >=1
+        return ( (names.garlic or 0) >= 1) and (names.ice or 0) >= 2 and (names.plantmeat or 0) >= 1
         -- local fwd_in_pdt_food_soybeans = names.fwd_in_pdt_food_soybeans or 0
         -- if fwd_in_pdt_food_soybeans >= 4  then
         --     return true
@@ -830,13 +846,15 @@ local fwd_in_pdt_food_garlic_cucumber = {
 
 AddCookerRecipe("cookpot", fwd_in_pdt_food_garlic_cucumber) -- 将食谱添加进普通锅
 AddCookerRecipe("portablecookpot", fwd_in_pdt_food_garlic_cucumber) -- 将食谱添加进便携锅(大厨锅)
-AddCookerRecipe("archive_cookpot", fwd_in_pdt_food_garlic_cucumber) --档案馆远古窑，有好多mod作者忽略了这口锅
+AddCookerRecipe("archive_cookpot", fwd_in_pdt_food_garlic_cucumber) -- 档案馆远古窑，有好多mod作者忽略了这口锅
 ---------------------------------------------------------------------------------------------------------------------
 ----- 猫屎咖啡
 local fwd_in_pdt_food_coffee_luwak = {
     test = function(cooker, names, tags)
         return (names.fwd_in_pdt_food_coffeebeans or 0) >= 3 and (names.fwd_in_pdt_food_cat_feces or 0) >= 1
-        or ( (names.lg_coffee or 0) >= 3) and ( (names.fwd_in_pdt_food_cat_feces or 0) >= 1)
+        -- 兼容海传
+        or ( (names.lg_coffee or 0) >= 3) and ( (names.fwd_in_pdt_food_cat_feces or 0) >= 1)    
+        or ( (names.lg_coffee_cooked or 0) >= 3) and ( (names.fwd_in_pdt_food_cat_feces or 0) >= 1)
         -- if fwd_in_pdt_food_soybeans >= 4  then
         --     return true
         -- end
@@ -864,12 +882,12 @@ local fwd_in_pdt_food_coffee_luwak = {
 
 AddCookerRecipe("cookpot", fwd_in_pdt_food_coffee_luwak) -- 将食谱添加进普通锅
 AddCookerRecipe("portablecookpot", fwd_in_pdt_food_coffee_luwak) -- 将食谱添加进便携锅(大厨锅)
-AddCookerRecipe("archive_cookpot", fwd_in_pdt_food_coffee_luwak) --档案馆远古窑，有好多mod作者忽略了这口锅
+AddCookerRecipe("archive_cookpot", fwd_in_pdt_food_coffee_luwak) -- 档案馆远古窑，有好多mod作者忽略了这口锅
 -------------------------------------------------------------------------------------------------------------------
 ----- 人肉包子
 local fwd_in_pdt_food_meat_buns = {
     test = function(cooker, names, tags)
-        return (names.monstermeat or 0) >=2 and (names.fwd_in_pdt_food_wheat_flour or 0) >=2
+        return (names.monstermeat or 0) >= 2 and (names.fwd_in_pdt_food_wheat_flour or 0) >= 2
             and ( --新月那天才能做出来
                     tags.newmoon or --一定要用or
                     TheWorld and TheWorld.state and not TheWorld:HasTag("cave") --洞穴永远是新月，这里得多加个洞穴判定
@@ -902,11 +920,12 @@ local fwd_in_pdt_food_meat_buns = {
 
 AddCookerRecipe("cookpot", fwd_in_pdt_food_meat_buns) -- 将食谱添加进普通锅
 AddCookerRecipe("portablecookpot", fwd_in_pdt_food_meat_buns) -- 将食谱添加进便携锅(大厨锅)
-AddCookerRecipe("archive_cookpot", fwd_in_pdt_food_meat_buns) --档案馆远古窑，有好多mod作者忽略了这口锅
+AddCookerRecipe("archive_cookpot", fwd_in_pdt_food_meat_buns) -- 档案馆远古窑，有好多mod作者忽略了这口锅
 -------------------------------------------------------------------------------------------------------------------
 ----- 蛋黄月饼
 local fwd_in_pdt_food_egg_mooncake = {
     test = function(cooker, names, tags)
+
         return (tags.egg or 0) >=4 and (names.fwd_in_pdt_food_wheat_flour or 0) >=2
             
         -- if fwd_in_pdt_food_soybeans >= 4  then

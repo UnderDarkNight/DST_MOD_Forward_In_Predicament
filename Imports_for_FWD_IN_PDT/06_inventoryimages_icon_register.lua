@@ -81,8 +81,8 @@ local files_name = {
 		"fwd_in_pdt_equipment_balloon_bobble_loong_green",		--- 泡泡龙气球（皮肤）
 		"fwd_in_pdt_equipment_magic_spatula",					--- 魔法锅铲
 		"fwd_in_pdt_equipment_shield_of_light",					--- 光之护盾
-		"fwd_in_pdt_void_fishingrod",							--- 虚空鱼竿
-		"fwd_in_pdt_void_fishingrod_flower",					--- 虚空鱼竿（皮肤）
+		-- "fwd_in_pdt_void_fishingrod",							--- 虚空鱼竿
+		-- "fwd_in_pdt_void_fishingrod_flower",					--- 虚空鱼竿（皮肤）
 		"fwd_in_pdt_equipment_telescope",						--- 望远镜
 		"fwd_in_pdt_frog_hound_skin_raincoat",					--- 哈皮雨衣
 		"fwd_in_pdt_equipment_ocean_fork",						--- 填海叉子

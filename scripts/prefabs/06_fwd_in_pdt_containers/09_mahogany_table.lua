@@ -12,6 +12,8 @@
         Asset("ANIM", "anim/fwd_in_pdt_container_mahogany_table.zip"),
         Asset( "IMAGE", "images/widget/fwd_in_pdt_container_mahogany_table_slot_bg.tex" ), 
         Asset( "ATLAS", "images/widget/fwd_in_pdt_container_mahogany_table_slot_bg.xml" ),
+
+        Asset("ANIM", "anim/fwd_in_pdt_container_mahogany_table_dilapidated.zip"), -- 破旧皮肤
     }
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -20,6 +22,28 @@
         local prefab_name = name or "fwd_in_pdt_container_mahogany_table"
         local LANGUAGE = type(TUNING["Forward_In_Predicament.Language"]) == "function" and TUNING["Forward_In_Predicament.Language"]() or TUNING["Forward_In_Predicament.Language"]
         return TUNING["Forward_In_Predicament.Strings"][LANGUAGE][prefab_name] or {}
+    end
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---- 皮肤API 套件
+    --- 建筑用的skin 数据
+    local skins_data = {
+        ["fwd_in_pdt_container_mahogany_table_dilapidated"] = {             --- 皮肤名字，全局唯一。
+            bank = "fwd_in_pdt_container_mahogany_table_dilapidated",                   --- 制作完成后切换的 bank
+            build = "fwd_in_pdt_container_mahogany_table_dilapidated",                  --- 制作完成后切换的 build
+            name = "破旧",                    --- 【制作栏】皮肤的名字
+            name_color = {255/255,185/255,15/255,255/255},
+            minimap = "fwd_in_pdt_container_mahogany_table_dilapidated.tex",                --- 小地图图标
+            atlas = "images/map_icons/fwd_in_pdt_container_mahogany_table_dilapidated.xml",                                        --- 【制作栏】皮肤显示的贴图，
+            image = "fwd_in_pdt_container_mahogany_table_dilapidated",                              --- 【制作栏】皮肤显示的贴图， 不需要 .tex
+        },
+
+    }
+    FWD_IN_PDT_MOD_SKIN.SKIN_INIT(skins_data,"fwd_in_pdt_container_mahogany_table")     --- 往总表注册所有皮肤
+
+    local function Set_ReSkin_API_Default_Animate(inst,bank,build,minimap)      -- 在 inst.AnimState:PlayAnimation() 前启用本函数
+        FWD_IN_PDT_MOD_SKIN.Set_ReSkin_API_Default_Animate(inst,bank,build,minimap)
     end
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -241,6 +265,12 @@ local function fn()
 
 
     add_container_before_not_ismastersim_return(inst)
+
+    --- 皮肤API
+        Set_ReSkin_API_Default_Animate(inst,"fwd_in_pdt_container_mahogany_table","fwd_in_pdt_container_mahogany_table","fwd_in_pdt_container_mahogany_table.tex")
+        if TheWorld.ismastersim then
+            inst:AddComponent("fwd_in_pdt_func"):Init("skin","normal_api")
+        end
 
     if not TheWorld.ismastersim then
         return inst

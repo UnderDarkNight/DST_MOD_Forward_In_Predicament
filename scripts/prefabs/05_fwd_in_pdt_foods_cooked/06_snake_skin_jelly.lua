@@ -52,6 +52,7 @@ local function fn()
             if eater.components.fwd_in_pdt_wellness and eater.components.fwd_in_pdt_wellness:Get_Debuff("fwd_in_pdt_welness_snake_poison") then
 
                 eater.components.fwd_in_pdt_wellness:Remove_Debuff("fwd_in_pdt_welness_snake_poison")
+                eater.components.fwd_in_pdt_wellness:DoDelta_Poison(-25)
                 eater.components.fwd_in_pdt_wellness:Set("snake_poison_blocker_update_times",100)
                 if eater.components.sanity then
                     eater.components.sanity:DoDelta(-10)

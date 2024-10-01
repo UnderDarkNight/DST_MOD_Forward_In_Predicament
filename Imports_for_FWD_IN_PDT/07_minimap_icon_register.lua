@@ -36,6 +36,7 @@ local files_name = {
 		"fwd_in_pdt_container_tv_box_laser",						--- 电视机（皮肤）
 		"fwd_in_pdt_building_drying_rack",							--- 晾晒架
 		"fwd_in_pdt_container_mahogany_table",						--- 红木桌
+		"fwd_in_pdt_container_mahogany_table_dilapidated",			--- 红木桌（破旧皮肤）
 		"fwd_in_pdt_deep_freeze",									--- 冰柜
 	-------------------------------------------------------------------------------------------------
 	---- 07_fwd_in_pdt_buildings

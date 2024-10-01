@@ -135,24 +135,24 @@
     )
     RemoveRecipeFromFilter("fwd_in_pdt_equipment_shield_of_light","MODS")                       -- -- 在【模组物品】标签里移除这个。
 --------------------------------------------------------------------------------------------------------------------------------------------
----- 虚空钓竿
---------------------------------------------------------------------------------------------------------------------------------------------
-    AddRecipeToFilter("fwd_in_pdt_void_fishingrod","MAGIC")     ---- 添加物品到目标标签
-    AddRecipe2(
-        "fwd_in_pdt_void_fishingrod",            --  --  inst.prefab  实体名字
-        { Ingredient("spidereggsack", 4) }, 
-        TECH.SCIENCE_ONE, --- THCH.一本科技
-        {
-            no_deconstruction=false,
-            atlas = "images/inventoryimages/fwd_in_pdt_void_fishingrod.xml",
-            -- atlas = GetInventoryItemAtlas("fishingrod.tex"),
-            image = "fwd_in_pdt_void_fishingrod.tex",
-        },
-        {"MAGIC","FISHING","FWD_IN_PDT"}
-    )
-    RemoveRecipeFromFilter("fwd_in_pdt_void_fishingrod","MODS")                       -- -- 在【模组物品】标签里移除这个。
+-- ---- 虚空钓竿
+-- --------------------------------------------------------------------------------------------------------------------------------------------
+--     AddRecipeToFilter("fwd_in_pdt_void_fishingrod","MAGIC")     ---- 添加物品到目标标签
+--     AddRecipe2(
+--         "fwd_in_pdt_void_fishingrod",            --  --  inst.prefab  实体名字
+--         { Ingredient("spidereggsack", 4) }, 
+--         TECH.SCIENCE_ONE, --- THCH.一本科技
+--         {
+--             no_deconstruction=false,
+--             atlas = "images/inventoryimages/fwd_in_pdt_void_fishingrod.xml",
+--             -- atlas = GetInventoryItemAtlas("fishingrod.tex"),
+--             image = "fwd_in_pdt_void_fishingrod.tex",
+--         },
+--         {"MAGIC","FISHING","FWD_IN_PDT"}
+--     )
+--     RemoveRecipeFromFilter("fwd_in_pdt_void_fishingrod","MODS")                       -- -- 在【模组物品】标签里移除这个。
 
---------------------------------------------------------------------------------------------------------------------------------------------
+-- --------------------------------------------------------------------------------------------------------------------------------------------
 ---- 望远镜
 --------------------------------------------------------------------------------------------------------------------------------------------
     AddRecipeToFilter("fwd_in_pdt_equipment_telescope","TOOLS")     ---- 添加物品到目标标签

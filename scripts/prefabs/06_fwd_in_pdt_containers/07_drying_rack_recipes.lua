@@ -108,7 +108,7 @@ return {
     --以下是和负重兼容
 -------------------------------------------------------------------------------------------------------------------------
     -- 橙子
-        ["fwd_in_pdt_plant_orange"] = {
+        ["fwd_in_pdt_food_orange"] = {
             product = "fwd_in_pdt_food_pericarpium_citri_reticulatae",
             num = 2 ,
         },

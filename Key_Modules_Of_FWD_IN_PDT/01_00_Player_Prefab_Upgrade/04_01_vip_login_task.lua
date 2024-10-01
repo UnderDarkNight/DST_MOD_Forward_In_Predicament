@@ -110,10 +110,10 @@ AddPlayerPostInit(function(inst)
                         ["fwd_in_pdt_equipment_vampire_sword"] = {
                             "fwd_in_pdt_equipment_vampire_sword_laser",
                         },
-                    ---- 虚空钓竿
-                        ["fwd_in_pdt_void_fishingrod"] = {
-                            "fwd_in_pdt_void_fishingrod_flower",
-                        },
+                    -- ---- 虚空钓竿
+                    --     ["fwd_in_pdt_void_fishingrod"] = {
+                    --         "fwd_in_pdt_void_fishingrod_flower",
+                    --     },
                     ---- 特殊工作台
                         ["fwd_in_pdt_building_special_production_table"] = {
                             "fwd_in_pdt_building_special_production_table_punk",
@@ -122,6 +122,10 @@ AddPlayerPostInit(function(inst)
                         -- ["fwd_in_pdt_building_fermenter"] = {
                         --     "fwd_in_pdt_building_fermenter_honey",
                         -- },
+                        ---- 红木桌
+                        ["fwd_in_pdt_container_mahogany_table"] = {
+                            "fwd_in_pdt_container_mahogany_table_dilapidated",
+                        },
                     ---- 混沌万能锅
                         ["fwd_in_pdt_building_special_cookpot"] = {
                             "fwd_in_pdt_building_special_cookpot_lantern",

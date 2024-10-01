@@ -394,11 +394,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "Use light as a shield to block damage",
                 ["recipe_desc"] = "Use light as a shield to block damage",
             },
-            ["fwd_in_pdt_void_fishingrod"] = {
-                ["name"] = "Void Fishingrod",
-                ["inspect_str"] = "You can fish something out of the void.",
-                ["recipe_desc"] = "You can fish something out of the void.",
-            },
+            -- ["fwd_in_pdt_void_fishingrod"] = {
+            --     ["name"] = "Void Fishingrod",
+            --     ["inspect_str"] = "You can fish something out of the void.",
+            --     ["recipe_desc"] = "You can fish something out of the void.",
+            -- },
             ["fwd_in_pdt_equipment_telescope"] = {
                 ["name"] = "Telescope",
                 ["inspect_str"] = "Able to observe distant places",

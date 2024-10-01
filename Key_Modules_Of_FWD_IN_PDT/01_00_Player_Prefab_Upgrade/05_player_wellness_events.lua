@@ -170,7 +170,7 @@ AddPlayerPostInit(function(inst)
                 if type(prefab_list_with_glu_value[food_base_prefab]) == "number" then
                     return prefab_list_with_glu_value[food_base_prefab]
                 end
-
+                
                 if food:HasTag("honeyed") then
                     num = 10
                 elseif cooking_ingredients[food_base_prefab] and cooking_ingredients[food_base_prefab].tags and cooking_ingredients[food_base_prefab].tags["sweetener"] then
@@ -179,7 +179,10 @@ AddPlayerPostInit(function(inst)
                     num = food.components.edible.honeyvalue
                 elseif cooking_ingredients[food_base_prefab] and cooking_ingredients[food_base_prefab].tags and cooking_ingredients[food_base_prefab].tags["fruit"] then
                     num = 5
+                elseif cooking_ingredients[food_base_prefab] and cooking_ingredients[food_base_prefab].tags and cooking_ingredients[food_base_prefab].tags["dairy"] then
+                    num = 5
                 end
+                
                 return num
             end
                 
@@ -268,6 +271,10 @@ AddPlayerPostInit(function(inst)
                 if food:HasTag("monster") then
                     inst.components.fwd_in_pdt_wellness:DoDelta_Poison(5)
                 end
+                -- -- 吃奶制品增加血糖
+                -- if food:HasTag("dairy") then
+                --     inst.components.fwd_in_pdt_wellness:DoDelta_Glucose(5)
+                -- end
             end
         ---------------- 监听玩家吃食物的事件
             inst:ListenForEvent("oneat",function(inst,_table)
