@@ -1,4 +1,4 @@
---蛤皮雨衣
+-- 蛤皮雨衣
 
 
 
@@ -54,7 +54,7 @@ local function fn()
     inst:AddComponent("tradable")
 
     inst:AddComponent("equippable")
-    inst.components.equippable.equipslot = EQUIPSLOTS.BODY
+    inst.components.equippable.equipslot = EQUIPSLOTS.BELLY  or EQUIPSLOTS.BODY -- BELLY是奶酪那个六格装备  为了兼容写的对应的插槽  理论上还是放BODY上吧！
     inst.components.equippable.insulated = true
     inst.components.equippable:SetOnEquip(onequip)
     inst.components.equippable:SetOnUnequip(onunequip)

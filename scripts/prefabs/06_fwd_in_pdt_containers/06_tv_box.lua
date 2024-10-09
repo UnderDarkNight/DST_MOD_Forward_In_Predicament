@@ -110,6 +110,7 @@ end
 --- 显示图标 event
 local function pic_display_event(inst)
     inst:ListenForEvent("pic_display",function()
+
         ---- 暂时没法 给MOD 物品用
         local tar_atlas = nil
         local tar_image = nil
@@ -129,19 +130,18 @@ local function pic_display_event(inst)
             -- if not TheSim:AtlasContains(atlasname, imagename) then
             --     atlasname = resolvefilepath_soft(atlasname)                    
             -- end
-
-        if tar_image and tar_atlas then
-            inst.AnimState:OverrideSymbol("SWAP_SIGN",tar_atlas,tar_image)
-        else
-            inst.AnimState:ClearOverrideSymbol("SWAP_SIGN")
-        end
-
+            if tar_image and tar_atlas then
+                inst.AnimState:OverrideSymbol("SWAP_SIGN",tar_atlas,tar_image)
+                else
+                    inst.AnimState:ClearOverrideSymbol("SWAP_SIGN")
+                end
     end)
 
     inst:DoTaskInTime(0,function()
         inst:PushEvent("pic_display")
     end)
 end
+
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -185,10 +185,14 @@ local function fn()
     end
 
     inst:AddComponent("inspectable") --可检查组件
-
-
     -----------------------------------------------------------------------------------
-
+    -- local function onhit(inst, worker)
+    --     inst.sorasign = nil
+    --     updatesign(inst)
+    --     if inst.hitcount and inst.hitcount > 0 then
+    --         inst.components.container:DropEverything()
+    --     end
+    -- end
     -----------------------------------------------------------------------------------
         pic_display_event(inst)
     -----------------------------------------------------------------------------------
@@ -225,6 +229,8 @@ local function fn()
             })
             inst:Remove()
         end)
+
+
     -----------------------------------------------------------------------------------
     return inst
 end
