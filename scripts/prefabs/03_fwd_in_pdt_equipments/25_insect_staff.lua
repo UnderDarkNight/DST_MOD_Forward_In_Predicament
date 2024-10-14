@@ -22,7 +22,7 @@ local function onequip(inst, owner)
 
 	owner:AddTag("insect")  -- 昆虫标签，防止被蜜蜂主动叮咬  貌似是采摘蜂蜜不会出蜜蜂
 
-    owner.components.fwd_in_pdt_remove_tag_blocker:Add("insect")
+    -- owner.components.fwd_in_pdt_remove_tag_blocker:Add("insect")
 
 end
 
@@ -34,9 +34,9 @@ local function onunequip(inst, owner)
 
     owner.isbeeking = nil  -- 结束hook
 
-    owner.components.fwd_in_pdt_remove_tag_blocker:Remove("insect")
+    -- owner.components.fwd_in_pdt_remove_tag_blocker:Remove("insect")
 
-    owner:RemoveTag(owner,"insect")--昆虫标签，防止被蜜蜂主动叮咬  貌似是采摘蜂蜜不会出蜜蜂
+    owner:RemoveTag("insect")--昆虫标签，防止被蜜蜂主动叮咬  貌似是采摘蜂蜜不会出蜜蜂
 
     
 

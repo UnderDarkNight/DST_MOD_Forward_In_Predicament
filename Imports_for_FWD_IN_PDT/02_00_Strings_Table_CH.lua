@@ -832,6 +832,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "竟然能防治亮茄",
                 ["recipe_desc"] = "亮茄的真正克星",
             },
+            ["fwd_in_pdt_building_panda"] = {
+                ["name"] = "熊猫摆件",
+                ["inspect_str"] = "熊猫在向我招手",
+                ["recipe_desc"] = "喜欢熊猫吗",
+            },
         --------------------------------------------------------------------
         ---- 08_fwd_in_pdt_resources
             ["fwd_in_pdt_resource_glacier_huge"] = {

@@ -76,12 +76,18 @@ local function onequip(inst, owner)
     owner.AnimState:OverrideSymbol("swap_object", bank or "fwd_in_pdt_equipment_blazing_nightmaresword_swap", "swap_object")    
     owner.AnimState:Show("ARM_carry")
     owner.AnimState:Hide("ARM_normal")
+
+
+
 end
 
 local function onunequip(inst, owner)
     owner.AnimState:Hide("ARM_carry")
     owner.AnimState:Show("ARM_normal")
     owner.AnimState:ClearOverrideSymbol("swap_object")
+
+
+
 
 end
 

@@ -312,5 +312,24 @@ AddRecipe2(
 )
 RemoveRecipeFromFilter("fwd_in_pdt_building_potting_a","MODS")                       -- -- 在【模组物品】标签里移除这个。
 --------------------------------------------------------------------------------------------------------------------------------------------
+---- 熊猫摆件
+--------------------------------------------------------------------------------------------------------------------------------------------
+AddRecipeToFilter("fwd_in_pdt_building_panda","STRUCTURES")     ---- 添加物品到目标标签
+AddRecipe2(
+    "fwd_in_pdt_building_panda",            --  --  inst.prefab  实体名字
+    { Ingredient("petals", 1), Ingredient("cutgrass", 2) }, 
+    TECH.SCIENCE_TWO, --- TECH.二本科技
+    {
+        -- nounlock=true,
+        no_deconstruction=false,
+        -- builder_tag = "npng_tag.has_green_amulet",    --------- -- 【builder_tag】只给指定tag的角色能制造这件物品，角色添加/移除 tag 都能立马解锁/隐藏该物品
+        placer = "fwd_in_pdt_building_panda_placer",                       -------- 建筑放置器,记住不是prefab替换  后面有个placer呢！
+        atlas = "images/inventoryimages/fwd_in_pdt_building_panda.xml", ---在哪注册的 一定要注意
+        image = "fwd_in_pdt_building_panda.tex",
+    },
+    {"STRUCTURES","FWD_IN_PDT"}
+)
+RemoveRecipeFromFilter("fwd_in_pdt_building_panda","MODS")                       -- -- 在【模组物品】标签里移除这个。
+--------------------------------------------------------------------------------------------------------------------------------------------
 
 

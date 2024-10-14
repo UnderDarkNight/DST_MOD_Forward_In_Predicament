@@ -23,6 +23,7 @@ local assets =
         owner.AnimState:Hide("ARM_carry")
         owner.AnimState:Show("ARM_normal")
     end
+
 ------------------------------------------------------------------------------------------------------------------------
 
 local function fn()

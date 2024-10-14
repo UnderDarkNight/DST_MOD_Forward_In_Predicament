@@ -30,6 +30,26 @@ local assets =
     Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_equipment_mole_backpack_snowman.xml" ),
 }
 
+local containers = require "containers"
+local params = containers.params
+
+-- 背包界面注册 不知道会不会有相关问题
+params.fwd_in_pdt_mole_backpack = {
+    widget = {
+        slotpos = {},
+        animbank = "ui_krampusbag_2x8",
+        animbuild = "ui_krampusbag_2x8",
+        -- pos = Vector3(-5, -120, 0),
+        pos = Vector3(-25, -85, 0)
+    },
+    issidewidget = true,
+    type = "pack",
+    openlimit = 1
+}
+for y = 0, 7 do
+    table.insert(params.fwd_in_pdt_mole_backpack.widget.slotpos, Vector3(-156, -75 * y + 212, 0))
+    table.insert(params.fwd_in_pdt_mole_backpack.widget.slotpos,Vector3(-156 + 75, -75 * y + 212, 0))
+end
 
 -------------------------------------------------------------------------------------------------------------------------------
 ---- 皮肤API 套件
@@ -96,6 +116,18 @@ local function onequiptomodel(inst, owner)
     inst.components.container:Close(owner)
 end
 
+-- local function AcceptTest(inst,item,giver)
+-- 	if item.prefab == "bluegem"  then
+-- 		if inst.bluegem < 3 then
+-- 			return true
+-- 		else
+-- 			giver.components.talker:Say("背包已经可以反鲜了")
+-- 		end
+--     else
+--         giver.components.talker:Say("需要蓝宝石")
+-- 	end
+-- 	return false
+-- end
 local function fn()
     local inst = CreateEntity()
 
@@ -129,12 +161,12 @@ local function fn()
     --- 容器安装
         if TheWorld.ismastersim then
             inst:AddComponent("container")
-            inst.components.container:WidgetSetup("backpack")
+            inst.components.container:WidgetSetup("fwd_in_pdt_mole_backpack")
         else
             inst.OnEntityReplicated = function()
                 local container = inst.replica.container or inst.replica._.container
                 if container then
-                    container:WidgetSetup("backpack")
+                    container:WidgetSetup("fwd_in_pdt_mole_backpack")
                 end
             end
         end
@@ -158,10 +190,18 @@ local function fn()
         return inst
     end
 
+    inst:AddTag("meteor_protection") --防止被流星破坏
+        --因为有容器组件，所以不会被猴子、食人花、坎普斯等拿走
+    inst:AddTag("nosteal") --防止被火药猴偷走
+    inst:AddTag("NORATCHECK") --mod兼容：永不妥协。该道具不算鼠潮分
+
     inst:AddComponent("inspectable")
 
     -- inst:AddComponent("inventoryitem")
     -- inst.components.inventoryitem.cangoincontainer = false
+
+    -- inst:AddComponent("trader")   --交易组件
+	-- inst.components.trader:SetAcceptTest(AcceptTest)  
 
     inst:AddComponent("equippable")
     -- inst.components.equippable.equipslot = EQUIPSLOTS.BACK or EQUIPSLOTS.BEIBAO or EQUIPSLOTS.BAG or EQUIPSLOTS.BODY

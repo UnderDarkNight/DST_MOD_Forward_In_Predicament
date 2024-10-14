@@ -14,7 +14,7 @@ local function itemCheck(item)
         ["weed_tillweed"] = true,               --- 犁地草
         
     }
-    if prefabs[item.prefab] or item:HasTag("oceanfish") then
+    if prefabs[item.prefab] then
         return true
     end
     return false
@@ -35,8 +35,8 @@ local function container_Widget_change(theContainer)
             widget =
             {
                 slotpos = {},
-                animbank = "ui_fish_box_7x7",   --- 格子背景动画
-                animbuild = "ui_fish_box_7x7",  --- 格子背景动画
+                animbank = "ui_fish_box_5x4",   --- 格子背景动画
+                animbuild = "ui_fish_box_5x4",  --- 格子背景动画
                 pos = Vector3(0, 220, 0),       --- 基点坐标
                 side_align_tip = 160,
             },
@@ -108,7 +108,6 @@ local function fn()
     inst.AnimState:SetBuild("fwd_in_pdt_cutgrass_container")
     inst.AnimState:PlayAnimation("idle")
 
-    -- inst:AddTag("fridge")  --- 有这个才能给暖石降温
     inst:AddTag("structure")
     inst:AddTag("fwd_in_pdt_cutgrass_container")
 
@@ -123,8 +122,8 @@ local function fn()
 -------------------------------------------------------------------------------------
 -- 被敲打拆除，掉出所有东西
     local function onhammered(inst, worker)
-        inst.components.lootdropper:DropLoot()
-        inst.components.container:DropEverything()
+        inst.components.lootdropper:DropLoot()      -- 拆除后掉落一半物品
+        inst.components.container:DropEverything() -- 掉出所有物品
         local fx = SpawnPrefab("collapse_small")
         fx.Transform:SetPosition(inst.Transform:GetWorldPosition())
         fx:SetMaterial("metal")
@@ -147,36 +146,57 @@ end
 
 inst:AddComponent("inspectable")
 -------------------------------------------------------------------------------------
----- 打开、关闭 容器的时候触发的事件。可以用来播放动画
-    -- inst:ListenForEvent("onopen",function()
-    --     inst.AnimState:PlayAnimation("open")
-    --     inst.SoundEmitter:PlaySound("dontstarve/common/icebox_open")
-    -- end)
--- local function onclose(inst)
---     inst.AnimState:PlayAnimation("idle")
---     inst.SoundEmitter:PlaySound("dontstarve/common/icebox_close")
--- end
-    -- inst:ListenForEvent("onclose",function()
-    --     inst.AnimState:PlayAnimation("idle")
-    --     inst.SoundEmitter:PlaySound("dontstarve/common/icebox_close")
-    -- end)
+-- 打开、关闭 容器的时候触发的事件。可以用来播放动画
+    inst:ListenForEvent("onopen",function()
+        inst.AnimState:PlayAnimation("open")
+        inst.SoundEmitter:PlaySound("dontstarve/common/icebox_open")
+    end)
+
+    inst:ListenForEvent("onclose",function()
+        inst.AnimState:PlayAnimation("idle")
+        inst.SoundEmitter:PlaySound("dontstarve/common/icebox_close")
+    end)
 -------------------------------------------------------------------------------------
     inst:AddComponent("lootdropper")
 ---- 被敲打拆除设置次数
     inst:AddComponent("workable")
     inst.components.workable:SetWorkAction(ACTIONS.HAMMER)
     inst.components.workable:SetWorkLeft(4)
-    inst.components.workable:SetOnFinishCallback(onhammered)
-    inst.components.workable:SetOnWorkCallback(onhit)
+    inst.components.workable:SetOnFinishCallback(onhammered)  -- 回调
+    inst.components.workable:SetOnWorkCallback(onhit)           -- 回调
     
-    inst:WatchWorldState( "isday", onWatchWorldState)
-    inst:WatchWorldState( "iscaveday", onWatchWorldState)
+
 -------------------------------------------------------------------------------------
-    -- inst:ListenForEvent("onbuilt",function()
-    --     inst.AnimState:PlayAnimation("idle")
-    --     inst.SoundEmitter:PlaySound("dontstarve/common/icebox_craft")
-    --     ---- 刚刚制作出来才会触发的代码，通常用来触发 建造动画。
-    -- end)
+    inst:ListenForEvent("onbuilt",function()
+        inst.AnimState:PlayAnimation("idle")
+        inst.SoundEmitter:PlaySound("dontstarve/common/icebox_craft")
+        ---- 刚刚制作出来才会触发的代码，通常用来触发 建造动画。
+    end)
+-------------------------------------------------------------------------------------
+        --- 检测一下放进去草的时候 顺便播放动画
+    local container_prefab_list = { -- 做表吧万一后续新增东西呢
+        ["cutgrass"] = true ,                   --- 普通的草
+        ["dug_grass"] = true ,                  --- 草丛
+        ["twigs"] = true,                       --- 树枝
+        ["dug_sapling"] = true,                 --- 树苗
+        ["mandrake"] = true,                    --- 曼德拉草
+        ["cookedmandrake"] = true,              --- 烤熟了的曼德拉草
+        ["grassgekko"] = true,                  --- 草壁虎
+        -- 杂草！！
+        ["weed_forgetmelots"] = true,           --- 必忘我
+        ["weed_firenettle"] = true,             --- 火荨麻  
+        ["weed_tillweed"] = true,               --- 犁地草
+        
+    }
+    inst:ListenForEvent("itemget",function(inst,_table)
+
+        if _table and _table.item and container_prefab_list[_table.item.prefab]  then
+
+            inst.AnimState:PlayAnimation("111")
+
+        end
+    end)
+
 -------------------------------------------------------------------------------------
 ---- 积雪检查
     --[[ 

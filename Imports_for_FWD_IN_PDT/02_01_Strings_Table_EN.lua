@@ -827,6 +827,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "Surprisingly, it can combat something",
                 ["recipe_desc"] = "Something's afraid of it",
             },
+            ["fwd_in_pdt_building_panda"] = {
+                ["name"] = "Panda",
+                ["inspect_str"] = "Panda waving at me",
+                ["recipe_desc"] = "Do you like pandas?",
+            },
         --------------------------------------------------------------------
         ---- 08_fwd_in_pdt_resources
             ["fwd_in_pdt_resource_glacier_huge"] = {

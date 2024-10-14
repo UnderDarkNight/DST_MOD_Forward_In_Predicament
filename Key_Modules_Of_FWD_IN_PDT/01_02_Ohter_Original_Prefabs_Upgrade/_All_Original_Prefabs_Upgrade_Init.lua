@@ -38,7 +38,7 @@ modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/19_per
 
 modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/20_catcoon.lua")    --- 修改 猫 掉落 猫屎
 
--- modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/21_wasphive.lua")    --- hook 蜂巢
+modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/21_wasphive.lua")    --- hook 蜂巢
 
 modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/22_crabking.lua")    --- 修改 帝王蟹 掉落 填海叉蓝图
 

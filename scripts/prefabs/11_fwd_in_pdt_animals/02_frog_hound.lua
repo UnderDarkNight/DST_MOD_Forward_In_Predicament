@@ -99,6 +99,11 @@ end
 
 
 local function OnAttacked(inst, data)
+    -- local damage = data.damage
+    -- local attacker = data.attacker
+    -- if damage > 10 then
+    --     attacker.
+    -- end
     inst.components.combat:SetTarget(data.attacker)
     inst.components.combat:ShareTarget(data.attacker, 30, function(dude) return dude:HasTag("frog") and not dude.components.health:IsDead() end, 5)
 end
@@ -353,6 +358,7 @@ local function fncommon()
     inst.OnLoad = OnLoad
 
     inst:ListenForEvent("attacked", OnAttacked)
+    
     inst:ListenForEvent("onattackother", OnAttackOther)
 
     MakeMediumFreezableCharacter(inst, "hound_body")

@@ -38,8 +38,8 @@ local prefabs_name_list = {
     "08_wallet",                              --- 钱包
     "09_mahogany_table",                      --- 红木桌
     "10_deep_freeze",                         --- 冰柜
-    --"11_cutgrass_container",                --- 草车
-    --"12_firewood_container",                --- 柴房
+    -- "11_cutgrass_container",                  --- 草车
+    -- "12_firewood_container",                --- 柴房
     
 }
 

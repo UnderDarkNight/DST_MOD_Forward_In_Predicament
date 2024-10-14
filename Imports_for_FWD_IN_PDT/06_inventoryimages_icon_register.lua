@@ -158,6 +158,7 @@ local files_name = {
 		"fwd_in_pdt_building_flower_fence_mushroom",					-- 花围栏（皮肤）
 		"fwd_in_pdt_building_lantern",							-- 灯笼
 		"fwd_in_pdt_building_potting_a",						-- 盆栽
+		"fwd_in_pdt_building_panda",							-- 熊猫摆件
 	---------------------------------------------------------------------------------------
 	-- 09_fwd_in_pdt_plants
 		"fwd_in_pdt_plant_paddy_rice_seed",								--- 未脱壳的稻米
