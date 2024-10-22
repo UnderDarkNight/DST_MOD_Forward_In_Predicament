@@ -48,10 +48,24 @@ local function fn()
 
     inst.components.workable:SetWorkAction(ACTIONS.HAMMER)
     inst.components.workable:SetWorkLeft(3)
+    inst.components.workable:SetOnWorkCallback(function()
+        if not inst:HasTag("burnt") then
+            inst.AnimState:PlayAnimation("hit")
+            inst.AnimState:PushAnimation("idle",true)
+        end
+    end) 
+
     inst.components.workable:SetOnFinishCallback(function()
         inst.components.lootdropper:DropLoot()----这个才能让官方的敲除实现掉落一半
         inst:PushEvent("_building_remove")
     end)
+    inst:ListenForEvent("onbuilt",function()  -- 玩家刚刚建立的时候 可以用来播放动画和声音
+        -- inst.SoundEmitter:PlaySound("dontstarve/common/chest_trap")
+        inst.AnimState:PlayAnimation("build")
+        -- inst.AnimState:PushAnimation("idle",true)
+    
+    end)
+
     -- 敲打拆除触发的特效
     inst:ListenForEvent("_building_remove",function()
         SpawnPrefab("fwd_in_pdt_fx_collapse"):PushEvent("Set",{

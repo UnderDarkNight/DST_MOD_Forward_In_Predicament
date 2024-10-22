@@ -50,6 +50,11 @@ local function retargetfn(inst)
 end
 
 local function KeepTarget(inst, target)
+
+	if target and (target:HasTag("playerghost") or not target:IsValid()) then
+		return false
+	end
+
 	return inst.components.combat:CanTarget(target) and inst:GetDistanceSqToInst(target) <= (TUNING.SPIDER_TARGET_DIST*TUNING.SPIDER_TARGET_DIST*4*4) and not target:HasTag("aquatic")
 end
 

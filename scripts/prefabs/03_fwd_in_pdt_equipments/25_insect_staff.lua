@@ -55,7 +55,6 @@ local function fn()
     inst.AnimState:SetBuild("fwd_in_pdt_equipment_insect_staff")
     inst.AnimState:PlayAnimation("idle")
 
-    
     inst:AddTag("weapon")
 
     MakeInventoryFloatable(inst, "med", 0.05, {1.1, 0.5, 1.1}, true, -9)
@@ -70,7 +69,7 @@ local function fn()
     inst:AddComponent("inspectable")
 
     inst:AddComponent("inventoryitem")
-    -- inst.components.inventoryitem:ChangeImageName("spear")
+    
     inst.components.inventoryitem.imagename = "fwd_in_pdt_equipment_insect_staff"
     inst.components.inventoryitem.atlasname = "images/inventoryimages/fwd_in_pdt_equipment_insect_staff.xml"
 

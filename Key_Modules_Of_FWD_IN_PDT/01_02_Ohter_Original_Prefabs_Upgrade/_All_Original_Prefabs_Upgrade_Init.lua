@@ -47,3 +47,7 @@ modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/23_cur
 modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/24_lightning_rod.lua")    --- 升级避雷针 防止亮茄
 
 modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/25_lunarthrall_plant.lua")    --- 让亮茄10%概率掉落亮茄涂层
+
+modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/26_frog_split.lua")           --- 青蛙分裂事件
+
+-- modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/27_trapped.lua")           --- 捕捉青蛙触发的事件

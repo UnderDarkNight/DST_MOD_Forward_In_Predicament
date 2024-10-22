@@ -1,5 +1,5 @@
 -------------------------------------------------------------------------------------------------------------------------------
---- 鼹鼠背包
+--- 零食鼠背包
 -------------------------------------------------------------------------------------------------------------------------------
     local function GetStringsTable(name)
         local prefab_name = name or "fwd_in_pdt_equipment_mole_backpack"
@@ -33,22 +33,26 @@ local assets =
 local containers = require "containers"
 local params = containers.params
 
--- 背包界面注册 不知道会不会有相关问题
+-- 背包界面注册 跟官方的糖果袋子是一样的参数
 params.fwd_in_pdt_mole_backpack = {
     widget = {
         slotpos = {},
         animbank = "ui_krampusbag_2x8",
         animbuild = "ui_krampusbag_2x8",
         -- pos = Vector3(-5, -120, 0),
-        pos = Vector3(-25, -85, 0)
+        pos = Vector3(-5, -130, 0)
     },
     issidewidget = true,
     type = "pack",
     openlimit = 1
 }
-for y = 0, 7 do
-    table.insert(params.fwd_in_pdt_mole_backpack.widget.slotpos, Vector3(-156, -75 * y + 212, 0))
-    table.insert(params.fwd_in_pdt_mole_backpack.widget.slotpos,Vector3(-156 + 75, -75 * y + 212, 0))
+-- for y = 0, 7 do
+--     table.insert(params.fwd_in_pdt_mole_backpack.widget.slotpos, Vector3(-156, -75 * y + 212, 0))
+--     table.insert(params.fwd_in_pdt_mole_backpack.widget.slotpos,Vector3(-156 + 75, -75 * y + 212, 0))
+-- end
+for y = 0, 6 do
+    table.insert(params.fwd_in_pdt_mole_backpack.widget.slotpos, Vector3(-162, -75 * y + 240, 0))
+    table.insert(params.fwd_in_pdt_mole_backpack.widget.slotpos, Vector3(-162 + 75, -75 * y + 240, 0))
 end
 
 -------------------------------------------------------------------------------------------------------------------------------
