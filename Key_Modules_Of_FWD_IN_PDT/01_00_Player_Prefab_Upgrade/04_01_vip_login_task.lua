@@ -168,6 +168,9 @@ AddPlayerPostInit(function(inst)
                             -- "fwd_in_pdt_equipment_mole_backpack_snowman",    --- 雪人背包
                             "fwd_in_pdt_equipment_mole_backpack_rabbit",    --- VIP
                         },
+                        ["fwd_in_pdt_plant_mango_tree"] = {
+                            "fwd_in_pdt_plant_mango_tree_potted",    --- VIP
+                        },
 
                 }
                 inst.components.fwd_in_pdt_func:SkinAPI__Unlock_Skin(list)

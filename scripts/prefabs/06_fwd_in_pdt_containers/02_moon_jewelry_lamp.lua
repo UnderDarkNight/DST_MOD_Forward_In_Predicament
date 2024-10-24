@@ -8,7 +8,8 @@ local assets =
     Asset( "ATLAS", "images/widget/fwd_in_pdt_moom_jewelry_lamp_slot_1.xml" ),
     Asset( "IMAGE", "images/widget/fwd_in_pdt_moom_jewelry_lamp_slot_2.tex" ), 
     Asset( "ATLAS", "images/widget/fwd_in_pdt_moom_jewelry_lamp_slot_2.xml" ),
-    Asset("ANIM", "anim/fwd_in_pdt_moom_jewelry_lamp_moon.zip"),
+
+    Asset("ANIM", "anim/fwd_in_pdt_moom_jewelry_lamp_moon.zip"),                  -- 皮肤
 }
 local function GetStringsTable(name)
     local prefab_name = name or "fwd_in_pdt_moom_jewelry_lamp"

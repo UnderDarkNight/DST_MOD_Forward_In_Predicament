@@ -2,7 +2,7 @@
 -- 本lua 和 modmain.lua 平级
 -- 注意文件路径
 
--- modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/01_amulet_upgrade.lua")    --- 升级项链
+modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/01_123.lua")    -- 测试升级某个东西
 
 modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/00_special_ent_add_tag.lua")    --- 上 tag 好扫描
 
