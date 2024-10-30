@@ -5,6 +5,8 @@
 ---- 无法归类的 注册
 
 
+modimport("Key_Modules_Of_FWD_IN_PDT/00_Others/00_debugging_hook.lua")    --- debug用的
+
 modimport("Key_Modules_Of_FWD_IN_PDT/00_Others/01_Special_hook_TheSim.lua")    --- 解决WG 平台 的骷髅问题
 
 modimport("Key_Modules_Of_FWD_IN_PDT/00_Others/02_Sound_hook.lua")    --- 屏蔽掉某些声音

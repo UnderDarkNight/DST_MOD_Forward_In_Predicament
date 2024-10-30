@@ -118,11 +118,26 @@ local function pic_display_event(inst)
                     local imagename = temp_item.nameoverride or temp_item.components.inventoryitem.imagename or temp_item.prefab
                     imagename  = string.gsub(imagename,".tex", "") .. ".tex"
                     local atlasname = temp_item.components.inventoryitem.atlasname or GetInventoryItemAtlas(imagename)
-                    if TheSim:AtlasContains(atlasname, imagename) then
-                        tar_atlas = atlasname
-                        tar_image = imagename
-                        break
-                    end
+                    -- if TheSim:AtlasContains(atlasname, imagename) then
+                    --     --- 官方物品
+                    --     tar_atlas = atlasname
+                    --     tar_image = imagename
+                    --     break
+                    -- elseif FWD_IN_PDT_IS_CUSTOM_ATLAS_BUILD(GetInventoryItemAtlas(imagename)) then
+                    --     --- 自定义MOD物品
+                    --     atlasname = GetInventoryItemAtlas(imagename)
+                    --     atlasname = resolvefilepath_soft(atlasname) --为了兼容mod物品，不然是没有这道工序的
+
+                    --     tar_atlas = atlasname
+                    --     tar_image = imagename
+                    --     break
+                    -- end
+                    atlasname = GetInventoryItemAtlas(imagename)
+                    atlasname = resolvefilepath_soft(atlasname) --为了兼容mod物品，不然是没有这道工序的
+                    
+                    tar_atlas = atlasname
+                    tar_image = imagename
+                    break
             end
         end
 
