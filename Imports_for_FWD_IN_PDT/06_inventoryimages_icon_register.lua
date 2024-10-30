@@ -27,9 +27,8 @@ end
 	local originalCtor = Asset._ctor
 
 	-- 创建一个新的构造函数
-	local newCtor = function(self, type, file, param)
-		-- 调用原始的构造函数
-		originalCtor(self, type, file, param)		
+	local newCtor = function(self, type, file, param,...)
+
 		-- 如果 type 是 "ATLAS"，则打印 file
 		if type == "ATLAS" then --- 普通素材
 			-- print("++++",file)
@@ -41,6 +40,8 @@ end
 		elseif type == "ATLAS_BUILD" and param ~= 256 then
 			official_atlas_builds[file] = true
 		end
+		-- 调用原始的构造函数
+		return originalCtor(self, type, file, param,...)		
 	end
 	-- 替换原始的构造函数
 	Asset._ctor = newCtor
