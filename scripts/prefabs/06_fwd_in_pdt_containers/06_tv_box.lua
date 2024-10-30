@@ -118,32 +118,28 @@ local function pic_display_event(inst)
                     local imagename = temp_item.nameoverride or temp_item.components.inventoryitem.imagename or temp_item.prefab
                     imagename  = string.gsub(imagename,".tex", "") .. ".tex"
                     local atlasname = temp_item.components.inventoryitem.atlasname or GetInventoryItemAtlas(imagename)
-                    -- if TheSim:AtlasContains(atlasname, imagename) then
-                    --     --- 官方物品
-                    --     tar_atlas = atlasname
-                    --     tar_image = imagename
-                    --     break
-                    -- elseif FWD_IN_PDT_IS_CUSTOM_ATLAS_BUILD(GetInventoryItemAtlas(imagename)) then
-                    --     --- 自定义MOD物品
-                    --     atlasname = GetInventoryItemAtlas(imagename)
-                    --     atlasname = resolvefilepath_soft(atlasname) --为了兼容mod物品，不然是没有这道工序的
-
-                    --     tar_atlas = atlasname
-                    --     tar_image = imagename
-                    --     break
-                    -- end
-                    atlasname = GetInventoryItemAtlas(imagename)
-                    atlasname = resolvefilepath_soft(atlasname) --为了兼容mod物品，不然是没有这道工序的
+                    if TheSim:AtlasContains(atlasname, imagename) then
+                        --- 官方物品
+                        tar_atlas = atlasname
+                        tar_image = imagename
+                        -- break
+                    else
+                        --- 自定义MOD物品
+                        atlasname = GetInventoryItemAtlas(imagename)
+                        atlasname = resolvefilepath_soft(atlasname) --为了兼容mod物品，不然是没有这道工序的
+                        tar_atlas = atlasname
+                        tar_image = imagename
+                        -- break
+                    end
+                    if tar_atlas and tar_image and TheSim:AtlasContains(tar_atlas, tar_image) then
+                        break
+                    end
                     
-                    tar_atlas = atlasname
-                    tar_image = imagename
-                    break
             end
         end
 
-            -- if not TheSim:AtlasContains(atlasname, imagename) then
-            --     atlasname = resolvefilepath_soft(atlasname)                    
-            -- end
+        -- print("tar_atlas",tar_atlas)
+        -- print("tar_image",tar_image)
 
         if tar_image and tar_atlas then
             inst.AnimState:OverrideSymbol("SWAP_SIGN",tar_atlas,tar_image)

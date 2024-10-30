@@ -291,50 +291,50 @@ local flg,error_code = pcall(function()
     ----------------------------------------------------------------------------------------------------------------
     --- 
 
-        ThePlayer.__test_fn = function(inst,tar_atlas,tar_image)
-            local item = nil
-            for num, temp_item in pairs(inst.components.container.slots) do
-                if temp_item and temp_item:IsValid() then
-                        -- local imagename = temp_item.nameoverride or temp_item.components.inventoryitem.imagename or temp_item.prefab
-                        -- imagename  = string.gsub(imagename,".tex", "") .. ".tex"
-                        -- local atlasname = temp_item.components.inventoryitem.atlasname or GetInventoryItemAtlas(imagename)
-                        -- if TheSim:AtlasContains(atlasname, imagename) then
-                        --     tar_atlas = atlasname
-                        --     tar_image = imagename
-                        --     break
-                        -- end
-                        item = temp_item
-                        break
-                end
-            end
-            if item then
-                local crash_flag,atlas,image = pcall(function()
-                    -- print("+++",item.inv_image_bg)
-                    -- -- local atlas, bgimage, bgatlas
-                    -- -- local image = FunctionOrValue(item.drawimageoverride, item, inst) or (#(item.components.inventoryitem.imagename or "") > 0 and item.components.inventoryitem.imagename) or item.prefab or nil
+        -- ThePlayer.__test_fn = function(inst,tar_atlas,tar_image)
+        --     local item = nil
+        --     for num, temp_item in pairs(inst.components.container.slots) do
+        --         if temp_item and temp_item:IsValid() then
+        --                 -- local imagename = temp_item.nameoverride or temp_item.components.inventoryitem.imagename or temp_item.prefab
+        --                 -- imagename  = string.gsub(imagename,".tex", "") .. ".tex"
+        --                 -- local atlasname = temp_item.components.inventoryitem.atlasname or GetInventoryItemAtlas(imagename)
+        --                 -- if TheSim:AtlasContains(atlasname, imagename) then
+        --                 --     tar_atlas = atlasname
+        --                 --     tar_image = imagename
+        --                 --     break
+        --                 -- end
+        --                 item = temp_item
+        --                 break
+        --         end
+        --     end
+        --     if item then
+        --         local crash_flag,atlas,image = pcall(function()
+        --             -- print("+++",item.inv_image_bg)
+        --             -- -- local atlas, bgimage, bgatlas
+        --             -- -- local image = FunctionOrValue(item.drawimageoverride, item, inst) or (#(item.components.inventoryitem.imagename or "") > 0 and item.components.inventoryitem.imagename) or item.prefab or nil
                     
-                    local imagename = item.nameoverride or item.components.inventoryitem.imagename or item.prefab
-                    local imagename  = string.gsub(imagename,".tex", "") .. ".tex"
-                    local atlasname = item.components.inventoryitem.atlasname or GetInventoryItemAtlas(imagename)
-                    -- print("pre",atlasname)
+        --             local imagename = item.nameoverride or item.components.inventoryitem.imagename or item.prefab
+        --             local imagename  = string.gsub(imagename,".tex", "") .. ".tex"
+        --             local atlasname = item.components.inventoryitem.atlasname or GetInventoryItemAtlas(imagename)
+        --             -- print("pre",atlasname)
 
-                    if TheSim:AtlasContains(atlasname, imagename) then
-                        --- 官方物品
-                        print("official item",atlasname, imagename)
-                        return atlasname,imagename
-                    else
-                        --- 自定义MOD物品
-                        atlasname = GetInventoryItemAtlas(imagename)
-                        atlasname = resolvefilepath_soft(atlasname) --为了兼容mod物品，不然是没有这道工序的
-                        print("custom item",atlasname, imagename)
+        --             if TheSim:AtlasContains(atlasname, imagename) then
+        --                 --- 官方物品
+        --                 print("official item",atlasname, imagename)
+        --                 return atlasname,imagename
+        --             else
+        --                 --- 自定义MOD物品
+        --                 atlasname = GetInventoryItemAtlas(imagename)
+        --                 atlasname = resolvefilepath_soft(atlasname) --为了兼容mod物品，不然是没有这道工序的
+        --                 print("custom item",atlasname, imagename)
 
-                        return atlasname,imagename
-                    end
+        --                 return atlasname,imagename
+        --             end
 
-                    -- print("imagename:",imagename)
-                    -- print("atlasname:",atlasname)
+        --             -- print("imagename:",imagename)
+        --             -- print("atlasname:",atlasname)
 
-                    return atlasname,imagename
+        --             return atlasname,imagename
 
 
 
@@ -344,20 +344,22 @@ local flg,error_code = pcall(function()
                 
 
 
-                end)
-                -- print("+++++++++++++++++++++++++++++++++++++++++++++++++++++")
-                -- print("tar_atlas:",tar_atlas)
-                -- print("tar_image:",tar_image)
-                -- print("+++++++++++++++++++++++++++++++++++++++++++++++++++++")
-                if not crash_flag then
-                    print("Error : ",atlas)
-                else
-                    tar_atlas = atlas
-                    tar_image = image
-                end
-            end
-            return tar_atlas,tar_image
-        end
+        --         end)
+        --         -- print("+++++++++++++++++++++++++++++++++++++++++++++++++++++")
+        --         -- print("tar_atlas:",tar_atlas)
+        --         -- print("tar_image:",tar_image)
+        --         -- print("+++++++++++++++++++++++++++++++++++++++++++++++++++++")
+        --         if not crash_flag then
+        --             print("Error : ",atlas)
+        --         else
+        --             tar_atlas = atlas
+        --             tar_image = image
+        --         end
+        --     end
+        --     return tar_atlas,tar_image
+        -- end
+        -- print(TheSim:AtlasContains("images/inventoryimages3.xml", "fwd_in_pdt_item_orthopedic_water.tex"))
+        print(GetInventoryItemAtlas("fwd_in_pdt_item_orthopedic_water.tex"))
     ----------------------------------------------------------------------------------------------------------------
     -- lua 加载路径 测试 使用 gmatch 方法来分割字符串
         -- for path in package.path:gmatch("[^;]+") do
