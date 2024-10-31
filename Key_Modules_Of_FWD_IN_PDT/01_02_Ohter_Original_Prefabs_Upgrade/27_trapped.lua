@@ -11,22 +11,15 @@ AddPrefabPostInit(
         if not TheWorld.ismastersim then
             return
         end
-
+-- 回调函数
 
 --- 监听捕捉的瞬间
-        inst:ListenForEvent("trapped",function(_,_table)
-
-            if _table and _table.self and _table.self:HasTag("frog") then
-                
-                print("123123")
-
-                -- inst:Remove()
-
+        inst:ListenForEvent("trapped",function()
+            -- 不需要判断青蛙了 那个地方有判断
                 inst:PushEvent("fwd_in_pdt_event.frog_split")
-            end
+            
         end)
     end)
-            
 
     --         if inst:HasTag("fwd_in_pdt_tag.mutant_frog") then  -- 必须没有这个tag 才能进行下去
     --             return

@@ -1,10 +1,58 @@
 --------------------------------------------------------------------------------------------------------------------------------------------
 --- 健康检查机及其科技
 --------------------------------------------------------------------------------------------------------------------------------------------
+-- 【笔记】
+-- 添加自定义原型机
+-- 有时候我们需要自定义原型机（研究或制作站）在制作菜单中的显示方式。
+-- 原型机指的是科学机器、炼金机器、远古制作台等类似的设备，比如过年活动时的神龛。角色站在旁边时可以制作对应的物品。为了实现这个功能，我们可以使用 AddPrototyperDef 函数自定义原型机的显示方式：
 
+-- AddPrototyperDef(prototyper_prefab, prototyper_def)
+-- 其中，prototyper_prefab 是用于原型机的 prefab 名，prototyper_def 是一个包含以下属性的表：
+-- icon_atlas (string): 图标文档
+-- icon_image (string): 图标图片
+-- action_str (string): 「建造」按钮显示的字符串，比如神龛显示的是「供奉」
+-- is_crafting_station (bool): 是否是制作站，也就是是否只能在停留附近时才能制作对应物品
+-- filter_text (string): 在过滤器上的名称
+-- 以下是一个创建自定义原型机定义的示例：
 
+-- local prototyper_prefab = "moon_altar"
+-- prototyper_def = {
+--     icon_atlas = "images/xxxx.xml",
+--     icon_image = "moon_altar.tex",
+--     is_crafting_station = true,
+--     action_str = "生产",
+--     filter_text = "月之产品"
+-- },
+-- AddPrototyperDef(prototyper_prefab, prototyper_def)
+----------------------------------------------------------------------------------------------------------------------------------------
+--【笔记】
+-- 修改 Recipe
+-- 有时候我们需要修改游戏中已存在的 Recipe。为了实现这个功能，我们可以使用 AddRecipePostInit
 
+-- AddRecipePostInit(recipe, fn)
+-- 其中，recipe 是要修改的 recipe 名，fn 是一个修改函数，传入参数为这个 recipe 对象。
 
+-- 以下是一个修改指定 Recipe 的示例：
+-- local function fn(recipe)-- 修改制作栏描述
+--     recipe.description = "适合砍树"
+-- end
+-- AddRecipePostInit("axe", fn)
+----------------------------------------------------------------------------------------------------------------------------------------
+--【笔记】
+-- 修改任意 Recipe
+-- 如果我们需要修改所有的 Recipe，可以使用 AddRecipePostInitAny
+
+-- AddRecipePostInitAny(fn)
+-- 其中，fn 是一个修改函数，传入参数为 recipe 对象。这个修改会对所有的 recipe 生效。
+
+-- 以下是一个修改任意 Recipe 的示例
+-- 其实就是hook写法
+-- local function fn(recipe)-- 统一修改制作栏描述
+--     local old_str = recipe.description
+--     recipe.description = "描述: " .. old_str
+-- end
+
+-- AddRecipePostInitAny(fn)
 ----------------------------------------------------------------------------------------------------------------------------------------
 ------- 加载和创建个专属建造标签，并靠近才能使用。
                         ------- 科技要单独设置添加
