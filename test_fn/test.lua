@@ -260,10 +260,156 @@ local flg,error_code = pcall(function()
     --     end
     -- end)
     ----------------------------------------------------------------------------------------------------------------
-    --- shader 测试
-        local pigman = SpawnPrefab("pigman")
-        pigman.Transform:SetPosition(x,y,z)
-        pigman.AnimState:SetBloomEffectHandle(resolvefilepath("shaders/mod_test_shader.ksh"))
+    --- 
+        -- ThePlayer:ListenForEvent("newstate",function(_,_table)
+        --     local statename = _table and _table.statename
+        --     print("++ newstate",statename)
+        -- end)
+    ----------------------------------------------------------------------------------------------------------------
+    ---
+        -- local inst = TheSim:FindFirstEntityWithTag("fwd_in_pdt_container_tv_box")
+        -- inst.AnimState:PlayAnimation("idle",true)
+        -- local item = SpawnPrefab("fwd_in_pdt_equipment_vampire_sword")
+        -- -- local item = SpawnPrefab("fwd_in_pdt_material_chaotic_cookpot_puzzle_4")
+        -- if inst.item then
+        --     inst.item:Remove()
+        -- end
+        -- inst.item = item
+        -- inst:AddChild(item)
+        -- item:AddTag("NOCLICK")
+    	-- item:ReturnToScene()
+        -- item:AddTag("outofreach")
+        -- if item.Follower == nil then
+        --     item.entity:AddFollower()
+        -- end
+        -- item.Transform:SetPosition(0, 0, 0)
+        -- item.Follower:FollowSymbol(inst.GUID, "SWAP_SIGN", 0, 0, 0, true)
+
+
+        -- -- local test = TheSim:FindFirstEntityWithTag("fwd_in_pdt_material_chaotic_cookpot_puzzles")
+        -- -- ThePlayer.Transform:SetPosition(test.Transform:GetWorldPosition())
+    ----------------------------------------------------------------------------------------------------------------
+    --- 
+
+        -- ThePlayer.__test_fn = function(inst,tar_atlas,tar_image)
+        --     local item = nil
+        --     for num, temp_item in pairs(inst.components.container.slots) do
+        --         if temp_item and temp_item:IsValid() then
+        --                 -- local imagename = temp_item.nameoverride or temp_item.components.inventoryitem.imagename or temp_item.prefab
+        --                 -- imagename  = string.gsub(imagename,".tex", "") .. ".tex"
+        --                 -- local atlasname = temp_item.components.inventoryitem.atlasname or GetInventoryItemAtlas(imagename)
+        --                 -- if TheSim:AtlasContains(atlasname, imagename) then
+        --                 --     tar_atlas = atlasname
+        --                 --     tar_image = imagename
+        --                 --     break
+        --                 -- end
+        --                 item = temp_item
+        --                 break
+        --         end
+        --     end
+        --     if item then
+        --         local crash_flag,atlas,image = pcall(function()
+        --             -- print("+++",item.inv_image_bg)
+        --             -- -- local atlas, bgimage, bgatlas
+        --             -- -- local image = FunctionOrValue(item.drawimageoverride, item, inst) or (#(item.components.inventoryitem.imagename or "") > 0 and item.components.inventoryitem.imagename) or item.prefab or nil
+                    
+        --             local imagename = item.nameoverride or item.components.inventoryitem.imagename or item.prefab
+        --             local imagename  = string.gsub(imagename,".tex", "") .. ".tex"
+        --             local atlasname = item.components.inventoryitem.atlasname or GetInventoryItemAtlas(imagename)
+        --             -- print("pre",atlasname)
+
+        --             if TheSim:AtlasContains(atlasname, imagename) then
+        --                 --- 官方物品
+        --                 print("official item",atlasname, imagename)
+        --                 return atlasname,imagename
+        --             else
+        --                 --- 自定义MOD物品
+        --                 atlasname = GetInventoryItemAtlas(imagename)
+        --                 atlasname = resolvefilepath_soft(atlasname) --为了兼容mod物品，不然是没有这道工序的
+        --                 print("custom item",atlasname, imagename)
+
+        --                 return atlasname,imagename
+        --             end
+
+        --             -- print("imagename:",imagename)
+        --             -- print("atlasname:",atlasname)
+
+        --             return atlasname,imagename
+
+
+
+
+
+                    
+                
+
+
+        --         end)
+        --         -- print("+++++++++++++++++++++++++++++++++++++++++++++++++++++")
+        --         -- print("tar_atlas:",tar_atlas)
+        --         -- print("tar_image:",tar_image)
+        --         -- print("+++++++++++++++++++++++++++++++++++++++++++++++++++++")
+        --         if not crash_flag then
+        --             print("Error : ",atlas)
+        --         else
+        --             tar_atlas = atlas
+        --             tar_image = image
+        --         end
+        --     end
+        --     return tar_atlas,tar_image
+        -- end
+        -- print(TheSim:AtlasContains("images/inventoryimages3.xml", "fwd_in_pdt_item_orthopedic_water.tex"))
+        print(GetInventoryItemAtlas("fwd_in_pdt_item_orthopedic_water.tex"))
+    ----------------------------------------------------------------------------------------------------------------
+    -- lua 加载路径 测试 使用 gmatch 方法来分割字符串
+        -- for path in package.path:gmatch("[^;]+") do
+        --     print(path)
+        -- end
+
+        -- -- 如果你使用的是 Lua 5.3 或更高版本，可以使用 string.split
+        -- if _VERSION >= "Lua 5.3" then
+        --     local function split(str, delimiter)
+        --         local result = {}
+        --         for substr in str:gsub("([^^" .. delimiter .. "]+)"):gmatch("%1") do
+        --             table.insert(result, substr)
+        --         end
+        --         return result
+        --     end
+
+        --     local paths = split(package.path, ";")
+        --     for _, path in ipairs(paths) do
+        --         print(path)
+        --     end
+        -- else
+        --     -- 对于低于 Lua 5.3 的版本，手动实现一个简单的 split 函数
+        --     local function split(str, delimiter)
+        --         local result = {}
+        --         local from = 1
+        --         local delim_from = string.find(str, delimiter, from)
+        --         while delim_from do
+        --             table.insert(result, string.sub(str, from, delim_from - 1))
+        --             from = delim_from + 1
+        --             delim_from = string.find(str, delimiter, from)
+        --         end
+        --         if from <= #str then
+        --             table.insert(result, string.sub(str, from))
+        --         end
+        --         return result
+        --     end
+
+        --     local paths = split(package.path, ";")
+        --     for _, path in ipairs(paths) do
+        --         print(path)
+        --     end
+        -- end
+    ----------------------------------------------------------------------------------------------------------------
+    --- lua 已经加载素材检测
+        -- 遍历 package.loaded 表中的所有键（模块名）
+        -- for moduleName, moduleObject in pairs(package.loaded) do
+        --     print("+++++++++++++++++++++++++++++++++++")
+        --     print("Module Name:", moduleName)
+        --     print("Module Object:", moduleObject)
+        -- end
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)

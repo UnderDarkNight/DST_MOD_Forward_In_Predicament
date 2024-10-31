@@ -79,7 +79,8 @@ dont_starve_compatible = true
 dst_compatible = true
 all_clients_require_mod = true
 
-priority = -10000000000  -- MOD加载优先级 影响某些功能的兼容性，比如官方Com 的 Hook
+-- priority = -10000000000  -- MOD加载优先级 影响某些功能的兼容性，比如官方Com 的 Hook
+priority = 10000000000  -- MOD加载优先级 影响某些功能的兼容性，比如官方Com 的 Hook
 
 
 local function IsChinese()
