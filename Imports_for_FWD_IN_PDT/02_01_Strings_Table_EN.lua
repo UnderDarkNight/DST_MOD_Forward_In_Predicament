@@ -414,6 +414,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "Used for reclamation and dredging",
                 ["recipe_desc"] = "Used for reclamation and dredging",
             },
+            ["fwd_in_pdt_equipment_insect_staff"] = {
+                ["name"] = "Insect Staff",
+                ["inspect_str"] = "This will keep the killer bees out of the nest.",
+                ["recipe_desc"] = "This will keep the killer bees out of the nest.",
+            },
         --------------------------------------------------------------------
         ---- 04_fwd_in_pdt_foods
             ["fwd_in_pdt_food_raw_milk"] = {

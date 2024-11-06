@@ -421,6 +421,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "用来填海和挖海",
                 ["recipe_desc"] = "用来填海和挖海",
             },
+            ["fwd_in_pdt_equipment_insect_staff"] = {
+                ["name"] = "昆虫法杖",
+                ["inspect_str"] = "这个能避免杀人蜂从巢穴中出来",
+                ["recipe_desc"] = "这个能避免杀人蜂从巢穴中出来",
+            },
         --------------------------------------------------------------------
         ---- 04_fwd_in_pdt_foods
             ["fwd_in_pdt_food_raw_milk"] = {

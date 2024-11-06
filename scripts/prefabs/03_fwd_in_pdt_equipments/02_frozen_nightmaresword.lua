@@ -43,7 +43,7 @@ local assets =
             build = "fwd_in_pdt_equipment_frozen_nightmaresword_zelu",                              --- 制作完成后切换的 build
             atlas = "images/inventoryimages/fwd_in_pdt_equipment_frozen_nightmaresword_zelu.xml",                                        --- 【制作栏】皮肤显示的贴图，
             image = "fwd_in_pdt_equipment_frozen_nightmaresword_zelu",                              --- 【制作栏】皮肤显示的贴图， 不需要 .tex
-            -- name = "尖锐",                                                                         --- 【制作栏】皮肤的名字
+            name = "泽露",                                                                         --- 【制作栏】皮肤的名字
             onequip_bank = "fwd_in_pdt_equipment_frozen_nightmaresword_zelu_swap"
         },
     }

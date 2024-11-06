@@ -126,6 +126,7 @@ local files_name = {
 		"fwd_in_pdt_equipment_telescope",						--- 望远镜
 		"fwd_in_pdt_frog_hound_skin_raincoat",					--- 哈皮雨衣
 		"fwd_in_pdt_equipment_ocean_fork",						--- 填海叉子
+		"fwd_in_pdt_equipment_insect_staff",					--- 昆虫法杖
 	---------------------------------------------------------------------------------------
 	-- 04_fwd_in_pdt_foods
 		"fwd_in_pdt_food_raw_milk",								--- 生牛奶

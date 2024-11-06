@@ -13,14 +13,16 @@ local assets =
 
 local function onequip(inst, owner)
 
-	owner.AnimState:OverrideSymbol("swap_object", "fwd_in_pdt_equipment_repair_staff_swap", "swap_object")    
+	owner.AnimState:OverrideSymbol("swap_object", "fwd_in_pdt_equipment_insect_staff_swap", "swap_object")    
     owner.AnimState:Show("ARM_carry")
     owner.AnimState:Hide("ARM_normal")
 
 
     owner.isbeeking = true  -- 靠近杀人蜂巢穴不会出杀人蜂
 
-	owner:AddTag("insect")  -- 昆虫标签，防止被蜜蜂主动叮咬  貌似是采摘蜂蜜不会出蜜蜂
+	owner:AddTag("insect")  -- 昆虫标签 不知道有什么用
+
+    -- owner.components.skilltreeupdater:IsActivated("wormwood_bugs")  -- 植物人相关
 
     -- owner.components.fwd_in_pdt_remove_tag_blocker:Add("insect")
 
@@ -36,7 +38,7 @@ local function onunequip(inst, owner)
 
     -- owner.components.fwd_in_pdt_remove_tag_blocker:Remove("insect")
 
-    owner:RemoveTag("insect")--昆虫标签，防止被蜜蜂主动叮咬  貌似是采摘蜂蜜不会出蜜蜂
+    owner:RemoveTag("insect")   -- 昆虫标签 不知道有什么用咬
 
     
 
@@ -58,6 +60,63 @@ local function fn()
     inst:AddTag("weapon")
 
     MakeInventoryFloatable(inst, "med", 0.05, {1.1, 0.5, 1.1}, true, -9)
+
+    -- 通用的远程施法组件
+    inst:ListenForEvent("fwd_in_pdt_event.OnEntityReplicated.fwd_in_pdt_com_point_and_target_spell_caster",function(_,replica_com)
+
+        replica_com:SetTestFn(function(inst,doer,target,pt,right_click)
+
+            if target and target.prefab == "beebox" then
+
+                return true
+
+            end
+                replica_com:SetDistance(10)
+
+                replica_com:SetPreActionFn("picker")
+
+                replica_com:SetText("fwd_in_pdt_equipment_insect_staff",123)
+        end)
+    end)
+    if TheWorld.ismastersim then
+        
+        inst:AddComponent("fwd_in_pdt_com_point_and_target_spell_caster")
+
+        inst:AddComponent("harvestable")
+        inst.components.fwd_in_pdt_com_point_and_target_spell_caster:SetSpellFn(function(inst,doer,target,pt)
+                if target and target.prefab == "beebox" then
+------------------------------------------------------------------------------------------------------------------------------------
+                    -- 前置检查 是不是正在燃烧呢？  蜂箱是否能采集呢？
+                    if target:HasTag("burnt") then
+                        return
+                    end
+                    if not target.components.harvestable:CanBeHarvested() then
+                        return
+                    end
+------------------------------------------------------------------------------------------------------------------------------------
+                    -- 储存玩家隐身标记位 杀人蜂走的逻辑是这个 不需要hook了
+                    local invincible_switch_flag = false
+                    local old_invincible = nil
+                    if doer and doer.components.health then
+                        invincible_switch_flag = true
+                        old_invincible = doer.components.health.invincible
+                    end
+                    -- print("1234")
+------------------------------------------------------------------------------------------------------------------------------------
+                    -- 执行采集
+                    target.components.harvestable:Harvest(doer)
+------------------------------------------------------------------------------------------------------------------------------------
+                    -- 恢复玩家隐身标记位
+                    if invincible_switch_flag then
+                        doer.components.health.invincible = old_invincible
+                    end
+------------------------------------------------------------------------------------------------------------------------------------
+                    -- 返回成功  
+                    return true
+------------------------------------------------------------------------------------------------------------------------------------
+                end
+        end)
+    end
 
     inst.entity:SetPristine()
 
