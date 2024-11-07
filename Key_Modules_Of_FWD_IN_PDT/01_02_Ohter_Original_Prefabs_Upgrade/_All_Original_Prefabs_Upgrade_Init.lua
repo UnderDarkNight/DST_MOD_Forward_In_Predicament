@@ -51,3 +51,5 @@ modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/25_lun
 modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/26_frog_split.lua")           --- 青蛙分裂事件
 
 modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/27_trapped.lua")           --- 捕捉青蛙触发的事件
+
+modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/28_beequeen.lua")           --- 修改 蜂后 掉落昆虫法杖

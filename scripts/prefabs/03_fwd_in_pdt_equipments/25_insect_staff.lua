@@ -38,7 +38,7 @@ local function onunequip(inst, owner)
 
     -- owner.components.fwd_in_pdt_remove_tag_blocker:Remove("insect")
 
-    owner:RemoveTag("insect")   -- 昆虫标签 不知道有什么用咬
+    owner:RemoveTag("insect")   -- 昆虫标签 不知道有什么用
 
     
 
@@ -71,11 +71,11 @@ local function fn()
                 return true
 
             end
-                replica_com:SetDistance(10)
+                replica_com:SetDistance(20)
 
-                replica_com:SetPreActionFn("picker")
+                replica_com:SetSGAction("quickcastspell")
 
-                replica_com:SetText("fwd_in_pdt_equipment_insect_staff",123)
+                replica_com:SetText("fwd_in_pdt_equipment_insect_staff","采收")
         end)
     end)
     if TheWorld.ismastersim then
@@ -94,24 +94,37 @@ local function fn()
                         return
                     end
 ------------------------------------------------------------------------------------------------------------------------------------
-                    -- 储存玩家隐身标记位 杀人蜂走的逻辑是这个 不需要hook了
-                    local invincible_switch_flag = false
-                    local old_invincible = nil
-                    if doer and doer.components.health then
-                        invincible_switch_flag = true
-                        old_invincible = doer.components.health.invincible
-                    end
+                    -- -- 储存玩家隐身标记位 杀人蜂走的逻辑是这个 不需要hook了  可以学习这种方法  但是不知道为什么隐藏了标记 有时候还是会出 干脆hook生成器
+                    -- local invincible_switch_flag = false
+                    -- local old_invincible = nil
+                    -- if doer and doer.components.health then
+                    --     invincible_switch_flag = true
+                    --     old_invincible = doer.components.health.invincible
+                    -- end
                     -- print("1234")
+                    local child_com_hooked_flag = false
+                    local old_ReleaseAllChildren_fn = nil
+                    if target.components.childspawner then
+                        child_com_hooked_flag = true
+                        old_ReleaseAllChildren_fn = target.components.childspawner.ReleaseAllChildren
+                        target.components.childspawner.ReleaseAllChildren = function()
+                            return nil
+                        end
+                            
+                        end
 ------------------------------------------------------------------------------------------------------------------------------------
                     -- 执行采集
                     target.components.harvestable:Harvest(doer)
 ------------------------------------------------------------------------------------------------------------------------------------
-                    -- 恢复玩家隐身标记位
-                    if invincible_switch_flag then
-                        doer.components.health.invincible = old_invincible
+                    -- -- 恢复玩家隐身标记位
+                    -- if invincible_switch_flag then
+                    --     doer.components.health.invincible = old_invincible
+                    -- end
+                    if child_com_hooked_flag then
+                        target.components.childspawner.ReleaseAllChildren = old_ReleaseAllChildren_fn
                     end
 ------------------------------------------------------------------------------------------------------------------------------------
-                    -- 返回成功  
+                    -- 返回成功
                     return true
 ------------------------------------------------------------------------------------------------------------------------------------
                 end
@@ -134,11 +147,13 @@ local function fn()
 
 
     inst:AddComponent("weapon")
-    inst.components.weapon:SetDamage(0)
+    inst.components.weapon:SetDamage(TUNING.CANE_DAMAGE) -- 步行手杖的攻击力
     -------
     inst:AddComponent("equippable")
     inst.components.equippable:SetOnEquip(onequip)
     inst.components.equippable:SetOnUnequip(onunequip)
+    inst.components.equippable.walkspeedmult = TUNING.CANE_SPEED_MULT -- 步行手杖的加速
+
 
     MakeHauntableLaunch(inst)
 
