@@ -25,7 +25,7 @@ FWD_IN_PDT_COM_ITEM_USE_ACTION.fn = function(act)    --- 只在服务端执行~
 
     if item and target and doer and item.components.fwd_in_pdt_com_item_use_to then
         local replica_com = item.replica.fwd_in_pdt_com_item_use_to or item.replica._.fwd_in_pdt_com_item_use_to
-        if replica_com and replica_com:Test(target,doer) then
+        if replica_com and replica_com:Test(target,doer,true) then
             return item.components.fwd_in_pdt_com_item_use_to:Active(target,doer)
         end
     end
@@ -50,8 +50,10 @@ AddComponentAction("USEITEM", "fwd_in_pdt_com_item_use_to", function(item, doer,
     if doer and item and target then
         local fwd_in_pdt_com_item_use_to_com = item.replica.fwd_in_pdt_com_item_use_to or item.replica._.fwd_in_pdt_com_item_use_to
 
-        if fwd_in_pdt_com_item_use_to_com and fwd_in_pdt_com_item_use_to_com:Test(target,doer) then
-            table.insert(actions, ACTIONS.FWD_IN_PDT_COM_ITEM_USE_ACTION)
+        if fwd_in_pdt_com_item_use_to_com and fwd_in_pdt_com_item_use_to_com:Test(target,doer,right_click) then
+            local this_action = ACTIONS.FWD_IN_PDT_COM_ITEM_USE_ACTION
+            this_action.distance = fwd_in_pdt_com_item_use_to_com:GetDistance()
+            table.insert(actions, this_action)
         end        
     end
 end)

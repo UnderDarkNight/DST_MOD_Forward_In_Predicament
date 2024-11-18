@@ -18,6 +18,8 @@ local fwd_in_pdt_com_item_use_to = Class(function(self, inst)
     self.str_index = "DEFAULT"
     self.str = "test"
 
+    self.distance = nil
+
 end,
 nil,
 {
@@ -32,9 +34,9 @@ nil,
         end
     end
 
-    function fwd_in_pdt_com_item_use_to:Test(target,doer)
+    function fwd_in_pdt_com_item_use_to:Test(target,doer,right_click)
         if self.test_fn then
-            return self.test_fn(self.inst,target,doer)
+            return self.test_fn(self.inst,target,doer,right_click)
         end
         return false
     end
@@ -51,16 +53,16 @@ nil,
             return self.__pre_action_fn(self.inst,target,doer)
         end
     end
-    --------------------------------------------------------------------------------------------------------------
-    --- sg
+--------------------------------------------------------------------------------------------------------------
+--- sg
     function fwd_in_pdt_com_item_use_to:SetSGAction(sg)
         self.sg = sg
     end
     function fwd_in_pdt_com_item_use_to:GetSGAction()
         return self.sg
     end
-    --------------------------------------------------------------------------------------------------------------
-    --- 显示文本
+--------------------------------------------------------------------------------------------------------------
+--- 显示文本
     function fwd_in_pdt_com_item_use_to:SetText(index,str)
         self.str_index = string.upper(index)
         self.str = str
@@ -69,6 +71,14 @@ nil,
 
     function fwd_in_pdt_com_item_use_to:GetTextIndex()
         return self.str_index
+    end
+--------------------------------------------------------------------------------------------------------------
+---
+    function fwd_in_pdt_com_item_use_to:SetDistance(distance)
+        self.distance = distance
+    end
+    function fwd_in_pdt_com_item_use_to:GetDistance()
+        return self.distance
     end
 --------------------------------------------------------------------------------------------------------------
 
