@@ -29,7 +29,7 @@ local assets =
     Asset( "IMAGE", "images/inventoryimages/fwd_in_pdt_equipment_mole_backpack_snowman.tex" ),  -- 背包贴图
     Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_equipment_mole_backpack_snowman.xml" ),
 }
-
+-------------------------------------------------------------------------------------------------------------------------------
 local containers = require "containers"
 local params = containers.params
 
@@ -120,18 +120,7 @@ local function onequiptomodel(inst, owner)
     inst.components.container:Close(owner)
 end
 
--- local function AcceptTest(inst,item,giver)
--- 	if item.prefab == "bluegem"  then
--- 		if inst.bluegem < 3 then
--- 			return true
--- 		else
--- 			giver.components.talker:Say("背包已经可以反鲜了")
--- 		end
---     else
---         giver.components.talker:Say("需要蓝宝石")
--- 	end
--- 	return false
--- end
+
 local function fn()
     local inst = CreateEntity()
 

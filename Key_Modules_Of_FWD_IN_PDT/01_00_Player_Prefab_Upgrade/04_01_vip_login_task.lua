@@ -161,7 +161,7 @@ AddPlayerPostInit(function(inst)
                     --     ["fwd_in_pdt_building_potting_a"] = {
                     --     "fwd_in_pdt_building_potting_cotton",   ---棉花皮肤 
                     --     },
-                    ---- 鼹鼠背包
+                    ---- 零食鼠背包
                         ["fwd_in_pdt_equipment_mole_backpack"] = {
                             -- "fwd_in_pdt_equipment_mole_backpack_panda",  -- 免费送
                             -- "fwd_in_pdt_equipment_mole_backpack_cat",    --- 猫线线背包

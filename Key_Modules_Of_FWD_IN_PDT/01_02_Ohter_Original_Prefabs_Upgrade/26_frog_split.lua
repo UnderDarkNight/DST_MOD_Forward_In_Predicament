@@ -17,7 +17,7 @@ AddPrefabPostInit(
 
     -- worker:PushEvent("finishedwork", { target = self.inst, action = self.action })
     inst:ListenForEvent("fwd_in_pdt_event.frog_split",function(_,_table)
-        
+
         if inst:HasTag("fwd_in_pdt_tag.mutant_frog") then
             return
         end

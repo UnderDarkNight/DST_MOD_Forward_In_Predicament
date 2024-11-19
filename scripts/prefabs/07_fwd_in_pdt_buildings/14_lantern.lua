@@ -65,7 +65,7 @@ local function fn()
 
     inst.Light:SetIntensity(0.5)		-- 强度
     inst.Light:SetRadius(5)			-- 半径 ，矩形的？？ --- SetIntensity 为1 的时候 成矩形
-    inst.Light:SetFalloff(1)		-- 下降梯度
+    inst.Light:SetFalloff(0.1)		-- 下降梯度
     inst.Light:SetColour(255 / 255, 255 / 255, 255 / 255)
     inst.Light:Enable(false)
 
@@ -137,7 +137,7 @@ local function fn()
         inst.components.lootdropper:DropLoot()----这个才能让官方的敲击实现掉落一半
         inst:PushEvent("_building_remove")
     end)
---------------------------------------------------------
+    --------------------------------------------------------
         local function snow_over_init(inst)
             if TheWorld.state.issnowcovered then
                 inst.AnimState:Show("SNOW")
@@ -153,11 +153,6 @@ local function fn()
             inst.AnimState:Hide("LIGHT_OFF")
             inst.AnimState:Show("LIGHT_ON")
             inst.Light:Enable(true)
-
-            if inst.__ground_fx == nil then
-                inst.__ground_fx = inst:SpawnChild("fwd_in_pdt_building_banner_light_fx")
-                inst.__ground_fx:PushEvent("Set",{pt = Vector3(0,0,0)})
-            end
         end)
         inst:ListenForEvent("LIGHT_OFF",function()
             inst.AnimState:Show("LIGHT_OFF")
@@ -178,10 +173,10 @@ local function fn()
         end
         inst:DoTaskInTime(0,SwitchTheLight)
         inst:WatchWorldState("isnight",function()
-            inst:DoTaskInTime(math.random(3, 8),SwitchTheLight)
+            inst:DoTaskInTime( 0.01,SwitchTheLight)
         end)
         inst:WatchWorldState("isday",function()
-            inst:DoTaskInTime(math.random(3,8),SwitchTheLight)
+            inst:DoTaskInTime( 0.01,SwitchTheLight)
         end)
     -------------------------------------------------------------------------------------
 

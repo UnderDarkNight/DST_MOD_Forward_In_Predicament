@@ -20,7 +20,7 @@ local Prefabs_name_list = {
     "11_huge_soybean",                  --- 巨大豆荚
     "12_huge_orange",                  --- 巨大橙子
 
-    "13_mole_backpack",                  --- 鼹鼠背包
+    "13_mole_backpack",                  --- 零食鼠背包
 
 }
 
