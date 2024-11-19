@@ -411,6 +411,17 @@ local flg,error_code = pcall(function()
         --     print("Module Object:", moduleObject)
         -- end
     ----------------------------------------------------------------------------------------------------------------
+    --- 
+            inst:AddComponent("fwd_in_pdt_data")
+            inst:ListenForEvent("update_scale",function()
+                local level = inst.components.fwd_in_pdt_data:Add("level",0)
+                local scale = 1 + level*0.1
+                inst.AnimState:SetScale(sacle,scale,scale)
+            end)
+            inst:DoTaskInTime(0,function()
+                inst:PushEvent("update_scale")
+            end)
+    ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)
 

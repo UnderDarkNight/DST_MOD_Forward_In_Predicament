@@ -27,6 +27,8 @@ local temp_assets = {
 		Asset("ANIM", "anim/player_actions_telescope.zip"),	--- 望远镜动作
 
 	---------------------------------------------------------------------------
+		Asset("ANIM", "anim/fwd_in_pdt_active_item_cursor_sight.zip"),	--- 鼠标物品施法指示圈
+	---------------------------------------------------------------------------
 
 
 }

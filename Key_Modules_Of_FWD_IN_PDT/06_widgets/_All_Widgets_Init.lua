@@ -34,4 +34,6 @@ modimport("Key_Modules_Of_FWD_IN_PDT/06_widgets/14_task_scroll.lua")    --- 任�
 
 modimport("Key_Modules_Of_FWD_IN_PDT/06_widgets/15_drawing_display_sys.lua")    --- 立绘播放
 
+modimport("Key_Modules_Of_FWD_IN_PDT/06_widgets/16_active_item_cursor_sight_inventory_classified_hook.lua")    --- 鼠标物品施法指示圈
+
 
