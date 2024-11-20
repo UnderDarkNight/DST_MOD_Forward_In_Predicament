@@ -254,6 +254,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "Drugs for epilepsy.",
                 ["recipe_desc"] = "Able to deal with some difficult cases.",
             },
+            ["fwd_in_pdt_item_book_of_life_and_death"] = {
+                ["name"] = "Book of Life and Death",
+                ["inspect_str"] = "Book of Life and Death",
+                ["recipe_desc"] = "Book of Life and Death",
+            },
         --------------------------------------------------------------------
         ---- 02_fwd_in_pdt_materials
             ["fwd_in_pdt_material_tree_resin"] = {

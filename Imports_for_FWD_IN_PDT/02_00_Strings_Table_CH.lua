@@ -258,6 +258,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "治疗癫痫的药物",
                 ["recipe_desc"] = "能针对一些疑难杂症",
             },
+            ["fwd_in_pdt_item_book_of_life_and_death"] = {
+                ["name"] = "《生死簿》",
+                ["inspect_str"] = "《生死簿》",
+                ["recipe_desc"] = "《生死簿》",
+            },
         --------------------------------------------------------------------
         ---- 02_fwd_in_pdt_materials
             ["fwd_in_pdt_material_tree_resin"] = {

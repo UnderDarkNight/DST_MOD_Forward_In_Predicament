@@ -58,6 +58,7 @@ local prefabs_name_list = {
     "29_opalstaff_maker",                -- 唤月法杖
     "30_avoidable_lunarthrall",          -- 亮茄涂层
     "31_mouse_and_camera_crazy_powder",  -- 癫痫散
+    "32_book_of_life_and_death",         -- 《生死簿》
 }
 
 
