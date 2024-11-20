@@ -22,10 +22,6 @@ local function onequip(inst, owner)
 
 	owner:AddTag("insect")  -- 昆虫标签 不知道有什么用
 
-    -- owner.components.skilltreeupdater:IsActivated("wormwood_bugs")  -- 植物人相关
-
-    -- owner.components.fwd_in_pdt_remove_tag_blocker:Add("insect")
-
 end
 
 local function onunequip(inst, owner)
@@ -35,8 +31,6 @@ local function onunequip(inst, owner)
     owner.AnimState:ClearOverrideSymbol("swap_object")
 
     owner.isbeeking = nil  -- 结束hook
-
-    -- owner.components.fwd_in_pdt_remove_tag_blocker:Remove("insect")
 
     owner:RemoveTag("insect")   -- 昆虫标签 不知道有什么用
 
@@ -110,8 +104,7 @@ local function fn()
                         target.components.childspawner.ReleaseAllChildren = function()
                             return nil
                         end
-                            
-                        end
+                    end
 ------------------------------------------------------------------------------------------------------------------------------------
                     -- 执行采集
                     target.components.harvestable:Harvest(doer)

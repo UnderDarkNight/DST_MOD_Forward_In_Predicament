@@ -17,6 +17,7 @@ AddRecipeFilter({name="FWD_IN_PDT", atlas = "images/ui_images/fwd_in_pdt_buildin
 STRINGS.UI.CRAFTING_FILTERS["FWD_IN_PDT"] = GetStringsTable("fwd_in_pdt_ui_craftingmenu")["FWD_IN_PDT"] or ""
 --------------------------------------------------------------------------------------------------------------------------------------------
 require("recipes_filter")
+--------------------------------------------------------------------------------------------------------------------------------------------
 -- 【笔记】AddRecipe2参数说明
 
 -- name (string)：配方的名称，通常用prefab名
@@ -72,12 +73,8 @@ require("recipes_filter")
 -- }
 
 -- -- 添加自定义过滤器
--- AddRecipeFilter(filter_samansha_def, 1)
--- STRINGS.UI.CRAFTING_FILTERS.SAMANSHA ="自定义过滤器" -- 制作栏中显示的名字
-
--- -- 创建一个配方，并将其添加到自定义过滤器中
--- AddRecipe2("my_custom_recipe", ingredients, tech, config, {"SAMANSHA"})
--- 也就是还是这四个参数
+-- AddRecipeFilter(filter_samansha_def, 1) -- 这个1貌似是所在位置
+-- STRINGS.UI.CRAFTING_FILTERS.SAMANSHA ="自定义过滤器" -- 制作栏中显示的名字 -- 【注意：这里要全程大写 别写错了】
 ----------------------------------------------------------------------------------------------------------------------------------------------
 -- ---- 拟态墙-草
 -- -- --------------------------------------------------------------------------------------------------------------------------------------------

@@ -95,7 +95,7 @@ local function BookFn(inst,reader)      -- 采摘
     local canthavetags = {}
     local musthaveoneoftags = {}
     
-    local ents = TheSim:FindEntities(pt.x, 0, pt.z, 12, musthavetags, canthavetags, musthaveoneoftags)
+    local ents = TheSim:FindEntities(pt.x, 0, pt.z, 20, musthavetags, canthavetags, musthaveoneoftags)  -- 测试20 刚好能收草和树枝
     for k, v in pairs(ents) do
         if v and prefab_names[v.prefab] and v.components.pickable and v.components.pickable:CanBePicked() then
             v.components.pickable:Pick(reader)
