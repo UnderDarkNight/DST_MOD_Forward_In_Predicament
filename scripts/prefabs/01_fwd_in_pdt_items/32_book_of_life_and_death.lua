@@ -61,16 +61,16 @@ local assets =
 
         -------------------------------------------------------------
         -- 围绕书本的特效圈圈
-            local reading_fx_prefab = "book_fx"
-            if player.components.rider:IsRiding() then
-                reading_fx_prefab = "book_fx_mount"
-            end
-            local book_fx = SpawnPrefab(reading_fx_prefab)
-            book_fx.entity:SetParent(player.entity)
-            player.sg.statemem.book_fx = book_fx
+            -- local reading_fx_prefab = "book_fx"
+            -- if player.components.rider:IsRiding() then
+            --     reading_fx_prefab = "book_fx_mount"
+            -- end
+            -- local book_fx = SpawnPrefab(reading_fx_prefab)
+            -- book_fx.entity:SetParent(player.entity)
+            -- player.sg.statemem.book_fx = book_fx        
+            -- local t = player.AnimState:GetCurrentAnimationNumFrames()
+            -- player.sg.statemem.book_fx.AnimState:SetFrame(t + 6)
         -------------------------------------------------------------
-        local t = player.AnimState:GetCurrentAnimationNumFrames()
-        player.sg.statemem.book_fx.AnimState:SetFrame(t + 6)
 
         player.SoundEmitter:PlaySound("dontstarve/common/use_book_light") -- 翻书声音
 
