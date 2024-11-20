@@ -11,7 +11,7 @@ local fwd_in_pdt_com_sleeping_tent = Class(function(self, inst)
     self.inst = inst
 
     self.sleepers = {}
-    self.sleeping_players_num = 0
+    self.sleeping_players_num = 5
 
     self.tick_period = TUNING.SLEEP_TICK_PERIOD
 
@@ -20,7 +20,7 @@ local fwd_in_pdt_com_sleeping_tent = Class(function(self, inst)
 
     self.sleep_phase = {
         ["night"]  = true,
-        ["day"]    = false,
+        ["day"]    = true,
     }
 
     -----------------------------------------------------------------------
