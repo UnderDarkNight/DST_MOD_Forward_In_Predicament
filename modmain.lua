@@ -43,6 +43,20 @@ end
 		--     return TUNING["Forward_In_Predicament.Strings"][LANGUAGE][prefab_name] or {}
 		-- end
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-- 自动兼容show me（中文/origin）
+TUNING.MONITOR_CHESTS = TUNING.MONITOR_CHESTS or {}
+TUNING.MONITOR_CHESTS.fwd_in_pdt_deep_freeze = true
+TUNING.MONITOR_CHESTS.fwd_in_pdt_fish_farm = true
+TUNING.MONITOR_CHESTS.fwd_in_pdt_moom_jewelry_lamp = true
+TUNING.MONITOR_CHESTS.fwd_in_pdt_building_special_production_table = true
+TUNING.MONITOR_CHESTS.fwd_in_pdt_building_fermenter = true
+TUNING.MONITOR_CHESTS.fwd_in_pdt_building_special_cookpot = true
+TUNING.MONITOR_CHESTS.fwd_in_pdt_container_tv_box = true
+TUNING.MONITOR_CHESTS.fwd_in_pdt_building_drying_rack = true
+TUNING.MONITOR_CHESTS.fwd_in_pdt_container_wallet = true
+TUNING.MONITOR_CHESTS.fwd_in_pdt_container_mahogany_table = true
+TUNING.MONITOR_CHESTS.fwd_in_pdt_deep_freeze_new = true
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ----- 调试模式开关
 ----- 用于新大型版本管理和上线后文件切割。修BUG不用担心新的未完成内容上线造成崩溃。
 	TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE = TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE or GetModConfigData("DEBUGGING_MOD") or false	
