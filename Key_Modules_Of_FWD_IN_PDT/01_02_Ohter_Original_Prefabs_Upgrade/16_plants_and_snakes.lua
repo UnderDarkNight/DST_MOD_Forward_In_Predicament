@@ -58,7 +58,7 @@
             end
             inst:AddTag("fwd_in_pdt_tag.snake_spawned")
 
-            if not TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE and math.random(1000)/1000 < 0.95 then    --- 5%概率出蛇
+            if not TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE and math.random(1000)/1000 < 0.75 then    --- 25%概率出蛇
                 return
             end
 
@@ -68,16 +68,39 @@
     end
 
     local tree_prefabs = {
+        -- 常青树
         "evergreen",
         "evergreen_normal",
         "evergreen_tall",
         "evergreen_short",
-        --"evergreen_sparse",
-
+        
+        -- 桦木树
         "deciduoustree",
-        "deciduoustree_normal",
-        "deciduoustree_tall",
-        "deciduoustree_short",
+
+        -- 所有的多枝树
+        "twiggytree",
+        "twiggy_normal",
+        "twiggy_tall",
+        "twiggy_short",
+        "twiggy_old",
+
+        -- 完全正常的树
+        "livingtree",
+
+        -- 万圣节制作的完全正常的树
+        "livingtree_halloween",
+
+        -- 月树
+        "moon_tree",
+        "moon_tree_short",
+        "moon_tree_normal",
+        "moon_tree_tall",
+
+        --棕榈松果树
+        "palmconetree_tall",
+        "palmconetree_normal",
+        "palmconetree_short",
+        
     }
 
     for k, the_prefab in pairs(tree_prefabs) do   

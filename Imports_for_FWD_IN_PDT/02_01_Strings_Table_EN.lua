@@ -728,15 +728,18 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["recipe_desc"] = "For putting food on the table.",
             },
             ["fwd_in_pdt_deep_freeze"] = {
-                ["name"] = "deep freeze",
-                ["inspect_str"] = "For putting food in it.",
-                ["inspect_str_burnt"] = "It burns wonderfully.",
-                ["recipe_desc"] = "For putting food on the table.",
+                ["name"] = "refrigerator",
+                ["inspect_str"] = "Used to store food.",
+                ["recipe_desc"] = "Used to store food.",
             },
             ["fwd_in_pdt_building_potting_a"] = {
                 ["name"] = "Potting",
                 ["inspect_str"] = "The rabbits inside are lifelike.",
                 ["recipe_desc"] = "It's definitely right to use it to decorate the base.",
+            },
+            ["fwd_in_pdt_deep_freeze_new"] = {
+                ["name"] = "Flexible freezer",
+                ["inspect_str"] = "There is no upper limit to the number of individual food items that can be used for storage.",
             },
         --------------------------------------------------------------------
         ---- 07_fwd_in_pdt_buildings

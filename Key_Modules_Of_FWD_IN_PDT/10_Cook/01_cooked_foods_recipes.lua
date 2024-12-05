@@ -7,7 +7,7 @@
         return TUNING["Forward_In_Predicament.Strings"][LANGUAGE][prefab_name] or {}
     end
 --[[
-				tags所有标签: 
+				食物tags所有标签: 
                 fruit-水果度
                 monster-怪物度
                 sweetener-甜度
@@ -23,7 +23,21 @@
                 seed-种子-桦栗果
                 magic-魔法度-噩梦燃料
 			]]
-
+    -- 官方的 食谱写法参考
+-- 	ceviche =
+	-- {
+	-- 	test = function(cooker, names, tags) return tags.fish and tags.fish >= 2 and tags.frozen and not tags.inedible and not tags.egg end,
+	-- 	priority = 20,
+	-- 	foodtype = FOODTYPE.MEAT,
+	-- 	health = TUNING.HEALING_MED,        -- 用数字也行
+	-- 	hunger = TUNING.CALORIES_MED,       -- 用数字也行
+	-- 	perishtime = TUNING.PERISH_MED,     -- 用数字也行
+	-- 	sanity = TUNING.SANITY_TINY,        -- 用数字也行
+	-- 	temperature = TUNING.COLD_FOOD_BONUS_TEMP,          -- 这个是作用升温和降温的没试过数字行不行带HOT就是升温 COLD就是降温
+	-- 	temperatureduration = TUNING.FOOD_TEMP_AVERAGE,     -- 这个是升温或者降温持续时间   
+	-- 	cooktime = 0.5,                     -- 烹饪时间
+    --     floater = {"med", 0.05, {0.65, 0.6, 0.65}},
+	-- },
 
 ---------------------------------------------------------------------------------------------------------------------
 ----- 疙瘩汤
@@ -60,6 +74,8 @@
         floater = {"med", nil, 0.55},
         oneat_desc = GetStringsTable("fwd_in_pdt_food_mixed_potato_soup")["oneat_desc"],    --- 副作用一栏显示的文本
         cookbook_category = "portablecookpot"
+        -- temperature = TUNING.HOT_FOOD_BONUS_TEMP,          -- 这个是作用升温和降温的没试过数字行不行带HOT就是升温 COLD就是降温
+	    -- temperatureduration = TUNING.FOOD_TEMP_LONG,     -- 这个是升温或者降温持续时间
     }
 
     -- AddCookerRecipe("cookpot", fwd_in_pdt_food_mixed_potato_soup) -- 将食谱添加进普通锅

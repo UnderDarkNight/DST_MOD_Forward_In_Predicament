@@ -169,7 +169,7 @@ local function fn()
 
     inst.entity:AddMiniMapEntity()
     inst.MiniMapEntity:SetIcon("fwd_in_pdt_container_tv_box.tex")
-    -- inst:AddTag("chest_upgradeable") --能被 弹性空间制造器 升级
+    
     inst.AnimState:SetBank("fwd_in_pdt_container_tv_box")
     inst.AnimState:SetBuild("fwd_in_pdt_container_tv_box")
     inst.AnimState:PlayAnimation("idle",true)
@@ -181,7 +181,8 @@ local function fn()
     inst:AddTag("chest")
     inst:AddTag("fwd_in_pdt_container_tv_box")
 
-
+    inst:AddComponent("container")
+    inst.components.container:EnableInfiniteStackSize(true) -- 无限堆叠
 
     inst.entity:SetPristine()
 

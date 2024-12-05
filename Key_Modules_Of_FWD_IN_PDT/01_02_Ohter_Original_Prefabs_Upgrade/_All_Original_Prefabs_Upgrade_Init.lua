@@ -2,7 +2,7 @@
 -- 本lua 和 modmain.lua 平级
 -- 注意文件路径
 
-modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/01_123.lua")    -- 测试升级某个东西
+-- modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/01_123.lua")    -- 测试升级某个东西
 
 modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/00_special_ent_add_tag.lua")    --- 上 tag 好扫描
 
@@ -52,4 +52,7 @@ modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/26_fro
 
 modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/27_trapped.lua")           --- 捕捉青蛙触发的事件
 
-modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/28_beequeen.lua")           --- 修改 蜂后 掉落昆虫法杖
+modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/28_beequeen.lua")           --- 修改 蜂后 掉落昆虫法杖29_deep
+
+modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/29_fwd_in_pdt_deep_freeze.lua")             --- 升级 冰柜 让里面变为无限堆叠（prefab 替换）
+
