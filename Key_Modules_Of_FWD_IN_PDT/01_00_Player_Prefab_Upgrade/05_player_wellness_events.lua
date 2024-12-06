@@ -166,7 +166,7 @@ AddPlayerPostInit(function(inst)
                 local num = 0
                 local food_base_prefab = food.nameoverride or food.prefab 
 
-                ----- 靠prefab 定义血糖值
+                -----  定义血糖值
                 if type(prefab_list_with_glu_value[food_base_prefab]) == "number" then
                     return prefab_list_with_glu_value[food_base_prefab]
                 end

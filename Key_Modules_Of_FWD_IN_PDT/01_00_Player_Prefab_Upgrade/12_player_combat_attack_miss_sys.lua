@@ -64,6 +64,6 @@ AddPlayerPostInit(function(inst)
                 end
             end
             old_combat_DoAttack_fn(self,...)
-        end        
+        end
     ----------------------------------------------------------------------------------------------------------
 end)

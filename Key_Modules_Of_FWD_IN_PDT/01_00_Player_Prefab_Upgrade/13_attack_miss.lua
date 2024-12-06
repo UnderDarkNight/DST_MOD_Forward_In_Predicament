@@ -33,7 +33,6 @@ AddPlayerPostInit(function(inst)
                                     message = GetStringsTable("fwd_in_pdt_welness_attack_miss")["debuff_attach_whisper"] or "", ---- 文字内容
                                 })
                                 -- print("fake error +++++++ ")
-                    
     end)
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
