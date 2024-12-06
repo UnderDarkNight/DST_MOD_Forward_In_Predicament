@@ -36,7 +36,5 @@ AddPrefabPostInit(
         if not TheWorld.ismastersim then
             return
         end
-
-
     end
 )
