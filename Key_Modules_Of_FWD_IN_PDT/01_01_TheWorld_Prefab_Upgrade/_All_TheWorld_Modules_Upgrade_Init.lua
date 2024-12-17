@@ -22,4 +22,5 @@ modimport("Key_Modules_Of_FWD_IN_PDT/01_01_TheWorld_Prefab_Upgrade/05_tile_tag_s
 modimport("Key_Modules_Of_FWD_IN_PDT/01_01_TheWorld_Prefab_Upgrade/06_summer_heat.lua")    
 --- 锁定世界温度系统
 
-
+modimport("Key_Modules_Of_FWD_IN_PDT/01_01_TheWorld_Prefab_Upgrade/07_rain_more.lua")    
+--- 锁定世界温度系统
