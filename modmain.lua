@@ -55,7 +55,6 @@ TUNING.MONITOR_CHESTS.fwd_in_pdt_container_tv_box = true
 TUNING.MONITOR_CHESTS.fwd_in_pdt_building_drying_rack = true
 TUNING.MONITOR_CHESTS.fwd_in_pdt_container_wallet = true
 TUNING.MONITOR_CHESTS.fwd_in_pdt_container_mahogany_table = true
-TUNING.MONITOR_CHESTS.fwd_in_pdt_deep_freeze_new = true
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ----- 调试模式开关
 ----- 用于新大型版本管理和上线后文件切割。修BUG不用担心新的未完成内容上线造成崩溃。

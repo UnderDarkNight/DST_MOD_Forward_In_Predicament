@@ -54,5 +54,5 @@ modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/27_tra
 
 modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/28_beequeen.lua")           --- 修改 蜂后 掉落昆虫法杖29_deep
 
-modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/29_fwd_in_pdt_deep_freeze.lua")             --- 升级 冰柜 让里面变为无限堆叠（prefab 替换）
+modimport("Key_Modules_Of_FWD_IN_PDT/01_02_Ohter_Original_Prefabs_Upgrade/29_fwd_in_pdt_deep_freeze.lua")             --- 升级 冰柜 让里面变为无限堆叠
 

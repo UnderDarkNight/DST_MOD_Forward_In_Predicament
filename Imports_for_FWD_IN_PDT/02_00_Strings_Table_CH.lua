@@ -738,11 +738,6 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str_burnt"] = "烧得很精彩",
                 ["recipe_desc"] = "用来储存食物",
             },
-            ["fwd_in_pdt_deep_freeze_new"] = {
-                ["name"] = "弹性冰柜",
-                ["inspect_str"] = "用来储存的单个食物没有上限",
-                ["inspect_str_burnt"] = "烧得很精彩",
-            },
         --------------------------------------------------------------------
         ---- 07_fwd_in_pdt_buildings
             ["fwd_in_pdt_building_mock_wall_grass"] = {

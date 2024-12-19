@@ -147,7 +147,7 @@ local function fn()
     inst:AddComponent("preserver")
     inst.components.preserver:SetPerishRateMultiplier(-500000)  -- 嗖的一下就反鲜了 ~
     
-    inst:AddComponent("container")
+    -- inst:AddComponent("container")
     
     inst.entity:SetPristine()
 -------------------------------------------------------------------------------------
