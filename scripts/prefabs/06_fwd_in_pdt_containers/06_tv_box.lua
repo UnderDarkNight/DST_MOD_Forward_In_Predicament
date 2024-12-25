@@ -181,8 +181,8 @@ local function fn()
     inst:AddTag("chest")
     inst:AddTag("fwd_in_pdt_container_tv_box")
 
-    inst:AddComponent("container")
-    inst.components.container:EnableInfiniteStackSize(true) -- 无限堆叠
+    -- inst:AddComponent("container")
+    -- inst.components.container:EnableInfiniteStackSize(true) -- 无限堆叠
 
     inst.entity:SetPristine()
 
@@ -200,24 +200,32 @@ local function fn()
 
     inst:AddComponent("inspectable") --可检查组件
     -----------------------------------------------------------------------------------
-    -- local function onhit(inst, worker)
-    --     inst.sorasign = nil
-    --     updatesign(inst)
-    --     if inst.hitcount and inst.hitcount > 0 then
-    --         inst.components.container:DropEverything()
-    --     end
-    -- end
     -----------------------------------------------------------------------------------
         pic_display_event(inst)
     -----------------------------------------------------------------------------------
     -- inst.components.container
-        inst:ListenForEvent("onopen",function()
-            inst.SoundEmitter:PlaySound("dontstarve/wilson/chest_open")
-        end)
-        inst:ListenForEvent("onclose",function()
-            inst.SoundEmitter:PlaySound("dontstarve/wilson/chest_close")
-            inst:PushEvent("pic_display")
-        end)
+    local function onopen(inst)
+
+        inst.SoundEmitter:PlaySound("dontstarve/wilson/chest_open")
+    end
+    local function onclose(inst)
+
+        inst.SoundEmitter:PlaySound("dontstarve/wilson/chest_close")
+        inst:PushEvent("pic_display")
+
+    end
+    -----------------------------------------------------------------------------------
+    local function onbuilt(inst)
+
+        inst.SoundEmitter:PlaySound("dontstarve/common/dragonfly_chest_craft")
+        
+    end
+    -----------------------------------------------------------------------------------
+
+    local function onhit(inst, worker)
+        inst.AnimState:PlayAnimation("hit")
+        inst.AnimState:PushAnimation("idle")
+    end
 
     -----------------------------------------------------------------------------------
     ---- 积雪检查
@@ -235,6 +243,8 @@ local function fn()
         inst:AddComponent("workable")
         inst.components.workable:SetWorkAction(ACTIONS.HAMMER)
         inst.components.workable:SetWorkLeft(5)
+        inst.components.workable:SetOnWorkCallback(onhit)
+        
         inst.components.workable:SetOnFinishCallback(function()
             inst.components.lootdropper:DropLoot()
             inst.components.container:DropEverything()
@@ -243,8 +253,14 @@ local function fn()
             })
             inst:Remove()
         end)
+        -- container组件 官方的写法是在  TheWorld.ismastersim then 的后面
 
-
+        inst:AddComponent("container")
+        inst.components.container.onopenfn = onopen
+        inst.components.container.onclosefn = onclose
+        inst.components.container:EnableInfiniteStackSize(true) -- 无限堆叠
+    -----------------------------------------------------------------------------------
+        inst:ListenForEvent("onbuilt", onbuilt) -- 建立回调
     -----------------------------------------------------------------------------------
     return inst
 end
