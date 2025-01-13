@@ -59,6 +59,7 @@ local prefabs_name_list = {
     "30_avoidable_lunarthrall",          -- 亮茄涂层
     "31_mouse_and_camera_crazy_powder",  -- 癫痫散
     "32_book_of_life_and_death",         -- 《生死簿》
+    "33_decorative_tool_box",            -- 装饰工具盒子
 }
 
 

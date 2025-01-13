@@ -16,3 +16,6 @@ modimport("Key_Modules_Of_FWD_IN_PDT/03_Auxiliary_File_Registration_System/02_ta
 
 modimport("Key_Modules_Of_FWD_IN_PDT/03_Auxiliary_File_Registration_System/04_rpc_event_register.lua")    
 --- 独立RPC事件管道 
+
+modimport("Key_Modules_Of_FWD_IN_PDT/03_Auxiliary_File_Registration_System/05_the_input_upgrade.lua")    
+--- TheInput 升级 

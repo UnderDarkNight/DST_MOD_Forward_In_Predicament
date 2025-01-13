@@ -51,6 +51,7 @@ local prefabs_name_list = {
     "23_red_tornado",               --- 龙卷风
     "24_clock_fx",                  --- 旺达的时间标记
     "25_dotted_circle",             --- 虚线圆圈
+    "26_canvas",                    --- 装饰物的画布
 
     
 }

@@ -51,6 +51,9 @@ modimport("Key_Modules_Of_FWD_IN_PDT/12_turfs/_All_Turfs_Related_Init.lua")
 modimport("Key_Modules_Of_FWD_IN_PDT/13_time_pause_sys/__all_time_pause_init.lua")
 --- 时间暂停使用
 
+modimport("Key_Modules_Of_FWD_IN_PDT/14_building_decoration_sys/__all_building_decoration_sys_init.lua")
+--- 装饰物系统
+
 -------------- 不同版本开发专用的调试区域
 if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE == true then
     modimport("Key_Modules_Of_FWD_IN_PDT/_Debugging_Modules/_All_Debugging_Modules_Init.lua") 

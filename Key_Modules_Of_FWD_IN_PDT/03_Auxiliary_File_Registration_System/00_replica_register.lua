@@ -37,3 +37,5 @@ AddReplicableComponent("fwd_in_pdt_com_player_anything_eater")  --- 吃任意东
 
 AddReplicableComponent("fwd_in_pdt_com_inspectable_spell_caster")  --- 任意目标施法组件
 
+AddReplicableComponent("fwd_in_pdt_building_decoration_system")  --- 建筑装饰系统
+

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Atlas>
+	<Texture filename="fwd_in_pdt_decoration_ui.tex" />
+	<Elements>
+		<Element name="background.tex" u1="0.001" u2="0.36765234375" v2="0.5058359375" v1="0.0635" variant="" />
+		<Element name="black_frame.tex" u1="0.038841796875" u2="0.061255859375" v2="0.5546640625" v1="0.5078359375" variant="" />
+		<Element name="box.tex" u1="0.36965234375" u2="0.51901953125" v2="0.999" v1="0.610375" variant="" />
+		<Element name="canvas.tex" u1="0.001" u2="0.36765234375" v2="0.999" v1="0.5566640625" variant="" />
+		<Element name="icon_close.tex" u1="0.001" u2="0.012427734375" v2="0.5546640625" v1="0.53225" variant="" />
+		<Element name="icon_slot.tex" u1="0.014427734375" u2="0.036841796875" v2="0.5546640625" v1="0.5078359375" variant="" />
+	</Elements>
+</Atlas>

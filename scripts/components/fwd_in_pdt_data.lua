@@ -42,11 +42,11 @@ nil,
 ---------------------------------------------------------------------------------------------------
 ----- 数据读取/储存
 
-    function fwd_in_pdt_data:Get(index)
+    function fwd_in_pdt_data:Get(index,default)
         if index then
-            return self.DataTable[index]
+            return self.DataTable[index] or default
         end
-        return nil
+        return nil or default
     end
     function fwd_in_pdt_data:Set(index,theData)
         if index then
@@ -54,10 +54,17 @@ nil,
         end
     end
 
-    function fwd_in_pdt_data:Add(index,num)
+    function fwd_in_pdt_data:Add(index,num,min,max)
         if index then
-            self.DataTable[index] = (self.DataTable[index] or 0) + ( num or 0 )
-            return self.DataTable[index]
+            if min and max then
+                local ret = (self.DataTable[index] or 0) + ( num or 0 )
+                ret = math.clamp(ret,min,max)
+                self.DataTable[index] = ret
+                return ret
+            else
+                self.DataTable[index] = (self.DataTable[index] or 0) + ( num or 0 )
+                return self.DataTable[index]
+            end
         end
         return 0
     end

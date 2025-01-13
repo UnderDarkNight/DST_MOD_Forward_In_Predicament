@@ -11,416 +11,443 @@
     local Menu = require "widgets/menu"
     local Text = require "widgets/text"
     local TEMPLATES = require "widgets/redux/templates"
+    local ScrollableList = require "widgets/scrollablelist"
+
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 local flg,error_code = pcall(function()
     print("WARNING:PCALL START +++++++++++++++++++++++++++++++++++++++++++++++++")
     local x,y,z =    ThePlayer.Transform:GetWorldPosition()  
     ----------------------------------------------------------------------------------------------------------------
     ----
-        -- ThePlayer:ListenForEvent("newstate",function(_,_table)
-        --     print("state",_table and _table.statename)
-        -- end)
-    ----------------------------------------------------------------------------------------------------------------
-
-    -- miss 测试
-                    
-                    -- ThePlayer.components.combat:Fwd_In_Pdt_Add_Miss_Check(ThePlayer,function(targ,...)
-                    --     print("Miss target",targ)
-                    --     SpawnPrefab("fwd_in_pdt_fx_miss"):PushEvent("Set",{
-                    --         target = targ,
-                    --         speed = 2,
-                    --     })
-                    --     return true
-                    -- end)
-                    --  ThePlayer.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_attack_miss")
-
-                    -- ThePlayer.components.fwd_in_pdt_wellness:Remove_Debuff("fwd_in_pdt_welness_attack_miss")
-    ----------------------------------------------------------------------------------------------------------------
-    -------
-    -- 癫痫测试
-        --ThePlayer.components.fwd_in_pdt_wellness:Add_Debuff("fwd_in_pdt_welness_mouse_and_camera_crazy")
-        -- ThePlayer.components.fwd_in_pdt_wellness:Remove_Debuff("fwd_in_pdt_welness_mouse_and_camera_crazy")
-
-    ----
-        -- local BASE_SCALE = Vector3(0.5,0.5,0.5)
-        -- local inst = ThePlayer
-        -- inst.body_fx.AnimState:SetScale(0.5,0.5,0.5)
-    ----------------------------------------------------------------------------------------------------------------
-    ----
-        -- ThePlayer.components.freezable:Freeze(10)
-        -- ThePlayer.___light___fx:Remove()
-
-        -- SpawnPrefab("fwd_in_pdt_spell_time_stopper"):PushEvent("Set",{
-        --     target = ThePlayer,
-        --     range = 30,
-        --     time = 30,
-        -- })
-    ----------------------------------------------------------------------------------------------------------------
-    ----
-        -- ThePlayer:RemoveEventCallback("changearea",ThePlayer.___area_event_fn or function()        end)
-
-        -- ThePlayer.___area_event_fn = function(inst,_table)
-        --     -- print(_table,type(_table))
-        --     if type(_table) ~= "table" then
-        --         return
-        --     end
-        --     print("+++++++++++++++++++++++++++++")
-        --         print(_table.type)
-        --         for k, v in pairs(_table.tags) do
-        --             print(k,v)
-        --         end
-        --     print("+++++++++++++++++++++++++++++")
-
+        -- local function GetIconDataById(id)
+        --     return TUNING.FWD_IN_PDT_DECORATIONS and TUNING.FWD_IN_PDT_DECORATIONS[id] or nil
         -- end
-        -- ThePlayer:ListenForEvent("changearea",ThePlayer.___area_event_fn)
-    ----------------------------------------------------------------------------------------------------------------
-    --- 
-            -- for k, v in pairs(ThePlayer.replica._.fwd_in_pdt_com_inspectable_spell_caster) do
-            --     print(k,v)
-            -- end
-    ----------------------------------------------------------------------------------------------------------------
-    --- 
-        -- local map_width,map_height = TheWorld.Map:GetSize()
-        -- print("map_width",map_width,"map_height",map_height)
-
-        -- local tx, ty = TheWorld.Map:GetTileXYAtPoint(x,y,z)
-        -- print(tx,ty)
-    ----------------------------------------------------------------------------------------------------------------
-    ---- 
-        -- ThePlayer:RemoveEventCallback("fwd_in_pdt_event.enter_new_tile",ThePlayer.___test_area_event_fn or function()        end)
-
-        -- ThePlayer.___test_area_event_fn = function(inst,_table)
-        --     print("++++++++++++++++++++++++++++")
-        --     print("tile : ",_table.tile)
-        --     print("TileXY",_table.tx,_table.ty)
-        --     local temp_data = TheWorld.components.fwd_in_pdt_com_world_map_tile_sys:Get_Data_By_Tile_XY(_table.tx,_table.ty)
-        --     for k, v in pairs(temp_data.tags or {}) do
-        --         print("+tag:",v)
-        --     end
-        --     print("++++++++++++++++++++++++++++")
+        -- local function GetAllIconData()
+        --     return TUNING.FWD_IN_PDT_DECORATIONS or {}
         -- end
-        -- ThePlayer:ListenForEvent("fwd_in_pdt_event.enter_new_tile",ThePlayer.___test_area_event_fn)
-
-    ----------------------------------------------------------------------------------------------------------------
-    ----
-        -- TheWorld.components.fwd_in_pdt_com_world_map_tile_sys:Add_Tag_To_Tile_By_Point(x,y,z,"test_tag")
-        -- TheWorld.components.fwd_in_pdt_com_world_map_tile_sys:Remove_Tag_From_Tile_By_Point(x,y,z,"test_tag")
-    ----------------------------------------------------------------------------------------------------------------
-        
-        -- local ent = TheSim:FindFirstEntityWithTag("fwd_in_pdt__red_tree_island_mid_point")
-        -- print("ent",ent)
-        -- ThePlayer.Transform:SetPosition(ent.Transform:GetWorldPosition())
-    ----------------------------------------------------------------------------------------------------------------
-        -- ThePlayer.SoundEmitter:PlaySound("dontstarve/music/gramaphone_ragtime")
-    ----------------------------------------------------------------------------------------------------------------
-    -- 读取模块local 测试
-            -- local worldmigrator = require("components/worldmigrator")
-            --------------------------------------------------------------------------
-            -- --- 读取某个 func 内部的 local 变量
-            --     local debug_getupvalue = debug.getupvalue
-            --     -- 尝试从加载的模块中找到对nextPortalID的引用
-            --     for i = 1, math.huge do
-            --         local name, value = debug.getupvalue(worldmigrator, i)
-            --         if name == "nextPortalID" then
-            --             print("Found nextPortalID:", value,i)
-            --             break
-            --         elseif not name then
-            --             break -- 没有更多的上值了
-            --         end
-            --     end
-            --------------------------------------------------------------------------
-
-    ----------------------------------------------------------------------------------------------------------------
-    -- 
-        -- print(TheWorld.Map:GetSize())
-
-        -- local temp_size = 1000
-        -- TheWorld.Map:SetSize(temp_size,temp_size)
-        -- TheWorld:PushEvent("worldmapsetsize", { width = temp_size, height = temp_size, })
-        -- TheWorld.Map:SetNavSize(temp_size, temp_size)
-    ----------------------------------------------------------------------------------------------------------------
-    ---- 鼠标模拟测试
-    
-        -- -- local mousepos = TheInput:GetScreenPosition()
-        -- -- print(mousepos.x, mousepos.y)
-       
-        -- -- print(TheInput:ControllerAttached())
-        -- -- local temp_TheInputProxy = getmetatable(TheInputProxy).__index
-        -- -- for k, v in pairs(temp_TheInputProxy) do
-        -- --     print(k,v,type(v))
+        -- -- function TUNING.FWD_IN_PDT_DECORATION_FN:Start(inst,submit_fn,old_saved_data,mark_fn)
+        -- --     ---------------------------------------------------------------------------------------------
+        -- --     -- 前置准备
+        -- --         local ui_atlas = "images/widget/fwd_in_pdt_decoration_ui.xml"
+        -- --         local mark_bank = "fwd_in_pdt_fx_canvas"
+        -- --         local mark_build = "fwd_in_pdt_fx_canvas"
+        -- --         local mark_anim = "mark"
+        -- --     ---------------------------------------------------------------------------------------------
+        -- --     -- 前置根节点
+        -- --         local front_root = ThePlayer.HUD:AddChild(Widget())
+        -- --         front_root:SetHAnchor(1) -- 设置原点x坐标位置，0、1、2分别对应屏幕中、左、右
+        -- --         front_root:SetVAnchor(2) -- 设置原点y坐标位置，0、1、2分别对应屏幕中、上、下
+        -- --         front_root:SetPosition(0,0)
+        -- --         -- front_root:MoveToBack()
+        -- --         front_root:SetScaleMode(SCALEMODE_FIXEDSCREEN_NONDYNAMIC)   --- 缩放模式
+        -- --         local screen_width,screen_height = TheSim:GetScreenSize()
+        -- --         local mid_pos = Vector3(screen_width/2,screen_height/2,0)
+        -- --         front_root:SetPosition(mid_pos.x,mid_pos.y)
+        -- --     ---------------------------------------------------------------------------------------------
+        -- --     --- 根节点-关闭
+        -- --         front_root.inst:DoPeriodicTask(1,function()
+        -- --             if ThePlayer:GetDistanceSqToInst(inst) > 20 then
+        -- --                 front_root:Kill()
+        -- --             end
+        -- --         end)
+        -- --         front_root.inst:ListenForEvent("onremove",function()
+        -- --             front_root:Kill()
+        -- --         end,inst)
+        -- --     ---------------------------------------------------------------------------------------------
+        -- --     --- 根节点
+        -- --             local SCALE = 0.6
+        -- --             local root = front_root:AddChild(Widget())
+        -- --             root:SetScale(SCALE, SCALE, SCALE)
+        -- --     ---------------------------------------------------------------------------------------------
+        -- --     --- 背景
+        -- --             local bg = root:AddChild(Image(ui_atlas,"background.tex"))
+        -- --     ---------------------------------------------------------------------------------------------
+        -- --     --- 关闭按钮
+        -- --         local button_close = root:AddChild(ImageButton(ui_atlas,"icon_slot.tex","icon_slot.tex","icon_slot.tex","icon_slot.tex","icon_slot.tex"))
+        -- --         button_close.image:AddChild(Image(ui_atlas,"icon_close.tex"))
+        -- --         button_close:SetPosition(750,450)
+        -- --         button_close:SetOnClick(function()
+        -- --             front_root.inst:PushEvent("close")
+        -- --             -- front_root:Kill()
+        -- --         end)
+        -- --     ---------------------------------------------------------------------------------------------
+        -- --     --- canvas button
+        -- --         local button_canvas = root:AddChild(ImageButton(ui_atlas,"canvas.tex","canvas.tex","canvas.tex","canvas.tex","canvas.tex"))
+        -- --         button_canvas.focus_scale = {1,1,1}
+        -- --         button_canvas:SetOnClick(function()
+        -- --             local mouse_x, mouse_y = TheSim:GetPosition()
+        -- --             front_root.inst:PushEvent("on_draw",Vector3(mouse_x, mouse_y,0))
+        -- --         end)
+        -- --         button_canvas.clickoffset = Vector3(0,0,0)
+        -- --     ---------------------------------------------------------------------------------------------
+        -- --     --- 标记图层
+        -- --             local mark_layer = root:AddChild(Widget())
+        -- --             mark_layer:SetPosition(0,0)
+        -- --             mark_layer:SetHAnchor(1) -- 设置原点x坐标位置，0、1、2分别对应屏幕中、左、右
+        -- --             mark_layer:SetVAnchor(2) -- 设置原点y坐标位置，0、1、2分别对应屏幕中、上、下
+        -- --             -- mark_layer:SetClickable(false)
+        -- --     ---------------------------------------------------------------------------------------------
+        -- --     --- 基点标记
+        -- --         local mark_scale = 0.5
+        -- --         local mark_pos = Vector3(640,200,0)
+        -- --         local mark = mark_layer:AddChild(UIAnim())
+        -- --         mark:GetAnimState():SetBank(mark_bank)
+        -- --         mark:GetAnimState():SetBuild(mark_build)
+        -- --         mark:GetAnimState():PlayAnimation(mark_anim, true)
+        -- --         mark:SetPosition(mark_pos.x,mark_pos.y)
+        -- --         mark:SetScale(mark_scale,mark_scale,mark_scale)
+        -- --         -- mark:FollowMouse()
+        -- --         front_root.mark = mark
+        -- --         if mark_fn then
+        -- --             mark_fn(mark)
+        -- --         end
+        -- --     ---------------------------------------------------------------------------------------------
+        -- --     --- slot box
+        -- --             local slot_box = root:AddChild(Image(ui_atlas,"box.tex"))
+        -- --             slot_box:SetPosition(400,0)
+        -- --     ---------------------------------------------------------------------------------------------
+        -- --     --- selectting_box
+        -- --             local selectting_box = root:AddChild(ImageButton(ui_atlas,"icon_slot.tex","icon_slot.tex","icon_slot.tex","icon_slot.tex","icon_slot.tex"))
+        -- --             selectting_box:SetPosition(30,350)
+        -- --             selectting_box.icon = selectting_box.image:AddChild(UIAnim())
+        -- --             selectting_box.icon:GetAnimState():SetBank(mark_bank)
+        -- --             selectting_box.icon:GetAnimState():SetBuild(mark_build)
+        -- --             selectting_box.icon:GetAnimState():PlayAnimation(mark_anim, true)
+        -- --             selectting_box.icon:SetScale(0.7,0.7,0.7)
+        -- --             function selectting_box:SetImage(bank,build,anim)
+        -- --                 self.icon:GetAnimState():SetBank(bank)
+        -- --                 self.icon:GetAnimState():SetBuild(build)
+        -- --                 self.icon:GetAnimState():PlayAnimation(anim, true)                        
+        -- --             end
+        -- --             function selectting_box:SetData(id,bank,build,anim)
+        -- --                 if id and bank and build and anim then
+        -- --                     self.id = id
+        -- --                     self:SetImage(bank,build,anim)
+        -- --                 else
+        -- --                     self.id = nil
+        -- --                     self.icon:GetAnimState():SetBank(mark_bank)
+        -- --                     self.icon:GetAnimState():SetBuild(mark_build)
+        -- --                     self.icon:GetAnimState():PlayAnimation(mark_anim, true)
+        -- --                 end
+        -- --             end
+        -- --             function selectting_box:GetID()
+        -- --                 return self.id
+        -- --             end
+        -- --             selectting_box.focus_scale = {1,1,1}
+        -- --             front_root.inst:ListenForEvent("slot_selected",function(_,id)
+        -- --                 local icon_data = GetIconDataById(id)
+        -- --                 if icon_data then
+        -- --                     selectting_box:SetData(id,icon_data.bank,icon_data.build,icon_data.anim)
+        -- --                 else
+        -- --                     selectting_box:SetData(nil,nil,nil,nil)
+        -- --                 end
+        -- --             end)
+        -- --             selectting_box:SetOnClick(function()
+        -- --                 selectting_box:SetData(nil,nil,nil,nil)
+        -- --             end)
+        -- --     ---------------------------------------------------------------------------------------------
+        -- --     --- 关闭和提交
+        -- --             front_root.inst:ListenForEvent("close",function()
+        -- --                 front_root.inst:PushEvent("submit")
+        -- --                 front_root:Kill()
+        -- --             end)
+        -- --             button_close:MoveToFront()
+        -- --     ---------------------------------------------------------------------------------------------
+        -- --     ---- 单个选项框体
+        -- --             local function CreateSlot(id)
+        -- --                 local icon_data = GetIconDataById(id)
+        -- --                 local temp_button = ImageButton(ui_atlas,"icon_slot.tex","icon_slot.tex","icon_slot.tex","icon_slot.tex","icon_slot.tex")
+        -- --                 if icon_data then
+        -- --                     local icon = temp_button.image:AddChild(UIAnim())
+        -- --                     icon:GetAnimState():SetBank(icon_data.bank)
+        -- --                     icon:GetAnimState():SetBuild(icon_data.build)
+        -- --                     icon:GetAnimState():PlayAnimation(icon_data.anim,true)
+        -- --                     icon:SetScale(0.7,0.7,0.7)
+        -- --                     temp_button.icon = icon
+        -- --                 end
+        -- --                 temp_button.id = id
+        -- --                 temp_button:SetOnClick(function()
+        -- --                     front_root.inst:PushEvent("slot_selected",temp_button.id)
+        -- --                     -- print("slot selected",temp_button.id)
+        -- --                 end)
+        -- --                 function temp_button:SetID(id)
+        -- --                     self.id = id
+        -- --                     local icon_data = GetIconDataById(id)
+        -- --                     if icon_data then
+        -- --                         self.icon:GetAnimState():SetBank(icon_data.bank)
+        -- --                         self.icon:GetAnimState():SetBuild(icon_data.build)
+        -- --                         self.icon:GetAnimState():PlayAnimation(icon_data.anim,true)
+        -- --                     end
+        -- --                 end
+        -- --                 temp_button.focus_scale = {1,1,1}
+        -- --                 return temp_button
+        -- --             end
+        -- --             -- slot_box:AddChild(CreateSlot("yellow_alphabet_a"))
+        -- --     ---------------------------------------------------------------------------------------------
+        -- --     ---- 滚动条区域
+        -- --             local function create_scroll_box(all_slot_num)
+        -- --                 -------------------------------------------------------------------------------
+        -- --                 -------------------------------------------------------------------------------
+        -- --                 --- 单行 6 格子一行
+        -- --                     local lines_num = math.ceil(all_slot_num/6)                        
+        -- --                     local slot_width = 90
+        -- --                     local slot_height = 90
+        -- --                     local lines = {}
+        -- --                     local all_slots = {}
+        -- --                     local line_temp_num = 1
+        -- --                     local function CreateLine()
+        -- --                         local line = Widget()
+        -- --                         for i = 1, 6, 1 do
+        -- --                             local temp_slot = line:AddChild(CreateSlot("yellow_alphabet_a"))
+        -- --                             temp_slot:SetPosition((i-3)*slot_width-45,0)
+        -- --                             table.insert(all_slots,temp_slot)                               
+        -- --                         end
+        -- --                         line_temp_num = line_temp_num + 1
+        -- --                         table.insert(lines,line)
+        -- --                         return line
+        -- --                     end
+        -- --                     -- slot_box:AddChild(CreateLine())
+        -- --                 -------------------------------------------------------------------------------
+        -- --                 --- 滚动条区域
+        -- --                     local line_items_box = {}
+        -- --                     for i = 1, lines_num, 1 do
+        -- --                         table.insert(line_items_box,CreateLine())
+        -- --                     end
+        -- --                     local listwidth = 600
+        -- --                     local listheight = 700
+        -- --                     local itemheight = 5
+        -- --                     local itempadding = 90
+        -- --                     local updatefn = function() end
+        -- --                     local widgetstoupdate = nil
+        -- --                     local scroll_bar_area = ScrollableList(line_items_box,listwidth, listheight, itemheight, itempadding,updatefn,widgetstoupdate)
+        -- --                     scroll_bar_area:SetPosition(0,0) -- 设置滚动区域位置
+        -- --                     scroll_bar_area.scroll_bar_container:SetPosition(-305,0)  --- 设置滚动条位置
+        -- --                     ---- 设置滚动条样式
+        -- --                     -- scroll_bar_area.up_button:SetTextures(atlas,"arrow_scrollbar_up.tex")
+        -- --                     -- scroll_bar_area.down_button:SetTextures(atlas,"arrow_scrollbar_down.tex")
+        -- --                     -- scroll_bar_area.scroll_bar_line:SetTexture(atlas,"scrollbarline.tex")
+        -- --                     -- scroll_bar_area.position_marker:SetTextures(atlas,"scrollbarbox.tex","scrollbarbox.tex","scrollbarbox.tex","scrollbarbox.tex","scrollbarbox.tex")
+        -- --                     -- scroll_bar_area.position_marker:OnGainFocus() --- 不知道为什么，贴图替换失败。只能用这种方式刷一下。
+        -- --                     -- scroll_bar_area.position_marker:OnLoseFocus()
+        -- --                 -------------------------------------------------------------------------------
+        -- --                 ---
+        -- --                     scroll_bar_area.all_slots = all_slots
+        -- --                     return scroll_bar_area
+        -- --                 -------------------------------------------------------------------------------
+        -- --             end
+        -- --             local all_icon_data = GetAllIconData()
+        -- --             local all_icon_ids = {}
+        -- --             for id,data in pairs(all_icon_data) do
+        -- --                 table.insert(all_icon_ids,id)
+        -- --             end
+        -- --             local scroll_box = slot_box:AddChild(create_scroll_box(#all_icon_ids))
+        -- --             scroll_box:SetPosition(280,0)
+        -- --             for k, temp_slot in pairs(scroll_box.all_slots) do
+        -- --                 local temp_id = all_icon_ids[k]
+        -- --                 if temp_id then
+        -- --                     temp_slot:SetID(temp_id)
+        -- --                 else
+        -- --                     temp_slot:Hide()
+        -- --                 end
+        -- --             end
+        -- --     ---------------------------------------------------------------------------------------------
+        -- --     --- 画出来的图标
+        -- --         local function CreateDrawedIcon(id)
+        -- --             local icon_data = GetIconDataById(id)
+        -- --             if icon_data == nil then
+        -- --                 return
+        -- --             end
+        -- --             local bank = icon_data.bank
+        -- --             local build = icon_data.build
+        -- --             local anim = icon_data.anim
+        -- --             local temp_button = AnimButton(bank,{ idle = anim,over = anim,disabled = anim})
+        -- --             temp_button.anim:GetAnimState():SetBuild(build)
+        -- --             temp_button.anim:GetAnimState():SetBank(bank)
+        -- --             temp_button.anim:GetAnimState():PlayAnimation(anim,true)
+        -- --             temp_button.clickoffset = Vector3(0,0,0)
+        -- --             temp_button.focus_scale = {1,1,1}
+        -- --             temp_button:SetOnClick(function()
+        -- --                 temp_button:Kill()
+        -- --             end)
+        -- --             temp_button.id = id
+        -- --             temp_button.inst.id = id
+        -- --             return temp_button
+        -- --         end
+        -- --     ---------------------------------------------------------------------------------------------
+        -- --     --- 作画逻辑
+        -- --         local drawed_icons = {} --- 保存画出来的图标                
+        -- --         front_root.inst:ListenForEvent("on_draw",function(_,pt)
+        -- --             local current_seleted_id = selectting_box:GetID()
+        -- --             if current_seleted_id == nil then
+        -- --                 local old_mark_pos = mark:GetPosition()
+        -- --                 local move_vec = pt - old_mark_pos
+        -- --                 mark:SetPosition(pt.x,pt.y)
+        -- --                 ----------------------------------------------
+        -- --                 -- 刷新已经存在的图标
+        -- --                     local new_drawed_icons = {}
+        -- --                     for inst, temp_icon in pairs(drawed_icons) do
+        -- --                         if inst and inst:IsValid() then
+        -- --                             local new_pos = temp_icon:GetPosition() + move_vec
+        -- --                             temp_icon:SetPosition(new_pos.x,new_pos.y)
+        -- --                             new_drawed_icons[inst] = temp_icon
+        -- --                         end
+        -- --                     end
+        -- --                     drawed_icons = new_drawed_icons
+        -- --                 ----------------------------------------------
+        -- --             else
+        -- --                 local temp_icon = mark_layer:AddChild(CreateDrawedIcon(current_seleted_id))
+        -- --                 temp_icon:SetPosition(pt.x,pt.y)
+        -- --                 drawed_icons[temp_icon.inst] = temp_icon
+        -- --             end
+        -- --         end)
+        -- --     ---------------------------------------------------------------------------------------------
+        -- --     --- 数据转换并保存。只储存 和 mark 坐标相对应的 偏移量
+        -- --         local function GetIconSaveData()
+        -- --             local all_data = {}
+        -- --             local mark_pos = mark:GetPosition()
+        -- --             for inst, temp_icon in pairs(drawed_icons) do
+        -- --                 if inst and inst:IsValid() then
+        -- --                     local offset = temp_icon:GetPosition() - mark_pos
+        -- --                     local id = inst.id
+        -- --                     table.insert(all_data,{id,offset.x,offset.y})
+        -- --                 end
+        -- --             end
+        -- --             return all_data
+        -- --         end
+        -- --         front_root.inst:ListenForEvent("submit",function()
+        -- --             local save_data = GetIconSaveData()
+        -- --             if submit_fn then
+        -- --                 submit_fn(inst,save_data)
+        -- --             end
+        -- --         end)
+        -- --     ---------------------------------------------------------------------------------------------
+        -- --     --- 加载数据
+        -- --         if type(old_saved_data) == "table" then
+        -- --             for i, temp_icon_data in ipairs(old_saved_data) do
+        -- --                 local mark_pos = mark:GetPosition()
+        -- --                 local id = temp_icon_data[1]
+        -- --                 local offset_x = temp_icon_data[2]
+        -- --                 local offset_y = temp_icon_data[3]
+        -- --                 local temp_icon = mark_layer:AddChild(CreateDrawedIcon(id))
+        -- --                 temp_icon:SetPosition(mark_pos.x + offset_x,mark_pos.y + offset_y)
+        -- --                 drawed_icons[temp_icon.inst] = temp_icon
+        -- --             end
+        -- --         end
+        -- --     ---------------------------------------------------------------------------------------------
         -- -- end
-
-        -- ----------- 鼠标程序性移动
-        --     -- TheInputProxy:SetOSCursorPos(0,0)
-        --     -- local mx,my = TheInputProxy:GetOSCursorPos()
-        --     -- print(mx,my)
-        --     -- ThePlayer:DoTaskInTime(0.1,function()
-        --     --     for i = 1, 1000, 1 do
-        --     --     TheInput:OnMouseButton(i,true,mx,my)
-                    
-        --     --     end            
-        --     -- end)
-        -- ---------- 手柄按钮监听
-        --     --[[
-
-        --         CONTROL_MOVE_UP = 5  -- left joystick up
-        --         CONTROL_MOVE_DOWN = 6 -- left joystick down
-        --         CONTROL_MOVE_LEFT = 7 -- left joystick left
-        --         CONTROL_MOVE_RIGHT = 8 -- left joystick right
-
-
-        --         CONTROL_OPEN_INVENTORY = 45  -- right trigger
-        --         CONTROL_OPEN_CRAFTING = 46   -- left trigger
-        --         CONTROL_INVENTORY_LEFT = 47 -- right joystick left
-        --         CONTROL_INVENTORY_RIGHT = 48 -- right joystick right
-        --         CONTROL_INVENTORY_UP = 49 --  right joystick up
-        --         CONTROL_INVENTORY_DOWN = 50 -- right joystick down
-        --         CONTROL_INVENTORY_EXAMINE = 51 -- d-pad up
-        --         CONTROL_INVENTORY_USEONSELF = 52 -- d-pad right
-        --         CONTROL_INVENTORY_USEONSCENE = 53 -- d-pad left
-        --         CONTROL_INVENTORY_DROP = 54 -- d-pad down
-        --         CONTROL_PUTSTACK = 55
-        --         CONTROL_CONTROLLER_ATTACK = 56 -- X on xbox controller
-        --         CONTROL_CONTROLLER_ACTION = 57 -- A
-        --         CONTROL_CONTROLLER_ALTACTION = 58 -- B
-        --         CONTROL_USE_ITEM_ON_ITEM = 59
-        --     ]]--
-        --     -- if ThePlayer._temp_key_handler then
-        --     --     ThePlayer._temp_key_handler:Remove()
-        --     -- end
-        --     -- ThePlayer._temp_key_handler = TheInput:AddGeneralControlHandler(function(key,down)  ------ 30FPS
-        --     --     print(key,down)
-
-        --     -- end)
-        -- ------------
-        --     -- ThePlayer:DoTaskInTime(0.5,function()
-        --     --     -- TheInput:OnControl(MOUSEBUTTON_LEFT)
-
-        --     --     local mx,my = TheInputProxy:GetOSCursorPos()
-        --     --     print("mouse",mx,my)
-        --     --     -- TheInput:OnMouseMove(0,0)
-        --     --     TheInput:OnMouseButton(MOUSEBUTTON_LEFT,true,mx,my)
-        --     -- end)
-        -- ------------- TheFrontEnd
-        --     -- for k, v in pairs(TheFrontEnd) do
-        --     --     print(k,v,type(v))
-        --     -- end
-        -- ------------- 虚拟点击 目标 botton
-        -- ThePlayer:DoTaskInTime(0.5,function()
-        --     local crash_flag,reason = pcall(function()
-        --         print("+++++++++++++++++++++++++++++++++++++++++++++++++++++")
-        --         -- local mousepos = TheInput:GetScreenPosition()
-
-        --         local temp = TheInput:GetHUDEntityUnderMouse()
-
-
-        --         -- for k, v in pairs(temp.widget) do
-        --         --     print(k,v,type(v),tostring(v))
-        --         -- end
-        --         local temp_widget = temp.widget
-        --         local temp_button = nil
-        --         while true do
-        --             print("current:",temp_widget,"parent:",temp_widget.parent)
-        --             if tostring(temp_widget.parent) == "BUTTON" then
-        --                 temp_button = temp_widget.parent
+        -- local inst = TheSim:FindFirstEntityWithTag("fwd_in_pdt_fx_canvas")
+        -- if inst then
+        --     TUNING.FWD_IN_PDT_DECORATION_FN:Start(inst,function(inst,save_data)
+        --         ThePlayer.__test_save_data = save_data
+        --         --------------------------------------------------------------------------
+        --         ---
+        --             inst.marks = inst.marks or {}
+        --             for k, v in pairs(inst.marks) do
+        --                 v:Remove()
         --             end
-        --             temp_widget = temp_widget.parent
-        --             if temp_widget == nil then
-        --                 break
+        --             inst.marks = {}
+        --         --------------------------------------------------------------------------
+        --         --- 
+        --             for i,temp_icon_data in ipairs(save_data) do
+        --                 local id = temp_icon_data[1]
+        --                 local offset_x = temp_icon_data[2]
+        --                 local offset_y = temp_icon_data[3]
+        --                 local mark = SpawnPrefab("fwd_in_pdt_fx_canvas_slot")
+        --                 local anim_data = GetIconDataById(id) or {}
+        --                 local bank = anim_data.bank
+        --                 local build = anim_data.build
+        --                 local anim = anim_data.anim
+        --                 mark:PushEvent("Set",{
+        --                     link = inst,
+        --                     bank = bank,
+        --                     build = build,
+        --                     anim = anim,
+        --                     pt = Vector3(offset_x,-offset_y,0),
+        --                 })
+        --                 table.insert(inst.marks,mark)
         --             end
-
-        --         end
-        --         if temp_button and temp_button.OnControl then
-        --             print("button:",temp_button.OnControl)
-        --             temp_button:SetControl(MOUSEBUTTON_LEFT)    --- 设置激活按键为XXX
-        --             temp_button:OnControl(MOUSEBUTTON_LEFT,true)
-        --             temp_button:OnControl(MOUSEBUTTON_LEFT,false)
-        --         end
-        --         print("+++++++++++++++++++++++++++++++++++++++++++++++++++++")
-        --     end)
-
-        --     if not crash_flag then
-        --         print("Error ")
-        --         print(reason)
-        --     end
-        -- end)
-    ----------------------------------------------------------------------------------------------------------------
-    -- AddComponentPostInit("lunarthrall_plantspawner",function(self)
-    --     local old_FindPlant = self.FindPlant
-    --     self.FindPlant = function(self,...)
-    --         local origin_ret = old_FindPlant(self,...)
-    --         if type(origin_ret) == "table" and origin_ret.Transform then
-    --             local x,y,z = origin_ret.Transform:GetWorldPosition()
-    --             local ents = TheSim:FindEntities(x,y,z,60,{"___block_tag"})
-    --             if #ents > 0 then
-    --                 return nil
-    --             end
-    --         end
-    --         return origin_ret
-    --     end
-    -- end)
-    ----------------------------------------------------------------------------------------------------------------
-    --- 
-        -- ThePlayer:ListenForEvent("newstate",function(_,_table)
-        --     local statename = _table and _table.statename
-        --     print("++ newstate",statename)
-        -- end)
+        --         --------------------------------------------------------------------------
+        --     end,ThePlayer.__test_save_data)
+        -- end
     ----------------------------------------------------------------------------------------------------------------
     ---
-        -- local inst = TheSim:FindFirstEntityWithTag("fwd_in_pdt_container_tv_box")
-        -- inst.AnimState:PlayAnimation("idle",true)
-        -- local item = SpawnPrefab("fwd_in_pdt_equipment_vampire_sword")
-        -- -- local item = SpawnPrefab("fwd_in_pdt_material_chaotic_cookpot_puzzle_4")
-        -- if inst.item then
-        --     inst.item:Remove()
-        -- end
-        -- inst.item = item
-        -- inst:AddChild(item)
-        -- item:AddTag("NOCLICK")
-    	-- item:ReturnToScene()
-        -- item:AddTag("outofreach")
-        -- if item.Follower == nil then
-        --     item.entity:AddFollower()
-        -- end
-        -- item.Transform:SetPosition(0, 0, 0)
-        -- item.Follower:FollowSymbol(inst.GUID, "SWAP_SIGN", 0, 0, 0, true)
-
-
-        -- -- local test = TheSim:FindFirstEntityWithTag("fwd_in_pdt_material_chaotic_cookpot_puzzles")
-        -- -- ThePlayer.Transform:SetPosition(test.Transform:GetWorldPosition())
-    ----------------------------------------------------------------------------------------------------------------
-    --- 
-
-        -- ThePlayer.__test_fn = function(inst,tar_atlas,tar_image)
-        --     local item = nil
-        --     for num, temp_item in pairs(inst.components.container.slots) do
-        --         if temp_item and temp_item:IsValid() then
-        --                 -- local imagename = temp_item.nameoverride or temp_item.components.inventoryitem.imagename or temp_item.prefab
-        --                 -- imagename  = string.gsub(imagename,".tex", "") .. ".tex"
-        --                 -- local atlasname = temp_item.components.inventoryitem.atlasname or GetInventoryItemAtlas(imagename)
-        --                 -- if TheSim:AtlasContains(atlasname, imagename) then
-        --                 --     tar_atlas = atlasname
-        --                 --     tar_image = imagename
-        --                 --     break
-        --                 -- end
-        --                 item = temp_item
-        --                 break
-        --         end
-        --     end
-        --     if item then
-        --         local crash_flag,atlas,image = pcall(function()
-        --             -- print("+++",item.inv_image_bg)
-        --             -- -- local atlas, bgimage, bgatlas
-        --             -- -- local image = FunctionOrValue(item.drawimageoverride, item, inst) or (#(item.components.inventoryitem.imagename or "") > 0 and item.components.inventoryitem.imagename) or item.prefab or nil
-                    
-        --             local imagename = item.nameoverride or item.components.inventoryitem.imagename or item.prefab
-        --             local imagename  = string.gsub(imagename,".tex", "") .. ".tex"
-        --             local atlasname = item.components.inventoryitem.atlasname or GetInventoryItemAtlas(imagename)
-        --             -- print("pre",atlasname)
-
-        --             if TheSim:AtlasContains(atlasname, imagename) then
-        --                 --- 官方物品
-        --                 print("official item",atlasname, imagename)
-        --                 return atlasname,imagename
-        --             else
-        --                 --- 自定义MOD物品
-        --                 atlasname = GetInventoryItemAtlas(imagename)
-        --                 atlasname = resolvefilepath_soft(atlasname) --为了兼容mod物品，不然是没有这道工序的
-        --                 print("custom item",atlasname, imagename)
-
-        --                 return atlasname,imagename
-        --             end
-
-        --             -- print("imagename:",imagename)
-        --             -- print("atlasname:",atlasname)
-
-        --             return atlasname,imagename
-
-
-
-
-
-                    
-                
-
-
-        --         end)
-        --         -- print("+++++++++++++++++++++++++++++++++++++++++++++++++++++")
-        --         -- print("tar_atlas:",tar_atlas)
-        --         -- print("tar_image:",tar_image)
-        --         -- print("+++++++++++++++++++++++++++++++++++++++++++++++++++++")
-        --         if not crash_flag then
-        --             print("Error : ",atlas)
-        --         else
-        --             tar_atlas = atlas
-        --             tar_image = image
-        --         end
-        --     end
-        --     return tar_atlas,tar_image
-        -- end
-        -- print(TheSim:AtlasContains("images/inventoryimages3.xml", "fwd_in_pdt_item_orthopedic_water.tex"))
-        print(GetInventoryItemAtlas("fwd_in_pdt_item_orthopedic_water.tex"))
-    ----------------------------------------------------------------------------------------------------------------
-    -- lua 加载路径 测试 使用 gmatch 方法来分割字符串
-        -- for path in package.path:gmatch("[^;]+") do
-        --     print(path)
-        -- end
-
-        -- -- 如果你使用的是 Lua 5.3 或更高版本，可以使用 string.split
-        -- if _VERSION >= "Lua 5.3" then
-        --     local function split(str, delimiter)
-        --         local result = {}
-        --         for substr in str:gsub("([^^" .. delimiter .. "]+)"):gmatch("%1") do
-        --             table.insert(result, substr)
-        --         end
-        --         return result
-        --     end
-
-        --     local paths = split(package.path, ";")
-        --     for _, path in ipairs(paths) do
-        --         print(path)
-        --     end
-        -- else
-        --     -- 对于低于 Lua 5.3 的版本，手动实现一个简单的 split 函数
-        --     local function split(str, delimiter)
-        --         local result = {}
-        --         local from = 1
-        --         local delim_from = string.find(str, delimiter, from)
-        --         while delim_from do
-        --             table.insert(result, string.sub(str, from, delim_from - 1))
-        --             from = delim_from + 1
-        --             delim_from = string.find(str, delimiter, from)
-        --         end
-        --         if from <= #str then
-        --             table.insert(result, string.sub(str, from))
-        --         end
-        --         return result
-        --     end
-
-        --     local paths = split(package.path, ";")
-        --     for _, path in ipairs(paths) do
-        --         print(path)
-        --     end
-        -- end
-    ----------------------------------------------------------------------------------------------------------------
-    --- lua 已经加载素材检测
-        -- 遍历 package.loaded 表中的所有键（模块名）
-        -- for moduleName, moduleObject in pairs(package.loaded) do
-        --     print("+++++++++++++++++++++++++++++++++++")
-        --     print("Module Name:", moduleName)
-        --     print("Module Object:", moduleObject)
-        -- end
-    ----------------------------------------------------------------------------------------------------------------
-    --- 
-            inst:AddComponent("fwd_in_pdt_data")
-            inst:ListenForEvent("update_scale",function()
-                local level = inst.components.fwd_in_pdt_data:Add("level",0)
-                local scale = 1 + level*0.1
-                inst.AnimState:SetScale(sacle,scale,scale)
-            end)
-            inst:DoTaskInTime(0,function()
-                inst:PushEvent("update_scale")
-            end)
+        local mark_fn_list = {
+            -----------------------------------------------------------
+            --- 猪屋
+                ["pighouse"] = function(mark)
+                    local building = mark:AddChild(UIAnim())
+                    building:GetAnimState():SetBank("pig_house")
+                    building:GetAnimState():SetBuild("pig_house")
+                    building:GetAnimState():PlayAnimation("idle",true)
+                    local scale = 2
+                    building:SetScale(scale,scale,scale)
+                    building:SetClickable(false)
+                end,
+            -----------------------------------------------------------
+            --- 兔子房
+                ["rabbithouse"] = function(mark)
+                    local building = mark:AddChild(UIAnim())
+                    building:GetAnimState():SetBank("rabbithouse")
+                    building:GetAnimState():SetBuild("rabbit_house")
+                    building:GetAnimState():PlayAnimation("idle",true)
+                    local scale = 2
+                    building:SetScale(scale,scale,scale)
+                    building:SetClickable(false)
+                end,
+            -----------------------------------------------------------
+            --- 帐篷
+                ["tent"] = function(mark)
+                    local building = mark:AddChild(UIAnim())
+                    building:GetAnimState():SetBank("tent")
+                    building:GetAnimState():SetBuild("tent")
+                    building:GetAnimState():PlayAnimation("idle",true)
+                    local scale = 2
+                    building:SetScale(scale,scale,scale)
+                    building:SetClickable(false)
+                end,
+            -----------------------------------------------------------
+            --- 遮阳帐篷
+                ["siestahut"] = function(mark)
+                    local building = mark:AddChild(UIAnim())
+                    building:GetAnimState():SetBank("siesta_canopy")
+                    building:GetAnimState():SetBuild("siesta_canopy")
+                    building:GetAnimState():PlayAnimation("idle",true)
+                    local scale = 2
+                    building:SetScale(scale,scale,scale)
+                    building:SetClickable(false)
+                end,
+            -----------------------------------------------------------
+            --- 沃尔特帐篷
+                ["portabletent"] = function(mark)
+                    local building = mark:AddChild(UIAnim())
+                    building:GetAnimState():SetBank("tent_walter")
+                    building:GetAnimState():SetBuild("tent_walter")
+                    building:GetAnimState():PlayAnimation("idle",true)
+                    local scale = 2
+                    building:SetScale(scale,scale,scale)
+                    building:SetClickable(false)
+                end,
+            -----------------------------------------------------------
+            --- researchlab 科技
+                ["researchlab"] = function(mark)
+                    local building = mark:AddChild(UIAnim())
+                    building:GetAnimState():SetBank("tent_walter")
+                    building:GetAnimState():SetBuild("tent_walter")
+                    building:GetAnimState():PlayAnimation("idle",true)
+                    local scale = 2
+                    building:SetScale(scale,scale,scale)
+                    building:SetClickable(false)
+                end,
+            -----------------------------------------------------------
+        }
+        function TUNING.FWD_IN_PDT_DECORATION_FN:Test(prefab)
+            return mark_fn_list[prefab] ~= nil
+        end
+        function TUNING.FWD_IN_PDT_DECORATION_FN:MarkBuilding(mark,prefab)
+            if mark_fn_list[prefab] ~= nil then
+                mark_fn_list[prefab](mark)
+            end
+        end
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)
