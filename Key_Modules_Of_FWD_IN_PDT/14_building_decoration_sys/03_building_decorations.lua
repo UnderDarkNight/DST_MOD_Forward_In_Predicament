@@ -9,9 +9,12 @@
 TUNING.FWD_IN_PDT_DECORATION_FN = TUNING.FWD_IN_PDT_DECORATION_FN or {}
 
 local function GetIconDataById(id)
-    return TUNING.FWD_IN_PDT_DECORATIONS and TUNING.FWD_IN_PDT_DECORATIONS[id] or nil
+    return TUNING.FWD_IN_PDT_DECORATIONS_IDS and TUNING.FWD_IN_PDT_DECORATIONS_IDS[id] or nil
 end
 local function GetAllIconData()
+    return TUNING.FWD_IN_PDT_DECORATIONS_IDS or {}
+end
+local function GetAllIconData2()
     return TUNING.FWD_IN_PDT_DECORATIONS or {}
 end
 ----------------------------------------------------------------------------------------------------------------------------------
@@ -172,16 +175,8 @@ function TUNING.FWD_IN_PDT_DECORATION_FN:Start(inst,submit_fn,old_saved_data,mar
     ---------------------------------------------------------------------------------------------
     ---- 单个选项框体
             local function CreateSlot(id)
-                local icon_data = GetIconDataById(id)
+                -- local icon_data = GetIconDataById(id)
                 local temp_button = ImageButton(ui_atlas,"icon_slot.tex","icon_slot.tex","icon_slot.tex","icon_slot.tex","icon_slot.tex")
-                if icon_data then
-                    local icon = temp_button.image:AddChild(UIAnim())
-                    icon:GetAnimState():SetBank(icon_data.bank)
-                    icon:GetAnimState():SetBuild(icon_data.build)
-                    icon:GetAnimState():PlayAnimation(icon_data.anim,true)
-                    icon:SetScale(0.7,0.7,0.7)
-                    temp_button.icon = icon
-                end
                 temp_button.id = id
                 temp_button:SetOnClick(function()
                     front_root.inst:PushEvent("slot_selected",temp_button.id)
@@ -191,11 +186,14 @@ function TUNING.FWD_IN_PDT_DECORATION_FN:Start(inst,submit_fn,old_saved_data,mar
                     self.id = id
                     local icon_data = GetIconDataById(id)
                     if icon_data then
+                        self.icon = self.icon or self.image:AddChild(UIAnim())
+                        self.icon:SetScale(0.7,0.7,0.7)
                         self.icon:GetAnimState():SetBank(icon_data.bank)
                         self.icon:GetAnimState():SetBuild(icon_data.build)
                         self.icon:GetAnimState():PlayAnimation(icon_data.anim,true)
                     end
                 end
+                temp_button:SetID(id)
                 temp_button.focus_scale = {1,1,1}
                 return temp_button
             end
@@ -252,15 +250,11 @@ function TUNING.FWD_IN_PDT_DECORATION_FN:Start(inst,submit_fn,old_saved_data,mar
                     return scroll_bar_area
                 -------------------------------------------------------------------------------
             end
-            local all_icon_data = GetAllIconData()
-            local all_icon_ids = {}
-            for id,data in pairs(all_icon_data) do
-                table.insert(all_icon_ids,id)
-            end
-            local scroll_box = slot_box:AddChild(create_scroll_box(#all_icon_ids))
+            local all_icon_data = GetAllIconData2() or {}
+            local scroll_box = slot_box:AddChild(create_scroll_box(#all_icon_data))
             scroll_box:SetPosition(280,0)
-            for k, temp_slot in pairs(scroll_box.all_slots) do
-                local temp_id = all_icon_ids[k]
+            for i, temp_slot in ipairs(scroll_box.all_slots) do
+                local temp_id = all_icon_data[i] and all_icon_data[i].id
                 if temp_id then
                     temp_slot:SetID(temp_id)
                 else
@@ -277,6 +271,15 @@ function TUNING.FWD_IN_PDT_DECORATION_FN:Start(inst,submit_fn,old_saved_data,mar
             local bank = icon_data.bank
             local build = icon_data.build
             local anim = icon_data.anim
+            -----------------------------------------------------------
+            -- 超尺寸装饰物
+                local decoration = icon_data.decoration
+                if decoration then
+                    bank = decoration.bank
+                    build = decoration.build
+                    anim = decoration.anim
+                end
+            -----------------------------------------------------------
             local temp_button = AnimButton(bank,{ idle = anim,over = anim,disabled = anim})
             temp_button.anim:GetAnimState():SetBuild(build)
             temp_button.anim:GetAnimState():SetBank(bank)
@@ -339,15 +342,18 @@ function TUNING.FWD_IN_PDT_DECORATION_FN:Start(inst,submit_fn,old_saved_data,mar
         end)
     ---------------------------------------------------------------------------------------------
     --- 加载数据
-        if type(old_saved_data) == "table" then
+        if type(old_saved_data) == "table" and #old_saved_data > 0 then
             for i, temp_icon_data in ipairs(old_saved_data) do
                 local mark_pos = mark:GetPosition()
                 local id = temp_icon_data[1]
                 local offset_x = temp_icon_data[2]
                 local offset_y = temp_icon_data[3]
-                local temp_icon = mark_layer:AddChild(CreateDrawedIcon(id))
-                temp_icon:SetPosition(mark_pos.x + offset_x,mark_pos.y + offset_y)
-                drawed_icons[temp_icon.inst] = temp_icon
+                local drawed_icon = CreateDrawedIcon(id)
+                if drawed_icon then
+                    local temp_icon = mark_layer:AddChild(drawed_icon)
+                    temp_icon:SetPosition(mark_pos.x + offset_x,mark_pos.y + offset_y)
+                    drawed_icons[temp_icon.inst] = temp_icon
+                end
             end
         end
     ---------------------------------------------------------------------------------------------

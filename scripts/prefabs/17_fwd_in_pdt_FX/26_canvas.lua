@@ -15,7 +15,7 @@
 ----------------------------------------------------------------------------------------------------------------------------------
 --- 
     local function GetIconDataById(id)
-        return TUNING.FWD_IN_PDT_DECORATIONS and TUNING.FWD_IN_PDT_DECORATIONS[id] or nil
+        return TUNING.FWD_IN_PDT_DECORATIONS_IDS and TUNING.FWD_IN_PDT_DECORATIONS_IDS[id] or nil
     end
 ----------------------------------------------------------------------------------------------------------------------------------
 --- 
@@ -64,6 +64,15 @@
                 local bank = anim_data.bank
                 local build = anim_data.build
                 local anim = anim_data.anim
+                -----------------------------------------------------------
+                --- 超尺寸装饰物
+                    local decoration = anim_data.decoration
+                    if decoration then
+                        bank = decoration.bank
+                        build = decoration.build
+                        anim = decoration.anim
+                    end
+                -----------------------------------------------------------
                 mark:PushEvent("Set",{
                     link = inst,
                     bank = bank,
@@ -118,10 +127,13 @@
     end
 ----------------------------------------------------------------------------------------------------------------------------------
 --- 单个装饰物
-    local function Slot_Setting(inst,_table)
+    local function Slot_Setting(inst,_table)    
         local bank = _table.bank
         local build = _table.build
         local anim = _table.anim
+        if not (bank and build and anim) then
+            return
+        end
         inst.AnimState:SetBank(bank)
         inst.AnimState:SetBuild(build)
         inst.AnimState:PlayAnimation(anim,true)        
