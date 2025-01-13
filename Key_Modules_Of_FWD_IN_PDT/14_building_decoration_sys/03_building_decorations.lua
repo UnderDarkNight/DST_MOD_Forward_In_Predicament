@@ -287,8 +287,21 @@ function TUNING.FWD_IN_PDT_DECORATION_FN:Start(inst,submit_fn,old_saved_data,mar
             temp_button.clickoffset = Vector3(0,0,0)
             temp_button.focus_scale = {1,1,1}
             temp_button:SetOnClick(function()
-                temp_button:Kill()
+                -- temp_button:Kill()
             end)
+            temp_button._old_OnMouseButton = temp_button.OnMouseButton
+            temp_button.OnMouseButton = function(self,button,down,...)
+                if down then
+                    if button == MOUSEBUTTON_RIGHT then
+                        self:Kill()
+                        return
+                    elseif button == MOUSEBUTTON_LEFT then
+                        local mouse_x, mouse_y = TheSim:GetPosition()
+                        front_root.inst:PushEvent("on_draw",Vector3(mouse_x, mouse_y,0))
+                    end
+                end
+                return self._old_OnMouseButton(self,button,down,...)
+            end
             temp_button.id = id
             temp_button.inst.id = id
             return temp_button
@@ -305,19 +318,19 @@ function TUNING.FWD_IN_PDT_DECORATION_FN:Start(inst,submit_fn,old_saved_data,mar
                 ----------------------------------------------
                 -- 刷新已经存在的图标
                     local new_drawed_icons = {}
-                    for inst, temp_icon in pairs(drawed_icons) do
-                        if inst and inst:IsValid() then
+                    for index, temp_icon in pairs(drawed_icons) do
+                        if temp_icon and temp_icon.inst and temp_icon.inst:IsValid() then
                             local new_pos = temp_icon:GetPosition() + move_vec
                             temp_icon:SetPosition(new_pos.x,new_pos.y)
-                            new_drawed_icons[inst] = temp_icon
+                            table.insert(new_drawed_icons,temp_icon)
                         end
                     end
                     drawed_icons = new_drawed_icons
                 ----------------------------------------------
             else
                 local temp_icon = mark_layer:AddChild(CreateDrawedIcon(current_seleted_id))
-                temp_icon:SetPosition(pt.x,pt.y)
-                drawed_icons[temp_icon.inst] = temp_icon
+                temp_icon:SetPosition(pt.x,pt.y)                
+                table.insert(drawed_icons,temp_icon)
             end
         end)
     ---------------------------------------------------------------------------------------------
@@ -325,11 +338,12 @@ function TUNING.FWD_IN_PDT_DECORATION_FN:Start(inst,submit_fn,old_saved_data,mar
         local function GetIconSaveData()
             local all_data = {}
             local mark_pos = mark:GetPosition()
-            for inst, temp_icon in pairs(drawed_icons) do
-                if inst and inst:IsValid() then
+            for index, temp_icon in ipairs(drawed_icons) do
+                if temp_icon.inst and temp_icon.inst:IsValid() then
                     local offset = temp_icon:GetPosition() - mark_pos
-                    local id = inst.id
+                    local id = temp_icon.id
                     table.insert(all_data,{id,offset.x,offset.y})
+                    -- print(id,offset.x,offset.y)
                 end
             end
             return all_data
@@ -351,8 +365,8 @@ function TUNING.FWD_IN_PDT_DECORATION_FN:Start(inst,submit_fn,old_saved_data,mar
                 local drawed_icon = CreateDrawedIcon(id)
                 if drawed_icon then
                     local temp_icon = mark_layer:AddChild(drawed_icon)
-                    temp_icon:SetPosition(mark_pos.x + offset_x,mark_pos.y + offset_y)
-                    drawed_icons[temp_icon.inst] = temp_icon
+                    temp_icon:SetPosition(mark_pos.x + offset_x,mark_pos.y + offset_y)                    
+                    table.insert(drawed_icons,temp_icon)
                 end
             end
         end

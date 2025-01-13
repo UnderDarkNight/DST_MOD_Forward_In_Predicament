@@ -371,81 +371,92 @@ local flg,error_code = pcall(function()
         -- end
     ----------------------------------------------------------------------------------------------------------------
     ---
-        local mark_fn_list = {
-            -----------------------------------------------------------
-            --- 猪屋
-                ["pighouse"] = function(mark)
-                    local building = mark:AddChild(UIAnim())
-                    building:GetAnimState():SetBank("pig_house")
-                    building:GetAnimState():SetBuild("pig_house")
-                    building:GetAnimState():PlayAnimation("idle",true)
-                    local scale = 2
-                    building:SetScale(scale,scale,scale)
-                    building:SetClickable(false)
-                end,
-            -----------------------------------------------------------
-            --- 兔子房
-                ["rabbithouse"] = function(mark)
-                    local building = mark:AddChild(UIAnim())
-                    building:GetAnimState():SetBank("rabbithouse")
-                    building:GetAnimState():SetBuild("rabbit_house")
-                    building:GetAnimState():PlayAnimation("idle",true)
-                    local scale = 2
-                    building:SetScale(scale,scale,scale)
-                    building:SetClickable(false)
-                end,
-            -----------------------------------------------------------
-            --- 帐篷
-                ["tent"] = function(mark)
-                    local building = mark:AddChild(UIAnim())
-                    building:GetAnimState():SetBank("tent")
-                    building:GetAnimState():SetBuild("tent")
-                    building:GetAnimState():PlayAnimation("idle",true)
-                    local scale = 2
-                    building:SetScale(scale,scale,scale)
-                    building:SetClickable(false)
-                end,
-            -----------------------------------------------------------
-            --- 遮阳帐篷
-                ["siestahut"] = function(mark)
-                    local building = mark:AddChild(UIAnim())
-                    building:GetAnimState():SetBank("siesta_canopy")
-                    building:GetAnimState():SetBuild("siesta_canopy")
-                    building:GetAnimState():PlayAnimation("idle",true)
-                    local scale = 2
-                    building:SetScale(scale,scale,scale)
-                    building:SetClickable(false)
-                end,
-            -----------------------------------------------------------
-            --- 沃尔特帐篷
-                ["portabletent"] = function(mark)
-                    local building = mark:AddChild(UIAnim())
-                    building:GetAnimState():SetBank("tent_walter")
-                    building:GetAnimState():SetBuild("tent_walter")
-                    building:GetAnimState():PlayAnimation("idle",true)
-                    local scale = 2
-                    building:SetScale(scale,scale,scale)
-                    building:SetClickable(false)
-                end,
-            -----------------------------------------------------------
-            --- researchlab 科技
-                ["researchlab"] = function(mark)
-                    local building = mark:AddChild(UIAnim())
-                    building:GetAnimState():SetBank("tent_walter")
-                    building:GetAnimState():SetBuild("tent_walter")
-                    building:GetAnimState():PlayAnimation("idle",true)
-                    local scale = 2
-                    building:SetScale(scale,scale,scale)
-                    building:SetClickable(false)
-                end,
-            -----------------------------------------------------------
-        }
-        function TUNING.FWD_IN_PDT_DECORATION_FN:Test(prefab)
-            return mark_fn_list[prefab] ~= nil
-        end
-        function TUNING.FWD_IN_PDT_DECORATION_FN:MarkBuilding(mark,prefab)
-            if mark_fn_list[prefab] ~= nil then
-                mark_fn_list[prefab](mark)
+        -- local mark_fn_list = {
+        --     -----------------------------------------------------------
+        --     --- 猪屋
+        --         ["pighouse"] = function(mark)
+        --             local building = mark:AddChild(UIAnim())
+        --             building:GetAnimState():SetBank("pig_house")
+        --             building:GetAnimState():SetBuild("pig_house")
+        --             building:GetAnimState():PlayAnimation("idle",true)
+        --             local scale = 2
+        --             building:SetScale(scale,scale,scale)
+        --             building:SetClickable(false)
+        --         end,
+        --     -----------------------------------------------------------
+        --     --- 兔子房
+        --         ["rabbithouse"] = function(mark)
+        --             local building = mark:AddChild(UIAnim())
+        --             building:GetAnimState():SetBank("rabbithouse")
+        --             building:GetAnimState():SetBuild("rabbit_house")
+        --             building:GetAnimState():PlayAnimation("idle",true)
+        --             local scale = 2
+        --             building:SetScale(scale,scale,scale)
+        --             building:SetClickable(false)
+        --         end,
+        --     -----------------------------------------------------------
+        --     --- 帐篷
+        --         ["tent"] = function(mark)
+        --             local building = mark:AddChild(UIAnim())
+        --             building:GetAnimState():SetBank("tent")
+        --             building:GetAnimState():SetBuild("tent")
+        --             building:GetAnimState():PlayAnimation("idle",true)
+        --             local scale = 2
+        --             building:SetScale(scale,scale,scale)
+        --             building:SetClickable(false)
+        --         end,
+        --     -----------------------------------------------------------
+        --     --- 遮阳帐篷
+        --         ["siestahut"] = function(mark)
+        --             local building = mark:AddChild(UIAnim())
+        --             building:GetAnimState():SetBank("siesta_canopy")
+        --             building:GetAnimState():SetBuild("siesta_canopy")
+        --             building:GetAnimState():PlayAnimation("idle",true)
+        --             local scale = 2
+        --             building:SetScale(scale,scale,scale)
+        --             building:SetClickable(false)
+        --         end,
+        --     -----------------------------------------------------------
+        --     --- 沃尔特帐篷
+        --         ["portabletent"] = function(mark)
+        --             local building = mark:AddChild(UIAnim())
+        --             building:GetAnimState():SetBank("tent_walter")
+        --             building:GetAnimState():SetBuild("tent_walter")
+        --             building:GetAnimState():PlayAnimation("idle",true)
+        --             local scale = 2
+        --             building:SetScale(scale,scale,scale)
+        --             building:SetClickable(false)
+        --         end,
+        --     -----------------------------------------------------------
+        --     --- researchlab 科技
+        --         ["researchlab"] = function(mark)
+        --             local building = mark:AddChild(UIAnim())
+        --             building:GetAnimState():SetBank("tent_walter")
+        --             building:GetAnimState():SetBuild("tent_walter")
+        --             building:GetAnimState():PlayAnimation("idle",true)
+        --             local scale = 2
+        --             building:SetScale(scale,scale,scale)
+        --             building:SetClickable(false)
+        --         end,
+        --     -----------------------------------------------------------
+        -- }
+        -- function TUNING.FWD_IN_PDT_DECORATION_FN:Test(prefab)
+        --     return mark_fn_list[prefab] ~= nil
+        -- end
+        -- function TUNING.FWD_IN_PDT_DECORATION_FN:MarkBuilding(mark,prefab)
+        --     if mark_fn_list[prefab] ~= nil then
+        --         mark_fn_list[prefab](mark)
+        --     end
+        -- end
+    ----------------------------------------------------------------------------------------------------------------
+    ---
+        ThePlayer.__test_button_fn = function(temp_button)
+            temp_button._old_OnMouseButton = temp_button.OnMouseButton
+            temp_button.OnMouseButton = function(self,button,down,...)
+                if down then
+                    print("Button Pressed",button)
+                end
+                return self._old_OnControl(self,button,down,...)
             end
         end
     ----------------------------------------------------------------------------------------------------------------

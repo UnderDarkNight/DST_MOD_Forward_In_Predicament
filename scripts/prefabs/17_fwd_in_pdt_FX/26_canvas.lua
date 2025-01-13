@@ -59,6 +59,7 @@
                 local id = temp_icon_data[1]
                 local offset_x = temp_icon_data[2]
                 local offset_y = temp_icon_data[3]
+                -- print("info server",id,offset_x,offset_y)
                 local mark = SpawnPrefab("fwd_in_pdt_fx_canvas_slot")
                 local anim_data = GetIconDataById(id) or {}
                 local bank = anim_data.bank
