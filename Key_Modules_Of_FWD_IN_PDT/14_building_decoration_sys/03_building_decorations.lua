@@ -118,9 +118,22 @@ function TUNING.FWD_IN_PDT_DECORATION_FN:Start(inst,submit_fn,old_saved_data,mar
         -- mark:FollowMouse()
         front_root.mark = mark
         if mark_fn then
-            mark_fn(mark)
+            local temp_mark = mark:AddChild(Widget())
+            temp_mark:SetPosition(0,0)
+            temp_mark:SetScale(1/mark_scale,1/mark_scale,1/mark_scale)
+            mark_fn(temp_mark)
         end
         mark:SetClickable(false)
+        front_root.inst:ListenForEvent("move_down",function()
+            local old_mark_pos = mark:GetPosition()
+            -- mark:SetPosition(old_mark_pos.x,old_mark_pos.y-100)
+            front_root.inst:PushEvent("drawed_icons_and_mark_move",Vector3(0,-100,0))
+        end)
+        front_root.inst:ListenForEvent("move_up",function()
+            local old_mark_pos = mark:GetPosition()
+            -- mark:SetPosition(old_mark_pos.x,old_mark_pos.y-100)
+            front_root.inst:PushEvent("drawed_icons_and_mark_move",Vector3(0,100,0))
+        end)
     ---------------------------------------------------------------------------------------------
     --- slot box
             local slot_box = root:AddChild(Image(ui_atlas,"box.tex"))
@@ -165,6 +178,26 @@ function TUNING.FWD_IN_PDT_DECORATION_FN:Start(inst,submit_fn,old_saved_data,mar
             selectting_box:SetOnClick(function()
                 selectting_box:SetData(nil,nil,nil,nil)
             end)
+    ---------------------------------------------------------------------------------------------
+    --- 向上按钮
+        local move_down_button = root:AddChild(ImageButton(ui_atlas,"icon_slot.tex","icon_slot.tex","icon_slot.tex","icon_slot.tex","icon_slot.tex"))
+        move_down_button:SetPosition(30,250)
+        move_down_button:SetOnClick(function()
+            front_root.inst:PushEvent("move_up")
+        end)
+        move_down_button.icon = move_down_button.image:AddChild(Image("images/global_redux.xml","arrow_left_disabled.tex"))
+        move_down_button.icon:SetRotation(90)
+        move_down_button.icon:SetScale(0.7,0.7,0.7)
+    ---------------------------------------------------------------------------------------------
+    --- 向下按钮
+        local move_down_button = root:AddChild(ImageButton(ui_atlas,"icon_slot.tex","icon_slot.tex","icon_slot.tex","icon_slot.tex","icon_slot.tex"))
+        move_down_button:SetPosition(30,150)
+        move_down_button:SetOnClick(function()
+            front_root.inst:PushEvent("move_down")
+        end)
+        move_down_button.icon = move_down_button.image:AddChild(Image("images/global_redux.xml","arrow_right_disabled.tex"))
+        move_down_button.icon:SetRotation(90)
+        move_down_button.icon:SetScale(0.7,0.7,0.7)
     ---------------------------------------------------------------------------------------------
     --- 关闭和提交
             front_root.inst:ListenForEvent("close",function()
@@ -314,24 +347,42 @@ function TUNING.FWD_IN_PDT_DECORATION_FN:Start(inst,submit_fn,old_saved_data,mar
             if current_seleted_id == nil then
                 local old_mark_pos = mark:GetPosition()
                 local move_vec = pt - old_mark_pos
-                mark:SetPosition(pt.x,pt.y)
-                ----------------------------------------------
-                -- 刷新已经存在的图标
-                    local new_drawed_icons = {}
-                    for index, temp_icon in pairs(drawed_icons) do
-                        if temp_icon and temp_icon.inst and temp_icon.inst:IsValid() then
-                            local new_pos = temp_icon:GetPosition() + move_vec
-                            temp_icon:SetPosition(new_pos.x,new_pos.y)
-                            table.insert(new_drawed_icons,temp_icon)
-                        end
-                    end
-                    drawed_icons = new_drawed_icons
-                ----------------------------------------------
+                -- mark:SetPosition(pt.x,pt.y)
+                -- ----------------------------------------------
+                -- -- 刷新已经存在的图标
+                --     local new_drawed_icons = {}
+                --     for index, temp_icon in pairs(drawed_icons) do
+                --         if temp_icon and temp_icon.inst and temp_icon.inst:IsValid() then
+                --             local new_pos = temp_icon:GetPosition() + move_vec
+                --             temp_icon:SetPosition(new_pos.x,new_pos.y)
+                --             table.insert(new_drawed_icons,temp_icon)
+                --         end
+                --     end
+                --     drawed_icons = new_drawed_icons
+                -- ----------------------------------------------
+                front_root.inst:PushEvent("drawed_icons_and_mark_move",move_vec)
             else
                 local temp_icon = mark_layer:AddChild(CreateDrawedIcon(current_seleted_id))
                 temp_icon:SetPosition(pt.x,pt.y)                
                 table.insert(drawed_icons,temp_icon)
             end
+        end)
+        front_root.inst:ListenForEvent("drawed_icons_and_mark_move",function(_,delta_pt)
+            local old_mark_pos = mark:GetPosition()
+            local new_mark_pos = old_mark_pos + delta_pt
+            mark:SetPosition(new_mark_pos.x,new_mark_pos.y)
+            ----------------------------------------------
+            -- 刷新已经存在的图标
+                local new_drawed_icons = {}
+                for index, temp_icon in pairs(drawed_icons) do
+                    if temp_icon and temp_icon.inst and temp_icon.inst:IsValid() then
+                        local new_pos = temp_icon:GetPosition() + delta_pt
+                        temp_icon:SetPosition(new_pos.x,new_pos.y)
+                        table.insert(new_drawed_icons,temp_icon)
+                    end
+                end
+                drawed_icons = new_drawed_icons
+            ----------------------------------------------            
         end)
     ---------------------------------------------------------------------------------------------
     --- 数据转换并保存。只储存 和 mark 坐标相对应的 偏移量

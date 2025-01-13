@@ -29,7 +29,7 @@ TUNING.FWD_IN_PDT_DECORATION_FN = TUNING.FWD_IN_PDT_DECORATION_FN or {}
                 building:GetAnimState():SetBank("pig_house")
                 building:GetAnimState():SetBuild("pig_house")
                 building:GetAnimState():PlayAnimation("idle",true)
-                local scale = 2
+                local scale = 1
                 building:SetScale(scale,scale,scale)
                 building:SetClickable(false)
             end,
@@ -40,7 +40,7 @@ TUNING.FWD_IN_PDT_DECORATION_FN = TUNING.FWD_IN_PDT_DECORATION_FN or {}
                 building:GetAnimState():SetBank("rabbithouse")
                 building:GetAnimState():SetBuild("rabbit_house")
                 building:GetAnimState():PlayAnimation("idle",true)
-                local scale = 2
+                local scale = 1
                 building:SetScale(scale,scale,scale)
                 building:SetClickable(false)
             end,
@@ -51,7 +51,7 @@ TUNING.FWD_IN_PDT_DECORATION_FN = TUNING.FWD_IN_PDT_DECORATION_FN or {}
                 building:GetAnimState():SetBank("tent")
                 building:GetAnimState():SetBuild("tent")
                 building:GetAnimState():PlayAnimation("idle",true)
-                local scale = 2
+                local scale = 1
                 building:SetScale(scale,scale,scale)
                 building:SetClickable(false)
             end,
@@ -62,7 +62,7 @@ TUNING.FWD_IN_PDT_DECORATION_FN = TUNING.FWD_IN_PDT_DECORATION_FN or {}
                 building:GetAnimState():SetBank("siesta_canopy")
                 building:GetAnimState():SetBuild("siesta_canopy")
                 building:GetAnimState():PlayAnimation("idle",true)
-                local scale = 2
+                local scale = 1
                 building:SetScale(scale,scale,scale)
                 building:SetClickable(false)
             end,
@@ -73,7 +73,7 @@ TUNING.FWD_IN_PDT_DECORATION_FN = TUNING.FWD_IN_PDT_DECORATION_FN or {}
                 building:GetAnimState():SetBank("tent_walter")
                 building:GetAnimState():SetBuild("tent_walter")
                 building:GetAnimState():PlayAnimation("idle",true)
-                local scale = 2
+                local scale = 1
                 building:SetScale(scale,scale,scale)
                 building:SetClickable(false)
             end,
@@ -84,7 +84,7 @@ TUNING.FWD_IN_PDT_DECORATION_FN = TUNING.FWD_IN_PDT_DECORATION_FN or {}
                 building:GetAnimState():SetBank("researchlab")
                 building:GetAnimState():SetBuild("researchlab")
                 building:GetAnimState():PlayAnimation("idle",true)
-                local scale = 2
+                local scale = 1
                 building:SetScale(scale,scale,scale)
                 building:SetClickable(false)
             end,
