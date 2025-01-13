@@ -96,7 +96,15 @@
     local function on_load_fn(inst)
         local save_data = inst.components.fwd_in_pdt_building_decoration_system:GetDecorations() or {}
         on_draw_event(inst,save_data)
-    end    
+    end
+----------------------------------------------------------------------------------------------------------------------------------
+--- 
+    local function spawn_init_checker(inst)
+        if inst.Ready then
+            return
+        end
+        inst:Remove()
+    end
 ----------------------------------------------------------------------------------------------------------------------------------
 --- 基础FX
     local function fx()
@@ -124,6 +132,7 @@
         inst:ListenForEvent("OnDrawed",on_draw_event) --- 客户端回传
         inst:ListenForEvent("start",player_start_drawing_event)
         inst:DoTaskInTime(0,on_load_fn)
+        inst:DoTaskInTime(0,spawn_init_checker)
         return inst
     end
 ----------------------------------------------------------------------------------------------------------------------------------
@@ -147,12 +156,6 @@
         end
         inst.Ready = true
     end
-    local function slot_init_checker(inst)
-        if inst.Ready then
-            return
-        end
-        inst:Remove()
-    end
     local function slot_fn()
         local inst = CreateEntity()
         inst.entity:AddTransform()
@@ -170,7 +173,7 @@
             return inst
         end
         inst:ListenForEvent("Set",Slot_Setting)
-        inst:DoTaskInTime(0,slot_init_checker)
+        inst:DoTaskInTime(0,spawn_init_checker)
         return inst
     end
 ----------------------------------------------------------------------------------------------------------------------------------
@@ -195,6 +198,7 @@
             fx.entity:SetParent(target.entity)
             fx.Transform:SetPosition(0,0,0)
             inst.fx = fx
+            fx.Ready = true
         --------------------------------------------------------------------------
         ---
             fx.components.fwd_in_pdt_building_decoration_system:SetOwner(target)
