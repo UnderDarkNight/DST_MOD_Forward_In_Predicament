@@ -28,20 +28,21 @@
             params[container_widget_name] = {
                 widget =
                 {
-                    slotpos = {
-                        Vector3(-37.5, 32 + 4, 0),
-                        Vector3(37.5, 32 + 4, 0),
-                        Vector3(-37.5, -(32 + 4), 0),
-                        Vector3(37.5, -(32 + 4), 0),
-                    },
-                    animbank = "ui_bundle_2x2",
-                    animbuild = "ui_bundle_2x2",
+                    slotpos = {},
+                    animbank = "ui_fish_box_5x4",
+                    animbuild = "ui_fish_box_5x4",
                     pos = Vector3(0, 220, 0),
                     side_align_tip = 160,
                 },
                 type = "chest",
                 acceptsstacks = true,                
             }
+
+            for y = 2.5, -0.5, -1 do
+                for x = -1, 3 do
+                    table.insert(params[container_widget_name].widget.slotpos, Vector3(75 * x - 75 * 2 + 75, 75 * y - 75 * 2 + 75, 0))
+                end
+            end
             ------------------------------------------------------------------------------------------
             ---- item test
                 params[container_widget_name].itemtestfn =  function(container_com, item, slot)
@@ -77,61 +78,6 @@
                 end
             end        
         -------------------------------------------------------------------------------------------------
-    end
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
---- 奖励物品
-    local function GetRewardMult()
-        return 1
-    end
-    local function SpawnReward(inst)
-        --[[
-            石头，燧石，黄金随机刷新，刷新量3~10
-            石果苗，齿轮随机刷新，刷新量1
-            固定刷新随机蓝图1
-            固定刷新随机宝石铥矿2或宝石树种子1
-        ]]--
-        ------------------------------------------------
-        ---
-            local reward_mult = GetRewardMult()
-        ------------------------------------------------
-        ---
-            local slot_1_reward = {"rocks","nitre","goldnugget"}
-            local prefab = slot_1_reward[math.random(#slot_1_reward)]
-            local item = SpawnPrefab(prefab)
-            if item.components.stackable then
-                item.components.stackable.stacksize = math.min( math.ceil(math.random(3,10)*reward_mult) , item.components.stackable.maxsize)
-            end
-            inst.components.container:GiveItem(item)
-        ------------------------------------------------
-        ---
-            local slot_2_reward = {"dug_rock_avocado_bush","gears"}
-            local prefab = slot_2_reward[math.random(#slot_2_reward)]
-            local item = SpawnPrefab(prefab)
-            if item.components.stackable then
-                item.components.stackable.stacksize = math.min( math.ceil(math.random(1,2)*reward_mult) , item.components.stackable.maxsize)
-            end
-            inst.components.container:GiveItem(item)
-        ------------------------------------------------
-        ---
-            inst.components.container:GiveItem(SpawnPrefab("blueprint"))
-        ------------------------------------------------
-        ---
-            if math.random() < 0.5 then
-                local slot_4_reward = {"thulecite","redgem","orangegem","yellowgem","greengem","bluegem","purplegem","opalpreciousgem"}
-                local prefab = slot_4_reward[math.random(#slot_4_reward)]
-                local item = SpawnPrefab(prefab)
-                if item.components.stackable then
-                    item.components.stackable.stacksize = math.min( math.ceil(math.random(1,2)*reward_mult) , item.components.stackable.maxsize)
-                end
-                inst.components.container:GiveItem(item)
-            else
-                local item = SpawnPrefab("ancienttree_seed")
-                if item.components.stackable then
-                    item.components.stackable.stacksize = math.min( math.ceil(reward_mult) , item.components.stackable.maxsize)
-                end
-                inst.components.container:GiveItem(item)
-            end
-        ------------------------------------------------
     end
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --- 
@@ -187,7 +133,6 @@
             inst.components.workable:SetWorkLeft(4)
         -------------------------------------------------------------------------------------------------
         ---
-            inst:ListenForEvent("spawn_reward",SpawnReward)
         -------------------------------------------------------------------------------------------------
         return inst
     end
