@@ -182,17 +182,25 @@ end)
 
 ---------------------------------------------------
 --- VIP 礼物盒
+    local function HasGotVipBox(inst)
+        local flag = "vip_gift." .. tostring(inst.userid)
+        return TheWorld.components.fwd_in_pdt_data:Get(flag) or inst.components.fwd_in_pdt_data:Get(flag)
+    end
+    local function SetHasGotVipBox(inst)
+        local flag = "vip_gift." .. tostring(inst.userid)
+        TheWorld.components.fwd_in_pdt_data:Set(flag,true)
+        inst.components.fwd_in_pdt_data:Set(flag,true)
+    end
 AddPlayerPostInit(function(inst)
     if not TheWorld.ismastersim or TheWorld:HasTag("cave") then
         return
     end
 
     inst:ListenForEvent("give_fwd_in_pdt_vip_gift_pack",function(inst)
-        local flag = "vip_gift." .. tostring(inst.userid)
-        if TheWorld.components.fwd_in_pdt_data:Get(flag) then
+        if HasGotVipBox(inst) then
             return
         end
-        TheWorld.components.fwd_in_pdt_data:Set(flag,true)
+        SetHasGotVipBox(inst)
 
         local gift_pack = SpawnPrefab("fwd_in_pdt_gift_pack")
         local skin_num = tostring(math.random(12))
@@ -256,9 +264,10 @@ AddPlayerPostInit(function(inst)
             return old_Say(self,str,...)
         end
         inst:DoTaskInTime(10,function()
-            TheNet:Announce("󰀏󰀧󰀭󰀒󰀏说出\"负重前行最好玩了\"则得到一个vip礼物盒子")
+            if not HasGotVipBox(inst) then
+                TheNet:Announce("󰀏󰀧󰀭󰀒󰀏说出\"负重前行最好玩了\"则得到一个vip礼物盒子")
+            end
         end)
-
 ----------------------------------------------------------------------------------------------------------------------------------------
 
 end)

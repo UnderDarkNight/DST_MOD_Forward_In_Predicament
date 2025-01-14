@@ -19,10 +19,10 @@ local flg,error_code = pcall(function()
     local x,y,z =    ThePlayer.Transform:GetWorldPosition()  
     ----------------------------------------------------------------------------------------------------------------
     ----
-        -- local inst = TheSim:FindFirstEntityWithTag("fwd_in_pdt_building_inspectaclesbox")
-        -- ThePlayer.Transform:SetPosition(inst.Transform:GetWorldPosition())
+        local inst = TheSim:FindFirstEntityWithTag("fwd_in_pdt_building_inspectaclesbox")
+        ThePlayer.Transform:SetPosition(inst.Transform:GetWorldPosition())
 
-        ThePlayer.AnimState:SetClientSideBuildOverrideFlag("fwd_in_pdt_building_inspectaclesbox_searching", true)
+        -- ThePlayer.AnimState:SetClientSideBuildOverrideFlag("fwd_in_pdt_building_inspectaclesbox_searching", true)
 
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
