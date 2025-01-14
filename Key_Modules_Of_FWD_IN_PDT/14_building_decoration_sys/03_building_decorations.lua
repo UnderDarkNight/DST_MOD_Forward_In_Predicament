@@ -422,4 +422,9 @@ function TUNING.FWD_IN_PDT_DECORATION_FN:Start(inst,submit_fn,old_saved_data,mar
             end
         end
     ---------------------------------------------------------------------------------------------
+    --- 屏蔽缩放
+        if TheCamera and TheCamera.FWD_IN_PDT_Add_Zoom_Block_Modifier then
+            TheCamera:FWD_IN_PDT_Add_Zoom_Block_Modifier(front_root.inst)
+        end
+    ---------------------------------------------------------------------------------------------
 end

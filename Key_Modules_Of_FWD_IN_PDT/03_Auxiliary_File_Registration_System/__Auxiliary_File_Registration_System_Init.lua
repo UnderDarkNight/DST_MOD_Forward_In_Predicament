@@ -19,3 +19,6 @@ modimport("Key_Modules_Of_FWD_IN_PDT/03_Auxiliary_File_Registration_System/04_rp
 
 modimport("Key_Modules_Of_FWD_IN_PDT/03_Auxiliary_File_Registration_System/05_the_input_upgrade.lua")    
 --- TheInput 升级 
+
+modimport("Key_Modules_Of_FWD_IN_PDT/03_Auxiliary_File_Registration_System/06_the_camera_upgrade.lua")    
+--- TheCamera 升级 
