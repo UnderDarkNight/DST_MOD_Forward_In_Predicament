@@ -53,6 +53,7 @@ local prefabs_name_list = {
     "23_frog_hound_skin_raincoat",      --- 哈皮雨衣
     "24_ocean_fork",                    --- 填海叉
     "25_insect_staff",                  --- 昆虫法杖
+    "26_inspectable_searcher_hat",      --- 寻宝帽子
 
     
 }

@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Atlas>
+	<Texture filename="fwd_in_pdt_spell_ring_buttons.tex" />
+	<Elements>
+		<Element name="black.tex" u1="0.001" u2="0.29196875" v2="0.999" v1="0.4150625" variant="" />
+		<Element name="empty.tex" u1="0.29396875" u2="0.532203125" v2="0.999" v1="0.45803125" variant="" />
+	</Elements>
+</Atlas>

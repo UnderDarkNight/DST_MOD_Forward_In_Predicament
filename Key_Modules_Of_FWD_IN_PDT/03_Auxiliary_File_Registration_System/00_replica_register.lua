@@ -39,3 +39,6 @@ AddReplicableComponent("fwd_in_pdt_com_inspectable_spell_caster")  --- 任意目
 
 AddReplicableComponent("fwd_in_pdt_building_decoration_system")  --- 建筑装饰系统
 
+AddReplicableComponent("fwd_in_pdt_com_inspectacle_searcher")  --- 寻宝装备
+AddReplicableComponent("fwd_in_pdt_com_inspectacle_searcher_game_puzzle")  --- 游戏模块
+

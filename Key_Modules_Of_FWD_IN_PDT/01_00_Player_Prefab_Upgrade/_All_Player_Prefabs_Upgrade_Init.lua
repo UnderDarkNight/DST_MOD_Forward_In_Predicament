@@ -47,5 +47,8 @@ modimport("Key_Modules_Of_FWD_IN_PDT/01_00_Player_Prefab_Upgrade/12_player_comba
 modimport("Key_Modules_Of_FWD_IN_PDT/01_00_Player_Prefab_Upgrade/13_attack_miss.lua")
  --- 失明触发
 
+modimport("Key_Modules_Of_FWD_IN_PDT/01_00_Player_Prefab_Upgrade/14_inspectacle_searcher_init.lua")
+ --- 寻宝系统的初始化标记
+
 
 

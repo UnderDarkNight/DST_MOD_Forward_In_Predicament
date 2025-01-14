@@ -44,7 +44,9 @@ local prefabs_name_list = {
     "14_lantern",                    -- 灯笼
     "15_building_panda",             -- 熊猫摆件
     "16_potting_a",                  -- 盆栽
-    "17_lightning_rod"               -- 避茄针
+    "17_lightning_rod",              -- 避茄针
+    "18_inspectaclesbox",            -- 寻宝帽子用的箱子
+    "19_inspectaclesbox_fixed",      -- 寻宝帽子用的箱子(修复后的)
 }
 
 

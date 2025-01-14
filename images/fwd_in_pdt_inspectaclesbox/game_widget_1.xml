@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Atlas>
+	<Texture filename="game_widget_1.tex" />
+	<Elements>
+		<Element name="background.tex" u1="0.001" u2="0.65183203125" v2="0.950171875" v1="0.56887109375" variant="" />
+		<Element name="box_frame.tex" u1="0.001" u2="0.4433359375" v2="0.56687109375" v1="0.31984765625" variant="" />
+		<Element name="button_active.tex" u1="0.049828125" u2="0.09519140625" v2="0.999" v1="0.96437890625" variant="" />
+		<Element name="button_deacitve.tex" u1="0.09719140625" u2="0.1425546875" v2="0.999" v1="0.96437890625" variant="" />
+		<Element name="icon_close.tex" u1="0.1445546875" u2="0.165015625" v2="0.999" v1="0.97805078125" variant="" />
+		<Element name="icon_refresh.tex" u1="0.167015625" u2="0.18894140625" v2="0.999" v1="0.97805078125" variant="" />
+		<Element name="icon_star.tex" u1="0.1445546875" u2="0.16550390625" v2="0.97605078125" v1="0.9551015625" variant="" />
+		<Element name="slot_bg.tex" u1="0.19094140625" u2="0.23776953125" v2="0.999" v1="0.952171875" variant="" />
+		<Element name="slot_frame.tex" u1="0.001" u2="0.047828125" v2="0.999" v1="0.952171875" variant="" />
+	</Elements>
+</Atlas>
