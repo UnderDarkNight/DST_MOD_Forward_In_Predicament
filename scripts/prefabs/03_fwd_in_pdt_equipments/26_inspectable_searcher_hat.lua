@@ -60,7 +60,7 @@
         --- pinger 的检查激活
             root.inst:DoPeriodicTask(1,function()
                 if inst.replica.fwd_in_pdt_com_inspectacle_searcher:GetPingerTarget() == nil and inst:HasTag("ready") then
-                    inst.replica.fwd_in_pdt_com_inspectacle_searcher:SetPingerTarget(TheSim:FindFirstEntityWithTag("fwd_in_pdt_building_inspectaclesbox"))
+                    inst.replica.fwd_in_pdt_com_inspectacle_searcher:SetPingerTarget(TheSim:FindFirstEntityWithTag("fwd_in_pdt_com_inspectacle_searcher_target"))
                 end
                 if inst.replica.fwd_in_pdt_com_inspectacle_searcher:GetPingerTarget() == nil 
                     and inst.replica.fwd_in_pdt_com_inspectacle_searcher:GetPingerTargetPos() == nil
@@ -127,7 +127,7 @@
 --- 创建标记
     local function CreateMarker(inst)
         print("CreateMarker")
-        local marker = TheSim:FindFirstEntityWithTag("fwd_in_pdt_building_inspectaclesbox")
+        local marker = TheSim:FindFirstEntityWithTag("fwd_in_pdt_com_inspectacle_searcher_target")
         if marker and marker:IsValid() then
             -- print("marker is valid")
             -- inst.components.fwd_in_pdt_com_inspectacle_searcher:SetPingerTarget(marker)
@@ -148,7 +148,7 @@
     end
     --- 服务器定期扫描下发坐标给客户端，通过RPC。用来解决 目标物品 在加载范围外无法在客户端扫描到的bug
     local function Marker_Searching_Task(inst)
-        local marker = TheSim:FindFirstEntityWithTag("fwd_in_pdt_building_inspectaclesbox")
+        local marker = TheSim:FindFirstEntityWithTag("fwd_in_pdt_com_inspectacle_searcher_target")
         local owner = inst.components.fwd_in_pdt_com_inspectacle_searcher:GetOwner()
         if owner == nil then
             return

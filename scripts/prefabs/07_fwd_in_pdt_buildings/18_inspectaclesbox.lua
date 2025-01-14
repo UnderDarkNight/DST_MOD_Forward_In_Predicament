@@ -118,7 +118,7 @@
         inst.AnimState:SetScale(SCALE,SCALE,SCALE)
 
         inst:AddTag("NOBLOCK")
-        inst:AddTag("fwd_in_pdt_building_inspectaclesbox")
+        inst:AddTag("fwd_in_pdt_com_inspectacle_searcher_target")
 
         inst.AnimState:SetClientsideBuildOverride("fwd_in_pdt_building_inspectaclesbox_searching", "fwd_in_pdt_building_inspectaclesbox_empty", "fwd_in_pdt_building_inspectaclesbox")
 
