@@ -143,7 +143,12 @@
             return
         end
         local pos = GetRandomPosition(player)
-        SpawnPrefab("fwd_in_pdt_building_inspectaclesbox").Transform:SetPosition(pos.x,0,pos.z)
+        local game_buildings = {
+            "fwd_in_pdt_building_inspectaclesbox_puzzle",
+            "fwd_in_pdt_building_inspectaclesbox_look_for_the_unique",
+        }
+        local building_prefab = game_buildings[math.random(#game_buildings)]
+        SpawnPrefab(building_prefab).Transform:SetPosition(pos.x,0,pos.z)
         inst.components.rechargeable:Discharge(MAX_COOL_DOWN_TIME)
     end
     --- 服务器定期扫描下发坐标给客户端，通过RPC。用来解决 目标物品 在加载范围外无法在客户端扫描到的bug

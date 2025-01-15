@@ -32,6 +32,8 @@ local temp_assets = {
 	--- 寻宝游戏的界面和素材
 		Asset("IMAGE", "images/fwd_in_pdt_inspectaclesbox/game_widget_1.tex"),
 		Asset("ATLAS", "images/fwd_in_pdt_inspectaclesbox/game_widget_1.xml"),
+		Asset("IMAGE", "images/fwd_in_pdt_inspectaclesbox/transparent_button_box.tex"),
+		Asset("ATLAS", "images/fwd_in_pdt_inspectaclesbox/transparent_button_box.xml"),
 
 		Asset("IMAGE", "images/fwd_in_pdt_inspectaclesbox/test_puzzle.tex"),
 		Asset("ATLAS", "images/fwd_in_pdt_inspectaclesbox/test_puzzle.xml"),
@@ -85,6 +87,9 @@ local temp_assets = {
 		Asset("ATLAS", "images/fwd_in_pdt_inspectaclesbox/game_puzzle_24.xml"),
 		Asset("IMAGE", "images/fwd_in_pdt_inspectaclesbox/game_puzzle_25.tex"),
 		Asset("ATLAS", "images/fwd_in_pdt_inspectaclesbox/game_puzzle_25.xml"),
+
+		Asset("IMAGE", "images/fwd_in_pdt_inspectaclesbox/game_look_for_the_unique.tex"),
+		Asset("ATLAS", "images/fwd_in_pdt_inspectaclesbox/game_look_for_the_unique.xml"),
 
 
 	---------------------------------------------------------------------------

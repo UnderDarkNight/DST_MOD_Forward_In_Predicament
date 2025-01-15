@@ -103,9 +103,9 @@
 --- 游戏模块 安装、启动入口
     local function Game_Com_Install(inst)
         inst:ListenForEvent("game_start",function()
-            inst.replica.fwd_in_pdt_com_inspectacle_searcher_game_puzzle:StartGame()
+            inst.replica.fwd_in_pdt_com_inspectacle_searcher_game_look_for_the_unique:StartGame()
         end)
-        inst:ListenForEvent("fwd_in_pdt_event.OnEntityReplicated.fwd_in_pdt_com_inspectacle_searcher_game_puzzle",function(inst,replica_com)
+        inst:ListenForEvent("fwd_in_pdt_event.OnEntityReplicated.fwd_in_pdt_com_inspectacle_searcher_game_look_for_the_unique",function(inst,replica_com)
             replica_com:SetSubmitFn(function(inst)
                 local rpc = ThePlayer and ThePlayer.replica.fwd_in_pdt_com_rpc_event
                 if rpc then
@@ -116,7 +116,9 @@
         if not TheWorld.ismastersim then
             return
         end
-        inst:AddComponent("fwd_in_pdt_com_inspectacle_searcher_game_puzzle")
+        inst:AddComponent("fwd_in_pdt_com_inspectacle_searcher_game_look_for_the_unique")
+        inst.components.fwd_in_pdt_com_inspectacle_searcher_game_look_for_the_unique:SetMaxTestNum(6)
+        inst.components.fwd_in_pdt_com_inspectacle_searcher_game_look_for_the_unique:SetImageIndex(math.random(20))
         inst:ListenForEvent("game_finish",function(inst)
             local x,y,z = inst.Transform:GetWorldPosition()
             local box = SpawnPrefab("fwd_in_pdt_building_inspectaclesbox_fixed")
@@ -203,4 +205,4 @@
     end
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-return Prefab("fwd_in_pdt_building_inspectaclesbox", fn, assets)
+return Prefab("fwd_in_pdt_building_inspectaclesbox_look_for_the_unique", fn, assets)

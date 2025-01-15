@@ -19,8 +19,22 @@ local flg,error_code = pcall(function()
     local x,y,z =    ThePlayer.Transform:GetWorldPosition()  
     ----------------------------------------------------------------------------------------------------------------
     ----
+        
+    ----------------------------------------------------------------------------------------------------------------
+    ----
         local inst = TheSim:FindFirstEntityWithTag("fwd_in_pdt_com_inspectacle_searcher_target")
-        ThePlayer.Transform:SetPosition(inst.Transform:GetWorldPosition())
+        -- ThePlayer.Transform:SetPosition(inst.Transform:GetWorldPosition())
+
+        inst.Submit = function()            
+        end
+        inst.RefreshClick = function(self)
+            self.game_widget:Kill()
+            self.game_widget = nil
+            CreateGameWidget(self)
+        end
+        inst.inst = inst
+
+        CreateGameWidget(inst)
 
         -- ThePlayer.AnimState:SetClientSideBuildOverrideFlag("fwd_in_pdt_building_inspectaclesbox_searching", true)
 

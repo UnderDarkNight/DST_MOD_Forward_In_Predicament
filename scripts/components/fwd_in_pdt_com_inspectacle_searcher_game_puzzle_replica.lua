@@ -152,9 +152,9 @@
                 local slot_scale = 1.015
                 temp_slot:SetScale(slot_scale,slot_scale,slot_scale)
                 temp_slot.num = num
-                if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
-                    temp_slot.image:AddChild(Text(CODEFONT,40,tostring(num),{0/255,255/255,0/255,1}))
-                end
+                -- if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
+                --     temp_slot.image:AddChild(Text(CODEFONT,40,tostring(num),{0/255,255/255,0/255,1}))
+                -- end
                 function temp_slot:GetSlottXY()
                     return self.s_x,self.s_y
                 end

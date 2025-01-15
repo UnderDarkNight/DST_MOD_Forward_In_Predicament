@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Atlas>
+	<Texture filename="game_look_for_the_unique.tex" />
+	<Elements>
+		<Element name="1_normal.tex" u1="0.001" u2="0.18259375" v2="0.999" v1="0.815453125" variant="" />
+		<Element name="1_special.tex" u1="0.18459375" u2="0.33103125" v2="0.999" v1="0.838890625" variant="" />
+		<Element name="10_normal.tex" u1="0.001" u2="0.108375" v2="0.500953125" v1="0.35646875" variant="" />
+		<Element name="10_special.tex" u1="0.110375" u2="0.21775" v2="0.500953125" v1="0.35646875" variant="" />
+		<Element name="11_normal.tex" u1="0.001" u2="0.15915625" v2="0.35446875" v1="0.2119375" variant="" />
+		<Element name="11_special.tex" u1="0.21975" u2="0.37790625" v2="0.51853125" v1="0.376" variant="" />
+		<Element name="12_normal.tex" u1="0.001" u2="0.1005625" v2="0.2099375" v1="0.0556875" variant="" />
+		<Element name="12_special.tex" u1="0.16115625" u2="0.26071875" v2="0.35446875" v1="0.20021875" variant="" />
+		<Element name="13_normal.tex" u1="0.37990625" u2="0.528296875" v2="0.536109375" v1="0.42678125" variant="" />
+		<Element name="13_special.tex" u1="0.26271875" u2="0.411109375" v2="0.374" v1="0.264671875" variant="" />
+		<Element name="14_normal.tex" u1="0.1025625" u2="0.22165625" v2="0.19821875" v1="0.0635" variant="" />
+		<Element name="14_special.tex" u1="0.530296875" u2="0.649390625" v2="0.555640625" v1="0.420921875" variant="" />
+		<Element name="15_normal.tex" u1="0.26271875" u2="0.422828125" v2="0.262671875" v1="0.09865625" variant="" />
+		<Element name="15_special.tex" u1="0.659203125" u2="0.7724375" v2="0.567359375" v1="0.40334375" variant="" />
+		<Element name="16_normal.tex" u1="0.413109375" u2="0.555640625" v2="0.418921875" v1="0.31740625" variant="" />
+		<Element name="16_special.tex" u1="0.424828125" u2="0.567359375" v2="0.31540625" v1="0.213890625" variant="" />
+		<Element name="17_normal.tex" u1="0.424828125" u2="0.516578125" v2="0.211890625" v1="0.081078125" variant="" />
+		<Element name="17_special.tex" u1="0.7744375" u2="0.8661875" v2="0.559546875" v1="0.428734375" variant="" />
+		<Element name="18_normal.tex" u1="0.569359375" u2="0.70603125" v2="0.40134375" v1="0.268578125" variant="" />
+		<Element name="18_special.tex" u1="0.569359375" u2="0.70603125" v2="0.266578125" v1="0.13771875" variant="" />
+		<Element name="19_normal.tex" u1="0.70803125" u2="0.8115" v2="0.40134375" v1="0.30178125" variant="" />
+		<Element name="19_special.tex" u1="0.8681875" u2="0.97165625" v2="0.559546875" v1="0.459984375" variant="" />
+		<Element name="2_normal.tex" u1="0.33303125" u2="0.497046875" v2="0.999" v1="0.8213125" variant="" />
+		<Element name="2_special.tex" u1="0.001" u2="0.165015625" v2="0.813453125" v1="0.635765625" variant="" />
+		<Element name="20_normal.tex" u1="0.70803125" u2="0.829078125" v2="0.29978125" v1="0.16115625" variant="" />
+		<Element name="20_special.tex" u1="0.8681875" u2="0.989234375" v2="0.457984375" v1="0.319359375" variant="" />
+		<Element name="3_normal.tex" u1="0.167015625" u2="0.329078125" v2="0.813453125" v1="0.65334375" variant="" />
+		<Element name="3_special.tex" u1="0.331078125" u2="0.493140625" v2="0.8193125" v1="0.659203125" variant="" />
+		<Element name="4_normal.tex" u1="0.001" u2="0.172828125" v2="0.633765625" v1="0.502953125" variant="" />
+		<Element name="4_special.tex" u1="0.174828125" u2="0.34665625" v2="0.65134375" v1="0.52053125" variant="" />
+		<Element name="5_normal.tex" u1="0.499046875" u2="0.65525" v2="0.999" v1="0.8525625" variant="" />
+		<Element name="5_special.tex" u1="0.499046875" u2="0.65525" v2="0.8505625" v1="0.706078125" variant="" />
+		<Element name="6_normal.tex" u1="0.65725" u2="0.78415625" v2="0.999" v1="0.876" variant="" />
+		<Element name="6_special.tex" u1="0.34865625" u2="0.4755625" v2="0.657203125" v1="0.538109375" variant="" />
+		<Element name="7_normal.tex" u1="0.65725" u2="0.8193125" v2="0.874" v1="0.7275625" variant="" />
+		<Element name="7_special.tex" u1="0.495140625" u2="0.657203125" v2="0.704078125" v1="0.557640625" variant="" />
+		<Element name="8_normal.tex" u1="0.8213125" u2="0.96384375" v2="0.999" v1="0.842796875" variant="" />
+		<Element name="8_special.tex" u1="0.659203125" u2="0.79196875" v2="0.7255625" v1="0.569359375" variant="" />
+		<Element name="9_normal.tex" u1="0.8213125" u2="0.985328125" v2="0.840796875" v1="0.702171875" variant="" />
+		<Element name="9_special.tex" u1="0.79396875" u2="0.957984375" v2="0.700171875" v1="0.561546875" variant="" />
+	</Elements>
+</Atlas>
