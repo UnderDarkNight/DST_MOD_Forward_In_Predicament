@@ -201,6 +201,9 @@
             end
             for i, pos in ipairs(all_points) do
                 local temp_image = images_layer:AddChild(Image(image_atlas,image_name))
+                if math.random() > 0.5 then
+                    temp_image:SetScale(1,-1)
+                end
                 temp_image:SetPosition(pos.x+GetOffset(),pos.y+GetOffset(),0)
                 temp_image:SetRotation(math.random(0,7)*45)  -- 45度一节 8 个
                 table.insert(all_images,temp_image)
