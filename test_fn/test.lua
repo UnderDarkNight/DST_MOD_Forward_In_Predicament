@@ -22,22 +22,38 @@ local flg,error_code = pcall(function()
         
     ----------------------------------------------------------------------------------------------------------------
     ----
-        local inst = TheSim:FindFirstEntityWithTag("fwd_in_pdt_com_inspectacle_searcher_target")
+        -- local inst = TheSim:FindFirstEntityWithTag("fwd_in_pdt_com_inspectacle_searcher_target")
         -- ThePlayer.Transform:SetPosition(inst.Transform:GetWorldPosition())
 
-        inst.Submit = function()            
-        end
-        inst.RefreshClick = function(self)
-            self.game_widget:Kill()
-            self.game_widget = nil
-            CreateGameWidget(self)
-        end
-        inst.inst = inst
+        -- inst.Submit = function()            
+        -- end
+        -- inst.RefreshClick = function(self)
+        --     self.game_widget:Kill()
+        --     self.game_widget = nil
+        --     CreateGameWidget(self)
+        -- end
+        -- inst.inst = inst
 
-        CreateGameWidget(inst)
+        -- CreateGameWidget(inst)
 
         -- ThePlayer.AnimState:SetClientSideBuildOverrideFlag("fwd_in_pdt_building_inspectaclesbox_searching", true)
 
+    ----------------------------------------------------------------------------------------------------------------
+    ---
+        local item_list = {
+            "fossil_piece","feather_canary","dreadstone","thulecite","marblebean",
+            "cutstone","transistor","moonstorm_static_item","lavae_egg_cracked",
+            "beeswax","slurtleslime","shroom_skin","dragon_scales","spidergland","beefalowool"
+        }
+        local prefab = item_list[math.random(#item_list)]
+        local fx = SpawnPrefab("fwd_in_pdt_fx_catch_game_mark")
+        fx.AnimState:PlayAnimation("idle2")
+        fx.Transform:SetPosition(x,y,z)
+        fx:DoTaskInTime(10,fx.Remove)
+
+        local image_name = prefab..".tex"
+        local atlas_name = GetInventoryItemAtlas(image_name)
+        fx.AnimState:OverrideSymbol("SWAP_SIGN",atlas_name,image_name)
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)

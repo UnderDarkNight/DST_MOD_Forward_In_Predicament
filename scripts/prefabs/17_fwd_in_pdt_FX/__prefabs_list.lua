@@ -52,6 +52,7 @@ local prefabs_name_list = {
     "24_clock_fx",                  --- 旺达的时间标记
     "25_dotted_circle",             --- 虚线圆圈
     "26_canvas",                    --- 装饰物的画布
+    "27_catch_game_mark",           --- 接物游戏标记特效
 
     
 }

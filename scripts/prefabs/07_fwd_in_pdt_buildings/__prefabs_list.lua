@@ -47,6 +47,7 @@ local prefabs_name_list = {
     "17_lightning_rod",              -- 避茄针
     "18_01_inspectaclesbox_puzzle",                         -- 寻宝帽子用的箱子
     "18_02_inspectaclesbox_look_for_the_unique",            -- 寻宝帽子用的箱子
+    "18_03_inspectaclesbox_catch_item",                     -- 寻宝帽子用的箱子
     "19_inspectaclesbox_fixed",      -- 寻宝帽子用的箱子(修复后的)
 }
 

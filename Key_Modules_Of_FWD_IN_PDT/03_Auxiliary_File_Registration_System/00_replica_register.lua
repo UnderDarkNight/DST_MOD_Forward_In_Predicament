@@ -42,4 +42,5 @@ AddReplicableComponent("fwd_in_pdt_building_decoration_system")  --- 建筑装�
 AddReplicableComponent("fwd_in_pdt_com_inspectacle_searcher")  --- 寻宝装备
 AddReplicableComponent("fwd_in_pdt_com_inspectacle_searcher_game_puzzle")  --- 游戏模块
 AddReplicableComponent("fwd_in_pdt_com_inspectacle_searcher_game_look_for_the_unique")  --- 游戏模块
+AddReplicableComponent("fwd_in_pdt_com_inspectacle_searcher_game_catch_item")  --- 游戏模块
 
