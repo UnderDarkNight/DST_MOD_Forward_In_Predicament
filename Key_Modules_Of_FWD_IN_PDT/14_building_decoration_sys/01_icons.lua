@@ -32,6 +32,7 @@ local temp_assets = {
     ---------------------------------------------------------------------------------------------
     --- 装饰
 	    Asset("ANIM", "anim/fwd_in_pdt_decoration_excample_spring_scrolls.zip"), --- 示例用的对联
+	    Asset("ANIM", "anim/fwd_in_pdt_decoration_cats_1.zip"), --- 猫
     ---------------------------------------------------------------------------------------------
 }
 for k, v in pairs(temp_assets) do
@@ -66,8 +67,18 @@ TUNING.FWD_IN_PDT_DECORATIONS = {
     {id = "yellow_alphabet_x", bank = "fwd_in_pdt_fx_canvas" ,build = "fwd_in_pdt_fx_canvas" ,anim = "x"},
     {id = "yellow_alphabet_y", bank = "fwd_in_pdt_fx_canvas" ,build = "fwd_in_pdt_fx_canvas" ,anim = "y"},
     {id = "yellow_alphabet_z", bank = "fwd_in_pdt_fx_canvas" ,build = "fwd_in_pdt_fx_canvas" ,anim = "z"},
+    --- 示例春联
     {id = "excample_spring_scrolls_titile",bank = "fwd_in_pdt_decoration_excample_spring_scrolls" ,build = "fwd_in_pdt_decoration_excample_spring_scrolls" ,anim = "icon_title" , decoration = {bank = "fwd_in_pdt_decoration_excample_spring_scrolls" ,build = "fwd_in_pdt_decoration_excample_spring_scrolls" ,anim = "title"}},
     {id = "excample_spring_scrolls_scroll",bank = "fwd_in_pdt_decoration_excample_spring_scrolls" ,build = "fwd_in_pdt_decoration_excample_spring_scrolls" ,anim = "icon_scroll" , decoration = {bank = "fwd_in_pdt_decoration_excample_spring_scrolls" ,build = "fwd_in_pdt_decoration_excample_spring_scrolls" ,anim = "scroll"}},
+    --- fwd_in_pdt_decoration_cats_1 猫包
+    {id = "jellyfish_1",bank = "fwd_in_pdt_decoration_cats_1" ,build = "fwd_in_pdt_decoration_cats_1" ,anim = "icon_jellyfish_1" , decoration = {bank = "fwd_in_pdt_decoration_cats_1" ,build = "fwd_in_pdt_decoration_cats_1" ,anim = "jellyfish_1"}},
+    {id = "jellyfish_2",bank = "fwd_in_pdt_decoration_cats_1" ,build = "fwd_in_pdt_decoration_cats_1" ,anim = "icon_jellyfish_2" , decoration = {bank = "fwd_in_pdt_decoration_cats_1" ,build = "fwd_in_pdt_decoration_cats_1" ,anim = "jellyfish_2"}},
+    {id = "pink_cat_wind_chime",bank = "fwd_in_pdt_decoration_cats_1" ,build = "fwd_in_pdt_decoration_cats_1" ,anim = "icon_wind_chime" , decoration = {bank = "fwd_in_pdt_decoration_cats_1" ,build = "fwd_in_pdt_decoration_cats_1" ,anim = "wind_chime"}},
+    {id = "innocent_black_cat",bank = "fwd_in_pdt_decoration_cats_1" ,build = "fwd_in_pdt_decoration_cats_1" ,anim = "icon_black_cat" , decoration = {bank = "fwd_in_pdt_decoration_cats_1" ,build = "fwd_in_pdt_decoration_cats_1" ,anim = "black_cat"}},
+    {id = "blue_cat_holding",bank = "fwd_in_pdt_decoration_cats_1" ,build = "fwd_in_pdt_decoration_cats_1" ,anim = "icon_cat_blue" , decoration = {bank = "fwd_in_pdt_decoration_cats_1" ,build = "fwd_in_pdt_decoration_cats_1" ,anim = "cat_blue"}},
+    {id = "orange_cat_holding",bank = "fwd_in_pdt_decoration_cats_1" ,build = "fwd_in_pdt_decoration_cats_1" ,anim = "icon_cat_orange" , decoration = {bank = "fwd_in_pdt_decoration_cats_1" ,build = "fwd_in_pdt_decoration_cats_1" ,anim = "cat_orange"}},
+    {id = "black_cat_holding",bank = "fwd_in_pdt_decoration_cats_1" ,build = "fwd_in_pdt_decoration_cats_1" ,anim = "icon_cat_black" , decoration = {bank = "fwd_in_pdt_decoration_cats_1" ,build = "fwd_in_pdt_decoration_cats_1" ,anim = "cat_black"}},
+    {id = "white_cat_holding",bank = "fwd_in_pdt_decoration_cats_1" ,build = "fwd_in_pdt_decoration_cats_1" ,anim = "icon_cat_white" , decoration = {bank = "fwd_in_pdt_decoration_cats_1" ,build = "fwd_in_pdt_decoration_cats_1" ,anim = "cat_white"}},
 }
 TUNING.FWD_IN_PDT_DECORATIONS_IDS = {}
 for k,temp_data in pairs(TUNING.FWD_IN_PDT_DECORATIONS) do
