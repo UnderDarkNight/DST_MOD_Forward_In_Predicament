@@ -146,7 +146,8 @@
         end
         inst.AnimState:SetBank(bank)
         inst.AnimState:SetBuild(build)
-        inst.AnimState:PlayAnimation(anim,true)        
+        inst.AnimState:PlayAnimation(anim,true)
+        inst.AnimState:SetTime(inst.AnimState:GetCurrentAnimationLength()*math.random())
         local link = _table.link
         if link then
             local pt = _table.pt or Vector3(0,0,0)
