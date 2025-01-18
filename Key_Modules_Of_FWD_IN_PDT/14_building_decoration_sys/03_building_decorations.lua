@@ -224,9 +224,12 @@ function TUNING.FWD_IN_PDT_DECORATION_FN:Start(inst,submit_fn,old_saved_data,mar
                         self.icon:GetAnimState():SetBank(icon_data.bank)
                         self.icon:GetAnimState():SetBuild(icon_data.build)
                         self.icon:GetAnimState():PlayAnimation(icon_data.anim,true)
+                        -- print("create icon slot ",icon_data.anim,icon_data.bank,icon_data.build)
                     end
                 end
-                temp_button:SetID(id)
+                if id ~= nil then
+                    temp_button:SetID(id)
+                end
                 temp_button.focus_scale = {1,1,1}
                 return temp_button
             end
@@ -246,7 +249,7 @@ function TUNING.FWD_IN_PDT_DECORATION_FN:Start(inst,submit_fn,old_saved_data,mar
                     local function CreateLine()
                         local line = Widget()
                         for i = 1, 6, 1 do
-                            local temp_slot = line:AddChild(CreateSlot("yellow_alphabet_a"))
+                            local temp_slot = line:AddChild(CreateSlot())
                             temp_slot:SetPosition((i-3)*slot_width-45,0)
                             table.insert(all_slots,temp_slot)                               
                         end
