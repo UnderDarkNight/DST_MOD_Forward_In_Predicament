@@ -11,7 +11,7 @@
 --- 素材
     local assets =
     {
-        Asset("ANIM", "anim/cane.zip"),
+        Asset("ANIM", "anim/fwd_in_pdt_item_inspectable_searcher_hat.zip"),
         Asset("ANIM", "anim/swap_cane.zip"),
 
         Asset("IMAGE", "images/widget/fwd_in_pdt_spell_ring_buttons.tex"),
@@ -185,7 +185,7 @@
 
         MakeInventoryPhysics(inst)
 
-        inst.AnimState:SetBank("cane")
+        inst.AnimState:SetBank("fwd_in_pdt_item_inspectable_searcher_hat")
         inst.AnimState:SetBuild("swap_cane")
         inst.AnimState:PlayAnimation("idle")
         inst:AddTag("fwd_in_pdt_item_inspectable_searcher_hat")

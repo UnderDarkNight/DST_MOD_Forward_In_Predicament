@@ -31,7 +31,7 @@ local temp_assets = {
 	    Asset("ANIM", "anim/fwd_in_pdt_fx_canvas.zip"),
     ---------------------------------------------------------------------------------------------
     --- 装饰
-	    Asset("ANIM", "anim/fwd_in_pdt_decoration_excample_spring_scrolls.zip"), --- 示例用的对联
+	    Asset("ANIM", "anim/fwd_in_pdt_decoration_spring_scrolls.zip"), --- 示例用的对联
 	    Asset("ANIM", "anim/fwd_in_pdt_decoration_cats_1.zip"), --- 猫
     ---------------------------------------------------------------------------------------------
 }
@@ -68,8 +68,9 @@ TUNING.FWD_IN_PDT_DECORATIONS = {
     {id = "yellow_alphabet_y", bank = "fwd_in_pdt_fx_canvas" ,build = "fwd_in_pdt_fx_canvas" ,anim = "y"},
     {id = "yellow_alphabet_z", bank = "fwd_in_pdt_fx_canvas" ,build = "fwd_in_pdt_fx_canvas" ,anim = "z"},
     --- 示例春联
-    {id = "excample_spring_scrolls_titile",bank = "fwd_in_pdt_decoration_excample_spring_scrolls" ,build = "fwd_in_pdt_decoration_excample_spring_scrolls" ,anim = "icon_title" , decoration = {bank = "fwd_in_pdt_decoration_excample_spring_scrolls" ,build = "fwd_in_pdt_decoration_excample_spring_scrolls" ,anim = "title"}},
-    {id = "excample_spring_scrolls_scroll",bank = "fwd_in_pdt_decoration_excample_spring_scrolls" ,build = "fwd_in_pdt_decoration_excample_spring_scrolls" ,anim = "icon_scroll" , decoration = {bank = "fwd_in_pdt_decoration_excample_spring_scrolls" ,build = "fwd_in_pdt_decoration_excample_spring_scrolls" ,anim = "scroll"}},
+    {id = "spring_scrolls_title",bank = "fwd_in_pdt_decoration_spring_scrolls" ,build = "fwd_in_pdt_decoration_spring_scrolls" ,anim = "icon_title" , decoration = {bank = "fwd_in_pdt_decoration_spring_scrolls" ,build = "fwd_in_pdt_decoration_spring_scrolls" ,anim = "title"}},
+    {id = "spring_scrolls_scroll_left",bank = "fwd_in_pdt_decoration_spring_scrolls" ,build = "fwd_in_pdt_decoration_spring_scrolls" ,anim = "icon_left_scroll" , decoration = {bank = "fwd_in_pdt_decoration_spring_scrolls" ,build = "fwd_in_pdt_decoration_spring_scrolls" ,anim = "left_scroll"}},
+    {id = "spring_scrolls_scroll_right",bank = "fwd_in_pdt_decoration_spring_scrolls" ,build = "fwd_in_pdt_decoration_spring_scrolls" ,anim = "icon_right_scroll" , decoration = {bank = "fwd_in_pdt_decoration_spring_scrolls" ,build = "fwd_in_pdt_decoration_spring_scrolls" ,anim = "right_scroll"}},
     --- fwd_in_pdt_decoration_cats_1 猫包
     {id = "jellyfish_1",bank = "fwd_in_pdt_decoration_cats_1" ,build = "fwd_in_pdt_decoration_cats_1" ,anim = "icon_jellyfish_1" , decoration = {bank = "fwd_in_pdt_decoration_cats_1" ,build = "fwd_in_pdt_decoration_cats_1" ,anim = "jellyfish_1"}},
     {id = "jellyfish_2",bank = "fwd_in_pdt_decoration_cats_1" ,build = "fwd_in_pdt_decoration_cats_1" ,anim = "icon_jellyfish_2" , decoration = {bank = "fwd_in_pdt_decoration_cats_1" ,build = "fwd_in_pdt_decoration_cats_1" ,anim = "jellyfish_2"}},
