@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --[[
-
+        找不同~
 ]]--
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --- 素材
@@ -21,9 +21,9 @@
     local function SpawnReward(inst)
         --[[
             石头，燧石，黄金随机刷新，刷新量3~10
-            石果苗，齿轮随机刷新，刷新量1
+            石果苗，齿轮随机刷新，刷新量2~4
             固定刷新随机蓝图1
-            固定刷新随机宝石铥矿2或宝石树种子1
+            固定刷新随机宝石铥矿5~10或宝石树种子1
         ]]--
         ------------------------------------------------
         ---
@@ -43,7 +43,7 @@
             local prefab = slot_2_reward[math.random(#slot_2_reward)]
             local item = SpawnPrefab(prefab)
             if item.components.stackable then
-                item.components.stackable.stacksize = math.min( math.ceil(math.random(1,2)*reward_mult) , item.components.stackable.maxsize)
+                item.components.stackable.stacksize = math.min( math.ceil(math.random(2,4)*reward_mult) , item.components.stackable.maxsize)
             end
             inst.components.container:GiveItem(item)
         ------------------------------------------------
@@ -56,7 +56,7 @@
                 local prefab = slot_4_reward[math.random(#slot_4_reward)]
                 local item = SpawnPrefab(prefab)
                 if item.components.stackable then
-                    item.components.stackable.stacksize = math.min( math.ceil(math.random(1,2)*reward_mult) , item.components.stackable.maxsize)
+                    item.components.stackable.stacksize = math.min( math.ceil(math.random(5,10)*reward_mult) , item.components.stackable.maxsize)
                 end
                 inst.components.container:GiveItem(item)
             else

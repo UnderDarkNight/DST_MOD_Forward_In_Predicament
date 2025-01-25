@@ -326,8 +326,8 @@ local function fncommon()
     inst:AddComponent("lootdropper")
     inst.components.lootdropper:AddChanceLoot("monstermeat", 1)
     inst.components.lootdropper:AddChanceLoot("fwd_in_pdt_material_snake_skin", 0.5)
+    inst.components.lootdropper:AddChanceLoot("fwd_in_pdt_item_inspectable_searcher_hat",1)
     
-
     inst:AddComponent("inspectable")
 
 

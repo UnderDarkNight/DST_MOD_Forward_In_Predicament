@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --[[
-
+    拼图
 ]]--
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --- 素材
@@ -21,9 +21,9 @@
     local function SpawnReward(inst)
         --[[
             石头，燧石，黄金随机刷新，刷新量3~10
-            石果苗，齿轮随机刷新，刷新量1
+            石果苗，齿轮随机刷新，刷新量2~5
             固定刷新随机蓝图1
-            固定刷新随机宝石铥矿2或宝石树种子1
+            固定刷新万能解毒1
         ]]--
         ------------------------------------------------
         ---
@@ -43,7 +43,7 @@
             local prefab = slot_2_reward[math.random(#slot_2_reward)]
             local item = SpawnPrefab(prefab)
             if item.components.stackable then
-                item.components.stackable.stacksize = math.min( math.ceil(math.random(1,2)*reward_mult) , item.components.stackable.maxsize)
+                item.components.stackable.stacksize = math.min( math.ceil(math.random(2,5)*reward_mult) , item.components.stackable.maxsize)
             end
             inst.components.container:GiveItem(item)
         ------------------------------------------------
@@ -52,7 +52,7 @@
         ------------------------------------------------
         ---
             if math.random() < 0.5 then
-                local slot_4_reward = {"thulecite","redgem","orangegem","yellowgem","greengem","bluegem","purplegem","opalpreciousgem"}
+                local slot_4_reward = {"fwd_in_pdt_food_universal_antidote"}
                 local prefab = slot_4_reward[math.random(#slot_4_reward)]
                 local item = SpawnPrefab(prefab)
                 if item.components.stackable then
@@ -60,7 +60,7 @@
                 end
                 inst.components.container:GiveItem(item)
             else
-                local item = SpawnPrefab("ancienttree_seed")
+                local item = SpawnPrefab("fwd_in_pdt_food_universal_antidote")
                 if item.components.stackable then
                     item.components.stackable.stacksize = math.min( math.ceil(reward_mult) , item.components.stackable.maxsize)
                 end
