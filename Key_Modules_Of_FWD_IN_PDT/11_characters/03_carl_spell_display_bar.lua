@@ -12,6 +12,45 @@ local AnimButton = require "widgets/animbutton"
 -- local Menu = require "widgets/menu"
 local Text = require "widgets/text"
 -- local TEMPLATES = require "widgets/redux/templates"
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--- 客户端数据储存与读取
+    local data_sheet_index = "fwd_in_pdt.widget.carl_spell_bar"
+    local function GetData(index,default)
+        local data = {}
+        TheSim:GetPersistentString(data_sheet_index, function(load_success, str_data)
+            if load_success and str_data then
+                local crash_flag,temp_data = pcall(json.decode,str_data)
+                if crash_flag then
+                    data = temp_data
+                end
+            end
+        end)
+        return data[index] or default
+    end
+    local function SetData(index,value)
+        local data = {}
+        TheSim:GetPersistentString(data_sheet_index, function(load_success, str_data)
+            if load_success and str_data then
+                local crash_flag,temp_data = pcall(json.decode,str_data)
+                if crash_flag then
+                    data = temp_data
+                end
+            end
+        end)
+        data[index] = value
+        local str = json.encode(data)
+        TheSim:SetPersistentString(data_sheet_index, str, false, function()
+            print("info fwd_in_pdt.widget.carl_spell_bar SAVED!")
+        end)
+    end
+    local function GetXY()
+        local ret_table = GetData("xy",{x = 0.5,y = 0.5})
+        return ret_table.x,ret_table.y
+    end
+    local function SetXY(x,y)
+        SetData("xy",{x = x,y = y})
+    end
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 AddClassPostConstruct("screens/playerhud",function(self)
@@ -26,13 +65,11 @@ AddClassPostConstruct("screens/playerhud",function(self)
         end
         ------------------------------------------------------------
         --- 获取坐标
-            local carl_spell_bar_pt = ThePlayer.replica.fwd_in_pdt_func:Get_Cross_Archived_Data("carl_spell_bar_pt")
-            if carl_spell_bar_pt == nil then
-                carl_spell_bar_pt = {
-                    x = 0.5,
-                    y = 0.5,
-                }
-            end
+            local temp_x,temp_y = GetXY()
+            local carl_spell_bar_pt = {
+                x = temp_x,
+                y = temp_y,
+            }
         ------------------------------------------------------------
         --- 添加主节点
             local main_scale_num = 0.7
@@ -99,10 +136,7 @@ AddClassPostConstruct("screens/playerhud",function(self)
                                     -- owner:PushEvent("fwd_in_pdt_wellness_bars.save_cmd",{    --- 发送储存坐标。
                                     --     pt = {x_percent = root.x_percent,y_percent = root.y_percent},
                                     -- })
-                                    ThePlayer.replica.fwd_in_pdt_func:Set_Cross_Archived_Data("carl_spell_bar_pt",{
-                                        x = root.x_percent,
-                                        y = root.y_percent,
-                                    })
+                                    SetXY(root.x_percent,root.y_percent)
 
                                 end
                             end)
