@@ -12,7 +12,10 @@
     local assets =
     {
         Asset("ANIM", "anim/fwd_in_pdt_item_inspectable_searcher_hat.zip"),
-        Asset("ANIM", "anim/swap_cane.zip"),
+        Asset( "IMAGE", "images/inventoryimages/fwd_in_pdt_item_inspectable_searcher_hat.tex" ),  -- 背包贴图
+        Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_item_inspectable_searcher_hat.xml" ),
+    ---- 皮肤
+        -- Asset("ANIM", "anim/fwd_in_pdt_item_inspectable_searcher_hat_swap.zip"),
 
         Asset("IMAGE", "images/widget/fwd_in_pdt_spell_ring_buttons.tex"),
         Asset("ATLAS", "images/widget/fwd_in_pdt_spell_ring_buttons.xml"),
@@ -30,10 +33,38 @@
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --- 穿戴
     local function onequip(inst, owner)
-        inst.components.fwd_in_pdt_com_inspectacle_searcher:Active(owner)        
+        
+        owner.AnimState:OverrideSymbol("swap_hat", "fwd_in_pdt_item_inspectable_searcher_hat", "swap_hat")    
+
+        owner.AnimState:Show("HAT")
+        owner.AnimState:Show("HAIR_HAT")
+        owner.AnimState:Hide("HAIR_NOHAT")
+        owner.AnimState:Hide("HAIR")
+
+        if owner:HasTag("player") then
+            owner.AnimState:Hide("HEAD")
+            owner.AnimState:Show("HEAD_HAT")
+        end
+    
+        if owner:HasTag("equipmentmodel") then return end--假人就不往下走了
+
+        inst.components.fwd_in_pdt_com_inspectacle_searcher:Active(owner)
     end
     local function onunequip(inst, owner)
-        inst.components.fwd_in_pdt_com_inspectacle_searcher:Deactive()        
+        inst.components.fwd_in_pdt_com_inspectacle_searcher:Deactive()
+
+        owner.AnimState:ClearOverrideSymbol("swap_hat")
+        owner.AnimState:Hide("HAT")
+        owner.AnimState:Hide("HAIR_HAT")
+        owner.AnimState:Show("HAIR_NOHAT")
+        owner.AnimState:Show("HAIR")
+
+	    if owner:HasTag("player") then
+            owner.AnimState:Show("HEAD")
+            owner.AnimState:Hide("HEAD_HAT")
+        end
+
+	if owner:HasTag("equipmentmodel") then return end--假人就不往下走了     
     end
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --- wiget
@@ -186,8 +217,8 @@
         MakeInventoryPhysics(inst)
 
         inst.AnimState:SetBank("fwd_in_pdt_item_inspectable_searcher_hat")
-        inst.AnimState:SetBuild("swap_cane")
-        inst.AnimState:PlayAnimation("idle")
+        inst.AnimState:SetBuild("fwd_in_pdt_item_inspectable_searcher_hat")
+        inst.AnimState:PlayAnimation("anim")
         inst:AddTag("fwd_in_pdt_item_inspectable_searcher_hat")
         inst.entity:SetPristine()
         ---------------------------------------------------------------------
@@ -206,7 +237,7 @@
         --- 基础组件
             inst:AddComponent("inspectable")
             inst:AddComponent("inventoryitem")
-            inst.components.inventoryitem:ChangeImageName("bluegem")
+            -- inst.components.inventoryitem:ChangeImageName("bluegem")
             -- inst.components.inventoryitem.imagename = "_item_luminescent_crystal"
             -- inst.components.inventoryitem.atlasname = "images/inventoryimages/_item_luminescent_crystal.xml"
             inst:AddComponent("equippable")

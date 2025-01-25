@@ -431,6 +431,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "这个能避免杀人蜂从巢穴中出来",
                 ["recipe_desc"] = "这个能避免杀人蜂从巢穴中出来",
             },
+            ["fwd_in_pdt_item_inspectable_searcher_hat"] = {
+                ["name"] = "寻宝帽子",
+                ["inspect_str"] = "这个能找到好宝贝",
+                -- ["recipe_desc"] = "这个能避免杀人蜂从巢穴中出来",
+            },
         --------------------------------------------------------------------
         ---- 04_fwd_in_pdt_foods
             ["fwd_in_pdt_food_raw_milk"] = {

@@ -424,6 +424,10 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "This will keep the killer bees out of the nest.",
                 ["recipe_desc"] = "This will keep the killer bees out of the nest.",
             },
+            ["fwd_in_pdt_item_inspectable_searcher_hat"] = {
+                ["name"] = "Searcher Hat",
+                ["inspect_str"] = "It can find some treasures.",
+            },
         --------------------------------------------------------------------
         ---- 04_fwd_in_pdt_foods
             ["fwd_in_pdt_food_raw_milk"] = {
