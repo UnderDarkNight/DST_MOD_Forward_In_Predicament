@@ -852,6 +852,22 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "熊猫在向我招手",
                 ["recipe_desc"] = "喜欢熊猫吗",
             },
+            ["fwd_in_pdt_building_inspectaclesbox_fixed"] = {
+                ["name"] = "修复后的箱子",
+                ["inspect_str"] = "里面有宝贝",
+            },
+            ["fwd_in_pdt_building_inspectaclesbox_puzzle"] = {
+                ["name"] = "寻宝箱子",
+                ["inspect_str"] = "得玩点游戏才能获得奖励",
+            },
+            ["fwd_in_pdt_building_inspectaclesbox_look_for_the_unique"] = {
+                ["name"] = "寻宝箱子",
+                ["inspect_str"] = "得玩点游戏才能获得奖励",
+            },
+            ["fwd_in_pdt_building_inspectaclesbox_catch_item"] = {
+                ["name"] = "寻宝箱子",
+                ["inspect_str"] = "得玩点游戏才能获得奖励",
+            },
         --------------------------------------------------------------------
         ---- 08_fwd_in_pdt_resources
             ["fwd_in_pdt_resource_glacier_huge"] = {

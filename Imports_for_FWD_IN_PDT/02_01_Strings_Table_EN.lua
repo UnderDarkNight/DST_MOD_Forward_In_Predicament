@@ -849,6 +849,22 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "Panda waving at me",
                 ["recipe_desc"] = "Do you like pandas?",
             },
+            ["fwd_in_pdt_building_inspectaclesbox_fixed"] = {
+                ["name"] = "Fixed Treasure Box",
+                ["inspect_str"] = "There are some treasures in it.",
+            },
+            ["fwd_in_pdt_building_inspectaclesbox_puzzle"] = {
+                ["name"] = "Treasure Box",
+                ["inspect_str"] = "We can play some games to get rewards.",
+            },
+            ["fwd_in_pdt_building_inspectaclesbox_look_for_the_unique"] = {
+                ["name"] = "Treasure Box",
+                ["inspect_str"] = "We can play some games to get rewards.",
+            },
+            ["fwd_in_pdt_building_inspectaclesbox_catch_item"] = {
+                ["name"] = "Treasure Box",
+                ["inspect_str"] = "We can play some games to get rewards.",
+            },
         --------------------------------------------------------------------
         ---- 08_fwd_in_pdt_resources
             ["fwd_in_pdt_resource_glacier_huge"] = {

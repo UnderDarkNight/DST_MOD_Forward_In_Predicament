@@ -188,17 +188,12 @@
 
         inst:AddComponent("inspectable")
         
-
-        -- inst:AddComponent("workable")
-        -- inst.components.workable:SetWorkAction(ACTIONS.DIG)
-        -- inst.components.workable:SetOnFinishCallback(function()
-        --     local x,y,z = inst.Transform:GetWorldPosition()
-        --     local fx = SpawnPrefab("collapse_big")
-        --     fx.Transform:SetPosition(x,y,z)
-        --     fx:SetMaterial("wood")
-        --     SpawnTreasureBox(x,y,z)
-        --     inst:Remove()
-        -- end)
+        inst:AddComponent("workable")
+        inst.components.workable:SetWorkAction(ACTIONS.HAMMER)
+        inst.components.workable:SetWorkLeft(3)
+        inst.components.workable:SetOnFinishCallback(function()
+            inst:Remove()
+        end)
         -- inst.components.workable:SetWorkLeft(1)
 
         return inst
