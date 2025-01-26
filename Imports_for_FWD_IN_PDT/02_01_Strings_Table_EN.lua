@@ -259,6 +259,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "Book of Life and Death",
                 ["recipe_desc"] = "Book of Life and Death",
             },
+            ["fwd_in_pdt_item_decorative_tool_box"] = {
+                ["name"] = "Decorative Tool Box",
+                ["inspect_str"] = "There are some decorations in it.",
+                ["recipe_desc"] = "You can use it to decorate some buildings.",
+            },
         --------------------------------------------------------------------
         ---- 02_fwd_in_pdt_materials
             ["fwd_in_pdt_material_tree_resin"] = {

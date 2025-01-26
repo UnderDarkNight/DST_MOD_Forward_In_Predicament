@@ -263,6 +263,11 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
                 ["inspect_str"] = "《生死簿》",
                 ["recipe_desc"] = "《生死簿》",
             },
+            ["fwd_in_pdt_item_decorative_tool_box"] = {
+                ["name"] = "装饰箱子",
+                ["inspect_str"] = "里面有很多装饰品",
+                ["recipe_desc"] = "用这个来装饰一些建筑",
+            },
         --------------------------------------------------------------------
         ---- 02_fwd_in_pdt_materials
             ["fwd_in_pdt_material_tree_resin"] = {

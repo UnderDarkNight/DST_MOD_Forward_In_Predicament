@@ -14,9 +14,9 @@
 -- end
 
 local assets = {
-    -- Asset("ANIM", "anim/fwd_in_pdt_item_werepig_flute.zip"), 
-    -- Asset( "IMAGE", "images/inventoryimages/fwd_in_pdt_item_werepig_flute.tex" ),  -- 背包贴图
-    -- Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_item_werepig_flute.xml" ),
+    Asset("ANIM", "anim/fwd_in_pdt_item_decorative_tool_box.zip"), 
+    Asset( "IMAGE", "images/inventoryimages/fwd_in_pdt_item_decorative_tool_box.tex" ),  -- 背包贴图
+    Asset( "ATLAS", "images/inventoryimages/fwd_in_pdt_item_decorative_tool_box.xml" ),
 }
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ---
@@ -76,8 +76,8 @@ local function fn()
     MakeInventoryPhysics(inst)
     MakeInventoryFloatable(inst, "med", nil, 0.75)
 
-    inst.AnimState:SetBank("fwd_in_pdt_item_werepig_flute") -- 地上动画
-    inst.AnimState:SetBuild("fwd_in_pdt_item_werepig_flute") -- 材质包，就是anim里的zip包
+    inst.AnimState:SetBank("fwd_in_pdt_item_decorative_tool_box") -- 地上动画
+    inst.AnimState:SetBuild("fwd_in_pdt_item_decorative_tool_box") -- 材质包，就是anim里的zip包
     inst.AnimState:PlayAnimation("idle",true) -- 默认播放哪个动画
     -- inst.Transform:SetScale(1.2, 1.2, 1.2)
     -- inst:AddTag("bookcabinet_item") -- 能够放书架里
@@ -94,7 +94,7 @@ local function fn()
     ------ 物品名 和检查文本
         inst:AddComponent("inspectable")
         inst:AddComponent("inventoryitem")
-        inst.components.inventoryitem:ChangeImageName("cane")
+        -- inst.components.inventoryitem:ChangeImageName("cane")
         -- inst.components.inventoryitem.imagename = "fwd_in_pdt_item_werepig_flute"
         -- inst.components.inventoryitem.atlasname = "images/inventoryimages/fwd_in_pdt_item_werepig_flute.xml"
     --------------------------------------------------------------------------
