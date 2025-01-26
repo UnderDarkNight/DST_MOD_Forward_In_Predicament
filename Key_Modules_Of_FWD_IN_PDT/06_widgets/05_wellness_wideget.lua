@@ -15,55 +15,49 @@ local ImageButton = require "widgets/imagebutton"
 local Menu = require "widgets/menu"
 local Text = require "widgets/text"
 local TEMPLATES = require "widgets/redux/templates"
-
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--- 客户端数据储存与读取
+    local data_sheet_index = "fwd_in_pdt.widget.wellness_bar"
+    local function GetData(index,default)
+        local data = {}
+        TheSim:GetPersistentString(data_sheet_index, function(load_success, str_data)
+            if load_success and str_data then
+                local crash_flag,temp_data = pcall(json.decode,str_data)
+                if crash_flag then
+                    data = temp_data
+                end
+            end
+        end)
+        return data[index] or default
+    end
+    local function SetData(index,value)
+        local data = {}
+        TheSim:GetPersistentString(data_sheet_index, function(load_success, str_data)
+            if load_success and str_data then
+                local crash_flag,temp_data = pcall(json.decode,str_data)
+                if crash_flag then
+                    data = temp_data
+                end
+            end
+        end)
+        data[index] = value
+        local str = json.encode(data)
+        TheSim:SetPersistentString(data_sheet_index, str, false, function()
+            print("info fwd_in_pdt.widget.wellness SAVED!")
+        end)
+    end
+    local function GetXY()
+        local ret_table = GetData("wellness_bars_screen_xy",{x = 0.5,y = 0.5})
+        return ret_table.x,ret_table.y
+    end
+    local function SetXY(x,y)
+        SetData("wellness_bars_screen_xy",{x = x,y = y})
+    end
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -------------------------------------------- 能量条的坐标储存
 if TUNING["Forward_In_Predicament.Config"].BUILD_MOD then
     return
 end
--------------------------------------------- 能量条的坐标储存
-    AddPlayerPostInit(function(inst)    
-
-        inst:ListenForEvent("fwd_in_pdt_event.Cross_Archived_Data_Send_2_Server_Finish",function()
-            if inst.HUD and inst.HUD.fwd_in_pdt_wellness then
-                local pt_percent_of_screen = inst.replica.fwd_in_pdt_func:Get_Cross_Archived_Data("wellness_bars_screen_xy")
-                -- print("error +++++++++++++ ")
-                if pt_percent_of_screen and pt_percent_of_screen.x_percent then
-                    inst.HUD.fwd_in_pdt_wellness.x_percent = pt_percent_of_screen.x_percent
-                    inst.HUD.fwd_in_pdt_wellness.y_percent = pt_percent_of_screen.y_percent
-                    inst.HUD.fwd_in_pdt_wellness:LocationScaleFix()
-                end
-
-                ----- 
-                local wellness_main_icon_hide_flag = inst.replica.fwd_in_pdt_func:Get_Cross_Archived_Data("wellness_main_icon_hide_flag")
-                if wellness_main_icon_hide_flag then
-                    inst.HUD.fwd_in_pdt_wellness:HideMainIcon(true)
-                else
-                    inst.HUD.fwd_in_pdt_wellness:HideMainIcon(false)                    
-                end
-
-            end
-        end)
-
-        --------- 监听 体质条 的移动和储存数据到跨存档保存表
-        inst:DoTaskInTime(1,function()
-            if inst.HUD and inst.HUD.fwd_in_pdt_wellness then
-                inst:ListenForEvent("fwd_in_pdt_wellness_bars.save_cmd",function(_,cmd_table)
-                    if type(cmd_table) ~= "table" then
-                        return
-                    end
-                    if cmd_table.pt and cmd_table.pt.x_percent then
-                        inst.replica.fwd_in_pdt_func:Set_Cross_Archived_Data("wellness_bars_screen_xy",cmd_table.pt)
-                    end
-                    if cmd_table.HideMainIcon ~= nil then
-                        inst.replica.fwd_in_pdt_func:Set_Cross_Archived_Data("wellness_main_icon_hide_flag",cmd_table.HideMainIcon)
-                    end
-
-                end)
-            end
-        end)
-
-    end)
-
 -------------------- 直接在这添加界面节点和数据
 
 AddClassPostConstruct("widgets/controls", function(self, owner)
@@ -96,8 +90,9 @@ AddClassPostConstruct("widgets/controls", function(self, owner)
                         end
                         self.____last_scrnh = scrnh
                     end
-                end
-
+                end              
+                root.x_percent ,root.y_percent = GetXY()
+                root:LocationScaleFix()
                 owner:DoPeriodicTask(2,function()
                     root:LocationScaleFix()
                 end)
@@ -133,9 +128,10 @@ AddClassPostConstruct("widgets/controls", function(self, owner)
                                             root.x_percent = x/scrnw
                                             root.y_percent = y/scrnh
 
-                                            owner:PushEvent("fwd_in_pdt_wellness_bars.save_cmd",{    --- 发送储存坐标。
-                                                pt = {x_percent = root.x_percent,y_percent = root.y_percent},
-                                            })
+                                            -- owner:PushEvent("fwd_in_pdt_wellness_bars.save_cmd",{    --- 发送储存坐标。
+                                            --     pt = {x_percent = root.x_percent,y_percent = root.y_percent},
+                                            -- })
+                                            SetXY(root.x_percent,root.y_percent)
 
                                         end
                                     end)
@@ -210,18 +206,21 @@ AddClassPostConstruct("widgets/controls", function(self, owner)
                         if t_button == MOUSEBUTTON_LEFT and down == false then
                             if wellness_icon.show_flag then
                                 root:HideMainIcon(true)
-                                owner:PushEvent("fwd_in_pdt_wellness_bars.save_cmd",{
-                                    HideMainIcon = true
-                                })
+                                -- owner:PushEvent("fwd_in_pdt_wellness_bars.save_cmd",{
+                                --     HideMainIcon = true
+                                -- })
+                                SetData("HideMainIcon",true)
                             else
                                 root:HideMainIcon(false)
-                                owner:PushEvent("fwd_in_pdt_wellness_bars.save_cmd",{
-                                    HideMainIcon = false
-                                })
+                                -- owner:PushEvent("fwd_in_pdt_wellness_bars.save_cmd",{
+                                --     HideMainIcon = false
+                                -- })
+                                SetData("HideMainIcon",false)
                             end
                         end
                         return self:OnMouseButton__fwd_in_pdt_old(t_button,down,x,y)
                     end
+                    root:HideMainIcon(GetData("HideMainIcon",false))
                 ------------------------------------------------------
 
                 function owner.HUD.fwd_in_pdt_wellness:SetCurrent_Wellness(num,percent,max) 
