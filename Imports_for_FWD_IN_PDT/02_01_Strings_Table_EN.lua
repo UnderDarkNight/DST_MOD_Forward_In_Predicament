@@ -432,6 +432,7 @@ TUNING["Forward_In_Predicament.Strings"][this_language] = TUNING["Forward_In_Pre
             ["fwd_in_pdt_item_inspectable_searcher_hat"] = {
                 ["name"] = "Searcher Hat",
                 ["inspect_str"] = "It can find some treasures.",
+                ["recipe_desc"] = "It can find some treasures.",
             },
         --------------------------------------------------------------------
         ---- 04_fwd_in_pdt_foods

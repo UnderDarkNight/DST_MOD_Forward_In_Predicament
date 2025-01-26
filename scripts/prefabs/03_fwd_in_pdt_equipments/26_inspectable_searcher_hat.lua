@@ -177,6 +177,8 @@
         local game_buildings = {
             "fwd_in_pdt_building_inspectaclesbox_puzzle",
             "fwd_in_pdt_building_inspectaclesbox_look_for_the_unique",
+            "fwd_in_pdt_building_inspectaclesbox_catch_item",
+            
         }
         local building_prefab = game_buildings[math.random(#game_buildings)]
         SpawnPrefab(building_prefab).Transform:SetPosition(pos.x,0,pos.z)
