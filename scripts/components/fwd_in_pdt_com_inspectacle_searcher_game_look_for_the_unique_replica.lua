@@ -213,23 +213,30 @@
             local special_image = all_images[math.random(#all_images)]
             special_image:MoveToFront()
             special_image:SetTexture(image_atlas,image_special_name)
-            -- if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
-            --     -- special_image:SetTint(1,0,0,1)
-            --     special_image:SetTint(unpack(succeed_color))
-            -- end
+            if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
+                -- special_image:SetTint(1,0,0,1)
+                special_image:SetTint(unpack(succeed_color))
+            end
         ----------------------------------------------------
         --- 点击判定
             front_root.inst:ListenForEvent("select",function(inst,pos)
                 local target_pos = special_image:GetPosition()
                 local delta_x = math.abs(target_pos.x - pos.x)
                 local delta_y = math.abs(target_pos.y - pos.y)
-                if delta_x <= radius*1.2 and delta_y <= radius*1.2 then
+                local succeed_radio = radius*1.2
+                if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then                    
+                    print("____tar",target_pos.x,target_pos.y)
+                    print("clicked",pos.x,pos.y)
+                    print("deltaXY",delta_x,delta_y,succeed_radio)
+                end
+                if delta_x <= succeed_radio and delta_y <= succeed_radio then
                     special_image:SetTint(unpack(succeed_color))
                     select_button:SetClickable(false)
                     button_star:SetActive(true)
                     front_root.inst:PushEvent("succeed_click")
                 else
                     front_root.inst:PushEvent("wrong_click")
+                    print("fake error : Wrong")
                 end
             end)
         ----------------------------------------------------
