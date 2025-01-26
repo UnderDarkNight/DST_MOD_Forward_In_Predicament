@@ -78,7 +78,7 @@ TUNING.FWD_IN_PDT_DECORATION_FN = TUNING.FWD_IN_PDT_DECORATION_FN or {}
                 building:SetClickable(false)
             end,
         -----------------------------------------------------------
-        --- researchlab 科技
+        --- 一本科技
             ["researchlab"] = function(mark)
                 local building = mark:AddChild(UIAnim())
                 building:GetAnimState():SetBank("researchlab")
@@ -88,6 +88,50 @@ TUNING.FWD_IN_PDT_DECORATION_FN = TUNING.FWD_IN_PDT_DECORATION_FN or {}
                 building:SetScale(scale,scale,scale)
                 building:SetClickable(false)
             end,
+        -----------------------------------------------------------
+        --- 二本
+            ["researchlab2"] = function(mark)
+                local building = mark:AddChild(UIAnim())
+                building:GetAnimState():SetBank("researchlab2")
+                building:GetAnimState():SetBuild("researchlab2")
+                building:GetAnimState():PlayAnimation("idle",true)
+                local scale = 1
+                building:SetScale(scale,scale,scale)
+                building:SetClickable(false)
+            end,
+        -----------------------------------------------------------
+        --- 锯马
+            ["carpentry_station"] = function(mark)
+                local building = mark:AddChild(UIAnim())
+                building:GetAnimState():SetBank("carpentry_station")
+                building:GetAnimState():SetBuild("carpentry_station")
+                building:GetAnimState():PlayAnimation("idle",true)
+                local scale = 1
+                building:SetScale(scale,scale,scale)
+                building:SetClickable(false)
+            end,
+        -----------------------------------------------------------
+            --- 假人
+            ["sewing_mannequin"] = function(mark)
+                local building = mark:AddChild(UIAnim())
+                building:GetAnimState():SetBank("sewing_mannequin")
+                building:GetAnimState():SetBuild("sewing_mannequin")
+                building:GetAnimState():PlayAnimation("idle",true)
+                local scale = 1
+                building:SetScale(scale,scale,scale)
+                building:SetClickable(false)
+            end,
+        -----------------------------------------------------------
+            -- --- 雨量计(动画有bug)
+            -- ["rainometer"] = function(mark)
+            --     local building = mark:AddChild(UIAnim())
+            --     building:GetAnimState():SetBank("rainometer")
+            --     building:GetAnimState():SetBuild("rainometer")
+            --     building:GetAnimState():PlayAnimation("idle",true)
+            --     local scale = 1
+            --     building:SetScale(scale,scale,scale)
+            --     building:SetClickable(false)
+            -- end,
         -----------------------------------------------------------
     }
 

@@ -29,9 +29,10 @@ local temp_assets = {
     ---------------------------------------------------------------------------------------------
     --- 字母
 	    Asset("ANIM", "anim/fwd_in_pdt_fx_canvas.zip"),
+        Asset("ANIM", "anim/fwd_in_pdt_decoration_old.zip"),
     ---------------------------------------------------------------------------------------------
     --- 装饰
-	    Asset("ANIM", "anim/fwd_in_pdt_decoration_spring_scrolls.zip"), --- 示例用的对联
+	    Asset("ANIM", "anim/fwd_in_pdt_decoration_spring_scrolls.zip"), --- 对联
 	    Asset("ANIM", "anim/fwd_in_pdt_decoration_cats_1.zip"), --- 猫
     ---------------------------------------------------------------------------------------------
 }
@@ -80,6 +81,33 @@ TUNING.FWD_IN_PDT_DECORATIONS = {
     {id = "orange_cat_holding",bank = "fwd_in_pdt_decoration_cats_1" ,build = "fwd_in_pdt_decoration_cats_1" ,anim = "icon_cat_orange" , decoration = {bank = "fwd_in_pdt_decoration_cats_1" ,build = "fwd_in_pdt_decoration_cats_1" ,anim = "cat_orange"}},
     {id = "black_cat_holding",bank = "fwd_in_pdt_decoration_cats_1" ,build = "fwd_in_pdt_decoration_cats_1" ,anim = "icon_cat_black" , decoration = {bank = "fwd_in_pdt_decoration_cats_1" ,build = "fwd_in_pdt_decoration_cats_1" ,anim = "cat_black"}},
     {id = "white_cat_holding",bank = "fwd_in_pdt_decoration_cats_1" ,build = "fwd_in_pdt_decoration_cats_1" ,anim = "icon_cat_white" , decoration = {bank = "fwd_in_pdt_decoration_cats_1" ,build = "fwd_in_pdt_decoration_cats_1" ,anim = "cat_white"}},
+    --- fwd_in_pdt_decoration_old
+    {id = "decoration_1", bank = "fwd_in_pdt_decoration_old" ,build = "fwd_in_pdt_decoration_old" ,anim = "decoration_1"},
+    {id = "decoration_2", bank = "fwd_in_pdt_decoration_old" ,build = "fwd_in_pdt_decoration_old" ,anim = "decoration_2"},
+    {id = "decoration_3", bank = "fwd_in_pdt_decoration_old" ,build = "fwd_in_pdt_decoration_old" ,anim = "decoration_3"},
+    {id = "decoration_4", bank = "fwd_in_pdt_decoration_old" ,build = "fwd_in_pdt_decoration_old" ,anim = "decoration_4"},
+    {id = "decoration_5", bank = "fwd_in_pdt_decoration_old" ,build = "fwd_in_pdt_decoration_old" ,anim = "decoration_5"},
+    {id = "decoration_6", bank = "fwd_in_pdt_decoration_old" ,build = "fwd_in_pdt_decoration_old" ,anim = "decoration_6"},
+    {id = "decoration_7", bank = "fwd_in_pdt_decoration_old" ,build = "fwd_in_pdt_decoration_old" ,anim = "decoration_7"},
+    {id = "decoration_8", bank = "fwd_in_pdt_decoration_old" ,build = "fwd_in_pdt_decoration_old" ,anim = "decoration_8"},
+    {id = "decoration_9", bank = "fwd_in_pdt_decoration_old" ,build = "fwd_in_pdt_decoration_old" ,anim = "decoration_9"},
+    {id = "decoration_10", bank = "fwd_in_pdt_decoration_old" ,build = "fwd_in_pdt_decoration_old" ,anim = "decoration_10"},
+    {id = "decoration_11", bank = "fwd_in_pdt_decoration_old" ,build = "fwd_in_pdt_decoration_old" ,anim = "decoration_11"},
+    {id = "decoration_12", bank = "fwd_in_pdt_decoration_old" ,build = "fwd_in_pdt_decoration_old" ,anim = "decoration_12"},
+    {id = "decoration_13", bank = "fwd_in_pdt_decoration_old" ,build = "fwd_in_pdt_decoration_old" ,anim = "decoration_13"},
+    {id = "decoration_14", bank = "fwd_in_pdt_decoration_old" ,build = "fwd_in_pdt_decoration_old" ,anim = "decoration_14"},
+    {id = "decoration_15", bank = "fwd_in_pdt_decoration_old" ,build = "fwd_in_pdt_decoration_old" ,anim = "decoration_15"},
+    {id = "decoration_16", bank = "fwd_in_pdt_decoration_old" ,build = "fwd_in_pdt_decoration_old" ,anim = "decoration_16"},
+    {id = "decoration_17", bank = "fwd_in_pdt_decoration_old" ,build = "fwd_in_pdt_decoration_old" ,anim = "decoration_17"},
+    {id = "decoration_18", bank = "fwd_in_pdt_decoration_old" ,build = "fwd_in_pdt_decoration_old" ,anim = "decoration_18"},
+    {id = "decoration_19", bank = "fwd_in_pdt_decoration_old" ,build = "fwd_in_pdt_decoration_old" ,anim = "decoration_19"},
+    {id = "decoration_20", bank = "fwd_in_pdt_decoration_old" ,build = "fwd_in_pdt_decoration_old" ,anim = "decoration_20"},
+    {id = "decoration_21", bank = "fwd_in_pdt_decoration_old" ,build = "fwd_in_pdt_decoration_old" ,anim = "decoration_21"},
+    {id = "decoration_22", bank = "fwd_in_pdt_decoration_old" ,build = "fwd_in_pdt_decoration_old" ,anim = "decoration_22"},
+    {id = "decoration_23", bank = "fwd_in_pdt_decoration_old" ,build = "fwd_in_pdt_decoration_old" ,anim = "decoration_23"},
+    {id = "decoration_24", bank = "fwd_in_pdt_decoration_old" ,build = "fwd_in_pdt_decoration_old" ,anim = "decoration_24"},
+    {id = "decoration_25", bank = "fwd_in_pdt_decoration_old" ,build = "fwd_in_pdt_decoration_old" ,anim = "decoration_25"},
+    {id = "decoration_26", bank = "fwd_in_pdt_decoration_old" ,build = "fwd_in_pdt_decoration_old" ,anim = "decoration_26"},
 }
 TUNING.FWD_IN_PDT_DECORATIONS_IDS = {}
 for k,temp_data in pairs(TUNING.FWD_IN_PDT_DECORATIONS) do
