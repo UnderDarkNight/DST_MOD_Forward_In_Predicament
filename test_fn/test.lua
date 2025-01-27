@@ -64,23 +64,25 @@ local flg,error_code = pcall(function()
         -- end)
     ----------------------------------------------------------------------------------------------------------------
     --- 
-        local temp_fns = require("fwd_in_pdt_vip_decryption") -- 加密模块
-        local reald_decryption = temp_fns.reald_decryption
-        local VIP_SetData = temp_fns.VIP_SetData
-        local VIP_GetData = temp_fns.VIP_GetData
+        -- local temp_fns = require("fwd_in_pdt_vip_decryption") -- 加密模块
+        -- local reald_decryption = temp_fns.reald_decryption
+        -- local VIP_SetData = temp_fns.VIP_SetData
+        -- local VIP_GetData = temp_fns.VIP_GetData
 
-        local cut_fns = require("fwd_in_pdt_cd_key_cutter") -- 切割模块
-        local cut_cdk = cut_fns.cut_cdk
-        local merge_cdk = cut_fns.merge_cdk
+        -- local cut_fns = require("fwd_in_pdt_cd_key_cutter") -- 切割模块
+        -- local cut_cdk = cut_fns.cut_cdk
+        -- local merge_cdk = cut_fns.merge_cdk
 
-        local cd_key = "[637,1684,102,888,1092,1566,1009,1330,1708,2262,157,1053,1326,281,1501,475,1330,2111,2050,1009,2111,1684,1002,2262,903,1597,475,475,405,281,1482,1899,2068,1900,1899,1448,888,411,157,1900,279,1255,239,1373,1467,2068,1094,903,475,888,13,1501,888,157,1900,2111,1899,1735,1467,1900,2142,1045,669,281,903,1597,1892,903,475,888,2177,1053,1326,1482,2111,903,2068,888,1501,1485,1641,1279,1402,2068,1900,1092,1448,903,1892,1092,157,1501,1448,1485,1485,1467,1735,1394,1373,1899,1083,1231,690,1735,1708,13,13,1330,405,475,411,1467,1467,1596,405,763]"
-        local userid = ThePlayer.userid
+        -- local cd_key = "[637,1684,102,888,1092,1566,1009,1330,1708,2262,157,1053,1326,281,1501,475,1330,2111,2050,1009,2111,1684,1002,2262,903,1597,475,475,405,281,1482,1899,2068,1900,1899,1448,888,411,157,1900,279,1255,239,1373,1467,2068,1094,903,475,888,13,1501,888,157,1900,2111,1899,1735,1467,1900,2142,1045,669,281,903,1597,1892,903,475,888,2177,1053,1326,1482,2111,903,2068,888,1501,1485,1641,1279,1402,2068,1900,1092,1448,903,1892,1092,157,1501,1448,1485,1485,1467,1735,1394,1373,1899,1083,1231,690,1735,1708,13,13,1330,405,475,411,1467,1467,1596,405,763]"
+        -- local userid = ThePlayer.userid
 
-        local function GetDataIndex(userid)
-            return userid .. ".fwd_in_pdt.cd_key"
-        end
-        print(VIP_GetData(GetDataIndex(userid)))
-        -- VIP_SetData(GetDataIndex(userid),cd_key)
+        -- local function GetDataIndex(userid)
+        --     return userid .. ".fwd_in_pdt.cd_key"
+        -- end
+        -- print(VIP_GetData(GetDataIndex(userid)))
+        -- -- VIP_SetData(GetDataIndex(userid),cd_key)
+
+        ThePlayer.replica.fwd_in_pdt_func:Send_Skin_Key_2_server("[637,1684,1628,2111,1900,411,475,1485,835,1826,2177,2091,2224,1485,884,280,280,2122,1726,1399,112,719,907,2017,280,742,280,742,742,1679,2017,2050,1810,1596,1092,1892,888,1330,2050,1009,85,2255,2236,1900,1485,1501,1899,405,1892,157,385,907,1373,1448,1482,1467,1900,888,1501,157,2262,2255,179,281,1708,903,1899,1330,2068,1448,13,1735,1092,1899,1735,1335,1326,1231]")
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)

@@ -180,7 +180,7 @@ local function reald_decryption(userid,cd_key)
     
     userid = tostring(userid)
     cd_key = tostring(cd_key)
-    print("reald_decryption enter key",cd_key)
+    -- print("reald_decryption enter key",cd_key)
 
     local crash_flag,decrypted_message = pcall(real_decrypted_fn,userid,cd_key)
     if not crash_flag then

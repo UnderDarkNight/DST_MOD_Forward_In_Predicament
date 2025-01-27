@@ -20,6 +20,10 @@ end
     local cut_cdk = cut_fns.cut_cdk
     local merge_cdk = cut_fns.merge_cdk
 
+    local skin_api = require("fwd_in_pdt_skin_save_and_get") -- 皮肤模块
+    local GetAllSkinDataByUserid = skin_api.GetAllSkinDataByUserid
+    local SaveSkinKeyForPlayer = skin_api.SaveSkinKeyForPlayer
+
     local function GetDataIndex(userid)
         return userid .. ".fwd_in_pdt.cd_key"
     end
@@ -192,6 +196,7 @@ local function main_com(self)
                     self:Personal_Skin_Unlocker_Save_Data(data.skins)
                     self:Personal_Skin_Unlocker_Refresh()
                 end
+
             end
             self:VIP_Run_Checked_Fn()
         end)
@@ -215,6 +220,25 @@ local function main_com(self)
             end
 
         end)
+    ------------------------------------------------------------------------------------------
+    -- 单个皮肤解锁
+        self.inst:ListenForEvent("fwd_in_pdt_vip.server_unlock_single_skin",function(inst,cd_key)
+            local data = reald_decryption(inst.userid,cd_key) or {}
+            print("服务器接到请求解锁单个皮肤命令",data.userid,data.skin)
+            if data.skin and data.userid then
+                if inst.userid == data.userid then
+                    local prefab = self:SkinAPI__Get_Prefab_By_Skin(data.skin)
+                    if prefab then
+                        self:_SkinAPI__Unlock_Skin({
+                            [prefab] = {data.skin}
+                        })
+                        print("解锁了皮肤",prefab,data.skin)
+                        self:RPC_PushEvent2("fwd_in_pdt_vip.server_has_unlocked_single_skin",data.skin)
+                    end
+                end
+            end
+        end)
+    ------------------------------------------------------------------------------------------
 end
 
 local function replica(self)
@@ -237,15 +261,22 @@ local function replica(self)
     function self:Send_CDK_2_server(cd_key_str) --- 给UI调用
         -----------------------------------------------------------
         -- 验证 cdk 的合法性
-            local flag = pcall(json.decode,cd_key_str)
+            local flag,data = pcall(json.decode,cd_key_str)
             if not flag then
                 print("CDK 格式错误")
                 print(cd_key_str)
                 return
             end
         -----------------------------------------------------------
+        --- 判定是不是皮肤解锁key
+            local temp_data = reald_decryption(self.inst.userid,cd_key_str)
+            if type(temp_data) == "table" and temp_data.skin and temp_data.userid and temp_data.userid == self.inst.userid then
+                self:Send_Skin_Key_2_server(cd_key_str)
+                return
+            end
+        -----------------------------------------------------------
         temp_save_cd_key = cd_key_str
-        pcall(function()            
+        pcall(function()
             -----------------------------------------------------------
             --- 切割 CDK
                 local cut_cdk_data = cut_cdk(cd_key_str)
@@ -272,6 +303,23 @@ local function replica(self)
         end)
     end
 
+    local unlocked_skin = {}
+    function self:Send_Skin_Key_2_server(skin_key_str) --- 给UI调用
+        local data = reald_decryption(self.inst.userid,skin_key_str) or {}
+        -- print("Send_Skin_Key_2_server",data.userid,data.skin)
+        if type(data) == "table" and data.skin and data.userid and data.userid == self.inst.userid then
+            self:RPC_PushEvent2("fwd_in_pdt_vip.server_unlock_single_skin",skin_key_str)
+            unlocked_skin[data.skin] = skin_key_str
+            print("客户端发送了皮肤CDK")
+        end
+    end
+    self.inst:ListenForEvent("fwd_in_pdt_vip.server_has_unlocked_single_skin",function(inst,skin_name)
+        if unlocked_skin[skin_name] then
+            SaveSkinKeyForPlayer(inst.userid,unlocked_skin[skin_name])            
+        end
+    end)
+
+
     if TheNet:IsDedicated() then        
         return
     end
@@ -286,6 +334,20 @@ local function replica(self)
             local cd_key = VIP_GetData(GetDataIndex(self.inst.userid))
             if cd_key then
                 self:Send_CDK_2_server(cd_key)
+            end
+        end)
+    end)
+
+    self.inst:DoTaskInTime(5,function()
+        print("info FWD_IN_PDT 开始检查 皮肤 cdk")
+        pcall(function()
+            local ALL_SKIN_KEYS = GetAllSkinDataByUserid(self.inst.userid)
+            local num = 1
+            for skin_key,_ in pairs(ALL_SKIN_KEYS) do
+                self.inst:DoTaskInTime(num*0.1,function()
+                    self:Send_Skin_Key_2_server(skin_key)
+                end)
+                num = num + 1
             end
         end)
     end)
