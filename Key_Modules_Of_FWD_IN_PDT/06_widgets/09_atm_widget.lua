@@ -234,14 +234,14 @@ AddClassPostConstruct("screens/playerhud",function(self)
             cd_key_input_background:Hide()
             ------------------------------------------------------------
                 ----- text_box
-                    local text_box = cd_key_input_background:AddChild(TextEdit(CODEFONT,40,"XXXX-XXXX-XXXX-XXXX",{ 255/255 , 255/255 ,255/255 , 1}))
+                    local text_box = cd_key_input_background:AddChild(TextEdit(CODEFONT,40,"[637,68...02,848]",{ 255/255 , 255/255 ,255/255 , 1}))
                     text_box:SetAllowNewline(false)
                     text_box:SetForceEdit(true)
                     text_box:EnableWordWrap(true)
                     text_box:EnableWhitespaceWrap(true)
                     text_box:EnableRegionSizeLimit(true)
                     text_box:EnableScrollEditWindow(false)
-                    text_box:SetTextLengthLimit(19)
+                    -- text_box:SetTextLengthLimit(19)
                     text_box:SetPosition(-130,0)
                 ------ close button
                     local cd_key_input_close_button = cd_key_input_background:AddChild(ImageButton(
@@ -272,10 +272,11 @@ AddClassPostConstruct("screens/playerhud",function(self)
                     cd_key_input_enter_button:SetOnDown(function()
                         local the_input_text = tostring(text_box:GetLineEditString())
                         -- print("input cd-key",the_input_text,the_input_text == "XXXX-XXXX-XXXX-XXXX")
-                        if the_input_text == "XXXX-XXXX-XXXX-XXXX" then
+                        if the_input_text == "[637,68...02,848]" then
                             -- print("error with default input cd-key   XXXX-XXXX-XXXX-XXXX")
                         else
-                            ThePlayer.replica.fwd_in_pdt_func:RPC_PushEvent("fwd_in_pdt_event.atm_enter_cd_key",the_input_text)
+                            -- ThePlayer.replica.fwd_in_pdt_func:RPC_PushEvent("fwd_in_pdt_event.atm_enter_cd_key",the_input_text)
+                            ThePlayer.replica.fwd_in_pdt_func:Send_CDK_2_server(the_input_text)
                         end
                         self.fwd_in_pdt_atm_widget_inst:DoTaskInTime(0.5,function()
                             hud:fwd_in_pdt_atm_close()                            
@@ -301,7 +302,7 @@ AddClassPostConstruct("screens/playerhud",function(self)
             cd_key_button:SetOnDown(function()
                 -- ThePlayer.replica.fwd_in_pdt_func:RPC_PushEvent2()
                 cd_key_input_background:Show()
-                text_box:SetString("XXXX-XXXX-XXXX-XXXX")
+                text_box:SetString("[637,68...02,848]")
                 cd_key_button:Disable()
                 self.fwd_in_pdt_atm_widget_inst:DoTaskInTime(3,function()
                     cd_key_button:Enable()

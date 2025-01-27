@@ -45,12 +45,6 @@ AddPlayerPostInit(function(inst)
         
     end)
 
-    inst:ListenForEvent("fwd_in_pdt_event.atm_enter_cd_key",function(_,cd_key)
-        if type(cd_key) == "string" then
-            inst.components.fwd_in_pdt_func:VIP_Player_Input_Key(cd_key)
-        end
-    end)
-
     inst.components.fwd_in_pdt_func:VIP_Add_Fn(function()
         inst:AddTag("fwd_in_pdt_tag.vip")
     end)
