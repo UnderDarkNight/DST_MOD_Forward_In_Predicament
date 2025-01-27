@@ -2,13 +2,16 @@
 ---- 根据本地数据注册皮肤给玩家使用
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 local function main_com(self)
+    local temp_skins = {}
     function self:Personal_Skin_Unlocker_Save_Data(skins)
         if type(skins) == "table" then
-            self:Set_Cross_Archived_Data("skins",skins)
+            -- self:Set_Cross_Archived_Data("skins",skins)
+            temp_skins = skins
         end
     end
     function self:Personal_Skin_Unlocker_Refresh()
-        local skins = self:Get_Cross_Archived_Data("skins") or {}
+        -- local skins = self:Get_Cross_Archived_Data("skins") or {}
+        local skins = temp_skins or {}
         local unlock_commands = {}
         local need_2_start_unlock = false
         for k, skin_name in pairs(skins) do
@@ -25,9 +28,9 @@ local function main_com(self)
         end
     end
 
-    self:Add_Cross_Archived_Data_Special_Onload_Fn(function()
-        self:Personal_Skin_Unlocker_Refresh()
-    end)
+    -- self:Add_Cross_Archived_Data_Special_Onload_Fn(function()
+    --     self:Personal_Skin_Unlocker_Refresh()
+    -- end)
 
 end
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
