@@ -10,6 +10,20 @@ local function GetStringTable()
 end
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---
+    local temp_fns = require("fwd_in_pdt_vip_decryption") -- 加密模块
+    local reald_decryption = temp_fns.reald_decryption
+    local VIP_SetData = temp_fns.VIP_SetData
+    local VIP_GetData = temp_fns.VIP_GetData
+
+    local cut_fns = require("fwd_in_pdt_cd_key_cutter") -- 切割模块
+    local cut_cdk = cut_fns.cut_cdk
+    local merge_cdk = cut_fns.merge_cdk
+
+    local function GetDataIndex(userid)
+        return userid .. ".fwd_in_pdt.cd_key"
+    end
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 local function Get_OS_Time_Num()
     local year = tonumber(os.date("%Y"))
@@ -53,11 +67,14 @@ local function main_com(self)
         end
 
         function self:VIP_Save_Key_2_Local(cd_key)
-            self:Set_Cross_Archived_Data("cd_key",cd_key)
+            self.inst:DoTaskInTime(0,function()                    
+                VIP_SetData(GetDataIndex(self.inst.userid),cd_key)
+                self:RPC_PushEvent("fwd_in_pdt_vip.save_key_2_local",cd_key)
+            end)
         end
 
         function self:VIP_Get_Local_Key()
-            return self:Get_Cross_Archived_Data("cd_key") or nil
+            return nil
         end
     ------------------------------------------------------------------------------------------
         --- 运行vip权限专属的 fn,只在权限验证成功后执行一次。
@@ -92,23 +109,16 @@ local function main_com(self)
             end
         end
     ------------------------------------------------------------------------------------------
-        local function Set_Is_VIP() 
-            self:Set_Cross_Archived_Data("cd_key_time_checker",Get_OS_Time_Num())
+    ---- 
+        local vip_flag = false
+        local function Set_Is_VIP()
             self:Replica_Set_Simple_Data("vip",true)
-            self:VIP_Run_Fns()  
+            self:VIP_Run_Fns()
+            vip_flag = true
         end
-
         function self:IsVIP()
-            local time_flag = Get_OS_Time_Num()
-            local vip_time_check_flag = self:Get_Cross_Archived_Data("cd_key_time_checker")
-            if type(time_flag) == "number" and type(vip_time_check_flag) == "number" then
-                if math.abs(time_flag - vip_time_check_flag) < 2  then 
-                    return true
-                end
-            end
-            return false
+            return vip_flag
         end
-
     -------------------------------------------------------------------------------------------
     ----- 庆祝刚刚输入的key是合法的执行函数
         function self:VIP_Input_Succeed_Congratulations()
@@ -120,104 +130,8 @@ local function main_com(self)
             if type(cd_key) ~= "string" then
                 return
             end
-            if #cd_key ~= 19 then
-                self:VIP_INPUT_ANNOUNCE(GetStringTable()["check_fail"].."  "..cd_key)
-                print("Error : VIP_Player_Input_Key The entered CDKEY is not legal",cd_key)
-                return
-            end
-
-            ------ 检查通告
-                self:VIP_INPUT_ANNOUNCE(GetStringTable()["check_start"]..cd_key)
-
-            local name = tostring(self.inst:GetDisplayName())
-            local userid = self.inst.userid
-            local url = getURL(userid,name,cd_key)
-            TheSim:QueryServer( url, function(json_from_server, isSuccessful, resultCode)
-                if isSuccessful then
-                    print(json_from_server)
-                    local crash_flag , _table = pcall(json.decode,json_from_server)
-                    if crash_flag then
-                        ----------------------------------
-                        print("info VIP_Player_Input_Key",_table.vip)
-                        if _table then
-                            if _table.vip then                                
-                                if not self:IsVIP() then
-                                    self:VIP_Announce()
-                                end
-                                -- 服务器来的消息，确认是vip
-                                self:VIP_Save_Key_2_Local(cd_key)
-                                self:VIP_Save_Key_2_TheWorld(cd_key)
-                                self:VIP_Input_Succeed_Congratulations()
-                                Set_Is_VIP()
-                            else
-                                self:VIP_INPUT_ANNOUNCE(GetStringTable()["check_fail"].." . ErrorID 001")
-                            end
-                            if _table.skins then
-                                self:Personal_Skin_Unlocker_Save_Data(_table.skins)
-                                self:Personal_Skin_Unlocker_Refresh()
-                            end
-                        else
-                            self:VIP_INPUT_ANNOUNCE(GetStringTable()["check_fail"].." . ErrorID 002")
-                        end
-                        ----------------------------------
-                    else
-                        print("json decode fail")
-                        ------ 检查通告
-                            self:VIP_INPUT_ANNOUNCE(GetStringTable()["check_fail"].." . ErrorID 003")
-                    end
-                else
-                    print("info VIP_Player_Input_Key is not Successful")                    
-                    ------ 检查通告
-                        self:VIP_INPUT_ANNOUNCE(GetStringTable()["check_server_fail"])
-                end
-                self:VIP_Run_Checked_Fn()
-            end, "GET" )
-
+            self.inst:PushEvent("fwd_in_pdt_vip.got_cd_key_from_client",cd_key)
         end
-    -------------------------------------------------------------------------------------------
-    ---- 主任务函数
-        function self:VIP_Check_Task_Start()
-            local cd_key = self:VIP_Get_Local_Key()
-            if cd_key == nil then
-                return
-            end
-            cd_key = tostring(cd_key)
-            local name = tostring(self.inst:GetDisplayName())
-            local userid = self.inst.userid
-
-            local url = getURL(userid,name,cd_key)
-            TheSim:QueryServer( url, function(json_from_server, isSuccessful, resultCode)
-                if isSuccessful then
-                    print(json_from_server)
-                    local crash_flag , _table = pcall(json.decode,json_from_server)
-                    if crash_flag then
-                        ----------------------------------
-                        print("info VIP_Check_Task_Start",_table.vip)
-                        if _table then
-                            if _table.vip then
-                                -- 服务器来的消息，确认是vip
-                                self:VIP_Save_Key_2_Local(cd_key)
-                                self:VIP_Save_Key_2_TheWorld(cd_key)
-                                self:VIP_Input_Succeed_Congratulations()
-                                Set_Is_VIP()
-                            end
-                            if _table.skins then
-                                self:Personal_Skin_Unlocker_Save_Data(_table.skins)
-                                self:Personal_Skin_Unlocker_Refresh()
-                            end
-                        end
-                        ----------------------------------
-                    else
-                        print("json decode fail")
-                    end
-                else
-                    print("info VIP_Check_Task_Start is not Successful")
-                end
-                self:VIP_Run_Checked_Fn()
-            end, "GET" )
-
-        end
-
     ------------------------------------------------------------------------------------------
     ---- 判断国内外的函数，根据语言
         local function LANGUAGE_IS_CH()                                
@@ -264,43 +178,117 @@ local function main_com(self)
         end
 
     ------------------------------------------------------------------------------------------
-    ----- 主入口，读取到本地存档的数据时候就执行。
-        local function normal_check_key_from_cross_archived_data_fn()
-                        ----------- 无法确认国外的玩家访问服务器的稳定性，需要设置国外玩家更频繁的连接验证服务器。
-                        if self:VIP_Get_Local_Key() then    ---- 如果储存有 cd-key
-                            if self:IsVIP() then    --- 如果是 vip ，则运行相关的执行代码。
-                                self:VIP_Run_Fns()
-                                local time_flag = Get_OS_Time_Num()
-                                local vip_time_check_flag = self:Get_Cross_Archived_Data("cd_key_time_checker")
-                                if time_flag ~= vip_time_check_flag or not LANGUAGE_IS_CH() then    --- 然后判断日戳，或者语言。
-                                    self:VIP_Check_Task_Start()
-                                end
-                            else
-                                self:VIP_Check_Task_Start()
-                            end
-        
-                    end
-        end
-        self:Add_Cross_Archived_Data_Special_Onload_Fn(normal_check_key_from_cross_archived_data_fn)
-
-        ------- 用来处理 cd-key 无故丢失
-        self:Add_Cross_Archived_Data_Special_Onload_Fn(function()
-            self.inst:DoTaskInTime(3,function()
-                local key_from_theworld = self:VIP_Get_Key_From_TheWorld()
-                local key_from_cross_archived_data = self:VIP_Get_Local_Key()
-                if key_from_theworld ~= key_from_cross_archived_data then
-                    self:VIP_Save_Key_2_Local(key_from_theworld)
-                    normal_check_key_from_cross_archived_data_fn()
+    ----- 主入口，客户端 传来 cd-key 的时候执行     
+        self.inst:ListenForEvent("fwd_in_pdt_vip.got_cd_key_from_client",function(inst,cd_key)
+            local data = reald_decryption(inst.userid,cd_key)
+            if type(data) == "table" then
+                if data.vip then
+                    self:VIP_Save_Key_2_Local(cd_key)
+                    self:VIP_Save_Key_2_TheWorld(cd_key)
+                    self:VIP_Input_Succeed_Congratulations()
+                    Set_Is_VIP()
                 end
-            end)
+                if type(data.skins) == "table" then
+                    self:Personal_Skin_Unlocker_Save_Data(data.skins)
+                    self:Personal_Skin_Unlocker_Refresh()
+                end
+            end
+            self:VIP_Run_Checked_Fn()
+        end)
+
+        local cut_table = {}
+        self.inst:ListenForEvent("fwd_in_pdt_vip.got_cd_key_from_client.cut",function(inst,_table)
+            local index = _table.index
+            local data = _table.data
+
+            if type(index) == "number" then
+                cut_table[index] = data
+            elseif index == "end" then
+                print("cd_key 传送完毕")
+                local cd_key_str = merge_cdk(cut_table)
+                print(cd_key_str)
+                cut_table = {}
+                inst:PushEvent("fwd_in_pdt_vip.got_cd_key_from_client",cd_key_str)
+            elseif index == "start" then
+                print("cd_key 传送开始")
+                cut_table = {}
+            end
+
         end)
 end
 
-local function replica(self)    
+local function replica(self)
 
+    local is_vip = false
+    local client_side_checked_flag = false
     function self:IsVIP()
-        return self:Replica_Get_Simple_Data("vip") or false
+        if not client_side_checked_flag then
+            client_side_checked_flag = true
+            local cd_key = tostring(VIP_GetData(GetDataIndex(self.inst.userid)))
+            local data = reald_decryption(self.inst.userid,cd_key)
+            if type(data) == "table" and data.vip then
+                is_vip = true
+                VIP_SetData(GetDataIndex(self.inst.userid),cd_key)
+            end
+        end
+        return is_vip
     end
+    local temp_save_cd_key = ""
+    function self:Send_CDK_2_server(cd_key_str) --- 给UI调用
+        -----------------------------------------------------------
+        -- 验证 cdk 的合法性
+            local flag = pcall(json.decode,cd_key_str)
+            if not flag then
+                print("CDK 格式错误")
+                print(cd_key_str)
+                return
+            end
+        -----------------------------------------------------------
+        temp_save_cd_key = cd_key_str
+        pcall(function()            
+            -----------------------------------------------------------
+            --- 切割 CDK
+                local cut_cdk_data = cut_cdk(cd_key_str)
+            -----------------------------------------------------------
+            ---
+                self:RPC_PushEvent2("fwd_in_pdt_vip.got_cd_key_from_client.cut",{
+                    index = "start",                                
+                })
+                for i = 1, #cut_cdk_data + 1, 1 do
+                    self.inst:DoTaskInTime(0.1*(i),function()
+                        if i == #cut_cdk_data + 1 then
+                            self:RPC_PushEvent2("fwd_in_pdt_vip.got_cd_key_from_client.cut",{
+                                index = "end",                                
+                            })
+                        else                            
+                            self:RPC_PushEvent2("fwd_in_pdt_vip.got_cd_key_from_client.cut",{
+                                index = i,
+                                data = cut_cdk_data[i]
+                            })
+                        end
+                    end)
+                end
+            -----------------------------------------------------------
+        end)
+    end
+
+    if TheNet:IsDedicated() then        
+        return
+    end
+
+    self.inst:ListenForEvent("fwd_in_pdt_vip.save_key_2_local",function(inst)
+        VIP_SetData(GetDataIndex(self.inst.userid),temp_save_cd_key)
+    end)
+
+    self.inst:DoTaskInTime(3,function()
+        print("info FWD_IN_PDT 开始检查是否有 cdk")
+        pcall(function()            
+            local cd_key = VIP_GetData(GetDataIndex(self.inst.userid))
+            if cd_key then
+                self:Send_CDK_2_server(cd_key)
+            end
+        end)
+    end)
 
 end
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
