@@ -49,12 +49,15 @@ local assets = {
         if not debuff_inst then
             return false
         end
-
         target:DoTaskInTime(2,function()
             debuff_inst:PushEvent("start",doer)
+            inst.components.finiteuses:Use()
         end)
-
-        return true
+        -- if TheWorld.ismastersim then
+        --     inst:AddComponent("fwd_in_pdt_com_workable")
+        --     inst.components.finiteuses:Use()
+        -- end
+        -- return true
     end
     local function give_com_install(inst)
         inst:ListenForEvent("fwd_in_pdt_event.OnEntityReplicated.fwd_in_pdt_com_item_use_to",replica_com_install)
@@ -63,6 +66,9 @@ local assets = {
         end
         inst:AddComponent("fwd_in_pdt_com_item_use_to")
         inst.components.fwd_in_pdt_com_item_use_to:SetActiveFn(acive_fn)
+        
+        -- inst:AddComponent("fwd_in_pdt_com_workable")
+        -- inst.components.finiteuses:Use()
     end
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -97,6 +103,13 @@ local function fn()
         -- inst.components.inventoryitem:ChangeImageName("cane")
         -- inst.components.inventoryitem.imagename = "fwd_in_pdt_item_werepig_flute"
         -- inst.components.inventoryitem.atlasname = "images/inventoryimages/fwd_in_pdt_item_werepig_flute.xml"
+    --------------------------------------------------------------------------
+    --------------------------------------------------------------------------
+    --- 耐久度
+    inst:AddComponent("finiteuses")
+    inst.components.finiteuses:SetMaxUses(10)
+    inst.components.finiteuses:SetUses(10)
+    inst.components.finiteuses:SetOnFinished(inst.Remove)
     --------------------------------------------------------------------------
     return inst
 end

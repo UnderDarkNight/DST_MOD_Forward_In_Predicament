@@ -33,6 +33,8 @@ local temp_assets = {
     ---------------------------------------------------------------------------------------------
     --- 装饰
 	    Asset("ANIM", "anim/fwd_in_pdt_decoration_spring_scrolls.zip"), --- 对联
+        Asset("ANIM", "anim/fwd_in_pdt_decoration_spring_scrolls_1.zip"), --- 对联
+        Asset("ANIM", "anim/fwd_in_pdt_decoration_spring_scrolls_2.zip"), --- 对联
 	    Asset("ANIM", "anim/fwd_in_pdt_decoration_cats_1.zip"), --- 猫
     ---------------------------------------------------------------------------------------------
 }
@@ -68,10 +70,20 @@ TUNING.FWD_IN_PDT_DECORATIONS = {
     {id = "yellow_alphabet_x", bank = "fwd_in_pdt_fx_canvas" ,build = "fwd_in_pdt_fx_canvas" ,anim = "x"},
     {id = "yellow_alphabet_y", bank = "fwd_in_pdt_fx_canvas" ,build = "fwd_in_pdt_fx_canvas" ,anim = "y"},
     {id = "yellow_alphabet_z", bank = "fwd_in_pdt_fx_canvas" ,build = "fwd_in_pdt_fx_canvas" ,anim = "z"},
-    --- 示例春联
+    --- fwd_in_pdt_decoration_spring_scrolls 春联
     {id = "spring_scrolls_title",bank = "fwd_in_pdt_decoration_spring_scrolls" ,build = "fwd_in_pdt_decoration_spring_scrolls" ,anim = "icon_title" , decoration = {bank = "fwd_in_pdt_decoration_spring_scrolls" ,build = "fwd_in_pdt_decoration_spring_scrolls" ,anim = "title"}},
     {id = "spring_scrolls_scroll_left",bank = "fwd_in_pdt_decoration_spring_scrolls" ,build = "fwd_in_pdt_decoration_spring_scrolls" ,anim = "icon_left_scroll" , decoration = {bank = "fwd_in_pdt_decoration_spring_scrolls" ,build = "fwd_in_pdt_decoration_spring_scrolls" ,anim = "left_scroll"}},
     {id = "spring_scrolls_scroll_right",bank = "fwd_in_pdt_decoration_spring_scrolls" ,build = "fwd_in_pdt_decoration_spring_scrolls" ,anim = "icon_right_scroll" , decoration = {bank = "fwd_in_pdt_decoration_spring_scrolls" ,build = "fwd_in_pdt_decoration_spring_scrolls" ,anim = "right_scroll"}},
+    --- fwd_in_pdt_decoration_spring_scrolls_1 春联
+    {id = "spring_scrolls_title_1",bank = "fwd_in_pdt_decoration_spring_scrolls_1" ,build = "fwd_in_pdt_decoration_spring_scrolls_1" ,anim = "icon_title_1" , decoration = {bank = "fwd_in_pdt_decoration_spring_scrolls_1" ,build = "fwd_in_pdt_decoration_spring_scrolls_1" ,anim = "title_1"}},
+    {id = "spring_scrolls_scroll_left_1",bank = "fwd_in_pdt_decoration_spring_scrolls_1" ,build = "fwd_in_pdt_decoration_spring_scrolls_1" ,anim = "icon_left_scroll_1" , decoration = {bank = "fwd_in_pdt_decoration_spring_scrolls_1" ,build = "fwd_in_pdt_decoration_spring_scrolls_1" ,anim = "left_scroll_1"}},
+    {id = "spring_scrolls_scroll_right_1",bank = "fwd_in_pdt_decoration_spring_scrolls_1" ,build = "fwd_in_pdt_decoration_spring_scrolls_1" ,anim = "icon_right_scroll_1" , decoration = {bank = "fwd_in_pdt_decoration_spring_scrolls_1" ,build = "fwd_in_pdt_decoration_spring_scrolls_1" ,anim = "right_scroll_1"}},
+    --- fwd_in_pdt_decoration_spring_scrolls_2 春联
+    {id = "spring_scrolls_title_2",bank = "fwd_in_pdt_decoration_spring_scrolls_2" ,build = "fwd_in_pdt_decoration_spring_scrolls_2" ,anim = "icon_title_2" , decoration = {bank = "fwd_in_pdt_decoration_spring_scrolls_2" ,build = "fwd_in_pdt_decoration_spring_scrolls_2" ,anim = "title_2"}},
+    {id = "spring_scrolls_scroll_left_2",bank = "fwd_in_pdt_decoration_spring_scrolls_2" ,build = "fwd_in_pdt_decoration_spring_scrolls_2" ,anim = "icon_left_scroll_2" , decoration = {bank = "fwd_in_pdt_decoration_spring_scrolls_2" ,build = "fwd_in_pdt_decoration_spring_scrolls_2" ,anim = "left_scroll_2"}},
+    {id = "spring_scrolls_scroll_right_2",bank = "fwd_in_pdt_decoration_spring_scrolls_2" ,build = "fwd_in_pdt_decoration_spring_scrolls_2" ,anim = "icon_right_scroll_2" , decoration = {bank = "fwd_in_pdt_decoration_spring_scrolls_2" ,build = "fwd_in_pdt_decoration_spring_scrolls_2" ,anim = "right_scroll_2"}},
+    
+    
     --- fwd_in_pdt_decoration_cats_1 猫包
     {id = "jellyfish_1",bank = "fwd_in_pdt_decoration_cats_1" ,build = "fwd_in_pdt_decoration_cats_1" ,anim = "icon_jellyfish_1" , decoration = {bank = "fwd_in_pdt_decoration_cats_1" ,build = "fwd_in_pdt_decoration_cats_1" ,anim = "jellyfish_1"}},
     {id = "jellyfish_2",bank = "fwd_in_pdt_decoration_cats_1" ,build = "fwd_in_pdt_decoration_cats_1" ,anim = "icon_jellyfish_2" , decoration = {bank = "fwd_in_pdt_decoration_cats_1" ,build = "fwd_in_pdt_decoration_cats_1" ,anim = "jellyfish_2"}},
@@ -81,7 +93,7 @@ TUNING.FWD_IN_PDT_DECORATIONS = {
     {id = "orange_cat_holding",bank = "fwd_in_pdt_decoration_cats_1" ,build = "fwd_in_pdt_decoration_cats_1" ,anim = "icon_cat_orange" , decoration = {bank = "fwd_in_pdt_decoration_cats_1" ,build = "fwd_in_pdt_decoration_cats_1" ,anim = "cat_orange"}},
     {id = "black_cat_holding",bank = "fwd_in_pdt_decoration_cats_1" ,build = "fwd_in_pdt_decoration_cats_1" ,anim = "icon_cat_black" , decoration = {bank = "fwd_in_pdt_decoration_cats_1" ,build = "fwd_in_pdt_decoration_cats_1" ,anim = "cat_black"}},
     {id = "white_cat_holding",bank = "fwd_in_pdt_decoration_cats_1" ,build = "fwd_in_pdt_decoration_cats_1" ,anim = "icon_cat_white" , decoration = {bank = "fwd_in_pdt_decoration_cats_1" ,build = "fwd_in_pdt_decoration_cats_1" ,anim = "cat_white"}},
-    --- fwd_in_pdt_decoration_old
+    --- fwd_in_pdt_decoration_old 官方小玩意
     {id = "decoration_1", bank = "fwd_in_pdt_decoration_old" ,build = "fwd_in_pdt_decoration_old" ,anim = "decoration_1"},
     {id = "decoration_2", bank = "fwd_in_pdt_decoration_old" ,build = "fwd_in_pdt_decoration_old" ,anim = "decoration_2"},
     {id = "decoration_3", bank = "fwd_in_pdt_decoration_old" ,build = "fwd_in_pdt_decoration_old" ,anim = "decoration_3"},

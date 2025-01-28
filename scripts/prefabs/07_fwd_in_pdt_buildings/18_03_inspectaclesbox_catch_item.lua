@@ -22,8 +22,8 @@
         --[[
             石头，燧石，黄金随机刷新，刷新量3~10
             石果苗，齿轮随机刷新，刷新量10~20
-            固定刷新随机蓝图1
             固定刷新随机宝石铥矿2或宝石树种子1
+            固定给一个装饰箱子
         ]]--
         ------------------------------------------------
         ---
@@ -48,7 +48,7 @@
             inst.components.container:GiveItem(item)
         ------------------------------------------------
         ---
-            inst.components.container:GiveItem(SpawnPrefab("blueprint"))
+            inst.components.container:GiveItem(SpawnPrefab("fwd_in_pdt_item_decorative_tool_box"))
         ------------------------------------------------
         ---
             if math.random() < 0.5 then
