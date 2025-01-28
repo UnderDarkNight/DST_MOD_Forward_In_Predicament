@@ -57,7 +57,7 @@ local assets = {
         --     inst:AddComponent("fwd_in_pdt_com_workable")
         --     inst.components.finiteuses:Use()
         -- end
-        -- return true
+        return true
     end
     local function give_com_install(inst)
         inst:ListenForEvent("fwd_in_pdt_event.OnEntityReplicated.fwd_in_pdt_com_item_use_to",replica_com_install)
