@@ -11,8 +11,8 @@ end
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ---
-    local temp_fns = require("fwd_in_pdt_vip_decryption") -- 加密模块
-    local reald_decryption = temp_fns.reald_decryption
+    local reald_decryption = require("fwd_in_pdt_vip_decryption") -- 解密模块
+    local temp_fns =  require("fwd_in_pdt_vip_data_api") -- 数据模块
     local VIP_SetData = temp_fns.VIP_SetData
     local VIP_GetData = temp_fns.VIP_GetData
 
