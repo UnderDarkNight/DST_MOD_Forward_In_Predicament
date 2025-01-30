@@ -24,6 +24,8 @@ end
     local GetAllSkinDataByUserid = skin_api.GetAllSkinDataByUserid
     local SaveSkinKeyForPlayer = skin_api.SaveSkinKeyForPlayer
 
+    local unzip_cdk_fn = require("fwd_in_pdt_unzip_cd_key") -- 解压模块
+
     local function GetDataIndex(userid)
         return userid .. ".fwd_in_pdt.cd_key"
     end
@@ -39,27 +41,27 @@ end
 
 local function main_com(self)
     self.TempData.VIP = {}
-    local function getURL(userid,name,cd_key)
-        -- local function decodeURI(s)
-        --     s = string.gsub(s, '%%(%x%x)', function(h) return string.char(tonumber(h, 16)) end)
-        --     return s
-        -- end
+    -- local function getURL(userid,name,cd_key)
+    --     -- local function decodeURI(s)
+    --     --     s = string.gsub(s, '%%(%x%x)', function(h) return string.char(tonumber(h, 16)) end)
+    --     --     return s
+    --     -- end
         
-        local function encodeURI(s)
-            s = string.gsub(s, "([^%w%.%- ])", function(c) return string.format("%%%02X", string.byte(c)) end)
-            return string.gsub(s, " ", "+")
-        end
-        userid = encodeURI(userid)
-        name = encodeURI(name)
-        cd_key = encodeURI(cd_key)
-        local base_url = "http://123.60.67.238:8888"
-        -- local base_url = "http://127.0.0.1:8889"
-        -- if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
-        --     base_url = "http://127.0.0.1:8888"
-        -- end
-        local url = base_url.."/default.aspx?skin=test&mod=fwd_in_pdt&userid="..userid .. "&name=".. name .. "&cd_key=" ..cd_key
-        return url
-    end
+    --     local function encodeURI(s)
+    --         s = string.gsub(s, "([^%w%.%- ])", function(c) return string.format("%%%02X", string.byte(c)) end)
+    --         return string.gsub(s, " ", "+")
+    --     end
+    --     userid = encodeURI(userid)
+    --     name = encodeURI(name)
+    --     cd_key = encodeURI(cd_key)
+    --     local base_url = "http://123.60.67.238:8888"
+    --     -- local base_url = "http://127.0.0.1:8889"
+    --     -- if TUNING.FWD_IN_PDT_MOD___DEBUGGING_MODE then
+    --     --     base_url = "http://127.0.0.1:8888"
+    --     -- end
+    --     local url = base_url.."/default.aspx?skin=test&mod=fwd_in_pdt&userid="..userid .. "&name=".. name .. "&cd_key=" ..cd_key
+    --     return url
+    -- end
 
 
     ------------------------------------------------------------------------------------------
@@ -259,6 +261,9 @@ local function replica(self)
     end
     local temp_save_cd_key = ""
     function self:Send_CDK_2_server(cd_key_str) --- 给UI调用
+        -----------------------------------------------------------
+        -- 尝试解压CDK
+            cd_key_str = unzip_cdk_fn(cd_key_str)
         -----------------------------------------------------------
         -- 验证 cdk 的合法性
             local flag,data = pcall(json.decode,cd_key_str)
