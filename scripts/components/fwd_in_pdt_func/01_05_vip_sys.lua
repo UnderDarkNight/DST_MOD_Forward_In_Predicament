@@ -209,13 +209,13 @@ local function main_com(self)
             if type(index) == "number" then
                 cut_table[index] = data
             elseif index == "end" then
-                print("cd_key 传送完毕")
+                -- print("cd_key 传送完毕")
                 local cd_key_str = merge_cdk(cut_table)
                 print(cd_key_str)
                 cut_table = {}
                 inst:PushEvent("fwd_in_pdt_vip.got_cd_key_from_client",cd_key_str)
             elseif index == "start" then
-                print("cd_key 传送开始")
+                -- print("cd_key 传送开始")
                 cut_table = {}
             end
 
@@ -224,7 +224,7 @@ local function main_com(self)
     -- 单个皮肤解锁
         self.inst:ListenForEvent("fwd_in_pdt_vip.server_unlock_single_skin",function(inst,cd_key)
             local data = reald_decryption(inst.userid,cd_key) or {}
-            print("服务器接到请求解锁单个皮肤命令",data.userid,data.skin)
+            -- print("服务器接到请求解锁单个皮肤命令",data.userid,data.skin)
             if data.skin and data.userid then
                 if inst.userid == data.userid then
                     local prefab = self:SkinAPI__Get_Prefab_By_Skin(data.skin)
@@ -232,7 +232,7 @@ local function main_com(self)
                         self:_SkinAPI__Unlock_Skin({
                             [prefab] = {data.skin}
                         })
-                        print("解锁了皮肤",prefab,data.skin)
+                        -- print("解锁了皮肤",prefab,data.skin)
                         self:RPC_PushEvent2("fwd_in_pdt_vip.server_has_unlocked_single_skin",data.skin)
                     end
                 end
@@ -310,7 +310,7 @@ local function replica(self)
         if type(data) == "table" and data.skin and data.userid and data.userid == self.inst.userid then
             self:RPC_PushEvent2("fwd_in_pdt_vip.server_unlock_single_skin",skin_key_str)
             unlocked_skin[data.skin] = skin_key_str
-            print("客户端发送了皮肤CDK")
+            -- print("客户端发送了皮肤CDK")
         end
     end
     self.inst:ListenForEvent("fwd_in_pdt_vip.server_has_unlocked_single_skin",function(inst,skin_name)
@@ -329,7 +329,7 @@ local function replica(self)
     end)
 
     self.inst:DoTaskInTime(3,function()
-        print("info FWD_IN_PDT 开始检查是否有 cdk")
+        -- print("info FWD_IN_PDT 开始检查是否有 cdk")
         pcall(function()            
             local cd_key = VIP_GetData(GetDataIndex(self.inst.userid))
             if cd_key then
@@ -339,7 +339,7 @@ local function replica(self)
     end)
 
     self.inst:DoTaskInTime(5,function()
-        print("info FWD_IN_PDT 开始检查 皮肤 cdk")
+        -- print("info FWD_IN_PDT 开始检查 皮肤 cdk")
         pcall(function()
             local ALL_SKIN_KEYS = GetAllSkinDataByUserid(self.inst.userid)
             local num = 1
