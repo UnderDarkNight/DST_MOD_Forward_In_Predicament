@@ -1,8 +1,16 @@
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -- 冰柜
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
+local assets =
+{
+    Asset("ANIM", "anim/fwd_in_pdt_deep_freeze.zip"),
+    Asset( "IMAGE", "images/widget/fwd_in_pdt_deep_freeze_slot_bg.tex" ), 
+    Asset( "ATLAS", "images/widget/fwd_in_pdt_deep_freeze_slot_bg.xml" ),
+}
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+local containers = require("containers")
+containers.MAXITEMSLOTS = math.max(containers.MAXITEMSLOTS, 49)
+-- print("Item position:", item.Transform:GetWorldPosition())
 ---- 安装容器界面
 local function container_Widget_change(theContainer)
     -----------------------------------------------------------------------------------
@@ -18,19 +26,68 @@ local function container_Widget_change(theContainer)
             widget =
             {
                 slotpos = {},
-                animbank = "ui_fish_box_5x4",   --- 格子背景动画
-                animbuild = "ui_fish_box_5x4",  --- 格子背景动画
-                pos = Vector3(0, 220, 0),       --- 基点坐标
+                animbank = "fwd_in_pdt_deep_freeze",   --- 格子背景动画
+                animbuild = "fwd_in_pdt_deep_freeze",  --- 格子背景动画
+                pos = Vector3(0, 200, 0),       --- 基点坐标
                 side_align_tip = 160,
+                slotbg = {
+                    { image = "fwd_in_pdt_deep_freeze_slot_bg.tex", atlas = "images/widget/fwd_in_pdt_deep_freeze_slot_bg.xml"},
+                    { image = "fwd_in_pdt_deep_freeze_slot_bg.tex", atlas = "images/widget/fwd_in_pdt_deep_freeze_slot_bg.xml"},
+                    { image = "fwd_in_pdt_deep_freeze_slot_bg.tex", atlas = "images/widget/fwd_in_pdt_deep_freeze_slot_bg.xml"},
+                    { image = "fwd_in_pdt_deep_freeze_slot_bg.tex", atlas = "images/widget/fwd_in_pdt_deep_freeze_slot_bg.xml"},
+                    { image = "fwd_in_pdt_deep_freeze_slot_bg.tex", atlas = "images/widget/fwd_in_pdt_deep_freeze_slot_bg.xml"},
+                    { image = "fwd_in_pdt_deep_freeze_slot_bg.tex", atlas = "images/widget/fwd_in_pdt_deep_freeze_slot_bg.xml"},
+                    { image = "fwd_in_pdt_deep_freeze_slot_bg.tex", atlas = "images/widget/fwd_in_pdt_deep_freeze_slot_bg.xml"},
+                    { image = "fwd_in_pdt_deep_freeze_slot_bg.tex", atlas = "images/widget/fwd_in_pdt_deep_freeze_slot_bg.xml"},
+                    { image = "fwd_in_pdt_deep_freeze_slot_bg.tex", atlas = "images/widget/fwd_in_pdt_deep_freeze_slot_bg.xml"},
+                    { image = "fwd_in_pdt_deep_freeze_slot_bg.tex", atlas = "images/widget/fwd_in_pdt_deep_freeze_slot_bg.xml"},
+                    { image = "fwd_in_pdt_deep_freeze_slot_bg.tex", atlas = "images/widget/fwd_in_pdt_deep_freeze_slot_bg.xml"},
+                    { image = "fwd_in_pdt_deep_freeze_slot_bg.tex", atlas = "images/widget/fwd_in_pdt_deep_freeze_slot_bg.xml"},
+                    { image = "fwd_in_pdt_deep_freeze_slot_bg.tex", atlas = "images/widget/fwd_in_pdt_deep_freeze_slot_bg.xml"},
+                    { image = "fwd_in_pdt_deep_freeze_slot_bg.tex", atlas = "images/widget/fwd_in_pdt_deep_freeze_slot_bg.xml"},
+                    { image = "fwd_in_pdt_deep_freeze_slot_bg.tex", atlas = "images/widget/fwd_in_pdt_deep_freeze_slot_bg.xml"},
+                    { image = "fwd_in_pdt_deep_freeze_slot_bg.tex", atlas = "images/widget/fwd_in_pdt_deep_freeze_slot_bg.xml"},
+                    { image = "fwd_in_pdt_deep_freeze_slot_bg.tex", atlas = "images/widget/fwd_in_pdt_deep_freeze_slot_bg.xml"},
+                    { image = "fwd_in_pdt_deep_freeze_slot_bg.tex", atlas = "images/widget/fwd_in_pdt_deep_freeze_slot_bg.xml"},
+                    { image = "fwd_in_pdt_deep_freeze_slot_bg.tex", atlas = "images/widget/fwd_in_pdt_deep_freeze_slot_bg.xml"},
+                    { image = "fwd_in_pdt_deep_freeze_slot_bg.tex", atlas = "images/widget/fwd_in_pdt_deep_freeze_slot_bg.xml"},
+                    { image = "fwd_in_pdt_deep_freeze_slot_bg.tex", atlas = "images/widget/fwd_in_pdt_deep_freeze_slot_bg.xml"},
+                    { image = "fwd_in_pdt_deep_freeze_slot_bg.tex", atlas = "images/widget/fwd_in_pdt_deep_freeze_slot_bg.xml"},
+                    { image = "fwd_in_pdt_deep_freeze_slot_bg.tex", atlas = "images/widget/fwd_in_pdt_deep_freeze_slot_bg.xml"},
+                    { image = "fwd_in_pdt_deep_freeze_slot_bg.tex", atlas = "images/widget/fwd_in_pdt_deep_freeze_slot_bg.xml"},
+                    { image = "fwd_in_pdt_deep_freeze_slot_bg.tex", atlas = "images/widget/fwd_in_pdt_deep_freeze_slot_bg.xml"},
+                    { image = "fwd_in_pdt_deep_freeze_slot_bg.tex", atlas = "images/widget/fwd_in_pdt_deep_freeze_slot_bg.xml"},
+                    { image = "fwd_in_pdt_deep_freeze_slot_bg.tex", atlas = "images/widget/fwd_in_pdt_deep_freeze_slot_bg.xml"},
+                    { image = "fwd_in_pdt_deep_freeze_slot_bg.tex", atlas = "images/widget/fwd_in_pdt_deep_freeze_slot_bg.xml"},
+                    { image = "fwd_in_pdt_deep_freeze_slot_bg.tex", atlas = "images/widget/fwd_in_pdt_deep_freeze_slot_bg.xml"},
+                    { image = "fwd_in_pdt_deep_freeze_slot_bg.tex", atlas = "images/widget/fwd_in_pdt_deep_freeze_slot_bg.xml"},
+                    { image = "fwd_in_pdt_deep_freeze_slot_bg.tex", atlas = "images/widget/fwd_in_pdt_deep_freeze_slot_bg.xml"},
+                    { image = "fwd_in_pdt_deep_freeze_slot_bg.tex", atlas = "images/widget/fwd_in_pdt_deep_freeze_slot_bg.xml"},
+                    { image = "fwd_in_pdt_deep_freeze_slot_bg.tex", atlas = "images/widget/fwd_in_pdt_deep_freeze_slot_bg.xml"},
+                    { image = "fwd_in_pdt_deep_freeze_slot_bg.tex", atlas = "images/widget/fwd_in_pdt_deep_freeze_slot_bg.xml"},
+                    { image = "fwd_in_pdt_deep_freeze_slot_bg.tex", atlas = "images/widget/fwd_in_pdt_deep_freeze_slot_bg.xml"},
+                    { image = "fwd_in_pdt_deep_freeze_slot_bg.tex", atlas = "images/widget/fwd_in_pdt_deep_freeze_slot_bg.xml"},
+                    { image = "fwd_in_pdt_deep_freeze_slot_bg.tex", atlas = "images/widget/fwd_in_pdt_deep_freeze_slot_bg.xml"},
+                    { image = "fwd_in_pdt_deep_freeze_slot_bg.tex", atlas = "images/widget/fwd_in_pdt_deep_freeze_slot_bg.xml"},
+                    { image = "fwd_in_pdt_deep_freeze_slot_bg.tex", atlas = "images/widget/fwd_in_pdt_deep_freeze_slot_bg.xml"},
+                    { image = "fwd_in_pdt_deep_freeze_slot_bg.tex", atlas = "images/widget/fwd_in_pdt_deep_freeze_slot_bg.xml"},
+                    { image = "fwd_in_pdt_deep_freeze_slot_bg.tex", atlas = "images/widget/fwd_in_pdt_deep_freeze_slot_bg.xml"},
+                    { image = "fwd_in_pdt_deep_freeze_slot_bg.tex", atlas = "images/widget/fwd_in_pdt_deep_freeze_slot_bg.xml"},
+                    }
             },
             type = "chest",
             acceptsstacks = true,               --- 是否允许叠堆 
         }
-
-        ------ 格子的布局
-        for y = 2.5, -0.5, -1 do
-            for x = -1, 3 do
-                table.insert(params[container_widget_name].widget.slotpos, Vector3(75 * x - 75 * 2 + 75, 75 * y - 75 * 2 + 75, 0))
+        ------ 格子的布局(圆的 5x7)
+        -- for y = 0, 4 do
+        --     for x = 0, 6 do
+        --         table.insert(params[container_widget_name].widget.slotpos, Vector3(90 * x - 270 , -90 * y + 185, 0))
+        --     end
+        -- end
+        ------ 格子的布局(方的 6x7)
+        for y = 0, 5 do
+            for x = 0, 6 do
+                table.insert(params[container_widget_name].widget.slotpos, Vector3(80 * x - 240 , 70 * y - 170, 0))
             end
         end
         ------------------------------------------------------------------------------------------
@@ -115,11 +172,6 @@ local function add_container_before_not_ismastersim_return(inst)
 end
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-local assets =
-{
-    Asset("ANIM", "anim/fwd_in_pdt_deep_freeze.zip"),
-}
-
 local function fn()
 -------------------------------------------------------------------------------------
     local inst = CreateEntity()
@@ -193,7 +245,7 @@ inst:AddComponent("inspectable")
 -------------------------------------------------------------------------------------
 ---- 打开、关闭 容器的时候触发的事件。可以用来播放动画
     local function onopen(inst)
-        inst.AnimState:PlayAnimation("open")
+        inst.AnimState:PlayAnimation("open_1")
         inst.SoundEmitter:PlaySound("dontstarve/common/icebox_open")
     end
 

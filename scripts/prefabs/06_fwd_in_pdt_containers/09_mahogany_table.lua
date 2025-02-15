@@ -277,7 +277,7 @@ local function fn()
     end
     -----------------------------------------------------------------------------------
     ---- 可检查组件
-        inst:AddComponent("inspectable") --
+        inst:AddComponent("inspectable") 
         inst.components.inspectable.descriptionfn = function()
             if inst:HasTag("burnt") then
                 return GetStringsTable()["inspect_str_burnt"]

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Atlas>
+	<Texture filename="fwd_in_pdt_deep_freeze_slot_bg.tex" />
+	<Elements>
+		<Element name="fwd_in_pdt_deep_freeze_slot_bg.tex" u1="0.001" u2="0.514625" v2="0.999" v1="0.485375" variant="" />
+	</Elements>
+</Atlas>
