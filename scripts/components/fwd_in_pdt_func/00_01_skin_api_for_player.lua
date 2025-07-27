@@ -10,7 +10,18 @@
 local function main_com(self)
         self.DataTable.player_unlocked_skins_PREFAB_SKINS = {}          ---- index 为数字 内容为 skin_name
         self.DataTable.player_unlocked_skins_PREFAB_SKINS_IDS = {}      ---- index 为skin_name ,内容为数字
-
+        --[[
+            self.DataTable.player_unlocked_skins_PREFAB_SKINS = {
+                [prefab] = {skin_name_1,skin_name_2,skin_name_3}
+            } 
+            self.DataTable.player_unlocked_skins_PREFAB_SKINS_IDS = {
+                [prefab] = {
+                    [skin_name_1] = true,
+                    [skin_name_2] = true,
+                    [skin_name_3] = true,                
+                }            
+            }
+        ]]
         -------------------------------------------------------------
         ---- 解锁皮肤用的API
             function self:_SkinAPI__Unlock_Skin(cmd_table)   ----- 解锁皮肤

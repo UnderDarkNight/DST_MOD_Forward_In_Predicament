@@ -14,15 +14,14 @@ local theAnimState = getmetatable(tempInst.AnimState).__index  ------ 侵入user
 
 if type(theAnimState) == "table" and theAnimState.GetBank == nil then
 
+    local temp_banks = {}
     local old_set_bank = theAnimState.SetBank
-    theAnimState.temp_banks = theAnimState.temp_banks or {}
     theAnimState.SetBank = function(self,bank)
         old_set_bank(self,bank)
-        self.temp_banks[self] = bank
+        temp_banks[self] = bank
     end
 
     theAnimState.GetBank = function(self)
-        local temp_banks = self.temp_banks or {}
         return temp_banks[self]
     end
 
